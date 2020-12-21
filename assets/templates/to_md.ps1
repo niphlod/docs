@@ -67,7 +67,7 @@ $initScript = {
                 }
                 $null = $rtn.Add('')
             }
-        
+
             $null = $rtn.Add('```')
             $null = $rtn.Add("`n" + '&nbsp;' + "`n")
         }
@@ -86,7 +86,7 @@ $initScript = {
                 $null = $rtn.Add(($row.Trim() -replace 'PS C:\\>\s*', "PS C:\> "))
                 $inside = 1
             } elseif ($row.Trim() -eq '' -or $row.Trim() -eq 'Description') {
-        
+
             } else {
                 if ($inside -eq 1) {
                     $inside = 0
@@ -119,6 +119,9 @@ $initScript = {
                 $null = $rtn.Add('| Required | ' + $el[3] + ' |')
                 $null = $rtn.Add('| Pipeline | ' + $el[4] + ' |')
                 $null = $rtn.Add('| Default Value | ' + $el[5] + ' |')
+                if ($el[6]) {
+                    $null = $rtn.Add('| Accepted Values | ' + $el[6] + ' |')
+                }
                 $null = $rtn.Add('')
             }
             $dotitle = 0
@@ -133,7 +136,7 @@ $initScript = {
                     $dotitle = 1
                     $null = $rtn.Add('### Optional Parameters')
                 }
-        
+
                 $null = $rtn.Add('##### -' + $el[0])
                 $null = $rtn.Add($el[1])
                 $null = $rtn.Add('')
@@ -143,6 +146,9 @@ $initScript = {
                 $null = $rtn.Add('| Required | ' + $el[3] + ' |')
                 $null = $rtn.Add('| Pipeline | ' + $el[4] + ' |')
                 $null = $rtn.Add('| Default Value | ' + $el[5] + ' |')
+                if ($el[6]) {
+                    $null = $rtn.Add('| Accepted Values | ' + $el[6] + ' |')
+                }
                 $null = $rtn.Add('')
             }
         }
@@ -163,14 +169,14 @@ $initScript = {
         $cmdtags = @('dbatools')
         if ($doc_to_render.Tags) {
             $cmdtags += $c.Tags
-        } 
+        }
         $cmdtags = $cmdtags -Join ', '
         $page_template_static = $page_template_static.Replace('$____TAGS____$', (Get-DbadocsEscaped $cmdtags)).Replace('$____COMMANDNAME____$', (Get-DbadocsEscaped $cmdname))
-    
+
         $MDContent = Get-DbaDocsMD -doc_to_render $doc_to_render
         $HTMLFragmentContent = ($MDContent -Join "`n" | Convert-MarkdownToHTMLFragment).HtmlFragment
-        $page_template_static = $page_template_static.Replace('$____RENDERED____$', $HTMLFragmentContent) 
-        $page_template_static | Out-File (Join-Path $OutputFolder "$($doc_to_render.Name).html") -Encoding UTF8 
+        $page_template_static = $page_template_static.Replace('$____RENDERED____$', $HTMLFragmentContent)
+        $page_template_static | Out-File (Join-Path $OutputFolder "$($doc_to_render.Name).html") -Encoding UTF8
     }
 }
 
@@ -206,9 +212,9 @@ function Get-DocsRobotsTxt ($idx, $OutputFolder) {
         $null = $urlin.AppendChild($lastmod)
         $null = $urlset.AppendChild($urlin)
     }
-    
+
     $xmlDoc.Save((Join-Path $OutputFolder "sitemap.xml"))
-    
+
     "Sitemap: $rootdomain/sitemap.xml" | Out-File (Join-Path $OutputFolder "robots.txt") -Encoding UTF8
 }
 
