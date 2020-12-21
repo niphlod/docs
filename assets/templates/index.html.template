@@ -331,7 +331,7 @@
                             }
                             cloudlist[el] += 1
                         })
-                    } else {
+                    } else if (!_.isUndefined(el.Tags)){
                         if (!_.has(cloudlist, el.Tags)) {
                             cloudlist[el.Tags] = 0
                         }
