@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=2.0">
+    <title>dbatools docs | Rename-DbaDatabase</title>
+    <link rel="icon" href="https://dbatools.io/wp-content/uploads/2016/05/dbatools.png" sizes="32x32">
+    <link rel="icon" href="https://dbatools.io/wp-content/uploads/2016/05/dbatools.png" sizes="192x192">
+    <link rel="apple-touch-icon-precomposed" href="https://dbatools.io/wp-content/uploads/2016/05/dbatools.png">
+    <meta name="msapplication-TileImage" content="https://dbatools.io/wp-content/uploads/2016/05/dbatools.png">
+
+    <link title="Search" rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml">
+    <meta name="keywords" content="dbatools, ">
+    <meta name="subtitle" content="Docs for Rename-DbaDatabase">
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="dbatools docs:  Rename-DbaDatabase" />
+    <meta property="og:url" content="https://docs.dbatools.io/Rename-DbaDatabase.html" />
+    <meta property="og:description" content="dbatools docs for Rename-DbaDatabase" />
+    <meta property="og:site_name" content="docs.dbatools.io" />
+    <meta property="og:locale" content="en_US" />
+    <meta name="twitter:text:title" content="dbatools docs:  Rename-DbaDatabase" />
+    <meta name="twitter:image" content="https://dbatools.io/wp-content/uploads/2016/05/dbatools.png" />
+    <meta name="twitter:card" content="summary" />
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css"
+        href="//cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" type="text/css"
+        href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+
+    <link rel="stylesheet" href="assets/css/layout.css">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-80639740-2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-80639740-2');
+    </script>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+    <script src="//cdn.jsdelivr.net/npm/lodash@4.17.4/lodash.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script src="//cdn.jsdelivr.net/jquery.scrollto/2.1.2/jquery.scrollTo.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/autolinker/1.7.1/Autolinker.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jqcloud2@2.0.3/dist/jqcloud.min.js"
+        integrity="sha256-+krhsKJpvd3AZYVGHcwyCUGO01uNdGSTvqR7Apcy30E=" crossorigin="anonymous"></script>
+
+    <script type="text/javascript" language="javascript">
+        function register_dbatools_hljs(dbatoolscommands) {
+
+            hljs.registerLanguage("powershell", function (e) {
+                var t = {
+                    b: "`[\\s\\S]",
+                    r: 0
+                },
+                    o = {
+                        cN: "variable",
+                        v: [{
+                            b: /\$[\w\d][\w\d_:]*/
+                        }]
+                    },
+                    r = {
+                        cN: "literal",
+                        b: /\$(null|true|false)\b/
+                    },
+                    n = {
+                        cN: "string",
+                        v: [{
+                            b: /"/,
+                            e: /"/
+                        }, {
+                            b: /@"/,
+                            e: /^"@/
+                        }],
+                        c: [t, o, {
+                            cN: "variable",
+                            b: /\$[A-z]/,
+                            e: /[^A-z]/
+                        }]
+                    },
+                    a = {
+                        cN: "string",
+                        v: [{
+                            b: /'/,
+                            e: /'/
+                        }, {
+                            b: /@'/,
+                            e: /^'@/
+                        }]
+                    },
+                    i = {
+                        cN: "doctag",
+                        v: [{
+                            b: /\.(synopsis|description|example|inputs|outputs|notes|link|component|role|functionality)/
+                        }, {
+                            b: /\.(parameter|forwardhelptargetname|forwardhelpcategory|remotehelprunspace|externalhelp)\s+\S+/
+                        }]
+                    },
+                    s = e.inherit(e.C(null, null), {
+                        v: [{
+                            b: /#/,
+                            e: /$/
+                        }, {
+                            b: /<#/,
+                            e: /#>/
+                        }],
+                        c: [i]
+                    });
+                return {
+                    aliases: ["ps"],
+                    l: /-?[A-z\.\-]+/,
+                    cI: !0,
+                    k: {
+                        keyword: "if else foreach return function do while until elseif begin for trap data dynamicparam end break throw param continue finally in switch exit filter try process catch",
+                        built_in: dbatoolscommands + " Add-Computer Add-Content Add-History Add-JobTrigger Add-Member Add-PSSnapin Add-Type Checkpoint-Computer Clear-Content Clear-EventLog Clear-History Clear-Host Clear-Item Clear-ItemProperty Clear-Variable Compare-Object Complete-Transaction Connect-PSSession Connect-WSMan Convert-Path ConvertFrom-Csv ConvertFrom-Json ConvertFrom-SecureString ConvertFrom-StringData ConvertTo-Csv ConvertTo-Html ConvertTo-Json ConvertTo-SecureString ConvertTo-Xml Copy-Item Copy-ItemProperty Debug-Process Disable-ComputerRestore Disable-JobTrigger Disable-PSBreakpoint Disable-PSRemoting Disable-PSSessionConfiguration Disable-WSManCredSSP Disconnect-PSSession Disconnect-WSMan Disable-ScheduledJob Enable-ComputerRestore Enable-JobTrigger Enable-PSBreakpoint Enable-PSRemoting Enable-PSSessionConfiguration Enable-ScheduledJob Enable-WSManCredSSP Enter-PSSession Exit-PSSession Export-Alias Export-Clixml Export-Console Export-Counter Export-Csv Export-FormatData Export-ModuleMember Export-PSSession ForEach-Object Format-Custom Format-List Format-Table Format-Wide Get-Acl Get-Alias Get-AuthenticodeSignature Get-ChildItem Get-Command Get-ComputerRestorePoint Get-Content Get-ControlPanelItem Get-Counter Get-Credential Get-Culture Get-Date Get-Event Get-EventLog Get-EventSubscriber Get-ExecutionPolicy Get-FormatData Get-Host Get-HotFix Get-Help Get-History Get-IseSnippet Get-Item Get-ItemProperty Get-Job Get-JobTrigger Get-Location Get-Member Get-Module Get-PfxCertificate Get-Process Get-PSBreakpoint Get-PSCallStack Get-PSDrive Get-PSProvider Get-PSSession Get-PSSessionConfiguration Get-PSSnapin Get-Random Get-ScheduledJob Get-ScheduledJobOption Get-Service Get-TraceSource Get-Transaction Get-TypeData Get-UICulture Get-Unique Get-Variable Get-Verb Get-WinEvent Get-WmiObject Get-WSManCredSSP Get-WSManInstance Group-Object Import-Alias Import-Clixml Import-Counter Import-Csv Import-IseSnippet Import-LocalizedData Import-PSSession Import-Module Invoke-AsWorkflow Invoke-Command Invoke-Expression Invoke-History Invoke-Item Invoke-RestMethod Invoke-WebRequest Invoke-WmiMethod Invoke-WSManAction Join-Path Limit-EventLog Measure-Command Measure-Object Move-Item Move-ItemProperty New-Alias New-Event New-EventLog New-IseSnippet New-Item New-ItemProperty New-JobTrigger New-Object New-Module New-ModuleManifest New-PSDrive New-PSSession New-PSSessionConfigurationFile New-PSSessionOption New-PSTransportOption New-PSWorkflowExecutionOption New-PSWorkflowSession New-ScheduledJobOption New-Service New-TimeSpan New-Variable New-WebServiceProxy New-WinEvent New-WSManInstance New-WSManSessionOption Out-Default Out-File Out-GridView Out-Host Out-Null Out-Printer Out-String Pop-Location Push-Location Read-Host Receive-Job Register-EngineEvent Register-ObjectEvent Register-PSSessionConfiguration Register-ScheduledJob Register-WmiEvent Remove-Computer Remove-Event Remove-EventLog Remove-Item Remove-ItemProperty Remove-Job Remove-JobTrigger Remove-Module Remove-PSBreakpoint Remove-PSDrive Remove-PSSession Remove-PSSnapin Remove-TypeData Remove-Variable Remove-WmiObject Remove-WSManInstance Rename-Computer Rename-Item Rename-ItemProperty Reset-ComputerMachinePassword Resolve-Path Restart-Computer Restart-Service Restore-Computer Resume-Job Resume-Service Save-Help Select-Object Select-String Select-Xml Send-MailMessage Set-Acl Set-Alias Set-AuthenticodeSignature Set-Content Set-Date Set-ExecutionPolicy Set-Item Set-ItemProperty Set-JobTrigger Set-Location Set-PSBreakpoint Set-PSDebug Set-PSSessionConfiguration Set-ScheduledJob Set-ScheduledJobOption Set-Service Set-StrictMode Set-TraceSource Set-Variable Set-WmiInstance Set-WSManInstance Set-WSManQuickConfig Show-Command Show-ControlPanelItem Show-EventLog Sort-Object Split-Path Start-Job Start-Process Start-Service Start-Sleep Start-Transaction Start-Transcript Stop-Computer Stop-Job Stop-Process Stop-Service Stop-Transcript Suspend-Job Suspend-Service Tee-Object Test-ComputerSecureChannel Test-Connection Test-ModuleManifest Test-Path Test-PSSessionConfigurationFile Trace-Command Unblock-File Undo-Transaction Unregister-Event Unregister-PSSessionConfiguration Unregister-ScheduledJob Update-FormatData Update-Help Update-List Update-TypeData Use-Transaction Wait-Event Wait-Job Wait-Process Where-Object Write-Debug Write-Error Write-EventLog Write-Host Write-Output Write-Progress Write-Verbose Write-Warning Add-MDTPersistentDrive Disable-MDTMonitorService Enable-MDTMonitorService Get-MDTDeploymentShareStatistics Get-MDTMonitorData Get-MDTOperatingSystemCatalog Get-MDTPersistentDrive Import-MDTApplication Import-MDTDriver Import-MDTOperatingSystem Import-MDTPackage Import-MDTTaskSequence New-MDTDatabase Remove-MDTMonitorData Remove-MDTPersistentDrive Restore-MDTPersistentDrive Set-MDTMonitorData Test-MDTDeploymentShare Test-MDTMonitorData Update-MDTDatabaseSchema Update-MDTDeploymentShare Update-MDTLinkedDS Update-MDTMedia Update-MDTMedia Add-VamtProductKey Export-VamtData Find-VamtManagedMachine Get-VamtConfirmationId Get-VamtProduct Get-VamtProductKey Import-VamtData Initialize-VamtData Install-VamtConfirmationId Install-VamtProductActivation Install-VamtProductKey Update-VamtProduct",
+                        nomarkup: "-ne -eq -lt -gt -ge -le -not -like -notlike -match -notmatch -contains -notcontains -in -notin -replace"
+                    },
+                    c: [t, e.NM, n, a, r, o, s]
+                }
+            });
+
+        }
+        $(document).ready(function () {
+            function render_doc(doc_to_render, examples_mode) {
+                
+                $("#rendered h5").each(function (i, el) {
+                    if ($(el).text().startsWith('-')) {
+                        $(el).addClass('param')
+                    }
+                })
+                $('#rendered table').addClass('table table-sm table-hover')
+                if (examples_mode == 'new') {
+                    $('#rendered code').addClass('powershell')
+                }
+                $('#rendered code').each(function (i, block) {
+                    hljs.highlightBlock(block);
+                })
+                var authorcontent = $("td:contains('Author')").next('td').addClass('dbatools_author').text()
+                $("#rendered .dbatools_author").html(Autolinker.link(authorcontent, {
+                    className: 'myLink',
+                    mention: 'twitter'
+                })
+                )
+                $("#rendered h2#syntax").next().find('code').addClass('wrapped')
+                if (ClipboardJS.isSupported()) {
+                    $("#rendered h5[id^='example-']").append('<div class="bd-clipboard"><button class="btn-clipboard" title="Copy to clipboard">Copy</button></div>')
+                    new ClipboardJS('.btn-clipboard', {
+                        text: function (trigger) {
+                            var textlines = $(trigger).parent().parent().next('pre').find('code').text().split('\n')
+                            var copied = []
+                            _.forEach(textlines, function (row) {
+                                copied.push(row.replace(/^PS C:\\> /, "").replace(/^>>/, ""))
+                            })
+                            return _.join(copied, '\n')
+                        }
+                    });
+                }
+
+
+                //not all code is a block 
+                $("#rendered h3[id*='-parameters']").nextAll().find('code').addClass('hljs-inline')
+                $('#rendered #description').nextUntil('#rendered #syntax').find('code').addClass('hljs-inline')
+            }
+
+            $('#loader').removeClass('invisible')
+            var index_url = 'assets/dbatools-index.json'
+            var external_url = 'assets/external.json'
+            var values = [];
+            var options = {
+                valueNames: ['CommandName', 'Description', 'Alias', 'Examples', 'Params'],
+                item: '<a class="list-group-item" href="#"><span class="CommandName"></span></a>'
+            }
+            cmdlist = new List('cmdlist', options, values);
+            var indexhelp = ''
+            var allcmds = $.getJSON(index_url, function (data) {
+                indexhelp = data
+                cmdlist.add(data)
+                var dbacommands = []
+                var cloudlist = {}
+                _.forEach(data, function (el) {
+                    dbacommands.push(el.CommandName)
+                    if (_.isArray(el.Tags)) {
+                        _.forEach(el.Tags, function (el) {
+                            if (!_.has(cloudlist, el)) {
+                                cloudlist[el] = 0
+                            }
+                            cloudlist[el] += 1
+                        })
+                    } else if (!_.isUndefined(el.Tags)){
+                        if (!_.has(cloudlist, el.Tags)) {
+                            cloudlist[el.Tags] = 0
+                        }
+                        cloudlist[el.Tags] += 1
+                    }
+                })
+                var weightedVals = []
+                _.forEach(cloudlist, function (value, key) {
+                    weightedVals.push({
+                        text: key,
+                        weight: value,
+                        handlers: {
+                            click: function () { $('#search-ft').val('tag:' + key).trigger('keyup') }
+                        }
+                    })
+                })
+                var pixelHeight = window.innerHeight * 0.65;
+                $('#canvas').css({ 'height': pixelHeight + 'px' });
+                $('#canvas').jQCloud(weightedVals, {
+                    autoResize: true
+                });
+
+                register_dbatools_hljs(dbacommands.join(' '))
+                $(window).trigger('hashchange');
+            })
+            var options2 = {
+                valueNames: ['extName', { name: 'extHref', attr: 'href' }],
+                item: '<div><a class="list-group-item list-group-item-secondary extHref" href="#" _target="_blank"><span class="extName"></span></a></div>'
+            }
+            extlist = new List('extlist', options2, [])
+
+            $.getJSON(external_url, function (data) {
+                $('#dbatools_version').text('(v ' + data.version + ')')
+                _.forEach(data.external_links, function (el) {
+                    extlist.add({ 'extName': el.name, 'extHref': el.href })
+                })
+            })
+            cmdlist.on('searchComplete', function (e) {
+                if (cmdlist.matchingItems.length === 0) {
+                    var searchString = $('#search-ft').val().trim();
+                    if (searchString.length > 0 && !searchString.startsWith("ft:")) {
+                        if (searchString != "f" && searchString != "ft" && searchString != "ft:") {
+                            $('#search-ft').val("ft:" + searchString)
+                        }
+                    }
+                }
+            })
+            $('#cmdlist').on('click', 'a', function (e) {
+                e.preventDefault();
+                window.location.href = $(this).find('span.CommandName').text()
+                /*
+                window.location.hash = '#' + $(this).find('span.CommandName').text();
+                $('#cmdlist').find('a.active').removeClass('active')
+                $(this).addClass('active')
+                */
+            })
+            $('#search-ft').on('keyup', function () {
+                var searchString = $(this).val();
+                if (searchString.trim() == "ft:" || searchString.trim() == "tag:") {
+                    extlist.search();
+                }
+                else if (searchString.startsWith("ft:")) {
+                    searchString = searchString.substring(3).trim();
+                    cmdlist.search(searchString, ['CommandName', 'Alias', 'Description', 'Examples', 'Params']);
+                } else if (searchString.startsWith("tag:")) {
+                    searchString = searchString.substring(4).trim();
+                    cmdlist.filter(function (item) {
+                        if (_.indexOf(item.values().Tags, searchString) !== -1) {
+                            return true;
+                        } else {
+                            return false;
+                        }
+                    });
+                } else {
+                    cmdlist.search(searchString, ['CommandName', 'Alias']);
+                }
+                extlist.search('$$$')
+                if (_.isEmpty(searchString)) {
+                    extlist.search()
+                    cmdlist.filter()
+                }
+            })
+            $('#clear-search').on('click', function () {
+                $('#search-ft').val('').trigger('keyup')
+            })
+            $(window).on('hashchange', function (e) {
+                var hash = window.location.hash.substr(1);
+                var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop().split('.')[0];
+                if (hash.length == 0) {
+                    hash = pagename
+                }
+                if (hash.length > 0) {
+                    //ends with /
+                    if (_.endsWith(hash, '/')) {
+                        window.location.hash = '#' + hash.slice(0, hash.length - 1)
+                        $(window).trigger('hashchange');
+                        return;
+                    }
+                    //exact match
+                    var topublish = _.findIndex(indexhelp, { 'Name': hash })
+                    if (topublish == -1) {
+                        //lowercase match
+                        var topublish = _.findIndex(indexhelp, function (el) { return _.toLower(el.Name) == _.toLower(hash) })
+                        if (topublish == -1) {
+                            //alias match
+                            var topublish = _.findIndex(indexhelp, { 'Alias': hash })
+                            if (topublish == -1) {
+                                //lowercase alias match
+                                var topublish = _.findIndex(indexhelp, function (el) { return _.toLower(el.Alias) == _.toLower(hash) })
+                            }
+                            if (topublish == -1) {
+                                //multiple aliases, optionally lowercased
+                                var topublish = _.findIndex(indexhelp, function (el) { return _.includes(_.toLower(el.Alias).split(','), _.toLower(hash)) })
+                            }
+                        }
+                        if (topublish !== -1) {
+                            //normalization of URI
+                            window.location.hash = '#' + indexhelp[topublish].CommandName
+                            $(window).trigger('hashchange')
+                            return;
+                        }
+                    }
+                    if (topublish == -1) {
+                        $('#rendered').html(marked('### 404 Function not found \n (while searching for ' + hash + '). Please visit dbatools.io/commands for an updated index of current commands.'));
+                    } else {
+                        var doc_to_render = indexhelp[topublish]
+                        render_doc(doc_to_render, 'new')
+                        $("body").data("doc_to_render", indexhelp[topublish])
+                        if ($("#headscroll").offset().top > 150) {
+                            $(window).scrollTo('#headscroll')
+                        } else {
+                            $(window).scrollTo(0, 800)
+                        }
+                    }
+                } else {
+                    $('#loader').addClass('invisible')
+                }
+            })
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 50) {
+                    $('#back-to-top').fadeIn();
+                } else {
+                    $('#back-to-top').fadeOut();
+                }
+            })
+            $('#back-to-top').click(function () {
+                $(window).scrollTo(0, 800)
+                return false;
+            })
+
+        })
+    </script>
+</head>
+
+
+<body>
+
+    <nav class="navbar navbar-expand-md customnav">
+        <a href="https://docs.dbatools.io/" class="navbar-brand" rel="home" itemprop="url">
+            <img width="265" height="64" src="https://dbatools.io/wp-content/uploads/2018/09/dbatools-docs.png"
+                class="custom-logo" alt="dbatools" itemprop="logo" scale="0">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="oi oi-menu"></span>
+        </button>
+        <div class="collapse navbar-collapse flex-grow-1 text-right" id="navbarCollapse">
+            <ul class="navbar-nav ml-auto flex-nowrap">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://dbatools.io/download/">download</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://dbatools.io/getting-started/">get started</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://dbatools.io/functions/">commands</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">docs</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://dbatools.io/team/">team</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://dbatools.io/subscribe/">subscribe</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://dbatools.io/slack">find us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://dbatools.io/builds">build reference</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://dbatools.io/boh">bill of health</a>
+                </li>
+            </ul>
+            <div class="p-2 flex-shrink-0 bd-highlight invisible">cl said "add this much | |"</div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <hr />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xl-3 col-lg-5 col-md-5 col-sm-12 bd-sidebar">
+                <div id="relcommands" class="">
+                    <h3>
+                        commands
+                        <small id="dbatools_version" class="text-muted"></small>
+                    </h3>
+                    <p></p>
+                    <div class="form-group row">
+                        <div class="col-lg-12">
+                            <div class="input-group">
+
+                                <input type="text" class="form-control" id="search-ft"
+                                    placeholder="Search (&quot;ft: term&quot; enables fulltext)" autocomplete="off">
+                                <div class="input-group-append">
+                                    <div class="input-group-text" id="clear-search">Clear</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="extlist">
+                        <div class="list list-group"></div>
+                    </div>
+                    <div id="cmdlist">
+                        <div class="list list-group"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-9 col-lg-7 col-md-7 col-sm-12 bd-content">
+                <div id="headscroll">
+                    <a id="back-to-top" href="#" class="btn btn-primary btn-lg back-to-top" role="button"
+                        title="Click to return on the top page">&#94;</a>
+                </div>
+                <div id="rendered">
+                    <h1 id="rename-dbadatabase">Rename-DbaDatabase</h1>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Author</strong></td>
+<td>Simone Bizzotto (@niphold)</td>
+</tr>
+<tr>
+<td><strong>Availability</strong></td>
+<td>Windows only</td>
+</tr>
+</tbody>
+</table>
+<p> </p>
+<h2 id="synopsis">Synopsis</h2>
+<p>Changes database name, logical file names, file group names and physical file names (optionally handling the move). BETA VERSION.</p>
+<h2 id="description">Description</h2>
+<p>Can change every database metadata that can be renamed.
+The ultimate goal is choosing to have a default template to enforce in your environment
+so your naming convention for every bit can be put in place in no time.
+The process is as follows (it follows the hierarchy of the entities):</p>
+<ul>
+<li>database name is changed (optionally, forcing users out)</li>
+<li>filegroup name(s) are changed accordingly</li>
+<li>logical name(s) are changed accordingly</li>
+<li>physical file(s) are changed accordingly</li>
+<li>if Move is specified, the database will be taken offline and the move will initiate, then it will be taken online</li>
+<li>if Move is not specified, the database remains online (unless SetOffline), and you are in charge of moving files
+If any of the above fails, the process stops.
+Please take a backup of your databases BEFORE using this, and remember to backup AFTER (also a FULL backup of master)</li>
+</ul>
+<p>It returns an object for each database with all the renames done, plus hidden properties showing a &quot;human&quot; representation of them.</p>
+<p>It's better you store the resulting object in a variable so you can inspect it in case of issues, e.g. &quot;$result = Rename-DbaDatabase .....&quot;</p>
+<p>To get a grasp without worrying of what would happen under the hood, use &quot;Rename-DbaDatabase .... -Preview | Select-Object *&quot;</p>
+<h2 id="syntax">Syntax</h2>
+<pre><code>Rename-DbaDatabase -SqlInstance &lt;DbaInstanceParameter[]&gt; 
+    [-SqlCredential &lt;PSCredential&gt;] 
+    [-Database &lt;Object[]&gt;] 
+    [-ExcludeDatabase &lt;Object[]&gt;] 
+    [-AllDatabases] 
+    [-DatabaseName &lt;String&gt;] 
+    [-FileGroupName &lt;String&gt;] 
+    [-LogicalName &lt;String&gt;] 
+    [-FileName &lt;String&gt;] 
+    [-ReplaceBefore] 
+    [-Force] 
+    [-Move] 
+    [-SetOffline] 
+    [-Preview] 
+    [-EnableException] 
+    [-WhatIf] 
+    [-Confirm] [&lt;CommonParameters&gt;]
+
+Rename-DbaDatabase 
+    [-SqlCredential &lt;PSCredential&gt;] 
+    [-ExcludeDatabase &lt;Object[]&gt;] 
+    [-AllDatabases] 
+    [-DatabaseName &lt;String&gt;] 
+    [-FileGroupName &lt;String&gt;] 
+    [-LogicalName &lt;String&gt;] 
+    [-FileName &lt;String&gt;] 
+    [-ReplaceBefore] 
+    [-Force] 
+    [-Move] 
+    [-SetOffline] 
+    [-Preview] -InputObject &lt;Database[]&gt; 
+    [-EnableException] 
+    [-WhatIf] 
+    [-Confirm] [&lt;CommonParameters&gt;]
+
+</code></pre>
+<p> </p>
+<h2 id="examples">Examples</h2>
+<p> </p>
+<h5 id="example-1">Example:  1</h5>
+<pre><code>PS C:\&gt; Rename-DbaDatabase -SqlInstance sqlserver2014a -Database HR -DatabaseName HR2 -Preview | Select-Object *
+</code></pre>
+<p>Shows the detailed result set you'll get renaming the HR database to HR2 without doing anything</p>
+<h5 id="example-2">Example:  2</h5>
+<pre><code>PS C:\&gt; Rename-DbaDatabase -SqlInstance sqlserver2014a -Database HR -DatabaseName HR2
+</code></pre>
+<p>Renames the HR database to HR2</p>
+<h5 id="example-3">Example:  3</h5>
+<pre><code>PS C:\&gt; Get-DbaDatabase -SqlInstance sqlserver2014a -Database HR | Rename-DbaDatabase -DatabaseName HR2
+</code></pre>
+<p>Same as before, but with a piped database (renames the HR database to HR2)</p>
+<h5 id="example-4">Example:  4</h5>
+<pre><code>PS C:\&gt; Rename-DbaDatabase -SqlInstance sqlserver2014a -Database HR -DatabaseName &quot;dbatools_&lt;DBN&gt;&quot;
+</code></pre>
+<p>Renames the HR database to dbatools_HR</p>
+<h5 id="example-5">Example:  5</h5>
+<pre><code>PS C:\&gt; Rename-DbaDatabase -SqlInstance sqlserver2014a -Database HR -DatabaseName &quot;dbatools_&lt;DBN&gt;_&lt;DATE&gt;&quot;
+</code></pre>
+<p>Renames the HR database to dbatools_HR_20170807 (if today is 07th Aug 2017)</p>
+<h5 id="example-6">Example:  6</h5>
+<pre><code>PS C:\&gt; Rename-DbaDatabase -SqlInstance sqlserver2014a -Database HR -FileGroupName &quot;dbatools_&lt;FGN&gt;&quot;
+</code></pre>
+<p>Renames every FileGroup within HR to &quot;dbatools_[the original FileGroup name]&quot;</p>
+<h5 id="example-7">Example:  7</h5>
+<pre><code>PS C:\&gt; Rename-DbaDatabase -SqlInstance sqlserver2014a -Database HR -DatabaseName &quot;dbatools_&lt;DBN&gt;&quot; -FileGroupName &quot;&lt;DBN&gt;_&lt;FGN&gt;&quot;
+</code></pre>
+<p>Renames the HR database to &quot;dbatools_HR&quot;, then renames every FileGroup within to &quot;dbatools_HR_[the original FileGroup name]&quot;</p>
+<h5 id="example-8">Example:  8</h5>
+<pre><code>PS C:\&gt; Rename-DbaDatabase -SqlInstance sqlserver2014a -Database HR -FileGroupName &quot;dbatools_&lt;DBN&gt;_&lt;FGN&gt;&quot;
+PS C:\&gt; Rename-DbaDatabase -SqlInstance sqlserver2014a -Database HR -DatabaseName &quot;dbatools_&lt;DBN&gt;&quot;
+</code></pre>
+<p>Renames the HR database to &quot;dbatools_HR&quot;, then renames every FileGroup within to &quot;dbatools_HR_[the original FileGroup name]&quot;</p>
+<h5 id="example-9">Example:  9</h5>
+<pre><code>PS C:\&gt; Rename-DbaDatabase -SqlInstance sqlserver2014a -Database HR -DatabaseName &quot;dbatools_&lt;DBN&gt;&quot; -FileName &quot;&lt;DBN&gt;_&lt;FGN&gt;_&lt;FNN&gt;&quot;
+</code></pre>
+<p>Renames the HR database to &quot;dbatools_HR&quot; and then all filenames as &quot;dbatools_HR_[Name of the FileGroup]_[original_filename]&quot;
+The db stays online (watch out!). You can then proceed manually to move/copy files by hand, set the db offline and then online again to finish the rename process</p>
+<h5 id="example-10">Example:  10</h5>
+<pre><code>PS C:\&gt; Rename-DbaDatabase -SqlInstance sqlserver2014a -Database HR -DatabaseName &quot;dbatools_&lt;DBN&gt;&quot; -FileName &quot;&lt;DBN&gt;_&lt;FGN&gt;_&lt;FNN&gt;&quot; -SetOffline
+</code></pre>
+<p>Renames the HR database to &quot;dbatools_HR&quot; and then all filenames as &quot;dbatools_HR_[Name of the FileGroup]_[original_filename]&quot;
+The db is then set offline (watch out!). You can then proceed manually to move/copy files by hand and then set it online again to finish the rename process</p>
+<h5 id="example-11">Example:  11</h5>
+<pre><code>PS C:\&gt; Rename-DbaDatabase -SqlInstance sqlserver2014a -Database HR -DatabaseName &quot;dbatools_&lt;DBN&gt;&quot; -FileName &quot;&lt;DBN&gt;_&lt;FGN&gt;_&lt;FNN&gt;&quot; -Move
+</code></pre>
+<p>Renames the HR database to &quot;dbatools_HR&quot; and then all filenames as &quot;dbatools_HR_[Name of the FileGroup]_[original_filename]&quot;
+The db is then set offline (watch out!). The function tries to do a simple rename and then sets the db online again to finish the rename process</p>
+<h3 id="required-parameters">Required Parameters</h3>
+<h5 id="sqlinstance">-SqlInstance</h5>
+<p>Target any number of instances, in order to return their build state.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Alias</td>
+<td></td>
+</tr>
+<tr>
+<td>Required</td>
+<td>True</td>
+</tr>
+<tr>
+<td>Pipeline</td>
+<td>false</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h5 id="inputobject">-InputObject</h5>
+<p>Accepts piped database objects</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Alias</td>
+<td></td>
+</tr>
+<tr>
+<td>Required</td>
+<td>True</td>
+</tr>
+<tr>
+<td>Pipeline</td>
+<td>true (ByValue)</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="optional-parameters">Optional Parameters</h3>
+<h5 id="sqlcredential">-SqlCredential</h5>
+<p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
+Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
+For MFA support, please use Connect-DbaInstance.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Alias</td>
+<td></td>
+</tr>
+<tr>
+<td>Required</td>
+<td>False</td>
+</tr>
+<tr>
+<td>Pipeline</td>
+<td>false</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h5 id="database">-Database</h5>
+<p>Targets only specified databases</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Alias</td>
+<td></td>
+</tr>
+<tr>
+<td>Required</td>
+<td>False</td>
+</tr>
+<tr>
+<td>Pipeline</td>
+<td>false</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h5 id="excludedatabase">-ExcludeDatabase</h5>
+<p>Excludes only specified databases</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Alias</td>
+<td></td>
+</tr>
+<tr>
+<td>Required</td>
+<td>False</td>
+</tr>
+<tr>
+<td>Pipeline</td>
+<td>false</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h5 id="alldatabases">-AllDatabases</h5>
+<p>If you want to apply the naming convention system wide, you need to pass this parameter</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Alias</td>
+<td></td>
+</tr>
+<tr>
+<td>Required</td>
+<td>False</td>
+</tr>
+<tr>
+<td>Pipeline</td>
+<td>false</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>False</td>
+</tr>
+</tbody>
+</table>
+<h5 id="databasename">-DatabaseName</h5>
+<p>Pass a template to rename the database name. Valid placeholders are:</p>
+<ul>
+<li><DBN> current database name</li>
+<li><DATE> date (yyyyMMdd)</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Alias</td>
+<td></td>
+</tr>
+<tr>
+<td>Required</td>
+<td>False</td>
+</tr>
+<tr>
+<td>Pipeline</td>
+<td>false</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h5 id="filegroupname">-FileGroupName</h5>
+<p>Pass a template to rename file group name. Valid placeholders are:</p>
+<ul>
+<li><FGN> current filegroup name</li>
+<li><DBN> current database name</li>
+<li><DATE> date (yyyyMMdd)
+If distinct names cannot be generated, a counter will be appended (0001, 0002, 0003, etc)</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Alias</td>
+<td></td>
+</tr>
+<tr>
+<td>Required</td>
+<td>False</td>
+</tr>
+<tr>
+<td>Pipeline</td>
+<td>false</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h5 id="logicalname">-LogicalName</h5>
+<p>Pass a template to rename logical name. Valid placeholders are:</p>
+<ul>
+<li><FT> file type (ROWS, LOG)</li>
+<li><LGN> current logical name</li>
+<li><FGN> current filegroup name</li>
+<li><DBN> current database name</li>
+<li><DATE> date (yyyyMMdd)
+If distinct names cannot be generated, a counter will be appended (0001, 0002, 0003, etc)</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Alias</td>
+<td></td>
+</tr>
+<tr>
+<td>Required</td>
+<td>False</td>
+</tr>
+<tr>
+<td>Pipeline</td>
+<td>false</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h5 id="filename">-FileName</h5>
+<p>Pass a template to rename file name. Valid placeholders are:</p>
+<ul>
+<li><FNN> current file name (the basename, without directory nor extension)</li>
+<li><FT> file type (ROWS, LOG, MMO, FS)</li>
+<li><LGN> current logical name</li>
+<li><FGN> current filegroup name</li>
+<li><DBN> current database name</li>
+<li><DATE> date (yyyyMMdd)
+If distinct names cannot be generated, a counter will be appended (0001, 0002, 0003, etc)</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Alias</td>
+<td></td>
+</tr>
+<tr>
+<td>Required</td>
+<td>False</td>
+</tr>
+<tr>
+<td>Pipeline</td>
+<td>false</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h5 id="replacebefore">-ReplaceBefore</h5>
+<p>If you pass this switch, all upper level &quot;current names&quot; will be inspected and replaced BEFORE doing the
+rename according to the template in the current level (remember the hierarchy):
+Let's say you have a database named &quot;dbatools_HR&quot;, composed by 3 files</p>
+<ul>
+<li>dbatools_HR_Data.mdf</li>
+<li>dbatools_HR_Index.ndf</li>
+<li>dbatools_HR_log.ldf
+Rename-DbaDatabase .... -Database &quot;dbatools_HR&quot; -DatabaseName &quot;dbatools_HRARCHIVE&quot; -FileName '<DBN><FNN>'
+would end up with this logic:</li>
+<li>database --&gt; no placeholders specified</li>
+<li>dbatools_HR to dbatools_HRARCHIVE</li>
+<li>filenames placeholders specified
+<DBN><FNN> --&gt; current database name + current filename&quot;</li>
+<li>dbatools_HR_Data.mdf to dbatools_HRARCHIVEdbatools_HR_Data.mdf</li>
+<li>dbatools_HR_Index.mdf to dbatools_HRARCHIVEdbatools_HR_Data.mdf</li>
+<li>dbatools_HR_log.ldf to dbatools_HRARCHIVEdbatools_HR_log.ldf
+Passing this switch, instead, e.g.
+Rename-DbaDatabase .... -Database &quot;dbatools_HR&quot; -DatabaseName &quot;dbatools_HRARCHIVE&quot; -FileName '<DBN><FNN>' -ReplaceBefore
+end up with this logic instead:</li>
+<li>database --&gt; no placeholders specified</li>
+<li>dbatools_HR to dbatools_HRARCHIVE</li>
+<li>filenames placeholders specified,
+<DBN><FNN>, plus -ReplaceBefore --&gt; current database name + replace OLD &quot;upper level&quot; names inside the current filename</li>
+<li>dbatools_HR_Data.mdf to dbatools_HRARCHIVE_Data.mdf</li>
+<li>dbatools_HR_Index.mdf to dbatools_HRARCHIVE_Data.mdf</li>
+<li>dbatools_HR_log.ldf to dbatools_HRARCHIVE_log.ldf</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Alias</td>
+<td></td>
+</tr>
+<tr>
+<td>Required</td>
+<td>False</td>
+</tr>
+<tr>
+<td>Pipeline</td>
+<td>false</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>False</td>
+</tr>
+</tbody>
+</table>
+<h5 id="force">-Force</h5>
+<p>Kills any open session to be able to do renames.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Alias</td>
+<td></td>
+</tr>
+<tr>
+<td>Required</td>
+<td>False</td>
+</tr>
+<tr>
+<td>Pipeline</td>
+<td>false</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>False</td>
+</tr>
+</tbody>
+</table>
+<h5 id="move">-Move</h5>
+<p>If you want this function to move files, else you're the one in charge of it.
+This enables the same functionality as SetOffline, killing open transactions and putting the database
+offline, then do the actual rename and setting it online again afterwards</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Alias</td>
+<td></td>
+</tr>
+<tr>
+<td>Required</td>
+<td>False</td>
+</tr>
+<tr>
+<td>Pipeline</td>
+<td>false</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>False</td>
+</tr>
+</tbody>
+</table>
+<h5 id="setoffline">-SetOffline</h5>
+<p>Kills any open session and sets the database offline to be able to move files</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Alias</td>
+<td></td>
+</tr>
+<tr>
+<td>Required</td>
+<td>False</td>
+</tr>
+<tr>
+<td>Pipeline</td>
+<td>false</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>False</td>
+</tr>
+</tbody>
+</table>
+<h5 id="preview">-Preview</h5>
+<p>Shows the renames without performing any operation (recommended to find your way around this function parameters ;-) )</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Alias</td>
+<td></td>
+</tr>
+<tr>
+<td>Required</td>
+<td>False</td>
+</tr>
+<tr>
+<td>Pipeline</td>
+<td>false</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>False</td>
+</tr>
+</tbody>
+</table>
+<h5 id="enableexception">-EnableException</h5>
+<p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
+This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Alias</td>
+<td></td>
+</tr>
+<tr>
+<td>Required</td>
+<td>False</td>
+</tr>
+<tr>
+<td>Pipeline</td>
+<td>false</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>False</td>
+</tr>
+</tbody>
+</table>
+<h5 id="whatif">-WhatIf</h5>
+<p>If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Alias</td>
+<td>wi</td>
+</tr>
+<tr>
+<td>Required</td>
+<td>False</td>
+</tr>
+<tr>
+<td>Pipeline</td>
+<td>false</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h5 id="confirm">-Confirm</h5>
+<p>If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Alias</td>
+<td>cf</td>
+</tr>
+<tr>
+<td>Required</td>
+<td>False</td>
+</tr>
+<tr>
+<td>Pipeline</td>
+<td>false</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p> </p>
+<p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Rename-DbaDatabase.ps1">Rename-DbaDatabase</a> on GitHub.
+Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Rename-DbaDatabase">Rename-DbaDatabase</a>.</p>
+
+                </div> <!-- rendered -->
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
