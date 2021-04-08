@@ -4,15 +4,18 @@ $rootdomain = 'https://docs.dbatools.io'
 
 $OutputFolder = [System.IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..'))
 
-
-if (-not(Get-Command Convert-MarkdownToHTMLFragment -ErrorAction SilentlyContinue)) {
-    Write-Warning "Please install MarkdownToHtml"
-    return
+if ($PSVersionTable.PSVersion.Major -lt 7) {
+    if (-not(Get-Command Convert-MarkdownToHTMLFragment -ErrorAction SilentlyContinue)) {
+        Write-Warning "Please install MarkdownToHtml"
+        return
+    }
 }
 
 
 $initScript = {
-    Import-Module -Name MarkdownToHtml
+    if ($PSVersionTable.PSVersion.Major -lt 7) {
+        Import-Module -Name MarkdownToHtml
+    }
 
     function Get-DbadocsEscaped($str) {
         return [System.Security.SecurityElement]::Escape($str)
@@ -174,7 +177,11 @@ $initScript = {
         $page_template_static = $page_template_static.Replace('$____TAGS____$', (Get-DbadocsEscaped $cmdtags)).Replace('$____COMMANDNAME____$', (Get-DbadocsEscaped $cmdname))
 
         $MDContent = Get-DbaDocsMD -doc_to_render $doc_to_render
-        $HTMLFragmentContent = ($MDContent -Join "`n" | Convert-MarkdownToHTMLFragment).HtmlFragment
+        if ($PSVersionTable.PSVersion.Major -lt 7) {
+            $HTMLFragmentContent = ($MDContent -Join "`n" | Convert-MarkdownToHTMLFragment).HtmlFragment
+        } else {
+            $HTMLFragmentContent = ($MDContent -Join "`n" |  ConvertFrom-Markdown).Html
+        }
         $page_template_static = $page_template_static.Replace('$____RENDERED____$', $HTMLFragmentContent)
         $page_template_static | Out-File (Join-Path $OutputFolder "$($doc_to_render.Name).html") -Encoding UTF8
     }
@@ -193,7 +200,7 @@ function Get-DocsRobotsTxt ($idx, $OutputFolder) {
     $curdate = "{0:s}Z" -f (Get-Date).ToUniversalTime()
 
     [xml]$xmlDoc = New-Object System.Xml.XmlDocument
-    $decl = $xmlDoc.CreateXmlDeclaration("1.0","UTF-8",$null)
+    $decl = $xmlDoc.CreateXmlDeclaration("1.0", "UTF-8", $null)
     $ns = 'http://www.sitemaps.org/schemas/sitemap/0.9'
 
     $urlset = $xmlDoc.CreateElement('urlset', $ns)
@@ -201,7 +208,7 @@ function Get-DocsRobotsTxt ($idx, $OutputFolder) {
     $null = $xmlDoc.AppendChild($urlset)
 
     $null = $xmlDoc.InsertBefore($decl, $xmlDoc.DocumentElement)
-    foreach($c in $idx) {
+    foreach ($c in $idx) {
         $cmdname = $c.Name
         $urlin = $xmlDoc.CreateElement('url', $ns)
         $docin = $xmlDoc.CreateElement('loc', $ns)
@@ -233,7 +240,7 @@ function Split-ArrayInParts($array, [int]$parts) {
 $sw = [System.Diagnostics.Stopwatch]::StartNew()
 
 #get json index path
-$idxPath = Join-path (Join-Path $OutputFolder 'assets') 'dbatools-index.json'
+$idxPath = Join-Path (Join-Path $OutputFolder 'assets') 'dbatools-index.json'
 
 #get help in json format
 $idx = Get-Content $idxPath | ConvertFrom-Json
@@ -258,5 +265,5 @@ foreach ($piece in $whatever) {
 }
 $null = $jobs | Wait-Job #-Timeout 120
 $null = $jobs | Receive-Job
-
+Get-ChildItem $OutputFolder
 Write-Host "elapsed $($sw.ElapsedMilliseconds) ms"
