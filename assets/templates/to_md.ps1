@@ -253,7 +253,11 @@ Set-DbadocsIndex -OutputFolder $OutputFolder -ContentFolder $ContentFolder
 Set-DbadocsOSearch -OutputFolder $OutputFolder -ContentFolder $ContentFolder
 
 #create all pages
-$maxConcurrentJobs = (Get-CimInstance -ClassName Win32_Processor -Property NumberOfCores | Measure-Object -Property 'NumberOfCores' -Sum).Sum
+try {
+    $maxConcurrentJobs = (Get-CimInstance -ClassName Win32_Processor -Property NumberOfCores | Measure-Object -Property 'NumberOfCores' -Sum).Sum
+} catch {
+    $maxConcurrentJobs = 4
+}
 $whatever = Split-ArrayInParts -array $idx -parts $maxConcurrentJobs
 $jobs = @()
 foreach ($piece in $whatever) {
