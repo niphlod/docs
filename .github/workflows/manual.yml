@@ -1,0 +1,21 @@
+name: Rebuild Docs
+on:
+  workflow_dispatch:
+
+jobs:
+  # This workflow contains a single job called "greet"
+  rebuildpages:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout multiple_pages
+      uses: actions/checkout@v2
+      with:
+        ref: multiple_pages
+    - name: 'Build docs'
+      working-directory: assets/templates
+      shell: pwsh
+      run: |
+        curl -O https://raw.githubusercontent.com/sqlcollaborative/dbatools/master/bin/dbatools-index.json
+        .\to_md.ps1
+      
