@@ -2,7 +2,7 @@
 $ContentFolder = "$PSScriptRoot"
 $rootdomain = 'https://docs.dbatools.io'
 
-$OutputFolder = [System.IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..'))
+$OutputFolder = [System.IO.Path]::GetFullPath((Join-Path (Join-Path $PSScriptRoot '..') '..'))
 
 if ($PSVersionTable.PSVersion.Major -lt 7) {
     if (-not(Get-Command Convert-MarkdownToHTMLFragment -ErrorAction SilentlyContinue)) {
