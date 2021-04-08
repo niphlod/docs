@@ -246,10 +246,13 @@ $idxPath = Join-Path (Join-Path $OutputFolder 'assets') 'dbatools-index.json'
 $idx = Get-Content $idxPath | ConvertFrom-Json
 
 #create robots
+Write-Host "Creating robots.txt"
 Get-DocsRobotsTxt -idx $idx -OutputFolder $OutputFolder
 #create index
+Write-Host "Creating index.html"
 Set-DbadocsIndex -OutputFolder $OutputFolder -ContentFolder $ContentFolder
 #create opensearch
+Write-Host "Creating opensearch.xml"
 Set-DbadocsOSearch -OutputFolder $OutputFolder -ContentFolder $ContentFolder
 
 #create all pages
@@ -260,6 +263,7 @@ try {
 }
 $whatever = Split-ArrayInParts -array $idx -parts $maxConcurrentJobs
 $jobs = @()
+Write-Host "Creating docs pages"
 foreach ($piece in $whatever) {
     $jobs += Start-Job -InitializationScript $initScript -ScriptBlock {
         foreach ($p in $Args) {
@@ -270,4 +274,4 @@ foreach ($piece in $whatever) {
 $null = $jobs | Wait-Job #-Timeout 120
 $null = $jobs | Receive-Job
 Get-ChildItem $OutputFolder
-Write-Host "elapsed $($sw.ElapsedMilliseconds) ms"
+Write-Host "Done: elapsed $($sw.ElapsedMilliseconds) ms"
