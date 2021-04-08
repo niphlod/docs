@@ -13,12 +13,12 @@ jobs:
       with:
         ref: multiple_pages
     - name: 'Build docs'
-      working-directory: assets/templates
+      working-directory: assets
       shell: pwsh
       run: |
         curl -O https://raw.githubusercontent.com/sqlcollaborative/dbatools/master/bin/dbatools-index.json
         $OutputFolder = (Get-Location).Path
         Write-Host "running in $OutputFolder"
         Get-ChildItem $OutputFolder 
-        .\to_md.ps1
+        ./templates/to_md.ps1
       
