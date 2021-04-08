@@ -22,3 +22,9 @@ jobs:
         Get-ChildItem $OutputFolder 
         ./templates/to_md.ps1
       
+    - name: commit if file changed
+      uses: stefanzweifel/git-auto-commit-action@v4
+      with:
+        commit_message: refreshing docs pages
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
