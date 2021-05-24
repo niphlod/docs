@@ -169,12 +169,12 @@
                         }
                     })
                     _.forEach(splitted_paramsets, function (syntax) {
-                        _.forEach(syntax.split(/[\[]+-/), function (val, i) {
+                        _.forEach(syntax.replace('\r', '').replace('\n', '').split(/ \[/), function (val, i) {
                             if (!_.isEmpty(val)) {
                                 if (i == 0) {
                                     rtn.push(val)
                                 } else {
-                                    rtn.push('    [-' + val.replace('\n', '').replace('\n', ''))
+                                    rtn.push('    [' + val.replace('\n', '').replace('\n', ''))
                                 }
                             }
                         })
@@ -420,7 +420,12 @@
             })
             $(window).on('hashchange', function (e) {
                 var hash = window.location.hash.substr(1);
-                var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop().split('.')[0];
+                var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
+                if (_.isUndefined(pagename)) {
+                    pagename = 'index'
+                } else {
+                    pagename = pagename.split('.')[0];
+                }
                 if (hash.length == 0) {
                     hash = pagename
                 }
