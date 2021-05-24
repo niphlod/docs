@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -470,19 +470,19 @@
 <p>The Get-DbaDbSynonym returns the synonym(s) for database(s) / instance(s) of SQL Server.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Get-DbaDbSynonym
-    -[-SqlInstance] &lt;DbaInstanceParameter[]&gt;]
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    -[-Database] &lt;String[]&gt;]
-    -[-ExcludeDatabase] &lt;String[]&gt;]
-    -[-Schema] &lt;String[]&gt;]
-    -[-ExcludeSchema] &lt;String[]&gt;]
-    -[-Synonym] &lt;String[]&gt;]
-    -[-ExcludeSynonym] &lt;String[]&gt;]
-    -[-InputObject] &lt;Database[]&gt;]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [[-SqlInstance] &lt;DbaInstanceParameter[]&gt;]
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [[-Database] &lt;String[]&gt;]
+    [[-ExcludeDatabase] &lt;String[]&gt;]
+    [[-Schema] &lt;String[]&gt;]
+    [[-ExcludeSchema] &lt;String[]&gt;]
+    [[-Synonym] &lt;String[]&gt;]
+    [[-ExcludeSynonym] &lt;String[]&gt;]
+    [[-InputObject] &lt;Database[]&gt;]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -491,27 +491,27 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Get-DbaDbSynonym -SqlInstance localhost
 </code></pre>
-<p>Returns all database synonyms in all databases on the local default SQL Server instance</p>
+<p>Returns all database synonyms in all databases on the local default SQL Server instance<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Get-DbaDbSynonym -SqlInstance localhost, sql2016
 </code></pre>
-<p>Returns all synonyms of all database(s) on the local and sql2016 SQL Server instances</p>
+<p>Returns all synonyms of all database(s) on the local and sql2016 SQL Server instances<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; $servers = Get-Content C:\servers.txt
 PS C:\&gt; $servers | Get-DbaDbSynonym
 </code></pre>
-<p>Returns synonyms of all database(s) for every server in C:\servers.txt</p>
+<p>Returns synonyms of all database(s) for every server in C:\servers.txt<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; Get-DbaDbSynonym -SqlInstance localhost -Database db1
 </code></pre>
-<p>Returns synonyms of the database db1 on localhost.</p>
+<p>Returns synonyms of the database db1 on localhost.<br></p>
 <h5 id="example-5">Example:  5</h5>
 <pre><code>PS C:\&gt; Get-DbaDbSynonym -SqlInstance localhost -Database db1 -Synonym 'synonym1'
 </code></pre>
-<p>Returns the synonym1 synonym in the db1 database on localhost.</p>
+<p>Returns the synonym1 synonym in the db1 database on localhost.<br></p>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances. This can be a collection and receive pipeline input to allow the function to be executed against multiple SQL Server instances.</p>
+<p>The target SQL Server instance or instances. This can be a collection and receive pipeline input to allow the function to be executed against multiple SQL Server instances.<br></p>
 <table>
 <thead>
 <tr>
@@ -541,7 +541,7 @@ PS C:\&gt; $servers | Get-DbaDbSynonym
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -569,7 +569,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="database">-Database</h5>
-<p>The database(s) to process. This list is auto-populated from the server. If unspecified, all databases will be processed.</p>
+<p>The database(s) to process. This list is auto-populated from the server. If unspecified, all databases will be processed.<br></p>
 <table>
 <thead>
 <tr>
@@ -597,7 +597,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="excludedatabase">-ExcludeDatabase</h5>
-<p>The database(s) to exclude. This list is auto-populated from the server.</p>
+<p>The database(s) to exclude. This list is auto-populated from the server.<br></p>
 <table>
 <thead>
 <tr>
@@ -625,7 +625,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="schema">-Schema</h5>
-<p>The schema(s) to process. If unspecified, all schemas will be processed.</p>
+<p>The schema(s) to process. If unspecified, all schemas will be processed.<br></p>
 <table>
 <thead>
 <tr>
@@ -653,7 +653,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="excludeschema">-ExcludeSchema</h5>
-<p>The schema(s) to exclude.</p>
+<p>The schema(s) to exclude.<br></p>
 <table>
 <thead>
 <tr>
@@ -681,7 +681,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="synonym">-Synonym</h5>
-<p>The synonym(s) to process. If unspecified, all synonyms will be processed.</p>
+<p>The synonym(s) to process. If unspecified, all synonyms will be processed.<br></p>
 <table>
 <thead>
 <tr>
@@ -709,7 +709,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="excludesynonym">-ExcludeSynonym</h5>
-<p>The synonym(s) to exclude.</p>
+<p>The synonym(s) to exclude.<br></p>
 <table>
 <thead>
 <tr>
@@ -737,7 +737,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="inputobject">-InputObject</h5>
-<p>Enables piped input from Get-DbaDatabase</p>
+<p>Enables piped input from Get-DbaDatabase<br></p>
 <table>
 <thead>
 <tr>
@@ -767,7 +767,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -795,7 +795,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>Shows what would happen if the command were to run. No actions are actually performed.</p>
+<p>Shows what would happen if the command were to run. No actions are actually performed.<br></p>
 <table>
 <thead>
 <tr>
@@ -823,7 +823,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>Prompts you for confirmation before executing any changing operations within the command.</p>
+<p>Prompts you for confirmation before executing any changing operations within the command.<br></p>
 <table>
 <thead>
 <tr>
@@ -852,6 +852,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Get-DbaDbSynonym.ps1">Get-DbaDbSynonym</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Get-DbaDbSynonym">Get-DbaDbSynonym</a>.</p>
 
                 </div> <!-- rendered -->

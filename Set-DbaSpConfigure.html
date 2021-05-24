@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -472,15 +472,15 @@ This is designed to be safe and will not allow for configurations to be set outs
 While it is possible to set below the min, or above the max this can cause serious problems with SQL Server (including startup failures), and so is not permitted.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Set-DbaSpConfigure
-    -[-SqlInstance] &lt;DbaInstanceParameter[]&gt;]
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    -[-Value] &lt;Int32&gt;]
-    -[-Name] &lt;String[]&gt;]
-    -[-InputObject] &lt;Object[]&gt;]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [[-SqlInstance] &lt;DbaInstanceParameter[]&gt;]
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [[-Value] &lt;Int32&gt;]
+    [[-Name] &lt;String[]&gt;]
+    [[-InputObject] &lt;Object[]&gt;]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -489,23 +489,23 @@ While it is possible to set below the min, or above the max this can cause serio
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Set-DbaSpConfigure -SqlInstance localhost -Name ScanForStartupProcedures -Value 1
 </code></pre>
-<p>Adjusts the Scan for startup stored procedures configuration value to 1 and notifies the user that this requires a SQL restart to take effect</p>
+<p>Adjusts the Scan for startup stored procedures configuration value to 1 and notifies the user that this requires a SQL restart to take effect<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Get-DbaSpConfigure -SqlInstance sql2017, sql2014 -Name XPCmdShellEnabled, IsSqlClrEnabled | Set-DbaSpConfigure -Value $false
 </code></pre>
-<p>Sets the values for XPCmdShellEnabled and IsSqlClrEnabled on sql2017 and sql2014 to False</p>
+<p>Sets the values for XPCmdShellEnabled and IsSqlClrEnabled on sql2017 and sql2014 to False<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Set-DbaSpConfigure -SqlInstance localhost -Name XPCmdShellEnabled -Value 1
 </code></pre>
-<p>Adjusts the xp_cmdshell configuration value to 1.</p>
+<p>Adjusts the xp_cmdshell configuration value to 1.<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; Set-DbaSpConfigure -SqlInstance localhost -Name XPCmdShellEnabled -Value 1 -WhatIf
 </code></pre>
-<p>Returns information on the action that would be performed. No actual change will be made.</p>
+<p>Returns information on the action that would be performed. No actual change will be made.<br></p>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
 <p>The target SQL Server instance or instances. This can be a
-collection and receive pipeline input</p>
+collection and receive pipeline input<br></p>
 <table>
 <thead>
 <tr>
@@ -535,7 +535,7 @@ collection and receive pipeline input</p>
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -563,7 +563,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="value">-Value</h5>
-<p>The new value for the configuration</p>
+<p>The new value for the configuration<br></p>
 <table>
 <thead>
 <tr>
@@ -591,7 +591,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="name">-Name</h5>
-<p>The name of the configuration to be set -- Configs is auto-populated for tabbing convenience.</p>
+<p>The name of the configuration to be set -- Configs is auto-populated for tabbing convenience.<br></p>
 <table>
 <thead>
 <tr>
@@ -619,7 +619,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="inputobject">-InputObject</h5>
-<p>Piped objects from Get-DbaSpConfigure</p>
+<p>Piped objects from Get-DbaSpConfigure<br></p>
 <table>
 <thead>
 <tr>
@@ -649,7 +649,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -677,7 +677,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>Shows what would happen if the command were to run. No actions are actually performed.</p>
+<p>Shows what would happen if the command were to run. No actions are actually performed.<br></p>
 <table>
 <thead>
 <tr>
@@ -705,7 +705,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>Prompts you for confirmation before executing any changing operations within the command.</p>
+<p>Prompts you for confirmation before executing any changing operations within the command.<br></p>
 <table>
 <thead>
 <tr>
@@ -734,6 +734,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Set-DbaSpConfigure.ps1">Set-DbaSpConfigure</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Set-DbaSpConfigure">Set-DbaSpConfigure</a>.</p>
 
                 </div> <!-- rendered -->

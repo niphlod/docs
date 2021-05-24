@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -471,15 +471,15 @@
 <p>Want to know more about Access Tokens? This page explains it well: <a href="https://dzone.com/articles/using-managed-identity-to-securely-access-azure-re">https://dzone.com/articles/using-managed-identity-to-securely-access-azure-re</a></p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>New-DbaAzAccessToken
-    --Type] &lt;String&gt;
-    -[-Subtype] &lt;String&gt;]
-    -[-Config] &lt;Object&gt;]
-    -[-Credential] &lt;PSCredential&gt;]
-    -[-Tenant] &lt;String&gt;]
-    -[-Thumbprint] &lt;String&gt;]
-    -[-Store] &lt;String&gt;]
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [-Type] &lt;String&gt;
+    [[-Subtype] &lt;String&gt;]
+    [[-Config] &lt;Object&gt;]
+    [[-Credential] &lt;PSCredential&gt;]
+    [[-Tenant] &lt;String&gt;]
+    [[-Thumbprint] &lt;String&gt;]
+    [[-Store] &lt;String&gt;]
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -488,25 +488,25 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; New-DbaAzAccessToken -Type ManagedIdentity
 </code></pre>
-<p>Returns a plain-text token for Managed Identities for SQL Azure Db.</p>
+<p>Returns a plain-text token for Managed Identities for SQL Azure Db.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; $token = New-DbaAzAccessToken -Type ManagedIdentity -Subtype AzureSqlDb
 PS C:\&gt; $server = Connect-DbaInstance -SqlInstance myserver.database.windows.net -Database mydb -AccessToken $token -DisableException
 </code></pre>
-<p>Generates a token then uses it to connect to Azure SQL DB then connects to an Azure SQL Db</p>
+<p>Generates a token then uses it to connect to Azure SQL DB then connects to an Azure SQL Db<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; $token = New-DbaAzAccessToken -Type ServicePrincipal -Tenant whatup.onmicrosoft.com -Credential ee590f55-9b2b-55d4-8bca-38ab123db670
 PS C:\&gt; $server = Connect-DbaInstance -SqlInstance myserver.database.windows.net -Database mydb -AccessToken $token -DisableException
 PS C:\&gt; Invoke-DbaQuery -SqlInstance $server -Query &quot;select 1 as test&quot;
 </code></pre>
-<p>Generates a token then uses it to connect to Azure SQL DB then connects to an Azure SQL Db.
-Once the connection is made, it is used to perform a test query.</p>
+<p>Generates a token then uses it to connect to Azure SQL DB then connects to an Azure SQL Db.<br>
+Once the connection is made, it is used to perform a test query.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="type">-Type</h5>
 <p>The type of request:
 ManagedIdentity
 ServicePrincipal
-RenewableServicePrincipal</p>
+RenewableServicePrincipal<br></p>
 <table>
 <thead>
 <tr>
@@ -548,7 +548,7 @@ KeyVault
 ResourceManager
 ServiceBus
 Storage
-Read more here: <a href="https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-sql">https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-sql</a></p>
+Read more here: <a href="https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-sql">https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-sql</a><br></p>
 <table>
 <thead>
 <tr>
@@ -580,7 +580,7 @@ Read more here: <a href="https://docs.microsoft.com/en-us/azure/active-directory
 </tbody>
 </table>
 <h5 id="config">-Config</h5>
-<p>The hashtable or json configuration.</p>
+<p>The hashtable or json configuration.<br></p>
 <table>
 <thead>
 <tr>
@@ -609,7 +609,7 @@ Read more here: <a href="https://docs.microsoft.com/en-us/azure/active-directory
 </table>
 <h5 id="credential">-Credential</h5>
 <p>When using the ServicePrincipal type, a Credential is required. The username is the App ID and Password is the App Password
-<a href="https://docs.microsoft.com/en-us/azure/active-directory/user-help/multi-factor-authentication-end-user-app-passwords">https://docs.microsoft.com/en-us/azure/active-directory/user-help/multi-factor-authentication-end-user-app-passwords</a></p>
+<a href="https://docs.microsoft.com/en-us/azure/active-directory/user-help/multi-factor-authentication-end-user-app-passwords">https://docs.microsoft.com/en-us/azure/active-directory/user-help/multi-factor-authentication-end-user-app-passwords</a><br></p>
 <table>
 <thead>
 <tr>
@@ -637,7 +637,7 @@ Read more here: <a href="https://docs.microsoft.com/en-us/azure/active-directory
 </tbody>
 </table>
 <h5 id="tenant">-Tenant</h5>
-<p>When using the ServicePrincipal or RenewableServicePrincipal types, a tenant name or ID is required. This field works with both.</p>
+<p>When using the ServicePrincipal or RenewableServicePrincipal types, a tenant name or ID is required. This field works with both.<br></p>
 <table>
 <thead>
 <tr>
@@ -665,7 +665,7 @@ Read more here: <a href="https://docs.microsoft.com/en-us/azure/active-directory
 </tbody>
 </table>
 <h5 id="thumbprint">-Thumbprint</h5>
-<p>Thumbprint for connections to Azure MSI</p>
+<p>Thumbprint for connections to Azure MSI<br></p>
 <table>
 <thead>
 <tr>
@@ -693,7 +693,7 @@ Read more here: <a href="https://docs.microsoft.com/en-us/azure/active-directory
 </tbody>
 </table>
 <h5 id="store">-Store</h5>
-<p>Store where the Azure MSI certificate is stored</p>
+<p>Store where the Azure MSI certificate is stored<br></p>
 <table>
 <thead>
 <tr>
@@ -727,7 +727,7 @@ Read more here: <a href="https://docs.microsoft.com/en-us/azure/active-directory
 <h5 id="enableexception">-EnableException</h5>
 <p>By default in most of our commands, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This command, however, gifts you  with &quot;sea of red&quot; exceptions, by default, because it is useful for advanced scripting.
-Using this switch turns our &quot;nice by default&quot; feature on which makes errors into pretty warnings.</p>
+Using this switch turns our &quot;nice by default&quot; feature on which makes errors into pretty warnings.<br></p>
 <table>
 <thead>
 <tr>
@@ -756,6 +756,7 @@ Using this switch turns our &quot;nice by default&quot; feature on which makes e
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/New-DbaAzAccessToken.ps1">New-DbaAzAccessToken</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#New-DbaAzAccessToken">New-DbaAzAccessToken</a>.</p>
 
                 </div> <!-- rendered -->

@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -470,17 +470,17 @@
 <p>Remove-DbaAgentJob removes a job in the SQL Server Agent.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Remove-DbaAgentJob
-    -[-SqlInstance] &lt;DbaInstanceParameter[]&gt;]
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    -[-Job] &lt;Object[]&gt;]
-    --KeepHistory]
-    --KeepUnusedSchedule]
-    -[-Mode] {Strict | Lazy | Report}]
-    -[-InputObject] &lt;Job[]&gt;]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [[-SqlInstance] &lt;DbaInstanceParameter[]&gt;]
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [[-Job] &lt;Object[]&gt;]
+    [-KeepHistory]
+    [-KeepUnusedSchedule]
+    [[-Mode] {Strict | Lazy | Report}]
+    [[-InputObject] &lt;Job[]&gt;]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -489,22 +489,22 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Remove-DbaAgentJob -SqlInstance sql1 -Job Job1
 </code></pre>
-<p>Removes the job from the instance with the name Job1</p>
+<p>Removes the job from the instance with the name Job1<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; GetDbaAgentJob -SqlInstance sql1 -Job Job1 | Remove-DbaAgentJob -KeepHistory
 </code></pre>
-<p>Removes the job but keeps the history</p>
+<p>Removes the job but keeps the history<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Remove-DbaAgentJob -SqlInstance sql1 -Job Job1 -KeepUnusedSchedule
 </code></pre>
-<p>Removes the job but keeps the unused schedules</p>
+<p>Removes the job but keeps the unused schedules<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; Remove-DbaAgentJob -SqlInstance sql1, sql2, sql3 -Job Job1
 </code></pre>
-<p>Removes the job from multiple servers</p>
+<p>Removes the job from multiple servers<br></p>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances. This can be a collection and receive pipeline input to allow the function to be executed against multiple SQL Server instances.</p>
+<p>The target SQL Server instance or instances. This can be a collection and receive pipeline input to allow the function to be executed against multiple SQL Server instances.<br></p>
 <table>
 <thead>
 <tr>
@@ -534,7 +534,7 @@
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -562,7 +562,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="job">-Job</h5>
-<p>The name of the job. Can be null if the the job id is being used.</p>
+<p>The name of the job. Can be null if the the job id is being used.<br></p>
 <table>
 <thead>
 <tr>
@@ -590,7 +590,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="keephistory">-KeepHistory</h5>
-<p>Specifies to keep the history for the job. By default history is deleted.</p>
+<p>Specifies to keep the history for the job. By default history is deleted.<br></p>
 <table>
 <thead>
 <tr>
@@ -619,7 +619,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </table>
 <h5 id="keepunusedschedule">-KeepUnusedSchedule</h5>
 <p>Specifies to keep the schedules attached to this job if they are not attached to any other job.
-By default the unused schedule is deleted.</p>
+By default the unused schedule is deleted.<br></p>
 <table>
 <thead>
 <tr>
@@ -650,7 +650,7 @@ By default the unused schedule is deleted.</p>
 <p>Default: Strict
 How strict does the command take lesser issues?
 Strict: Interrupt if the job specified doesn't exist.
-Lazy:   Silently skip over jobs that don't exist.</p>
+Lazy:   Silently skip over jobs that don't exist.<br></p>
 <table>
 <thead>
 <tr>
@@ -678,7 +678,7 @@ Lazy:   Silently skip over jobs that don't exist.</p>
 </tbody>
 </table>
 <h5 id="inputobject">-InputObject</h5>
-<p>Accepts piped input from Get-DbaAgentJob</p>
+<p>Accepts piped input from Get-DbaAgentJob<br></p>
 <table>
 <thead>
 <tr>
@@ -708,7 +708,7 @@ Lazy:   Silently skip over jobs that don't exist.</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -736,7 +736,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>Shows what would happen if the command were to run. No actions are actually performed.</p>
+<p>Shows what would happen if the command were to run. No actions are actually performed.<br></p>
 <table>
 <thead>
 <tr>
@@ -764,7 +764,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>Prompts you for confirmation before executing any changing operations within the command.</p>
+<p>Prompts you for confirmation before executing any changing operations within the command.<br></p>
 <table>
 <thead>
 <tr>
@@ -793,6 +793,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Remove-DbaAgentJob.ps1">Remove-DbaAgentJob</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Remove-DbaAgentJob">Remove-DbaAgentJob</a>.</p>
 
                 </div> <!-- rendered -->

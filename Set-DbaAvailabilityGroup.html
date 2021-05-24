@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -470,23 +470,23 @@
 <p>Sets availability group properties on a SQL Server instance.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Set-DbaAvailabilityGroup
-    -[-SqlInstance] &lt;DbaInstanceParameter[]&gt;]
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    -[-AvailabilityGroup] &lt;String[]&gt;]
-    --AllAvailabilityGroups]
-    --DtcSupportEnabled]
-    -[-ClusterType] &lt;String&gt;]
-    -[-AutomatedBackupPreference] &lt;String&gt;]
-    -[-FailureConditionLevel] &lt;String&gt;]
-    -[-HealthCheckTimeout] &lt;Int32&gt;]
-    --BasicAvailabilityGroup]
-    --DatabaseHealthTrigger]
-    --IsDistributedAvailabilityGroup]
-    -[-InputObject] &lt;AvailabilityGroup[]&gt;]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [[-SqlInstance] &lt;DbaInstanceParameter[]&gt;]
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [[-AvailabilityGroup] &lt;String[]&gt;]
+    [-AllAvailabilityGroups]
+    [-DtcSupportEnabled]
+    [[-ClusterType] &lt;String&gt;]
+    [[-AutomatedBackupPreference] &lt;String&gt;]
+    [[-FailureConditionLevel] &lt;String&gt;]
+    [[-HealthCheckTimeout] &lt;Int32&gt;]
+    [-BasicAvailabilityGroup]
+    [-DatabaseHealthTrigger]
+    [-IsDistributedAvailabilityGroup]
+    [[-InputObject] &lt;AvailabilityGroup[]&gt;]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -495,18 +495,18 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Get-DbaAvailabilityGroup -SqlInstance sql2016 | Set-DbaAvailabilityGroup -DtcSupportEnabled
 </code></pre>
-<p>Enables DTC for all availability groups on sql2016</p>
+<p>Enables DTC for all availability groups on sql2016<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Get-DbaAvailabilityGroup -SqlInstance sql2016 -AvailabilityGroup AG1 | Set-DbaAvailabilityGroup -DtcSupportEnabled:$false
 </code></pre>
-<p>Disables DTC support for the availability group AG1</p>
+<p>Disables DTC support for the availability group AG1<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Set-DbaAvailabilityGroup -SqlInstance sql2016 -AvailabilityGroup AG1 -DtcSupportEnabled:$false
 </code></pre>
-<p>Disables DTC support for the availability group AG1</p>
+<p>Disables DTC support for the availability group AG1<br></p>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances. Server version must be SQL Server version 2012 or higher.</p>
+<p>The target SQL Server instance or instances. Server version must be SQL Server version 2012 or higher.<br></p>
 <table>
 <thead>
 <tr>
@@ -536,7 +536,7 @@
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -564,7 +564,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="availabilitygroup">-AvailabilityGroup</h5>
-<p>Only set specific availability group properties.</p>
+<p>Only set specific availability group properties.<br></p>
 <table>
 <thead>
 <tr>
@@ -592,7 +592,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="allavailabilitygroups">-AllAvailabilityGroups</h5>
-<p>Set properties for all availability group on an instance.</p>
+<p>Set properties for all availability group on an instance.<br></p>
 <table>
 <thead>
 <tr>
@@ -620,7 +620,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="dtcsupportenabled">-DtcSupportEnabled</h5>
-<p>Enables DtcSupport.</p>
+<p>Enables DtcSupport.<br></p>
 <table>
 <thead>
 <tr>
@@ -649,7 +649,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </table>
 <h5 id="clustertype">-ClusterType</h5>
 <p>Cluster type of the Availability Group. Only supported in SQL Server 2017 and above.
-Options include: External, Wsfc or None.</p>
+Options include: External, Wsfc or None.<br></p>
 <table>
 <thead>
 <tr>
@@ -681,7 +681,7 @@ Options include: External, Wsfc or None.</p>
 </tbody>
 </table>
 <h5 id="automatedbackuppreference">-AutomatedBackupPreference</h5>
-<p>Specifies how replicas in the primary role are treated in the evaluation to pick the desired replica to perform a backup.</p>
+<p>Specifies how replicas in the primary role are treated in the evaluation to pick the desired replica to perform a backup.<br></p>
 <table>
 <thead>
 <tr>
@@ -713,7 +713,7 @@ Options include: External, Wsfc or None.</p>
 </tbody>
 </table>
 <h5 id="failureconditionlevel">-FailureConditionLevel</h5>
-<p>Specifies the different conditions that can trigger an automatic failover in Availability Group.</p>
+<p>Specifies the different conditions that can trigger an automatic failover in Availability Group.<br></p>
 <table>
 <thead>
 <tr>
@@ -748,7 +748,7 @@ Options include: External, Wsfc or None.</p>
 <p>This setting used to specify the length of time, in milliseconds, that the SQL Server resource DLL should wait for information returned by the sp_server_diagnostics stored procedure before reporting
 the Always On Failover Cluster Instance (FCI) as unresponsive.
 Changes that are made to the timeout settings are effective immediately and do not require a restart of the SQL Server resource.
-Defaults is 30000 (30 seconds).</p>
+Defaults is 30000 (30 seconds).<br></p>
 <table>
 <thead>
 <tr>
@@ -777,7 +777,7 @@ Defaults is 30000 (30 seconds).</p>
 </table>
 <h5 id="basicavailabilitygroup">-BasicAvailabilityGroup</h5>
 <p>Indicates whether the availability group is basic. Basic availability groups like pumpkin spice and uggs.
-<a href="https://docs.microsoft.com/en-us/sql/database-engine/availability-groups/windows/basic-availability-groups-always-on-availability-groups">https://docs.microsoft.com/en-us/sql/database-engine/availability-groups/windows/basic-availability-groups-always-on-availability-groups</a></p>
+<a href="https://docs.microsoft.com/en-us/sql/database-engine/availability-groups/windows/basic-availability-groups-always-on-availability-groups">https://docs.microsoft.com/en-us/sql/database-engine/availability-groups/windows/basic-availability-groups-always-on-availability-groups</a><br></p>
 <table>
 <thead>
 <tr>
@@ -805,7 +805,7 @@ Defaults is 30000 (30 seconds).</p>
 </tbody>
 </table>
 <h5 id="databasehealthtrigger">-DatabaseHealthTrigger</h5>
-<p>Indicates whether the availability group triggers the database health.</p>
+<p>Indicates whether the availability group triggers the database health.<br></p>
 <table>
 <thead>
 <tr>
@@ -833,7 +833,7 @@ Defaults is 30000 (30 seconds).</p>
 </tbody>
 </table>
 <h5 id="isdistributedavailabilitygroup">-IsDistributedAvailabilityGroup</h5>
-<p>Indicates whether the availability group is distributed.</p>
+<p>Indicates whether the availability group is distributed.<br></p>
 <table>
 <thead>
 <tr>
@@ -861,7 +861,7 @@ Defaults is 30000 (30 seconds).</p>
 </tbody>
 </table>
 <h5 id="inputobject">-InputObject</h5>
-<p>Enables piping from Get-DbaAvailabilityGroup.</p>
+<p>Enables piping from Get-DbaAvailabilityGroup.<br></p>
 <table>
 <thead>
 <tr>
@@ -891,7 +891,7 @@ Defaults is 30000 (30 seconds).</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -919,7 +919,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>Shows what would happen if the command were to run. No actions are actually performed.</p>
+<p>Shows what would happen if the command were to run. No actions are actually performed.<br></p>
 <table>
 <thead>
 <tr>
@@ -947,7 +947,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>Prompts you for confirmation before executing any changing operations within the command.</p>
+<p>Prompts you for confirmation before executing any changing operations within the command.<br></p>
 <table>
 <thead>
 <tr>
@@ -976,6 +976,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Set-DbaAvailabilityGroup.ps1">Set-DbaAvailabilityGroup</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Set-DbaAvailabilityGroup">Set-DbaAvailabilityGroup</a>.</p>
 
                 </div> <!-- rendered -->

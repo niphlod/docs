@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -471,11 +471,11 @@
 These are not persisted after a restart, use Set-DbaStartupParameter to set them to persist after restarts.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Enable-DbaTraceFlag
-    --SqlInstance] &lt;DbaInstanceParameter[]&gt;
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    --TraceFlag] &lt;Int32[]&gt;
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [-SqlInstance] &lt;DbaInstanceParameter[]&gt;
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [-TraceFlag] &lt;Int32[]&gt;
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -484,14 +484,14 @@ These are not persisted after a restart, use Set-DbaStartupParameter to set them
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Enable-DbaTraceFlag -SqlInstance sql2016 -TraceFlag 3226
 </code></pre>
-<p>Enable the trace flag 3226 on SQL Server instance sql2016</p>
+<p>Enable the trace flag 3226 on SQL Server instance sql2016<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Enable-DbaTraceFlag -SqlInstance sql2016 -TraceFlag 1117, 1118
 </code></pre>
-<p>Enable multiple trace flags on SQL Server instance sql2016</p>
+<p>Enable multiple trace flags on SQL Server instance sql2016<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances.</p>
+<p>The target SQL Server instance or instances.<br></p>
 <table>
 <thead>
 <tr>
@@ -519,7 +519,7 @@ These are not persisted after a restart, use Set-DbaStartupParameter to set them
 </tbody>
 </table>
 <h5 id="traceflag">-TraceFlag</h5>
-<p>Trace flag number(s) to enable globally</p>
+<p>Trace flag number(s) to enable globally<br></p>
 <table>
 <thead>
 <tr>
@@ -550,7 +550,7 @@ These are not persisted after a restart, use Set-DbaStartupParameter to set them
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -580,7 +580,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -609,6 +609,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Enable-DbaTraceFlag.ps1">Enable-DbaTraceFlag</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Enable-DbaTraceFlag">Enable-DbaTraceFlag</a>.</p>
 
                 </div> <!-- rendered -->

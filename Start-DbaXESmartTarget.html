@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -471,18 +471,18 @@
 <p>See more at <a href="https://github.com/spaghettidba/XESmartTarget/wiki">https://github.com/spaghettidba/XESmartTarget/wiki</a></p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Start-DbaXESmartTarget
-    --SqlInstance] &lt;DbaInstanceParameter[]&gt;
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    -[-Database] &lt;String&gt;]
-    --Session] &lt;String&gt;
-    --FailOnProcessingError]
-    -[-Responder] &lt;Object[]&gt;]
-    -[-Template] &lt;String[]&gt;]
-    --NotAsJob]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-SqlInstance] &lt;DbaInstanceParameter[]&gt;
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [[-Database] &lt;String&gt;]
+    [-Session] &lt;String&gt;
+    [-FailOnProcessingError]
+    [[-Responder] &lt;Object[]&gt;]
+    [[-Template] &lt;String[]&gt;]
+    [-NotAsJob]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -492,7 +492,7 @@
 <pre><code>PS C:\&gt; $response = New-DbaXESmartQueryExec -SqlInstance sql2017 -Database dbadb -Query &quot;update table set whatever = 1&quot;
 PS C:\&gt; Start-DbaXESmartTarget -SqlInstance sql2017 -Session deadlock_tracker -Responder $response
 </code></pre>
-<p>Executes a T-SQL command against dbadb on sql2017 whenever a deadlock event is recorded.</p>
+<p>Executes a T-SQL command against dbadb on sql2017 whenever a deadlock event is recorded.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; $response = New-DbaXESmartQueryExec -SqlInstance sql2017 -Database dbadb -Query &quot;update table set whatever = 1&quot;
 PS C:\&gt; $params = @{
@@ -507,16 +507,16 @@ PS C:\&gt; $params = @{
 PS C:\&gt; $emailresponse = New-DbaXESmartEmail @params
 PS C:\&gt; Start-DbaXESmartTarget -SqlInstance sql2017 -Session querytracker -Responder $response, $emailresponse
 </code></pre>
-<p>Executes a T-SQL command against dbadb on sql2017 and sends an email whenever a querytracker event is recorded.</p>
+<p>Executes a T-SQL command against dbadb on sql2017 and sends an email whenever a querytracker event is recorded.<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; $columns = &quot;cpu_time&quot;, &quot;duration&quot;, &quot;physical_reads&quot;, &quot;logical_reads&quot;, &quot;writes&quot;, &quot;row_count&quot;, &quot;batch_text&quot;
 PS C:\&gt; $response = New-DbaXESmartTableWriter -SqlInstance sql2017 -Database dbadb -Table deadlocktracker -OutputColumns $columns -Filter &quot;duration &gt; 10000&quot;
 PS C:\&gt; Start-DbaXESmartTarget -SqlInstance sql2017 -Session deadlock_tracker -Responder $response
 </code></pre>
-<p>Writes Extended Events to the deadlocktracker table in dbadb on sql2017.</p>
+<p>Writes Extended Events to the deadlocktracker table in dbadb on sql2017.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances. You must have sysadmin access and server version must be SQL Server version 2008 or higher.</p>
+<p>The target SQL Server instance or instances. You must have sysadmin access and server version must be SQL Server version 2008 or higher.<br></p>
 <table>
 <thead>
 <tr>
@@ -546,7 +546,7 @@ PS C:\&gt; Start-DbaXESmartTarget -SqlInstance sql2017 -Session deadlock_tracker
 <h5 id="session">-Session</h5>
 <p>Name of the Extended Events session to attach to.
 You can monitor a single session with an instance of XESmartTarget. In case you need to perform action on multiple sessions, run an additional instance of XESmartTarget, with its own configuration
-file.</p>
+file.<br></p>
 <table>
 <thead>
 <tr>
@@ -577,7 +577,7 @@ file.</p>
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -605,7 +605,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="database">-Database</h5>
-<p>Specifies the name of the database that contains the target table.</p>
+<p>Specifies the name of the database that contains the target table.<br></p>
 <table>
 <thead>
 <tr>
@@ -633,7 +633,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="failonprocessingerror">-FailOnProcessingError</h5>
-<p>If this switch is enabled, the a processing error will trigger a failure.</p>
+<p>If this switch is enabled, the a processing error will trigger a failure.<br></p>
 <table>
 <thead>
 <tr>
@@ -661,7 +661,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="responder">-Responder</h5>
-<p>The list of responses can include zero or more Response objects, each to be configured by specifying values for their public members.</p>
+<p>The list of responses can include zero or more Response objects, each to be configured by specifying values for their public members.<br></p>
 <table>
 <thead>
 <tr>
@@ -689,7 +689,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="template">-Template</h5>
-<p>Path to the dbatools built-in templates</p>
+<p>Path to the dbatools built-in templates<br></p>
 <table>
 <thead>
 <tr>
@@ -717,7 +717,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="notasjob">-NotAsJob</h5>
-<p>If this switch is enabled, output will be sent to screen indefinitely. BY default, a job will be run in the background.</p>
+<p>If this switch is enabled, output will be sent to screen indefinitely. BY default, a job will be run in the background.<br></p>
 <table>
 <thead>
 <tr>
@@ -747,7 +747,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -775,7 +775,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.</p>
+<p>If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.<br></p>
 <table>
 <thead>
 <tr>
@@ -803,7 +803,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.</p>
+<p>If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.<br></p>
 <table>
 <thead>
 <tr>
@@ -832,6 +832,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Start-DbaXESmartTarget.ps1">Start-DbaXESmartTarget</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Start-DbaXESmartTarget">Start-DbaXESmartTarget</a>.</p>
 
                 </div> <!-- rendered -->

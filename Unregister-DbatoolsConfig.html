@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -472,15 +472,15 @@ This function can be used to remove settings that have been persisted for either
 <p>Note: This command has no effect on configuration settings currently in memory.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Unregister-DbatoolsConfig
-    --ConfigurationItem &lt;Config[]&gt;]
-    --FullName &lt;String[]&gt;]
-    --Scope {UserDefault | UserMandatory | SystemDefault | SystemMandatory | FileUserLocal | FileUserShared | FileSystem}]
-    -&lt;CommonParameters&gt;]
+    [-ConfigurationItem &lt;Config[]&gt;]
+    [-FullName &lt;String[]&gt;]
+    [-Scope {UserDefault | UserMandatory | SystemDefault | SystemMandatory | FileUserLocal | FileUserShared | FileSystem}]
+    [&lt;CommonParameters&gt;]
 
 Unregister-DbatoolsConfig -Module &lt;String&gt;
-    --Name &lt;String&gt;]
-    --Scope {UserDefault | UserMandatory | SystemDefault | SystemMandatory | FileUserLocal | FileUserShared | FileSystem}]
-    -&lt;CommonParameters&gt;]
+    [-Name &lt;String&gt;]
+    [-Scope {UserDefault | UserMandatory | SystemDefault | SystemMandatory | FileUserLocal | FileUserShared | FileSystem}]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -489,20 +489,20 @@ Unregister-DbatoolsConfig -Module &lt;String&gt;
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Get-DbatoolsConfig | Unregister-DbatoolsConfig
 </code></pre>
-<p>Completely removes all registered configurations currently loaded in memory.
-In most cases, this will mean removing all registered configurations.</p>
+<p>Completely removes all registered configurations currently loaded in memory.<br>
+In most cases, this will mean removing all registered configurations.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Unregister-DbatoolsConfig -Scope SystemDefault -FullName 'MyModule.Path.DefaultExport'
 </code></pre>
-<p>Unregisters the setting 'MyModule.Path.DefaultExport' from the list of computer-wide defaults.
-Note: Changing system wide settings requires running the console with elevation.</p>
+<p>Unregisters the setting 'MyModule.Path.DefaultExport' from the list of computer-wide defaults.<br>
+Note: Changing system wide settings requires running the console with elevation.<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Unregister-DbatoolsConfig -Module MyModule
 </code></pre>
-<p>Unregisters all configuration settings for the module MyModule.</p>
+<p>Unregisters all configuration settings for the module MyModule.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="module">-Module</h5>
-<p>The module, amongst which settings should be unregistered.</p>
+<p>The module, amongst which settings should be unregistered.<br></p>
 <table>
 <thead>
 <tr>
@@ -531,7 +531,7 @@ Note: Changing system wide settings requires running the console with elevation.
 </table>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="configurationitem">-ConfigurationItem</h5>
-<p>A configuration object as returned by Get-DbatoolsConfig.</p>
+<p>A configuration object as returned by Get-DbatoolsConfig.<br></p>
 <table>
 <thead>
 <tr>
@@ -559,7 +559,7 @@ Note: Changing system wide settings requires running the console with elevation.
 </tbody>
 </table>
 <h5 id="fullname">-FullName</h5>
-<p>The full name of the configuration setting to purge.</p>
+<p>The full name of the configuration setting to purge.<br></p>
 <table>
 <thead>
 <tr>
@@ -588,7 +588,7 @@ Note: Changing system wide settings requires running the console with elevation.
 </table>
 <h5 id="name">-Name</h5>
 <p>The name of the setting to unregister.
-For use together with the module parameter, to limit the amount of settings that are unregistered.</p>
+For use together with the module parameter, to limit the amount of settings that are unregistered.<br></p>
 <table>
 <thead>
 <tr>
@@ -618,7 +618,7 @@ For use together with the module parameter, to limit the amount of settings that
 <h5 id="scope">-Scope</h5>
 <p>Settings can be set to either default or enforced, for user or the entire computer.
 By default, only DefaultSettings for the user are unregistered.
-Use this parameter to choose the actual scope for the command to process.</p>
+Use this parameter to choose the actual scope for the command to process.<br></p>
 <table>
 <thead>
 <tr>
@@ -647,6 +647,7 @@ Use this parameter to choose the actual scope for the command to process.</p>
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Unregister-DbatoolsConfig.ps1">Unregister-DbatoolsConfig</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Unregister-DbatoolsConfig">Unregister-DbatoolsConfig</a>.</p>
 
                 </div> <!-- rendered -->

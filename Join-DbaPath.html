@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -466,9 +466,9 @@
 <p>Performs multisegment path joins.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Join-DbaPath
-    --Path] &lt;String&gt;
-    --Child &lt;String[]&gt;]
-    -&lt;CommonParameters&gt;]
+    [-Path] &lt;String&gt;
+    [-Child &lt;String[]&gt;]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -477,11 +477,11 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Join-DbaPath -Path 'C:\temp' 'Foo' 'Bar'
 </code></pre>
-<p>Returns 'C:\temp\Foo\Bar' on windows.
-Returns 'C:/temp/Foo/Bar' on non-windows.</p>
+<p>Returns 'C:\temp\Foo\Bar' on windows.<br>
+Returns 'C:/temp/Foo/Bar' on non-windows.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="path">-Path</h5>
-<p>The basepath to join on.</p>
+<p>The basepath to join on.<br></p>
 <table>
 <thead>
 <tr>
@@ -510,7 +510,7 @@ Returns 'C:/temp/Foo/Bar' on non-windows.</p>
 </table>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="child">-Child</h5>
-<p>Any number of child paths to add.</p>
+<p>Any number of child paths to add.<br></p>
 <table>
 <thead>
 <tr>
@@ -539,6 +539,7 @@ Returns 'C:/temp/Foo/Bar' on non-windows.</p>
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Join-DbaPath.ps1">Join-DbaPath</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Join-DbaPath">Join-DbaPath</a>.</p>
 
                 </div> <!-- rendered -->

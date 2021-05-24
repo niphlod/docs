@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -472,17 +472,17 @@
 Results will exclude the module definition, but can be queried explicitly.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Get-DbaModule
-    -[-SqlInstance] &lt;DbaInstanceParameter[]&gt;]
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    -[-Database] &lt;Object[]&gt;]
-    -[-ExcludeDatabase] &lt;Object[]&gt;]
-    -[-ModifiedSince] &lt;DateTime&gt;]
-    -[-Type] &lt;String[]&gt;]
-    --ExcludeSystemDatabases]
-    --ExcludeSystemObjects]
-    -[-InputObject] &lt;Database[]&gt;]
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [[-SqlInstance] &lt;DbaInstanceParameter[]&gt;]
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [[-Database] &lt;Object[]&gt;]
+    [[-ExcludeDatabase] &lt;Object[]&gt;]
+    [[-ModifiedSince] &lt;DateTime&gt;]
+    [[-Type] &lt;String[]&gt;]
+    [-ExcludeSystemDatabases]
+    [-ExcludeSystemObjects]
+    [[-InputObject] &lt;Database[]&gt;]
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -491,34 +491,34 @@ Results will exclude the module definition, but can be queried explicitly.</p>
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Get-DbaModule -SqlInstance sql2008, sqlserver2012
 </code></pre>
-<p>Return all modules for servers sql2008 and sqlserver2012 sorted by Database, Modify_Date ASC.</p>
+<p>Return all modules for servers sql2008 and sqlserver2012 sorted by Database, Modify_Date ASC.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Get-DbaModule -SqlInstance sql2008, sqlserver2012 | Select-Object *
 </code></pre>
-<p>Shows hidden definition column (informative wall of text).</p>
+<p>Shows hidden definition column (informative wall of text).<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Get-DbaModule -SqlInstance sql2008 -Database TestDB -ModifiedSince &quot;2017-01-01 10:00:00&quot;
 </code></pre>
-<p>Return all modules on server sql2008 for only the TestDB database with a modified date after 1 January 2017 10:00:00 AM.</p>
+<p>Return all modules on server sql2008 for only the TestDB database with a modified date after 1 January 2017 10:00:00 AM.<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; Get-DbaModule -SqlInstance sql2008 -Type View, Trigger, ScalarFunction
 </code></pre>
-<p>Return all modules on server sql2008 for all databases that are triggers, views or scalar functions.</p>
+<p>Return all modules on server sql2008 for all databases that are triggers, views or scalar functions.<br></p>
 <h5 id="example-5">Example:  5</h5>
 <pre><code>PS C:\&gt; 'sql2008' | Get-DbaModule -Database TestDB -Type View, StoredProcedure, ScalarFunction
 </code></pre>
-<p>Return all modules on server sql2008 for only the TestDB database that are stored procedures, views or scalar functions. Input via Pipeline</p>
+<p>Return all modules on server sql2008 for only the TestDB database that are stored procedures, views or scalar functions. Input via Pipeline<br></p>
 <h5 id="example-6">Example:  6</h5>
 <pre><code>PS C:\&gt; Get-DbaDatabase -SqlInstance sql2008 -ExcludeSystem | Get-DbaModule -Type View, Trigger, ScalarFunction
 </code></pre>
-<p>Return all modules on server sql2008 for all user databases that are triggers, views or scalar functions.</p>
+<p>Return all modules on server sql2008 for all user databases that are triggers, views or scalar functions.<br></p>
 <h5 id="example-7">Example:  7</h5>
 <pre><code>PS C:\&gt; Get-DbaDatabase -SqlInstance sql2008, sqlserver2012 -ExcludeUser | Get-DbaModule -Type StoredProcedure -ExcludeSystemObjects
 </code></pre>
-<p>Return all user created stored procedures in the system databases for servers sql2008 and sqlserver2012.</p>
+<p>Return all user created stored procedures in the system databases for servers sql2008 and sqlserver2012.<br></p>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances.</p>
+<p>The target SQL Server instance or instances.<br></p>
 <table>
 <thead>
 <tr>
@@ -548,7 +548,7 @@ Results will exclude the module definition, but can be queried explicitly.</p>
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -576,7 +576,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="database">-Database</h5>
-<p>The database(s) to process. If unspecified, all databases will be processed.</p>
+<p>The database(s) to process. If unspecified, all databases will be processed.<br></p>
 <table>
 <thead>
 <tr>
@@ -604,7 +604,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="excludedatabase">-ExcludeDatabase</h5>
-<p>The database(s) to exclude.</p>
+<p>The database(s) to exclude.<br></p>
 <table>
 <thead>
 <tr>
@@ -632,7 +632,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="modifiedsince">-ModifiedSince</h5>
-<p>DateTime value to use as minimum modified date of module.</p>
+<p>DateTime value to use as minimum modified date of module.<br></p>
 <table>
 <thead>
 <tr>
@@ -660,7 +660,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="type">-Type</h5>
-<p>Limit by specific type of module. Valid choices include: View, TableValuedFunction, DefaultConstraint, StoredProcedure, Rule, InlineTableValuedFunction, Trigger, ScalarFunction</p>
+<p>Limit by specific type of module. Valid choices include: View, TableValuedFunction, DefaultConstraint, StoredProcedure, Rule, InlineTableValuedFunction, Trigger, ScalarFunction<br></p>
 <table>
 <thead>
 <tr>
@@ -692,7 +692,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="excludesystemdatabases">-ExcludeSystemDatabases</h5>
-<p>Allows you to suppress output on system databases</p>
+<p>Allows you to suppress output on system databases<br></p>
 <table>
 <thead>
 <tr>
@@ -720,7 +720,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="excludesystemobjects">-ExcludeSystemObjects</h5>
-<p>Allows you to suppress output on system objects</p>
+<p>Allows you to suppress output on system objects<br></p>
 <table>
 <thead>
 <tr>
@@ -748,7 +748,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="inputobject">-InputObject</h5>
-<p>Enables piping from Get-DbaDatabase.</p>
+<p>Enables piping from Get-DbaDatabase.<br></p>
 <table>
 <thead>
 <tr>
@@ -778,7 +778,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -807,6 +807,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Get-DbaModule.ps1">Get-DbaModule</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Get-DbaModule">Get-DbaModule</a>.</p>
 
                 </div> <!-- rendered -->

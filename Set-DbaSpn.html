@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -471,14 +471,14 @@
 <p>Note: This function supports -WhatIf</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Set-DbaSpn
-    --SPN] &lt;String&gt;
-    --ServiceAccount] &lt;String&gt;
-    -[-Credential] &lt;PSCredential&gt;]
-    --NoDelegation]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-SPN] &lt;String&gt;
+    [-ServiceAccount] &lt;String&gt;
+    [[-Credential] &lt;PSCredential&gt;]
+    [-NoDelegation]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -488,27 +488,27 @@
 <pre><code>PS C:\&gt; Set-DbaSpn -SPN MSSQLSvc/SQLSERVERA.domain.something -ServiceAccount domain\account
 PS C:\&gt; Set-DbaSpn -SPN MSSQLSvc/SQLSERVERA.domain.something -ServiceAccount domain\account -EnableException
 </code></pre>
-<p>Connects to Active Directory and adds a provided SPN to the given account.
-Connects to Active Directory and adds a provided SPN to the given account, suppressing all error messages and throw exceptions that can be caught instead</p>
+<p>Connects to Active Directory and adds a provided SPN to the given account.<br>
+Connects to Active Directory and adds a provided SPN to the given account, suppressing all error messages and throw exceptions that can be caught instead<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Set-DbaSpn -SPN MSSQLSvc/SQLSERVERA.domain.something -ServiceAccount domain\account -Credential ad\sqldba
 </code></pre>
-<p>Connects to Active Directory and adds a provided SPN to the given account. Uses alternative account to connect to AD.</p>
+<p>Connects to Active Directory and adds a provided SPN to the given account. Uses alternative account to connect to AD.<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Set-DbaSpn -SPN MSSQLSvc/SQLSERVERA.domain.something -ServiceAccount domain\account -NoDelegation
 </code></pre>
-<p>Connects to Active Directory and adds a provided SPN to the given account, without the delegation.</p>
+<p>Connects to Active Directory and adds a provided SPN to the given account, without the delegation.<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; Test-DbaSpn -ComputerName sql2016 | Where-Object { $_.isSet -eq $false } | Set-DbaSpn
 </code></pre>
-<p>Sets all missing SPNs for sql2016</p>
+<p>Sets all missing SPNs for sql2016<br></p>
 <h5 id="example-5">Example:  5</h5>
 <pre><code>PS C:\&gt; Test-DbaSpn -ComputerName sql2016 | Where-Object { $_.isSet -eq $false } | Set-DbaSpn -WhatIf
 </code></pre>
-<p>Displays what would happen trying to set all missing SPNs for sql2016</p>
+<p>Displays what would happen trying to set all missing SPNs for sql2016<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="spn">-SPN</h5>
-<p>The SPN you want to add</p>
+<p>The SPN you want to add<br></p>
 <table>
 <thead>
 <tr>
@@ -536,7 +536,7 @@ Connects to Active Directory and adds a provided SPN to the given account, suppr
 </tbody>
 </table>
 <h5 id="serviceaccount">-ServiceAccount</h5>
-<p>The account you want the SPN added to</p>
+<p>The account you want the SPN added to<br></p>
 <table>
 <thead>
 <tr>
@@ -565,7 +565,7 @@ Connects to Active Directory and adds a provided SPN to the given account, suppr
 </table>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="credential">-Credential</h5>
-<p>The credential you want to use to connect to Active Directory to make the changes</p>
+<p>The credential you want to use to connect to Active Directory to make the changes<br></p>
 <table>
 <thead>
 <tr>
@@ -593,7 +593,7 @@ Connects to Active Directory and adds a provided SPN to the given account, suppr
 </tbody>
 </table>
 <h5 id="nodelegation">-NoDelegation</h5>
-<p>Skips setting the delegation</p>
+<p>Skips setting the delegation<br></p>
 <table>
 <thead>
 <tr>
@@ -623,7 +623,7 @@ Connects to Active Directory and adds a provided SPN to the given account, suppr
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -651,7 +651,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>Shows what would happen if the command was executed</p>
+<p>Shows what would happen if the command was executed<br></p>
 <table>
 <thead>
 <tr>
@@ -679,7 +679,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>Turns confirmations before changes on or off</p>
+<p>Turns confirmations before changes on or off<br></p>
 <table>
 <thead>
 <tr>
@@ -708,6 +708,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Set-DbaSpn.ps1">Set-DbaSpn</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Set-DbaSpn">Set-DbaSpn</a>.</p>
 
                 </div> <!-- rendered -->

@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -471,12 +471,12 @@
 <p>This setting requires access to the Windows Server and not the SQL Server instance. The setting is found in SQL Server Configuration Manager under the properties of SQL Server Network Configuration &gt; Protocols for &quot;InstanceName&quot;.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Get-DbaExtendedProtection
-    -[-SqlInstance] &lt;DbaInstanceParameter[]&gt;]
-    -[-Credential] &lt;PSCredential&gt;]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [[-SqlInstance] &lt;DbaInstanceParameter[]&gt;]
+    [[-Credential] &lt;PSCredential&gt;]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -485,15 +485,15 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Get-DbaExtendedProtection
 </code></pre>
-<p>Gets Extended Protection on the default (MSSQLSERVER) instance on localhost - requires (and checks for) RunAs admin.</p>
+<p>Gets Extended Protection on the default (MSSQLSERVER) instance on localhost - requires (and checks for) RunAs admin.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Get-DbaExtendedProtection -SqlInstance sql01\SQL2008R2SP2
 </code></pre>
-<p>Set Extended Protection of SQL Engine for the SQL2008R2SP2 on sql01 to &quot;Off&quot;. Uses Windows Credentials to both connect and modify the registry.
-Gets Extended Protection for the SQL2008R2SP2 on sql01. Uses Windows Credentials to both login and view the registry.</p>
+<p>Set Extended Protection of SQL Engine for the SQL2008R2SP2 on sql01 to &quot;Off&quot;. Uses Windows Credentials to both connect and modify the registry.<br>
+Gets Extended Protection for the SQL2008R2SP2 on sql01. Uses Windows Credentials to both login and view the registry.<br></p>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances.</p>
+<p>The target SQL Server instance or instances.<br></p>
 <table>
 <thead>
 <tr>
@@ -521,7 +521,7 @@ Gets Extended Protection for the SQL2008R2SP2 on sql01. Uses Windows Credentials
 </tbody>
 </table>
 <h5 id="credential">-Credential</h5>
-<p>Allows you to login to the computer (not SQL Server instance) using alternative Windows credentials</p>
+<p>Allows you to login to the computer (not SQL Server instance) using alternative Windows credentials<br></p>
 <table>
 <thead>
 <tr>
@@ -551,7 +551,7 @@ Gets Extended Protection for the SQL2008R2SP2 on sql01. Uses Windows Credentials
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -579,7 +579,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.</p>
+<p>If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.<br></p>
 <table>
 <thead>
 <tr>
@@ -607,7 +607,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.</p>
+<p>If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.<br></p>
 <table>
 <thead>
 <tr>
@@ -636,6 +636,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Get-DbaExtendedProtection.ps1">Get-DbaExtendedProtection</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Get-DbaExtendedProtection">Get-DbaExtendedProtection</a>.</p>
 
                 </div> <!-- rendered -->

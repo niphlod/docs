@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -470,10 +470,10 @@
 <p>Gets SQL Server alias by reading HKLM:\SOFTWARE\Microsoft\MSSQLServer\Client</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Get-DbaClientAlias
-    -[-ComputerName] &lt;DbaInstanceParameter[]&gt;]
-    -[-Credential] &lt;PSCredential&gt;]
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [[-ComputerName] &lt;DbaInstanceParameter[]&gt;]
+    [[-Credential] &lt;PSCredential&gt;]
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -482,22 +482,22 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Get-DbaClientAlias
 </code></pre>
-<p>Gets all SQL Server client aliases on the local computer</p>
+<p>Gets all SQL Server client aliases on the local computer<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Get-DbaClientAlias -ComputerName workstationx
 </code></pre>
-<p>Gets all SQL Server client aliases on Workstationx</p>
+<p>Gets all SQL Server client aliases on Workstationx<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Get-DbaClientAlias -ComputerName workstationx -Credential ad\sqldba
 </code></pre>
-<p>Logs into workstationx as ad\sqldba then retrieves all SQL Server client aliases on Workstationx</p>
+<p>Logs into workstationx as ad\sqldba then retrieves all SQL Server client aliases on Workstationx<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; 'Server1', 'Server2' | Get-DbaClientAlias
 </code></pre>
-<p>Gets all SQL Server client aliases on Server1 and Server2</p>
+<p>Gets all SQL Server client aliases on Server1 and Server2<br></p>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="computername">-ComputerName</h5>
-<p>The target computer where the alias has been created</p>
+<p>The target computer where the alias has been created<br></p>
 <table>
 <thead>
 <tr>
@@ -525,7 +525,7 @@
 </tbody>
 </table>
 <h5 id="credential">-Credential</h5>
-<p>Allows you to login to remote computers using alternative credentials</p>
+<p>Allows you to login to remote computers using alternative credentials<br></p>
 <table>
 <thead>
 <tr>
@@ -555,7 +555,7 @@
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -584,6 +584,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Get-DbaClientAlias.ps1">Get-DbaClientAlias</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Get-DbaClientAlias">Get-DbaClientAlias</a>.</p>
 
                 </div> <!-- rendered -->

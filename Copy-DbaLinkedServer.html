@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -471,18 +471,18 @@
 <p>Credit: <a href="https://blog.netspi.com/decrypting-mssql-database-link-server-passwords/">https://blog.netspi.com/decrypting-mssql-database-link-server-passwords/</a></p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Copy-DbaLinkedServer
-    --Source] &lt;DbaInstanceParameter&gt;
-    -[-SourceSqlCredential] &lt;PSCredential&gt;]
-    --Destination] &lt;DbaInstanceParameter[]&gt;
-    -[-DestinationSqlCredential] &lt;PSCredential&gt;]
-    -[-LinkedServer] &lt;Object[]&gt;]
-    -[-ExcludeLinkedServer] &lt;Object[]&gt;]
-    --UpgradeSqlClient]
-    --Force]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-Source] &lt;DbaInstanceParameter&gt;
+    [[-SourceSqlCredential] &lt;PSCredential&gt;]
+    [-Destination] &lt;DbaInstanceParameter[]&gt;
+    [[-DestinationSqlCredential] &lt;PSCredential&gt;]
+    [[-LinkedServer] &lt;Object[]&gt;]
+    [[-ExcludeLinkedServer] &lt;Object[]&gt;]
+    [-UpgradeSqlClient]
+    [-Force]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -491,14 +491,14 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Copy-DbaLinkedServer -Source sqlserver2014a -Destination sqlcluster
 </code></pre>
-<p>Copies all SQL Server Linked Servers on sqlserver2014a to sqlcluster. If Linked Server exists on destination, it will be skipped.</p>
+<p>Copies all SQL Server Linked Servers on sqlserver2014a to sqlcluster. If Linked Server exists on destination, it will be skipped.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Copy-DbaLinkedServer -Source sqlserver2014a -Destination sqlcluster -LinkedServer SQL2K5,SQL2k -Force
 </code></pre>
-<p>Copies over two SQL Server Linked Servers (SQL2K and SQL2K2) from sqlserver to sqlcluster. If the credential already exists on the destination, it will be dropped.</p>
+<p>Copies over two SQL Server Linked Servers (SQL2K and SQL2K2) from sqlserver to sqlcluster. If the credential already exists on the destination, it will be dropped.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="source">-Source</h5>
-<p>Source SQL Server (2005 and above). You must have sysadmin access to both SQL Server and Windows.</p>
+<p>Source SQL Server (2005 and above). You must have sysadmin access to both SQL Server and Windows.<br></p>
 <table>
 <thead>
 <tr>
@@ -526,7 +526,7 @@
 </tbody>
 </table>
 <h5 id="destination">-Destination</h5>
-<p>Destination SQL Server (2005 and above). You must have sysadmin access to both SQL Server and Windows.</p>
+<p>Destination SQL Server (2005 and above). You must have sysadmin access to both SQL Server and Windows.<br></p>
 <table>
 <thead>
 <tr>
@@ -557,7 +557,7 @@
 <h5 id="sourcesqlcredential">-SourceSqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -587,7 +587,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 <h5 id="destinationsqlcredential">-DestinationSqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -615,7 +615,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="linkedserver">-LinkedServer</h5>
-<p>The linked server(s) to process - this list is auto-populated from the server. If unspecified, all linked servers will be processed.</p>
+<p>The linked server(s) to process - this list is auto-populated from the server. If unspecified, all linked servers will be processed.<br></p>
 <table>
 <thead>
 <tr>
@@ -643,7 +643,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="excludelinkedserver">-ExcludeLinkedServer</h5>
-<p>The linked server(s) to exclude - this list is auto-populated from the server</p>
+<p>The linked server(s) to exclude - this list is auto-populated from the server<br></p>
 <table>
 <thead>
 <tr>
@@ -671,7 +671,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="upgradesqlclient">-UpgradeSqlClient</h5>
-<p>Upgrade any SqlClient Linked Server to the current Version</p>
+<p>Upgrade any SqlClient Linked Server to the current Version<br></p>
 <table>
 <thead>
 <tr>
@@ -699,7 +699,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="force">-Force</h5>
-<p>By default, if a Linked Server exists on the source and destination, the Linked Server is not copied over. Specifying -force will drop and recreate the Linked Server on the Destination server.</p>
+<p>By default, if a Linked Server exists on the source and destination, the Linked Server is not copied over. Specifying -force will drop and recreate the Linked Server on the Destination server.<br></p>
 <table>
 <thead>
 <tr>
@@ -729,7 +729,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -757,7 +757,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>Shows what would happen if the command were to run. No actions are actually performed.</p>
+<p>Shows what would happen if the command were to run. No actions are actually performed.<br></p>
 <table>
 <thead>
 <tr>
@@ -785,7 +785,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>Prompts you for confirmation before executing any changing operations within the command.</p>
+<p>Prompts you for confirmation before executing any changing operations within the command.<br></p>
 <table>
 <thead>
 <tr>
@@ -814,6 +814,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Copy-DbaLinkedServer.ps1">Copy-DbaLinkedServer</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Copy-DbaLinkedServer">Copy-DbaLinkedServer</a>.</p>
 
                 </div> <!-- rendered -->

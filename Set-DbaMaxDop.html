@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -472,17 +472,17 @@
 <p>You can set MaxDop database scoped configurations if the server is version 2016 or higher</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Set-DbaMaxDop
-    -[-SqlInstance] &lt;DbaInstanceParameter[]&gt;]
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    -[-Database] &lt;Object[]&gt;]
-    -[-ExcludeDatabase] &lt;Object[]&gt;]
-    -[-MaxDop] &lt;Int32&gt;]
-    -[-InputObject] &lt;PSObject&gt;]
-    --AllDatabases]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [[-SqlInstance] &lt;DbaInstanceParameter[]&gt;]
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [[-Database] &lt;Object[]&gt;]
+    [[-ExcludeDatabase] &lt;Object[]&gt;]
+    [[-MaxDop] &lt;Int32&gt;]
+    [[-InputObject] &lt;PSObject&gt;]
+    [-AllDatabases]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -491,26 +491,26 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Set-DbaMaxDop -SqlInstance sql2008, sql2012
 </code></pre>
-<p>Sets Max DOP to the recommended value for servers sql2008 and sql2012.</p>
+<p>Sets Max DOP to the recommended value for servers sql2008 and sql2012.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Set-DbaMaxDop -SqlInstance sql2014 -MaxDop 4
 </code></pre>
-<p>Sets Max DOP to 4 for server sql2014.</p>
+<p>Sets Max DOP to 4 for server sql2014.<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Test-DbaMaxDop -SqlInstance sql2008 | Set-DbaMaxDop
 </code></pre>
-<p>Gets the recommended Max DOP from Test-DbaMaxDop and applies it to to sql2008.</p>
+<p>Gets the recommended Max DOP from Test-DbaMaxDop and applies it to to sql2008.<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; Set-DbaMaxDop -SqlInstance sql2016 -Database db1
 </code></pre>
-<p>Set recommended Max DOP for database db1 on server sql2016.</p>
+<p>Set recommended Max DOP for database db1 on server sql2016.<br></p>
 <h5 id="example-5">Example:  5</h5>
 <pre><code>PS C:\&gt; Set-DbaMaxDop -SqlInstance sql2016 -AllDatabases
 </code></pre>
-<p>Set recommended Max DOP for all databases on server sql2016.</p>
+<p>Set recommended Max DOP for all databases on server sql2016.<br></p>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances. Defaults to localhost.</p>
+<p>The target SQL Server instance or instances. Defaults to localhost.<br></p>
 <table>
 <thead>
 <tr>
@@ -540,7 +540,7 @@
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -568,7 +568,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="database">-Database</h5>
-<p>Specifies one or more databases to process. Options for this list are auto-populated from the server. If unspecified, all databases will be processed.</p>
+<p>Specifies one or more databases to process. Options for this list are auto-populated from the server. If unspecified, all databases will be processed.<br></p>
 <table>
 <thead>
 <tr>
@@ -596,7 +596,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="excludedatabase">-ExcludeDatabase</h5>
-<p>Specifies one or more databases to exclude from processing. Options for this list are auto-populated from the server</p>
+<p>Specifies one or more databases to exclude from processing. Options for this list are auto-populated from the server<br></p>
 <table>
 <thead>
 <tr>
@@ -624,7 +624,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="maxdop">-MaxDop</h5>
-<p>Specifies the Max DOP value to set.</p>
+<p>Specifies the Max DOP value to set.<br></p>
 <table>
 <thead>
 <tr>
@@ -652,7 +652,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="inputobject">-InputObject</h5>
-<p>If Test-SqlMaxDop has been executed prior to this function, the results may be passed in via this parameter.</p>
+<p>If Test-SqlMaxDop has been executed prior to this function, the results may be passed in via this parameter.<br></p>
 <table>
 <thead>
 <tr>
@@ -680,7 +680,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="alldatabases">-AllDatabases</h5>
-<p>If this switch is enabled, Max DOP will be set on all databases. This switch is only useful on SQL Server 2016 and higher.</p>
+<p>If this switch is enabled, Max DOP will be set on all databases. This switch is only useful on SQL Server 2016 and higher.<br></p>
 <table>
 <thead>
 <tr>
@@ -710,7 +710,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -738,7 +738,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>Shows what would happen if the cmdlet runs. The cmdlet is not run.</p>
+<p>Shows what would happen if the cmdlet runs. The cmdlet is not run.<br></p>
 <table>
 <thead>
 <tr>
@@ -766,7 +766,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>Prompts you for confirmation before running the cmdlet.</p>
+<p>Prompts you for confirmation before running the cmdlet.<br></p>
 <table>
 <thead>
 <tr>
@@ -795,6 +795,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Set-DbaMaxDop.ps1">Set-DbaMaxDop</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Set-DbaMaxDop">Set-DbaMaxDop</a>.</p>
 
                 </div> <!-- rendered -->

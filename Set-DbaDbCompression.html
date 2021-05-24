@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -474,18 +474,18 @@ You would probably be best if you utilized Get-DbaUptime first, before running t
 (<a href="https://github.com/Microsoft/tigertoolbox/tree/master/Evaluate-Compression-Gains">https://github.com/Microsoft/tigertoolbox/tree/master/Evaluate-Compression-Gains</a>)</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Set-DbaDbCompression
-    --SqlInstance] &lt;DbaInstanceParameter[]&gt;
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    -[-Database] &lt;Object[]&gt;]
-    -[-ExcludeDatabase] &lt;Object[]&gt;]
-    -[-CompressionType] &lt;Object&gt;]
-    -[-MaxRunTime] &lt;Int32&gt;]
-    -[-PercentCompression] &lt;Int32&gt;]
-    -[-InputObject] &lt;Object&gt;]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-SqlInstance] &lt;DbaInstanceParameter[]&gt;
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [[-Database] &lt;Object[]&gt;]
+    [[-ExcludeDatabase] &lt;Object[]&gt;]
+    [[-CompressionType] &lt;Object&gt;]
+    [[-MaxRunTime] &lt;Int32&gt;]
+    [[-PercentCompression] &lt;Int32&gt;]
+    [[-InputObject] &lt;Object&gt;]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -494,37 +494,37 @@ You would probably be best if you utilized Get-DbaUptime first, before running t
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Set-DbaDbCompression -SqlInstance localhost -MaxRunTime 60 -PercentCompression 25
 </code></pre>
-<p>Set the compression run time to 60 minutes and will start the compression of tables/indexes that have a difference of 25% or higher between current and recommended.</p>
+<p>Set the compression run time to 60 minutes and will start the compression of tables/indexes that have a difference of 25% or higher between current and recommended.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Set-DbaDbCompression -SqlInstance ServerA -Database DBName -CompressionType Page
 </code></pre>
-<p>Utilizes Page compression for all objects in DBName on ServerA with no time limit.</p>
+<p>Utilizes Page compression for all objects in DBName on ServerA with no time limit.<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Set-DbaDbCompression -SqlInstance ServerA -Database DBName -PercentCompression 25 | Out-GridView
 </code></pre>
-<p>Will compress tables/indexes within the specified database that would show any % improvement with compression and with no time limit. The results will be piped into a nicely formatted GridView.</p>
+<p>Will compress tables/indexes within the specified database that would show any % improvement with compression and with no time limit. The results will be piped into a nicely formatted GridView.<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; $testCompression = Test-DbaDbCompression -SqlInstance ServerA -Database DBName
 PS C:\&gt; Set-DbaDbCompression -SqlInstance ServerA -Database DBName -InputObject $testCompression
 </code></pre>
-<p>Gets the compression suggestions from Test-DbaDbCompression into a variable, this can then be reviewed and passed into Set-DbaDbCompression.</p>
+<p>Gets the compression suggestions from Test-DbaDbCompression into a variable, this can then be reviewed and passed into Set-DbaDbCompression.<br></p>
 <h5 id="example-5">Example:  5</h5>
 <pre><code>PS C:\&gt; $cred = Get-Credential sqladmin
 PS C:\&gt; Set-DbaDbCompression -SqlInstance ServerA -ExcludeDatabase Database -SqlCredential $cred -MaxRunTime 60 -PercentCompression 25
 </code></pre>
-<p>Set the compression run time to 60 minutes and will start the compression of tables/indexes for all databases except the specified excluded database. Only objects that have a difference of 25% or
-higher between current and recommended will be compressed.</p>
+<p>Set the compression run time to 60 minutes and will start the compression of tables/indexes for all databases except the specified excluded database. Only objects that have a difference of 25% or <br>
+higher between current and recommended will be compressed.<br></p>
 <h5 id="example-6">Example:  6</h5>
 <pre><code>PS C:\&gt; $servers = 'Server1','Server2'
 PS C:\&gt; foreach ($svr in $servers) {
 &gt;&gt; Set-DbaDbCompression -SqlInstance $svr -MaxRunTime 60 -PercentCompression 25 | Export-Csv -Path C:\temp\CompressionAnalysisPAC.csv -Append
 &gt;&gt; }
 </code></pre>
-<p>Set the compression run time to 60 minutes and will start the compression of tables/indexes across all listed servers that have a difference of 25% or higher between current and recommended. Output
-of command is exported to a csv.</p>
+<p>Set the compression run time to 60 minutes and will start the compression of tables/indexes across all listed servers that have a difference of 25% or higher between current and recommended. Output <br>
+of command is exported to a csv.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances. This can be a collection and receive pipeline input to allow the function to be executed against multiple SQL Server instances.</p>
+<p>The target SQL Server instance or instances. This can be a collection and receive pipeline input to allow the function to be executed against multiple SQL Server instances.<br></p>
 <table>
 <thead>
 <tr>
@@ -555,7 +555,7 @@ of command is exported to a csv.</p>
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -583,7 +583,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="database">-Database</h5>
-<p>The database(s) to process - this list is auto populated from the server. If unspecified, all databases will be processed.</p>
+<p>The database(s) to process - this list is auto populated from the server. If unspecified, all databases will be processed.<br></p>
 <table>
 <thead>
 <tr>
@@ -611,7 +611,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="excludedatabase">-ExcludeDatabase</h5>
-<p>The database(s) to exclude - this list is auto populated from the server.</p>
+<p>The database(s) to exclude - this list is auto populated from the server.<br></p>
 <table>
 <thead>
 <tr>
@@ -640,7 +640,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </table>
 <h5 id="compressiontype">-CompressionType</h5>
 <p>Control the compression type applied. Default is 'Recommended' which uses the Tiger Team query to use the most appropriate setting per object. Other option is to compress all objects to either Row or
-Page.</p>
+Page.<br></p>
 <table>
 <thead>
 <tr>
@@ -672,7 +672,7 @@ Page.</p>
 </tbody>
 </table>
 <h5 id="maxruntime">-MaxRunTime</h5>
-<p>Will continue to alter tables and indexes for the given amount of minutes.</p>
+<p>Will continue to alter tables and indexes for the given amount of minutes.<br></p>
 <table>
 <thead>
 <tr>
@@ -700,7 +700,7 @@ Page.</p>
 </tbody>
 </table>
 <h5 id="percentcompression">-PercentCompression</h5>
-<p>Will only work on the tables/indexes that have the calculated savings at and higher for the given number provided.</p>
+<p>Will only work on the tables/indexes that have the calculated savings at and higher for the given number provided.<br></p>
 <table>
 <thead>
 <tr>
@@ -728,7 +728,7 @@ Page.</p>
 </tbody>
 </table>
 <h5 id="inputobject">-InputObject</h5>
-<p>Takes the output of Test-DbaDbCompression as an object and applied compression based on those recommendations.</p>
+<p>Takes the output of Test-DbaDbCompression as an object and applied compression based on those recommendations.<br></p>
 <table>
 <thead>
 <tr>
@@ -758,7 +758,7 @@ Page.</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -786,7 +786,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.</p>
+<p>If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.<br></p>
 <table>
 <thead>
 <tr>
@@ -814,7 +814,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.</p>
+<p>If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.<br></p>
 <table>
 <thead>
 <tr>
@@ -843,6 +843,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Set-DbaDbCompression.ps1">Set-DbaDbCompression</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Set-DbaDbCompression">Set-DbaDbCompression</a>.</p>
 
                 </div> <!-- rendered -->

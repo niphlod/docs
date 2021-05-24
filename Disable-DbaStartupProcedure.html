@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -472,14 +472,14 @@ Equivalent to running the system stored procedure sp_procoption with @OptionValu
 Returns the SMO StoredProcedure object for procedures affected.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Disable-DbaStartupProcedure
-    -[-SqlInstance] &lt;DbaInstanceParameter[]&gt;]
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    -[-StartupProcedure] &lt;String[]&gt;]
-    -[-InputObject] &lt;Object[]&gt;]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [[-SqlInstance] &lt;DbaInstanceParameter[]&gt;]
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [[-StartupProcedure] &lt;String[]&gt;]
+    [[-InputObject] &lt;Object[]&gt;]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -488,20 +488,20 @@ Returns the SMO StoredProcedure object for procedures affected.</p>
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Disable-DbaStartupProcedure -SqlInstance SqlBox1\Instance2 -StartupProcedure '[dbo].[StartUpProc1]'
 </code></pre>
-<p>Attempts to clear the automatic execution of the procedure '[dbo].[StartUpProc1]' in the master database of SqlBox1\Instance2 when the instance is started.</p>
+<p>Attempts to clear the automatic execution of the procedure '[dbo].[StartUpProc1]' in the master database of SqlBox1\Instance2 when the instance is started.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; $cred = Get-Credential sqladmin
 PS C:\&gt; Disable-DbaStartupProcedure -SqlInstance winserver\sqlexpress, sql2016 -SqlCredential $cred -StartupProcedure '[dbo].[StartUpProc1]'
 </code></pre>
-<p>Attempts to clear the automatic execution of the procedure '[dbo].[StartUpProc1]' in the master database of winserver\sqlexpress and sql2016 when the instance is started. Connects using sqladmin
-credential</p>
+<p>Attempts to clear the automatic execution of the procedure '[dbo].[StartUpProc1]' in the master database of winserver\sqlexpress and sql2016 when the instance is started. Connects using sqladmin <br>
+credential<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Get-DbaStartupProcedure -SqlInstance sql2016 | Disable-DbaStartupProcedure
 </code></pre>
-<p>Get all startup procedures for the sql2016 instance and disables them by piping to Disable-DbaStartupProcedure</p>
+<p>Get all startup procedures for the sql2016 instance and disables them by piping to Disable-DbaStartupProcedure<br></p>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances.</p>
+<p>The target SQL Server instance or instances.<br></p>
 <table>
 <thead>
 <tr>
@@ -531,7 +531,7 @@ credential</p>
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -559,7 +559,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="startupprocedure">-StartupProcedure</h5>
-<p>The Procedure(s) to process.</p>
+<p>The Procedure(s) to process.<br></p>
 <table>
 <thead>
 <tr>
@@ -587,7 +587,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="inputobject">-InputObject</h5>
-<p>Piped objects from Get-DbaStartup</p>
+<p>Piped objects from Get-DbaStartup<br></p>
 <table>
 <thead>
 <tr>
@@ -617,7 +617,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -645,7 +645,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.</p>
+<p>If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.<br></p>
 <table>
 <thead>
 <tr>
@@ -673,7 +673,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.</p>
+<p>If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.<br></p>
 <table>
 <thead>
 <tr>
@@ -702,6 +702,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Disable-DbaStartupProcedure.ps1">Disable-DbaStartupProcedure</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Disable-DbaStartupProcedure">Disable-DbaStartupProcedure</a>.</p>
 
                 </div> <!-- rendered -->

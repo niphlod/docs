@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -470,15 +470,15 @@
 <p>Quickly find slow query executions within a database.  Results will include stored procedures and individual SQL statements.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Get-DbaQueryExecutionTime -SqlInstance &lt;DbaInstanceParameter[]&gt;
-    --SqlCredential &lt;PSCredential&gt;]
-    --Database &lt;Object[]&gt;]
-    --ExcludeDatabase &lt;Object[]&gt;]
-    --MaxResultsPerDb &lt;Int32&gt;]
-    --MinExecs &lt;Int32&gt;]
-    -[-MinExecMs] &lt;Int32&gt;]
-    -[-ExcludeSystem]]
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [-SqlCredential &lt;PSCredential&gt;]
+    [-Database &lt;Object[]&gt;]
+    [-ExcludeDatabase &lt;Object[]&gt;]
+    [-MaxResultsPerDb &lt;Int32&gt;]
+    [-MinExecs &lt;Int32&gt;]
+    [[-MinExecMs] &lt;Int32&gt;]
+    [[-ExcludeSystem]]
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -487,19 +487,19 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Get-DbaQueryExecutionTime -SqlInstance sql2008, sqlserver2012
 </code></pre>
-<p>Return the top 100 slowest stored procedures or statements for servers sql2008 and sqlserver2012.</p>
+<p>Return the top 100 slowest stored procedures or statements for servers sql2008 and sqlserver2012.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Get-DbaQueryExecutionTime -SqlInstance sql2008 -Database TestDB
 </code></pre>
-<p>Return the top 100 slowest stored procedures or statements on server sql2008 for only the TestDB database.</p>
+<p>Return the top 100 slowest stored procedures or statements on server sql2008 for only the TestDB database.<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Get-DbaQueryExecutionTime -SqlInstance sql2008 -Database TestDB -MaxResultsPerDb 100 -MinExecs 200 -MinExecMs 1000
 </code></pre>
-<p>Return the top 100 slowest stored procedures or statements on server sql2008 for only the TestDB database, limiting results to queries with more than 200 total executions and an execution time over
-1000ms or higher.</p>
+<p>Return the top 100 slowest stored procedures or statements on server sql2008 for only the TestDB database, limiting results to queries with more than 200 total executions and an execution time over <br>
+1000ms or higher.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances.</p>
+<p>The target SQL Server instance or instances.<br></p>
 <table>
 <thead>
 <tr>
@@ -530,7 +530,7 @@
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -558,7 +558,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="database">-Database</h5>
-<p>The database(s) to process - this list is auto-populated from the server. If unspecified, all databases will be processed.</p>
+<p>The database(s) to process - this list is auto-populated from the server. If unspecified, all databases will be processed.<br></p>
 <table>
 <thead>
 <tr>
@@ -586,7 +586,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="excludedatabase">-ExcludeDatabase</h5>
-<p>The database(s) to exclude - this list is auto-populated from the server</p>
+<p>The database(s) to exclude - this list is auto-populated from the server<br></p>
 <table>
 <thead>
 <tr>
@@ -614,7 +614,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="maxresultsperdb">-MaxResultsPerDb</h5>
-<p>Allows you to limit the number of results returned, as many systems can have very large amounts of query plans.  Default value is 100 results.</p>
+<p>Allows you to limit the number of results returned, as many systems can have very large amounts of query plans.  Default value is 100 results.<br></p>
 <table>
 <thead>
 <tr>
@@ -642,7 +642,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="minexecs">-MinExecs</h5>
-<p>Allows you to limit the scope to queries that have been executed a minimum number of time. Default value is 100 executions.</p>
+<p>Allows you to limit the scope to queries that have been executed a minimum number of time. Default value is 100 executions.<br></p>
 <table>
 <thead>
 <tr>
@@ -670,7 +670,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="minexecms">-MinExecMs</h5>
-<p>Allows you to limit the scope to queries with a specified average execution time.  Default value is 500 (ms).</p>
+<p>Allows you to limit the scope to queries with a specified average execution time.  Default value is 500 (ms).<br></p>
 <table>
 <thead>
 <tr>
@@ -698,7 +698,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="excludesystem">-ExcludeSystem</h5>
-<p>Allows you to suppress output on system databases</p>
+<p>Allows you to suppress output on system databases<br></p>
 <table>
 <thead>
 <tr>
@@ -728,7 +728,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -757,6 +757,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Get-DbaQueryExecutionTime.ps1">Get-DbaQueryExecutionTime</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Get-DbaQueryExecutionTime">Get-DbaQueryExecutionTime</a>.</p>
 
                 </div> <!-- rendered -->

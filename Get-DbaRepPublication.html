@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -470,12 +470,12 @@
 <p>Quickly find all transactional, merge, and snapshot publications on a specific server or database.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Get-DbaRepPublication
-    --SqlInstance] &lt;DbaInstanceParameter[]&gt;
-    -[-Database] &lt;Object[]&gt;]
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    -[-PublicationType] &lt;Object[]&gt;]
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [-SqlInstance] &lt;DbaInstanceParameter[]&gt;
+    [[-Database] &lt;Object[]&gt;]
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [[-PublicationType] &lt;Object[]&gt;]
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -484,18 +484,18 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Get-DbaRepPublication -SqlInstance sql2008, sqlserver2012
 </code></pre>
-<p>Return all publications for servers sql2008 and sqlserver2012.</p>
+<p>Return all publications for servers sql2008 and sqlserver2012.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Get-DbaRepPublication -SqlInstance sql2008 -Database TestDB
 </code></pre>
-<p>Return all publications on server sql2008 for only the TestDB database</p>
+<p>Return all publications on server sql2008 for only the TestDB database<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Get-DbaRepPublication -SqlInstance sql2008 -PublicationType Transactional
 </code></pre>
-<p>Return all publications on server sql2008 for all databases that have Transactional publications</p>
+<p>Return all publications on server sql2008 for all databases that have Transactional publications<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances.</p>
+<p>The target SQL Server instance or instances.<br></p>
 <table>
 <thead>
 <tr>
@@ -524,7 +524,7 @@
 </table>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="database">-Database</h5>
-<p>The database(s) to process. If unspecified, all databases will be processed.</p>
+<p>The database(s) to process. If unspecified, all databases will be processed.<br></p>
 <table>
 <thead>
 <tr>
@@ -554,7 +554,7 @@
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -582,7 +582,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="publicationtype">-PublicationType</h5>
-<p>Limit by specific type of publication. Valid choices include: Transactional, Merge, Snapshot</p>
+<p>Limit by specific type of publication. Valid choices include: Transactional, Merge, Snapshot<br></p>
 <table>
 <thead>
 <tr>
@@ -614,7 +614,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="enableexception">-EnableException</h5>
-<p>byng this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+<p>byng this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -643,6 +643,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Get-DbaRepPublication.ps1">Get-DbaRepPublication</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Get-DbaRepPublication">Get-DbaRepPublication</a>.</p>
 
                 </div> <!-- rendered -->

@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -472,11 +472,11 @@
 <a href="https://www.sqlskills.com/blogs/jonathan/converting-sql-trace-to-extended-events-in-sql-server-2012/">https://www.sqlskills.com/blogs/jonathan/converting-sql-trace-to-extended-events-in-sql-server-2012/</a></p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>ConvertTo-DbaXESession
-    --InputObject] &lt;Object[]&gt;
-    --Name] &lt;String&gt;
-    --OutputScriptOnly]
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [-InputObject] &lt;Object[]&gt;
+    [-Name] &lt;String&gt;
+    [-OutputScriptOnly]
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -485,18 +485,18 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Get-DbaTrace -SqlInstance sql2017, sql2012 | Where-Object Id -eq 2 | ConvertTo-DbaXESession -Name 'Test'
 </code></pre>
-<p>Converts Trace with ID 2 to a Session named Test on SQL Server instances named sql2017 and sql2012 and creates the Session on each respective server.</p>
+<p>Converts Trace with ID 2 to a Session named Test on SQL Server instances named sql2017 and sql2012 and creates the Session on each respective server.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Get-DbaTrace -SqlInstance sql2014 | Out-GridView -PassThru | ConvertTo-DbaXESession -Name 'Test' | Start-DbaXESession
 </code></pre>
-<p>Converts selected traces on sql2014 to sessions, creates the session, and starts it.</p>
+<p>Converts selected traces on sql2014 to sessions, creates the session, and starts it.<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Get-DbaTrace -SqlInstance sql2014 | Where-Object Id -eq 1 | ConvertTo-DbaXESession -Name 'Test' -OutputScriptOnly
 </code></pre>
-<p>Converts trace ID 1 on sql2014 to an Extended Event and outputs the resulting T-SQL.</p>
+<p>Converts trace ID 1 on sql2014 to an Extended Event and outputs the resulting T-SQL.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="inputobject">-InputObject</h5>
-<p>Specifies a Trace object output by Get-DbaTrace.</p>
+<p>Specifies a Trace object output by Get-DbaTrace.<br></p>
 <table>
 <thead>
 <tr>
@@ -524,7 +524,7 @@
 </tbody>
 </table>
 <h5 id="name">-Name</h5>
-<p>The name of the Trace to convert. If the name exists, characters will be appended to it.</p>
+<p>The name of the Trace to convert. If the name exists, characters will be appended to it.<br></p>
 <table>
 <thead>
 <tr>
@@ -553,7 +553,7 @@
 </table>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="outputscriptonly">-OutputScriptOnly</h5>
-<p>Outputs the T-SQL script to create the XE session and does not execute it.</p>
+<p>Outputs the T-SQL script to create the XE session and does not execute it.<br></p>
 <table>
 <thead>
 <tr>
@@ -583,7 +583,7 @@
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -612,6 +612,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/ConvertTo-DbaXESession.ps1">ConvertTo-DbaXESession</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#ConvertTo-DbaXESession">ConvertTo-DbaXESession</a>.</p>
 
                 </div> <!-- rendered -->

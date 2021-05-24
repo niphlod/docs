@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -470,18 +470,18 @@
 <p>Returns log entries for dbatools. Handy when debugging or developing a script using it.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Get-DbatoolsLog
-    -[-FunctionName] &lt;String&gt;]
-    -[-ModuleName] &lt;String&gt;]
-    -[-Target] &lt;Object&gt;]
-    -[-Tag] &lt;String[]&gt;]
-    -[-Last] &lt;Int32&gt;]
-    --LastError]
-    -[-Skip] &lt;Int32&gt;]
-    -[-Runspace] &lt;Guid&gt;]
-    -[-Level] {Critical | Important | Output | Significant | VeryVerbose | Verbose | SomewhatVerbose | System | Debug | InternalComment | Warning}]
-    --Raw]
-    --Errors]
-    -&lt;CommonParameters&gt;]
+    [[-FunctionName] &lt;String&gt;]
+    [[-ModuleName] &lt;String&gt;]
+    [[-Target] &lt;Object&gt;]
+    [[-Tag] &lt;String[]&gt;]
+    [[-Last] &lt;Int32&gt;]
+    [-LastError]
+    [[-Skip] &lt;Int32&gt;]
+    [[-Runspace] &lt;Guid&gt;]
+    [[-Level] {Critical | Important | Output | Significant | VeryVerbose | Verbose | SomewhatVerbose | System | Debug | InternalComment | Warning}]
+    [-Raw]
+    [-Errors]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -490,23 +490,23 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Get-DbatoolsLog
 </code></pre>
-<p>Returns all log entries currently in memory.</p>
+<p>Returns all log entries currently in memory.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Get-DbatooolsLog -LastError
 </code></pre>
-<p>Returns the last log entry type of error.</p>
+<p>Returns the last log entry type of error.<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Get-DbatoolsLog -Target &quot;a&quot; -Last 1 -Skip 1
 </code></pre>
-<p>Returns all log entries that targeted the object &quot;a&quot; in the second last execution sent.</p>
+<p>Returns all log entries that targeted the object &quot;a&quot; in the second last execution sent.<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; Get-DbatoolsLog -Tag &quot;fail&quot; -Last 5
 </code></pre>
-<p>Returns all log entries within the last 5 executions that contained the tag &quot;fail&quot;</p>
+<p>Returns all log entries within the last 5 executions that contained the tag &quot;fail&quot;<br></p>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="functionname">-FunctionName</h5>
 <p>Default: &quot;*&quot;
-Only messages written by similar functions will be returned.</p>
+Only messages written by similar functions will be returned.<br></p>
 <table>
 <thead>
 <tr>
@@ -535,7 +535,7 @@ Only messages written by similar functions will be returned.</p>
 </table>
 <h5 id="modulename">-ModuleName</h5>
 <p>Default: &quot;*&quot;
-Only messages written by commands from similar modules will be returned.</p>
+Only messages written by commands from similar modules will be returned.<br></p>
 <table>
 <thead>
 <tr>
@@ -563,7 +563,7 @@ Only messages written by commands from similar modules will be returned.</p>
 </tbody>
 </table>
 <h5 id="target">-Target</h5>
-<p>Only messages handling the specified target will be returned.</p>
+<p>Only messages handling the specified target will be returned.<br></p>
 <table>
 <thead>
 <tr>
@@ -591,7 +591,7 @@ Only messages written by commands from similar modules will be returned.</p>
 </tbody>
 </table>
 <h5 id="tag">-Tag</h5>
-<p>Only messages containing one of these tags will be returned.</p>
+<p>Only messages containing one of these tags will be returned.<br></p>
 <table>
 <thead>
 <tr>
@@ -622,7 +622,7 @@ Only messages written by commands from similar modules will be returned.</p>
 <p>Only messages written by the last X executions will be returned.
 Uses Get-History to determine execution. Ignores Get-message commands.
 By default, this will also include messages from other runspaces. If your command executes in parallel, that's useful.
-If it doesn't and you were offloading executions to other runspaces, consider also filtering by runspace using '-Runspace'</p>
+If it doesn't and you were offloading executions to other runspaces, consider also filtering by runspace using '-Runspace'<br></p>
 <table>
 <thead>
 <tr>
@@ -650,7 +650,7 @@ If it doesn't and you were offloading executions to other runspaces, consider al
 </tbody>
 </table>
 <h5 id="lasterror">-LastError</h5>
-<p>Only retrieves the last error message type written.</p>
+<p>Only retrieves the last error message type written.<br></p>
 <table>
 <thead>
 <tr>
@@ -679,7 +679,7 @@ If it doesn't and you were offloading executions to other runspaces, consider al
 </table>
 <h5 id="skip">-Skip</h5>
 <p>How many executions to skip when specifying '-Last'.
-Has no effect without the '-Last' parameter.</p>
+Has no effect without the '-Last' parameter.<br></p>
 <table>
 <thead>
 <tr>
@@ -710,7 +710,7 @@ Has no effect without the '-Last' parameter.</p>
 <p>The guid of the runspace to return messages from.
 By default, messages from all runspaces are returned.
 Run the following line to see the list of guids:
-Get-Runspace | ft Id, Name, InstanceId -AutoSize</p>
+Get-Runspace | ft Id, Name, InstanceId -AutoSize<br></p>
 <table>
 <thead>
 <tr>
@@ -741,7 +741,7 @@ Get-Runspace | ft Id, Name, InstanceId -AutoSize</p>
 <p>Limit the message selection by level.
 Message levels have a numeric value, making it easier to select a range:
 -Level (1..6)
-Will select the first 6 levels (Critical - SomewhatVerbose).</p>
+Will select the first 6 levels (Critical - SomewhatVerbose).<br></p>
 <table>
 <thead>
 <tr>
@@ -769,7 +769,7 @@ Will select the first 6 levels (Critical - SomewhatVerbose).</p>
 </tbody>
 </table>
 <h5 id="raw">-Raw</h5>
-<p>By default, messages such as SQL statements are flattened. Use raw to see the output without flattened formatting.</p>
+<p>By default, messages such as SQL statements are flattened. Use raw to see the output without flattened formatting.<br></p>
 <table>
 <thead>
 <tr>
@@ -797,7 +797,7 @@ Will select the first 6 levels (Critical - SomewhatVerbose).</p>
 </tbody>
 </table>
 <h5 id="errors">-Errors</h5>
-<p>Instead of log entries, the error entries will be retrieved</p>
+<p>Instead of log entries, the error entries will be retrieved<br></p>
 <table>
 <thead>
 <tr>
@@ -826,6 +826,7 @@ Will select the first 6 levels (Critical - SomewhatVerbose).</p>
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Get-DbatoolsLog.ps1">Get-DbatoolsLog</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Get-DbatoolsLog">Get-DbatoolsLog</a>.</p>
 
                 </div> <!-- rendered -->

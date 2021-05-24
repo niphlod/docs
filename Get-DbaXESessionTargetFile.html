@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -471,25 +471,25 @@
 <p>Note: this performs a Get-ChildItem on remote servers if the specified target SQL Server is remote.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Get-DbaXESessionTargetFile
-    --SqlCredential &lt;PSCredential&gt;]
-    --Session &lt;String[]&gt;]
-    --Target &lt;String[]&gt;]
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [-SqlCredential &lt;PSCredential&gt;]
+    [-Session &lt;String[]&gt;]
+    [-Target &lt;String[]&gt;]
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 Get-DbaXESessionTargetFile -SqlInstance &lt;DbaInstanceParameter[]&gt;
-    --SqlCredential &lt;PSCredential&gt;]
-    --Session &lt;String[]&gt;]
-    --Target &lt;String[]&gt;]
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [-SqlCredential &lt;PSCredential&gt;]
+    [-Session &lt;String[]&gt;]
+    [-Target &lt;String[]&gt;]
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 Get-DbaXESessionTargetFile
-    --SqlCredential &lt;PSCredential&gt;]
-    --Session &lt;String[]&gt;]
-    --Target &lt;String[]&gt;] -InputObject &lt;Target[]&gt;
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [-SqlCredential &lt;PSCredential&gt;]
+    [-Session &lt;String[]&gt;]
+    [-Target &lt;String[]&gt;] -InputObject &lt;Target[]&gt;
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -498,14 +498,14 @@ Get-DbaXESessionTargetFile
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Get-DbaXESessionTargetFile -SqlInstance sql2017 -Session 'Long Running Queries'
 </code></pre>
-<p>Shows Target Files for the 'Long Running Queries' session on sql2017.</p>
+<p>Shows Target Files for the 'Long Running Queries' session on sql2017.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Get-DbaXESession -SqlInstance sql2016 -Session 'Long Running Queries' | Get-DbaXESessionTarget | Get-DbaXESessionTargetFile
 </code></pre>
-<p>Returns the Target Files for the system_health session on sql2016.</p>
+<p>Returns the Target Files for the system_health session on sql2016.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server</p>
+<p>The target SQL Server<br></p>
 <table>
 <thead>
 <tr>
@@ -533,7 +533,7 @@ Get-DbaXESessionTargetFile
 </tbody>
 </table>
 <h5 id="inputobject">-InputObject</h5>
-<p>Allows results from piping in Get-DbaXESessionTarget.</p>
+<p>Allows results from piping in Get-DbaXESessionTarget.<br></p>
 <table>
 <thead>
 <tr>
@@ -564,7 +564,7 @@ Get-DbaXESessionTargetFile
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -592,7 +592,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="session">-Session</h5>
-<p>Only return files from a specific session. Options for this parameter are auto-populated from the server.</p>
+<p>Only return files from a specific session. Options for this parameter are auto-populated from the server.<br></p>
 <table>
 <thead>
 <tr>
@@ -620,7 +620,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="target">-Target</h5>
-<p>Only return files from a specific target.</p>
+<p>Only return files from a specific target.<br></p>
 <table>
 <thead>
 <tr>
@@ -650,7 +650,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -679,6 +679,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Get-DbaXESessionTargetFile.ps1">Get-DbaXESessionTargetFile</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Get-DbaXESessionTargetFile">Get-DbaXESessionTargetFile</a>.</p>
 
                 </div> <!-- rendered -->

@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -485,15 +485,15 @@
 Tested on SQL Server 2005 SP4 through 2016 CTP2.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Reset-DbaAdmin
-    --SqlInstance] &lt;DbaInstanceParameter&gt;
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    -[-Login] &lt;String&gt;]
-    -[-SecurePassword] &lt;SecureString&gt;]
-    --Force]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-SqlInstance] &lt;DbaInstanceParameter&gt;
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [[-Login] &lt;String&gt;]
+    [[-SecurePassword] &lt;SecureString&gt;]
+    [-Force]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -502,21 +502,21 @@ Tested on SQL Server 2005 SP4 through 2016 CTP2.</p>
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Reset-DbaAdmin -SqlInstance sqlcluster -SqlCredential sqladmin
 </code></pre>
-<p>Prompts for password, then resets the &quot;sqladmin&quot; account password on sqlcluster.</p>
+<p>Prompts for password, then resets the &quot;sqladmin&quot; account password on sqlcluster.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Reset-DbaAdmin -SqlInstance sqlserver\sqlexpress -Login ad\administrator -Confirm:$false
 </code></pre>
-<p>Adds the domain account &quot;ad\administrator&quot; as a sysadmin to the SQL instance.
-If the account already exists, it will be added to the sysadmin role.
-Does not prompt for a password since it is not a SQL login. Does not prompt for confirmation since -Confirm is set to $false.</p>
+<p>Adds the domain account &quot;ad\administrator&quot; as a sysadmin to the SQL instance.<br>
+If the account already exists, it will be added to the sysadmin role.<br>
+Does not prompt for a password since it is not a SQL login. Does not prompt for confirmation since -Confirm is set to $false.<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Reset-DbaAdmin -SqlInstance sqlserver\sqlexpress -Login sqladmin -Force
 </code></pre>
-<p>Skips restart confirmation, prompts for password, then adds a SQL Login &quot;sqladmin&quot; with sysadmin privileges.
-If the account already exists, it will be added to the sysadmin role and the password will be reset.</p>
+<p>Skips restart confirmation, prompts for password, then adds a SQL Login &quot;sqladmin&quot; with sysadmin privileges.<br>
+If the account already exists, it will be added to the sysadmin role and the password will be reset.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances. SQL Server must be 2005 and above, and can be a clustered or stand-alone instance.</p>
+<p>The target SQL Server instance or instances. SQL Server must be 2005 and above, and can be a clustered or stand-alone instance.<br></p>
 <table>
 <thead>
 <tr>
@@ -545,7 +545,7 @@ If the account already exists, it will be added to the sysadmin role and the pas
 </table>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="sqlcredential">-SqlCredential</h5>
-<p>Instead of using Login and SecurePassword, you can just pass in a credential object.</p>
+<p>Instead of using Login and SecurePassword, you can just pass in a credential object.<br></p>
 <table>
 <thead>
 <tr>
@@ -574,7 +574,7 @@ If the account already exists, it will be added to the sysadmin role and the pas
 </table>
 <h5 id="login">-Login</h5>
 <p>By default, the Login parameter is &quot;sa&quot; but any other SQL or Windows account can be specified. If a login does not currently exist, it will be added.
-When adding a Windows login to remote servers, ensure the SQL Server can add the login (ie, don't add WORKSTATION\Admin to remoteserver\instance. Domain users and Groups are valid input.</p>
+When adding a Windows login to remote servers, ensure the SQL Server can add the login (ie, don't add WORKSTATION\Admin to remoteserver\instance. Domain users and Groups are valid input.<br></p>
 <table>
 <thead>
 <tr>
@@ -602,7 +602,7 @@ When adding a Windows login to remote servers, ensure the SQL Server can add the
 </tbody>
 </table>
 <h5 id="securepassword">-SecurePassword</h5>
-<p>By default, if a SQL Login is detected, you will be prompted for a password. Use this to securely bypass the prompt.</p>
+<p>By default, if a SQL Login is detected, you will be prompted for a password. Use this to securely bypass the prompt.<br></p>
 <table>
 <thead>
 <tr>
@@ -630,7 +630,7 @@ When adding a Windows login to remote servers, ensure the SQL Server can add the
 </tbody>
 </table>
 <h5 id="force">-Force</h5>
-<p>If this switch is enabled, the Login(s) will be dropped and recreated on Destination. Logins that own Agent jobs cannot be dropped at this time.</p>
+<p>If this switch is enabled, the Login(s) will be dropped and recreated on Destination. Logins that own Agent jobs cannot be dropped at this time.<br></p>
 <table>
 <thead>
 <tr>
@@ -660,7 +660,7 @@ When adding a Windows login to remote servers, ensure the SQL Server can add the
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -688,7 +688,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.</p>
+<p>If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.<br></p>
 <table>
 <thead>
 <tr>
@@ -716,7 +716,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.</p>
+<p>If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.<br></p>
 <table>
 <thead>
 <tr>
@@ -745,6 +745,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Reset-DbaAdmin.ps1">Reset-DbaAdmin</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Reset-DbaAdmin">Reset-DbaAdmin</a>.</p>
 
                 </div> <!-- rendered -->

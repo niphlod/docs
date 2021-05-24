@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -470,21 +470,21 @@
 <p>Adds a listener to an availability group on a SQL Server instance.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Add-DbaAgListener
-    -[-SqlInstance] &lt;DbaInstanceParameter[]&gt;]
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    -[-AvailabilityGroup] &lt;String[]&gt;]
-    -[-Name] &lt;String&gt;]
-    -[-IPAddress] &lt;IPAddress[]&gt;]
-    -[-SubnetIP] &lt;IPAddress[]&gt;]
-    -[-SubnetMask] &lt;IPAddress[]&gt;]
-    -[-Port] &lt;Int32&gt;]
-    --Dhcp]
-    --Passthru]
-    -[-InputObject] &lt;AvailabilityGroup[]&gt;]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [[-SqlInstance] &lt;DbaInstanceParameter[]&gt;]
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [[-AvailabilityGroup] &lt;String[]&gt;]
+    [[-Name] &lt;String&gt;]
+    [[-IPAddress] &lt;IPAddress[]&gt;]
+    [[-SubnetIP] &lt;IPAddress[]&gt;]
+    [[-SubnetMask] &lt;IPAddress[]&gt;]
+    [[-Port] &lt;Int32&gt;]
+    [-Dhcp]
+    [-Passthru]
+    [[-InputObject] &lt;AvailabilityGroup[]&gt;]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -493,18 +493,18 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Add-DbaAgListener -SqlInstance sql2017 -AvailabilityGroup SharePoint -IPAddress 10.0.20.20
 </code></pre>
-<p>Creates a listener on 10.0.20.20 port 1433 for the SharePoint availability group on sql2017.</p>
+<p>Creates a listener on 10.0.20.20 port 1433 for the SharePoint availability group on sql2017.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Get-DbaAvailabilityGroup -SqlInstance sql2017 -AvailabilityGroup availabilitygroup1 | Add-DbaAgListener -Dhcp
 </code></pre>
-<p>Creates a listener on port 1433 with a dynamic IP for the group1 availability group on sql2017.</p>
+<p>Creates a listener on port 1433 with a dynamic IP for the group1 availability group on sql2017.<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Add-DbaAgListener -SqlInstance sql2017 -AvailabilityGroup SharePoint -IPAddress 10.0.20.20,10.1.77.77 -SubnetMask 255.255.252.0
 </code></pre>
-<p>Creates a multi-subnet listener with 10.0.20.20 and 10.1.77.77, on two /22 subnets, on port 1433 for the SharePoint availability group on sql2017.</p>
+<p>Creates a multi-subnet listener with 10.0.20.20 and 10.1.77.77, on two /22 subnets, on port 1433 for the SharePoint availability group on sql2017.<br></p>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances. Server version must be SQL Server version 2012 or higher.</p>
+<p>The target SQL Server instance or instances. Server version must be SQL Server version 2012 or higher.<br></p>
 <table>
 <thead>
 <tr>
@@ -532,7 +532,7 @@
 </tbody>
 </table>
 <h5 id="sqlcredential">-SqlCredential</h5>
-<p>Login to the SqlInstance instance using alternative credentials. Windows and SQL Authentication supported. Accepts credential objects (Get-Credential)</p>
+<p>Login to the SqlInstance instance using alternative credentials. Windows and SQL Authentication supported. Accepts credential objects (Get-Credential)<br></p>
 <table>
 <thead>
 <tr>
@@ -560,7 +560,7 @@
 </tbody>
 </table>
 <h5 id="availabilitygroup">-AvailabilityGroup</h5>
-<p>The Availability Group to which a listener will be bestowed upon.</p>
+<p>The Availability Group to which a listener will be bestowed upon.<br></p>
 <table>
 <thead>
 <tr>
@@ -589,7 +589,7 @@
 </table>
 <h5 id="name">-Name</h5>
 <p>The name of the listener. If one is not specified, the Availability Group name will be used.
-Note that Name cannot be used with Multiple Ags.</p>
+Note that Name cannot be used with Multiple Ags.<br></p>
 <table>
 <thead>
 <tr>
@@ -617,7 +617,7 @@ Note that Name cannot be used with Multiple Ags.</p>
 </tbody>
 </table>
 <h5 id="ipaddress">-IPAddress</h5>
-<p>Sets the IP address(es) of the availability group listener.</p>
+<p>Sets the IP address(es) of the availability group listener.<br></p>
 <table>
 <thead>
 <tr>
@@ -645,7 +645,7 @@ Note that Name cannot be used with Multiple Ags.</p>
 </tbody>
 </table>
 <h5 id="subnetip">-SubnetIP</h5>
-<p>Sets the Subnet IP address(es) of the availability group listener.</p>
+<p>Sets the Subnet IP address(es) of the availability group listener.<br></p>
 <table>
 <thead>
 <tr>
@@ -673,7 +673,7 @@ Note that Name cannot be used with Multiple Ags.</p>
 </tbody>
 </table>
 <h5 id="subnetmask">-SubnetMask</h5>
-<p>Sets the subnet IP mask(s) of the availability group listener. Defaults to 255.255.255.0.</p>
+<p>Sets the subnet IP mask(s) of the availability group listener. Defaults to 255.255.255.0.<br></p>
 <table>
 <thead>
 <tr>
@@ -701,7 +701,7 @@ Note that Name cannot be used with Multiple Ags.</p>
 </tbody>
 </table>
 <h5 id="port">-Port</h5>
-<p>Sets the port number used to communicate with the availability group. Defaults to 1433.</p>
+<p>Sets the port number used to communicate with the availability group. Defaults to 1433.<br></p>
 <table>
 <thead>
 <tr>
@@ -729,7 +729,7 @@ Note that Name cannot be used with Multiple Ags.</p>
 </tbody>
 </table>
 <h5 id="dhcp">-Dhcp</h5>
-<p>Indicates whether the listener uses DHCP.</p>
+<p>Indicates whether the listener uses DHCP.<br></p>
 <table>
 <thead>
 <tr>
@@ -757,7 +757,7 @@ Note that Name cannot be used with Multiple Ags.</p>
 </tbody>
 </table>
 <h5 id="passthru">-Passthru</h5>
-<p>Don't create the listener, just pass thru an object that can be further customized before creation.</p>
+<p>Don't create the listener, just pass thru an object that can be further customized before creation.<br></p>
 <table>
 <thead>
 <tr>
@@ -785,7 +785,7 @@ Note that Name cannot be used with Multiple Ags.</p>
 </tbody>
 </table>
 <h5 id="inputobject">-InputObject</h5>
-<p>Enables piping from Get-DbaAvailabilityGroup</p>
+<p>Enables piping from Get-DbaAvailabilityGroup<br></p>
 <table>
 <thead>
 <tr>
@@ -815,7 +815,7 @@ Note that Name cannot be used with Multiple Ags.</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -843,7 +843,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>Shows what would happen if the command were to run. No actions are actually performed.</p>
+<p>Shows what would happen if the command were to run. No actions are actually performed.<br></p>
 <table>
 <thead>
 <tr>
@@ -871,7 +871,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>Prompts you for confirmation before executing any changing operations within the command.</p>
+<p>Prompts you for confirmation before executing any changing operations within the command.<br></p>
 <table>
 <thead>
 <tr>
@@ -900,6 +900,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Add-DbaAgListener.ps1">Add-DbaAgListener</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Add-DbaAgListener">Add-DbaAgListener</a>.</p>
 
                 </div> <!-- rendered -->

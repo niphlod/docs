@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -471,43 +471,43 @@
 <p>If you are attempting to kill your own login sessions, the process performing the kills will be skipped.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Stop-DbaProcess
-    --SqlCredential &lt;PSCredential&gt;]
-    --Spid &lt;Int32[]&gt;]
-    --ExcludeSpid &lt;Int32[]&gt;]
-    --Database &lt;String[]&gt;]
-    --Login &lt;String[]&gt;]
-    --Hostname &lt;String[]&gt;]
-    --Program &lt;String[]&gt;]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-SqlCredential &lt;PSCredential&gt;]
+    [-Spid &lt;Int32[]&gt;]
+    [-ExcludeSpid &lt;Int32[]&gt;]
+    [-Database &lt;String[]&gt;]
+    [-Login &lt;String[]&gt;]
+    [-Hostname &lt;String[]&gt;]
+    [-Program &lt;String[]&gt;]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 Stop-DbaProcess -SqlInstance &lt;DbaInstanceParameter&gt;
-    --SqlCredential &lt;PSCredential&gt;]
-    --Spid &lt;Int32[]&gt;]
-    --ExcludeSpid &lt;Int32[]&gt;]
-    --Database &lt;String[]&gt;]
-    --Login &lt;String[]&gt;]
-    --Hostname &lt;String[]&gt;]
-    --Program &lt;String[]&gt;]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-SqlCredential &lt;PSCredential&gt;]
+    [-Spid &lt;Int32[]&gt;]
+    [-ExcludeSpid &lt;Int32[]&gt;]
+    [-Database &lt;String[]&gt;]
+    [-Login &lt;String[]&gt;]
+    [-Hostname &lt;String[]&gt;]
+    [-Program &lt;String[]&gt;]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 Stop-DbaProcess
-    --SqlCredential &lt;PSCredential&gt;]
-    --Spid &lt;Int32[]&gt;]
-    --ExcludeSpid &lt;Int32[]&gt;]
-    --Database &lt;String[]&gt;]
-    --Login &lt;String[]&gt;]
-    --Hostname &lt;String[]&gt;]
-    --Program &lt;String[]&gt;] -InputObject &lt;Object[]&gt;
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-SqlCredential &lt;PSCredential&gt;]
+    [-Spid &lt;Int32[]&gt;]
+    [-ExcludeSpid &lt;Int32[]&gt;]
+    [-Database &lt;String[]&gt;]
+    [-Login &lt;String[]&gt;]
+    [-Hostname &lt;String[]&gt;]
+    [-Program &lt;String[]&gt;] -InputObject &lt;Object[]&gt;
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -516,30 +516,30 @@ Stop-DbaProcess
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Stop-DbaProcess -SqlInstance sqlserver2014a -Login base\ctrlb, sa
 </code></pre>
-<p>Finds all processes for base\ctrlb and sa on sqlserver2014a, then kills them. Uses Windows Authentication to login to sqlserver2014a.</p>
+<p>Finds all processes for base\ctrlb and sa on sqlserver2014a, then kills them. Uses Windows Authentication to login to sqlserver2014a.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Stop-DbaProcess -SqlInstance sqlserver2014a -SqlCredential $credential -Spid 56, 77
 </code></pre>
-<p>Finds processes for spid 56 and 57, then kills them. Uses alternative (SQL or Windows) credentials to login to sqlserver2014a.</p>
+<p>Finds processes for spid 56 and 57, then kills them. Uses alternative (SQL or Windows) credentials to login to sqlserver2014a.<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Stop-DbaProcess -SqlInstance sqlserver2014a -Program 'Microsoft SQL Server Management Studio'
 </code></pre>
-<p>Finds processes that were created in Microsoft SQL Server Management Studio, then kills them.</p>
+<p>Finds processes that were created in Microsoft SQL Server Management Studio, then kills them.<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; Stop-DbaProcess -SqlInstance sqlserver2014a -Hostname workstationx, server100
 </code></pre>
-<p>Finds processes that were initiated (computers/clients) workstationx and server 1000, then kills them.</p>
+<p>Finds processes that were initiated (computers/clients) workstationx and server 1000, then kills them.<br></p>
 <h5 id="example-5">Example:  5</h5>
 <pre><code>PS C:\&gt; Stop-DbaProcess -SqlInstance sqlserver2014  -Database tempdb -WhatIf
 </code></pre>
-<p>Shows what would happen if the command were executed.</p>
+<p>Shows what would happen if the command were executed.<br></p>
 <h5 id="example-6">Example:  6</h5>
 <pre><code>PS C:\&gt; Get-DbaProcess -SqlInstance sql2016 -Program 'dbatools PowerShell module - dbatools.io' | Stop-DbaProcess
 </code></pre>
-<p>Finds processes that were created with dbatools, then kills them.</p>
+<p>Finds processes that were created with dbatools, then kills them.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances.</p>
+<p>The target SQL Server instance or instances.<br></p>
 <table>
 <thead>
 <tr>
@@ -567,7 +567,7 @@ Stop-DbaProcess
 </tbody>
 </table>
 <h5 id="inputobject">-InputObject</h5>
-<p>This is the process object passed by Get-DbaProcess if using a pipeline.</p>
+<p>This is the process object passed by Get-DbaProcess if using a pipeline.<br></p>
 <table>
 <thead>
 <tr>
@@ -598,7 +598,7 @@ Stop-DbaProcess
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -626,7 +626,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="spid">-Spid</h5>
-<p>Specifies one or more spids to be killed. Options for this parameter are auto-populated from the server.</p>
+<p>Specifies one or more spids to be killed. Options for this parameter are auto-populated from the server.<br></p>
 <table>
 <thead>
 <tr>
@@ -655,7 +655,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </table>
 <h5 id="excludespid">-ExcludeSpid</h5>
 <p>Specifies one or more spids which will not be killed. Options for this parameter are auto-populated from the server.
-Exclude is the last filter to run, so even if a spid matches (for example) Hosts, if it's listed in Exclude it wil be excluded.</p>
+Exclude is the last filter to run, so even if a spid matches (for example) Hosts, if it's listed in Exclude it wil be excluded.<br></p>
 <table>
 <thead>
 <tr>
@@ -684,7 +684,7 @@ Exclude is the last filter to run, so even if a spid matches (for example) Hosts
 </table>
 <h5 id="database">-Database</h5>
 <p>Specifies one or more databases whose processes will be killed. Options for this parameter are auto-populated from the server and only databases that have active processes are offered.
-This parameter is auto-populated from -SqlInstance and allows only database names that have active processes. You can specify one or more Databases whose processes will be killed.</p>
+This parameter is auto-populated from -SqlInstance and allows only database names that have active processes. You can specify one or more Databases whose processes will be killed.<br></p>
 <table>
 <thead>
 <tr>
@@ -712,7 +712,7 @@ This parameter is auto-populated from -SqlInstance and allows only database name
 </tbody>
 </table>
 <h5 id="login">-Login</h5>
-<p>Specifies one or more login names whose processes will be killed. Options for this parameter are auto-populated from the server and only login names that have active processes are offered.</p>
+<p>Specifies one or more login names whose processes will be killed. Options for this parameter are auto-populated from the server and only login names that have active processes are offered.<br></p>
 <table>
 <thead>
 <tr>
@@ -740,7 +740,7 @@ This parameter is auto-populated from -SqlInstance and allows only database name
 </tbody>
 </table>
 <h5 id="hostname">-Hostname</h5>
-<p>Specifies one or more client hostnames whose processes will be killed. Options for this parameter are auto-populated from the server and only hostnames that have active processes are offered.</p>
+<p>Specifies one or more client hostnames whose processes will be killed. Options for this parameter are auto-populated from the server and only hostnames that have active processes are offered.<br></p>
 <table>
 <thead>
 <tr>
@@ -768,7 +768,7 @@ This parameter is auto-populated from -SqlInstance and allows only database name
 </tbody>
 </table>
 <h5 id="program">-Program</h5>
-<p>Specifies one or more client programs whose processes will be killed. Options for this parameter are auto-populated from the server and only programs that have active processes are offered.</p>
+<p>Specifies one or more client programs whose processes will be killed. Options for this parameter are auto-populated from the server and only programs that have active processes are offered.<br></p>
 <table>
 <thead>
 <tr>
@@ -798,7 +798,7 @@ This parameter is auto-populated from -SqlInstance and allows only database name
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -826,7 +826,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.</p>
+<p>If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.<br></p>
 <table>
 <thead>
 <tr>
@@ -854,7 +854,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.</p>
+<p>If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.<br></p>
 <table>
 <thead>
 <tr>
@@ -883,6 +883,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Stop-DbaProcess.ps1">Stop-DbaProcess</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Stop-DbaProcess">Stop-DbaProcess</a>.</p>
 
                 </div> <!-- rendered -->

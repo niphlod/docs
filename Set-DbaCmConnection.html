@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -472,53 +472,53 @@ This function will either create new records for computers that have no connecti
 <p>As such it can be handy in making bulk-edits on connections or manually adjusting some settings.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Set-DbaCmConnection
-    --ComputerName &lt;DbaCmConnectionParameter[]&gt;]
-    --Credential &lt;PSCredential&gt;]
-    --OverrideExplicitCredential]
-    --OverrideConnectionPolicy]
-    --DisabledConnectionTypes {None | CimRM | CimDCOM | Wmi | PowerShellRemoting}]
-    --DisableBadCredentialCache]
-    --DisableCimPersistence]
-    --DisableCredentialAutoRegister]
-    --EnableCredentialFailover]
-    --WindowsCredentialsAreBad]
-    --CimWinRMOptions &lt;WSManSessionOptions&gt;]
-    --CimDCOMOptions &lt;DComSessionOptions&gt;]
-    --AddBadCredential &lt;PSCredential[]&gt;]
-    --RemoveBadCredential &lt;PSCredential[]&gt;]
-    --ClearBadCredential]
-    --ClearCredential]
-    --ResetCredential]
-    --ResetConnectionStatus]
-    --ResetConfiguration]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-ComputerName &lt;DbaCmConnectionParameter[]&gt;]
+    [-Credential &lt;PSCredential&gt;]
+    [-OverrideExplicitCredential]
+    [-OverrideConnectionPolicy]
+    [-DisabledConnectionTypes {None | CimRM | CimDCOM | Wmi | PowerShellRemoting}]
+    [-DisableBadCredentialCache]
+    [-DisableCimPersistence]
+    [-DisableCredentialAutoRegister]
+    [-EnableCredentialFailover]
+    [-WindowsCredentialsAreBad]
+    [-CimWinRMOptions &lt;WSManSessionOptions&gt;]
+    [-CimDCOMOptions &lt;DComSessionOptions&gt;]
+    [-AddBadCredential &lt;PSCredential[]&gt;]
+    [-RemoveBadCredential &lt;PSCredential[]&gt;]
+    [-ClearBadCredential]
+    [-ClearCredential]
+    [-ResetCredential]
+    [-ResetConnectionStatus]
+    [-ResetConfiguration]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 Set-DbaCmConnection
-    --ComputerName &lt;DbaCmConnectionParameter[]&gt;]
-    --UseWindowsCredentials]
-    --OverrideExplicitCredential]
-    --OverrideConnectionPolicy]
-    --DisabledConnectionTypes {None | CimRM | CimDCOM | Wmi | PowerShellRemoting}]
-    --DisableBadCredentialCache]
-    --DisableCimPersistence]
-    --DisableCredentialAutoRegister]
-    --EnableCredentialFailover]
-    --CimWinRMOptions &lt;WSManSessionOptions&gt;]
-    --CimDCOMOptions &lt;DComSessionOptions&gt;]
-    --AddBadCredential &lt;PSCredential[]&gt;]
-    --RemoveBadCredential &lt;PSCredential[]&gt;]
-    --ClearBadCredential]
-    --ClearCredential]
-    --ResetCredential]
-    --ResetConnectionStatus]
-    --ResetConfiguration]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-ComputerName &lt;DbaCmConnectionParameter[]&gt;]
+    [-UseWindowsCredentials]
+    [-OverrideExplicitCredential]
+    [-OverrideConnectionPolicy]
+    [-DisabledConnectionTypes {None | CimRM | CimDCOM | Wmi | PowerShellRemoting}]
+    [-DisableBadCredentialCache]
+    [-DisableCimPersistence]
+    [-DisableCredentialAutoRegister]
+    [-EnableCredentialFailover]
+    [-CimWinRMOptions &lt;WSManSessionOptions&gt;]
+    [-CimDCOMOptions &lt;DComSessionOptions&gt;]
+    [-AddBadCredential &lt;PSCredential[]&gt;]
+    [-RemoveBadCredential &lt;PSCredential[]&gt;]
+    [-ClearBadCredential]
+    [-ClearCredential]
+    [-ResetCredential]
+    [-ResetConnectionStatus]
+    [-ResetConfiguration]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -527,23 +527,23 @@ Set-DbaCmConnection
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Get-DbaCmConnection sql2014 | Set-DbaCmConnection -ClearBadCredential -UseWindowsCredentials
 </code></pre>
-<p>Retrieves the already existing connection to sql2014, removes the list of not working credentials and configures it to default to the credentials of the logged on user.</p>
+<p>Retrieves the already existing connection to sql2014, removes the list of not working credentials and configures it to default to the credentials of the logged on user.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Get-DbaCmConnection | Set-DbaCmConnection -RemoveBadCredential $cred
 </code></pre>
-<p>Removes the credentials stored in $cred from all connections' list of &quot;known to not work&quot; credentials.
-Handy to update changes in privilege.</p>
+<p>Removes the credentials stored in $cred from all connections' list of &quot;known to not work&quot; credentials.<br>
+Handy to update changes in privilege.<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Get-DbaCmConnection | Export-Clixml .\connections.xml
 PS C:\&gt; Import-Clixml .\connections.xml | Set-DbaCmConnection -ResetConfiguration
 </code></pre>
-<p>At first, the current cached connections are stored in an xml file. At a later time - possibly in the profile when starting the console again - those connections are imported again and applied again
-to the connection cache.
-In this example, the configuration settings will also be reset, since after re-import those will be set to explicit, rather than deriving them from the global settings.
-In many cases, using the default settings is desirable. For specific settings, use New-DbaCmConnection as part of the profile in order to explicitly configure a connection.</p>
+<p>At first, the current cached connections are stored in an xml file. At a later time - possibly in the profile when starting the console again - those connections are imported again and applied again <br>
+to the connection cache.<br>
+In this example, the configuration settings will also be reset, since after re-import those will be set to explicit, rather than deriving them from the global settings.<br>
+In many cases, using the default settings is desirable. For specific settings, use New-DbaCmConnection as part of the profile in order to explicitly configure a connection.<br></p>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="computername">-ComputerName</h5>
-<p>The computer to build the connection object for.</p>
+<p>The computer to build the connection object for.<br></p>
 <table>
 <thead>
 <tr>
@@ -571,7 +571,7 @@ In many cases, using the default settings is desirable. For specific settings, u
 </tbody>
 </table>
 <h5 id="credential">-Credential</h5>
-<p>The credential to register.</p>
+<p>The credential to register.<br></p>
 <table>
 <thead>
 <tr>
@@ -600,7 +600,7 @@ In many cases, using the default settings is desirable. For specific settings, u
 </table>
 <h5 id="usewindowscredentials">-UseWindowsCredentials</h5>
 <p>Whether using the default windows credentials is legit.
-Not setting this will not exclude using windows credentials, but only not pre-confirm them as working.</p>
+Not setting this will not exclude using windows credentials, but only not pre-confirm them as working.<br></p>
 <table>
 <thead>
 <tr>
@@ -629,7 +629,7 @@ Not setting this will not exclude using windows credentials, but only not pre-co
 </table>
 <h5 id="overrideexplicitcredential">-OverrideExplicitCredential</h5>
 <p>Setting this will enable the credential override.
-The override will cause the system to ignore explicitly specified credentials, so long as known, good credentials are available.</p>
+The override will cause the system to ignore explicitly specified credentials, so long as known, good credentials are available.<br></p>
 <table>
 <thead>
 <tr>
@@ -658,7 +658,7 @@ The override will cause the system to ignore explicitly specified credentials, s
 </table>
 <h5 id="overrideconnectionpolicy">-OverrideConnectionPolicy</h5>
 <p>Setting this will configure the connection policy override.
-By default, global configurations enforce, which connection type is available at all and which is disabled.</p>
+By default, global configurations enforce, which connection type is available at all and which is disabled.<br></p>
 <table>
 <thead>
 <tr>
@@ -687,7 +687,7 @@ By default, global configurations enforce, which connection type is available at
 </table>
 <h5 id="disabledconnectiontypes">-DisabledConnectionTypes</h5>
 <p>Explicitly disable connection types.
-These types will then not be used for connecting to the computer.</p>
+These types will then not be used for connecting to the computer.<br></p>
 <table>
 <thead>
 <tr>
@@ -715,7 +715,7 @@ These types will then not be used for connecting to the computer.</p>
 </tbody>
 </table>
 <h5 id="disablebadcredentialcache">-DisableBadCredentialCache</h5>
-<p>Will prevent the caching of credentials if set to true.</p>
+<p>Will prevent the caching of credentials if set to true.<br></p>
 <table>
 <thead>
 <tr>
@@ -743,7 +743,7 @@ These types will then not be used for connecting to the computer.</p>
 </tbody>
 </table>
 <h5 id="disablecimpersistence">-DisableCimPersistence</h5>
-<p>Will prevent Cim-Sessions to be reused.</p>
+<p>Will prevent Cim-Sessions to be reused.<br></p>
 <table>
 <thead>
 <tr>
@@ -771,7 +771,7 @@ These types will then not be used for connecting to the computer.</p>
 </tbody>
 </table>
 <h5 id="disablecredentialautoregister">-DisableCredentialAutoRegister</h5>
-<p>Will prevent working credentials from being automatically cached</p>
+<p>Will prevent working credentials from being automatically cached<br></p>
 <table>
 <thead>
 <tr>
@@ -800,7 +800,7 @@ These types will then not be used for connecting to the computer.</p>
 </table>
 <h5 id="enablecredentialfailover">-EnableCredentialFailover</h5>
 <p>Will enable automatic failing over to known to work credentials, when using bad credentials.
-By default, passing bad credentials will cause the Computer Management functions to interrupt with a warning (Or exception if in silent mode).</p>
+By default, passing bad credentials will cause the Computer Management functions to interrupt with a warning (Or exception if in silent mode).<br></p>
 <table>
 <thead>
 <tr>
@@ -828,7 +828,7 @@ By default, passing bad credentials will cause the Computer Management functions
 </tbody>
 </table>
 <h5 id="windowscredentialsarebad">-WindowsCredentialsAreBad</h5>
-<p>Will prevent the windows credentials of the currently logged on user from being used for the remote connection.</p>
+<p>Will prevent the windows credentials of the currently logged on user from being used for the remote connection.<br></p>
 <table>
 <thead>
 <tr>
@@ -857,7 +857,7 @@ By default, passing bad credentials will cause the Computer Management functions
 </table>
 <h5 id="cimwinrmoptions">-CimWinRMOptions</h5>
 <p>Specify a set of options to use when connecting to the target computer using CIM over WinRM.
-Use 'New-CimSessionOption' to create such an object.</p>
+Use 'New-CimSessionOption' to create such an object.<br></p>
 <table>
 <thead>
 <tr>
@@ -886,7 +886,7 @@ Use 'New-CimSessionOption' to create such an object.</p>
 </table>
 <h5 id="cimdcomoptions">-CimDCOMOptions</h5>
 <p>Specify a set of options to use when connecting to the target computer using CIM over DCOM.
-Use 'New-CimSessionOption' to create such an object.</p>
+Use 'New-CimSessionOption' to create such an object.<br></p>
 <table>
 <thead>
 <tr>
@@ -915,7 +915,7 @@ Use 'New-CimSessionOption' to create such an object.</p>
 </table>
 <h5 id="addbadcredential">-AddBadCredential</h5>
 <p>Adds credentials to the bad credential cache.
-These credentials will not be used when connecting to the target remote computer.</p>
+These credentials will not be used when connecting to the target remote computer.<br></p>
 <table>
 <thead>
 <tr>
@@ -943,7 +943,7 @@ These credentials will not be used when connecting to the target remote computer
 </tbody>
 </table>
 <h5 id="removebadcredential">-RemoveBadCredential</h5>
-<p>Removes credentials from the bad credential cache.</p>
+<p>Removes credentials from the bad credential cache.<br></p>
 <table>
 <thead>
 <tr>
@@ -972,7 +972,7 @@ These credentials will not be used when connecting to the target remote computer
 </table>
 <h5 id="clearbadcredential">-ClearBadCredential</h5>
 <p>Clears the cache of credentials that didn't worked.
-Will be applied before adding entries to the credential cache.</p>
+Will be applied before adding entries to the credential cache.<br></p>
 <table>
 <thead>
 <tr>
@@ -1001,7 +1001,7 @@ Will be applied before adding entries to the credential cache.</p>
 </table>
 <h5 id="clearcredential">-ClearCredential</h5>
 <p>Clears the cache of credentials that worked.
-Will be applied before adding entries to the credential cache.</p>
+Will be applied before adding entries to the credential cache.<br></p>
 <table>
 <thead>
 <tr>
@@ -1036,7 +1036,7 @@ Will be applied before adding entries to the credential cache.</p>
 <li>Un-Confirms the windows credentials as working</li>
 <li>Un-Confirms the windows credentials as not working
 Automatically implies the parameters -ClearCredential and -ClearBadCredential. Using them together is redundant.
-Will be applied before adding entries to the credential cache.</li>
+Will be applied before adding entries to the credential cache.<br></li>
 </ul>
 <table>
 <thead>
@@ -1065,7 +1065,7 @@ Will be applied before adding entries to the credential cache.</li>
 </tbody>
 </table>
 <h5 id="resetconnectionstatus">-ResetConnectionStatus</h5>
-<p>Restores all connection status to default, as if no connection protocol had ever been tested.</p>
+<p>Restores all connection status to default, as if no connection protocol had ever been tested.<br></p>
 <table>
 <thead>
 <tr>
@@ -1096,7 +1096,7 @@ Will be applied before adding entries to the credential cache.</li>
 <p>Restores the configuration back to system default.
 Configuration elements are the basic behavior controlling settings, such as whether to cache bad credentials, etc.
 These can be configured globally using the dbatools configuration system and overridden locally on a per-connection basis.
-For a list of all available settings, use &quot;Get-DbatoolsConfig -Module ComputerManagement&quot;.</p>
+For a list of all available settings, use &quot;Get-DbatoolsConfig -Module ComputerManagement&quot;.<br></p>
 <table>
 <thead>
 <tr>
@@ -1126,7 +1126,7 @@ For a list of all available settings, use &quot;Get-DbatoolsConfig -Module Compu
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -1154,7 +1154,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.</p>
+<p>If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.<br></p>
 <table>
 <thead>
 <tr>
@@ -1182,7 +1182,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.</p>
+<p>If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.<br></p>
 <table>
 <thead>
 <tr>
@@ -1211,6 +1211,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Set-DbaCmConnection.ps1">Set-DbaCmConnection</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Set-DbaCmConnection">Set-DbaCmConnection</a>.</p>
 
                 </div> <!-- rendered -->

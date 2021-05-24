@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -474,10 +474,10 @@ Get-DbaDbBackupHistory
 And generates Bootstrap based, HTML file with Google Chart Timeline</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>ConvertTo-DbaTimeline
-    --InputObject] &lt;Object[]&gt;
-    --ExcludeRowLabel]
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [-InputObject] &lt;Object[]&gt;
+    [-ExcludeRowLabel]
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -486,12 +486,12 @@ And generates Bootstrap based, HTML file with Google Chart Timeline</p>
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Get-DbaAgentJobHistory -SqlInstance sql-1 -StartDate '2018-08-13 00:00' -EndDate '2018-08-13 23:59' -ExcludeJobSteps | ConvertTo-DbaTimeline | Out-File C:\temp\DbaAgentJobHistory.html
 </code></pre>
-<p>-Encoding ASCII
-Creates an output file containing a pretty timeline for all of the agent job history results for sql-1 the whole day of 2018-08-13</p>
+<p>-Encoding ASCII<br>
+Creates an output file containing a pretty timeline for all of the agent job history results for sql-1 the whole day of 2018-08-13<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Get-DbaRegServer -SqlInstance sqlcm | Get-DbaDbBackupHistory -Since '2018-08-13 00:00' | ConvertTo-DbaTimeline | Out-File C:\temp\DbaBackupHistory.html -Encoding ASCII
 </code></pre>
-<p>Creates an output file containing a pretty timeline for the agent job history since 2018-08-13 for all of the registered servers on sqlcm</p>
+<p>Creates an output file containing a pretty timeline for the agent job history since 2018-08-13 for all of the registered servers on sqlcm<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; $messageParameters = @{
 &gt;&gt; Subject = &quot;Backup history for sql2017 and sql2016&quot;
@@ -503,10 +503,10 @@ Creates an output file containing a pretty timeline for all of the agent job his
 &gt;&gt;
 PS C:\&gt; Send-MailMessage @messageParameters -BodyAsHtml
 </code></pre>
-<p>Sends an email to dba@ad.local with the results of Get-DbaDbBackupHistory. Note that viewing these reports may not be supported in all email clients.</p>
+<p>Sends an email to dba@ad.local with the results of Get-DbaDbBackupHistory. Note that viewing these reports may not be supported in all email clients.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="inputobject">-InputObject</h5>
-<p>Pipe input, must an output from the above functions.</p>
+<p>Pipe input, must an output from the above functions.<br></p>
 <table>
 <thead>
 <tr>
@@ -537,7 +537,7 @@ PS C:\&gt; Send-MailMessage @messageParameters -BodyAsHtml
 <h5 id="excluderowlabel">-ExcludeRowLabel</h5>
 <p>By default, the Timeline shows SqlInstance and item name (agent job or database) in row labels section of the chart.
 When this parameter (ExcludeRowLabel) is set to true the row labels will not be shown which will maximise the chart area for better visualisation.
-All relevant details are still available in the tooltip.</p>
+All relevant details are still available in the tooltip.<br></p>
 <table>
 <thead>
 <tr>
@@ -567,7 +567,7 @@ All relevant details are still available in the tooltip.</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -596,6 +596,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/ConvertTo-DbaTimeline.ps1">ConvertTo-DbaTimeline</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#ConvertTo-DbaTimeline">ConvertTo-DbaTimeline</a>.</p>
 
                 </div> <!-- rendered -->

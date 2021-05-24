@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -471,15 +471,15 @@
 This command will accept a hash object in pipeline with the following keys: Source, SourceDatabase, Destination. Using this command will provide a way to prepare before a complex migration with multiple databases from different sources and destinations.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Measure-DbaDiskSpaceRequirement
-    --Source] &lt;DbaInstanceParameter&gt;
-    --Database] &lt;String&gt;
-    -[-SourceSqlCredential] &lt;PSCredential&gt;]
-    --Destination] &lt;DbaInstanceParameter&gt;
-    -[-DestinationDatabase] &lt;String&gt;]
-    -[-DestinationSqlCredential] &lt;PSCredential&gt;]
-    -[-Credential] &lt;PSCredential&gt;]
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [-Source] &lt;DbaInstanceParameter&gt;
+    [-Database] &lt;String&gt;
+    [[-SourceSqlCredential] &lt;PSCredential&gt;]
+    [-Destination] &lt;DbaInstanceParameter&gt;
+    [[-DestinationDatabase] &lt;String&gt;]
+    [[-DestinationSqlCredential] &lt;PSCredential&gt;]
+    [[-Credential] &lt;PSCredential&gt;]
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -488,26 +488,26 @@ This command will accept a hash object in pipeline with the following keys: Sour
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Measure-DbaDiskSpaceRequirement -Source INSTANCE1 -Database DB1 -Destination INSTANCE2
 </code></pre>
-<p>Calculate space needed for a simple migration with one database with the same name at destination.</p>
+<p>Calculate space needed for a simple migration with one database with the same name at destination.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; @(
 &gt;&gt; [PSCustomObject]@{Source='SQL1';Destination='SQL2';Database='DB1'},
 &gt;&gt; [PSCustomObject]@{Source='SQL1';Destination='SQL2';Database='DB2'}
 &gt;&gt; ) | Measure-DbaDiskSpaceRequirement
 </code></pre>
-<p>Using a PSCustomObject with 2 databases to migrate on SQL2.</p>
+<p>Using a PSCustomObject with 2 databases to migrate on SQL2.<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Import-Csv -Path .\migration.csv -Delimiter &quot;`t&quot; | Measure-DbaDiskSpaceRequirement | Format-Table -AutoSize
 </code></pre>
-<p>Using a CSV file. You will need to use this header line &quot;Source<tab>Destination<tab>Database<tab>DestinationDatabase&quot;.</p>
+<p>Using a CSV file. You will need to use this header line &quot;Source<tab>Destination<tab>Database<tab>DestinationDatabase&quot;.<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; $qry = &quot;SELECT Source, Destination, Database FROM dbo.Migrations&quot;
 PS C:\&gt; Invoke-DbaCmd -SqlInstance DBA -Database Migrations -Query $qry | Measure-DbaDiskSpaceRequirement
 </code></pre>
-<p>Using a SQL table. We are DBA after all!</p>
+<p>Using a SQL table. We are DBA after all!<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="source">-Source</h5>
-<p>Source SQL Server.</p>
+<p>Source SQL Server.<br></p>
 <table>
 <thead>
 <tr>
@@ -535,7 +535,7 @@ PS C:\&gt; Invoke-DbaCmd -SqlInstance DBA -Database Migrations -Query $qry | Mea
 </tbody>
 </table>
 <h5 id="database">-Database</h5>
-<p>The database to copy. It MUST exist.</p>
+<p>The database to copy. It MUST exist.<br></p>
 <table>
 <thead>
 <tr>
@@ -563,7 +563,7 @@ PS C:\&gt; Invoke-DbaCmd -SqlInstance DBA -Database Migrations -Query $qry | Mea
 </tbody>
 </table>
 <h5 id="destination">-Destination</h5>
-<p>Destination SQL Server instance.</p>
+<p>Destination SQL Server instance.<br></p>
 <table>
 <thead>
 <tr>
@@ -594,7 +594,7 @@ PS C:\&gt; Invoke-DbaCmd -SqlInstance DBA -Database Migrations -Query $qry | Mea
 <h5 id="sourcesqlcredential">-SourceSqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -623,7 +623,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </table>
 <h5 id="destinationdatabase">-DestinationDatabase</h5>
 <p>The database name at destination.
-May or may not be present, if unspecified it will default to the database name provided in SourceDatabase.</p>
+May or may not be present, if unspecified it will default to the database name provided in SourceDatabase.<br></p>
 <table>
 <thead>
 <tr>
@@ -653,7 +653,7 @@ May or may not be present, if unspecified it will default to the database name p
 <h5 id="destinationsqlcredential">-DestinationSqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -681,7 +681,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="credential">-Credential</h5>
-<p>The credentials to use to connect via CIM/WMI/PowerShell remoting.</p>
+<p>The credentials to use to connect via CIM/WMI/PowerShell remoting.<br></p>
 <table>
 <thead>
 <tr>
@@ -711,7 +711,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -740,6 +740,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Measure-DbaDiskSpaceRequirement.ps1">Measure-DbaDiskSpaceRequirement</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Measure-DbaDiskSpaceRequirement">Measure-DbaDiskSpaceRequirement</a>.</p>
 
                 </div> <!-- rendered -->

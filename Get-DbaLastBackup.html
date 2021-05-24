@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -471,12 +471,12 @@
 <p>Default output includes columns Server, Database, LastFullBackup, LastDiffBackup, LastLogBackup.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Get-DbaLastBackup
-    --SqlInstance] &lt;DbaInstanceParameter[]&gt;
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    -[-Database] &lt;Object[]&gt;]
-    -[-ExcludeDatabase] &lt;Object[]&gt;]
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [-SqlInstance] &lt;DbaInstanceParameter[]&gt;
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [[-Database] &lt;Object[]&gt;]
+    [[-ExcludeDatabase] &lt;Object[]&gt;]
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -485,29 +485,29 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Get-DbaLastBackup -SqlInstance ServerA\sql987
 </code></pre>
-<p>Returns a custom object with Server name, Database name, and the date the last time backups were performed.</p>
+<p>Returns a custom object with Server name, Database name, and the date the last time backups were performed.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Get-DbaLastBackup -SqlInstance ServerA\sql987 | Select-Object *
 </code></pre>
-<p>Returns a custom object with Server name, Database name, and the date the last time backups were performed, and also recoverymodel and calculations on how long ago backups were taken and what the
-status is.</p>
+<p>Returns a custom object with Server name, Database name, and the date the last time backups were performed, and also recoverymodel and calculations on how long ago backups were taken and what the <br>
+status is.<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Get-DbaLastBackup -SqlInstance ServerA\sql987 | Select-Object * | Out-Gridview
 </code></pre>
-<p>Returns a gridview displaying ComputerName, InstanceName, SqlInstance, Database, RecoveryModel, LastFullBackup, LastDiffBackup, LastLogBackup, SinceFull, SinceDiff, SinceLog,
-LastFullBackupIsCopyOnly, LastDiffBackupIsCopyOnly, LastLogBackupIsCopyOnly, DatabaseCreated, DaysSinceDbCreated, Status</p>
+<p>Returns a gridview displaying ComputerName, InstanceName, SqlInstance, Database, RecoveryModel, LastFullBackup, LastDiffBackup, LastLogBackup, SinceFull, SinceDiff, SinceLog, <br>
+LastFullBackupIsCopyOnly, LastDiffBackupIsCopyOnly, LastLogBackupIsCopyOnly, DatabaseCreated, DaysSinceDbCreated, Status<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; $MyInstances | Get-DbaLastBackup | Where-Object -FilterScript { $_.LastFullBackup.Date -lt (Get-Date).AddDays(-3) } | Format-Table -Property SqlInstance, Database, LastFullBackup
 </code></pre>
-<p>Returns all databases on the given instances without a full backup in the last three days.
-Note that the property LastFullBackup is a custom object, with the subproperty Date of type datetime and therefore suitable for comparison with dates.</p>
+<p>Returns all databases on the given instances without a full backup in the last three days.<br>
+Note that the property LastFullBackup is a custom object, with the subproperty Date of type datetime and therefore suitable for comparison with dates.<br></p>
 <h5 id="example-5">Example:  5</h5>
 <pre><code>PS C:\&gt; Get-DbaLastBackup -SqlInstance ServerA\sql987 | Where-Object { $_.LastFullBackupIsCopyOnly -eq $true }
 </code></pre>
-<p>Filters for the databases that had a copy_only full backup done as the last backup.</p>
+<p>Filters for the databases that had a copy_only full backup done as the last backup.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances.</p>
+<p>The target SQL Server instance or instances.<br></p>
 <table>
 <thead>
 <tr>
@@ -538,7 +538,7 @@ Note that the property LastFullBackup is a custom object, with the subproperty D
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -566,7 +566,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="database">-Database</h5>
-<p>Specifies one or more database(s) to process. If unspecified, all databases will be processed.</p>
+<p>Specifies one or more database(s) to process. If unspecified, all databases will be processed.<br></p>
 <table>
 <thead>
 <tr>
@@ -594,7 +594,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="excludedatabase">-ExcludeDatabase</h5>
-<p>Specifies one or more database(s) to exclude from processing.</p>
+<p>Specifies one or more database(s) to exclude from processing.<br></p>
 <table>
 <thead>
 <tr>
@@ -623,7 +623,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </table>
 <h5 id="enableexception">-EnableException</h5>
 <p>If this switch is enabled exceptions will be thrown to the caller, which will need to perform its own exception processing. Otherwise, the function will try to catch the exception, interpret it and
-provide a friendly error message.</p>
+provide a friendly error message.<br></p>
 <table>
 <thead>
 <tr>
@@ -652,6 +652,7 @@ provide a friendly error message.</p>
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Get-DbaLastBackup.ps1">Get-DbaLastBackup</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Get-DbaLastBackup">Get-DbaLastBackup</a>.</p>
 
                 </div> <!-- rendered -->

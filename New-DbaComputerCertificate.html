@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -478,23 +478,23 @@
 <p>The certificate is generated using AD's webserver SSL template on the client machine and pushed to the remote machine.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>New-DbaComputerCertificate
-    -[-ComputerName] &lt;DbaInstanceParameter[]&gt;]
-    -[-Credential] &lt;PSCredential&gt;]
-    -[-CaServer] &lt;String&gt;]
-    -[-CaName] &lt;String&gt;]
-    -[-ClusterInstanceName] &lt;String&gt;]
-    -[-SecurePassword] &lt;SecureString&gt;]
-    -[-FriendlyName] &lt;String&gt;]
-    -[-CertificateTemplate] &lt;String&gt;]
-    -[-KeyLength] &lt;Int32&gt;]
-    -[-Store] &lt;String&gt;]
-    -[-Folder] &lt;String&gt;]
-    -[-Dns] &lt;String[]&gt;]
-    --SelfSigned]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [[-ComputerName] &lt;DbaInstanceParameter[]&gt;]
+    [[-Credential] &lt;PSCredential&gt;]
+    [[-CaServer] &lt;String&gt;]
+    [[-CaName] &lt;String&gt;]
+    [[-ClusterInstanceName] &lt;String&gt;]
+    [[-SecurePassword] &lt;SecureString&gt;]
+    [[-FriendlyName] &lt;String&gt;]
+    [[-CertificateTemplate] &lt;String&gt;]
+    [[-KeyLength] &lt;Int32&gt;]
+    [[-Store] &lt;String&gt;]
+    [[-Folder] &lt;String&gt;]
+    [[-Dns] &lt;String[]&gt;]
+    [-SelfSigned]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -503,28 +503,28 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; New-DbaComputerCertificate
 </code></pre>
-<p>Creates a computer certificate signed by the local domain CA for the local machine with the keylength of 1024.</p>
+<p>Creates a computer certificate signed by the local domain CA for the local machine with the keylength of 1024.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; New-DbaComputerCertificate -ComputerName Server1
 </code></pre>
-<p>Creates a computer certificate signed by the local domain CA <em>on the local machine</em> for server1 with the keylength of 1024.
-The certificate is then copied to the new machine over WinRM and imported.</p>
+<p>Creates a computer certificate signed by the local domain CA <em>on the local machine</em> for server1 with the keylength of 1024.<br>
+The certificate is then copied to the new machine over WinRM and imported.<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; New-DbaComputerCertificate -ComputerName sqla, sqlb -ClusterInstanceName sqlcluster -KeyLength 4096
 </code></pre>
-<p>Creates a computer certificate for sqlcluster, signed by the local domain CA, with the keylength of 4096.
-The certificate is then copied to sqla <em>and</em> sqlb over WinRM and imported.</p>
+<p>Creates a computer certificate for sqlcluster, signed by the local domain CA, with the keylength of 4096.<br>
+The certificate is then copied to sqla <em>and</em> sqlb over WinRM and imported.<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; New-DbaComputerCertificate -ComputerName Server1 -WhatIf
 </code></pre>
-<p>Shows what would happen if the command were run</p>
+<p>Shows what would happen if the command were run<br></p>
 <h5 id="example-5">Example:  5</h5>
 <pre><code>PS C:\&gt; New-DbaComputerCertificate -SelfSigned
 </code></pre>
-<p>Creates a self-signed certificate</p>
+<p>Creates a self-signed certificate<br></p>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="computername">-ComputerName</h5>
-<p>The target SQL Server instance or instances. Defaults to localhost. If target is a cluster, you must also specify ClusterInstanceName (see below)</p>
+<p>The target SQL Server instance or instances. Defaults to localhost. If target is a cluster, you must also specify ClusterInstanceName (see below)<br></p>
 <table>
 <thead>
 <tr>
@@ -552,7 +552,7 @@ The certificate is then copied to sqla <em>and</em> sqlb over WinRM and imported
 </tbody>
 </table>
 <h5 id="credential">-Credential</h5>
-<p>Allows you to login to $ComputerName using alternative credentials.</p>
+<p>Allows you to login to $ComputerName using alternative credentials.<br></p>
 <table>
 <thead>
 <tr>
@@ -580,7 +580,7 @@ The certificate is then copied to sqla <em>and</em> sqlb over WinRM and imported
 </tbody>
 </table>
 <h5 id="caserver">-CaServer</h5>
-<p>Optional - the CA Server where the request will be sent to</p>
+<p>Optional - the CA Server where the request will be sent to<br></p>
 <table>
 <thead>
 <tr>
@@ -608,7 +608,7 @@ The certificate is then copied to sqla <em>and</em> sqlb over WinRM and imported
 </tbody>
 </table>
 <h5 id="caname">-CaName</h5>
-<p>The properly formatted CA name of the corresponding CaServer</p>
+<p>The properly formatted CA name of the corresponding CaServer<br></p>
 <table>
 <thead>
 <tr>
@@ -636,7 +636,7 @@ The certificate is then copied to sqla <em>and</em> sqlb over WinRM and imported
 </tbody>
 </table>
 <h5 id="clusterinstancename">-ClusterInstanceName</h5>
-<p>When creating certs for a cluster, use this parameter to create the certificate for the cluster node name. Use ComputerName for each of the nodes.</p>
+<p>When creating certs for a cluster, use this parameter to create the certificate for the cluster node name. Use ComputerName for each of the nodes.<br></p>
 <table>
 <thead>
 <tr>
@@ -664,7 +664,7 @@ The certificate is then copied to sqla <em>and</em> sqlb over WinRM and imported
 </tbody>
 </table>
 <h5 id="securepassword">-SecurePassword</h5>
-<p>Password to encrypt/decrypt private key for export to remote machine</p>
+<p>Password to encrypt/decrypt private key for export to remote machine<br></p>
 <table>
 <thead>
 <tr>
@@ -692,7 +692,7 @@ The certificate is then copied to sqla <em>and</em> sqlb over WinRM and imported
 </tbody>
 </table>
 <h5 id="friendlyname">-FriendlyName</h5>
-<p>The FriendlyName listed in the certificate. This defaults to the FQDN of the $ComputerName</p>
+<p>The FriendlyName listed in the certificate. This defaults to the FQDN of the $ComputerName<br></p>
 <table>
 <thead>
 <tr>
@@ -720,7 +720,7 @@ The certificate is then copied to sqla <em>and</em> sqlb over WinRM and imported
 </tbody>
 </table>
 <h5 id="certificatetemplate">-CertificateTemplate</h5>
-<p>The domain's Certificate Template - WebServer by default.</p>
+<p>The domain's Certificate Template - WebServer by default.<br></p>
 <table>
 <thead>
 <tr>
@@ -748,7 +748,7 @@ The certificate is then copied to sqla <em>and</em> sqlb over WinRM and imported
 </tbody>
 </table>
 <h5 id="keylength">-KeyLength</h5>
-<p>The length of the key - defaults to 1024</p>
+<p>The length of the key - defaults to 1024<br></p>
 <table>
 <thead>
 <tr>
@@ -776,7 +776,7 @@ The certificate is then copied to sqla <em>and</em> sqlb over WinRM and imported
 </tbody>
 </table>
 <h5 id="store">-Store</h5>
-<p>Certificate store - defaults to LocalMachine</p>
+<p>Certificate store - defaults to LocalMachine<br></p>
 <table>
 <thead>
 <tr>
@@ -804,7 +804,7 @@ The certificate is then copied to sqla <em>and</em> sqlb over WinRM and imported
 </tbody>
 </table>
 <h5 id="folder">-Folder</h5>
-<p>Certificate folder - defaults to My (Personal)</p>
+<p>Certificate folder - defaults to My (Personal)<br></p>
 <table>
 <thead>
 <tr>
@@ -832,7 +832,7 @@ The certificate is then copied to sqla <em>and</em> sqlb over WinRM and imported
 </tbody>
 </table>
 <h5 id="dns">-Dns</h5>
-<p>Specify the Dns entries listed in SAN. By default, it will be ComputerName + FQDN, or in the case of clusters, clustername + cluster FQDN.</p>
+<p>Specify the Dns entries listed in SAN. By default, it will be ComputerName + FQDN, or in the case of clusters, clustername + cluster FQDN.<br></p>
 <table>
 <thead>
 <tr>
@@ -860,7 +860,7 @@ The certificate is then copied to sqla <em>and</em> sqlb over WinRM and imported
 </tbody>
 </table>
 <h5 id="selfsigned">-SelfSigned</h5>
-<p>Creates a self-signed certificate. All other parameters can still apply except CaServer and CaName because the command does not go and get the certificate signed.</p>
+<p>Creates a self-signed certificate. All other parameters can still apply except CaServer and CaName because the command does not go and get the certificate signed.<br></p>
 <table>
 <thead>
 <tr>
@@ -890,7 +890,7 @@ The certificate is then copied to sqla <em>and</em> sqlb over WinRM and imported
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -918,7 +918,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>Shows what would happen if the command were to run. No actions are actually performed.</p>
+<p>Shows what would happen if the command were to run. No actions are actually performed.<br></p>
 <table>
 <thead>
 <tr>
@@ -946,7 +946,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>Prompts you for confirmation before executing any changing operations within the command.</p>
+<p>Prompts you for confirmation before executing any changing operations within the command.<br></p>
 <table>
 <thead>
 <tr>
@@ -975,6 +975,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/New-DbaComputerCertificate.ps1">New-DbaComputerCertificate</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#New-DbaComputerCertificate">New-DbaComputerCertificate</a>.</p>
 
                 </div> <!-- rendered -->

@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -470,32 +470,32 @@
 <p>Set-DbaAgentJob updates a job in the SQL Server Agent with parameters supplied.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Set-DbaAgentJob
-    -[-SqlInstance] &lt;DbaInstanceParameter[]&gt;]
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    -[-Job] &lt;Object[]&gt;]
-    -[-Schedule] &lt;Object[]&gt;]
-    -[-ScheduleId] &lt;Int32[]&gt;]
-    -[-NewName] &lt;String&gt;]
-    --Enabled]
-    --Disabled]
-    -[-Description] &lt;String&gt;]
-    -[-StartStepId] &lt;Int32&gt;]
-    -[-Category] &lt;String&gt;]
-    -[-OwnerLogin] &lt;String&gt;]
-    -[-EventLogLevel] &lt;Object&gt;]
-    -[-EmailLevel] &lt;Object&gt;]
-    -[-NetsendLevel] &lt;Object&gt;]
-    -[-PageLevel] &lt;Object&gt;]
-    -[-EmailOperator] &lt;String&gt;]
-    -[-NetsendOperator] &lt;String&gt;]
-    -[-PageOperator] &lt;String&gt;]
-    -[-DeleteLevel] &lt;Object&gt;]
-    --Force]
-    -[-InputObject] &lt;Job[]&gt;]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [[-SqlInstance] &lt;DbaInstanceParameter[]&gt;]
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [[-Job] &lt;Object[]&gt;]
+    [[-Schedule] &lt;Object[]&gt;]
+    [[-ScheduleId] &lt;Int32[]&gt;]
+    [[-NewName] &lt;String&gt;]
+    [-Enabled]
+    [-Disabled]
+    [[-Description] &lt;String&gt;]
+    [[-StartStepId] &lt;Int32&gt;]
+    [[-Category] &lt;String&gt;]
+    [[-OwnerLogin] &lt;String&gt;]
+    [[-EventLogLevel] &lt;Object&gt;]
+    [[-EmailLevel] &lt;Object&gt;]
+    [[-NetsendLevel] &lt;Object&gt;]
+    [[-PageLevel] &lt;Object&gt;]
+    [[-EmailOperator] &lt;String&gt;]
+    [[-NetsendOperator] &lt;String&gt;]
+    [[-PageOperator] &lt;String&gt;]
+    [[-DeleteLevel] &lt;Object&gt;]
+    [-Force]
+    [[-InputObject] &lt;Job[]&gt;]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -504,42 +504,42 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Set-DbaAgentJob sql1 -Job Job1 -Disabled
 </code></pre>
-<p>Changes the job to disabled</p>
+<p>Changes the job to disabled<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Set-DbaAgentJob sql1 -Job Job1 -OwnerLogin user1
 </code></pre>
-<p>Changes the owner of the job</p>
+<p>Changes the owner of the job<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Set-DbaAgentJob -SqlInstance sql1 -Job Job1 -EventLogLevel OnSuccess
 </code></pre>
-<p>Changes the job and sets the notification to write to the Windows Application event log on success</p>
+<p>Changes the job and sets the notification to write to the Windows Application event log on success<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; Set-DbaAgentJob -SqlInstance sql1 -Job Job1 -EmailLevel OnFailure -EmailOperator dba
 </code></pre>
-<p>Changes the job and sets the notification to send an e-mail to the e-mail operator</p>
+<p>Changes the job and sets the notification to send an e-mail to the e-mail operator<br></p>
 <h5 id="example-5">Example:  5</h5>
 <pre><code>PS C:\&gt; Set-DbaAgentJob -SqlInstance sql1 -Job Job1, Job2, Job3 -Enabled
 </code></pre>
-<p>Changes multiple jobs to enabled</p>
+<p>Changes multiple jobs to enabled<br></p>
 <h5 id="example-6">Example:  6</h5>
 <pre><code>PS C:\&gt; Set-DbaAgentJob -SqlInstance sql1, sql2, sql3 -Job Job1, Job2, Job3 -Enabled
 </code></pre>
-<p>Changes multiple jobs to enabled on multiple servers</p>
+<p>Changes multiple jobs to enabled on multiple servers<br></p>
 <h5 id="example-7">Example:  7</h5>
 <pre><code>PS C:\&gt; Set-DbaAgentJob -SqlInstance sql1 -Job Job1 -Description 'Just another job' -Whatif
 </code></pre>
-<p>Doesn't Change the job but shows what would happen.</p>
+<p>Doesn't Change the job but shows what would happen.<br></p>
 <h5 id="example-8">Example:  8</h5>
 <pre><code>PS C:\&gt; Set-DbaAgentJob -SqlInstance sql1, sql2, sql3 -Job 'Job One' -Description 'Job One'
 </code></pre>
-<p>Changes a job with the name &quot;Job1&quot; on multiple servers to have another description</p>
+<p>Changes a job with the name &quot;Job1&quot; on multiple servers to have another description<br></p>
 <h5 id="example-9">Example:  9</h5>
 <pre><code>PS C:\&gt; sql1, sql2, sql3 | Set-DbaAgentJob -Job Job1 -Description 'Job One'
 </code></pre>
-<p>Changes a job with the name &quot;Job1&quot; on multiple servers to have another description using pipe line</p>
+<p>Changes a job with the name &quot;Job1&quot; on multiple servers to have another description using pipe line<br></p>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances. You must have sysadmin access and server version must be SQL Server version 2000 or greater.</p>
+<p>The target SQL Server instance or instances. You must have sysadmin access and server version must be SQL Server version 2000 or greater.<br></p>
 <table>
 <thead>
 <tr>
@@ -569,7 +569,7 @@
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -597,7 +597,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="job">-Job</h5>
-<p>The name of the job.</p>
+<p>The name of the job.<br></p>
 <table>
 <thead>
 <tr>
@@ -625,7 +625,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="schedule">-Schedule</h5>
-<p>Schedule to attach to job. This can be more than one schedule.</p>
+<p>Schedule to attach to job. This can be more than one schedule.<br></p>
 <table>
 <thead>
 <tr>
@@ -653,7 +653,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="scheduleid">-ScheduleId</h5>
-<p>Schedule ID to attach to job. This can be more than one schedule ID.</p>
+<p>Schedule ID to attach to job. This can be more than one schedule ID.<br></p>
 <table>
 <thead>
 <tr>
@@ -681,7 +681,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="newname">-NewName</h5>
-<p>The new name for the job.</p>
+<p>The new name for the job.<br></p>
 <table>
 <thead>
 <tr>
@@ -709,7 +709,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="enabled">-Enabled</h5>
-<p>Enabled the job.</p>
+<p>Enabled the job.<br></p>
 <table>
 <thead>
 <tr>
@@ -737,7 +737,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="disabled">-Disabled</h5>
-<p>Disabled the job</p>
+<p>Disabled the job<br></p>
 <table>
 <thead>
 <tr>
@@ -765,7 +765,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="description-1">-Description</h5>
-<p>The description of the job.</p>
+<p>The description of the job.<br></p>
 <table>
 <thead>
 <tr>
@@ -793,7 +793,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="startstepid">-StartStepId</h5>
-<p>The identification number of the first step to execute for the job.</p>
+<p>The identification number of the first step to execute for the job.<br></p>
 <table>
 <thead>
 <tr>
@@ -821,7 +821,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="category">-Category</h5>
-<p>The category of the job.</p>
+<p>The category of the job.<br></p>
 <table>
 <thead>
 <tr>
@@ -849,7 +849,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="ownerlogin">-OwnerLogin</h5>
-<p>The name of the login that owns the job.</p>
+<p>The name of the login that owns the job.<br></p>
 <table>
 <thead>
 <tr>
@@ -879,7 +879,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 <h5 id="eventloglevel">-EventLogLevel</h5>
 <p>Specifies when to place an entry in the Microsoft Windows application log for this job.
 Allowed values 0, &quot;Never&quot;, 1, &quot;OnSuccess&quot;, 2, &quot;OnFailure&quot;, 3, &quot;Always&quot;
-The text value van either be lowercase, uppercase or something in between as long as the text is correct.</p>
+The text value van either be lowercase, uppercase or something in between as long as the text is correct.<br></p>
 <table>
 <thead>
 <tr>
@@ -913,7 +913,7 @@ The text value van either be lowercase, uppercase or something in between as lon
 <h5 id="emaillevel">-EmailLevel</h5>
 <p>Specifies when to send an e-mail upon the completion of this job.
 Allowed values 0, &quot;Never&quot;, 1, &quot;OnSuccess&quot;, 2, &quot;OnFailure&quot;, 3, &quot;Always&quot;
-The text value van either be lowercase, uppercase or something in between as long as the text is correct.</p>
+The text value van either be lowercase, uppercase or something in between as long as the text is correct.<br></p>
 <table>
 <thead>
 <tr>
@@ -947,7 +947,7 @@ The text value van either be lowercase, uppercase or something in between as lon
 <h5 id="netsendlevel">-NetsendLevel</h5>
 <p>Specifies when to send a network message upon the completion of this job.
 Allowed values 0, &quot;Never&quot;, 1, &quot;OnSuccess&quot;, 2, &quot;OnFailure&quot;, 3, &quot;Always&quot;
-The text value van either be lowercase, uppercase or something in between as long as the text is correct.</p>
+The text value van either be lowercase, uppercase or something in between as long as the text is correct.<br></p>
 <table>
 <thead>
 <tr>
@@ -981,7 +981,7 @@ The text value van either be lowercase, uppercase or something in between as lon
 <h5 id="pagelevel">-PageLevel</h5>
 <p>Specifies when to send a page upon the completion of this job.
 Allowed values 0, &quot;Never&quot;, 1, &quot;OnSuccess&quot;, 2, &quot;OnFailure&quot;, 3, &quot;Always&quot;
-The text value van either be lowercase, uppercase or something in between as long as the text is correct.</p>
+The text value van either be lowercase, uppercase or something in between as long as the text is correct.<br></p>
 <table>
 <thead>
 <tr>
@@ -1013,7 +1013,7 @@ The text value van either be lowercase, uppercase or something in between as lon
 </tbody>
 </table>
 <h5 id="emailoperator">-EmailOperator</h5>
-<p>The e-mail name of the operator to whom the e-mail is sent when EmailLevel is reached.</p>
+<p>The e-mail name of the operator to whom the e-mail is sent when EmailLevel is reached.<br></p>
 <table>
 <thead>
 <tr>
@@ -1041,7 +1041,7 @@ The text value van either be lowercase, uppercase or something in between as lon
 </tbody>
 </table>
 <h5 id="netsendoperator">-NetsendOperator</h5>
-<p>The name of the operator to whom the network message is sent.</p>
+<p>The name of the operator to whom the network message is sent.<br></p>
 <table>
 <thead>
 <tr>
@@ -1069,7 +1069,7 @@ The text value van either be lowercase, uppercase or something in between as lon
 </tbody>
 </table>
 <h5 id="pageoperator">-PageOperator</h5>
-<p>The name of the operator to whom a page is sent.</p>
+<p>The name of the operator to whom a page is sent.<br></p>
 <table>
 <thead>
 <tr>
@@ -1099,7 +1099,7 @@ The text value van either be lowercase, uppercase or something in between as lon
 <h5 id="deletelevel">-DeleteLevel</h5>
 <p>Specifies when to delete the job.
 Allowed values 0, &quot;Never&quot;, 1, &quot;OnSuccess&quot;, 2, &quot;OnFailure&quot;, 3, &quot;Always&quot;
-The text value van either be lowercase, uppercase or something in between as long as the text is correct.</p>
+The text value van either be lowercase, uppercase or something in between as long as the text is correct.<br></p>
 <table>
 <thead>
 <tr>
@@ -1131,7 +1131,7 @@ The text value van either be lowercase, uppercase or something in between as lon
 </tbody>
 </table>
 <h5 id="force">-Force</h5>
-<p>The force parameter will ignore some errors in the parameters and assume defaults.</p>
+<p>The force parameter will ignore some errors in the parameters and assume defaults.<br></p>
 <table>
 <thead>
 <tr>
@@ -1159,7 +1159,7 @@ The text value van either be lowercase, uppercase or something in between as lon
 </tbody>
 </table>
 <h5 id="inputobject">-InputObject</h5>
-<p>Enables piping job objects</p>
+<p>Enables piping job objects<br></p>
 <table>
 <thead>
 <tr>
@@ -1189,7 +1189,7 @@ The text value van either be lowercase, uppercase or something in between as lon
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -1217,7 +1217,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>Shows what would happen if the command were to run. No actions are actually performed.</p>
+<p>Shows what would happen if the command were to run. No actions are actually performed.<br></p>
 <table>
 <thead>
 <tr>
@@ -1245,7 +1245,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>Prompts you for confirmation before executing any changing operations within the command.</p>
+<p>Prompts you for confirmation before executing any changing operations within the command.<br></p>
 <table>
 <thead>
 <tr>
@@ -1274,6 +1274,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Set-DbaAgentJob.ps1">Set-DbaAgentJob</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Set-DbaAgentJob">Set-DbaAgentJob</a>.</p>
 
                 </div> <!-- rendered -->

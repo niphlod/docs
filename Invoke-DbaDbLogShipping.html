@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -488,90 +488,90 @@ The backup destination must have at least read permissions for the secondary ins
 The copy destination must have at least read/write permission for the secondary instance agent acount.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Invoke-DbaDbLogShipping
-    --SourceSqlInstance] &lt;DbaInstanceParameter&gt;
-    --DestinationSqlInstance] &lt;DbaInstanceParameter[]&gt;
-    -[-SourceSqlCredential] &lt;PSCredential&gt;]
-    -[-SourceCredential] &lt;PSCredential&gt;]
-    -[-DestinationSqlCredential] &lt;PSCredential&gt;]
-    -[-DestinationCredential] &lt;PSCredential&gt;]
-    --Database] &lt;Object[]&gt;
-    --SharedPath] &lt;String&gt;
-    -[-LocalPath] &lt;String&gt;]
-    -[-BackupJob] &lt;String&gt;]
-    -[-BackupRetention] &lt;Int32&gt;]
-    -[-BackupSchedule] &lt;String&gt;]
-    --BackupScheduleDisabled]
-    -[-BackupScheduleFrequencyType] &lt;Object&gt;]
-    -[-BackupScheduleFrequencyInterval] &lt;Object[]&gt;]
-    -[-BackupScheduleFrequencySubdayType] &lt;Object&gt;]
-    -[-BackupScheduleFrequencySubdayInterval] &lt;Int32&gt;]
-    -[-BackupScheduleFrequencyRelativeInterval] &lt;Object&gt;]
-    -[-BackupScheduleFrequencyRecurrenceFactor] &lt;Int32&gt;]
-    -[-BackupScheduleStartDate] &lt;String&gt;]
-    -[-BackupScheduleEndDate] &lt;String&gt;]
-    -[-BackupScheduleStartTime] &lt;String&gt;]
-    -[-BackupScheduleEndTime] &lt;String&gt;]
-    -[-BackupThreshold] &lt;Int32&gt;]
-    --CompressBackup]
-    -[-CopyDestinationFolder] &lt;String&gt;]
-    -[-CopyJob] &lt;String&gt;]
-    -[-CopyRetention] &lt;Int32&gt;]
-    -[-CopySchedule] &lt;String&gt;]
-    --CopyScheduleDisabled]
-    -[-CopyScheduleFrequencyType] &lt;Object&gt;]
-    -[-CopyScheduleFrequencyInterval] &lt;Object[]&gt;]
-    -[-CopyScheduleFrequencySubdayType] &lt;Object&gt;]
-    -[-CopyScheduleFrequencySubdayInterval] &lt;Int32&gt;]
-    -[-CopyScheduleFrequencyRelativeInterval] &lt;Object&gt;]
-    -[-CopyScheduleFrequencyRecurrenceFactor] &lt;Int32&gt;]
-    -[-CopyScheduleStartDate] &lt;String&gt;]
-    -[-CopyScheduleEndDate] &lt;String&gt;]
-    -[-CopyScheduleStartTime] &lt;String&gt;]
-    -[-CopyScheduleEndTime] &lt;String&gt;]
-    --DisconnectUsers]
-    -[-FullBackupPath] &lt;String&gt;]
-    --GenerateFullBackup]
-    -[-HistoryRetention] &lt;Int32&gt;]
-    --NoRecovery]
-    --NoInitialization]
-    -[-PrimaryMonitorServer] &lt;String&gt;]
-    -[-PrimaryMonitorCredential] &lt;PSCredential&gt;]
-    -[-PrimaryMonitorServerSecurityMode] &lt;Object&gt;]
-    --PrimaryThresholdAlertEnabled]
-    -[-RestoreDataFolder] &lt;String&gt;]
-    -[-RestoreLogFolder] &lt;String&gt;]
-    -[-RestoreDelay] &lt;Int32&gt;]
-    -[-RestoreAlertThreshold] &lt;Int32&gt;]
-    -[-RestoreJob] &lt;String&gt;]
-    -[-RestoreRetention] &lt;Int32&gt;]
-    -[-RestoreSchedule] &lt;String&gt;]
-    --RestoreScheduleDisabled]
-    -[-RestoreScheduleFrequencyType] &lt;Object&gt;]
-    -[-RestoreScheduleFrequencyInterval] &lt;Object[]&gt;]
-    -[-RestoreScheduleFrequencySubdayType] &lt;Object&gt;]
-    -[-RestoreScheduleFrequencySubdayInterval] &lt;Int32&gt;]
-    -[-RestoreScheduleFrequencyRelativeInterval] &lt;Object&gt;]
-    -[-RestoreScheduleFrequencyRecurrenceFactor] &lt;Int32&gt;]
-    -[-RestoreScheduleStartDate] &lt;String&gt;]
-    -[-RestoreScheduleEndDate] &lt;String&gt;]
-    -[-RestoreScheduleStartTime] &lt;String&gt;]
-    -[-RestoreScheduleEndTime] &lt;String&gt;]
-    -[-RestoreThreshold] &lt;Int32&gt;]
-    -[-SecondaryDatabasePrefix] &lt;String&gt;]
-    -[-SecondaryDatabaseSuffix] &lt;String&gt;]
-    -[-SecondaryMonitorServer] &lt;String&gt;]
-    -[-SecondaryMonitorCredential] &lt;PSCredential&gt;]
-    -[-SecondaryMonitorServerSecurityMode] &lt;Object&gt;]
-    --SecondaryThresholdAlertEnabled]
-    --Standby]
-    -[-StandbyDirectory] &lt;String&gt;]
-    --UseExistingFullBackup]
-    -[-UseBackupFolder] &lt;String&gt;]
-    --Force]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-SourceSqlInstance] &lt;DbaInstanceParameter&gt;
+    [-DestinationSqlInstance] &lt;DbaInstanceParameter[]&gt;
+    [[-SourceSqlCredential] &lt;PSCredential&gt;]
+    [[-SourceCredential] &lt;PSCredential&gt;]
+    [[-DestinationSqlCredential] &lt;PSCredential&gt;]
+    [[-DestinationCredential] &lt;PSCredential&gt;]
+    [-Database] &lt;Object[]&gt;
+    [-SharedPath] &lt;String&gt;
+    [[-LocalPath] &lt;String&gt;]
+    [[-BackupJob] &lt;String&gt;]
+    [[-BackupRetention] &lt;Int32&gt;]
+    [[-BackupSchedule] &lt;String&gt;]
+    [-BackupScheduleDisabled]
+    [[-BackupScheduleFrequencyType] &lt;Object&gt;]
+    [[-BackupScheduleFrequencyInterval] &lt;Object[]&gt;]
+    [[-BackupScheduleFrequencySubdayType] &lt;Object&gt;]
+    [[-BackupScheduleFrequencySubdayInterval] &lt;Int32&gt;]
+    [[-BackupScheduleFrequencyRelativeInterval] &lt;Object&gt;]
+    [[-BackupScheduleFrequencyRecurrenceFactor] &lt;Int32&gt;]
+    [[-BackupScheduleStartDate] &lt;String&gt;]
+    [[-BackupScheduleEndDate] &lt;String&gt;]
+    [[-BackupScheduleStartTime] &lt;String&gt;]
+    [[-BackupScheduleEndTime] &lt;String&gt;]
+    [[-BackupThreshold] &lt;Int32&gt;]
+    [-CompressBackup]
+    [[-CopyDestinationFolder] &lt;String&gt;]
+    [[-CopyJob] &lt;String&gt;]
+    [[-CopyRetention] &lt;Int32&gt;]
+    [[-CopySchedule] &lt;String&gt;]
+    [-CopyScheduleDisabled]
+    [[-CopyScheduleFrequencyType] &lt;Object&gt;]
+    [[-CopyScheduleFrequencyInterval] &lt;Object[]&gt;]
+    [[-CopyScheduleFrequencySubdayType] &lt;Object&gt;]
+    [[-CopyScheduleFrequencySubdayInterval] &lt;Int32&gt;]
+    [[-CopyScheduleFrequencyRelativeInterval] &lt;Object&gt;]
+    [[-CopyScheduleFrequencyRecurrenceFactor] &lt;Int32&gt;]
+    [[-CopyScheduleStartDate] &lt;String&gt;]
+    [[-CopyScheduleEndDate] &lt;String&gt;]
+    [[-CopyScheduleStartTime] &lt;String&gt;]
+    [[-CopyScheduleEndTime] &lt;String&gt;]
+    [-DisconnectUsers]
+    [[-FullBackupPath] &lt;String&gt;]
+    [-GenerateFullBackup]
+    [[-HistoryRetention] &lt;Int32&gt;]
+    [-NoRecovery]
+    [-NoInitialization]
+    [[-PrimaryMonitorServer] &lt;String&gt;]
+    [[-PrimaryMonitorCredential] &lt;PSCredential&gt;]
+    [[-PrimaryMonitorServerSecurityMode] &lt;Object&gt;]
+    [-PrimaryThresholdAlertEnabled]
+    [[-RestoreDataFolder] &lt;String&gt;]
+    [[-RestoreLogFolder] &lt;String&gt;]
+    [[-RestoreDelay] &lt;Int32&gt;]
+    [[-RestoreAlertThreshold] &lt;Int32&gt;]
+    [[-RestoreJob] &lt;String&gt;]
+    [[-RestoreRetention] &lt;Int32&gt;]
+    [[-RestoreSchedule] &lt;String&gt;]
+    [-RestoreScheduleDisabled]
+    [[-RestoreScheduleFrequencyType] &lt;Object&gt;]
+    [[-RestoreScheduleFrequencyInterval] &lt;Object[]&gt;]
+    [[-RestoreScheduleFrequencySubdayType] &lt;Object&gt;]
+    [[-RestoreScheduleFrequencySubdayInterval] &lt;Int32&gt;]
+    [[-RestoreScheduleFrequencyRelativeInterval] &lt;Object&gt;]
+    [[-RestoreScheduleFrequencyRecurrenceFactor] &lt;Int32&gt;]
+    [[-RestoreScheduleStartDate] &lt;String&gt;]
+    [[-RestoreScheduleEndDate] &lt;String&gt;]
+    [[-RestoreScheduleStartTime] &lt;String&gt;]
+    [[-RestoreScheduleEndTime] &lt;String&gt;]
+    [[-RestoreThreshold] &lt;Int32&gt;]
+    [[-SecondaryDatabasePrefix] &lt;String&gt;]
+    [[-SecondaryDatabaseSuffix] &lt;String&gt;]
+    [[-SecondaryMonitorServer] &lt;String&gt;]
+    [[-SecondaryMonitorCredential] &lt;PSCredential&gt;]
+    [[-SecondaryMonitorServerSecurityMode] &lt;Object&gt;]
+    [-SecondaryThresholdAlertEnabled]
+    [-Standby]
+    [[-StandbyDirectory] &lt;String&gt;]
+    [-UseExistingFullBackup]
+    [[-UseBackupFolder] &lt;String&gt;]
+    [-Force]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -599,9 +599,9 @@ The copy destination must have at least read/write permission for the secondary 
 &gt;&gt;
 PS C:\&gt; Invoke-DbaDbLogShipping @params
 </code></pre>
-<p>Sets up log shipping for database &quot;db1&quot; with the backup path to a network share allowing local backups.
-It creates daily schedules for the backup, copy and restore job with all the defaults to be executed every 15 minutes daily.
-The secondary database will be called &quot;db1_LS&quot;.</p>
+<p>Sets up log shipping for database &quot;db1&quot; with the backup path to a network share allowing local backups.<br>
+It creates daily schedules for the backup, copy and restore job with all the defaults to be executed every 15 minutes daily.<br>
+The secondary database will be called &quot;db1_LS&quot;.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; $params = @{
 &gt;&gt; SourceSqlInstance = 'sql1'
@@ -614,13 +614,13 @@ The secondary database will be called &quot;db1_LS&quot;.</p>
 &gt;&gt;
 PS C:\&gt; Invoke-DbaDbLogShipping @params
 </code></pre>
-<p>Sets up log shipping with all defaults except that a backup file is generated.
-The script will show a message that the copy destination has not been supplied and asks if you want to use the default which would be the backup directory of the secondary server with the folder
-&quot;logshipping&quot; i.e. &quot;D:\SQLBackup\Logshiping&quot;.</p>
+<p>Sets up log shipping with all defaults except that a backup file is generated.<br>
+The script will show a message that the copy destination has not been supplied and asks if you want to use the default which would be the backup directory of the secondary server with the folder <br>
+&quot;logshipping&quot; i.e. &quot;D:\SQLBackup\Logshiping&quot;.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="sourcesqlinstance">-SourceSqlInstance</h5>
 <p>Source SQL Server instance which contains the databases to be log shipped.
-You must have sysadmin access and server version must be SQL Server version 2000 or greater.</p>
+You must have sysadmin access and server version must be SQL Server version 2000 or greater.<br></p>
 <table>
 <thead>
 <tr>
@@ -649,7 +649,7 @@ You must have sysadmin access and server version must be SQL Server version 2000
 </table>
 <h5 id="destinationsqlinstance">-DestinationSqlInstance</h5>
 <p>Destination SQL Server instance which contains the databases to be log shipped.
-You must have sysadmin access and server version must be SQL Server version 2000 or greater.</p>
+You must have sysadmin access and server version must be SQL Server version 2000 or greater.<br></p>
 <table>
 <thead>
 <tr>
@@ -677,7 +677,7 @@ You must have sysadmin access and server version must be SQL Server version 2000
 </tbody>
 </table>
 <h5 id="database">-Database</h5>
-<p>Database to set up log shipping for.</p>
+<p>Database to set up log shipping for.<br></p>
 <table>
 <thead>
 <tr>
@@ -706,7 +706,7 @@ You must have sysadmin access and server version must be SQL Server version 2000
 </table>
 <h5 id="sharedpath">-SharedPath</h5>
 <p>The backup unc path to place the backup files. This is the root directory.
-A directory with the name of the database will be created in this path.</p>
+A directory with the name of the database will be created in this path.<br></p>
 <table>
 <thead>
 <tr>
@@ -737,7 +737,7 @@ A directory with the name of the database will be created in this path.</p>
 <h5 id="sourcesqlcredential">-SourceSqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -767,7 +767,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 <h5 id="sourcecredential">-SourceCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -797,7 +797,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 <h5 id="destinationsqlcredential">-DestinationSqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -827,7 +827,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 <h5 id="destinationcredential">-DestinationCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -855,7 +855,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="localpath">-LocalPath</h5>
-<p>If the backup path is locally for the source server you can also set this value.</p>
+<p>If the backup path is locally for the source server you can also set this value.<br></p>
 <table>
 <thead>
 <tr>
@@ -885,7 +885,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 <h5 id="backupjob">-BackupJob</h5>
 <p>Name of the backup that will be created in the SQL Server agent.
 The parameter works as a prefix where the name of the database will be added to the backup job name.
-The default is &quot;LSBackup_[databasename]&quot;</p>
+The default is &quot;LSBackup_[databasename]&quot;<br></p>
 <table>
 <thead>
 <tr>
@@ -913,7 +913,7 @@ The default is &quot;LSBackup_[databasename]&quot;</p>
 </tbody>
 </table>
 <h5 id="backupretention">-BackupRetention</h5>
-<p>The backup retention period in minutes. Default is 4320 / 72 hours</p>
+<p>The backup retention period in minutes. Default is 4320 / 72 hours<br></p>
 <table>
 <thead>
 <tr>
@@ -943,7 +943,7 @@ The default is &quot;LSBackup_[databasename]&quot;</p>
 <h5 id="backupschedule">-BackupSchedule</h5>
 <p>Name of the backup schedule created for the backup job.
 The parameter works as a prefix where the name of the database will be added to the backup job schedule name.
-Default is &quot;LSBackupSchedule_[databasename]&quot;</p>
+Default is &quot;LSBackupSchedule_[databasename]&quot;<br></p>
 <table>
 <thead>
 <tr>
@@ -972,7 +972,7 @@ Default is &quot;LSBackupSchedule_[databasename]&quot;</p>
 </table>
 <h5 id="backupscheduledisabled">-BackupScheduleDisabled</h5>
 <p>Parameter to set the backup schedule to disabled upon creation.
-By default the schedule is enabled.</p>
+By default the schedule is enabled.<br></p>
 <table>
 <thead>
 <tr>
@@ -1001,7 +1001,7 @@ By default the schedule is enabled.</p>
 </table>
 <h5 id="backupschedulefrequencytype">-BackupScheduleFrequencyType</h5>
 <p>A value indicating when a job is to be executed.
-Allowed values are &quot;Daily&quot;, &quot;AgentStart&quot;, &quot;IdleComputer&quot;</p>
+Allowed values are &quot;Daily&quot;, &quot;AgentStart&quot;, &quot;IdleComputer&quot;<br></p>
 <table>
 <thead>
 <tr>
@@ -1033,7 +1033,7 @@ Allowed values are &quot;Daily&quot;, &quot;AgentStart&quot;, &quot;IdleComputer
 </tbody>
 </table>
 <h5 id="backupschedulefrequencyinterval">-BackupScheduleFrequencyInterval</h5>
-<p>The number of type periods to occur between each execution of the backup job.</p>
+<p>The number of type periods to occur between each execution of the backup job.<br></p>
 <table>
 <thead>
 <tr>
@@ -1062,7 +1062,7 @@ Allowed values are &quot;Daily&quot;, &quot;AgentStart&quot;, &quot;IdleComputer
 </table>
 <h5 id="backupschedulefrequencysubdaytype">-BackupScheduleFrequencySubdayType</h5>
 <p>Specifies the units for the sub-day FrequencyInterval.
-Allowed values are &quot;Time&quot;, &quot;Seconds&quot;, &quot;Minutes&quot;, &quot;Hours&quot;</p>
+Allowed values are &quot;Time&quot;, &quot;Seconds&quot;, &quot;Minutes&quot;, &quot;Hours&quot;<br></p>
 <table>
 <thead>
 <tr>
@@ -1094,7 +1094,7 @@ Allowed values are &quot;Time&quot;, &quot;Seconds&quot;, &quot;Minutes&quot;, &
 </tbody>
 </table>
 <h5 id="backupschedulefrequencysubdayinterval">-BackupScheduleFrequencySubdayInterval</h5>
-<p>The number of sub-day type periods to occur between each execution of the backup job.</p>
+<p>The number of sub-day type periods to occur between each execution of the backup job.<br></p>
 <table>
 <thead>
 <tr>
@@ -1122,7 +1122,7 @@ Allowed values are &quot;Time&quot;, &quot;Seconds&quot;, &quot;Minutes&quot;, &
 </tbody>
 </table>
 <h5 id="backupschedulefrequencyrelativeinterval">-BackupScheduleFrequencyRelativeInterval</h5>
-<p>A job's occurrence of FrequencyInterval in each month, if FrequencyInterval is 32 (monthlyrelative).</p>
+<p>A job's occurrence of FrequencyInterval in each month, if FrequencyInterval is 32 (monthlyrelative).<br></p>
 <table>
 <thead>
 <tr>
@@ -1154,7 +1154,7 @@ Allowed values are &quot;Time&quot;, &quot;Seconds&quot;, &quot;Minutes&quot;, &
 </tbody>
 </table>
 <h5 id="backupschedulefrequencyrecurrencefactor">-BackupScheduleFrequencyRecurrenceFactor</h5>
-<p>The number of weeks or months between the scheduled execution of a job. FrequencyRecurrenceFactor is used only if FrequencyType is 8, &quot;Weekly&quot;, 16, &quot;Monthly&quot;, 32 or &quot;MonthlyRelative&quot;.</p>
+<p>The number of weeks or months between the scheduled execution of a job. FrequencyRecurrenceFactor is used only if FrequencyType is 8, &quot;Weekly&quot;, 16, &quot;Monthly&quot;, 32 or &quot;MonthlyRelative&quot;.<br></p>
 <table>
 <thead>
 <tr>
@@ -1182,7 +1182,7 @@ Allowed values are &quot;Time&quot;, &quot;Seconds&quot;, &quot;Minutes&quot;, &
 </tbody>
 </table>
 <h5 id="backupschedulestartdate">-BackupScheduleStartDate</h5>
-<p>The date on which execution of a job can begin.</p>
+<p>The date on which execution of a job can begin.<br></p>
 <table>
 <thead>
 <tr>
@@ -1210,7 +1210,7 @@ Allowed values are &quot;Time&quot;, &quot;Seconds&quot;, &quot;Minutes&quot;, &
 </tbody>
 </table>
 <h5 id="backupscheduleenddate">-BackupScheduleEndDate</h5>
-<p>The date on which execution of a job can stop.</p>
+<p>The date on which execution of a job can stop.<br></p>
 <table>
 <thead>
 <tr>
@@ -1240,7 +1240,7 @@ Allowed values are &quot;Time&quot;, &quot;Seconds&quot;, &quot;Minutes&quot;, &
 <h5 id="backupschedulestarttime">-BackupScheduleStartTime</h5>
 <p>The time on any day to begin execution of a job. Format HHMMSS / 24 hour clock.
 Example: '010000' for 01:00:00 AM.
-Example: '140000' for 02:00:00 PM.</p>
+Example: '140000' for 02:00:00 PM.<br></p>
 <table>
 <thead>
 <tr>
@@ -1270,7 +1270,7 @@ Example: '140000' for 02:00:00 PM.</p>
 <h5 id="backupscheduleendtime">-BackupScheduleEndTime</h5>
 <p>The time on any day to end execution of a job. Format HHMMSS / 24 hour clock.
 Example: '010000' for 01:00:00 AM.
-Example: '140000' for 02:00:00 PM.</p>
+Example: '140000' for 02:00:00 PM.<br></p>
 <table>
 <thead>
 <tr>
@@ -1299,7 +1299,7 @@ Example: '140000' for 02:00:00 PM.</p>
 </table>
 <h5 id="backupthreshold">-BackupThreshold</h5>
 <p>Is the length of time, in minutes, after the last backup before a threshold alert error is raised.
-The default is 60.</p>
+The default is 60.<br></p>
 <table>
 <thead>
 <tr>
@@ -1327,7 +1327,7 @@ The default is 60.</p>
 </tbody>
 </table>
 <h5 id="compressbackup">-CompressBackup</h5>
-<p>Do the backups need to be compressed. By default the backups are not compressed.</p>
+<p>Do the backups need to be compressed. By default the backups are not compressed.<br></p>
 <table>
 <thead>
 <tr>
@@ -1356,7 +1356,7 @@ The default is 60.</p>
 </table>
 <h5 id="copydestinationfolder">-CopyDestinationFolder</h5>
 <p>The path to copy the transaction log backup files to. This is the root directory.
-A directory with the name of the database will be created in this path.</p>
+A directory with the name of the database will be created in this path.<br></p>
 <table>
 <thead>
 <tr>
@@ -1386,7 +1386,7 @@ A directory with the name of the database will be created in this path.</p>
 <h5 id="copyjob">-CopyJob</h5>
 <p>Name of the copy job that will be created in the SQL Server agent.
 The parameter works as a prefix where the name of the database will be added to the copy job name.
-The default is &quot;LSBackup_[databasename]&quot;</p>
+The default is &quot;LSBackup_[databasename]&quot;<br></p>
 <table>
 <thead>
 <tr>
@@ -1414,7 +1414,7 @@ The default is &quot;LSBackup_[databasename]&quot;</p>
 </tbody>
 </table>
 <h5 id="copyretention">-CopyRetention</h5>
-<p>The copy retention period in minutes. Default is 4320 / 72 hours</p>
+<p>The copy retention period in minutes. Default is 4320 / 72 hours<br></p>
 <table>
 <thead>
 <tr>
@@ -1444,7 +1444,7 @@ The default is &quot;LSBackup_[databasename]&quot;</p>
 <h5 id="copyschedule">-CopySchedule</h5>
 <p>Name of the backup schedule created for the copy job.
 The parameter works as a prefix where the name of the database will be added to the copy job schedule name.
-Default is &quot;LSCopy_[DestinationServerName]_[DatabaseName]&quot;</p>
+Default is &quot;LSCopy_[DestinationServerName]_[DatabaseName]&quot;<br></p>
 <table>
 <thead>
 <tr>
@@ -1473,7 +1473,7 @@ Default is &quot;LSCopy_[DestinationServerName]_[DatabaseName]&quot;</p>
 </table>
 <h5 id="copyscheduledisabled">-CopyScheduleDisabled</h5>
 <p>Parameter to set the copy schedule to disabled upon creation.
-By default the schedule is enabled.</p>
+By default the schedule is enabled.<br></p>
 <table>
 <thead>
 <tr>
@@ -1502,7 +1502,7 @@ By default the schedule is enabled.</p>
 </table>
 <h5 id="copyschedulefrequencytype">-CopyScheduleFrequencyType</h5>
 <p>A value indicating when a job is to be executed.
-Allowed values are &quot;Daily&quot;, &quot;AgentStart&quot;, &quot;IdleComputer&quot;</p>
+Allowed values are &quot;Daily&quot;, &quot;AgentStart&quot;, &quot;IdleComputer&quot;<br></p>
 <table>
 <thead>
 <tr>
@@ -1534,7 +1534,7 @@ Allowed values are &quot;Daily&quot;, &quot;AgentStart&quot;, &quot;IdleComputer
 </tbody>
 </table>
 <h5 id="copyschedulefrequencyinterval">-CopyScheduleFrequencyInterval</h5>
-<p>The number of type periods to occur between each execution of the copy job.</p>
+<p>The number of type periods to occur between each execution of the copy job.<br></p>
 <table>
 <thead>
 <tr>
@@ -1563,7 +1563,7 @@ Allowed values are &quot;Daily&quot;, &quot;AgentStart&quot;, &quot;IdleComputer
 </table>
 <h5 id="copyschedulefrequencysubdaytype">-CopyScheduleFrequencySubdayType</h5>
 <p>Specifies the units for the subday FrequencyInterval.
-Allowed values are &quot;Time&quot;, &quot;Seconds&quot;, &quot;Minutes&quot;, &quot;Hours&quot;</p>
+Allowed values are &quot;Time&quot;, &quot;Seconds&quot;, &quot;Minutes&quot;, &quot;Hours&quot;<br></p>
 <table>
 <thead>
 <tr>
@@ -1595,7 +1595,7 @@ Allowed values are &quot;Time&quot;, &quot;Seconds&quot;, &quot;Minutes&quot;, &
 </tbody>
 </table>
 <h5 id="copyschedulefrequencysubdayinterval">-CopyScheduleFrequencySubdayInterval</h5>
-<p>The number of subday type periods to occur between each execution of the copy job.</p>
+<p>The number of subday type periods to occur between each execution of the copy job.<br></p>
 <table>
 <thead>
 <tr>
@@ -1623,7 +1623,7 @@ Allowed values are &quot;Time&quot;, &quot;Seconds&quot;, &quot;Minutes&quot;, &
 </tbody>
 </table>
 <h5 id="copyschedulefrequencyrelativeinterval">-CopyScheduleFrequencyRelativeInterval</h5>
-<p>A job's occurrence of FrequencyInterval in each month, if FrequencyInterval is 32 (monthlyrelative).</p>
+<p>A job's occurrence of FrequencyInterval in each month, if FrequencyInterval is 32 (monthlyrelative).<br></p>
 <table>
 <thead>
 <tr>
@@ -1655,7 +1655,7 @@ Allowed values are &quot;Time&quot;, &quot;Seconds&quot;, &quot;Minutes&quot;, &
 </tbody>
 </table>
 <h5 id="copyschedulefrequencyrecurrencefactor">-CopyScheduleFrequencyRecurrenceFactor</h5>
-<p>The number of weeks or months between the scheduled execution of a job. FrequencyRecurrenceFactor is used only if FrequencyType is 8, &quot;Weekly&quot;, 16, &quot;Monthly&quot;, 32 or &quot;MonthlyRelative&quot;.</p>
+<p>The number of weeks or months between the scheduled execution of a job. FrequencyRecurrenceFactor is used only if FrequencyType is 8, &quot;Weekly&quot;, 16, &quot;Monthly&quot;, 32 or &quot;MonthlyRelative&quot;.<br></p>
 <table>
 <thead>
 <tr>
@@ -1683,7 +1683,7 @@ Allowed values are &quot;Time&quot;, &quot;Seconds&quot;, &quot;Minutes&quot;, &
 </tbody>
 </table>
 <h5 id="copyschedulestartdate">-CopyScheduleStartDate</h5>
-<p>The date on which execution of a job can begin.</p>
+<p>The date on which execution of a job can begin.<br></p>
 <table>
 <thead>
 <tr>
@@ -1711,7 +1711,7 @@ Allowed values are &quot;Time&quot;, &quot;Seconds&quot;, &quot;Minutes&quot;, &
 </tbody>
 </table>
 <h5 id="copyscheduleenddate">-CopyScheduleEndDate</h5>
-<p>The date on which execution of a job can stop.</p>
+<p>The date on which execution of a job can stop.<br></p>
 <table>
 <thead>
 <tr>
@@ -1741,7 +1741,7 @@ Allowed values are &quot;Time&quot;, &quot;Seconds&quot;, &quot;Minutes&quot;, &
 <h5 id="copyschedulestarttime">-CopyScheduleStartTime</h5>
 <p>The time on any day to begin execution of a job. Format HHMMSS / 24 hour clock.
 Example: '010000' for 01:00:00 AM.
-Example: '140000' for 02:00:00 PM.</p>
+Example: '140000' for 02:00:00 PM.<br></p>
 <table>
 <thead>
 <tr>
@@ -1771,7 +1771,7 @@ Example: '140000' for 02:00:00 PM.</p>
 <h5 id="copyscheduleendtime">-CopyScheduleEndTime</h5>
 <p>The time on any day to end execution of a job. Format HHMMSS / 24 hour clock.
 Example: '010000' for 01:00:00 AM.
-Example: '140000' for 02:00:00 PM.</p>
+Example: '140000' for 02:00:00 PM.<br></p>
 <table>
 <thead>
 <tr>
@@ -1799,7 +1799,7 @@ Example: '140000' for 02:00:00 PM.</p>
 </tbody>
 </table>
 <h5 id="disconnectusers">-DisconnectUsers</h5>
-<p>If this parameter is set in combinations of standby the users will be disconnected during restore.</p>
+<p>If this parameter is set in combinations of standby the users will be disconnected during restore.<br></p>
 <table>
 <thead>
 <tr>
@@ -1827,7 +1827,7 @@ Example: '140000' for 02:00:00 PM.</p>
 </tbody>
 </table>
 <h5 id="fullbackuppath">-FullBackupPath</h5>
-<p>Path to an existing full backup. Use this when an existing backup needs to used to initialize the database on the secondary instance.</p>
+<p>Path to an existing full backup. Use this when an existing backup needs to used to initialize the database on the secondary instance.<br></p>
 <table>
 <thead>
 <tr>
@@ -1856,7 +1856,7 @@ Example: '140000' for 02:00:00 PM.</p>
 </table>
 <h5 id="generatefullbackup">-GenerateFullBackup</h5>
 <p>If the database is not initialized on the secondary instance it can be done by creating a new full backup and
-restore it for you.</p>
+restore it for you.<br></p>
 <table>
 <thead>
 <tr>
@@ -1885,7 +1885,7 @@ restore it for you.</p>
 </table>
 <h5 id="historyretention">-HistoryRetention</h5>
 <p>Is the length of time in minutes in which the history is retained.
-The default value is 14420</p>
+The default value is 14420<br></p>
 <table>
 <thead>
 <tr>
@@ -1914,7 +1914,7 @@ The default value is 14420</p>
 </table>
 <h5 id="norecovery">-NoRecovery</h5>
 <p>If this parameter is set the database will be in recovery mode. The database will not be readable.
-This setting is default.</p>
+This setting is default.<br></p>
 <table>
 <thead>
 <tr>
@@ -1943,7 +1943,7 @@ This setting is default.</p>
 </table>
 <h5 id="noinitialization">-NoInitialization</h5>
 <p>If this parameter is set the secondary database will not be initialized.
-The database needs to be on the secondary instance in recovery mode.</p>
+The database needs to be on the secondary instance in recovery mode.<br></p>
 <table>
 <thead>
 <tr>
@@ -1972,7 +1972,7 @@ The database needs to be on the secondary instance in recovery mode.</p>
 </table>
 <h5 id="primarymonitorserver">-PrimaryMonitorServer</h5>
 <p>Is the name of the monitor server for the primary server.
-The default is the name of the primary sql server.</p>
+The default is the name of the primary sql server.<br></p>
 <table>
 <thead>
 <tr>
@@ -2001,7 +2001,7 @@ The default is the name of the primary sql server.</p>
 </table>
 <h5 id="primarymonitorcredential">-PrimaryMonitorCredential</h5>
 <p>Allows you to login to enter a secure credential. Only needs to be used when the PrimaryMonitorServerSecurityMode is 0 or &quot;sqlserver&quot;
-To use: $scred = Get-Credential, then pass $scred object to the -PrimaryMonitorCredential parameter.</p>
+To use: $scred = Get-Credential, then pass $scred object to the -PrimaryMonitorCredential parameter.<br></p>
 <table>
 <thead>
 <tr>
@@ -2030,7 +2030,7 @@ To use: $scred = Get-Credential, then pass $scred object to the -PrimaryMonitorC
 </table>
 <h5 id="primarymonitorserversecuritymode">-PrimaryMonitorServerSecurityMode</h5>
 <p>The security mode used to connect to the monitor server for the primary server. Allowed values are 0, &quot;sqlserver&quot;, 1, &quot;windows&quot;
-The default is 1 or Windows.</p>
+The default is 1 or Windows.<br></p>
 <table>
 <thead>
 <tr>
@@ -2062,7 +2062,7 @@ The default is 1 or Windows.</p>
 </tbody>
 </table>
 <h5 id="primarythresholdalertenabled">-PrimaryThresholdAlertEnabled</h5>
-<p>Enables the Threshold alert for the primary database</p>
+<p>Enables the Threshold alert for the primary database<br></p>
 <table>
 <thead>
 <tr>
@@ -2092,7 +2092,7 @@ The default is 1 or Windows.</p>
 <h5 id="restoredatafolder">-RestoreDataFolder</h5>
 <p>Folder to be used to restore the database data files. Only used when parameter GenerateFullBackup or UseExistingFullBackup are set.
 If the parameter is not set the default data folder of the secondary instance will be used including the name of the database.
-If the folder is set but doesn't exist the default data folder of the secondary instance will be used including the name of the database.</p>
+If the folder is set but doesn't exist the default data folder of the secondary instance will be used including the name of the database.<br></p>
 <table>
 <thead>
 <tr>
@@ -2122,7 +2122,7 @@ If the folder is set but doesn't exist the default data folder of the secondary 
 <h5 id="restorelogfolder">-RestoreLogFolder</h5>
 <p>Folder to be used to restore the database log files. Only used when parameter GenerateFullBackup or UseExistingFullBackup are set.
 If the parameter is not set the default transaction log folder of the secondary instance will be used.
-If the folder is set but doesn't exist the default transaction log folder of the secondary instance will be used.</p>
+If the folder is set but doesn't exist the default transaction log folder of the secondary instance will be used.<br></p>
 <table>
 <thead>
 <tr>
@@ -2151,7 +2151,7 @@ If the folder is set but doesn't exist the default transaction log folder of the
 </table>
 <h5 id="restoredelay">-RestoreDelay</h5>
 <p>In case a delay needs to be set for the restore.
-The default is 0.</p>
+The default is 0.<br></p>
 <table>
 <thead>
 <tr>
@@ -2180,7 +2180,7 @@ The default is 0.</p>
 </table>
 <h5 id="restorealertthreshold">-RestoreAlertThreshold</h5>
 <p>The amount of minutes after which an alert will be raised is no restore has taken place.
-The default is 45 minutes.</p>
+The default is 45 minutes.<br></p>
 <table>
 <thead>
 <tr>
@@ -2210,7 +2210,7 @@ The default is 45 minutes.</p>
 <h5 id="restorejob">-RestoreJob</h5>
 <p>Name of the restore job that will be created in the SQL Server agent.
 The parameter works as a prefix where the name of the database will be added to the restore job name.
-The default is &quot;LSRestore_[databasename]&quot;</p>
+The default is &quot;LSRestore_[databasename]&quot;<br></p>
 <table>
 <thead>
 <tr>
@@ -2238,7 +2238,7 @@ The default is &quot;LSRestore_[databasename]&quot;</p>
 </tbody>
 </table>
 <h5 id="restoreretention">-RestoreRetention</h5>
-<p>The backup retention period in minutes. Default is 4320 / 72 hours</p>
+<p>The backup retention period in minutes. Default is 4320 / 72 hours<br></p>
 <table>
 <thead>
 <tr>
@@ -2268,7 +2268,7 @@ The default is &quot;LSRestore_[databasename]&quot;</p>
 <h5 id="restoreschedule">-RestoreSchedule</h5>
 <p>Name of the backup schedule created for the restore job.
 The parameter works as a prefix where the name of the database will be added to the restore job schedule name.
-Default is &quot;LSRestore_[DestinationServerName]_[DatabaseName]&quot;</p>
+Default is &quot;LSRestore_[DestinationServerName]_[DatabaseName]&quot;<br></p>
 <table>
 <thead>
 <tr>
@@ -2297,7 +2297,7 @@ Default is &quot;LSRestore_[DestinationServerName]_[DatabaseName]&quot;</p>
 </table>
 <h5 id="restorescheduledisabled">-RestoreScheduleDisabled</h5>
 <p>Parameter to set the restore schedule to disabled upon creation.
-By default the schedule is enabled.</p>
+By default the schedule is enabled.<br></p>
 <table>
 <thead>
 <tr>
@@ -2326,7 +2326,7 @@ By default the schedule is enabled.</p>
 </table>
 <h5 id="restoreschedulefrequencytype">-RestoreScheduleFrequencyType</h5>
 <p>A value indicating when a job is to be executed.
-Allowed values are &quot;Daily&quot;, &quot;AgentStart&quot;, &quot;IdleComputer&quot;</p>
+Allowed values are &quot;Daily&quot;, &quot;AgentStart&quot;, &quot;IdleComputer&quot;<br></p>
 <table>
 <thead>
 <tr>
@@ -2358,7 +2358,7 @@ Allowed values are &quot;Daily&quot;, &quot;AgentStart&quot;, &quot;IdleComputer
 </tbody>
 </table>
 <h5 id="restoreschedulefrequencyinterval">-RestoreScheduleFrequencyInterval</h5>
-<p>The number of type periods to occur between each execution of the restore job.</p>
+<p>The number of type periods to occur between each execution of the restore job.<br></p>
 <table>
 <thead>
 <tr>
@@ -2387,7 +2387,7 @@ Allowed values are &quot;Daily&quot;, &quot;AgentStart&quot;, &quot;IdleComputer
 </table>
 <h5 id="restoreschedulefrequencysubdaytype">-RestoreScheduleFrequencySubdayType</h5>
 <p>Specifies the units for the subday FrequencyInterval.
-Allowed values are &quot;Time&quot;, &quot;Seconds&quot;, &quot;Minutes&quot;, &quot;Hours&quot;</p>
+Allowed values are &quot;Time&quot;, &quot;Seconds&quot;, &quot;Minutes&quot;, &quot;Hours&quot;<br></p>
 <table>
 <thead>
 <tr>
@@ -2419,7 +2419,7 @@ Allowed values are &quot;Time&quot;, &quot;Seconds&quot;, &quot;Minutes&quot;, &
 </tbody>
 </table>
 <h5 id="restoreschedulefrequencysubdayinterval">-RestoreScheduleFrequencySubdayInterval</h5>
-<p>The number of subday type periods to occur between each execution of the restore job.</p>
+<p>The number of subday type periods to occur between each execution of the restore job.<br></p>
 <table>
 <thead>
 <tr>
@@ -2447,7 +2447,7 @@ Allowed values are &quot;Time&quot;, &quot;Seconds&quot;, &quot;Minutes&quot;, &
 </tbody>
 </table>
 <h5 id="restoreschedulefrequencyrelativeinterval">-RestoreScheduleFrequencyRelativeInterval</h5>
-<p>A job's occurrence of FrequencyInterval in each month, if FrequencyInterval is 32 (monthlyrelative).</p>
+<p>A job's occurrence of FrequencyInterval in each month, if FrequencyInterval is 32 (monthlyrelative).<br></p>
 <table>
 <thead>
 <tr>
@@ -2479,7 +2479,7 @@ Allowed values are &quot;Time&quot;, &quot;Seconds&quot;, &quot;Minutes&quot;, &
 </tbody>
 </table>
 <h5 id="restoreschedulefrequencyrecurrencefactor">-RestoreScheduleFrequencyRecurrenceFactor</h5>
-<p>The number of weeks or months between the scheduled execution of a job. FrequencyRecurrenceFactor is used only if FrequencyType is 8, &quot;Weekly&quot;, 16, &quot;Monthly&quot;, 32 or &quot;MonthlyRelative&quot;.</p>
+<p>The number of weeks or months between the scheduled execution of a job. FrequencyRecurrenceFactor is used only if FrequencyType is 8, &quot;Weekly&quot;, 16, &quot;Monthly&quot;, 32 or &quot;MonthlyRelative&quot;.<br></p>
 <table>
 <thead>
 <tr>
@@ -2507,7 +2507,7 @@ Allowed values are &quot;Time&quot;, &quot;Seconds&quot;, &quot;Minutes&quot;, &
 </tbody>
 </table>
 <h5 id="restoreschedulestartdate">-RestoreScheduleStartDate</h5>
-<p>The date on which execution of a job can begin.</p>
+<p>The date on which execution of a job can begin.<br></p>
 <table>
 <thead>
 <tr>
@@ -2535,7 +2535,7 @@ Allowed values are &quot;Time&quot;, &quot;Seconds&quot;, &quot;Minutes&quot;, &
 </tbody>
 </table>
 <h5 id="restorescheduleenddate">-RestoreScheduleEndDate</h5>
-<p>The date on which execution of a job can stop.</p>
+<p>The date on which execution of a job can stop.<br></p>
 <table>
 <thead>
 <tr>
@@ -2565,7 +2565,7 @@ Allowed values are &quot;Time&quot;, &quot;Seconds&quot;, &quot;Minutes&quot;, &
 <h5 id="restoreschedulestarttime">-RestoreScheduleStartTime</h5>
 <p>The time on any day to begin execution of a job. Format HHMMSS / 24 hour clock.
 Example: '010000' for 01:00:00 AM.
-Example: '140000' for 02:00:00 PM.</p>
+Example: '140000' for 02:00:00 PM.<br></p>
 <table>
 <thead>
 <tr>
@@ -2595,7 +2595,7 @@ Example: '140000' for 02:00:00 PM.</p>
 <h5 id="restorescheduleendtime">-RestoreScheduleEndTime</h5>
 <p>The time on any day to end execution of a job. Format HHMMSS / 24 hour clock.
 Example: '010000' for 01:00:00 AM.
-Example: '140000' for 02:00:00 PM.</p>
+Example: '140000' for 02:00:00 PM.<br></p>
 <table>
 <thead>
 <tr>
@@ -2624,7 +2624,7 @@ Example: '140000' for 02:00:00 PM.</p>
 </table>
 <h5 id="restorethreshold">-RestoreThreshold</h5>
 <p>The number of minutes allowed to elapse between restore operations before an alert is generated.
-The default value = 0</p>
+The default value = 0<br></p>
 <table>
 <thead>
 <tr>
@@ -2652,7 +2652,7 @@ The default value = 0</p>
 </tbody>
 </table>
 <h5 id="secondarydatabaseprefix">-SecondaryDatabasePrefix</h5>
-<p>The secondary database can be renamed to include a prefix.</p>
+<p>The secondary database can be renamed to include a prefix.<br></p>
 <table>
 <thead>
 <tr>
@@ -2680,7 +2680,7 @@ The default value = 0</p>
 </tbody>
 </table>
 <h5 id="secondarydatabasesuffix">-SecondaryDatabaseSuffix</h5>
-<p>The secondary database can be renamed to include a suffix.</p>
+<p>The secondary database can be renamed to include a suffix.<br></p>
 <table>
 <thead>
 <tr>
@@ -2709,7 +2709,7 @@ The default value = 0</p>
 </table>
 <h5 id="secondarymonitorserver">-SecondaryMonitorServer</h5>
 <p>Is the name of the monitor server for the secondary server.
-The default is the name of the secondary sql server.</p>
+The default is the name of the secondary sql server.<br></p>
 <table>
 <thead>
 <tr>
@@ -2738,7 +2738,7 @@ The default is the name of the secondary sql server.</p>
 </table>
 <h5 id="secondarymonitorcredential">-SecondaryMonitorCredential</h5>
 <p>Allows you to login to enter a secure credential. Only needs to be used when the SecondaryMonitorServerSecurityMode is 0 or &quot;sqlserver&quot;
-To use: $scred = Get-Credential, then pass $scred object to the -SecondaryMonitorCredential parameter.</p>
+To use: $scred = Get-Credential, then pass $scred object to the -SecondaryMonitorCredential parameter.<br></p>
 <table>
 <thead>
 <tr>
@@ -2767,7 +2767,7 @@ To use: $scred = Get-Credential, then pass $scred object to the -SecondaryMonito
 </table>
 <h5 id="secondarymonitorserversecuritymode">-SecondaryMonitorServerSecurityMode</h5>
 <p>The security mode used to connect to the monitor server for the secondary server. Allowed values are 0, &quot;sqlserver&quot;, 1, &quot;windows&quot;
-The default is 1 or Windows.</p>
+The default is 1 or Windows.<br></p>
 <table>
 <thead>
 <tr>
@@ -2799,7 +2799,7 @@ The default is 1 or Windows.</p>
 </tbody>
 </table>
 <h5 id="secondarythresholdalertenabled">-SecondaryThresholdAlertEnabled</h5>
-<p>Enables the Threshold alert for the secondary database</p>
+<p>Enables the Threshold alert for the secondary database<br></p>
 <table>
 <thead>
 <tr>
@@ -2828,7 +2828,7 @@ The default is 1 or Windows.</p>
 </table>
 <h5 id="standby">-Standby</h5>
 <p>If this parameter is set the database will be set to standby mode making the database readable.
-If not set the database will be in recovery mode.</p>
+If not set the database will be in recovery mode.<br></p>
 <table>
 <thead>
 <tr>
@@ -2856,7 +2856,7 @@ If not set the database will be in recovery mode.</p>
 </tbody>
 </table>
 <h5 id="standbydirectory">-StandbyDirectory</h5>
-<p>Directory to place the standby file(s) in</p>
+<p>Directory to place the standby file(s) in<br></p>
 <table>
 <thead>
 <tr>
@@ -2885,7 +2885,7 @@ If not set the database will be in recovery mode.</p>
 </table>
 <h5 id="useexistingfullbackup">-UseExistingFullBackup</h5>
 <p>If the database is not initialized on the secondary instance it can be done by selecting an existing full backup
-and restore it for you.</p>
+and restore it for you.<br></p>
 <table>
 <thead>
 <tr>
@@ -2913,7 +2913,7 @@ and restore it for you.</p>
 </tbody>
 </table>
 <h5 id="usebackupfolder">-UseBackupFolder</h5>
-<p>This enables the user to specify a specific backup folder containing one or more backup files to initialize the database on the secondary instance.</p>
+<p>This enables the user to specify a specific backup folder containing one or more backup files to initialize the database on the secondary instance.<br></p>
 <table>
 <thead>
 <tr>
@@ -2942,7 +2942,7 @@ and restore it for you.</p>
 </table>
 <h5 id="force">-Force</h5>
 <p>The force parameter will ignore some errors in the parameters and assume defaults.
-It will also remove the any present schedules with the same name for the specific job.</p>
+It will also remove the any present schedules with the same name for the specific job.<br></p>
 <table>
 <thead>
 <tr>
@@ -2970,7 +2970,7 @@ It will also remove the any present schedules with the same name for the specifi
 </tbody>
 </table>
 <h5 id="enableexception">-EnableException</h5>
-<p>Use this switch to disable any kind of verbose messages</p>
+<p>Use this switch to disable any kind of verbose messages<br></p>
 <table>
 <thead>
 <tr>
@@ -2998,7 +2998,7 @@ It will also remove the any present schedules with the same name for the specifi
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>Shows what would happen if the command were to run. No actions are actually performed.</p>
+<p>Shows what would happen if the command were to run. No actions are actually performed.<br></p>
 <table>
 <thead>
 <tr>
@@ -3026,7 +3026,7 @@ It will also remove the any present schedules with the same name for the specifi
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>Prompts you for confirmation before executing any changing operations within the command.</p>
+<p>Prompts you for confirmation before executing any changing operations within the command.<br></p>
 <table>
 <thead>
 <tr>
@@ -3055,6 +3055,7 @@ It will also remove the any present schedules with the same name for the specifi
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Invoke-DbaDbLogShipping.ps1">Invoke-DbaDbLogShipping</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Invoke-DbaDbLogShipping">Invoke-DbaDbLogShipping</a>.</p>
 
                 </div> <!-- rendered -->

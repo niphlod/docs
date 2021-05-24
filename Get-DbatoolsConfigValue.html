@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -471,10 +471,10 @@
 It requires the full name (<Module>.<Name>) and is usually only called by functions.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Get-DbatoolsConfigValue
-    --FullName] &lt;String&gt;
-    -[-Fallback] &lt;Object&gt;]
-    --NotNull]
-    -&lt;CommonParameters&gt;]
+    [-FullName] &lt;String&gt;
+    [[-Fallback] &lt;Object&gt;]
+    [-NotNull]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -483,14 +483,14 @@ It requires the full name (<Module>.<Name>) and is usually only called by functi
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Get-DbatoolsConfigValue -Name 'System.MailServer'
 </code></pre>
-<p>Returns the configured value that was assigned to the key 'System.MailServer'</p>
+<p>Returns the configured value that was assigned to the key 'System.MailServer'<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Get-DbatoolsConfigValue -Name 'Default.CoffeeMilk' -Fallback 0
 </code></pre>
-<p>Returns the configured value for 'Default.CoffeeMilk'. If no such value is configured, it returns '0' instead.</p>
+<p>Returns the configured value for 'Default.CoffeeMilk'. If no such value is configured, it returns '0' instead.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="fullname">-FullName</h5>
-<p>The full name (<Module>.<Name>) of the configured value to return.</p>
+<p>The full name (<Module>.<Name>) of the configured value to return.<br></p>
 <table>
 <thead>
 <tr>
@@ -520,7 +520,7 @@ It requires the full name (<Module>.<Name>) and is usually only called by functi
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="fallback">-Fallback</h5>
 <p>A fallback value to use, if no value was registered to a specific configuration element.
-This basically is a default value that only applies on a &quot;per call&quot; basis, rather than a system-wide default.</p>
+This basically is a default value that only applies on a &quot;per call&quot; basis, rather than a system-wide default.<br></p>
 <table>
 <thead>
 <tr>
@@ -550,7 +550,7 @@ This basically is a default value that only applies on a &quot;per call&quot; ba
 <h5 id="notnull">-NotNull</h5>
 <p>By default, this function returns null if one tries to retrieve the value from either a Configuration that does not exist or a Configuration whose value was set to null.
 However, sometimes it may be important that some value was returned.
-By specifying this parameter, the function will throw an error if no value was found at all.</p>
+By specifying this parameter, the function will throw an error if no value was found at all.<br></p>
 <table>
 <thead>
 <tr>
@@ -579,6 +579,7 @@ By specifying this parameter, the function will throw an error if no value was f
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Get-DbatoolsConfigValue.ps1">Get-DbatoolsConfigValue</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Get-DbatoolsConfigValue">Get-DbatoolsConfigValue</a>.</p>
 
                 </div> <!-- rendered -->

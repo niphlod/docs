@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -479,17 +479,17 @@ After the restore job check is performed the job is disabled to prevent the job 
 <p>The last part is to set the database online by restoring the databases with recovery</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Invoke-DbaDbLogShipRecovery
-    -[-SqlInstance] &lt;DbaInstanceParameter[]&gt;]
-    -[-Database] &lt;String[]&gt;]
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    --NoRecovery]
-    --EnableException]
-    --Force]
-    -[-InputObject] &lt;Database[]&gt;]
-    -[-Delay] &lt;Int32&gt;]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [[-SqlInstance] &lt;DbaInstanceParameter[]&gt;]
+    [[-Database] &lt;String[]&gt;]
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [-NoRecovery]
+    [-EnableException]
+    [-Force]
+    [[-InputObject] &lt;Database[]&gt;]
+    [[-Delay] &lt;Int32&gt;]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -498,26 +498,26 @@ After the restore job check is performed the job is disabled to prevent the job 
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Invoke-DbaDbLogShipRecovery -SqlInstance server1
 </code></pre>
-<p>Recovers all the databases on the instance that are enabled for log shipping</p>
+<p>Recovers all the databases on the instance that are enabled for log shipping<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Invoke-DbaDbLogShipRecovery -SqlInstance server1 -SqlCredential $cred -Verbose
 </code></pre>
-<p>Recovers all the databases on the instance that are enabled for log shipping using a credential</p>
+<p>Recovers all the databases on the instance that are enabled for log shipping using a credential<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Invoke-DbaDbLogShipRecovery -SqlInstance server1 -database db_logship -Verbose
 </code></pre>
-<p>Recovers the database &quot;db_logship&quot; to a normal status</p>
+<p>Recovers the database &quot;db_logship&quot; to a normal status<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; db1, db2, db3, db4 | Invoke-DbaDbLogShipRecovery -SqlInstance server1 -Verbose
 </code></pre>
-<p>Recovers the database db1, db2, db3, db4 to a normal status</p>
+<p>Recovers the database db1, db2, db3, db4 to a normal status<br></p>
 <h5 id="example-5">Example:  5</h5>
 <pre><code>PS C:\&gt; Invoke-DbaDbLogShipRecovery -SqlInstance server1 -WhatIf
 </code></pre>
-<p>Shows what would happen if the command were executed.</p>
+<p>Shows what would happen if the command were executed.<br></p>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances.</p>
+<p>The target SQL Server instance or instances.<br></p>
 <table>
 <thead>
 <tr>
@@ -546,7 +546,7 @@ After the restore job check is performed the job is disabled to prevent the job 
 </table>
 <h5 id="database">-Database</h5>
 <p>Database to perform the restore for. This value can also be piped enabling multiple databases to be recovered.
-If this value is not supplied all databases will be recovered.</p>
+If this value is not supplied all databases will be recovered.<br></p>
 <table>
 <thead>
 <tr>
@@ -576,7 +576,7 @@ If this value is not supplied all databases will be recovered.</p>
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -605,7 +605,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </table>
 <h5 id="norecovery">-NoRecovery</h5>
 <p>Allows you to choose to not restore the database to a functional state (Normal) in the final steps of the process.
-By default the database is restored to a functional state (Normal).</p>
+By default the database is restored to a functional state (Normal).<br></p>
 <table>
 <thead>
 <tr>
@@ -635,7 +635,7 @@ By default the database is restored to a functional state (Normal).</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -663,7 +663,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="force">-Force</h5>
-<p>Use this parameter to force the function to continue and perform any adjusting actions to successfully execute</p>
+<p>Use this parameter to force the function to continue and perform any adjusting actions to successfully execute<br></p>
 <table>
 <thead>
 <tr>
@@ -691,7 +691,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="inputobject">-InputObject</h5>
-<p>Allows piped input from Get-DbaDatabase</p>
+<p>Allows piped input from Get-DbaDatabase<br></p>
 <table>
 <thead>
 <tr>
@@ -720,7 +720,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <h5 id="delay">-Delay</h5>
 <p>Set the delay in seconds to wait for the copy and/or restore jobs.
-By default the delay is 5 seconds</p>
+By default the delay is 5 seconds<br></p>
 <table>
 <thead>
 <tr>
@@ -748,7 +748,7 @@ By default the delay is 5 seconds</p>
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>Shows what would happen if the command were to run. No actions are actually performed.</p>
+<p>Shows what would happen if the command were to run. No actions are actually performed.<br></p>
 <table>
 <thead>
 <tr>
@@ -776,7 +776,7 @@ By default the delay is 5 seconds</p>
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>Prompts you for confirmation before executing any changing operations within the command.</p>
+<p>Prompts you for confirmation before executing any changing operations within the command.<br></p>
 <table>
 <thead>
 <tr>
@@ -805,6 +805,7 @@ By default the delay is 5 seconds</p>
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Invoke-DbaDbLogShipRecovery.ps1">Invoke-DbaDbLogShipRecovery</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Invoke-DbaDbLogShipRecovery">Invoke-DbaDbLogShipRecovery</a>.</p>
 
                 </div> <!-- rendered -->

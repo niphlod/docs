@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -471,17 +471,17 @@
 <p>For now only supported for CLUSTERED and NONCLUSTERED indexes</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Find-DbaDbUnusedIndex
-    -[-SqlInstance] &lt;DbaInstanceParameter[]&gt;]
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    -[-Database] &lt;Object[]&gt;]
-    -[-ExcludeDatabase] &lt;Object[]&gt;]
-    --IgnoreUptime]
-    -[-Seeks] &lt;Int32&gt;]
-    -[-Scans] &lt;Int32&gt;]
-    -[-Lookups] &lt;Int32&gt;]
-    -[-InputObject] &lt;Database[]&gt;]
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [[-SqlInstance] &lt;DbaInstanceParameter[]&gt;]
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [[-Database] &lt;Object[]&gt;]
+    [[-ExcludeDatabase] &lt;Object[]&gt;]
+    [-IgnoreUptime]
+    [[-Seeks] &lt;Int32&gt;]
+    [[-Scans] &lt;Int32&gt;]
+    [[-Lookups] &lt;Int32&gt;]
+    [[-InputObject] &lt;Database[]&gt;]
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -490,23 +490,23 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Find-DbaDbUnusedIndex -SqlInstance sql2016 -Database db1, db2
 </code></pre>
-<p>Finds unused indexes on db1 and db2 on sql2016</p>
+<p>Finds unused indexes on db1 and db2 on sql2016<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Find-DbaDbUnusedIndex -SqlInstance sql2016 -SqlCredential $cred
 </code></pre>
-<p>Finds unused indexes on db1 and db2 on sql2016 using SQL Authentication to connect to the server</p>
+<p>Finds unused indexes on db1 and db2 on sql2016 using SQL Authentication to connect to the server<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Get-DbaDatabase -SqlInstance sql2016 | Find-DbaDbUnusedIndex
 </code></pre>
-<p>Finds unused indexes on all databases on sql2016</p>
+<p>Finds unused indexes on all databases on sql2016<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; Get-DbaDatabase -SqlInstance sql2019 | Find-DbaDbUnusedIndex -Seeks 10 -Scans 100 -Lookups 1000
 </code></pre>
-<p>Finds 'unused' indexes with user_seeks &lt; 10, user_scans &lt; 100, and user_lookups &lt; 1000 on all databases on sql2019.
-Note that these additional parameters provide flexibility to define what is considered an 'unused' index.</p>
+<p>Finds 'unused' indexes with user_seeks &lt; 10, user_scans &lt; 100, and user_lookups &lt; 1000 on all databases on sql2019.<br>
+Note that these additional parameters provide flexibility to define what is considered an 'unused' index.<br></p>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The SQL Server you want to check for unused indexes.</p>
+<p>The SQL Server you want to check for unused indexes.<br></p>
 <table>
 <thead>
 <tr>
@@ -536,7 +536,7 @@ Note that these additional parameters provide flexibility to define what is cons
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -564,7 +564,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="database">-Database</h5>
-<p>The database(s) to process. Options for this list are auto-populated from the server. If unspecified, all databases will be processed.</p>
+<p>The database(s) to process. Options for this list are auto-populated from the server. If unspecified, all databases will be processed.<br></p>
 <table>
 <thead>
 <tr>
@@ -592,7 +592,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="excludedatabase">-ExcludeDatabase</h5>
-<p>Specifies the database(s) to exclude from processing. Options for this list are auto-populated from the server.</p>
+<p>Specifies the database(s) to exclude from processing. Options for this list are auto-populated from the server.<br></p>
 <table>
 <thead>
 <tr>
@@ -621,7 +621,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </table>
 <h5 id="ignoreuptime">-IgnoreUptime</h5>
 <p>Less than 7 days uptime can mean that analysis of unused indexes is unreliable, and normally no results will be returned. By setting this option results will be returned even if the Instance has been
-running for less than 7 days.</p>
+running for less than 7 days.<br></p>
 <table>
 <thead>
 <tr>
@@ -654,7 +654,7 @@ The valid values are between 1 and 1000000 to provide flexibility on the definit
 Note: The resulting WHERE clause uses the AND operator:
 user_seeks &lt; $Seeks
 AND user_scans &lt; $Scans
-AND user_lookups &lt; $Lookups</p>
+AND user_lookups &lt; $Lookups<br></p>
 <table>
 <thead>
 <tr>
@@ -687,7 +687,7 @@ The valid values are between 1 and 1000000 to provide flexibility on the definit
 Note: The resulting WHERE clause uses the AND operator:
 user_seeks &lt; $Seeks
 AND user_scans &lt; $Scans
-AND user_lookups &lt; $Lookups</p>
+AND user_lookups &lt; $Lookups<br></p>
 <table>
 <thead>
 <tr>
@@ -720,7 +720,7 @@ The valid values are between 1 and 1000000 to provide flexibility on the definit
 Note: The resulting WHERE clause uses the AND operator:
 user_seeks &lt; $Seeks
 AND user_scans &lt; $Scans
-AND user_lookups &lt; $Lookups</p>
+AND user_lookups &lt; $Lookups<br></p>
 <table>
 <thead>
 <tr>
@@ -748,7 +748,7 @@ AND user_lookups &lt; $Lookups</p>
 </tbody>
 </table>
 <h5 id="inputobject">-InputObject</h5>
-<p>Enables piping from Get-DbaDatabase</p>
+<p>Enables piping from Get-DbaDatabase<br></p>
 <table>
 <thead>
 <tr>
@@ -778,7 +778,7 @@ AND user_lookups &lt; $Lookups</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -807,6 +807,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Find-DbaDbUnusedIndex.ps1">Find-DbaDbUnusedIndex</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Find-DbaDbUnusedIndex">Find-DbaDbUnusedIndex</a>.</p>
 
                 </div> <!-- rendered -->

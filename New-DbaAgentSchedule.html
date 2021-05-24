@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -471,26 +471,26 @@
 If the job parameter is not supplied the schedule will not be attached to a job.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>New-DbaAgentSchedule
-    --SqlInstance] &lt;DbaInstanceParameter[]&gt;
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    -[-Job] &lt;Object[]&gt;]
-    -[-Schedule] &lt;Object&gt;]
-    --Disabled]
-    -[-FrequencyType] &lt;Object&gt;]
-    -[-FrequencyInterval] &lt;Object[]&gt;]
-    -[-FrequencySubdayType] &lt;Object&gt;]
-    -[-FrequencySubdayInterval] &lt;Int32&gt;]
-    -[-FrequencyRelativeInterval] &lt;Object&gt;]
-    -[-FrequencyRecurrenceFactor] &lt;Int32&gt;]
-    -[-StartDate] &lt;String&gt;]
-    -[-EndDate] &lt;String&gt;]
-    -[-StartTime] &lt;String&gt;]
-    -[-EndTime] &lt;String&gt;]
-    --Force]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-SqlInstance] &lt;DbaInstanceParameter[]&gt;
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [[-Job] &lt;Object[]&gt;]
+    [[-Schedule] &lt;Object&gt;]
+    [-Disabled]
+    [[-FrequencyType] &lt;Object&gt;]
+    [[-FrequencyInterval] &lt;Object[]&gt;]
+    [[-FrequencySubdayType] &lt;Object&gt;]
+    [[-FrequencySubdayInterval] &lt;Int32&gt;]
+    [[-FrequencyRelativeInterval] &lt;Object&gt;]
+    [[-FrequencyRecurrenceFactor] &lt;Int32&gt;]
+    [[-StartDate] &lt;String&gt;]
+    [[-EndDate] &lt;String&gt;]
+    [[-StartTime] &lt;String&gt;]
+    [[-EndTime] &lt;String&gt;]
+    [-Force]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -499,14 +499,14 @@ If the job parameter is not supplied the schedule will not be attached to a job.
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; New-DbaAgentSchedule -SqlInstance localhost\SQL2016 -Schedule daily -FrequencyType Daily -FrequencyInterval Everyday -Force
 </code></pre>
-<p>Creates a schedule with a daily frequency every day. It assumes default values for the start date, start time, end date and end time due to -Force.</p>
+<p>Creates a schedule with a daily frequency every day. It assumes default values for the start date, start time, end date and end time due to -Force.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; New-DbaAgentSchedule -SqlInstance sstad-pc -Schedule MonthlyTest -FrequencyType Monthly -FrequencyInterval 10 -FrequencyRecurrenceFactor 1 -Force
 </code></pre>
-<p>Create a schedule with a monhtly frequency occuring every 10th of the month. It assumes default values for the start date, start time, end date and end time due to -Force.</p>
+<p>Create a schedule with a monhtly frequency occuring every 10th of the month. It assumes default values for the start date, start time, end date and end time due to -Force.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances. You must have sysadmin access and server version must be SQL Server version 2000 or greater.</p>
+<p>The target SQL Server instance or instances. You must have sysadmin access and server version must be SQL Server version 2000 or greater.<br></p>
 <table>
 <thead>
 <tr>
@@ -537,7 +537,7 @@ If the job parameter is not supplied the schedule will not be attached to a job.
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -565,7 +565,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="job">-Job</h5>
-<p>The name of the job that has the schedule.</p>
+<p>The name of the job that has the schedule.<br></p>
 <table>
 <thead>
 <tr>
@@ -593,7 +593,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="schedule">-Schedule</h5>
-<p>The name of the schedule.</p>
+<p>The name of the schedule.<br></p>
 <table>
 <thead>
 <tr>
@@ -621,7 +621,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="disabled">-Disabled</h5>
-<p>Set the schedule to disabled. Default is enabled</p>
+<p>Set the schedule to disabled. Default is enabled<br></p>
 <table>
 <thead>
 <tr>
@@ -655,7 +655,7 @@ The following synonyms provide flexibility to the allowed values for this functi
 Once=OneTime
 AgentStart=AutoStart
 IdleComputer=OnIdle
-If force is used the default will be &quot;Once&quot;.</p>
+If force is used the default will be &quot;Once&quot;.<br></p>
 <table>
 <thead>
 <tr>
@@ -691,7 +691,7 @@ If force is used the default will be &quot;Once&quot;.</p>
 Allowed values: Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Weekdays, Weekend or EveryDay.
 The other allowed values are the numbers 1 to 31 for each day of the month.
 If &quot;Weekdays&quot;, &quot;Weekend&quot; or &quot;EveryDay&quot; is used it over writes any other value that has been passed before.
-If force is used the default will be 1.</p>
+If force is used the default will be 1.<br></p>
 <table>
 <thead>
 <tr>
@@ -729,7 +729,7 @@ The following synonyms provide flexibility to the allowed values for this functi
 Once=Time
 Seconds=Second
 Minutes=Minute
-Hours=Hour</p>
+Hours=Hour<br></p>
 <table>
 <thead>
 <tr>
@@ -761,7 +761,7 @@ Hours=Hour</p>
 </tbody>
 </table>
 <h5 id="frequencysubdayinterval">-FrequencySubdayInterval</h5>
-<p>The number of subday type periods to occur between each execution of a job.</p>
+<p>The number of subday type periods to occur between each execution of a job.<br></p>
 <table>
 <thead>
 <tr>
@@ -790,7 +790,7 @@ Hours=Hour</p>
 </table>
 <h5 id="frequencyrelativeinterval">-FrequencyRelativeInterval</h5>
 <p>A job's occurrence of FrequencyInterval in each month, if FrequencyInterval is 32 (monthlyrelative).
-Allowed values: First, Second, Third, Fourth or Last</p>
+Allowed values: First, Second, Third, Fourth or Last<br></p>
 <table>
 <thead>
 <tr>
@@ -823,7 +823,7 @@ Allowed values: First, Second, Third, Fourth or Last</p>
 </table>
 <h5 id="frequencyrecurrencefactor">-FrequencyRecurrenceFactor</h5>
 <p>The number of weeks or months between the scheduled execution of a job.
-FrequencyRecurrenceFactor is used only if FrequencyType is &quot;Weekly&quot;, &quot;Monthly&quot; or &quot;MonthlyRelative&quot;.</p>
+FrequencyRecurrenceFactor is used only if FrequencyType is &quot;Weekly&quot;, &quot;Monthly&quot; or &quot;MonthlyRelative&quot;.<br></p>
 <table>
 <thead>
 <tr>
@@ -852,7 +852,7 @@ FrequencyRecurrenceFactor is used only if FrequencyType is &quot;Weekly&quot;, &
 </table>
 <h5 id="startdate">-StartDate</h5>
 <p>The date on which execution of a job can begin.
-If force is used the start date will be the current day</p>
+If force is used the start date will be the current day<br></p>
 <table>
 <thead>
 <tr>
@@ -881,7 +881,7 @@ If force is used the start date will be the current day</p>
 </table>
 <h5 id="enddate">-EndDate</h5>
 <p>The date on which execution of a job can stop.
-If force is used the end date will be '9999-12-31'</p>
+If force is used the end date will be '9999-12-31'<br></p>
 <table>
 <thead>
 <tr>
@@ -912,7 +912,7 @@ If force is used the end date will be '9999-12-31'</p>
 <p>The time on any day to begin execution of a job. Format HHMMSS / 24 hour clock.
 Example: '010000' for 01:00:00 AM.
 Example: '140000' for 02:00:00 PM.
-If force is used the start time will be '00:00:00'</p>
+If force is used the start time will be '00:00:00'<br></p>
 <table>
 <thead>
 <tr>
@@ -943,7 +943,7 @@ If force is used the start time will be '00:00:00'</p>
 <p>The time on any day to end execution of a job. Format HHMMSS / 24 hour clock.
 Example: '010000' for 01:00:00 AM.
 Example: '140000' for 02:00:00 PM.
-If force is used the start time will be '23:59:59'</p>
+If force is used the start time will be '23:59:59'<br></p>
 <table>
 <thead>
 <tr>
@@ -972,7 +972,7 @@ If force is used the start time will be '23:59:59'</p>
 </table>
 <h5 id="force">-Force</h5>
 <p>The force parameter will ignore some errors in the parameters and assume defaults.
-It will also remove the any present schedules with the same name for the specific job.</p>
+It will also remove the any present schedules with the same name for the specific job.<br></p>
 <table>
 <thead>
 <tr>
@@ -1002,7 +1002,7 @@ It will also remove the any present schedules with the same name for the specifi
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -1030,7 +1030,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>Shows what would happen if the command were to run. No actions are actually performed.</p>
+<p>Shows what would happen if the command were to run. No actions are actually performed.<br></p>
 <table>
 <thead>
 <tr>
@@ -1058,7 +1058,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>Prompts you for confirmation before executing any changing operations within the command.</p>
+<p>Prompts you for confirmation before executing any changing operations within the command.<br></p>
 <table>
 <thead>
 <tr>
@@ -1087,6 +1087,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/New-DbaAgentSchedule.ps1">New-DbaAgentSchedule</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#New-DbaAgentSchedule">New-DbaAgentSchedule</a>.</p>
 
                 </div> <!-- rendered -->

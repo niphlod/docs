@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -471,11 +471,11 @@
 Add-Type Load Template for each version on the server.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Get-DbaManagementObject
-    -[-ComputerName] &lt;DbaInstanceParameter[]&gt;]
-    -[-Credential] &lt;PSCredential&gt;]
-    -[-VersionNumber] &lt;Int32&gt;]
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [[-ComputerName] &lt;DbaInstanceParameter[]&gt;]
+    [[-Credential] &lt;PSCredential&gt;]
+    [[-VersionNumber] &lt;Int32&gt;]
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -484,14 +484,14 @@ Add-Type Load Template for each version on the server.</p>
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Get-DbaManagementObject
 </code></pre>
-<p>Returns all versions of SMO on the computer</p>
+<p>Returns all versions of SMO on the computer<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Get-DbaManagementObject -VersionNumber 13
 </code></pre>
-<p>Returns just the version specified. If the version does not exist then it will return nothing.</p>
+<p>Returns just the version specified. If the version does not exist then it will return nothing.<br></p>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="computername">-ComputerName</h5>
-<p>The name of the Windows Server(s) you would like to check.</p>
+<p>The name of the Windows Server(s) you would like to check.<br></p>
 <table>
 <thead>
 <tr>
@@ -519,7 +519,7 @@ Add-Type Load Template for each version on the server.</p>
 </tbody>
 </table>
 <h5 id="credential">-Credential</h5>
-<p>This command uses Windows credentials. This parameter allows you to connect remotely as a different user.</p>
+<p>This command uses Windows credentials. This parameter allows you to connect remotely as a different user.<br></p>
 <table>
 <thead>
 <tr>
@@ -548,7 +548,7 @@ Add-Type Load Template for each version on the server.</p>
 </table>
 <h5 id="versionnumber">-VersionNumber</h5>
 <p>This is the specific version number you are looking for. The function will look
-for that version only.</p>
+for that version only.<br></p>
 <table>
 <thead>
 <tr>
@@ -578,7 +578,7 @@ for that version only.</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -607,6 +607,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Get-DbaManagementObject.ps1">Get-DbaManagementObject</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Get-DbaManagementObject">Get-DbaManagementObject</a>.</p>
 
                 </div> <!-- rendered -->

@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -483,17 +483,17 @@ It only considers Row or Page Compression (not column compression)
 It only evaluates User Tables</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Test-DbaDbCompression
-    --SqlInstance] &lt;DbaInstanceParameter[]&gt;
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    -[-Database] &lt;Object[]&gt;]
-    -[-ExcludeDatabase] &lt;Object[]&gt;]
-    -[-Schema] &lt;String[]&gt;]
-    -[-Table] &lt;String[]&gt;]
-    -[-ResultSize] &lt;Int32&gt;]
-    -[-Rank] &lt;String&gt;]
-    -[-FilterBy] &lt;String&gt;]
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [-SqlInstance] &lt;DbaInstanceParameter[]&gt;
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [[-Database] &lt;Object[]&gt;]
+    [[-ExcludeDatabase] &lt;Object[]&gt;]
+    [[-Schema] &lt;String[]&gt;]
+    [[-Table] &lt;String[]&gt;]
+    [[-ResultSize] &lt;Int32&gt;]
+    [[-Rank] &lt;String&gt;]
+    [[-FilterBy] &lt;String&gt;]
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -502,61 +502,61 @@ It only evaluates User Tables</p>
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Test-DbaDbCompression -SqlInstance localhost
 </code></pre>
-<p>Returns results of all potential compression options for all databases for the default instance on the local host. Returns a recommendation of either Page, Row or NO_GAIN</p>
+<p>Returns results of all potential compression options for all databases for the default instance on the local host. Returns a recommendation of either Page, Row or NO_GAIN<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Test-DbaDbCompression -SqlInstance ServerA
 </code></pre>
-<p>Returns results of all potential compression options for all databases on the instance ServerA</p>
+<p>Returns results of all potential compression options for all databases on the instance ServerA<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Test-DbaDbCompression -SqlInstance ServerA -Database DBName | Out-GridView
 </code></pre>
-<p>Returns results of all potential compression options for a single database DBName with the recommendation of either Page or Row or NO_GAIN in a nicely formatted GridView</p>
+<p>Returns results of all potential compression options for a single database DBName with the recommendation of either Page or Row or NO_GAIN in a nicely formatted GridView<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; $cred = Get-Credential sqladmin
 PS C:\&gt; Test-DbaDbCompression -SqlInstance ServerA -ExcludeDatabase MyDatabase -SqlCredential $cred
 </code></pre>
-<p>Returns results of all potential compression options for all databases except MyDatabase on instance ServerA using SQL credentials to authentication to ServerA.
-Returns the recommendation of either Page, Row or NO_GAIN</p>
+<p>Returns results of all potential compression options for all databases except MyDatabase on instance ServerA using SQL credentials to authentication to ServerA.<br>
+Returns the recommendation of either Page, Row or NO_GAIN<br></p>
 <h5 id="example-5">Example:  5</h5>
 <pre><code>PS C:\&gt; Test-DbaDbCompression -SqlInstance ServerA -Schema Test -Table MyTable
 </code></pre>
-<p>Returns results of all potential compression options for the Table Test.MyTable in instance ServerA on ServerA and ServerB.
-Returns the recommendation of either Page, Row or NO_GAIN.
-Returns a result for each partition of any Heap, Clustered or NonClustered index.</p>
+<p>Returns results of all potential compression options for the Table Test.MyTable in instance ServerA on ServerA and ServerB.<br>
+Returns the recommendation of either Page, Row or NO_GAIN.<br>
+Returns a result for each partition of any Heap, Clustered or NonClustered index.<br></p>
 <h5 id="example-6">Example:  6</h5>
 <pre><code>PS C:\&gt; Test-DbaDbCompression -SqlInstance ServerA, ServerB -ResultSize 10
 </code></pre>
-<p>Returns results of all potential compression options for all databases on ServerA and ServerB.
-Returns the recommendation of either Page, Row or NO_GAIN.
-Returns results for the top 10 partitions by TotalPages used per database.</p>
+<p>Returns results of all potential compression options for all databases on ServerA and ServerB.<br>
+Returns the recommendation of either Page, Row or NO_GAIN.<br>
+Returns results for the top 10 partitions by TotalPages used per database.<br></p>
 <h5 id="example-7">Example:  7</h5>
 <pre><code>PS C:\&gt; ServerA | Test-DbaDbCompression -Schema Test -ResultSize 10 -Rank UsedPages -FilterBy Table
 </code></pre>
-<p>Returns results of all potential compression options for all databases on ServerA containing a schema Test
-Returns results for the top 10 Tables by Used Pages per database.
-Results are split by Table, Index and Partition so more than 10 results may be returned.</p>
+<p>Returns results of all potential compression options for all databases on ServerA containing a schema Test<br>
+Returns results for the top 10 Tables by Used Pages per database.<br>
+Results are split by Table, Index and Partition so more than 10 results may be returned.<br></p>
 <h5 id="example-8">Example:  8</h5>
 <pre><code>PS C:\&gt; $servers = 'Server1','Server2'
 PS C:\&gt; $servers | Test-DbaDbCompression -Database DBName | Out-GridView
 </code></pre>
-<p>Returns results of all potential compression options for a single database DBName on Server1 or Server2
-Returns the recommendation of either Page, Row or NO_GAIN in a nicely formatted GridView</p>
+<p>Returns results of all potential compression options for a single database DBName on Server1 or Server2<br>
+Returns the recommendation of either Page, Row or NO_GAIN in a nicely formatted GridView<br></p>
 <h5 id="example-9">Example:  9</h5>
 <pre><code>PS C:\&gt; $cred = Get-Credential sqladmin
 PS C:\&gt; Test-DbaDbCompression -SqlInstance ServerA -Database MyDB -SqlCredential $cred -Schema Test -Table Test1, Test2
 </code></pre>
-<p>Returns results of all potential compression options for objects in Database MyDb on instance ServerA using SQL credentials to authentication to ServerA.
-Returns the recommendation of either Page, Row or NO_GAIN for tables with Schema Test and name in Test1 or Test2</p>
+<p>Returns results of all potential compression options for objects in Database MyDb on instance ServerA using SQL credentials to authentication to ServerA.<br>
+Returns the recommendation of either Page, Row or NO_GAIN for tables with Schema Test and name in Test1 or Test2<br></p>
 <h5 id="example-10">Example:  10</h5>
 <pre><code>PS C:\&gt; $servers = 'Server1','Server2'
 PS C:\&gt; foreach ($svr in $servers) {
 &gt;&gt; Test-DbaDbCompression -SqlInstance $svr | Export-Csv -Path C:\temp\CompressionAnalysisPAC.csv -Append
 &gt;&gt; }
 </code></pre>
-<p>This produces a full analysis of all your servers listed and is pushed to a csv for you to analyze.</p>
+<p>This produces a full analysis of all your servers listed and is pushed to a csv for you to analyze.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances. This can be a collection and receive pipeline input to allow the function to be executed against multiple SQL Server instances.</p>
+<p>The target SQL Server instance or instances. This can be a collection and receive pipeline input to allow the function to be executed against multiple SQL Server instances.<br></p>
 <table>
 <thead>
 <tr>
@@ -587,7 +587,7 @@ PS C:\&gt; foreach ($svr in $servers) {
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -615,7 +615,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="database">-Database</h5>
-<p>The database(s) to process - this list is auto-populated from the server. If unspecified, all databases will be processed.</p>
+<p>The database(s) to process - this list is auto-populated from the server. If unspecified, all databases will be processed.<br></p>
 <table>
 <thead>
 <tr>
@@ -643,7 +643,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="excludedatabase">-ExcludeDatabase</h5>
-<p>The database(s) to exclude - this list is auto-populated from the server</p>
+<p>The database(s) to exclude - this list is auto-populated from the server<br></p>
 <table>
 <thead>
 <tr>
@@ -671,7 +671,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="schema">-Schema</h5>
-<p>Filter to only get specific schemas If unspecified, all schemas will be processed.</p>
+<p>Filter to only get specific schemas If unspecified, all schemas will be processed.<br></p>
 <table>
 <thead>
 <tr>
@@ -699,7 +699,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="table">-Table</h5>
-<p>Filter to only get specific tables If unspecified, all User tables will be processed.</p>
+<p>Filter to only get specific tables If unspecified, all User tables will be processed.<br></p>
 <table>
 <thead>
 <tr>
@@ -727,7 +727,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="resultsize">-ResultSize</h5>
-<p>Allows you to limit the number of results returned, as some systems can have very large number of tables.  Default value is no restriction.</p>
+<p>Allows you to limit the number of results returned, as some systems can have very large number of tables.  Default value is no restriction.<br></p>
 <table>
 <thead>
 <tr>
@@ -756,7 +756,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </table>
 <h5 id="rank">-Rank</h5>
 <p>Allows you to specify the field used for ranking when determining the ResultSize
-Can be either TotalPages, UsedPages or TotalRows with default of TotalPages. Only applies when ResultSize is used.</p>
+Can be either TotalPages, UsedPages or TotalRows with default of TotalPages. Only applies when ResultSize is used.<br></p>
 <table>
 <thead>
 <tr>
@@ -789,7 +789,7 @@ Can be either TotalPages, UsedPages or TotalRows with default of TotalPages. Onl
 </table>
 <h5 id="filterby">-FilterBy</h5>
 <p>Allows you to specify level of filtering when determining the ResultSize
-Can be at either Table, Index or Partition level with default of Partition. Only applies when ResultSize is used.</p>
+Can be at either Table, Index or Partition level with default of Partition. Only applies when ResultSize is used.<br></p>
 <table>
 <thead>
 <tr>
@@ -823,7 +823,7 @@ Can be at either Table, Index or Partition level with default of Partition. Only
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -852,6 +852,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Test-DbaDbCompression.ps1">Test-DbaDbCompression</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Test-DbaDbCompression">Test-DbaDbCompression</a>.</p>
 
                 </div> <!-- rendered -->

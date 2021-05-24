@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -470,15 +470,15 @@
 <p>This response type is used to write Extended Events to a CSV file.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>New-DbaXESmartCsvWriter
-    --OutputFile] &lt;String&gt;
-    --Overwrite]
-    -[-Event] &lt;String[]&gt;]
-    -[-OutputColumn] &lt;String[]&gt;]
-    -[-Filter] &lt;String&gt;]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-OutputFile] &lt;String&gt;
+    [-Overwrite]
+    [[-Event] &lt;String[]&gt;]
+    [[-OutputColumn] &lt;String[]&gt;]
+    [[-Filter] &lt;String&gt;]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -489,10 +489,10 @@
 PS C:\&gt; $response = New-DbaXESmartCsvWriter -OutputFile c:\temp\workload.csv -OutputColumn $columns -OverWrite -Event &quot;sql_batch_completed&quot;
 PS C:\&gt; Start-DbaXESmartTarget -SqlInstance localhost\sql2017 -Session &quot;Profiler Standard&quot; -Responder $response
 </code></pre>
-<p>Writes Extended Events to the file &quot;C:\temp\workload.csv&quot;.</p>
+<p>Writes Extended Events to the file &quot;C:\temp\workload.csv&quot;.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="outputfile">-OutputFile</h5>
-<p>Specifies the path to the output CSV file.</p>
+<p>Specifies the path to the output CSV file.<br></p>
 <table>
 <thead>
 <tr>
@@ -521,7 +521,7 @@ PS C:\&gt; Start-DbaXESmartTarget -SqlInstance localhost\sql2017 -Session &quot;
 </table>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="overwrite">-Overwrite</h5>
-<p>Specifies whether any existiting file should be overwritten or not.</p>
+<p>Specifies whether any existiting file should be overwritten or not.<br></p>
 <table>
 <thead>
 <tr>
@@ -549,7 +549,7 @@ PS C:\&gt; Start-DbaXESmartTarget -SqlInstance localhost\sql2017 -Session &quot;
 </tbody>
 </table>
 <h5 id="event">-Event</h5>
-<p>Specifies a list of events to be processed (with others being ignored. By default, all events are processed.</p>
+<p>Specifies a list of events to be processed (with others being ignored. By default, all events are processed.<br></p>
 <table>
 <thead>
 <tr>
@@ -579,7 +579,7 @@ PS C:\&gt; Start-DbaXESmartTarget -SqlInstance localhost\sql2017 -Session &quot;
 <h5 id="outputcolumn">-OutputColumn</h5>
 <p>Specifies the list of columns to output from the events. XESmartTarget will capture in memory and write to the target table only the columns (fields or targets) that are present in this list.
 Fields and actions are matched in a case-sensitive manner.
-Expression columns are supported. Specify a column with ColumnName AS Expression to add an expression column (Example: Total AS Reads + Writes)</p>
+Expression columns are supported. Specify a column with ColumnName AS Expression to add an expression column (Example: Total AS Reads + Writes)<br></p>
 <table>
 <thead>
 <tr>
@@ -608,7 +608,7 @@ Expression columns are supported. Specify a column with ColumnName AS Expression
 </table>
 <h5 id="filter">-Filter</h5>
 <p>Specifies a filter expression in the same form as you would use in the WHERE clause of a SQL query.
-Example: duration &gt; 10000 AND cpu_time &gt; 10000</p>
+Example: duration &gt; 10000 AND cpu_time &gt; 10000<br></p>
 <table>
 <thead>
 <tr>
@@ -638,7 +638,7 @@ Example: duration &gt; 10000 AND cpu_time &gt; 10000</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -666,7 +666,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.</p>
+<p>If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.<br></p>
 <table>
 <thead>
 <tr>
@@ -694,7 +694,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.</p>
+<p>If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.<br></p>
 <table>
 <thead>
 <tr>
@@ -723,6 +723,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/New-DbaXESmartCsvWriter.ps1">New-DbaXESmartCsvWriter</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#New-DbaXESmartCsvWriter">New-DbaXESmartCsvWriter</a>.</p>
 
                 </div> <!-- rendered -->

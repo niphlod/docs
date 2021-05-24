@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -470,14 +470,14 @@
 <p>Exports a Data Collector Set XML Template from Get-DbaPfDataCollectorSet. Exports to &quot;$home\Documents\Performance Monitor Templates&quot; by default.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Export-DbaPfDataCollectorSetTemplate
-    -[-ComputerName] &lt;DbaInstanceParameter[]&gt;]
-    -[-Credential] &lt;PSCredential&gt;]
-    -[-CollectorSet] &lt;String[]&gt;]
-    -[-Path] &lt;String&gt;]
-    -[-FilePath] &lt;String&gt;]
-    -[-InputObject] &lt;Object[]&gt;]
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [[-ComputerName] &lt;DbaInstanceParameter[]&gt;]
+    [[-Credential] &lt;PSCredential&gt;]
+    [[-CollectorSet] &lt;String[]&gt;]
+    [[-Path] &lt;String&gt;]
+    [[-FilePath] &lt;String&gt;]
+    [[-InputObject] &lt;Object[]&gt;]
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -486,14 +486,14 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Export-DbaPfDataCollectorSetTemplate -ComputerName sql2017 -Path C:\temp\pf
 </code></pre>
-<p>Exports all data collector sets from to the C:\temp\pf folder.</p>
+<p>Exports all data collector sets from to the C:\temp\pf folder.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Get-DbaPfDataCollectorSet ComputerName sql2017 -CollectorSet 'System Correlation' | Export-DbaPfDataCollectorSetTemplate -Path C:\temp
 </code></pre>
-<p>Exports the 'System Correlation' data collector set from sql2017 to C:\temp.</p>
+<p>Exports the 'System Correlation' data collector set from sql2017 to C:\temp.<br></p>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="computername">-ComputerName</h5>
-<p>The target computer. Defaults to localhost.</p>
+<p>The target computer. Defaults to localhost.<br></p>
 <table>
 <thead>
 <tr>
@@ -522,7 +522,7 @@
 </table>
 <h5 id="credential">-Credential</h5>
 <p>Allows you to login to $ComputerName using alternative credentials. To use:
-$cred = Get-Credential, then pass $cred object to the -Credential parameter.</p>
+$cred = Get-Credential, then pass $cred object to the -Credential parameter.<br></p>
 <table>
 <thead>
 <tr>
@@ -550,7 +550,7 @@ $cred = Get-Credential, then pass $cred object to the -Credential parameter.</p>
 </tbody>
 </table>
 <h5 id="collectorset">-CollectorSet</h5>
-<p>The name of the collector set(s) to export.</p>
+<p>The name of the collector set(s) to export.<br></p>
 <table>
 <thead>
 <tr>
@@ -578,7 +578,7 @@ $cred = Get-Credential, then pass $cred object to the -Credential parameter.</p>
 </tbody>
 </table>
 <h5 id="path">-Path</h5>
-<p>Specifies the directory where the file or files will be exported.</p>
+<p>Specifies the directory where the file or files will be exported.<br></p>
 <table>
 <thead>
 <tr>
@@ -606,7 +606,7 @@ $cred = Get-Credential, then pass $cred object to the -Credential parameter.</p>
 </tbody>
 </table>
 <h5 id="filepath">-FilePath</h5>
-<p>Specifies the full file path of the output file.</p>
+<p>Specifies the full file path of the output file.<br></p>
 <table>
 <thead>
 <tr>
@@ -634,7 +634,7 @@ $cred = Get-Credential, then pass $cred object to the -Credential parameter.</p>
 </tbody>
 </table>
 <h5 id="inputobject">-InputObject</h5>
-<p>Accepts the object output by Get-DbaPfDataCollectorSetTemplate via the pipeline.</p>
+<p>Accepts the object output by Get-DbaPfDataCollectorSetTemplate via the pipeline.<br></p>
 <table>
 <thead>
 <tr>
@@ -664,7 +664,7 @@ $cred = Get-Credential, then pass $cred object to the -Credential parameter.</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -693,6 +693,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Export-DbaPfDataCollectorSetTemplate.ps1">Export-DbaPfDataCollectorSetTemplate</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Export-DbaPfDataCollectorSetTemplate">Export-DbaPfDataCollectorSetTemplate</a>.</p>
 
                 </div> <!-- rendered -->

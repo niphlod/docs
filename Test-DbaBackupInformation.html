@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -478,17 +478,17 @@
 </ul>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Test-DbaBackupInformation
-    --BackupHistory] &lt;Object[]&gt;
-    -[-SqlInstance] &lt;DbaInstanceParameter&gt;]
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    --WithReplace]
-    --Continue]
-    --VerifyOnly]
-    --OutputScriptOnly]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-BackupHistory] &lt;Object[]&gt;
+    [[-SqlInstance] &lt;DbaInstanceParameter&gt;]
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [-WithReplace]
+    [-Continue]
+    [-VerifyOnly]
+    [-OutputScriptOnly]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -499,11 +499,11 @@
 PS C:\&gt; $PassedDbs = $BackupHistory | Where-Object {$_.IsVerified -eq $True}
 PS C:\&gt; $FailedDbs = $BackupHistory | Where-Object {$_.IsVerified -ne $True}
 </code></pre>
-<p>Pass in a BackupHistory object to be tested against MyInstance.
-Those records that pass are marked as verified. We can then use the IsVerified property to divide the failures and successes</p>
+<p>Pass in a BackupHistory object to be tested against MyInstance.<br>
+Those records that pass are marked as verified. We can then use the IsVerified property to divide the failures and successes<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="backuphistory">-BackupHistory</h5>
-<p>dbatools BackupHistory object. Normally this will have been process with <code>Select-</code> and then <code>Format-DbaBackupInformation</code></p>
+<p>dbatools BackupHistory object. Normally this will have been process with <code>Select-</code> and then <code>Format-DbaBackupInformation</code><br></p>
 <table>
 <thead>
 <tr>
@@ -532,7 +532,7 @@ Those records that pass are marked as verified. We can then use the IsVerified p
 </table>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The Sql Server instance that wil be performing the restore</p>
+<p>The Sql Server instance that wil be performing the restore<br></p>
 <table>
 <thead>
 <tr>
@@ -562,7 +562,7 @@ Those records that pass are marked as verified. We can then use the IsVerified p
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -590,7 +590,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="withreplace">-WithReplace</h5>
-<p>By default we won't overwrite an existing database, this switch tells us you want to</p>
+<p>By default we won't overwrite an existing database, this switch tells us you want to<br></p>
 <table>
 <thead>
 <tr>
@@ -618,7 +618,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="continue">-Continue</h5>
-<p>Switch to indicate a continuing restore</p>
+<p>Switch to indicate a continuing restore<br></p>
 <table>
 <thead>
 <tr>
@@ -646,7 +646,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="verifyonly">-VerifyOnly</h5>
-<p>This switch indicates that you only wish to verify a restore, so runs a smaller number of tests as you won't be writing anything to the restore server</p>
+<p>This switch indicates that you only wish to verify a restore, so runs a smaller number of tests as you won't be writing anything to the restore server<br></p>
 <table>
 <thead>
 <tr>
@@ -674,7 +674,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="outputscriptonly">-OutputScriptOnly</h5>
-<p>Switch to disable path creation. Will write a warning that a path does not exist</p>
+<p>Switch to disable path creation. Will write a warning that a path does not exist<br></p>
 <table>
 <thead>
 <tr>
@@ -704,7 +704,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -732,7 +732,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>Shows what would happen if the cmdlet runs. The cmdlet is not run.</p>
+<p>Shows what would happen if the cmdlet runs. The cmdlet is not run.<br></p>
 <table>
 <thead>
 <tr>
@@ -760,7 +760,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>Prompts you for confirmation before running the cmdlet.</p>
+<p>Prompts you for confirmation before running the cmdlet.<br></p>
 <table>
 <thead>
 <tr>
@@ -789,6 +789,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Test-DbaBackupInformation.ps1">Test-DbaBackupInformation</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Test-DbaBackupInformation">Test-DbaBackupInformation</a>.</p>
 
                 </div> <!-- rendered -->

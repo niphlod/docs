@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -472,10 +472,10 @@
 <p>Use the Simple parameter for simplified output and faster results.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Get-DbaKbUpdate
-    --Name] &lt;String[]&gt;
-    --Simple]
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [-Name] &lt;String[]&gt;
+    [-Simple]
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -484,18 +484,18 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Get-DbaKbUpdate -Name KB4057119
 </code></pre>
-<p>Gets detailed information about KB4057119. This works for SQL Server or any other KB.</p>
+<p>Gets detailed information about KB4057119. This works for SQL Server or any other KB.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Get-DbaKbUpdate -Name KB4057119, 4057114
 </code></pre>
-<p>Gets detailed information about KB4057119 and KB4057114. This works for SQL Server or any other KB.</p>
+<p>Gets detailed information about KB4057119 and KB4057114. This works for SQL Server or any other KB.<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Get-DbaKbUpdate -Name KB4057119, 4057114 -Simple
 </code></pre>
-<p>A lil faster. Returns, at the very least: Title, Architecture, Language, Hotfix, UpdateId and Link</p>
+<p>A lil faster. Returns, at the very least: Title, Architecture, Language, Hotfix, UpdateId and Link<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="name">-Name</h5>
-<p>The KB name or number. For example, KB4057119 or 4057119.</p>
+<p>The KB name or number. For example, KB4057119 or 4057119.<br></p>
 <table>
 <thead>
 <tr>
@@ -524,7 +524,7 @@
 </table>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="simple">-Simple</h5>
-<p>A lil faster. Returns, at the very least: Title, Architecture, Language, Hotfix, UpdateId and Link</p>
+<p>A lil faster. Returns, at the very least: Title, Architecture, Language, Hotfix, UpdateId and Link<br></p>
 <table>
 <thead>
 <tr>
@@ -554,7 +554,7 @@
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -583,6 +583,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Get-DbaKbUpdate.ps1">Get-DbaKbUpdate</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Get-DbaKbUpdate">Get-DbaKbUpdate</a>.</p>
 
                 </div> <!-- rendered -->

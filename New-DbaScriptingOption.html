@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -471,7 +471,7 @@
 <p>See <a href="https://msdn.microsoft.com/en-us/library/microsoft.sqlserver.management.smo.scriptingoptions.aspx">https://msdn.microsoft.com/en-us/library/microsoft.sqlserver.management.smo.scriptingoptions.aspx</a> for more information</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>New-DbaScriptingOption
-    -&lt;CommonParameters&gt;]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -483,9 +483,10 @@ PS C:\&gt; $options.ScriptDrops = $false
 PS C:\&gt; $options.WithDependencies = $true
 PS C:\&gt; Get-DbaAgentJob -SqlInstance sql2016 | Export-DbaScript -ScriptingOptionObject $options
 </code></pre>
-<p>Exports Agent Jobs with the Scripting Options ScriptDrops set to $false and WithDependencies set to true</p>
+<p>Exports Agent Jobs with the Scripting Options ScriptDrops set to $false and WithDependencies set to true<br></p>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/New-DbaScriptingOption.ps1">New-DbaScriptingOption</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#New-DbaScriptingOption">New-DbaScriptingOption</a>.</p>
 
                 </div> <!-- rendered -->

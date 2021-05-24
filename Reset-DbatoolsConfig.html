@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -476,19 +476,19 @@ Generally, this amounts to reverting it to its default value.</p>
 </ul>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Reset-DbatoolsConfig
-    --ConfigurationItem &lt;Config[]&gt;]
-    --FullName &lt;String[]&gt;]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-ConfigurationItem &lt;Config[]&gt;]
+    [-FullName &lt;String[]&gt;]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 Reset-DbatoolsConfig -Module &lt;String&gt;
-    --Name &lt;String&gt;]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-Name &lt;String&gt;]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -497,19 +497,19 @@ Reset-DbatoolsConfig -Module &lt;String&gt;
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Reset-DbatoolsConfig -Module MyModule
 </code></pre>
-<p>Resets all configuration items of the MyModule to default.</p>
+<p>Resets all configuration items of the MyModule to default.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Get-DbatoolsConfig | Reset-DbatoolsConfig
 </code></pre>
-<p>Resets ALL configuration items to default.</p>
+<p>Resets ALL configuration items to default.<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Reset-DbatoolsConfig -FullName MyModule.Group.Setting1
 </code></pre>
-<p>Resets the configuration item named 'MyModule.Group.Setting1'.</p>
+<p>Resets the configuration item named 'MyModule.Group.Setting1'.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="module">-Module</h5>
 <p>The name of the module, from which configurations should be reset.
-Used in conjunction with the -Name parameter to filter a specific set of items.</p>
+Used in conjunction with the -Name parameter to filter a specific set of items.<br></p>
 <table>
 <thead>
 <tr>
@@ -538,7 +538,7 @@ Used in conjunction with the -Name parameter to filter a specific set of items.<
 </table>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="configurationitem">-ConfigurationItem</h5>
-<p>A configuration object as returned by Get-DbatoolsConfig.</p>
+<p>A configuration object as returned by Get-DbatoolsConfig.<br></p>
 <table>
 <thead>
 <tr>
@@ -566,7 +566,7 @@ Used in conjunction with the -Name parameter to filter a specific set of items.<
 </tbody>
 </table>
 <h5 id="fullname">-FullName</h5>
-<p>The full name of the setting to reset, offering the maximum of precision.</p>
+<p>The full name of the setting to reset, offering the maximum of precision.<br></p>
 <table>
 <thead>
 <tr>
@@ -594,7 +594,7 @@ Used in conjunction with the -Name parameter to filter a specific set of items.<
 </tbody>
 </table>
 <h5 id="name">-Name</h5>
-<p>Used in conjunction with the -Module parameter to select which settings to reset using wildcard comparison.</p>
+<p>Used in conjunction with the -Module parameter to select which settings to reset using wildcard comparison.<br></p>
 <table>
 <thead>
 <tr>
@@ -623,7 +623,7 @@ Used in conjunction with the -Name parameter to filter a specific set of items.<
 </table>
 <h5 id="enableexception">-EnableException</h5>
 <p>This parameters disables user-friendly warnings and enables the throwing of exceptions.
-This is less user friendly, but allows catching exceptions in calling scripts.</p>
+This is less user friendly, but allows catching exceptions in calling scripts.<br></p>
 <table>
 <thead>
 <tr>
@@ -651,7 +651,7 @@ This is less user friendly, but allows catching exceptions in calling scripts.</
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.</p>
+<p>If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.<br></p>
 <table>
 <thead>
 <tr>
@@ -679,7 +679,7 @@ This is less user friendly, but allows catching exceptions in calling scripts.</
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.</p>
+<p>If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.<br></p>
 <table>
 <thead>
 <tr>
@@ -708,6 +708,7 @@ This is less user friendly, but allows catching exceptions in calling scripts.</
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Reset-DbatoolsConfig.ps1">Reset-DbatoolsConfig</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Reset-DbatoolsConfig">Reset-DbatoolsConfig</a>.</p>
 
                 </div> <!-- rendered -->

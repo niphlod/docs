@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -470,23 +470,23 @@
 <p>Remove-DbaAgentSchedule removes a job in the SQL Server Agent.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Remove-DbaAgentSchedule -SqlInstance &lt;DbaInstanceParameter[]&gt;
-    --SqlCredential &lt;PSCredential&gt;]
-    --Schedule &lt;String[]&gt;]
-    --ScheduleUid &lt;String[]&gt;]
-    --EnableException]
-    --Force]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-SqlCredential &lt;PSCredential&gt;]
+    [-Schedule &lt;String[]&gt;]
+    [-ScheduleUid &lt;String[]&gt;]
+    [-EnableException]
+    [-Force]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 Remove-DbaAgentSchedule
-    --SqlCredential &lt;PSCredential&gt;]
-    --ScheduleUid &lt;String[]&gt;] -InputObject &lt;ScheduleBase[]&gt;
-    --EnableException]
-    --Force]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-SqlCredential &lt;PSCredential&gt;]
+    [-ScheduleUid &lt;String[]&gt;] -InputObject &lt;ScheduleBase[]&gt;
+    [-EnableException]
+    [-Force]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -495,34 +495,34 @@ Remove-DbaAgentSchedule
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Remove-DbaAgentSchedule -SqlInstance sql1 -Schedule weekly
 </code></pre>
-<p>Remove the schedule weekly</p>
+<p>Remove the schedule weekly<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Remove-DbaAgentSchedule -SqlInstance sql1 -Schedule weekly -Force
 </code></pre>
-<p>Remove the schedule weekly from the job even if the schedule is being used by another job.</p>
+<p>Remove the schedule weekly from the job even if the schedule is being used by another job.<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Remove-DbaAgentSchedule -SqlInstance sql1 -Schedule daily, weekly
 </code></pre>
-<p>Remove multiple schedule</p>
+<p>Remove multiple schedule<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; Remove-DbaAgentSchedule -SqlInstance sql1, sql2, sql3 -Schedule daily, weekly
 </code></pre>
-<p>Remove the schedule on multiple servers for multiple schedules</p>
+<p>Remove the schedule on multiple servers for multiple schedules<br></p>
 <h5 id="example-5">Example:  5</h5>
 <pre><code>PS C:\&gt; sql1, sql2, sql3 | Remove-DbaAgentSchedule -Schedule daily, weekly
 </code></pre>
-<p>Remove the schedule on multiple servers using pipe line</p>
+<p>Remove the schedule on multiple servers using pipe line<br></p>
 <h5 id="example-6">Example:  6</h5>
 <pre><code>PS C:\&gt; Get-DbaAgentSchedule -SqlInstance sql1 -Schedule sched1, sched2, sched3 | Remove-DbaAgentSchedule
 </code></pre>
-<p>Remove the schedules using a pipeline</p>
+<p>Remove the schedules using a pipeline<br></p>
 <h5 id="example-7">Example:  7</h5>
 <pre><code>PS C:\&gt; Remove-DbaAgentSchedule -SqlInstance sql1, sql2, sql3 -ScheduleUid 'bf57fa7e-7720-4936-85a0-87d279db7eb7'
 </code></pre>
-<p>Remove the schedules usingthe schdule uid</p>
+<p>Remove the schedules usingthe schdule uid<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances. You must have sysadmin access and server version must be SQL Server version 2000 or greater.</p>
+<p>The target SQL Server instance or instances. You must have sysadmin access and server version must be SQL Server version 2000 or greater.<br></p>
 <table>
 <thead>
 <tr>
@@ -550,7 +550,7 @@ Remove-DbaAgentSchedule
 </tbody>
 </table>
 <h5 id="inputobject">-InputObject</h5>
-<p>A collection of schedule (such as returned by Get-DbaAgentSchedule), to be removed.</p>
+<p>A collection of schedule (such as returned by Get-DbaAgentSchedule), to be removed.<br></p>
 <table>
 <thead>
 <tr>
@@ -581,7 +581,7 @@ Remove-DbaAgentSchedule
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -609,7 +609,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="schedule">-Schedule</h5>
-<p>The name of the job schedule.</p>
+<p>The name of the job schedule.<br></p>
 <table>
 <thead>
 <tr>
@@ -637,7 +637,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="scheduleuid">-ScheduleUid</h5>
-<p>The unique identifier of the schedule</p>
+<p>The unique identifier of the schedule<br></p>
 <table>
 <thead>
 <tr>
@@ -667,7 +667,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -696,7 +696,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <h5 id="force">-Force</h5>
 <p>The force parameter will ignore some errors in the parameters and assume defaults.
-It will also remove the any present schedules with the same name for the specific job.</p>
+It will also remove the any present schedules with the same name for the specific job.<br></p>
 <table>
 <thead>
 <tr>
@@ -724,7 +724,7 @@ It will also remove the any present schedules with the same name for the specifi
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>Shows what would happen if the command were to run. No actions are actually performed.</p>
+<p>Shows what would happen if the command were to run. No actions are actually performed.<br></p>
 <table>
 <thead>
 <tr>
@@ -752,7 +752,7 @@ It will also remove the any present schedules with the same name for the specifi
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>Prompts you for confirmation before executing any changing operations within the command.</p>
+<p>Prompts you for confirmation before executing any changing operations within the command.<br></p>
 <table>
 <thead>
 <tr>
@@ -781,6 +781,7 @@ It will also remove the any present schedules with the same name for the specifi
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Remove-DbaAgentSchedule.ps1">Remove-DbaAgentSchedule</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Remove-DbaAgentSchedule">Remove-DbaAgentSchedule</a>.</p>
 
                 </div> <!-- rendered -->

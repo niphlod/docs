@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -471,27 +471,27 @@
 <p>Automatically creates database mirroring endpoints if required.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Add-DbaAgReplica
-    --SqlInstance] &lt;DbaInstanceParameter[]&gt;
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    -[-Name] &lt;String&gt;]
-    -[-AvailabilityMode] &lt;String&gt;]
-    -[-FailoverMode] &lt;String&gt;]
-    -[-BackupPriority] &lt;Int32&gt;]
-    -[-ConnectionModeInPrimaryRole] &lt;String&gt;]
-    -[-ConnectionModeInSecondaryRole] &lt;String&gt;]
-    -[-SeedingMode] &lt;String&gt;]
-    -[-Endpoint] &lt;String&gt;]
-    -[-EndpointUrl] &lt;String[]&gt;]
-    --Passthru]
-    -[-ReadOnlyRoutingList] &lt;String[]&gt;]
-    -[-ReadonlyRoutingConnectionUrl] &lt;String&gt;]
-    -[-Certificate] &lt;String&gt;]
-    --ConfigureXESession]
-    --InputObject] &lt;AvailabilityGroup&gt;
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-SqlInstance] &lt;DbaInstanceParameter[]&gt;
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [[-Name] &lt;String&gt;]
+    [[-AvailabilityMode] &lt;String&gt;]
+    [[-FailoverMode] &lt;String&gt;]
+    [[-BackupPriority] &lt;Int32&gt;]
+    [[-ConnectionModeInPrimaryRole] &lt;String&gt;]
+    [[-ConnectionModeInSecondaryRole] &lt;String&gt;]
+    [[-SeedingMode] &lt;String&gt;]
+    [[-Endpoint] &lt;String&gt;]
+    [[-EndpointUrl] &lt;String[]&gt;]
+    [-Passthru]
+    [[-ReadOnlyRoutingList] &lt;String[]&gt;]
+    [[-ReadonlyRoutingConnectionUrl] &lt;String&gt;]
+    [[-Certificate] &lt;String&gt;]
+    [-ConfigureXESession]
+    [-InputObject] &lt;AvailabilityGroup&gt;
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -500,18 +500,18 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Get-DbaAvailabilityGroup -SqlInstance sql2017a -AvailabilityGroup SharePoint | Add-DbaAgReplica -SqlInstance sql2017b
 </code></pre>
-<p>Adds sql2017b to the SharePoint availability group on sql2017a</p>
+<p>Adds sql2017b to the SharePoint availability group on sql2017a<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Get-DbaAvailabilityGroup -SqlInstance sql2017a -AvailabilityGroup SharePoint | Add-DbaAgReplica -SqlInstance sql2017b -FailoverMode Manual
 </code></pre>
-<p>Adds sql2017b to the SharePoint availability group on sql2017a with a manual failover mode.</p>
+<p>Adds sql2017b to the SharePoint availability group on sql2017a with a manual failover mode.<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Get-DbaAvailabilityGroup -SqlInstance sql2017a -AvailabilityGroup SharePoint | Add-DbaAgReplica -SqlInstance sql2017b -EndpointUrl 'TCP://sql2017b.specialnet.local:5022'
 </code></pre>
-<p>Adds sql2017b to the SharePoint availability group on sql2017a with a custom endpoint URL.</p>
+<p>Adds sql2017b to the SharePoint availability group on sql2017a with a custom endpoint URL.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances. Server version must be SQL Server version 2012 or higher.</p>
+<p>The target SQL Server instance or instances. Server version must be SQL Server version 2012 or higher.<br></p>
 <table>
 <thead>
 <tr>
@@ -539,7 +539,7 @@
 </tbody>
 </table>
 <h5 id="inputobject">-InputObject</h5>
-<p>Enables piping from Get-DbaAvailabilityGroup.</p>
+<p>Enables piping from Get-DbaAvailabilityGroup.<br></p>
 <table>
 <thead>
 <tr>
@@ -570,7 +570,7 @@
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instances using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -599,7 +599,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </table>
 <h5 id="name">-Name</h5>
 <p>The name of the replica. Defaults to the SQL Server instance name.
-This parameter is only supported if the replica is added to just one instance.</p>
+This parameter is only supported if the replica is added to just one instance.<br></p>
 <table>
 <thead>
 <tr>
@@ -627,7 +627,7 @@ This parameter is only supported if the replica is added to just one instance.</
 </tbody>
 </table>
 <h5 id="availabilitymode">-AvailabilityMode</h5>
-<p>Sets the availability mode of the availability group replica. Options are: AsynchronousCommit and SynchronousCommit. SynchronousCommit is default.</p>
+<p>Sets the availability mode of the availability group replica. Options are: AsynchronousCommit and SynchronousCommit. SynchronousCommit is default.<br></p>
 <table>
 <thead>
 <tr>
@@ -659,7 +659,7 @@ This parameter is only supported if the replica is added to just one instance.</
 </tbody>
 </table>
 <h5 id="failovermode">-FailoverMode</h5>
-<p>Sets the failover mode of the availability group replica. Options are Automatic and Manual. Automatic is default.</p>
+<p>Sets the failover mode of the availability group replica. Options are Automatic and Manual. Automatic is default.<br></p>
 <table>
 <thead>
 <tr>
@@ -691,7 +691,7 @@ This parameter is only supported if the replica is added to just one instance.</
 </tbody>
 </table>
 <h5 id="backuppriority">-BackupPriority</h5>
-<p>Sets the backup priority availability group replica. Default is 50.</p>
+<p>Sets the backup priority availability group replica. Default is 50.<br></p>
 <table>
 <thead>
 <tr>
@@ -719,7 +719,7 @@ This parameter is only supported if the replica is added to just one instance.</
 </tbody>
 </table>
 <h5 id="connectionmodeinprimaryrole">-ConnectionModeInPrimaryRole</h5>
-<p>Specifies the connection intent mode of an Availability Replica in primary role. AllowAllConnections by default.</p>
+<p>Specifies the connection intent mode of an Availability Replica in primary role. AllowAllConnections by default.<br></p>
 <table>
 <thead>
 <tr>
@@ -751,7 +751,7 @@ This parameter is only supported if the replica is added to just one instance.</
 </tbody>
 </table>
 <h5 id="connectionmodeinsecondaryrole">-ConnectionModeInSecondaryRole</h5>
-<p>Specifies the connection intent mode of an Availability Replica in secondary role. AllowAllConnections by default.</p>
+<p>Specifies the connection intent mode of an Availability Replica in secondary role. AllowAllConnections by default.<br></p>
 <table>
 <thead>
 <tr>
@@ -785,7 +785,7 @@ This parameter is only supported if the replica is added to just one instance.</
 <h5 id="seedingmode">-SeedingMode</h5>
 <p>Specifies how the secondary replica will be initially seeded.
 Automatic enables direct seeding. This method will seed the secondary replica over the network. This method does not require you to backup and restore a copy of the primary database on the replica.
-Manual requires you to create a backup of the database on the primary replica and manually restore that backup on the secondary replica.</p>
+Manual requires you to create a backup of the database on the primary replica and manually restore that backup on the secondary replica.<br></p>
 <table>
 <thead>
 <tr>
@@ -818,7 +818,7 @@ Manual requires you to create a backup of the database on the primary replica an
 </table>
 <h5 id="endpoint">-Endpoint</h5>
 <p>By default, this command will attempt to find a DatabaseMirror endpoint. If one does not exist, it will create it.
-If an endpoint must be created, the name &quot;hadr_endpoint&quot; will be used. If an alternative is preferred, use Endpoint.</p>
+If an endpoint must be created, the name &quot;hadr_endpoint&quot; will be used. If an alternative is preferred, use Endpoint.<br></p>
 <table>
 <thead>
 <tr>
@@ -849,7 +849,7 @@ If an endpoint must be created, the name &quot;hadr_endpoint&quot; will be used.
 <p>By default, the property Fqdn of Get-DbaEndpoint is used as EndpointUrl.
 Use EndpointUrl if a different URL is required due to special network configurations.
 EndpointUrl has to be an array of strings in format 'TCP://system-address:port', one entry for every instance.
-See details at: <a href="https://docs.microsoft.com/en-us/sql/database-engine/availability-groups/windows/specify-endpoint-url-adding-or-modifying-availability-replica">https://docs.microsoft.com/en-us/sql/database-engine/availability-groups/windows/specify-endpoint-url-adding-or-modifying-availability-replica</a></p>
+See details at: <a href="https://docs.microsoft.com/en-us/sql/database-engine/availability-groups/windows/specify-endpoint-url-adding-or-modifying-availability-replica">https://docs.microsoft.com/en-us/sql/database-engine/availability-groups/windows/specify-endpoint-url-adding-or-modifying-availability-replica</a><br></p>
 <table>
 <thead>
 <tr>
@@ -877,7 +877,7 @@ See details at: <a href="https://docs.microsoft.com/en-us/sql/database-engine/av
 </tbody>
 </table>
 <h5 id="passthru">-Passthru</h5>
-<p>Don't create the replica, just pass thru an object that can be further customized before creation.</p>
+<p>Don't create the replica, just pass thru an object that can be further customized before creation.<br></p>
 <table>
 <thead>
 <tr>
@@ -906,7 +906,7 @@ See details at: <a href="https://docs.microsoft.com/en-us/sql/database-engine/av
 </table>
 <h5 id="readonlyroutinglist">-ReadOnlyRoutingList</h5>
 <p>Sets the read only routing ordered list of replica server names to use when redirecting read-only connections through this availability replica.
-This parameter is only supported if the replica is added to just one instance.</p>
+This parameter is only supported if the replica is added to just one instance.<br></p>
 <table>
 <thead>
 <tr>
@@ -935,7 +935,7 @@ This parameter is only supported if the replica is added to just one instance.</
 </table>
 <h5 id="readonlyroutingconnectionurl">-ReadonlyRoutingConnectionUrl</h5>
 <p>Sets the read only routing connection url for the availability replica.
-This parameter is only supported if the replica is added to just one instance.</p>
+This parameter is only supported if the replica is added to just one instance.<br></p>
 <table>
 <thead>
 <tr>
@@ -964,7 +964,7 @@ This parameter is only supported if the replica is added to just one instance.</
 </table>
 <h5 id="certificate">-Certificate</h5>
 <p>Specifies that the endpoint is to authenticate the connection using the certificate specified by certificate_name to establish identity for authorization.
-The far endpoint must have a certificate with the public key matching the private key of the specified certificate.</p>
+The far endpoint must have a certificate with the public key matching the private key of the specified certificate.<br></p>
 <table>
 <thead>
 <tr>
@@ -993,7 +993,7 @@ The far endpoint must have a certificate with the public key matching the privat
 </table>
 <h5 id="configurexesession">-ConfigureXESession</h5>
 <p>Configure the AlwaysOn_health extended events session to start automatically as the SSMS wizard would do.
-<a href="https://docs.microsoft.com/en-us/sql/database-engine/availability-groups/windows/always-on-extended-events#BKMK_alwayson_health">https://docs.microsoft.com/en-us/sql/database-engine/availability-groups/windows/always-on-extended-events#BKMK_alwayson_health</a></p>
+<a href="https://docs.microsoft.com/en-us/sql/database-engine/availability-groups/windows/always-on-extended-events#BKMK_alwayson_health">https://docs.microsoft.com/en-us/sql/database-engine/availability-groups/windows/always-on-extended-events#BKMK_alwayson_health</a><br></p>
 <table>
 <thead>
 <tr>
@@ -1023,7 +1023,7 @@ The far endpoint must have a certificate with the public key matching the privat
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -1051,7 +1051,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>Shows what would happen if the command were to run. No actions are actually performed.</p>
+<p>Shows what would happen if the command were to run. No actions are actually performed.<br></p>
 <table>
 <thead>
 <tr>
@@ -1079,7 +1079,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>Prompts you for confirmation before executing any changing operations within the command.</p>
+<p>Prompts you for confirmation before executing any changing operations within the command.<br></p>
 <table>
 <thead>
 <tr>
@@ -1108,6 +1108,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Add-DbaAgReplica.ps1">Add-DbaAgReplica</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Add-DbaAgReplica">Add-DbaAgReplica</a>.</p>
 
                 </div> <!-- rendered -->

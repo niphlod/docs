@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -470,16 +470,16 @@
 <p>The Get-DbaAgentJob returns connected SMO object for SQL Agent Job information for each instance(s) of SQL Server.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Get-DbaAgentJob
-    --SqlInstance] &lt;DbaInstanceParameter[]&gt;
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    -[-Job] &lt;String[]&gt;]
-    -[-ExcludeJob] &lt;String[]&gt;]
-    -[-Database] &lt;String[]&gt;]
-    -[-Category] &lt;String[]&gt;]
-    -[-ExcludeCategory] &lt;String[]&gt;]
-    --ExcludeDisabledJobs]
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [-SqlInstance] &lt;DbaInstanceParameter[]&gt;
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [[-Job] &lt;String[]&gt;]
+    [[-ExcludeJob] &lt;String[]&gt;]
+    [[-Database] &lt;String[]&gt;]
+    [[-Category] &lt;String[]&gt;]
+    [[-ExcludeCategory] &lt;String[]&gt;]
+    [-ExcludeDisabledJobs]
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -488,38 +488,38 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Get-DbaAgentJob -SqlInstance localhost
 </code></pre>
-<p>Returns all SQL Agent Jobs on the local default SQL Server instance</p>
+<p>Returns all SQL Agent Jobs on the local default SQL Server instance<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Get-DbaAgentJob -SqlInstance localhost, sql2016
 </code></pre>
-<p>Returns all SQl Agent Jobs for the local and sql2016 SQL Server instances</p>
+<p>Returns all SQl Agent Jobs for the local and sql2016 SQL Server instances<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Get-DbaAgentJob -SqlInstance localhost -Job BackupData, BackupDiff
 </code></pre>
-<p>Returns all SQL Agent Jobs named BackupData and BackupDiff from the local SQL Server instance.</p>
+<p>Returns all SQL Agent Jobs named BackupData and BackupDiff from the local SQL Server instance.<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; Get-DbaAgentJob -SqlInstance localhost -ExcludeJob BackupDiff
 </code></pre>
-<p>Returns all SQl Agent Jobs for the local SQL Server instances, except the BackupDiff Job.</p>
+<p>Returns all SQl Agent Jobs for the local SQL Server instances, except the BackupDiff Job.<br></p>
 <h5 id="example-5">Example:  5</h5>
 <pre><code>PS C:\&gt; Get-DbaAgentJob -SqlInstance localhost -ExcludeDisabledJobs
 </code></pre>
-<p>Returns all SQl Agent Jobs for the local SQL Server instances, excluding the disabled jobs.</p>
+<p>Returns all SQl Agent Jobs for the local SQL Server instances, excluding the disabled jobs.<br></p>
 <h5 id="example-6">Example:  6</h5>
 <pre><code>PS C:\&gt; $servers | Get-DbaAgentJob | Out-GridView -PassThru | Start-DbaAgentJob -WhatIf
 </code></pre>
-<p>Find all of your Jobs from SQL Server instances in the $servers collection, select the jobs you want to start then see jobs would start if you ran Start-DbaAgentJob</p>
+<p>Find all of your Jobs from SQL Server instances in the $servers collection, select the jobs you want to start then see jobs would start if you ran Start-DbaAgentJob<br></p>
 <h5 id="example-7">Example:  7</h5>
 <pre><code>PS C:\&gt; Get-DbaAgentJob -SqlInstance sqlserver2014a | Where-Object Category -eq &quot;Report Server&quot; | Export-DbaScript -Path &quot;C:\temp\sqlserver2014a_SSRSJobs.sql&quot;
 </code></pre>
-<p>Exports all SSRS jobs from SQL instance sqlserver2014a to a file.</p>
+<p>Exports all SSRS jobs from SQL instance sqlserver2014a to a file.<br></p>
 <h5 id="example-8">Example:  8</h5>
 <pre><code>PS C:\&gt; Get-DbaAgentJob -SqlInstance sqlserver2014a -Database msdb
 </code></pre>
-<p>Finds all jobs on sqlserver2014a that T-SQL job steps associated with msdb database</p>
+<p>Finds all jobs on sqlserver2014a that T-SQL job steps associated with msdb database<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances. This can be a collection and receive pipeline input to allow the function to be executed against multiple SQL Server instances.</p>
+<p>The target SQL Server instance or instances. This can be a collection and receive pipeline input to allow the function to be executed against multiple SQL Server instances.<br></p>
 <table>
 <thead>
 <tr>
@@ -550,7 +550,7 @@
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -578,7 +578,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="job">-Job</h5>
-<p>The job(s) to process - this list is auto-populated from the server. If unspecified, all jobs will be processed.</p>
+<p>The job(s) to process - this list is auto-populated from the server. If unspecified, all jobs will be processed.<br></p>
 <table>
 <thead>
 <tr>
@@ -606,7 +606,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="excludejob">-ExcludeJob</h5>
-<p>The job(s) to exclude - this list is auto-populated from the server.</p>
+<p>The job(s) to exclude - this list is auto-populated from the server.<br></p>
 <table>
 <thead>
 <tr>
@@ -634,7 +634,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="database">-Database</h5>
-<p>Return jobs with T-SQL job steps associated with specific databases</p>
+<p>Return jobs with T-SQL job steps associated with specific databases<br></p>
 <table>
 <thead>
 <tr>
@@ -662,7 +662,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="category">-Category</h5>
-<p>Return jobs associated with specific category</p>
+<p>Return jobs associated with specific category<br></p>
 <table>
 <thead>
 <tr>
@@ -690,7 +690,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="excludecategory">-ExcludeCategory</h5>
-<p>Categories to exclude - jobs associated with these categories will not be returned.</p>
+<p>Categories to exclude - jobs associated with these categories will not be returned.<br></p>
 <table>
 <thead>
 <tr>
@@ -718,7 +718,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="excludedisabledjobs">-ExcludeDisabledJobs</h5>
-<p>Switch will exclude disabled jobs from the output.</p>
+<p>Switch will exclude disabled jobs from the output.<br></p>
 <table>
 <thead>
 <tr>
@@ -748,7 +748,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -777,6 +777,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Get-DbaAgentJob.ps1">Get-DbaAgentJob</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Get-DbaAgentJob">Get-DbaAgentJob</a>.</p>
 
                 </div> <!-- rendered -->

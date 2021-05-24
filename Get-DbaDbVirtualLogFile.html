@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -475,13 +475,13 @@
 <p>If you've got a high number of VLFs, you can use Expand-DbaDbLogFile to reduce the number.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Get-DbaDbVirtualLogFile
-    --SqlInstance] &lt;DbaInstanceParameter[]&gt;
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    -[-Database] &lt;Object[]&gt;]
-    -[-ExcludeDatabase] &lt;Object[]&gt;]
-    --IncludeSystemDBs]
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [-SqlInstance] &lt;DbaInstanceParameter[]&gt;
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [[-Database] &lt;Object[]&gt;]
+    [[-ExcludeDatabase] &lt;Object[]&gt;]
+    [-IncludeSystemDBs]
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -490,22 +490,22 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Get-DbaDbVirtualLogFile -SqlInstance sqlcluster
 </code></pre>
-<p>Returns all user database virtual log file details for the sqlcluster instance.</p>
+<p>Returns all user database virtual log file details for the sqlcluster instance.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Get-DbaDbVirtualLogFile -SqlInstance sqlserver | Group-Object -Property Database | Where-Object Count -gt 50
 </code></pre>
-<p>Returns user databases that have 50 or more VLFs.</p>
+<p>Returns user databases that have 50 or more VLFs.<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; 'sqlserver','sqlcluster' | Get-DbaDbVirtualLogFile
 </code></pre>
-<p>Returns all VLF information for the sqlserver and sqlcluster SQL Server instances. Processes data via the pipeline.</p>
+<p>Returns all VLF information for the sqlserver and sqlcluster SQL Server instances. Processes data via the pipeline.<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; Get-DbaDbVirtualLogFile -SqlInstance sqlcluster -Database db1, db2
 </code></pre>
-<p>Returns the VLF counts for the db1 and db2 databases on sqlcluster.</p>
+<p>Returns the VLF counts for the db1 and db2 databases on sqlcluster.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances.</p>
+<p>The target SQL Server instance or instances.<br></p>
 <table>
 <thead>
 <tr>
@@ -536,7 +536,7 @@
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -564,7 +564,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="database">-Database</h5>
-<p>Specifies the database(s) to process. Options for this list are auto-populated from the server. If unspecified, all databases will be processed.</p>
+<p>Specifies the database(s) to process. Options for this list are auto-populated from the server. If unspecified, all databases will be processed.<br></p>
 <table>
 <thead>
 <tr>
@@ -592,7 +592,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="excludedatabase">-ExcludeDatabase</h5>
-<p>Specifies the database(s) to exclude from processing. Options for this list are auto-populated from the server.</p>
+<p>Specifies the database(s) to exclude from processing. Options for this list are auto-populated from the server.<br></p>
 <table>
 <thead>
 <tr>
@@ -620,7 +620,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="includesystemdbs">-IncludeSystemDBs</h5>
-<p>If this switch is enabled, system database information will be displayed.</p>
+<p>If this switch is enabled, system database information will be displayed.<br></p>
 <table>
 <thead>
 <tr>
@@ -650,7 +650,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -679,6 +679,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Get-DbaDbVirtualLogFile.ps1">Get-DbaDbVirtualLogFile</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Get-DbaDbVirtualLogFile">Get-DbaDbVirtualLogFile</a>.</p>
 
                 </div> <!-- rendered -->

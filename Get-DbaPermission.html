@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -478,14 +478,14 @@ To see server-level implicit permissions via fixed roles run the following comma
 <p>See <a href="https://msdn.microsoft.com/en-us/library/ms191291.aspx">https://msdn.microsoft.com/en-us/library/ms191291.aspx</a> for more information</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Get-DbaPermission
-    --SqlInstance] &lt;DbaInstanceParameter[]&gt;
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    -[-Database] &lt;Object[]&gt;]
-    -[-ExcludeDatabase] &lt;Object[]&gt;]
-    --IncludeServerLevel]
-    --ExcludeSystemObjects]
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [-SqlInstance] &lt;DbaInstanceParameter[]&gt;
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [[-Database] &lt;Object[]&gt;]
+    [[-ExcludeDatabase] &lt;Object[]&gt;]
+    [-IncludeServerLevel]
+    [-ExcludeSystemObjects]
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -494,23 +494,23 @@ To see server-level implicit permissions via fixed roles run the following comma
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Get-DbaPermission -SqlInstance ServerA\sql987
 </code></pre>
-<p>Returns a custom object with Server name, Database name, permission state, permission type, grantee and securable.</p>
+<p>Returns a custom object with Server name, Database name, permission state, permission type, grantee and securable.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Get-DbaPermission -SqlInstance ServerA\sql987 | Format-Table -AutoSize
 </code></pre>
-<p>Returns a formatted table displaying Server, Database, permission state, permission type, grantee, granteetype, securable and securabletype.</p>
+<p>Returns a formatted table displaying Server, Database, permission state, permission type, grantee, granteetype, securable and securabletype.<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Get-DbaPermission -SqlInstance ServerA\sql987 -ExcludeSystemObjects -IncludeServerLevel
 </code></pre>
-<p>Returns a custom object with Server name, Database name, permission state, permission type, grantee and securable
-in all databases and on the server level, but not on system securables.</p>
+<p>Returns a custom object with Server name, Database name, permission state, permission type, grantee and securable<br>
+in all databases and on the server level, but not on system securables.<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; Get-DbaPermission -SqlInstance sql2016 -Database master
 </code></pre>
-<p>Returns a custom object with permissions for the master database.</p>
+<p>Returns a custom object with permissions for the master database.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances. Defaults to localhost.</p>
+<p>The target SQL Server instance or instances. Defaults to localhost.<br></p>
 <table>
 <thead>
 <tr>
@@ -541,7 +541,7 @@ in all databases and on the server level, but not on system securables.</p>
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -569,7 +569,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="database">-Database</h5>
-<p>Specifies one or more database(s) to process. If unspecified, all databases will be processed.</p>
+<p>Specifies one or more database(s) to process. If unspecified, all databases will be processed.<br></p>
 <table>
 <thead>
 <tr>
@@ -597,7 +597,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="excludedatabase">-ExcludeDatabase</h5>
-<p>Specifies one or more database(s) to exclude from processing.</p>
+<p>Specifies one or more database(s) to exclude from processing.<br></p>
 <table>
 <thead>
 <tr>
@@ -625,7 +625,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="includeserverlevel">-IncludeServerLevel</h5>
-<p>If this switch is enabled, information about Server Level Permissions will be output.</p>
+<p>If this switch is enabled, information about Server Level Permissions will be output.<br></p>
 <table>
 <thead>
 <tr>
@@ -653,7 +653,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="excludesystemobjects">-ExcludeSystemObjects</h5>
-<p>If this switch is enabled, permissions on system securables will be excluded.</p>
+<p>If this switch is enabled, permissions on system securables will be excluded.<br></p>
 <table>
 <thead>
 <tr>
@@ -682,7 +682,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </table>
 <h5 id="enableexception">-EnableException</h5>
 <p>If this switch is enabled exceptions will be thrown to the caller, which will need to perform its own exception processing. Otherwise, the function will try to catch the exception, interpret it and
-provide a friendly error message.</p>
+provide a friendly error message.<br></p>
 <table>
 <thead>
 <tr>
@@ -711,6 +711,7 @@ provide a friendly error message.</p>
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Get-DbaPermission.ps1">Get-DbaPermission</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Get-DbaPermission">Get-DbaPermission</a>.</p>
 
                 </div> <!-- rendered -->

@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -491,35 +491,35 @@ This action constitutes a network scan, which may be illegal depending on the na
 If you are unsure whether you may use this command in your environment, check the detailed description on the '-ScanType' parameter and contact your IT security team for advice.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Find-DbaInstance
-    --Credential &lt;PSCredential&gt;]
-    --SqlCredential &lt;PSCredential&gt;]
-    --ScanType {TCPPort | SqlConnect | SqlService | DNSResolve | SPN | Browser | Ping | Default | All}]
-    --DomainController &lt;String&gt;]
-    --TCPPort &lt;Int32[]&gt;]
-    --MinimumConfidence {None | Low | Medium | High}]
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [-Credential &lt;PSCredential&gt;]
+    [-SqlCredential &lt;PSCredential&gt;]
+    [-ScanType {TCPPort | SqlConnect | SqlService | DNSResolve | SPN | Browser | Ping | Default | All}]
+    [-DomainController &lt;String&gt;]
+    [-TCPPort &lt;Int32[]&gt;]
+    [-MinimumConfidence {None | Low | Medium | High}]
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 Find-DbaInstance -ComputerName &lt;DbaInstanceParameter[]&gt;
-    --Credential &lt;PSCredential&gt;]
-    --SqlCredential &lt;PSCredential&gt;]
-    --ScanType {TCPPort | SqlConnect | SqlService | DNSResolve | SPN | Browser | Ping | Default | All}]
-    --DomainController &lt;String&gt;]
-    --TCPPort &lt;Int32[]&gt;]
-    --MinimumConfidence {None | Low | Medium | High}]
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [-Credential &lt;PSCredential&gt;]
+    [-SqlCredential &lt;PSCredential&gt;]
+    [-ScanType {TCPPort | SqlConnect | SqlService | DNSResolve | SPN | Browser | Ping | Default | All}]
+    [-DomainController &lt;String&gt;]
+    [-TCPPort &lt;Int32[]&gt;]
+    [-MinimumConfidence {None | Low | Medium | High}]
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 Find-DbaInstance -DiscoveryType {IPRange | DomainSPN | Domain | DataSourceEnumeration | DomainServer | All}
-    --Credential &lt;PSCredential&gt;]
-    --SqlCredential &lt;PSCredential&gt;]
-    --ScanType {TCPPort | SqlConnect | SqlService | DNSResolve | SPN | Browser | Ping | Default | All}]
-    --IpAddress &lt;String[]&gt;]
-    --DomainController &lt;String&gt;]
-    --TCPPort &lt;Int32[]&gt;]
-    --MinimumConfidence {None | Low | Medium | High}]
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [-Credential &lt;PSCredential&gt;]
+    [-SqlCredential &lt;PSCredential&gt;]
+    [-ScanType {TCPPort | SqlConnect | SqlService | DNSResolve | SPN | Browser | Ping | Default | All}]
+    [-IpAddress &lt;String[]&gt;]
+    [-DomainController &lt;String&gt;]
+    [-TCPPort &lt;Int32[]&gt;]
+    [-MinimumConfidence {None | Low | Medium | High}]
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -528,58 +528,58 @@ Find-DbaInstance -DiscoveryType {IPRange | DomainSPN | Domain | DataSourceEnumer
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Find-DbaInstance -DiscoveryType Domain, DataSourceEnumeration
 </code></pre>
-<p>Performs a network search for SQL Instances by:</p>
+<p>Performs a network search for SQL Instances by:<br></p>
 <ul>
-<li>Looking up the Service Principal Names of computers in Active Directory</li>
-<li>Using the UDP broadcast based auto-discovery of SSMS
-After that it will extensively scan all hosts thus discovered for instances.</li>
+<li>Looking up the Service Principal Names of computers in Active Directory<br></li>
+<li>Using the UDP broadcast based auto-discovery of SSMS<br>
+After that it will extensively scan all hosts thus discovered for instances.<br></li>
 </ul>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Find-DbaInstance -DiscoveryType All
 </code></pre>
-<p>Performs a network search for SQL Instances, using all discovery protocols:</p>
+<p>Performs a network search for SQL Instances, using all discovery protocols:<br></p>
 <ul>
-<li>Active directory search for Service Principal Names</li>
-<li>SQL Instance Enumeration (same as SSMS does)</li>
-<li>All IPAddresses in the current computer's subnets of all connected network interfaces
-Note: This scan will take a long time, due to including the IP Scan</li>
+<li>Active directory search for Service Principal Names<br></li>
+<li>SQL Instance Enumeration (same as SSMS does)<br></li>
+<li>All IPAddresses in the current computer's subnets of all connected network interfaces<br>
+Note: This scan will take a long time, due to including the IP Scan<br></li>
 </ul>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Get-ADComputer -Filter &quot;*&quot; | Find-DbaInstance
 </code></pre>
-<p>Scans all computers in the domain for SQL Instances, using a deep probe:</p>
+<p>Scans all computers in the domain for SQL Instances, using a deep probe:<br></p>
 <ul>
-<li>Tries resolving the name in DNS</li>
-<li>Tries pinging the computer</li>
-<li>Tries listing all SQL Services using CIM/WMI</li>
-<li>Tries discovering all instances via the browser service</li>
-<li>Tries connecting to the default TCP Port (1433)</li>
-<li>Tries connecting to the TCP port of each discovered instance</li>
-<li>Tries to establish a SQL connection to the server using default windows credentials</li>
-<li>Tries looking up the Service Principal Names for each instance</li>
+<li>Tries resolving the name in DNS<br></li>
+<li>Tries pinging the computer<br></li>
+<li>Tries listing all SQL Services using CIM/WMI<br></li>
+<li>Tries discovering all instances via the browser service<br></li>
+<li>Tries connecting to the default TCP Port (1433)<br></li>
+<li>Tries connecting to the TCP port of each discovered instance<br></li>
+<li>Tries to establish a SQL connection to the server using default windows credentials<br></li>
+<li>Tries looking up the Service Principal Names for each instance<br></li>
 </ul>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; Get-Content .\servers.txt | Find-DbaInstance -SqlCredential $cred -ScanType Browser, SqlConnect
 </code></pre>
-<p>Reads all servers from the servers.txt file (one server per line),
-then scans each of them for instances using the browser service
-and finally attempts to connect to each instance found using the specified credentials.
-then scans each of them for instances using the browser service and SqlService</p>
+<p>Reads all servers from the servers.txt file (one server per line),<br>
+then scans each of them for instances using the browser service<br>
+and finally attempts to connect to each instance found using the specified credentials.<br>
+then scans each of them for instances using the browser service and SqlService<br></p>
 <h5 id="example-5">Example:  5</h5>
 <pre><code>PS C:\&gt; Find-DbaInstance -ComputerName localhost | Get-DbaDatabase | Format-Table -Wrap
 </code></pre>
-<p>Scans localhost for instances using the browser service, traverses all instances for all databases and displays all information in a formatted table.</p>
+<p>Scans localhost for instances using the browser service, traverses all instances for all databases and displays all information in a formatted table.<br></p>
 <h5 id="example-6">Example:  6</h5>
 <pre><code>PS C:\&gt; $databases = Find-DbaInstance -ComputerName localhost | Get-DbaDatabase
 PS C:\&gt; $results = $databases | Select-Object SqlInstance, Name, Status, RecoveryModel, SizeMB, Compatibility, Owner, LastFullBackup, LastDiffBackup, LastLogBackup
 PS C:\&gt; $results | Format-Table -Wrap
 </code></pre>
-<p>Scans localhost for instances using the browser service, traverses all instances for all databases and displays a subset of the important information in a formatted table.
-Using this method regularly is not recommended. Use Get-DbaService or Get-DbaRegServer instead.</p>
+<p>Scans localhost for instances using the browser service, traverses all instances for all databases and displays a subset of the important information in a formatted table.<br>
+Using this method regularly is not recommended. Use Get-DbaService or Get-DbaRegServer instead.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="computername">-ComputerName</h5>
 <p>The computer to scan. Can be a variety of input types, including text or the output of Get-ADComputer.
-Any extra instance information (such as connection strings or live sql server connections) beyond the computername will be discarded.</p>
+Any extra instance information (such as connection strings or live sql server connections) beyond the computername will be discarded.<br></p>
 <table>
 <thead>
 <tr>
@@ -633,7 +633,7 @@ Domain Server:
 This will discover every single computer in Active Directory that is a Windows Server and enabled.
 By default, your nearest Domain Controller is contacted for this scan.
 However it is possible to explicitly state the DC to contact using its DistinguishedName and the '-DomainController' parameter.
-If credentials were specified using the '-Credential' parameter, those same credentials are used to perform this lookup, allowing the scan of other domains.</li>
+If credentials were specified using the '-Credential' parameter, those same credentials are used to perform this lookup, allowing the scan of other domains.<br></li>
 </ul>
 <table>
 <thead>
@@ -667,7 +667,7 @@ If credentials were specified using the '-Credential' parameter, those same cred
 These credentials are used for:</p>
 <ul>
 <li>Contact to domain controllers for SPN lookups (only if explicit Domain Controller is specified)</li>
-<li>CIM/WMI contact to the scanned computers during the scan phase (see the '-ScanType' parameter documentation on affected scans).</li>
+<li>CIM/WMI contact to the scanned computers during the scan phase (see the '-ScanType' parameter documentation on affected scans).<br></li>
 </ul>
 <table>
 <thead>
@@ -697,7 +697,7 @@ These credentials are used for:</p>
 </table>
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>The credentials used to connect to SqlInstances to during the scan phase.
-See the '-ScanType' parameter documentation on affected scans.</p>
+See the '-ScanType' parameter documentation on affected scans.<br></p>
 <table>
 <thead>
 <tr>
@@ -760,7 +760,7 @@ SqlConnect</li>
 <li>This scan is not used by default</li>
 <li>Success in this scan guarantees high confidence (See parameter '-MinimumConfidence' for details).
 All</li>
-<li>All of the above</li>
+<li>All of the above<br></li>
 </ul>
 <table>
 <thead>
@@ -800,7 +800,7 @@ This parameter accepts a list of strings supporting any combination of:</p>
 <li>IP Address Ranges (e.g.: &quot;10.1.1.1-10.1.1.5&quot;)</li>
 <li>IP Address &amp; Subnet Mask (e.g.: &quot;10.1.1.1/255.255.255.0&quot;)</li>
 <li>IP Address &amp; Subnet Length: (e.g.: &quot;10.1.1.1/24)
-Overlapping addresses will not result in duplicate scans.</li>
+Overlapping addresses will not result in duplicate scans.<br></li>
 </ul>
 <table>
 <thead>
@@ -830,7 +830,7 @@ Overlapping addresses will not result in duplicate scans.</li>
 </table>
 <h5 id="domaincontroller">-DomainController</h5>
 <p>The domain controller to contact for SPN lookups / searches.
-Uses the credentials from the '-Credential' parameter if specified.</p>
+Uses the credentials from the '-Credential' parameter if specified.<br></p>
 <table>
 <thead>
 <tr>
@@ -859,7 +859,7 @@ Uses the credentials from the '-Credential' parameter if specified.</p>
 </table>
 <h5 id="tcpport">-TCPPort</h5>
 <p>The ports to scan in the TCP Port Scan method.
-Defaults to 1433.</p>
+Defaults to 1433.<br></p>
 <table>
 <thead>
 <tr>
@@ -895,7 +895,7 @@ These are the confidence levels we support and how they are determined:</p>
 <li>High: Established SQL Connection (including rejection for bad credentials) or service scan.</li>
 <li>Medium: Browser reply or a combination of TCPConnect <em>and</em> SPN test.</li>
 <li>Low: Either TCPConnect <em>or</em> SPN</li>
-<li>None: Computer existence could be verified, but no sign of an SQL Instance</li>
+<li>None: Computer existence could be verified, but no sign of an SQL Instance<br></li>
 </ul>
 <table>
 <thead>
@@ -926,7 +926,7 @@ These are the confidence levels we support and how they are determined:</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -955,6 +955,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Find-DbaInstance.ps1">Find-DbaInstance</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Find-DbaInstance">Find-DbaInstance</a>.</p>
 
                 </div> <!-- rendered -->

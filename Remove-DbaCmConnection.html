@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -470,11 +470,11 @@
 <p>Removes connection objects from the connection cache used for remote computer management.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Remove-DbaCmConnection
-    --ComputerName] &lt;DbaCmConnectionParameter[]&gt;
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-ComputerName] &lt;DbaCmConnectionParameter[]&gt;
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -483,14 +483,14 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Remove-DbaCmConnection -ComputerName sql2014
 </code></pre>
-<p>Removes the cached connection to the server sql2014 from the cache.</p>
+<p>Removes the cached connection to the server sql2014 from the cache.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Get-DbaCmConnection | Remove-DbaCmConnection
 </code></pre>
-<p>Clears the entire connection cache.</p>
+<p>Clears the entire connection cache.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="computername">-ComputerName</h5>
-<p>The target computer. Accepts both text as well as the output of Get-DbaCmConnection.</p>
+<p>The target computer. Accepts both text as well as the output of Get-DbaCmConnection.<br></p>
 <table>
 <thead>
 <tr>
@@ -521,7 +521,7 @@
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -549,7 +549,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.</p>
+<p>If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.<br></p>
 <table>
 <thead>
 <tr>
@@ -577,7 +577,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.</p>
+<p>If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.<br></p>
 <table>
 <thead>
 <tr>
@@ -606,6 +606,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Remove-DbaCmConnection.ps1">Remove-DbaCmConnection</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Remove-DbaCmConnection">Remove-DbaCmConnection</a>.</p>
 
                 </div> <!-- rendered -->

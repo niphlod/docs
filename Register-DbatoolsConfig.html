@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -472,18 +472,18 @@ This allows simple persisting of settings across powershell consoles.
 It also can be used to generate a registry template, which can then be used to create policies.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Register-DbatoolsConfig
-    --Config &lt;Config[]&gt;]
-    --FullName &lt;String[]&gt;]
-    --Scope {UserDefault | UserMandatory | SystemDefault | SystemMandatory | FileUserLocal | FileUserShared | FileSystem}]
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [-Config &lt;Config[]&gt;]
+    [-FullName &lt;String[]&gt;]
+    [-Scope {UserDefault | UserMandatory | SystemDefault | SystemMandatory | FileUserLocal | FileUserShared | FileSystem}]
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 Register-DbatoolsConfig
-    --Module] &lt;String&gt;
-    -[-Name] &lt;String&gt;]
-    --Scope {UserDefault | UserMandatory | SystemDefault | SystemMandatory | FileUserLocal | FileUserShared | FileSystem}]
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [-Module] &lt;String&gt;
+    [[-Name] &lt;String&gt;]
+    [-Scope {UserDefault | UserMandatory | SystemDefault | SystemMandatory | FileUserLocal | FileUserShared | FileSystem}]
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -492,18 +492,18 @@ Register-DbatoolsConfig
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Get-DbatoolsConfig message.style.* | Register-DbatoolsConfig
 </code></pre>
-<p>Retrieves all configuration items that that start with message.style. and registers them in registry for the current user.</p>
+<p>Retrieves all configuration items that that start with message.style. and registers them in registry for the current user.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Register-DbatoolsConfig -FullName &quot;message.consoleoutput.disable&quot; -Scope SystemDefault
 </code></pre>
-<p>Retrieves the configuration item &quot;message.consoleoutput.disable&quot; and registers it in registry as the default setting for all users on this machine.</p>
+<p>Retrieves the configuration item &quot;message.consoleoutput.disable&quot; and registers it in registry as the default setting for all users on this machine.<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Register-DbatoolsConfig -Module Message -Scope SystemMandatory
 </code></pre>
-<p>Retrieves all configuration items of the module Message, then registers them in registry to enforce them for all users on the current system.</p>
+<p>Retrieves all configuration items of the module Message, then registers them in registry to enforce them for all users on the current system.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="module">-Module</h5>
-<p>The name of the module, whose settings should be written to registry.</p>
+<p>The name of the module, whose settings should be written to registry.<br></p>
 <table>
 <thead>
 <tr>
@@ -533,7 +533,7 @@ Register-DbatoolsConfig
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="config">-Config</h5>
 <p>The configuration object to write to registry.
-Can be retrieved using Get-DbatoolsConfig.</p>
+Can be retrieved using Get-DbatoolsConfig.<br></p>
 <table>
 <thead>
 <tr>
@@ -561,7 +561,7 @@ Can be retrieved using Get-DbatoolsConfig.</p>
 </tbody>
 </table>
 <h5 id="fullname">-FullName</h5>
-<p>The full name of the setting to be written to registry.</p>
+<p>The full name of the setting to be written to registry.<br></p>
 <table>
 <thead>
 <tr>
@@ -590,7 +590,7 @@ Can be retrieved using Get-DbatoolsConfig.</p>
 </table>
 <h5 id="name">-Name</h5>
 <p>Default: &quot;*&quot;
-Used in conjunction with the -Module parameter to restrict the number of configuration items written to registry.</p>
+Used in conjunction with the -Module parameter to restrict the number of configuration items written to registry.<br></p>
 <table>
 <thead>
 <tr>
@@ -620,7 +620,7 @@ Used in conjunction with the -Module parameter to restrict the number of configu
 <h5 id="scope">-Scope</h5>
 <p>Default: UserDefault
 Who will be affected by this export how? Current user or all? Default setting or enforced?
-Legal values: UserDefault, UserMandatory, SystemDefault, SystemMandatory</p>
+Legal values: UserDefault, UserMandatory, SystemDefault, SystemMandatory<br></p>
 <table>
 <thead>
 <tr>
@@ -649,7 +649,7 @@ Legal values: UserDefault, UserMandatory, SystemDefault, SystemMandatory</p>
 </table>
 <h5 id="enableexception">-EnableException</h5>
 <p>This parameters disables user-friendly warnings and enables the throwing of exceptions.
-This is less user friendly, but allows catching exceptions in calling scripts.</p>
+This is less user friendly, but allows catching exceptions in calling scripts.<br></p>
 <table>
 <thead>
 <tr>
@@ -678,6 +678,7 @@ This is less user friendly, but allows catching exceptions in calling scripts.</
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Register-DbatoolsConfig.ps1">Register-DbatoolsConfig</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Register-DbatoolsConfig">Register-DbatoolsConfig</a>.</p>
 
                 </div> <!-- rendered -->

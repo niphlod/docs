@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -468,11 +468,11 @@ The path can be persisted using the &quot;-Register&quot; command.
 Paths setup like this can be retrieved using Get-DbatoolsPath.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Set-DbatoolsPath -Name &lt;String&gt; -Path &lt;String&gt;
-    -&lt;CommonParameters&gt;]
+    [&lt;CommonParameters&gt;]
 
 Set-DbatoolsPath -Name &lt;String&gt; -Path &lt;String&gt; -Register
-    --Scope {UserDefault | UserMandatory | SystemDefault | SystemMandatory | FileUserLocal | FileUserShared | FileSystem}]
-    -&lt;CommonParameters&gt;]
+    [-Scope {UserDefault | UserMandatory | SystemDefault | SystemMandatory | FileUserLocal | FileUserShared | FileSystem}]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -481,10 +481,10 @@ Set-DbatoolsPath -Name &lt;String&gt; -Path &lt;String&gt; -Register
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Set-DbatoolsPath -Name 'temp' -Path 'C:\temp'
 </code></pre>
-<p>Configures C:\temp as the current temp path. (does not override $env:temp !)</p>
+<p>Configures C:\temp as the current temp path. (does not override $env:temp !)<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="name">-Name</h5>
-<p>Name the path should be stored under.</p>
+<p>Name the path should be stored under.<br></p>
 <table>
 <thead>
 <tr>
@@ -512,7 +512,7 @@ Set-DbatoolsPath -Name &lt;String&gt; -Path &lt;String&gt; -Register
 </tbody>
 </table>
 <h5 id="path">-Path</h5>
-<p>The path that should be returned under the name.</p>
+<p>The path that should be returned under the name.<br></p>
 <table>
 <thead>
 <tr>
@@ -540,7 +540,7 @@ Set-DbatoolsPath -Name &lt;String&gt; -Path &lt;String&gt; -Register
 </tbody>
 </table>
 <h5 id="register">-Register</h5>
-<p>Registering a path in order for it to persist across sessions.</p>
+<p>Registering a path in order for it to persist across sessions.<br></p>
 <table>
 <thead>
 <tr>
@@ -571,7 +571,7 @@ Set-DbatoolsPath -Name &lt;String&gt; -Path &lt;String&gt; -Register
 <h5 id="scope">-Scope</h5>
 <p>The configuration scope it should be registered under.
 Defaults to UserDefault.
-Configuration scopes are the default locations configurations are being stored at.</p>
+Configuration scopes are the default locations configurations are being stored at.<br></p>
 <table>
 <thead>
 <tr>
@@ -600,6 +600,7 @@ Configuration scopes are the default locations configurations are being stored a
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Set-DbatoolsPath.ps1">Set-DbatoolsPath</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Set-DbatoolsPath">Set-DbatoolsPath</a>.</p>
 
                 </div> <!-- rendered -->

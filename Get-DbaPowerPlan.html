@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -470,10 +470,10 @@
 <p>Gets the Power Plan settings on a computer against best practices recommendations.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Get-DbaPowerPlan
-    --ComputerName] &lt;DbaInstanceParameter[]&gt;
-    -[-Credential] &lt;PSCredential&gt;]
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [-ComputerName] &lt;DbaInstanceParameter[]&gt;
+    [[-Credential] &lt;PSCredential&gt;]
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -482,14 +482,14 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Get-DbaPowerPlan -ComputerName sql2017
 </code></pre>
-<p>Gets the Power Plan settings for sql2017</p>
+<p>Gets the Power Plan settings for sql2017<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Get-DbaPowerPlan -ComputerName sql2017 -Credential ad\admin
 </code></pre>
-<p>Gets the Power Plan settings for sql2017 using an alternative credential</p>
+<p>Gets the Power Plan settings for sql2017 using an alternative credential<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="computername">-ComputerName</h5>
-<p>The server(s) to check Power Plan settings on.</p>
+<p>The server(s) to check Power Plan settings on.<br></p>
 <table>
 <thead>
 <tr>
@@ -518,7 +518,7 @@
 </table>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="credential">-Credential</h5>
-<p>Specifies a PSCredential object to use in authenticating to the server(s), instead of the current user account.</p>
+<p>Specifies a PSCredential object to use in authenticating to the server(s), instead of the current user account.<br></p>
 <table>
 <thead>
 <tr>
@@ -548,7 +548,7 @@
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -577,6 +577,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Get-DbaPowerPlan.ps1">Get-DbaPowerPlan</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Get-DbaPowerPlan">Get-DbaPowerPlan</a>.</p>
 
                 </div> <!-- rendered -->

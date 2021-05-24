@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -475,16 +475,16 @@ Once you have loaded it in Visual Studio, clicking advanced shows you the list o
 For a full list of options that you can add to the profile, google &quot;sqlpackage.exe command line switches&quot; or (<a href="https://msdn.microsoft.com/en-us/library/hh550080(v=vs.103).aspx">https://msdn.microsoft.com/en-us/library/hh550080(v=vs.103).aspx</a>)</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>New-DbaDacProfile
-    -[-SqlInstance] &lt;DbaInstanceParameter[]&gt;]
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    --Database] &lt;String[]&gt;
-    -[-Path] &lt;String&gt;]
-    -[-ConnectionString] &lt;String[]&gt;]
-    -[-PublishOptions] &lt;Hashtable&gt;]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [[-SqlInstance] &lt;DbaInstanceParameter[]&gt;]
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [-Database] &lt;String[]&gt;
+    [[-Path] &lt;String&gt;]
+    [[-ConnectionString] &lt;String[]&gt;]
+    [[-PublishOptions] &lt;Hashtable&gt;]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -493,15 +493,15 @@ For a full list of options that you can add to the profile, google &quot;sqlpack
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; New-DbaDacProfile -SqlInstance sql2017 -SqlCredential ad\sqldba -Database WorldWideImporters -Path C:\temp
 </code></pre>
-<p>In this example, a prompt will appear for alternative credentials, then a connection will be made to sql2017. Using that connection,
-the ConnectionString will be extracted and used within the Publish Profile XML file which will be created at C:\temp\sql2017-WorldWideImporters-publish.xml</p>
+<p>In this example, a prompt will appear for alternative credentials, then a connection will be made to sql2017. Using that connection,<br>
+the ConnectionString will be extracted and used within the Publish Profile XML file which will be created at C:\temp\sql2017-WorldWideImporters-publish.xml<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; New-DbaDacProfile -Database WorldWideImporters -Path C:\temp -ConnectionString &quot;SERVER=(localdb)\MSSQLLocalDB;Integrated Security=True;Database=master&quot;
 </code></pre>
-<p>In this example, no connections are made, and a Publish Profile XML would be created at C:\temp\localdb-MSSQLLocalDB-WorldWideImporters-publish.xml</p>
+<p>In this example, no connections are made, and a Publish Profile XML would be created at C:\temp\localdb-MSSQLLocalDB-WorldWideImporters-publish.xml<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="database">-Database</h5>
-<p>The database name you are targeting</p>
+<p>The database name you are targeting<br></p>
 <table>
 <thead>
 <tr>
@@ -530,7 +530,7 @@ the ConnectionString will be extracted and used within the Publish Profile XML f
 </table>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances. Alternatively, you can provide a ConnectionString.</p>
+<p>The target SQL Server instance or instances. Alternatively, you can provide a ConnectionString.<br></p>
 <table>
 <thead>
 <tr>
@@ -560,7 +560,7 @@ the ConnectionString will be extracted and used within the Publish Profile XML f
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -588,7 +588,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="path">-Path</h5>
-<p>The directory where you would like to save the profile xml file(s).</p>
+<p>The directory where you would like to save the profile xml file(s).<br></p>
 <table>
 <thead>
 <tr>
@@ -617,7 +617,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </table>
 <h5 id="connectionstring">-ConnectionString</h5>
 <p>The connection string to the database you are upgrading.
-Alternatively, you can provide a SqlInstance (and optionally SqlCredential) and the script will connect and generate the connectionstring.</p>
+Alternatively, you can provide a SqlInstance (and optionally SqlCredential) and the script will connect and generate the connectionstring.<br></p>
 <table>
 <thead>
 <tr>
@@ -645,7 +645,7 @@ Alternatively, you can provide a SqlInstance (and optionally SqlCredential) and 
 </tbody>
 </table>
 <h5 id="publishoptions">-PublishOptions</h5>
-<p>Optional hashtable to set publish options. Key/value pairs in the hashtable get converted to strings of &quot;<key>value</key>&quot;.</p>
+<p>Optional hashtable to set publish options. Key/value pairs in the hashtable get converted to strings of &quot;<key>value</key>&quot;.<br></p>
 <table>
 <thead>
 <tr>
@@ -675,7 +675,7 @@ Alternatively, you can provide a SqlInstance (and optionally SqlCredential) and 
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -703,7 +703,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.</p>
+<p>If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.<br></p>
 <table>
 <thead>
 <tr>
@@ -731,7 +731,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.</p>
+<p>If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.<br></p>
 <table>
 <thead>
 <tr>
@@ -760,6 +760,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/New-DbaDacProfile.ps1">New-DbaDacProfile</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#New-DbaDacProfile">New-DbaDacProfile</a>.</p>
 
                 </div> <!-- rendered -->

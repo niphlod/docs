@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -470,28 +470,28 @@
 <p>Configure Query Store settings for a specific or multiple databases.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Set-DbaDbQueryStoreOption
-    --SqlInstance] &lt;DbaInstanceParameter[]&gt;
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    -[-Database] &lt;Object[]&gt;]
-    -[-ExcludeDatabase] &lt;Object[]&gt;]
-    --AllDatabases]
-    -[-State] &lt;String[]&gt;]
-    -[-FlushInterval] &lt;Int64&gt;]
-    -[-CollectionInterval] &lt;Int64&gt;]
-    -[-MaxSize] &lt;Int64&gt;]
-    -[-CaptureMode] &lt;String[]&gt;]
-    -[-CleanupMode] &lt;String[]&gt;]
-    -[-StaleQueryThreshold] &lt;Int64&gt;]
-    -[-MaxPlansPerQuery] &lt;Int64&gt;]
-    -[-WaitStatsCaptureMode] &lt;String[]&gt;]
-    -[-CustomCapturePolicyExecutionCount] &lt;Int64&gt;]
-    -[-CustomCapturePolicyTotalCompileCPUTimeMS] &lt;Int64&gt;]
-    -[-CustomCapturePolicyTotalExecutionCPUTimeMS] &lt;Int64&gt;]
-    -[-CustomCapturePolicyStaleThresholdHours] &lt;Int64&gt;]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-SqlInstance] &lt;DbaInstanceParameter[]&gt;
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [[-Database] &lt;Object[]&gt;]
+    [[-ExcludeDatabase] &lt;Object[]&gt;]
+    [-AllDatabases]
+    [[-State] &lt;String[]&gt;]
+    [[-FlushInterval] &lt;Int64&gt;]
+    [[-CollectionInterval] &lt;Int64&gt;]
+    [[-MaxSize] &lt;Int64&gt;]
+    [[-CaptureMode] &lt;String[]&gt;]
+    [[-CleanupMode] &lt;String[]&gt;]
+    [[-StaleQueryThreshold] &lt;Int64&gt;]
+    [[-MaxPlansPerQuery] &lt;Int64&gt;]
+    [[-WaitStatsCaptureMode] &lt;String[]&gt;]
+    [[-CustomCapturePolicyExecutionCount] &lt;Int64&gt;]
+    [[-CustomCapturePolicyTotalCompileCPUTimeMS] &lt;Int64&gt;]
+    [[-CustomCapturePolicyTotalExecutionCPUTimeMS] &lt;Int64&gt;]
+    [[-CustomCapturePolicyStaleThresholdHours] &lt;Int64&gt;]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -500,25 +500,25 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Set-DbaDbQueryStoreOption -SqlInstance ServerA\SQL -State ReadWrite -FlushInterval 600 -CollectionInterval 10 -MaxSize 100 -CaptureMode All -CleanupMode Auto -StaleQueryThreshold 100
 </code></pre>
-<p>-AllDatabases
-Configure the Query Store settings for all user databases in the ServerA\SQL Instance.</p>
+<p>-AllDatabases<br>
+Configure the Query Store settings for all user databases in the ServerA\SQL Instance.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Set-DbaDbQueryStoreOption -SqlInstance ServerA\SQL -FlushInterval 600
 </code></pre>
-<p>Only configure the FlushInterval setting for all Query Store databases in the ServerA\SQL Instance.</p>
+<p>Only configure the FlushInterval setting for all Query Store databases in the ServerA\SQL Instance.<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Set-DbaDbQueryStoreOption -SqlInstance ServerA\SQL -Database AdventureWorks -State ReadWrite -FlushInterval 600 -CollectionInterval 10 -MaxSize 100 -CaptureMode all -CleanupMode Auto
 </code></pre>
-<p>-StaleQueryThreshold 100
-Configure the Query Store settings for the AdventureWorks database in the ServerA\SQL Instance.</p>
+<p>-StaleQueryThreshold 100<br>
+Configure the Query Store settings for the AdventureWorks database in the ServerA\SQL Instance.<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; Set-DbaDbQueryStoreOption -SqlInstance ServerA\SQL -Exclude AdventureWorks -State ReadWrite -FlushInterval 600 -CollectionInterval 10 -MaxSize 100 -CaptureMode all -CleanupMode Auto
 </code></pre>
-<p>-StaleQueryThreshold 100
-Configure the Query Store settings for all user databases except the AdventureWorks database in the ServerA\SQL Instance.</p>
+<p>-StaleQueryThreshold 100<br>
+Configure the Query Store settings for all user databases except the AdventureWorks database in the ServerA\SQL Instance.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances.</p>
+<p>The target SQL Server instance or instances.<br></p>
 <table>
 <thead>
 <tr>
@@ -549,7 +549,7 @@ Configure the Query Store settings for all user databases except the AdventureWo
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>SqlLogin to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance..</p>
+For MFA support, please use Connect-DbaInstance..<br></p>
 <table>
 <thead>
 <tr>
@@ -577,7 +577,7 @@ For MFA support, please use Connect-DbaInstance..</p>
 </tbody>
 </table>
 <h5 id="database">-Database</h5>
-<p>The database(s) to process - this list is auto-populated from the server. If unspecified, all databases will be processed.</p>
+<p>The database(s) to process - this list is auto-populated from the server. If unspecified, all databases will be processed.<br></p>
 <table>
 <thead>
 <tr>
@@ -605,7 +605,7 @@ For MFA support, please use Connect-DbaInstance..</p>
 </tbody>
 </table>
 <h5 id="excludedatabase">-ExcludeDatabase</h5>
-<p>The database(s) to exclude - this list is auto-populated from the server</p>
+<p>The database(s) to exclude - this list is auto-populated from the server<br></p>
 <table>
 <thead>
 <tr>
@@ -633,7 +633,7 @@ For MFA support, please use Connect-DbaInstance..</p>
 </tbody>
 </table>
 <h5 id="alldatabases">-AllDatabases</h5>
-<p>Run command against all user databases</p>
+<p>Run command against all user databases<br></p>
 <table>
 <thead>
 <tr>
@@ -661,7 +661,7 @@ For MFA support, please use Connect-DbaInstance..</p>
 </tbody>
 </table>
 <h5 id="state">-State</h5>
-<p>Set the state of the Query Store. Valid options are &quot;ReadWrite&quot;, &quot;ReadOnly&quot; and &quot;Off&quot;.</p>
+<p>Set the state of the Query Store. Valid options are &quot;ReadWrite&quot;, &quot;ReadOnly&quot; and &quot;Off&quot;.<br></p>
 <table>
 <thead>
 <tr>
@@ -693,7 +693,7 @@ For MFA support, please use Connect-DbaInstance..</p>
 </tbody>
 </table>
 <h5 id="flushinterval">-FlushInterval</h5>
-<p>Set the flush to disk interval of the Query Store in seconds.</p>
+<p>Set the flush to disk interval of the Query Store in seconds.<br></p>
 <table>
 <thead>
 <tr>
@@ -721,7 +721,7 @@ For MFA support, please use Connect-DbaInstance..</p>
 </tbody>
 </table>
 <h5 id="collectioninterval">-CollectionInterval</h5>
-<p>Set the runtime statistics collection interval of the Query Store in minutes.</p>
+<p>Set the runtime statistics collection interval of the Query Store in minutes.<br></p>
 <table>
 <thead>
 <tr>
@@ -749,7 +749,7 @@ For MFA support, please use Connect-DbaInstance..</p>
 </tbody>
 </table>
 <h5 id="maxsize">-MaxSize</h5>
-<p>Set the maximum size of the Query Store in MB.</p>
+<p>Set the maximum size of the Query Store in MB.<br></p>
 <table>
 <thead>
 <tr>
@@ -777,7 +777,7 @@ For MFA support, please use Connect-DbaInstance..</p>
 </tbody>
 </table>
 <h5 id="capturemode">-CaptureMode</h5>
-<p>Set the query capture mode of the Query Store. Valid options are &quot;Auto&quot; and &quot;All&quot;.</p>
+<p>Set the query capture mode of the Query Store. Valid options are &quot;Auto&quot; and &quot;All&quot;.<br></p>
 <table>
 <thead>
 <tr>
@@ -809,7 +809,7 @@ For MFA support, please use Connect-DbaInstance..</p>
 </tbody>
 </table>
 <h5 id="cleanupmode">-CleanupMode</h5>
-<p>Set the query cleanup mode policy. Valid options are &quot;Auto&quot; and &quot;Off&quot;.</p>
+<p>Set the query cleanup mode policy. Valid options are &quot;Auto&quot; and &quot;Off&quot;.<br></p>
 <table>
 <thead>
 <tr>
@@ -841,7 +841,7 @@ For MFA support, please use Connect-DbaInstance..</p>
 </tbody>
 </table>
 <h5 id="stalequerythreshold">-StaleQueryThreshold</h5>
-<p>Set the stale query threshold in days.</p>
+<p>Set the stale query threshold in days.<br></p>
 <table>
 <thead>
 <tr>
@@ -869,7 +869,7 @@ For MFA support, please use Connect-DbaInstance..</p>
 </tbody>
 </table>
 <h5 id="maxplansperquery">-MaxPlansPerQuery</h5>
-<p>Set the max plans per query captured and kept.</p>
+<p>Set the max plans per query captured and kept.<br></p>
 <table>
 <thead>
 <tr>
@@ -897,7 +897,7 @@ For MFA support, please use Connect-DbaInstance..</p>
 </tbody>
 </table>
 <h5 id="waitstatscapturemode">-WaitStatsCaptureMode</h5>
-<p>Set wait stats capture on or off.</p>
+<p>Set wait stats capture on or off.<br></p>
 <table>
 <thead>
 <tr>
@@ -929,7 +929,7 @@ For MFA support, please use Connect-DbaInstance..</p>
 </tbody>
 </table>
 <h5 id="customcapturepolicyexecutioncount">-CustomCapturePolicyExecutionCount</h5>
-<p>Set the custom capture policy execution count. Only available in SQL Server 2019 and above.</p>
+<p>Set the custom capture policy execution count. Only available in SQL Server 2019 and above.<br></p>
 <table>
 <thead>
 <tr>
@@ -957,7 +957,7 @@ For MFA support, please use Connect-DbaInstance..</p>
 </tbody>
 </table>
 <h5 id="customcapturepolicytotalcompilecputimems">-CustomCapturePolicyTotalCompileCPUTimeMS</h5>
-<p>Set the custom capture policy total compile CPU time. Only available in SQL Server 2019 and above.</p>
+<p>Set the custom capture policy total compile CPU time. Only available in SQL Server 2019 and above.<br></p>
 <table>
 <thead>
 <tr>
@@ -985,7 +985,7 @@ For MFA support, please use Connect-DbaInstance..</p>
 </tbody>
 </table>
 <h5 id="customcapturepolicytotalexecutioncputimems">-CustomCapturePolicyTotalExecutionCPUTimeMS</h5>
-<p>Set the custom capture policy total execution CPU time. Only available in SQL Server 2019 and above.</p>
+<p>Set the custom capture policy total execution CPU time. Only available in SQL Server 2019 and above.<br></p>
 <table>
 <thead>
 <tr>
@@ -1013,7 +1013,7 @@ For MFA support, please use Connect-DbaInstance..</p>
 </tbody>
 </table>
 <h5 id="customcapturepolicystalethresholdhours">-CustomCapturePolicyStaleThresholdHours</h5>
-<p>Set the custom capture policy stale threshold. Only available in SQL Server 2019 and above.</p>
+<p>Set the custom capture policy stale threshold. Only available in SQL Server 2019 and above.<br></p>
 <table>
 <thead>
 <tr>
@@ -1043,7 +1043,7 @@ For MFA support, please use Connect-DbaInstance..</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -1071,7 +1071,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>Shows what would happen if the command were to run</p>
+<p>Shows what would happen if the command were to run<br></p>
 <table>
 <thead>
 <tr>
@@ -1102,7 +1102,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 <p>Prompts for confirmation of every step. For example:
 Are you sure you want to perform this action?
 Performing the operation &quot;Changing Desired State&quot; on target &quot;pubs on SQL2016\VNEXT&quot;.
-[Y] Yes  [A] Yes to All  [N] No  [L] No to All  [S] Suspend  [?] Help (default is &quot;Y&quot;):</p>
+[Y] Yes  [A] Yes to All  [N] No  [L] No to All  [S] Suspend  [?] Help (default is &quot;Y&quot;):<br></p>
 <table>
 <thead>
 <tr>
@@ -1131,6 +1131,7 @@ Performing the operation &quot;Changing Desired State&quot; on target &quot;pubs
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Set-DbaDbQueryStoreOption.ps1">Set-DbaDbQueryStoreOption</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Set-DbaDbQueryStoreOption">Set-DbaDbQueryStoreOption</a>.</p>
 
                 </div> <!-- rendered -->

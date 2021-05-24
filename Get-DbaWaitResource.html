@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -471,12 +471,12 @@
 <p>Given a wait resource in the form of 'KEY: 7:35457594073541168 (de21f92a1572)', returns the database, object and index that is being waited on, With the -row switch the row data will also be returned.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Get-DbaWaitResource
-    --SqlInstance] &lt;DbaInstanceParameter&gt;
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    --WaitResource] &lt;String&gt;
-    --Row]
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [-SqlInstance] &lt;DbaInstanceParameter&gt;
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [-WaitResource] &lt;String&gt;
+    [-Row]
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -485,18 +485,18 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Get-DbaWaitResource -SqlInstance server1 -WaitResource 'PAGE: 10:1:9180084'
 </code></pre>
-<p>Will return an object containing; database name, data file name, schema name and the object which owns the resource</p>
+<p>Will return an object containing; database name, data file name, schema name and the object which owns the resource<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Get-DbaWaitResource -SqlInstance server2 -WaitResource 'KEY: 7:35457594073541168 (de21f92a1572)'
 </code></pre>
-<p>Will return an object containing; database name, schema name and index name which is being waited on.</p>
+<p>Will return an object containing; database name, schema name and index name which is being waited on.<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Get-DbaWaitResource -SqlInstance server2 -WaitResource 'KEY: 7:35457594073541168 (de21f92a1572)' -row
 </code></pre>
-<p>Will return an object containing; database name, schema name and index name which is being waited on, and in addition the contents of the locked row at the time the command is run.</p>
+<p>Will return an object containing; database name, schema name and index name which is being waited on, and in addition the contents of the locked row at the time the command is run.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances.</p>
+<p>The target SQL Server instance or instances.<br></p>
 <table>
 <thead>
 <tr>
@@ -524,7 +524,7 @@
 </tbody>
 </table>
 <h5 id="waitresource">-WaitResource</h5>
-<p>The wait resource value as supplied in sys.dm_exec_requests</p>
+<p>The wait resource value as supplied in sys.dm_exec_requests<br></p>
 <table>
 <thead>
 <tr>
@@ -555,7 +555,7 @@
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -583,7 +583,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="row">-Row</h5>
-<p>If this switch provided also returns the value of the row being waited on with KEY wait resources</p>
+<p>If this switch provided also returns the value of the row being waited on with KEY wait resources<br></p>
 <table>
 <thead>
 <tr>
@@ -612,7 +612,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </table>
 <h5 id="enableexception">-EnableException</h5>
 <p>Replaces user friendly yellow warnings with bloody red exceptions of doom!
-Use this if you want the function to throw terminating errors you want to catch.</p>
+Use this if you want the function to throw terminating errors you want to catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -641,6 +641,7 @@ Use this if you want the function to throw terminating errors you want to catch.
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Get-DbaWaitResource.ps1">Get-DbaWaitResource</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Get-DbaWaitResource">Get-DbaWaitResource</a>.</p>
 
                 </div> <!-- rendered -->

@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -479,29 +479,29 @@ Geometry
 Xml</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Invoke-DbaDbDataMasking
-    -[-SqlInstance] &lt;DbaInstanceParameter[]&gt;]
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    -[-Database] &lt;String[]&gt;]
-    --FilePath] &lt;Object&gt;
-    -[-Locale] &lt;String&gt;]
-    -[-CharacterString] &lt;String&gt;]
-    -[-Table] &lt;String[]&gt;]
-    -[-Column] &lt;String[]&gt;]
-    -[-ExcludeTable] &lt;String[]&gt;]
-    -[-ExcludeColumn] &lt;String[]&gt;]
-    -[-MaxValue] &lt;Int32&gt;]
-    -[-ModulusFactor] &lt;Int32&gt;]
-    --ExactLength]
-    -[-ConnectionTimeout] &lt;Int32&gt;]
-    -[-CommandTimeout] &lt;Int32&gt;]
-    -[-BatchSize] &lt;Int32&gt;]
-    -[-Retry] &lt;Int32&gt;]
-    -[-DictionaryFilePath] &lt;String[]&gt;]
-    -[-DictionaryExportPath] &lt;String&gt;]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [[-SqlInstance] &lt;DbaInstanceParameter[]&gt;]
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [[-Database] &lt;String[]&gt;]
+    [-FilePath] &lt;Object&gt;
+    [[-Locale] &lt;String&gt;]
+    [[-CharacterString] &lt;String&gt;]
+    [[-Table] &lt;String[]&gt;]
+    [[-Column] &lt;String[]&gt;]
+    [[-ExcludeTable] &lt;String[]&gt;]
+    [[-ExcludeColumn] &lt;String[]&gt;]
+    [[-MaxValue] &lt;Int32&gt;]
+    [[-ModulusFactor] &lt;Int32&gt;]
+    [-ExactLength]
+    [[-ConnectionTimeout] &lt;Int32&gt;]
+    [[-CommandTimeout] &lt;Int32&gt;]
+    [[-BatchSize] &lt;Int32&gt;]
+    [[-Retry] &lt;Int32&gt;]
+    [[-DictionaryFilePath] &lt;String[]&gt;]
+    [[-DictionaryExportPath] &lt;String&gt;]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -510,23 +510,23 @@ Xml</p>
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Invoke-DbaDbDataMasking -SqlInstance SQLDB2 -Database DB1 -FilePath C:\Temp\sqldb1.db1.tables.json
 </code></pre>
-<p>Apply the data masking configuration from the file &quot;sqldb1.db1.tables.json&quot; to the db1 database on sqldb2. Prompt for confirmation for each table.</p>
+<p>Apply the data masking configuration from the file &quot;sqldb1.db1.tables.json&quot; to the db1 database on sqldb2. Prompt for confirmation for each table.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Get-ChildItem -Path C:\Temp\sqldb1.db1.tables.json | Invoke-DbaDbDataMasking -SqlInstance SQLDB2 -Database DB1 -Confirm:$false
 </code></pre>
-<p>Apply the data masking configuration from the file &quot;sqldb1.db1.tables.json&quot; to the db1 database on sqldb2. Do not prompt for confirmation.</p>
+<p>Apply the data masking configuration from the file &quot;sqldb1.db1.tables.json&quot; to the db1 database on sqldb2. Do not prompt for confirmation.<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; New-DbaDbMaskingConfig -SqlInstance SQLDB1 -Database DB1 -Path C:\Temp\clone -OutVariable file
 </code></pre>
-<p>$file | Invoke-DbaDbDataMasking -SqlInstance SQLDB2 -Database DB1 -Confirm:$false
-Create the data masking configuration file &quot;sqldb1.db1.tables.json&quot;, then use it to mask the db1 database on sqldb2. Do not prompt for confirmation.</p>
+<p>$file | Invoke-DbaDbDataMasking -SqlInstance SQLDB2 -Database DB1 -Confirm:$false<br>
+Create the data masking configuration file &quot;sqldb1.db1.tables.json&quot;, then use it to mask the db1 database on sqldb2. Do not prompt for confirmation.<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; Get-ChildItem -Path C:\Temp\sqldb1.db1.tables.json | Invoke-DbaDbDataMasking -SqlInstance SQLDB2, sqldb3 -Database DB1 -Confirm:$false
 </code></pre>
-<p>See what would happen if you the data masking configuration from the file &quot;sqldb1.db1.tables.json&quot; to the db1 database on sqldb2 and sqldb3. Do not prompt for confirmation.</p>
+<p>See what would happen if you the data masking configuration from the file &quot;sqldb1.db1.tables.json&quot; to the db1 database on sqldb2 and sqldb3. Do not prompt for confirmation.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="filepath">-FilePath</h5>
-<p>Configuration file that contains the which tables and columns need to be masked</p>
+<p>Configuration file that contains the which tables and columns need to be masked<br></p>
 <table>
 <thead>
 <tr>
@@ -555,7 +555,7 @@ Create the data masking configuration file &quot;sqldb1.db1.tables.json&quot;, t
 </table>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances.</p>
+<p>The target SQL Server instance or instances.<br></p>
 <table>
 <thead>
 <tr>
@@ -585,7 +585,7 @@ Create the data masking configuration file &quot;sqldb1.db1.tables.json&quot;, t
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -613,7 +613,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="database">-Database</h5>
-<p>Databases to process through</p>
+<p>Databases to process through<br></p>
 <table>
 <thead>
 <tr>
@@ -641,7 +641,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="locale">-Locale</h5>
-<p>Set the local to enable certain settings in the masking</p>
+<p>Set the local to enable certain settings in the masking<br></p>
 <table>
 <thead>
 <tr>
@@ -669,7 +669,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="characterstring">-CharacterString</h5>
-<p>The characters to use in string data. 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789' by default</p>
+<p>The characters to use in string data. 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789' by default<br></p>
 <table>
 <thead>
 <tr>
@@ -697,7 +697,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="table">-Table</h5>
-<p>Tables to process. By default all the tables will be processed</p>
+<p>Tables to process. By default all the tables will be processed<br></p>
 <table>
 <thead>
 <tr>
@@ -725,7 +725,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="column">-Column</h5>
-<p>Columns to process. By default all the columns will be processed</p>
+<p>Columns to process. By default all the columns will be processed<br></p>
 <table>
 <thead>
 <tr>
@@ -753,7 +753,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="excludetable">-ExcludeTable</h5>
-<p>Exclude specific tables even if it's listed in the config file.</p>
+<p>Exclude specific tables even if it's listed in the config file.<br></p>
 <table>
 <thead>
 <tr>
@@ -781,7 +781,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="excludecolumn">-ExcludeColumn</h5>
-<p>Exclude specific columns even if it's listed in the config file.</p>
+<p>Exclude specific columns even if it's listed in the config file.<br></p>
 <table>
 <thead>
 <tr>
@@ -810,7 +810,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </table>
 <h5 id="maxvalue">-MaxValue</h5>
 <p>Force a max length of strings instead of relying on datatype maxes. Note if a string datatype has a lower MaxValue, that will be used instead.
-Useful for adhoc updates and testing, otherwise, the config file should be used.</p>
+Useful for adhoc updates and testing, otherwise, the config file should be used.<br></p>
 <table>
 <thead>
 <tr>
@@ -838,7 +838,7 @@ Useful for adhoc updates and testing, otherwise, the config file should be used.
 </tbody>
 </table>
 <h5 id="modulusfactor">-ModulusFactor</h5>
-<p>Calculating the next nullable by using the remainder from the modulus. Default is every 10.</p>
+<p>Calculating the next nullable by using the remainder from the modulus. Default is every 10.<br></p>
 <table>
 <thead>
 <tr>
@@ -866,7 +866,7 @@ Useful for adhoc updates and testing, otherwise, the config file should be used.
 </tbody>
 </table>
 <h5 id="exactlength">-ExactLength</h5>
-<p>Mask string values to the same length. So 'Tate' will be replaced with 4 random characters.</p>
+<p>Mask string values to the same length. So 'Tate' will be replaced with 4 random characters.<br></p>
 <table>
 <thead>
 <tr>
@@ -894,7 +894,7 @@ Useful for adhoc updates and testing, otherwise, the config file should be used.
 </tbody>
 </table>
 <h5 id="connectiontimeout">-ConnectionTimeout</h5>
-<p>Timeout for the database connection in seconds. Default is 0</p>
+<p>Timeout for the database connection in seconds. Default is 0<br></p>
 <table>
 <thead>
 <tr>
@@ -922,7 +922,7 @@ Useful for adhoc updates and testing, otherwise, the config file should be used.
 </tbody>
 </table>
 <h5 id="commandtimeout">-CommandTimeout</h5>
-<p>Timeout for the database connection in seconds. Default is 300.</p>
+<p>Timeout for the database connection in seconds. Default is 300.<br></p>
 <table>
 <thead>
 <tr>
@@ -950,7 +950,7 @@ Useful for adhoc updates and testing, otherwise, the config file should be used.
 </tbody>
 </table>
 <h5 id="batchsize">-BatchSize</h5>
-<p>Size of the batch to use to write the masked data back to the database</p>
+<p>Size of the batch to use to write the masked data back to the database<br></p>
 <table>
 <thead>
 <tr>
@@ -978,7 +978,7 @@ Useful for adhoc updates and testing, otherwise, the config file should be used.
 </tbody>
 </table>
 <h5 id="retry">-Retry</h5>
-<p>The amount of retries to generate a unique row for a table. Default is 1000.</p>
+<p>The amount of retries to generate a unique row for a table. Default is 1000.<br></p>
 <table>
 <thead>
 <tr>
@@ -1006,7 +1006,7 @@ Useful for adhoc updates and testing, otherwise, the config file should be used.
 </tbody>
 </table>
 <h5 id="dictionaryfilepath">-DictionaryFilePath</h5>
-<p>Import the dictionary to be used in in the database masking</p>
+<p>Import the dictionary to be used in in the database masking<br></p>
 <table>
 <thead>
 <tr>
@@ -1035,7 +1035,7 @@ Useful for adhoc updates and testing, otherwise, the config file should be used.
 </table>
 <h5 id="dictionaryexportpath">-DictionaryExportPath</h5>
 <p>Export the dictionary to the given path. Naming convention will be [computername]<em>[instancename]</em>[database]_Dictionary.csv
-Be careful with this feature, this export is the key to get the original values which is a security risk!</p>
+Be careful with this feature, this export is the key to get the original values which is a security risk!<br></p>
 <table>
 <thead>
 <tr>
@@ -1065,7 +1065,7 @@ Be careful with this feature, this export is the key to get the original values 
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -1093,7 +1093,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.</p>
+<p>If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.<br></p>
 <table>
 <thead>
 <tr>
@@ -1121,7 +1121,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.</p>
+<p>If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.<br></p>
 <table>
 <thead>
 <tr>
@@ -1150,6 +1150,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Invoke-DbaDbDataMasking.ps1">Invoke-DbaDbDataMasking</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Invoke-DbaDbDataMasking">Invoke-DbaDbDataMasking</a>.</p>
 
                 </div> <!-- rendered -->

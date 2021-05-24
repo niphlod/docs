@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -475,33 +475,33 @@ and
 for the idea and query.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Export-DbaExecutionPlan
-    --Database &lt;Object[]&gt;]
-    --ExcludeDatabase &lt;Object[]&gt;]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-Database &lt;Object[]&gt;]
+    [-ExcludeDatabase &lt;Object[]&gt;]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 Export-DbaExecutionPlan -SqlInstance &lt;DbaInstanceParameter[]&gt;
-    --SqlCredential &lt;PSCredential&gt;]
-    --Database &lt;Object[]&gt;]
-    --ExcludeDatabase &lt;Object[]&gt;]
-    --Path &lt;String&gt;]
-    --SinceCreation &lt;DateTime&gt;]
-    --SinceLastExecution &lt;DateTime&gt;]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-SqlCredential &lt;PSCredential&gt;]
+    [-Database &lt;Object[]&gt;]
+    [-ExcludeDatabase &lt;Object[]&gt;]
+    [-Path &lt;String&gt;]
+    [-SinceCreation &lt;DateTime&gt;]
+    [-SinceLastExecution &lt;DateTime&gt;]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 Export-DbaExecutionPlan
-    --Database &lt;Object[]&gt;]
-    --ExcludeDatabase &lt;Object[]&gt;]
-    --Path &lt;String&gt;] -InputObject &lt;Object[]&gt;
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-Database &lt;Object[]&gt;]
+    [-ExcludeDatabase &lt;Object[]&gt;]
+    [-Path &lt;String&gt;] -InputObject &lt;Object[]&gt;
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -510,22 +510,22 @@ Export-DbaExecutionPlan
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Export-DbaExecutionPlan -SqlInstance sqlserver2014a -Path C:\Temp
 </code></pre>
-<p>Exports all execution plans for sqlserver2014a. Files saved in to C:\Temp</p>
+<p>Exports all execution plans for sqlserver2014a. Files saved in to C:\Temp<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Export-DbaExecutionPlan -SqlInstance sqlserver2014a -Database db1, db2 -SinceLastExecution '2016-07-01 10:47:00' -Path C:\Temp
 </code></pre>
-<p>Exports all execution plans for databases db1 and db2 on sqlserver2014a since July 1, 2016 at 10:47 AM. Files saved in to C:\Temp</p>
+<p>Exports all execution plans for databases db1 and db2 on sqlserver2014a since July 1, 2016 at 10:47 AM. Files saved in to C:\Temp<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Get-DbaExecutionPlan -SqlInstance sqlserver2014a | Export-DbaExecutionPlan -Path C:\Temp
 </code></pre>
-<p>Gets all execution plans for sqlserver2014a. Using Pipeline exports them all to C:\Temp</p>
+<p>Gets all execution plans for sqlserver2014a. Using Pipeline exports them all to C:\Temp<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; Get-DbaExecutionPlan -SqlInstance sqlserver2014a | Export-DbaExecutionPlan -Path C:\Temp -WhatIf
 </code></pre>
-<p>Gets all execution plans for sqlserver2014a. Then shows what would happen if the results where piped to Export-DbaExecutionPlan</p>
+<p>Gets all execution plans for sqlserver2014a. Then shows what would happen if the results where piped to Export-DbaExecutionPlan<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances.</p>
+<p>The target SQL Server instance or instances.<br></p>
 <table>
 <thead>
 <tr>
@@ -553,7 +553,7 @@ Export-DbaExecutionPlan
 </tbody>
 </table>
 <h5 id="inputobject">-InputObject</h5>
-<p>Internal parameter</p>
+<p>Internal parameter<br></p>
 <table>
 <thead>
 <tr>
@@ -584,7 +584,7 @@ Export-DbaExecutionPlan
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -612,7 +612,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="database">-Database</h5>
-<p>The database(s) to process - this list is auto-populated from the server. If unspecified, all databases will be processed.</p>
+<p>The database(s) to process - this list is auto-populated from the server. If unspecified, all databases will be processed.<br></p>
 <table>
 <thead>
 <tr>
@@ -640,7 +640,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="excludedatabase">-ExcludeDatabase</h5>
-<p>The database(s) to exclude - this list is auto-populated from the server</p>
+<p>The database(s) to exclude - this list is auto-populated from the server<br></p>
 <table>
 <thead>
 <tr>
@@ -668,7 +668,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="path">-Path</h5>
-<p>The directory where all of the sqlxml files will be exported</p>
+<p>The directory where all of the sqlxml files will be exported<br></p>
 <table>
 <thead>
 <tr>
@@ -696,7 +696,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="sincecreation">-SinceCreation</h5>
-<p>Datetime object used to narrow the results to a date</p>
+<p>Datetime object used to narrow the results to a date<br></p>
 <table>
 <thead>
 <tr>
@@ -724,7 +724,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="sincelastexecution">-SinceLastExecution</h5>
-<p>Datetime object used to narrow the results to a date</p>
+<p>Datetime object used to narrow the results to a date<br></p>
 <table>
 <thead>
 <tr>
@@ -754,7 +754,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -782,7 +782,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>Shows what would happen if the command were to run. No actions are actually performed.</p>
+<p>Shows what would happen if the command were to run. No actions are actually performed.<br></p>
 <table>
 <thead>
 <tr>
@@ -810,7 +810,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>Prompts you for confirmation before executing any changing operations within the command.</p>
+<p>Prompts you for confirmation before executing any changing operations within the command.<br></p>
 <table>
 <thead>
 <tr>
@@ -839,6 +839,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Export-DbaExecutionPlan.ps1">Export-DbaExecutionPlan</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Export-DbaExecutionPlan">Export-DbaExecutionPlan</a>.</p>
 
                 </div> <!-- rendered -->

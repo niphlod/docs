@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -472,11 +472,11 @@
 <p>See <a href="https://msdn.microsoft.com/en-us/library/ms190737.aspx">https://msdn.microsoft.com/en-us/library/ms190737.aspx</a> for more information.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Get-DbaStartupParameter
-    --SqlInstance] &lt;DbaInstanceParameter[]&gt;
-    -[-Credential] &lt;PSCredential&gt;]
-    --Simple]
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [-SqlInstance] &lt;DbaInstanceParameter[]&gt;
+    [[-Credential] &lt;PSCredential&gt;]
+    [-Simple]
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -485,15 +485,15 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Get-DbaStartupParameter -SqlInstance sql2014
 </code></pre>
-<p>Logs into SQL WMI as the current user then displays the values for numerous startup parameters.</p>
+<p>Logs into SQL WMI as the current user then displays the values for numerous startup parameters.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; $wincred = Get-Credential ad\sqladmin
 PS C:\&gt; Get-DbaStartupParameter -SqlInstance sql2014 -Credential $wincred -Simple
 </code></pre>
-<p>Logs in to WMI using the ad\sqladmin credential and gathers simplified information about the SQL Server Startup Parameters.</p>
+<p>Logs in to WMI using the ad\sqladmin credential and gathers simplified information about the SQL Server Startup Parameters.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances.</p>
+<p>The target SQL Server instance or instances.<br></p>
 <table>
 <thead>
 <tr>
@@ -523,7 +523,7 @@ PS C:\&gt; Get-DbaStartupParameter -SqlInstance sql2014 -Credential $wincred -Si
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="credential">-Credential</h5>
 <p>Allows you to login to servers using alternate Windows credentials.
-$scred = Get-Credential, then pass $scred object to the -Credential parameter.</p>
+$scred = Get-Credential, then pass $scred object to the -Credential parameter.<br></p>
 <table>
 <thead>
 <tr>
@@ -551,7 +551,7 @@ $scred = Get-Credential, then pass $scred object to the -Credential parameter.</
 </tbody>
 </table>
 <h5 id="simple">-Simple</h5>
-<p>If this switch is enabled, simplified output will be produced including only Server, Master Data Path, Master Log path, ErrorLog, TraceFlags and ParameterString.</p>
+<p>If this switch is enabled, simplified output will be produced including only Server, Master Data Path, Master Log path, ErrorLog, TraceFlags and ParameterString.<br></p>
 <table>
 <thead>
 <tr>
@@ -580,7 +580,7 @@ $scred = Get-Credential, then pass $scred object to the -Credential parameter.</
 </table>
 <h5 id="enableexception">-EnableException</h5>
 <p>If this switch is enabled, exceptions will be thrown to the caller, which will need to perform its own exception processing. Otherwise, the function will try to catch the exception, interpret it and
-provide a friendly error message.</p>
+provide a friendly error message.<br></p>
 <table>
 <thead>
 <tr>
@@ -609,6 +609,7 @@ provide a friendly error message.</p>
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Get-DbaStartupParameter.ps1">Get-DbaStartupParameter</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Get-DbaStartupParameter">Get-DbaStartupParameter</a>.</p>
 
                 </div> <!-- rendered -->

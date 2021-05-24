@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -474,13 +474,13 @@
 for more information</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>New-DbaDacOption
-    -[-Type] &lt;String&gt;]
-    --Action] &lt;String&gt;
-    -[-PublishXml] &lt;String&gt;]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [[-Type] &lt;String&gt;]
+    [-Action] &lt;String&gt;
+    [[-PublishXml] &lt;String&gt;]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -492,16 +492,16 @@ PS C:\&gt; $options.ExtractAllTableData = $true
 PS C:\&gt; $options.CommandTimeout = 0
 PS C:\&gt; Export-DbaDacPackage -SqlInstance sql2016 -Database DB1 -Options $options
 </code></pre>
-<p>Uses DacOption object to set the CommandTimeout to 0 then extracts the dacpac for SharePoint_Config on sql2016 to C:\temp\SharePoint_Config.dacpac including all table data.</p>
+<p>Uses DacOption object to set the CommandTimeout to 0 then extracts the dacpac for SharePoint_Config on sql2016 to C:\temp\SharePoint_Config.dacpac including all table data.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; $options = New-DbaDacOption -Type Dacpac -Action Publish
 PS C:\&gt; $options.DeployOptions.DropObjectsNotInSource = $true
 PS C:\&gt; Publish-DbaDacPackage -SqlInstance sql2016 -Database DB1 -Options $options -Path c:\temp\db.dacpac
 </code></pre>
-<p>Uses DacOption object to set Deployment Options and publish the db.dacpac dacpac file as DB1 on sql2016</p>
+<p>Uses DacOption object to set Deployment Options and publish the db.dacpac dacpac file as DB1 on sql2016<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="action">-Action</h5>
-<p>Choosing an intended action: Publish or Export.</p>
+<p>Choosing an intended action: Publish or Export.<br></p>
 <table>
 <thead>
 <tr>
@@ -534,7 +534,7 @@ PS C:\&gt; Publish-DbaDacPackage -SqlInstance sql2016 -Database DB1 -Options $op
 </table>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="type">-Type</h5>
-<p>Selecting the type of the export: Dacpac (default) or Bacpac.</p>
+<p>Selecting the type of the export: Dacpac (default) or Bacpac.<br></p>
 <table>
 <thead>
 <tr>
@@ -566,7 +566,7 @@ PS C:\&gt; Publish-DbaDacPackage -SqlInstance sql2016 -Database DB1 -Options $op
 </tbody>
 </table>
 <h5 id="publishxml">-PublishXml</h5>
-<p>Specifies the publish profile which will include options and sqlCmdVariables.</p>
+<p>Specifies the publish profile which will include options and sqlCmdVariables.<br></p>
 <table>
 <thead>
 <tr>
@@ -596,7 +596,7 @@ PS C:\&gt; Publish-DbaDacPackage -SqlInstance sql2016 -Database DB1 -Options $op
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -624,7 +624,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.</p>
+<p>If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.<br></p>
 <table>
 <thead>
 <tr>
@@ -652,7 +652,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.</p>
+<p>If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.<br></p>
 <table>
 <thead>
 <tr>
@@ -681,6 +681,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/New-DbaDacOption.ps1">New-DbaDacOption</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#New-DbaDacOption">New-DbaDacOption</a>.</p>
 
                 </div> <!-- rendered -->

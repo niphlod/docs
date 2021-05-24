@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -470,11 +470,11 @@
 <p>The Test-DbaManagementObject returns True if the Version is on the computer, and False if it does not exist.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Test-DbaManagementObject
-    -[-ComputerName] &lt;DbaInstanceParameter[]&gt;]
-    -[-Credential] &lt;PSCredential&gt;]
-    --VersionNumber] &lt;Int32[]&gt;
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [[-ComputerName] &lt;DbaInstanceParameter[]&gt;]
+    [[-Credential] &lt;PSCredential&gt;]
+    [-VersionNumber] &lt;Int32[]&gt;
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -483,10 +483,10 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Test-DbaManagementObject -VersionNumber 13
 </code></pre>
-<p>Returns True if the version exists, if it does not exist it will return False</p>
+<p>Returns True if the version exists, if it does not exist it will return False<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="versionnumber">-VersionNumber</h5>
-<p>This is the specific version number you are looking for and the return will be True.</p>
+<p>This is the specific version number you are looking for and the return will be True.<br></p>
 <table>
 <thead>
 <tr>
@@ -515,7 +515,7 @@
 </table>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="computername">-ComputerName</h5>
-<p>The name of the target you would like to check</p>
+<p>The name of the target you would like to check<br></p>
 <table>
 <thead>
 <tr>
@@ -543,7 +543,7 @@
 </tbody>
 </table>
 <h5 id="credential">-Credential</h5>
-<p>This command uses Windows credentials. This parameter allows you to connect remotely as a different user.</p>
+<p>This command uses Windows credentials. This parameter allows you to connect remotely as a different user.<br></p>
 <table>
 <thead>
 <tr>
@@ -573,7 +573,7 @@
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -602,6 +602,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Test-DbaManagementObject.ps1">Test-DbaManagementObject</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Test-DbaManagementObject">Test-DbaManagementObject</a>.</p>
 
                 </div> <!-- rendered -->

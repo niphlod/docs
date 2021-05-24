@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -470,12 +470,12 @@
 <p>The Get-DbaInstanceProperty command gets SQL Server instance properties from the SMO object sqlserver.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Get-DbaInstanceProperty
-    --SqlInstance] &lt;DbaInstanceParameter[]&gt;
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    -[-InstanceProperty] &lt;Object[]&gt;]
-    -[-ExcludeInstanceProperty] &lt;Object[]&gt;]
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [-SqlInstance] &lt;DbaInstanceParameter[]&gt;
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [[-InstanceProperty] &lt;Object[]&gt;]
+    [[-ExcludeInstanceProperty] &lt;Object[]&gt;]
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -484,31 +484,31 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Get-DbaInstanceProperty -SqlInstance localhost
 </code></pre>
-<p>Returns SQL Server instance properties on the local default SQL Server instance</p>
+<p>Returns SQL Server instance properties on the local default SQL Server instance<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Get-DbaInstanceProperty -SqlInstance sql2, sql4\sqlexpress
 </code></pre>
-<p>Returns SQL Server instance properties on default instance on sql2 and sqlexpress instance on sql4</p>
+<p>Returns SQL Server instance properties on default instance on sql2 and sqlexpress instance on sql4<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; 'sql2','sql4' | Get-DbaInstanceProperty
 </code></pre>
-<p>Returns SQL Server instance properties on sql2 and sql4</p>
+<p>Returns SQL Server instance properties on sql2 and sql4<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; Get-DbaInstanceProperty -SqlInstance sql2,sql4 -InstanceProperty DefaultFile
 </code></pre>
-<p>Returns SQL Server instance property DefaultFile on instance sql2 and sql4</p>
+<p>Returns SQL Server instance property DefaultFile on instance sql2 and sql4<br></p>
 <h5 id="example-5">Example:  5</h5>
 <pre><code>PS C:\&gt; Get-DbaInstanceProperty -SqlInstance sql2,sql4 -ExcludeInstanceProperty DefaultFile
 </code></pre>
-<p>Returns all SQL Server instance properties except DefaultFile on instance sql2 and sql4</p>
+<p>Returns all SQL Server instance properties except DefaultFile on instance sql2 and sql4<br></p>
 <h5 id="example-6">Example:  6</h5>
 <pre><code>PS C:\&gt; $cred = Get-Credential sqladmin
 PS C:\&gt; Get-DbaInstanceProperty -SqlInstance sql2 -SqlCredential $cred
 </code></pre>
-<p>Connects using sqladmin credential and returns SQL Server instance properties from sql2</p>
+<p>Connects using sqladmin credential and returns SQL Server instance properties from sql2<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances. This can be a collection and receive pipeline input to allow the function to be executed against multiple SQL Server instances.</p>
+<p>The target SQL Server instance or instances. This can be a collection and receive pipeline input to allow the function to be executed against multiple SQL Server instances.<br></p>
 <table>
 <thead>
 <tr>
@@ -539,7 +539,7 @@ PS C:\&gt; Get-DbaInstanceProperty -SqlInstance sql2 -SqlCredential $cred
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -567,7 +567,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="instanceproperty">-InstanceProperty</h5>
-<p>SQL Server instance property(ies) to include.</p>
+<p>SQL Server instance property(ies) to include.<br></p>
 <table>
 <thead>
 <tr>
@@ -595,7 +595,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="excludeinstanceproperty">-ExcludeInstanceProperty</h5>
-<p>SQL Server instance property(ies) to exclude.</p>
+<p>SQL Server instance property(ies) to exclude.<br></p>
 <table>
 <thead>
 <tr>
@@ -625,7 +625,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -654,6 +654,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Get-DbaInstanceProperty.ps1">Get-DbaInstanceProperty</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Get-DbaInstanceProperty">Get-DbaInstanceProperty</a>.</p>
 
                 </div> <!-- rendered -->

@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -471,25 +471,25 @@
 <p>Thanks to Dave Mason (@BeginTry) for some straightforward code samples <a href="https://itsalljustelectrons.blogspot.be/2017/01/SQL-Server-Extended-Event-Handling-Via-Powershell.html">https://itsalljustelectrons.blogspot.be/2017/01/SQL-Server-Extended-Event-Handling-Via-Powershell.html</a></p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Watch-DbaXESession
-    --SqlCredential &lt;PSCredential&gt;]
-    --Session &lt;String&gt;]
-    --Raw]
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [-SqlCredential &lt;PSCredential&gt;]
+    [-Session &lt;String&gt;]
+    [-Raw]
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 Watch-DbaXESession -SqlInstance &lt;DbaInstanceParameter&gt;
-    --SqlCredential &lt;PSCredential&gt;]
-    --Session &lt;String&gt;]
-    --Raw]
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [-SqlCredential &lt;PSCredential&gt;]
+    [-Session &lt;String&gt;]
+    [-Raw]
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 Watch-DbaXESession
-    --SqlCredential &lt;PSCredential&gt;]
-    --Session &lt;String&gt;] -InputObject &lt;Session&gt;
-    --Raw]
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [-SqlCredential &lt;PSCredential&gt;]
+    [-Session &lt;String&gt;] -InputObject &lt;Session&gt;
+    [-Raw]
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -498,18 +498,18 @@ Watch-DbaXESession
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Watch-DbaXESession -SqlInstance sql2017 -Session system_health
 </code></pre>
-<p>Shows events for the system_health session as it happens.</p>
+<p>Shows events for the system_health session as it happens.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Watch-DbaXESession -SqlInstance sql2017 -Session system_health | Export-Csv -NoTypeInformation -Path C:\temp\system_health.csv
 </code></pre>
-<p>Exports live events to CSV. Ctrl-C may not not cancel out of it - fastest way is to stop the session.</p>
+<p>Exports live events to CSV. Ctrl-C may not not cancel out of it - fastest way is to stop the session.<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Get-DbaXESession -SqlInstance sql2017 -Session system_health | Start-DbaXESession | Watch-DbaXESession | Export-Csv -NoTypeInformation -Path C:\temp\system_health.csv
 </code></pre>
-<p>Exports live events to CSV. Ctrl-C may not not cancel out of this. The fastest way to do so is to stop the session.</p>
+<p>Exports live events to CSV. Ctrl-C may not not cancel out of this. The fastest way to do so is to stop the session.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances. You must have sysadmin access and server version must be SQL Server version 2008 or higher.</p>
+<p>The target SQL Server instance or instances. You must have sysadmin access and server version must be SQL Server version 2008 or higher.<br></p>
 <table>
 <thead>
 <tr>
@@ -537,7 +537,7 @@ Watch-DbaXESession
 </tbody>
 </table>
 <h5 id="inputobject">-InputObject</h5>
-<p>Accepts an XESession object returned by Get-DbaXESession.</p>
+<p>Accepts an XESession object returned by Get-DbaXESession.<br></p>
 <table>
 <thead>
 <tr>
@@ -568,7 +568,7 @@ Watch-DbaXESession
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -596,7 +596,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="session">-Session</h5>
-<p>Only return a specific session. Options for this parameter are auto-populated from the server.</p>
+<p>Only return a specific session. Options for this parameter are auto-populated from the server.<br></p>
 <table>
 <thead>
 <tr>
@@ -624,7 +624,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="raw">-Raw</h5>
-<p>If this switch is enabled, the Microsoft.SqlServer.XEvent.Linq.QueryableXEventData enumeration object is returned.</p>
+<p>If this switch is enabled, the Microsoft.SqlServer.XEvent.Linq.QueryableXEventData enumeration object is returned.<br></p>
 <table>
 <thead>
 <tr>
@@ -654,7 +654,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -683,6 +683,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Watch-DbaXESession.ps1">Watch-DbaXESession</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Watch-DbaXESession">Watch-DbaXESession</a>.</p>
 
                 </div> <!-- rendered -->

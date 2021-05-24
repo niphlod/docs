@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -473,17 +473,17 @@
 <a href="https://github.com/erikdarlingdata/DarlingData">https://github.com/erikdarlingdata/DarlingData</a></p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Install-DbaDarlingData
-    --SqlInstance] &lt;DbaInstanceParameter[]&gt;
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    -[-Database] &lt;Object&gt;]
-    -[-Branch] &lt;String&gt;]
-    -[-Procedure] &lt;String[]&gt;]
-    -[-LocalFile] &lt;String&gt;]
-    --Force]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-SqlInstance] &lt;DbaInstanceParameter[]&gt;
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [[-Database] &lt;Object&gt;]
+    [[-Branch] &lt;String&gt;]
+    [[-Procedure] &lt;String[]&gt;]
+    [[-LocalFile] &lt;String&gt;]
+    [-Force]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -492,30 +492,30 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Install-DbaDarlingData -SqlInstance server1 -Database master
 </code></pre>
-<p>Logs into server1 with Windows authentication and then installs all of Erik's scripts in the master database.</p>
+<p>Logs into server1 with Windows authentication and then installs all of Erik's scripts in the master database.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Install-DbaDarlingData -SqlInstance server1\instance1 -Database DBA
 </code></pre>
-<p>Logs into server1\instance1 with Windows authentication and then installs tall of Erik's scripts in the DBA database.</p>
+<p>Logs into server1\instance1 with Windows authentication and then installs tall of Erik's scripts in the DBA database.<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Install-DbaDarlingData -SqlInstance server1\instance1 -Database master -SqlCredential $cred
 </code></pre>
-<p>Logs into server1\instance1 with SQL authentication and then installs all of Erik's scripts in the master database.</p>
+<p>Logs into server1\instance1 with SQL authentication and then installs all of Erik's scripts in the master database.<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; Install-DbaDarlingData -SqlInstance sql2016\standardrtm, sql2016\sqlexpress, sql2014
 </code></pre>
-<p>Logs into sql2016\standardrtm, sql2016\sqlexpress and sql2014 with Windows authentication and then installs al of Erik's scripts in the master database.</p>
+<p>Logs into sql2016\standardrtm, sql2016\sqlexpress and sql2014 with Windows authentication and then installs al of Erik's scripts in the master database.<br></p>
 <h5 id="example-5">Example:  5</h5>
 <pre><code>PS C:\&gt; Install-DbaDarlingData -SqlInstance sql2016 -Branch dev
 </code></pre>
-<p>Installs the dev branch version of Erik's scripts in the master database on sql2016 instance.</p>
+<p>Installs the dev branch version of Erik's scripts in the master database on sql2016 instance.<br></p>
 <h5 id="example-6">Example:  6</h5>
 <pre><code>PS C:\&gt; Install-DbaDarlingData -SqlInstance server1\instance1 -Database DBA -Procedure Human, Pressure
 </code></pre>
-<p>Logs into server1\instance1 with Windows authentication and then installs sp_HumanEvents and sp_PressureDetector of Erik's scripts in the DBA database.</p>
+<p>Logs into server1\instance1 with Windows authentication and then installs sp_HumanEvents and sp_PressureDetector of Erik's scripts in the DBA database.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances.</p>
+<p>The target SQL Server instance or instances.<br></p>
 <table>
 <thead>
 <tr>
@@ -546,7 +546,7 @@
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -574,7 +574,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="database">-Database</h5>
-<p>Specifies the database to install Erik's stored procedures into</p>
+<p>Specifies the database to install Erik's stored procedures into<br></p>
 <table>
 <thead>
 <tr>
@@ -605,7 +605,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 <p>Specifies an alternate branch of Erik's to install.
 Allowed values:
 master (default)
-dev</p>
+dev<br></p>
 <table>
 <thead>
 <tr>
@@ -642,7 +642,7 @@ Allowed Values or Combination of Values:
 All (default, to install all 3 procedures)
 Human (to install sp_HumanEvents)
 Pressure (to install sp_PressureDetector)
-Quickie (to install sp_QuickieStore)</p>
+Quickie (to install sp_QuickieStore)<br></p>
 <table>
 <thead>
 <tr>
@@ -675,7 +675,7 @@ Quickie (to install sp_QuickieStore)</p>
 </table>
 <h5 id="localfile">-LocalFile</h5>
 <p>Specifies the path to a local file to install from. This <em>should</em> be the zip file as distributed by the maintainers.
-If this parameter is not specified, the latest version will be downloaded and installed from <a href="https://github.com/erikdarlingdata/DarlingData">https://github.com/erikdarlingdata/DarlingData</a></p>
+If this parameter is not specified, the latest version will be downloaded and installed from <a href="https://github.com/erikdarlingdata/DarlingData">https://github.com/erikdarlingdata/DarlingData</a><br></p>
 <table>
 <thead>
 <tr>
@@ -703,7 +703,7 @@ If this parameter is not specified, the latest version will be downloaded and in
 </tbody>
 </table>
 <h5 id="force">-Force</h5>
-<p>If this switch is enabled, the zip will be downloaded from the internet even if previously cached.</p>
+<p>If this switch is enabled, the zip will be downloaded from the internet even if previously cached.<br></p>
 <table>
 <thead>
 <tr>
@@ -733,7 +733,7 @@ If this parameter is not specified, the latest version will be downloaded and in
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -761,7 +761,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>Shows what would happen if the command were to run. No actions are actually performed.</p>
+<p>Shows what would happen if the command were to run. No actions are actually performed.<br></p>
 <table>
 <thead>
 <tr>
@@ -789,7 +789,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>Prompts to confirm actions</p>
+<p>Prompts to confirm actions<br></p>
 <table>
 <thead>
 <tr>
@@ -818,6 +818,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Install-DbaDarlingData.ps1">Install-DbaDarlingData</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Install-DbaDarlingData">Install-DbaDarlingData</a>.</p>
 
                 </div> <!-- rendered -->

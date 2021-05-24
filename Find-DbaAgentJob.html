@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -470,21 +470,21 @@
 <p>This command filters SQL Agent jobs giving the DBA a list of jobs that may need attention or could possibly be options for removal.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Find-DbaAgentJob
-    --SqlInstance] &lt;DbaInstanceParameter[]&gt;
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    -[-JobName] &lt;String[]&gt;]
-    -[-ExcludeJobName] &lt;String[]&gt;]
-    -[-StepName] &lt;String[]&gt;]
-    -[-LastUsed] &lt;Int32&gt;]
-    --IsDisabled]
-    --IsFailed]
-    --IsNotScheduled]
-    --IsNoEmailNotification]
-    -[-Category] &lt;String[]&gt;]
-    -[-Owner] &lt;String&gt;]
-    -[-Since] &lt;DateTime&gt;]
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [-SqlInstance] &lt;DbaInstanceParameter[]&gt;
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [[-JobName] &lt;String[]&gt;]
+    [[-ExcludeJobName] &lt;String[]&gt;]
+    [[-StepName] &lt;String[]&gt;]
+    [[-LastUsed] &lt;Int32&gt;]
+    [-IsDisabled]
+    [-IsFailed]
+    [-IsNotScheduled]
+    [-IsNoEmailNotification]
+    [[-Category] &lt;String[]&gt;]
+    [[-Owner] &lt;String&gt;]
+    [[-Since] &lt;DateTime&gt;]
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -493,47 +493,47 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Find-DbaAgentJob -SqlInstance Dev01 -JobName *backup*
 </code></pre>
-<p>Returns all agent job(s) that have backup in the name</p>
+<p>Returns all agent job(s) that have backup in the name<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Find-DbaAgentJob -SqlInstance Dev01, Dev02 -JobName Mybackup
 </code></pre>
-<p>Returns all agent job(s) that are named exactly Mybackup</p>
+<p>Returns all agent job(s) that are named exactly Mybackup<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Find-DbaAgentJob -SqlInstance Dev01 -LastUsed 10
 </code></pre>
-<p>Returns all agent job(s) that have not ran in 10 days</p>
+<p>Returns all agent job(s) that have not ran in 10 days<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; Find-DbaAgentJob -SqlInstance Dev01 -IsDisabled -IsNoEmailNotification -IsNotScheduled
 </code></pre>
-<p>Returns all agent job(s) that are either disabled, have no email notification or don't have a schedule. returned with detail</p>
+<p>Returns all agent job(s) that are either disabled, have no email notification or don't have a schedule. returned with detail<br></p>
 <h5 id="example-5">Example:  5</h5>
 <pre><code>PS C:\&gt; $servers | Find-DbaAgentJob -IsFailed | Start-DbaAgentJob
 </code></pre>
-<p>Finds all failed job then starts them. Consider using a -WhatIf at the end of Start-DbaAgentJob to see what it'll do first</p>
+<p>Finds all failed job then starts them. Consider using a -WhatIf at the end of Start-DbaAgentJob to see what it'll do first<br></p>
 <h5 id="example-6">Example:  6</h5>
 <pre><code>PS C:\&gt; Find-DbaAgentJob -SqlInstance Dev01 -LastUsed 10 -Exclude &quot;Yearly - RollUp Workload&quot;, &quot;SMS - Notification&quot;
 </code></pre>
-<p>Returns all agent jobs that have not ran in the last 10 days ignoring jobs &quot;Yearly - RollUp Workload&quot; and &quot;SMS - Notification&quot;</p>
+<p>Returns all agent jobs that have not ran in the last 10 days ignoring jobs &quot;Yearly - RollUp Workload&quot; and &quot;SMS - Notification&quot;<br></p>
 <h5 id="example-7">Example:  7</h5>
 <pre><code>PS C:\&gt; Find-DbaAgentJob -SqlInstance Dev01 -Category &quot;REPL-Distribution&quot;, &quot;REPL-Snapshot&quot; | Format-Table -AutoSize -Wrap
 </code></pre>
-<p>Returns all job/s on Dev01 that are in either category &quot;REPL-Distribution&quot; or &quot;REPL-Snapshot&quot;</p>
+<p>Returns all job/s on Dev01 that are in either category &quot;REPL-Distribution&quot; or &quot;REPL-Snapshot&quot;<br></p>
 <h5 id="example-8">Example:  8</h5>
 <pre><code>PS C:\&gt; Find-DbaAgentJob -SqlInstance Dev01, Dev02 -IsFailed -Since '2016-07-01 10:47:00'
 </code></pre>
-<p>Returns all agent job(s) on Dev01 and Dev02 that have failed since July of 2016 (and still have history in msdb)</p>
+<p>Returns all agent job(s) on Dev01 and Dev02 that have failed since July of 2016 (and still have history in msdb)<br></p>
 <h5 id="example-9">Example:  9</h5>
 <pre><code>PS C:\&gt; Get-DbaRegServer -SqlInstance CMSServer -Group Production | Find-DbaAgentJob -Disabled -IsNotScheduled | Format-Table -AutoSize -Wrap
 </code></pre>
-<p>Queries CMS server to return all SQL instances in the Production folder and then list out all agent jobs that have either been disabled or have no schedule.</p>
+<p>Queries CMS server to return all SQL instances in the Production folder and then list out all agent jobs that have either been disabled or have no schedule.<br></p>
 <h5 id="example-10">Example:  10</h5>
 <pre><code>PS C:\&gt; $Instances = 'SQL2017N5','SQL2019N5','SQL2019N20','SQL2019N21','SQL2019N22'
 </code></pre>
-<p>Find-DbaAgentJob -SqlInstance $Instances -JobName <em>backup</em> -IsNotScheduled
-Returns all agent job(s) wiht backup in the name, that don't have a schedule on 'SQL2017N5','SQL2019N5','SQL2019N20','SQL2019N21','SQL2019N22'</p>
+<p>Find-DbaAgentJob -SqlInstance $Instances -JobName <em>backup</em> -IsNotScheduled<br>
+Returns all agent job(s) wiht backup in the name, that don't have a schedule on 'SQL2017N5','SQL2019N5','SQL2019N20','SQL2019N21','SQL2019N22'<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances. You must have sysadmin access and server version must be SQL Server version 2000 or higher.</p>
+<p>The target SQL Server instance or instances. You must have sysadmin access and server version must be SQL Server version 2000 or higher.<br></p>
 <table>
 <thead>
 <tr>
@@ -564,7 +564,7 @@ Returns all agent job(s) wiht backup in the name, that don't have a schedule on 
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -593,7 +593,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </table>
 <h5 id="jobname">-JobName</h5>
 <p>Filter agent jobs to only the name(s) you list.
-Supports regular expression (e.g. MyJob*) being passed in.</p>
+Supports regular expression (e.g. MyJob*) being passed in.<br></p>
 <table>
 <thead>
 <tr>
@@ -621,7 +621,7 @@ Supports regular expression (e.g. MyJob*) being passed in.</p>
 </tbody>
 </table>
 <h5 id="excludejobname">-ExcludeJobName</h5>
-<p>Allows you to enter an array of agent job names to ignore</p>
+<p>Allows you to enter an array of agent job names to ignore<br></p>
 <table>
 <thead>
 <tr>
@@ -650,7 +650,7 @@ Supports regular expression (e.g. MyJob*) being passed in.</p>
 </table>
 <h5 id="stepname">-StepName</h5>
 <p>Filter based on StepName.
-Supports regular expression (e.g. MyJob*) being passed in.</p>
+Supports regular expression (e.g. MyJob*) being passed in.<br></p>
 <table>
 <thead>
 <tr>
@@ -678,7 +678,7 @@ Supports regular expression (e.g. MyJob*) being passed in.</p>
 </tbody>
 </table>
 <h5 id="lastused">-LastUsed</h5>
-<p>Find all jobs that haven't ran in the INT number of previous day(s)</p>
+<p>Find all jobs that haven't ran in the INT number of previous day(s)<br></p>
 <table>
 <thead>
 <tr>
@@ -706,7 +706,7 @@ Supports regular expression (e.g. MyJob*) being passed in.</p>
 </tbody>
 </table>
 <h5 id="isdisabled">-IsDisabled</h5>
-<p>Find all jobs that are disabled</p>
+<p>Find all jobs that are disabled<br></p>
 <table>
 <thead>
 <tr>
@@ -734,7 +734,7 @@ Supports regular expression (e.g. MyJob*) being passed in.</p>
 </tbody>
 </table>
 <h5 id="isfailed">-IsFailed</h5>
-<p>Find all jobs that have failed</p>
+<p>Find all jobs that have failed<br></p>
 <table>
 <thead>
 <tr>
@@ -762,7 +762,7 @@ Supports regular expression (e.g. MyJob*) being passed in.</p>
 </tbody>
 </table>
 <h5 id="isnotscheduled">-IsNotScheduled</h5>
-<p>Find all jobs with no schedule assigned</p>
+<p>Find all jobs with no schedule assigned<br></p>
 <table>
 <thead>
 <tr>
@@ -790,7 +790,7 @@ Supports regular expression (e.g. MyJob*) being passed in.</p>
 </tbody>
 </table>
 <h5 id="isnoemailnotification">-IsNoEmailNotification</h5>
-<p>Find all jobs without email notification configured</p>
+<p>Find all jobs without email notification configured<br></p>
 <table>
 <thead>
 <tr>
@@ -818,7 +818,7 @@ Supports regular expression (e.g. MyJob*) being passed in.</p>
 </tbody>
 </table>
 <h5 id="category">-Category</h5>
-<p>Filter based on agent job categories</p>
+<p>Filter based on agent job categories<br></p>
 <table>
 <thead>
 <tr>
@@ -846,7 +846,7 @@ Supports regular expression (e.g. MyJob*) being passed in.</p>
 </tbody>
 </table>
 <h5 id="owner">-Owner</h5>
-<p>Filter based on owner of the job/s</p>
+<p>Filter based on owner of the job/s<br></p>
 <table>
 <thead>
 <tr>
@@ -874,7 +874,7 @@ Supports regular expression (e.g. MyJob*) being passed in.</p>
 </tbody>
 </table>
 <h5 id="since">-Since</h5>
-<p>Datetime object used to narrow the results to a date</p>
+<p>Datetime object used to narrow the results to a date<br></p>
 <table>
 <thead>
 <tr>
@@ -904,7 +904,7 @@ Supports regular expression (e.g. MyJob*) being passed in.</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -933,6 +933,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Find-DbaAgentJob.ps1">Find-DbaAgentJob</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Find-DbaAgentJob">Find-DbaAgentJob</a>.</p>
 
                 </div> <!-- rendered -->

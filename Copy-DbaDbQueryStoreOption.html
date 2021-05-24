@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -470,18 +470,18 @@
 <p>Copies the configuration of a Query Store enabled database and sets the copied configuration on other databases.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Copy-DbaDbQueryStoreOption
-    --Source] &lt;DbaInstanceParameter&gt;
-    -[-SourceSqlCredential] &lt;PSCredential&gt;]
-    --SourceDatabase] &lt;Object&gt;
-    --Destination] &lt;DbaInstanceParameter[]&gt;
-    -[-DestinationSqlCredential] &lt;PSCredential&gt;]
-    -[-DestinationDatabase] &lt;Object[]&gt;]
-    -[-Exclude] &lt;Object[]&gt;]
-    --AllDatabases]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-Source] &lt;DbaInstanceParameter&gt;
+    [[-SourceSqlCredential] &lt;PSCredential&gt;]
+    [-SourceDatabase] &lt;Object&gt;
+    [-Destination] &lt;DbaInstanceParameter[]&gt;
+    [[-DestinationSqlCredential] &lt;PSCredential&gt;]
+    [[-DestinationDatabase] &lt;Object[]&gt;]
+    [[-Exclude] &lt;Object[]&gt;]
+    [-AllDatabases]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -490,14 +490,14 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Copy-DbaDbQueryStoreOption -Source ServerA\SQL -SourceDatabase AdventureWorks -Destination ServerB\SQL -AllDatabases
 </code></pre>
-<p>Copy the Query Store configuration of the AdventureWorks database in the ServerA\SQL instance and apply it on all user databases in the ServerB\SQL Instance.</p>
+<p>Copy the Query Store configuration of the AdventureWorks database in the ServerA\SQL instance and apply it on all user databases in the ServerB\SQL Instance.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Copy-DbaDbQueryStoreOption -Source ServerA\SQL -SourceDatabase AdventureWorks -Destination ServerB\SQL -DestinationDatabase WorldWideTraders
 </code></pre>
-<p>Copy the Query Store configuration of the AdventureWorks database in the ServerA\SQL instance and apply it to the WorldWideTraders database in the ServerB\SQL Instance.</p>
+<p>Copy the Query Store configuration of the AdventureWorks database in the ServerA\SQL instance and apply it to the WorldWideTraders database in the ServerB\SQL Instance.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="source">-Source</h5>
-<p>Source SQL Server. You must have sysadmin access and server version must be SQL Server version 2016 or higher.</p>
+<p>Source SQL Server. You must have sysadmin access and server version must be SQL Server version 2016 or higher.<br></p>
 <table>
 <thead>
 <tr>
@@ -525,7 +525,7 @@
 </tbody>
 </table>
 <h5 id="sourcedatabase">-SourceDatabase</h5>
-<p>Specifies the database to copy the Query Store configuration from.</p>
+<p>Specifies the database to copy the Query Store configuration from.<br></p>
 <table>
 <thead>
 <tr>
@@ -553,7 +553,7 @@
 </tbody>
 </table>
 <h5 id="destination">-Destination</h5>
-<p>Destination SQL Server. You must have sysadmin access and the server must be SQL Server 2016 or higher.</p>
+<p>Destination SQL Server. You must have sysadmin access and the server must be SQL Server 2016 or higher.<br></p>
 <table>
 <thead>
 <tr>
@@ -584,7 +584,7 @@
 <h5 id="sourcesqlcredential">-SourceSqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -614,7 +614,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 <h5 id="destinationsqlcredential">-DestinationSqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -642,7 +642,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="destinationdatabase">-DestinationDatabase</h5>
-<p>Specifies a list of databases that will receive a copy of the Query Store configuration of the SourceDatabase.</p>
+<p>Specifies a list of databases that will receive a copy of the Query Store configuration of the SourceDatabase.<br></p>
 <table>
 <thead>
 <tr>
@@ -670,7 +670,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="exclude">-Exclude</h5>
-<p>Specifies a list of databases which will NOT receive a copy of the Query Store configuration.</p>
+<p>Specifies a list of databases which will NOT receive a copy of the Query Store configuration.<br></p>
 <table>
 <thead>
 <tr>
@@ -698,7 +698,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="alldatabases">-AllDatabases</h5>
-<p>If this switch is enabled, the Query Store configuration will be copied to all databases on the destination instance.</p>
+<p>If this switch is enabled, the Query Store configuration will be copied to all databases on the destination instance.<br></p>
 <table>
 <thead>
 <tr>
@@ -728,7 +728,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -756,7 +756,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.</p>
+<p>If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.<br></p>
 <table>
 <thead>
 <tr>
@@ -784,7 +784,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.</p>
+<p>If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.<br></p>
 <table>
 <thead>
 <tr>
@@ -813,6 +813,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Copy-DbaDbQueryStoreOption.ps1">Copy-DbaDbQueryStoreOption</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Copy-DbaDbQueryStoreOption">Copy-DbaDbQueryStoreOption</a>.</p>
 
                 </div> <!-- rendered -->

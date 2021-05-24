@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -473,16 +473,16 @@
 Use -RemoveSecondaryDatabase to make the command the secondary database</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Remove-DbaDbLogShipping
-    --PrimarySqlInstance] &lt;DbaInstanceParameter&gt;
-    -[-SecondarySqlInstance] &lt;DbaInstanceParameter&gt;]
-    -[-PrimarySqlCredential] &lt;PSCredential&gt;]
-    -[-SecondarySqlCredential] &lt;PSCredential&gt;]
-    --Database] &lt;Object[]&gt;
-    --RemoveSecondaryDatabase]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-PrimarySqlInstance] &lt;DbaInstanceParameter&gt;
+    [[-SecondarySqlInstance] &lt;DbaInstanceParameter&gt;]
+    [[-PrimarySqlCredential] &lt;PSCredential&gt;]
+    [[-SecondarySqlCredential] &lt;PSCredential&gt;]
+    [-Database] &lt;Object[]&gt;
+    [-RemoveSecondaryDatabase]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -491,23 +491,23 @@ Use -RemoveSecondaryDatabase to make the command the secondary database</p>
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Remove-DbaDbLogShipping -PrimarySqlInstance sql1 -SecondarySqlInstance sql2 -Database DB1
 </code></pre>
-<p>Remove the log shipping for database DB1</p>
+<p>Remove the log shipping for database DB1<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Remove-DbaDbLogShipping -PrimarySqlInstance sql1 -Database DB1
 </code></pre>
-<p>Remove the log shipping for database DB1 and let the command figure out the secondary instance</p>
+<p>Remove the log shipping for database DB1 and let the command figure out the secondary instance<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Remove-DbaDbLogShipping -PrimarySqlInstance localhost -SecondarySqlInstance sql2 -Database DB1, DB2
 </code></pre>
-<p>Remove the log shipping for multiple database</p>
+<p>Remove the log shipping for multiple database<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; Remove-DbaDbLogShipping -PrimarySqlInstance localhost -SecondarySqlInstance localhost -Database DB2 -RemoveSecondaryDatabase
 </code></pre>
-<p>Remove the log shipping for database DB2 and remove the database from the secondary instance</p>
+<p>Remove the log shipping for database DB2 and remove the database from the secondary instance<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="primarysqlinstance">-PrimarySqlInstance</h5>
 <p>Primary SQL Server instance which contains the primary database(s).
-You must have sysadmin access and server version must be SQL Server version 2000 or greater.</p>
+You must have sysadmin access and server version must be SQL Server version 2000 or greater.<br></p>
 <table>
 <thead>
 <tr>
@@ -536,7 +536,7 @@ You must have sysadmin access and server version must be SQL Server version 2000
 </table>
 <h5 id="database">-Database</h5>
 <p>Database to remove from log shipping.
-This is the name of the database located on the primary instance</p>
+This is the name of the database located on the primary instance<br></p>
 <table>
 <thead>
 <tr>
@@ -566,7 +566,7 @@ This is the name of the database located on the primary instance</p>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="secondarysqlinstance">-SecondarySqlInstance</h5>
 <p>Secondary SQL Server instance which contains the secondary database(s)
-You must have sysadmin access and server version must be SQL Server version 2000 or greater.</p>
+You must have sysadmin access and server version must be SQL Server version 2000 or greater.<br></p>
 <table>
 <thead>
 <tr>
@@ -596,7 +596,7 @@ You must have sysadmin access and server version must be SQL Server version 2000
 <h5 id="primarysqlcredential">-PrimarySqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -626,7 +626,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 <h5 id="secondarysqlcredential">-SecondarySqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -655,7 +655,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </table>
 <h5 id="removesecondarydatabase">-RemoveSecondaryDatabase</h5>
 <p>By default the command will not remove the database from the secondary instance.
-Use this parameter to make the command remove that database</p>
+Use this parameter to make the command remove that database<br></p>
 <table>
 <thead>
 <tr>
@@ -683,7 +683,7 @@ Use this parameter to make the command remove that database</p>
 </tbody>
 </table>
 <h5 id="enableexception">-EnableException</h5>
-<p>Use this switch to disable any kind of verbose messages</p>
+<p>Use this switch to disable any kind of verbose messages<br></p>
 <table>
 <thead>
 <tr>
@@ -711,7 +711,7 @@ Use this parameter to make the command remove that database</p>
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>Shows what would happen if the command were to run. No actions are actually performed.</p>
+<p>Shows what would happen if the command were to run. No actions are actually performed.<br></p>
 <table>
 <thead>
 <tr>
@@ -739,7 +739,7 @@ Use this parameter to make the command remove that database</p>
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>Prompts you for confirmation before executing any changing operations within the command.</p>
+<p>Prompts you for confirmation before executing any changing operations within the command.<br></p>
 <table>
 <thead>
 <tr>
@@ -768,6 +768,7 @@ Use this parameter to make the command remove that database</p>
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Remove-DbaDbLogShipping.ps1">Remove-DbaDbLogShipping</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Remove-DbaDbLogShipping">Remove-DbaDbLogShipping</a>.</p>
 
                 </div> <!-- rendered -->

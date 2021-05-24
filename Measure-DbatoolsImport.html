@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -470,7 +470,7 @@
 <p>Displays the import load times of the dbatools PowerShell module</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Measure-DbatoolsImport
-    -&lt;CommonParameters&gt;]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -479,14 +479,15 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Measure-DbatoolsImport
 </code></pre>
-<p>Displays the import load times of the dbatools PowerShell module</p>
+<p>Displays the import load times of the dbatools PowerShell module<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Import-Module dbatools
 PS C:\&gt; Measure-DbatoolsImport
 </code></pre>
-<p>Displays the import load times of the dbatools PowerShell module</p>
+<p>Displays the import load times of the dbatools PowerShell module<br></p>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Measure-DbatoolsImport.ps1">Measure-DbatoolsImport</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Measure-DbatoolsImport">Measure-DbatoolsImport</a>.</p>
 
                 </div> <!-- rendered -->

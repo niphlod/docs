@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -470,12 +470,12 @@
 <p>Older dbatools command names have been changed. This script helps keep up.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Invoke-DbatoolsRenameHelper
-    --InputObject] &lt;FileInfo[]&gt;
-    -[-Encoding] &lt;String&gt;]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-InputObject] &lt;FileInfo[]&gt;
+    [[-Encoding] &lt;String&gt;]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -484,16 +484,16 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Get-ChildItem C:\temp\ps\*.ps1 -Recurse | Invoke-DbatoolsRenameHelper
 </code></pre>
-<p>Checks to see if any ps1 file in C:\temp\ps matches an old command name.
-If so, then the command name within the text is updated and the resulting changes are written to disk in UTF-8.</p>
+<p>Checks to see if any ps1 file in C:\temp\ps matches an old command name.<br>
+If so, then the command name within the text is updated and the resulting changes are written to disk in UTF-8.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Get-ChildItem C:\temp\ps\*.ps1 -Recurse | Invoke-DbatoolsRenameHelper -Encoding Ascii -WhatIf
 </code></pre>
-<p>Shows what would happen if the command would run. If the command would run and there were matches,
-the resulting changes would be written to disk as Ascii encoded.</p>
+<p>Shows what would happen if the command would run. If the command would run and there were matches,<br>
+the resulting changes would be written to disk as Ascii encoded.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="inputobject">-InputObject</h5>
-<p>A piped in object from Get-ChildItem</p>
+<p>A piped in object from Get-ChildItem<br></p>
 <table>
 <thead>
 <tr>
@@ -531,7 +531,7 @@ Valid values are:
 -- Unicode: Encodes in UTF-16 format using the little-endian byte order.
 -- UTF7: Encodes in UTF-7 format.
 -- UTF8: Encodes in UTF-8 format.
--- Unknown: The encoding type is unknown or invalid. The data can be treated as binary.</p>
+-- Unknown: The encoding type is unknown or invalid. The data can be treated as binary.<br></p>
 <table>
 <thead>
 <tr>
@@ -565,7 +565,7 @@ Valid values are:
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -593,7 +593,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>Shows what would happen if the command were to run. No actions are actually performed</p>
+<p>Shows what would happen if the command were to run. No actions are actually performed<br></p>
 <table>
 <thead>
 <tr>
@@ -621,7 +621,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>Prompts you for confirmation before executing any changing operations within the command</p>
+<p>Prompts you for confirmation before executing any changing operations within the command<br></p>
 <table>
 <thead>
 <tr>
@@ -650,6 +650,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Invoke-DbatoolsRenameHelper.ps1">Invoke-DbatoolsRenameHelper</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Invoke-DbatoolsRenameHelper">Invoke-DbatoolsRenameHelper</a>.</p>
 
                 </div> <!-- rendered -->

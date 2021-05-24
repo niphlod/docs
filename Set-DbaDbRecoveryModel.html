@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -470,34 +470,34 @@
 <p>Set-DbaDbRecoveryModel sets the Recovery Model for all databases except TEMPDB.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Set-DbaDbRecoveryModel
-    --SqlCredential &lt;PSCredential&gt;] -RecoveryModel &lt;String&gt;
-    --Database &lt;Object[]&gt;]
-    --ExcludeDatabase &lt;Object[]&gt;]
-    --AllDatabases]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-SqlCredential &lt;PSCredential&gt;] -RecoveryModel &lt;String&gt;
+    [-Database &lt;Object[]&gt;]
+    [-ExcludeDatabase &lt;Object[]&gt;]
+    [-AllDatabases]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 Set-DbaDbRecoveryModel -SqlInstance &lt;DbaInstanceParameter[]&gt;
-    --SqlCredential &lt;PSCredential&gt;] -RecoveryModel &lt;String&gt;
-    --Database &lt;Object[]&gt;]
-    --ExcludeDatabase &lt;Object[]&gt;]
-    --AllDatabases]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-SqlCredential &lt;PSCredential&gt;] -RecoveryModel &lt;String&gt;
+    [-Database &lt;Object[]&gt;]
+    [-ExcludeDatabase &lt;Object[]&gt;]
+    [-AllDatabases]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 Set-DbaDbRecoveryModel
-    --SqlCredential &lt;PSCredential&gt;] -RecoveryModel &lt;String&gt;
-    --Database &lt;Object[]&gt;]
-    --ExcludeDatabase &lt;Object[]&gt;]
-    --AllDatabases]
-    --EnableException] -InputObject &lt;Database[]&gt;
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-SqlCredential &lt;PSCredential&gt;] -RecoveryModel &lt;String&gt;
+    [-Database &lt;Object[]&gt;]
+    [-ExcludeDatabase &lt;Object[]&gt;]
+    [-AllDatabases]
+    [-EnableException] -InputObject &lt;Database[]&gt;
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -506,26 +506,26 @@ Set-DbaDbRecoveryModel
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Set-DbaDbRecoveryModel -SqlInstance sql2014 -RecoveryModel BulkLogged -Database model -Confirm:$true -Verbose
 </code></pre>
-<p>Sets the Recovery Model to BulkLogged for database [model] on SQL Server instance sql2014. User is requested to confirm the action.</p>
+<p>Sets the Recovery Model to BulkLogged for database [model] on SQL Server instance sql2014. User is requested to confirm the action.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Get-DbaDatabase -SqlInstance sql2014 -Database TestDB | Set-DbaDbRecoveryModel -RecoveryModel Simple  -Confirm:$false
 </code></pre>
-<p>Sets the Recovery Model to Simple for database [TestDB] on SQL Server instance sql2014. Confirmation is not required.</p>
+<p>Sets the Recovery Model to Simple for database [TestDB] on SQL Server instance sql2014. Confirmation is not required.<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Set-DbaDbRecoveryModel -SqlInstance sql2014 -RecoveryModel Simple -Database TestDB -Confirm:$false
 </code></pre>
-<p>Sets the Recovery Model to Simple for database [TestDB] on SQL Server instance sql2014. Confirmation is not required.</p>
+<p>Sets the Recovery Model to Simple for database [TestDB] on SQL Server instance sql2014. Confirmation is not required.<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; Set-DbaDbRecoveryModel -SqlInstance sql2014 -RecoveryModel Simple -AllDatabases -Confirm:$false
 </code></pre>
-<p>Sets the Recovery Model to Simple for ALL user and system databases (except TEMPDB) on SQL Server instance sql2014. Runs without asking for confirmation.</p>
+<p>Sets the Recovery Model to Simple for ALL user and system databases (except TEMPDB) on SQL Server instance sql2014. Runs without asking for confirmation.<br></p>
 <h5 id="example-5">Example:  5</h5>
 <pre><code>PS C:\&gt; Set-DbaDbRecoveryModel -SqlInstance sql2014 -RecoveryModel BulkLogged -Database TestDB1, TestDB2 -Confirm:$false -Verbose
 </code></pre>
-<p>Sets the Recovery Model to BulkLogged for [TestDB1] and [TestDB2] databases on SQL Server instance sql2014. Runs without asking for confirmation.</p>
+<p>Sets the Recovery Model to BulkLogged for [TestDB1] and [TestDB2] databases on SQL Server instance sql2014. Runs without asking for confirmation.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances.</p>
+<p>The target SQL Server instance or instances.<br></p>
 <table>
 <thead>
 <tr>
@@ -555,7 +555,7 @@ Set-DbaDbRecoveryModel
 <h5 id="recoverymodel">-RecoveryModel</h5>
 <p>Recovery Model to be set. Valid options are 'Simple', 'Full', 'BulkLogged'
 Details about the recovery models can be found here:
-<a href="https://docs.microsoft.com/en-us/sql/relational-databases/backup-restore/recovery-models-sql-server">https://docs.microsoft.com/en-us/sql/relational-databases/backup-restore/recovery-models-sql-server</a></p>
+<a href="https://docs.microsoft.com/en-us/sql/relational-databases/backup-restore/recovery-models-sql-server">https://docs.microsoft.com/en-us/sql/relational-databases/backup-restore/recovery-models-sql-server</a><br></p>
 <table>
 <thead>
 <tr>
@@ -587,7 +587,7 @@ Details about the recovery models can be found here:
 </tbody>
 </table>
 <h5 id="inputobject">-InputObject</h5>
-<p>A collection of databases (such as returned by Get-DbaDatabase)</p>
+<p>A collection of databases (such as returned by Get-DbaDatabase)<br></p>
 <table>
 <thead>
 <tr>
@@ -618,7 +618,7 @@ Details about the recovery models can be found here:
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -646,7 +646,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="database">-Database</h5>
-<p>The database(s) to process - this list is auto-populated from the server. if unspecified, all databases will be processed.</p>
+<p>The database(s) to process - this list is auto-populated from the server. if unspecified, all databases will be processed.<br></p>
 <table>
 <thead>
 <tr>
@@ -674,7 +674,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="excludedatabase">-ExcludeDatabase</h5>
-<p>The database(s) to exclude - this list is auto-populated from the server</p>
+<p>The database(s) to exclude - this list is auto-populated from the server<br></p>
 <table>
 <thead>
 <tr>
@@ -702,7 +702,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="alldatabases">-AllDatabases</h5>
-<p>This is a parameter that was included for safety, so you don't accidentally set options on all databases without specifying</p>
+<p>This is a parameter that was included for safety, so you don't accidentally set options on all databases without specifying<br></p>
 <table>
 <thead>
 <tr>
@@ -732,7 +732,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -760,7 +760,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.</p>
+<p>If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.<br></p>
 <table>
 <thead>
 <tr>
@@ -791,7 +791,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 <p>Prompts for confirmation. For example:
 Are you sure you want to perform this action?
 Performing the operation &quot;ALTER DATABASE [model] SET RECOVERY Full&quot; on target &quot;[model] on WERES14224&quot;.
-[Y] Yes  [A] Yes to All  [N] No  [L] No to All  [S] Suspend  [?] Help (default is &quot;Y&quot;):</p>
+[Y] Yes  [A] Yes to All  [N] No  [L] No to All  [S] Suspend  [?] Help (default is &quot;Y&quot;):<br></p>
 <table>
 <thead>
 <tr>
@@ -820,6 +820,7 @@ Performing the operation &quot;ALTER DATABASE [model] SET RECOVERY Full&quot; on
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Set-DbaDbRecoveryModel.ps1">Set-DbaDbRecoveryModel</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Set-DbaDbRecoveryModel">Set-DbaDbRecoveryModel</a>.</p>
 
                 </div> <!-- rendered -->

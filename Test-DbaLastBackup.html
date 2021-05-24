@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -478,34 +478,34 @@
 </ol>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Test-DbaLastBackup
-    -[-SqlInstance] &lt;DbaInstanceParameter[]&gt;]
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    -[-Database] &lt;Object[]&gt;]
-    -[-ExcludeDatabase] &lt;Object[]&gt;]
-    -[-Destination] &lt;DbaInstanceParameter&gt;]
-    -[-DestinationCredential] &lt;Object&gt;]
-    -[-DataDirectory] &lt;String&gt;]
-    -[-LogDirectory] &lt;String&gt;]
-    -[-Prefix] &lt;String&gt;]
-    --VerifyOnly]
-    --NoCheck]
-    --NoDrop]
-    --CopyFile]
-    -[-CopyPath] &lt;String&gt;]
-    -[-MaxSize] &lt;Int32&gt;]
-    -[-DeviceType] &lt;String[]&gt;]
-    --IncludeCopyOnly]
-    --IgnoreLogBackup]
-    -[-AzureCredential] &lt;String&gt;]
-    -[-InputObject] &lt;Database[]&gt;]
-    -[-MaxTransferSize] &lt;Int32&gt;]
-    -[-BufferCount] &lt;Int32&gt;]
-    --IgnoreDiffBackup]
-    -[-MaxDop] &lt;Int32&gt;]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [[-SqlInstance] &lt;DbaInstanceParameter[]&gt;]
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [[-Database] &lt;Object[]&gt;]
+    [[-ExcludeDatabase] &lt;Object[]&gt;]
+    [[-Destination] &lt;DbaInstanceParameter&gt;]
+    [[-DestinationCredential] &lt;Object&gt;]
+    [[-DataDirectory] &lt;String&gt;]
+    [[-LogDirectory] &lt;String&gt;]
+    [[-Prefix] &lt;String&gt;]
+    [-VerifyOnly]
+    [-NoCheck]
+    [-NoDrop]
+    [-CopyFile]
+    [[-CopyPath] &lt;String&gt;]
+    [[-MaxSize] &lt;Int32&gt;]
+    [[-DeviceType] &lt;String[]&gt;]
+    [-IncludeCopyOnly]
+    [-IgnoreLogBackup]
+    [[-AzureCredential] &lt;String&gt;]
+    [[-InputObject] &lt;Database[]&gt;]
+    [[-MaxTransferSize] &lt;Int32&gt;]
+    [[-BufferCount] &lt;Int32&gt;]
+    [-IgnoreDiffBackup]
+    [[-MaxDop] &lt;Int32&gt;]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -514,56 +514,56 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Test-DbaLastBackup -SqlInstance sql2016
 </code></pre>
-<p>Determines the last full backup for ALL databases, attempts to restore all databases (with a different name and file structure), then performs a DBCC CHECKDB. Once the test is complete, the test
-restore will be dropped.</p>
+<p>Determines the last full backup for ALL databases, attempts to restore all databases (with a different name and file structure), then performs a DBCC CHECKDB. Once the test is complete, the test <br>
+restore will be dropped.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Test-DbaLastBackup -SqlInstance sql2016 -Database SharePoint_Config
 </code></pre>
-<p>Determines the last full backup for SharePoint_Config, attempts to restore it, then performs a DBCC CHECKDB.</p>
+<p>Determines the last full backup for SharePoint_Config, attempts to restore it, then performs a DBCC CHECKDB.<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Get-DbaDatabase -SqlInstance sql2016, sql2017 | Test-DbaLastBackup
 </code></pre>
-<p>Tests every database backup on sql2016 and sql2017</p>
+<p>Tests every database backup on sql2016 and sql2017<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; Get-DbaDatabase -SqlInstance sql2016, sql2017 -Database SharePoint_Config | Test-DbaLastBackup
 </code></pre>
-<p>Tests the database backup for the SharePoint_Config database on sql2016 and sql2017</p>
+<p>Tests the database backup for the SharePoint_Config database on sql2016 and sql2017<br></p>
 <h5 id="example-5">Example:  5</h5>
 <pre><code>PS C:\&gt; Test-DbaLastBackup -SqlInstance sql2016 -Database model, master -VerifyOnly
 </code></pre>
-<p>Skips performing an action restore of the database and simply verifies the backup using VERIFYONLY option of the restore.</p>
+<p>Skips performing an action restore of the database and simply verifies the backup using VERIFYONLY option of the restore.<br></p>
 <h5 id="example-6">Example:  6</h5>
 <pre><code>PS C:\&gt; Test-DbaLastBackup -SqlInstance sql2016 -NoCheck -NoDrop
 </code></pre>
-<p>Skips the DBCC CHECKDB check. This can help speed up the tests but makes it less tested. The test restores will remain on the server.</p>
+<p>Skips the DBCC CHECKDB check. This can help speed up the tests but makes it less tested. The test restores will remain on the server.<br></p>
 <h5 id="example-7">Example:  7</h5>
 <pre><code>PS C:\&gt; Test-DbaLastBackup -SqlInstance sql2016 -DataDirectory E:\bigdrive -LogDirectory L:\bigdrive -MaxSize 10240
 </code></pre>
-<p>Restores data and log files to alternative locations and only restores databases that are smaller than 10 GB.</p>
+<p>Restores data and log files to alternative locations and only restores databases that are smaller than 10 GB.<br></p>
 <h5 id="example-8">Example:  8</h5>
 <pre><code>PS C:\&gt; Test-DbaLastBackup -SqlInstance sql2014 -Destination sql2016 -CopyFile
 </code></pre>
-<p>Copies the backup files for sql2014 databases to sql2016 default backup locations and then attempts restore from there.</p>
+<p>Copies the backup files for sql2014 databases to sql2016 default backup locations and then attempts restore from there.<br></p>
 <h5 id="example-9">Example:  9</h5>
 <pre><code>PS C:\&gt; Test-DbaLastBackup -SqlInstance sql2014 -Destination sql2016 -CopyFile -CopyPath &quot;\\BackupShare\TestRestore\&quot;
 </code></pre>
-<p>Copies the backup files for sql2014 databases to sql2016 default backup locations and then attempts restore from there.</p>
+<p>Copies the backup files for sql2014 databases to sql2016 default backup locations and then attempts restore from there.<br></p>
 <h5 id="example-10">Example:  10</h5>
 <pre><code>PS C:\&gt; Test-DbaLastBackup -SqlInstance sql2016 -NoCheck -MaxTransferSize 4194302 -BufferCount 24
 </code></pre>
-<p>Determines the last full backup for ALL databases, attempts to restore all databases (with a different name and file structure).
-The Restore will use more memory for reading the backup files. Do not set these values to high or you can get an Out of Memory error!!!
-When running the restore with these additional parameters and there is other server activity it could affect server OLTP performance. Please use with causion.
-Prior to running, you should check memory and server resources before configure it to run automatically.
-More information:
-<a href="https://www.mssqltips.com/sqlservertip/4935/optimize-sql-server-database-restore-performance/">https://www.mssqltips.com/sqlservertip/4935/optimize-sql-server-database-restore-performance/</a></p>
+<p>Determines the last full backup for ALL databases, attempts to restore all databases (with a different name and file structure).<br>
+The Restore will use more memory for reading the backup files. Do not set these values to high or you can get an Out of Memory error!!!<br>
+When running the restore with these additional parameters and there is other server activity it could affect server OLTP performance. Please use with causion.<br>
+Prior to running, you should check memory and server resources before configure it to run automatically.<br>
+More information:<br>
+<a href="https://www.mssqltips.com/sqlservertip/4935/optimize-sql-server-database-restore-performance/">https://www.mssqltips.com/sqlservertip/4935/optimize-sql-server-database-restore-performance/</a><br></p>
 <h5 id="example-11">Example:  11</h5>
 <pre><code>PS C:\&gt; Test-DbaLastBackup -SqlInstance sql2016 -MaxDop 4
 </code></pre>
-<p>The use of the MaxDop parameter will limit the number of processors used during the DBCC command</p>
+<p>The use of the MaxDop parameter will limit the number of processors used during the DBCC command<br></p>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances. Unlike many of the other commands, you cannot specify more than one server.</p>
+<p>The target SQL Server instance or instances. Unlike many of the other commands, you cannot specify more than one server.<br></p>
 <table>
 <thead>
 <tr>
@@ -593,7 +593,7 @@ More information:
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -621,7 +621,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="database">-Database</h5>
-<p>The database backups to test. If -Database is not provided, all database backups will be tested.</p>
+<p>The database backups to test. If -Database is not provided, all database backups will be tested.<br></p>
 <table>
 <thead>
 <tr>
@@ -649,7 +649,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="excludedatabase">-ExcludeDatabase</h5>
-<p>Exclude specific Database backups to test.</p>
+<p>Exclude specific Database backups to test.<br></p>
 <table>
 <thead>
 <tr>
@@ -678,7 +678,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </table>
 <h5 id="destination">-Destination</h5>
 <p>The destination server to use to test the restore. By default, the Destination will be set to the source server
-If a different Destination server is specified, you must ensure that the database backups are on a shared location</p>
+If a different Destination server is specified, you must ensure that the database backups are on a shared location<br></p>
 <table>
 <thead>
 <tr>
@@ -708,7 +708,7 @@ If a different Destination server is specified, you must ensure that the databas
 <h5 id="destinationcredential">-DestinationCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -736,7 +736,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="datadirectory">-DataDirectory</h5>
-<p>Specifies an alternative directory for mdfs, ndfs and so on. The command uses the SQL Server's default data directory for all restores.</p>
+<p>Specifies an alternative directory for mdfs, ndfs and so on. The command uses the SQL Server's default data directory for all restores.<br></p>
 <table>
 <thead>
 <tr>
@@ -764,7 +764,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="logdirectory">-LogDirectory</h5>
-<p>Specifies an alternative directory for ldfs. The command uses the SQL Server's default log directory for all restores.</p>
+<p>Specifies an alternative directory for ldfs. The command uses the SQL Server's default log directory for all restores.<br></p>
 <table>
 <thead>
 <tr>
@@ -792,7 +792,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="prefix">-Prefix</h5>
-<p>The database is restored as &quot;dbatools-testrestore-$databaseName&quot; by default. You can change dbatools-testrestore to whatever you would like using this parameter.</p>
+<p>The database is restored as &quot;dbatools-testrestore-$databaseName&quot; by default. You can change dbatools-testrestore to whatever you would like using this parameter.<br></p>
 <table>
 <thead>
 <tr>
@@ -820,7 +820,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="verifyonly">-VerifyOnly</h5>
-<p>If this switch is enabled, VERIFYONLY will be performed. An actual restore will not be executed.</p>
+<p>If this switch is enabled, VERIFYONLY will be performed. An actual restore will not be executed.<br></p>
 <table>
 <thead>
 <tr>
@@ -848,7 +848,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="nocheck">-NoCheck</h5>
-<p>If this switch is enabled, DBCC CHECKDB will be skipped</p>
+<p>If this switch is enabled, DBCC CHECKDB will be skipped<br></p>
 <table>
 <thead>
 <tr>
@@ -876,7 +876,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="nodrop">-NoDrop</h5>
-<p>If this switch is enabled, the newly-created test database will not be dropped.</p>
+<p>If this switch is enabled, the newly-created test database will not be dropped.<br></p>
 <table>
 <thead>
 <tr>
@@ -904,7 +904,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="copyfile">-CopyFile</h5>
-<p>If this switch is enabled, the backup file will be copied to the destination default backup location unless CopyPath is specified.</p>
+<p>If this switch is enabled, the backup file will be copied to the destination default backup location unless CopyPath is specified.<br></p>
 <table>
 <thead>
 <tr>
@@ -933,7 +933,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </table>
 <h5 id="copypath">-CopyPath</h5>
 <p>Specifies a path relative to the SQL Server to copy backups when CopyFile is specified. If not specified will use destination default backup location. If destination SQL Server is not local, admin
-UNC paths will be utilized for the copy.</p>
+UNC paths will be utilized for the copy.<br></p>
 <table>
 <thead>
 <tr>
@@ -961,7 +961,7 @@ UNC paths will be utilized for the copy.</p>
 </tbody>
 </table>
 <h5 id="maxsize">-MaxSize</h5>
-<p>Max size in MB. Databases larger than this value will not be restored.</p>
+<p>Max size in MB. Databases larger than this value will not be restored.<br></p>
 <table>
 <thead>
 <tr>
@@ -990,7 +990,7 @@ UNC paths will be utilized for the copy.</p>
 </table>
 <h5 id="devicetype">-DeviceType</h5>
 <p>Specifies a filter for backup sets based on DeviceTypes. Valid options are 'Disk','Permanent Disk Device', 'Tape', 'Permanent Tape Device','Pipe','Permanent Pipe Device','Virtual Device', in addition
-to custom integers for your own DeviceTypes.</p>
+to custom integers for your own DeviceTypes.<br></p>
 <table>
 <thead>
 <tr>
@@ -1018,7 +1018,7 @@ to custom integers for your own DeviceTypes.</p>
 </tbody>
 </table>
 <h5 id="includecopyonly">-IncludeCopyOnly</h5>
-<p>If this switch is enabled, copy only backups will be counted as a last backup.</p>
+<p>If this switch is enabled, copy only backups will be counted as a last backup.<br></p>
 <table>
 <thead>
 <tr>
@@ -1046,7 +1046,7 @@ to custom integers for your own DeviceTypes.</p>
 </tbody>
 </table>
 <h5 id="ignorelogbackup">-IgnoreLogBackup</h5>
-<p>If this switch is enabled, transaction log backups will be ignored. The restore will stop at the latest full or differential backup point.</p>
+<p>If this switch is enabled, transaction log backups will be ignored. The restore will stop at the latest full or differential backup point.<br></p>
 <table>
 <thead>
 <tr>
@@ -1074,7 +1074,7 @@ to custom integers for your own DeviceTypes.</p>
 </tbody>
 </table>
 <h5 id="azurecredential">-AzureCredential</h5>
-<p>The name of the SQL Server credential on the destination instance that holds the key to the azure storage account.</p>
+<p>The name of the SQL Server credential on the destination instance that holds the key to the azure storage account.<br></p>
 <table>
 <thead>
 <tr>
@@ -1102,7 +1102,7 @@ to custom integers for your own DeviceTypes.</p>
 </tbody>
 </table>
 <h5 id="inputobject">-InputObject</h5>
-<p>Enables piping from Get-DbaDatabase</p>
+<p>Enables piping from Get-DbaDatabase<br></p>
 <table>
 <thead>
 <tr>
@@ -1131,7 +1131,7 @@ to custom integers for your own DeviceTypes.</p>
 </table>
 <h5 id="maxtransfersize">-MaxTransferSize</h5>
 <p>Parameter to set the unit of transfer. Values must be a multiple of 64kb and a max of 4GB
-Parameter is used as passtrough for Restore-DbaDatabase.</p>
+Parameter is used as passtrough for Restore-DbaDatabase.<br></p>
 <table>
 <thead>
 <tr>
@@ -1161,7 +1161,7 @@ Parameter is used as passtrough for Restore-DbaDatabase.</p>
 <h5 id="buffercount">-BufferCount</h5>
 <p>Number of I/O buffers to use to perform the operation.
 Refererence: <a href="https://msdn.microsoft.com/en-us/library/ms178615.aspx#data-transfer-options">https://msdn.microsoft.com/en-us/library/ms178615.aspx#data-transfer-options</a>
-Parameter is used as passtrough for Restore-DbaDatabase.</p>
+Parameter is used as passtrough for Restore-DbaDatabase.<br></p>
 <table>
 <thead>
 <tr>
@@ -1189,7 +1189,7 @@ Parameter is used as passtrough for Restore-DbaDatabase.</p>
 </tbody>
 </table>
 <h5 id="ignorediffbackup">-IgnoreDiffBackup</h5>
-<p>If this switch is enabled, differential backuys will be ignored. The restore will only use Full and Log backups, so will take longer to complete</p>
+<p>If this switch is enabled, differential backuys will be ignored. The restore will only use Full and Log backups, so will take longer to complete<br></p>
 <table>
 <thead>
 <tr>
@@ -1217,7 +1217,7 @@ Parameter is used as passtrough for Restore-DbaDatabase.</p>
 </tbody>
 </table>
 <h5 id="maxdop">-MaxDop</h5>
-<p>Allows you to pass in a MAXDOP setting to the DBCC CheckDB command to limit the number of parallel processes used.</p>
+<p>Allows you to pass in a MAXDOP setting to the DBCC CheckDB command to limit the number of parallel processes used.<br></p>
 <table>
 <thead>
 <tr>
@@ -1247,7 +1247,7 @@ Parameter is used as passtrough for Restore-DbaDatabase.</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -1275,7 +1275,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.</p>
+<p>If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.<br></p>
 <table>
 <thead>
 <tr>
@@ -1303,7 +1303,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.</p>
+<p>If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.<br></p>
 <table>
 <thead>
 <tr>
@@ -1332,6 +1332,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Test-DbaLastBackup.ps1">Test-DbaLastBackup</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Test-DbaLastBackup">Test-DbaLastBackup</a>.</p>
 
                 </div> <!-- rendered -->

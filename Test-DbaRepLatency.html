@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -471,15 +471,15 @@
 for all transactional publications for a server, database, or publication.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Test-DbaRepLatency
-    --SqlInstance] &lt;DbaInstanceParameter[]&gt;
-    -[-Database] &lt;Object[]&gt;]
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    -[-PublicationName] &lt;Object[]&gt;]
-    -[-TimeToLive] &lt;Int32&gt;]
-    --RetainToken]
-    --DisplayTokenHistory]
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [-SqlInstance] &lt;DbaInstanceParameter[]&gt;
+    [[-Database] &lt;Object[]&gt;]
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [[-PublicationName] &lt;Object[]&gt;]
+    [[-TimeToLive] &lt;Int32&gt;]
+    [-RetainToken]
+    [-DisplayTokenHistory]
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -488,18 +488,18 @@ for all transactional publications for a server, database, or publication.</p>
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Test-DbaRepLatency -SqlInstance sql2008, sqlserver2012
 </code></pre>
-<p>Return replication latency for all transactional publications for servers sql2008 and sqlserver2012.</p>
+<p>Return replication latency for all transactional publications for servers sql2008 and sqlserver2012.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Test-DbaRepLatency -SqlInstance sql2008 -Database TestDB
 </code></pre>
-<p>Return replication latency for all transactional publications on server sql2008 for only the TestDB database</p>
+<p>Return replication latency for all transactional publications on server sql2008 for only the TestDB database<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Test-DbaRepLatency -SqlInstance sql2008 -Database TestDB -PublicationName TestDB_Pub
 </code></pre>
-<p>Return replication latency for the TestDB_Pub publication for the TestDB database located on the server sql2008.</p>
+<p>Return replication latency for the TestDB_Pub publication for the TestDB database located on the server sql2008.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances.</p>
+<p>The target SQL Server instance or instances.<br></p>
 <table>
 <thead>
 <tr>
@@ -528,7 +528,7 @@ for all transactional publications for a server, database, or publication.</p>
 </table>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="database">-Database</h5>
-<p>The database(s) to process. If unspecified, all databases will be processed.</p>
+<p>The database(s) to process. If unspecified, all databases will be processed.<br></p>
 <table>
 <thead>
 <tr>
@@ -558,7 +558,7 @@ for all transactional publications for a server, database, or publication.</p>
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -586,7 +586,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="publicationname">-PublicationName</h5>
-<p>The publication(s) to process. If unspecified, all publications will be processed.</p>
+<p>The publication(s) to process. If unspecified, all publications will be processed.<br></p>
 <table>
 <thead>
 <tr>
@@ -615,7 +615,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </table>
 <h5 id="timetolive">-TimeToLive</h5>
 <p>How long, in seconds, to wait for a tracer token to complete its journey from the publisher to the subscriber.
-If unspecified, all tracer tokens will take as long as they need to process results.</p>
+If unspecified, all tracer tokens will take as long as they need to process results.<br></p>
 <table>
 <thead>
 <tr>
@@ -643,7 +643,7 @@ If unspecified, all tracer tokens will take as long as they need to process resu
 </tbody>
 </table>
 <h5 id="retaintoken">-RetainToken</h5>
-<p>Retains the tracer tokens created for each publication. If unspecified, all tracer tokens created will be discarded.</p>
+<p>Retains the tracer tokens created for each publication. If unspecified, all tracer tokens created will be discarded.<br></p>
 <table>
 <thead>
 <tr>
@@ -671,7 +671,7 @@ If unspecified, all tracer tokens will take as long as they need to process resu
 </tbody>
 </table>
 <h5 id="displaytokenhistory">-DisplayTokenHistory</h5>
-<p>Displays all tracer tokens in each publication. If unspecified, the current tracer token created will be only token displayed.</p>
+<p>Displays all tracer tokens in each publication. If unspecified, the current tracer token created will be only token displayed.<br></p>
 <table>
 <thead>
 <tr>
@@ -701,7 +701,7 @@ If unspecified, all tracer tokens will take as long as they need to process resu
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -730,6 +730,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Test-DbaRepLatency.ps1">Test-DbaRepLatency</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Test-DbaRepLatency">Test-DbaRepLatency</a>.</p>
 
                 </div> <!-- rendered -->

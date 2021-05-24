@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -472,92 +472,92 @@
 <p>The login hash algorithm changed in SQL Server 2012, and is not backwards compatible with previous SQL Server versions. This means that while SQL Server 2000 logins can be migrated to SQL Server 2012, logins created in SQL Server 2012 can only be migrated to SQL Server 2012 and above.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Copy-DbaLogin
-    --SourceSqlCredential &lt;PSCredential&gt;]
-    --DestinationSqlCredential &lt;PSCredential&gt;]
-    --Login &lt;Object[]&gt;]
-    --ExcludeLogin &lt;Object[]&gt;]
-    --ExcludeSystemLogins]
-    --LoginRenameHashtable &lt;Hashtable&gt;]
-    --KillActiveConnection]
-    --NewSid]
-    --Force]
-    --ObjectLevel]
-    --ExcludePermissionSync]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-SourceSqlCredential &lt;PSCredential&gt;]
+    [-DestinationSqlCredential &lt;PSCredential&gt;]
+    [-Login &lt;Object[]&gt;]
+    [-ExcludeLogin &lt;Object[]&gt;]
+    [-ExcludeSystemLogins]
+    [-LoginRenameHashtable &lt;Hashtable&gt;]
+    [-KillActiveConnection]
+    [-NewSid]
+    [-Force]
+    [-ObjectLevel]
+    [-ExcludePermissionSync]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 Copy-DbaLogin -Source &lt;DbaInstanceParameter&gt;
-    --SourceSqlCredential &lt;PSCredential&gt;] -Destination &lt;DbaInstanceParameter[]&gt;
-    --DestinationSqlCredential &lt;PSCredential&gt;]
-    --Login &lt;Object[]&gt;]
-    --ExcludeLogin &lt;Object[]&gt;]
-    --ExcludeSystemLogins]
-    --SyncSaName]
-    --LoginRenameHashtable &lt;Hashtable&gt;]
-    --KillActiveConnection]
-    --NewSid]
-    --Force]
-    --ObjectLevel]
-    --ExcludePermissionSync]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-SourceSqlCredential &lt;PSCredential&gt;] -Destination &lt;DbaInstanceParameter[]&gt;
+    [-DestinationSqlCredential &lt;PSCredential&gt;]
+    [-Login &lt;Object[]&gt;]
+    [-ExcludeLogin &lt;Object[]&gt;]
+    [-ExcludeSystemLogins]
+    [-SyncSaName]
+    [-LoginRenameHashtable &lt;Hashtable&gt;]
+    [-KillActiveConnection]
+    [-NewSid]
+    [-Force]
+    [-ObjectLevel]
+    [-ExcludePermissionSync]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 Copy-DbaLogin -Source &lt;DbaInstanceParameter&gt;
-    --SourceSqlCredential &lt;PSCredential&gt;]
-    --DestinationSqlCredential &lt;PSCredential&gt;]
-    --Login &lt;Object[]&gt;]
-    --ExcludeLogin &lt;Object[]&gt;]
-    --ExcludeSystemLogins] -OutFile &lt;String&gt;
-    --LoginRenameHashtable &lt;Hashtable&gt;]
-    --KillActiveConnection]
-    --NewSid]
-    --Force]
-    --ObjectLevel]
-    --ExcludePermissionSync]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-SourceSqlCredential &lt;PSCredential&gt;]
+    [-DestinationSqlCredential &lt;PSCredential&gt;]
+    [-Login &lt;Object[]&gt;]
+    [-ExcludeLogin &lt;Object[]&gt;]
+    [-ExcludeSystemLogins] -OutFile &lt;String&gt;
+    [-LoginRenameHashtable &lt;Hashtable&gt;]
+    [-KillActiveConnection]
+    [-NewSid]
+    [-Force]
+    [-ObjectLevel]
+    [-ExcludePermissionSync]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 Copy-DbaLogin
-    --SourceSqlCredential &lt;PSCredential&gt;] -Destination &lt;DbaInstanceParameter[]&gt;
-    --DestinationSqlCredential &lt;PSCredential&gt;]
-    --Login &lt;Object[]&gt;]
-    --ExcludeLogin &lt;Object[]&gt;]
-    --ExcludeSystemLogins]
-    --InputObject &lt;Object[]&gt;]
-    --LoginRenameHashtable &lt;Hashtable&gt;]
-    --KillActiveConnection]
-    --NewSid]
-    --Force]
-    --ObjectLevel]
-    --ExcludePermissionSync]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-SourceSqlCredential &lt;PSCredential&gt;] -Destination &lt;DbaInstanceParameter[]&gt;
+    [-DestinationSqlCredential &lt;PSCredential&gt;]
+    [-Login &lt;Object[]&gt;]
+    [-ExcludeLogin &lt;Object[]&gt;]
+    [-ExcludeSystemLogins]
+    [-InputObject &lt;Object[]&gt;]
+    [-LoginRenameHashtable &lt;Hashtable&gt;]
+    [-KillActiveConnection]
+    [-NewSid]
+    [-Force]
+    [-ObjectLevel]
+    [-ExcludePermissionSync]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 Copy-DbaLogin
-    --SourceSqlCredential &lt;PSCredential&gt;]
-    --DestinationSqlCredential &lt;PSCredential&gt;]
-    --Login &lt;Object[]&gt;]
-    --ExcludeLogin &lt;Object[]&gt;]
-    --ExcludeSystemLogins]
-    --SyncSaName]
-    --LoginRenameHashtable &lt;Hashtable&gt;]
-    --KillActiveConnection]
-    --NewSid]
-    --Force]
-    --ObjectLevel]
-    --ExcludePermissionSync]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-SourceSqlCredential &lt;PSCredential&gt;]
+    [-DestinationSqlCredential &lt;PSCredential&gt;]
+    [-Login &lt;Object[]&gt;]
+    [-ExcludeLogin &lt;Object[]&gt;]
+    [-ExcludeSystemLogins]
+    [-SyncSaName]
+    [-LoginRenameHashtable &lt;Hashtable&gt;]
+    [-KillActiveConnection]
+    [-NewSid]
+    [-Force]
+    [-ObjectLevel]
+    [-ExcludePermissionSync]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -566,34 +566,34 @@ Copy-DbaLogin
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Copy-DbaLogin -Source sqlserver2014a -Destination sqlcluster -Force
 </code></pre>
-<p>Copies all logins from Source Destination. If a SQL Login on Source exists on the Destination, the Login on Destination will be dropped and recreated.
-If active connections are found for a login, the copy of that Login will fail as it cannot be dropped.</p>
+<p>Copies all logins from Source Destination. If a SQL Login on Source exists on the Destination, the Login on Destination will be dropped and recreated.<br>
+If active connections are found for a login, the copy of that Login will fail as it cannot be dropped.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Copy-DbaLogin -Source sqlserver2014a -Destination sqlcluster -Force -KillActiveConnection
 </code></pre>
-<p>Copies all logins from Source Destination. If a SQL Login on Source exists on the Destination, the Login on Destination will be dropped and recreated.
-If any active connections are found they will be killed.</p>
+<p>Copies all logins from Source Destination. If a SQL Login on Source exists on the Destination, the Login on Destination will be dropped and recreated.<br>
+If any active connections are found they will be killed.<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Copy-DbaLogin -Source sqlserver2014a -Destination sqlcluster -ExcludeLogin realcajun -SourceSqlCredential $scred -DestinationSqlCredential $dcred
 </code></pre>
-<p>Copies all Logins from Source to Destination except for realcajun using SQL Authentication to connect to both instances.
-If a Login already exists on the destination, it will not be migrated.</p>
+<p>Copies all Logins from Source to Destination except for realcajun using SQL Authentication to connect to both instances.<br>
+If a Login already exists on the destination, it will not be migrated.<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; Copy-DbaLogin -Source sqlserver2014a -Destination sqlcluster -Login realcajun, netnerds -force
 </code></pre>
-<p>Copies ONLY Logins netnerds and realcajun. If Login realcajun or netnerds exists on Destination, the existing Login(s) will be dropped and recreated.</p>
+<p>Copies ONLY Logins netnerds and realcajun. If Login realcajun or netnerds exists on Destination, the existing Login(s) will be dropped and recreated.<br></p>
 <h5 id="example-5">Example:  5</h5>
 <pre><code>PS C:\&gt; Copy-DbaLogin -LoginRenameHashtable @{ &quot;PreviousUser&quot; = &quot;newlogin&quot; } -Source $Sql01 -Destination Localhost -SourceSqlCredential $sqlcred -Login PreviousUser
 </code></pre>
-<p>Copies PreviousUser as newlogin.</p>
+<p>Copies PreviousUser as newlogin.<br></p>
 <h5 id="example-6">Example:  6</h5>
 <pre><code>PS C:\&gt; Copy-DbaLogin -LoginRenameHashtable @{ OldLogin = &quot;NewLogin&quot; } -Source Sql01 -Destination Sql01 -Login ORG\OldLogin -ObjectLevel -NewSid
 </code></pre>
-<p>Clones OldLogin as NewLogin onto the same server, generating a new SID for the login. Also clones object-level permissions.</p>
+<p>Clones OldLogin as NewLogin onto the same server, generating a new SID for the login. Also clones object-level permissions.<br></p>
 <h5 id="example-7">Example:  7</h5>
 <pre><code>PS C:\&gt; Get-DbaLogin -SqlInstance sql2016 | Out-GridView -Passthru | Copy-DbaLogin -Destination sql2017
 </code></pre>
-<p>Displays all available logins on sql2016 in a grid view, then copies all selected logins to sql2017.</p>
+<p>Displays all available logins on sql2016 in a grid view, then copies all selected logins to sql2017.<br></p>
 <h5 id="example-8">Example:  8</h5>
 <pre><code>PS C:\&gt; $loginSplat = @{
 &gt;&gt; Source = $Sql01
@@ -608,10 +608,10 @@ If a Login already exists on the destination, it will not be migrated.</p>
 &gt;&gt; }
 PS C:\&gt; Copy-DbaLogin @loginSplat
 </code></pre>
-<p>Copies the three specified logins to 'localhost' and renames them according to the LoginRenameHashTable.</p>
+<p>Copies the three specified logins to 'localhost' and renames them according to the LoginRenameHashTable.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="source">-Source</h5>
-<p>Source SQL Server. You must have sysadmin access and server version must be SQL Server version 2000 or higher.</p>
+<p>Source SQL Server. You must have sysadmin access and server version must be SQL Server version 2000 or higher.<br></p>
 <table>
 <thead>
 <tr>
@@ -639,7 +639,7 @@ PS C:\&gt; Copy-DbaLogin @loginSplat
 </tbody>
 </table>
 <h5 id="destination">-Destination</h5>
-<p>Destination SQL Server. You must have sysadmin access and the server must be SQL Server 2000 or higher.</p>
+<p>Destination SQL Server. You must have sysadmin access and the server must be SQL Server 2000 or higher.<br></p>
 <table>
 <thead>
 <tr>
@@ -667,7 +667,7 @@ PS C:\&gt; Copy-DbaLogin @loginSplat
 </tbody>
 </table>
 <h5 id="outfile">-OutFile</h5>
-<p>Calls Export-DbaLogin and exports all logins to a T-SQL formatted file. This does not perform a copy, so no destination is required.</p>
+<p>Calls Export-DbaLogin and exports all logins to a T-SQL formatted file. This does not perform a copy, so no destination is required.<br></p>
 <table>
 <thead>
 <tr>
@@ -698,7 +698,7 @@ PS C:\&gt; Copy-DbaLogin @loginSplat
 <h5 id="sourcesqlcredential">-SourceSqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -728,7 +728,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 <h5 id="destinationsqlcredential">-DestinationSqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -756,7 +756,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="login">-Login</h5>
-<p>The login(s) to process. Options for this list are auto-populated from the server. If unspecified, all logins will be processed.</p>
+<p>The login(s) to process. Options for this list are auto-populated from the server. If unspecified, all logins will be processed.<br></p>
 <table>
 <thead>
 <tr>
@@ -784,7 +784,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="excludelogin">-ExcludeLogin</h5>
-<p>The login(s) to exclude. Options for this list are auto-populated from the server.</p>
+<p>The login(s) to exclude. Options for this list are auto-populated from the server.<br></p>
 <table>
 <thead>
 <tr>
@@ -812,7 +812,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="excludesystemlogins">-ExcludeSystemLogins</h5>
-<p>If this switch is enabled, NT SERVICE accounts will be skipped.</p>
+<p>If this switch is enabled, NT SERVICE accounts will be skipped.<br></p>
 <table>
 <thead>
 <tr>
@@ -840,7 +840,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="syncsaname">-SyncSaName</h5>
-<p>If this switch is enabled, the name of the sa account will be synced between Source and Destination</p>
+<p>If this switch is enabled, the name of the sa account will be synced between Source and Destination<br></p>
 <table>
 <thead>
 <tr>
@@ -868,7 +868,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="inputobject">-InputObject</h5>
-<p>Takes the parameters required from a Login object that has been piped into the command</p>
+<p>Takes the parameters required from a Login object that has been piped into the command<br></p>
 <table>
 <thead>
 <tr>
@@ -896,7 +896,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="loginrenamehashtable">-LoginRenameHashtable</h5>
-<p>Pass a hash table into this parameter to create logins under different names based on hashtable mapping.</p>
+<p>Pass a hash table into this parameter to create logins under different names based on hashtable mapping.<br></p>
 <table>
 <thead>
 <tr>
@@ -925,7 +925,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </table>
 <h5 id="killactiveconnection">-KillActiveConnection</h5>
 <p>If this switch and -Force are enabled, all active connections and sessions on Destination will be killed.
-A login cannot be dropped when it has active connections on the instance.</p>
+A login cannot be dropped when it has active connections on the instance.<br></p>
 <table>
 <thead>
 <tr>
@@ -953,7 +953,7 @@ A login cannot be dropped when it has active connections on the instance.</p>
 </tbody>
 </table>
 <h5 id="newsid">-NewSid</h5>
-<p>Ignore sids from the source login objects to generate new sids on the destination server. Useful when copying login onto the same server</p>
+<p>Ignore sids from the source login objects to generate new sids on the destination server. Useful when copying login onto the same server<br></p>
 <table>
 <thead>
 <tr>
@@ -981,7 +981,7 @@ A login cannot be dropped when it has active connections on the instance.</p>
 </tbody>
 </table>
 <h5 id="force">-Force</h5>
-<p>If this switch is enabled, the Login(s) will be dropped and recreated on Destination. Logins that own Agent jobs cannot be dropped at this time.</p>
+<p>If this switch is enabled, the Login(s) will be dropped and recreated on Destination. Logins that own Agent jobs cannot be dropped at this time.<br></p>
 <table>
 <thead>
 <tr>
@@ -1009,7 +1009,7 @@ A login cannot be dropped when it has active connections on the instance.</p>
 </tbody>
 </table>
 <h5 id="objectlevel">-ObjectLevel</h5>
-<p>Include object-level permissions for each user associated with copied login.</p>
+<p>Include object-level permissions for each user associated with copied login.<br></p>
 <table>
 <thead>
 <tr>
@@ -1037,7 +1037,7 @@ A login cannot be dropped when it has active connections on the instance.</p>
 </tbody>
 </table>
 <h5 id="excludepermissionsync">-ExcludePermissionSync</h5>
-<p>Skips permission syncs</p>
+<p>Skips permission syncs<br></p>
 <table>
 <thead>
 <tr>
@@ -1067,7 +1067,7 @@ A login cannot be dropped when it has active connections on the instance.</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -1095,7 +1095,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.</p>
+<p>If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.<br></p>
 <table>
 <thead>
 <tr>
@@ -1123,7 +1123,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.</p>
+<p>If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.<br></p>
 <table>
 <thead>
 <tr>
@@ -1152,6 +1152,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Copy-DbaLogin.ps1">Copy-DbaLogin</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Copy-DbaLogin">Copy-DbaLogin</a>.</p>
 
                 </div> <!-- rendered -->

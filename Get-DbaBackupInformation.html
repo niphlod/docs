@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -475,36 +475,36 @@ XpDirTree will be used to perform the file scans</p>
 passed in.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Get-DbaBackupInformation -Path &lt;Object[]&gt; -SqlInstance &lt;DbaInstanceParameter&gt;
-    --SqlCredential &lt;PSCredential&gt;]
-    --DatabaseName &lt;String[]&gt;]
-    --SourceInstance &lt;String[]&gt;]
-    --NoXpDirTree]
-    --DirectoryRecurse]
-    --EnableException]
-    --MaintenanceSolution]
-    --IgnoreLogBackup]
-    --IgnoreDiffBackup]
-    --ExportPath &lt;String&gt;]
-    --AzureCredential &lt;String&gt;]
-    --Anonymise]
-    --NoClobber]
-    --PassThru]
-    -&lt;CommonParameters&gt;]
+    [-SqlCredential &lt;PSCredential&gt;]
+    [-DatabaseName &lt;String[]&gt;]
+    [-SourceInstance &lt;String[]&gt;]
+    [-NoXpDirTree]
+    [-DirectoryRecurse]
+    [-EnableException]
+    [-MaintenanceSolution]
+    [-IgnoreLogBackup]
+    [-IgnoreDiffBackup]
+    [-ExportPath &lt;String&gt;]
+    [-AzureCredential &lt;String&gt;]
+    [-Anonymise]
+    [-NoClobber]
+    [-PassThru]
+    [&lt;CommonParameters&gt;]
 
 Get-DbaBackupInformation -Path &lt;Object[]&gt;
-    --DatabaseName &lt;String[]&gt;]
-    --SourceInstance &lt;String[]&gt;]
-    --EnableException]
-    --MaintenanceSolution]
-    --IgnoreLogBackup]
-    --IgnoreDiffBackup]
-    --ExportPath &lt;String&gt;]
-    --AzureCredential &lt;String&gt;]
-    --Import]
-    --Anonymise]
-    --NoClobber]
-    --PassThru]
-    -&lt;CommonParameters&gt;]
+    [-DatabaseName &lt;String[]&gt;]
+    [-SourceInstance &lt;String[]&gt;]
+    [-EnableException]
+    [-MaintenanceSolution]
+    [-IgnoreLogBackup]
+    [-IgnoreDiffBackup]
+    [-ExportPath &lt;String&gt;]
+    [-AzureCredential &lt;String&gt;]
+    [-Import]
+    [-Anonymise]
+    [-NoClobber]
+    [-PassThru]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -513,47 +513,47 @@ Get-DbaBackupInformation -Path &lt;Object[]&gt;
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Get-DbaBackupInformation -SqlInstance Server1 -Path c:\backups\ -DirectoryRecurse
 </code></pre>
-<p>Will use the Server1 instance to recursively read all backup files under c:\backups, and return a dbatools BackupHistory object</p>
+<p>Will use the Server1 instance to recursively read all backup files under c:\backups, and return a dbatools BackupHistory object<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Get-DbaBackupInformation -SqlInstance Server1 -Path c:\backups\ -DirectoryRecurse -ExportPath c:\store\BackupHistory.xml
 PS C:\&gt; robocopy c:\store\ \\remoteMachine\C$\store\ BackupHistory.xml
 PS C:\&gt; Get-DbaBackupInformation -Import -Path  c:\store\BackupHistory.xml | Restore-DbaDatabase -SqlInstance Server2 -TrustDbBackupHistory
 </code></pre>
-<p>This example creates backup history output from server1 and copies the file to the remote machine in order to preserve backup history. It is then used to restore the databases onto server2.</p>
+<p>This example creates backup history output from server1 and copies the file to the remote machine in order to preserve backup history. It is then used to restore the databases onto server2.<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Get-DbaBackupInformation -SqlInstance Server1 -Path c:\backups\ -DirectoryRecurse -ExportPath C:\store\BackupHistory.xml -PassThru | Restore-DbaDatabase -SqlInstance Server2
 </code></pre>
-<p>-TrustDbBackupHistory
-In this example we gather backup information, export it to an xml file, and then pass it on through to Restore-DbaDatabase.
-This allows us to repeat the restore without having to scan all the backup files again</p>
+<p>-TrustDbBackupHistory<br>
+In this example we gather backup information, export it to an xml file, and then pass it on through to Restore-DbaDatabase.<br>
+This allows us to repeat the restore without having to scan all the backup files again<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; Get-ChildItem c:\backups\ -recurse -files | Where-Object {$_.extension -in ('.bak','.trn') -and $_.LastWriteTime -gt (get-date).AddMonths(-1)} | Get-DbaBackupInformation -SqlInstance Server1
 </code></pre>
-<p>-ExportPath C:\backupHistory.xml
-This lets you keep a record of all backup history from the last month on hand to speed up refreshes</p>
+<p>-ExportPath C:\backupHistory.xml<br>
+This lets you keep a record of all backup history from the last month on hand to speed up refreshes<br></p>
 <h5 id="example-5">Example:  5</h5>
 <pre><code>PS C:\&gt; $Backups = Get-DbaBackupInformation -SqlInstance Server1 -Path \\network\backups
 PS C:\&gt; $Backups += Get-DbaBackupInformation -SqlInstance Server2 -NoXpDirTree -Path c:\backups
 </code></pre>
-<p>Scan the unc folder \network\backups with Server1, and then scan the C:\backups folder on
-Server2 not using xp_dirtree, adding the results to the first set.</p>
+<p>Scan the unc folder \network\backups with Server1, and then scan the C:\backups folder on<br>
+Server2 not using xp_dirtree, adding the results to the first set.<br></p>
 <h5 id="example-6">Example:  6</h5>
 <pre><code>PS C:\&gt; $Backups = Get-DbaBackupInformation -SqlInstance Server1 -Path \\network\backups -MaintenanceSolution
 </code></pre>
-<p>When MaintenanceSolution is indicated we know we are dealing with the output from Ola Hallengren backup scripts. So we make sure that a FULL folder exists in the first level of Path, if not we
-shortcut scanning all the files as we have nothing to work with</p>
+<p>When MaintenanceSolution is indicated we know we are dealing with the output from Ola Hallengren backup scripts. So we make sure that a FULL folder exists in the first level of Path, if not we <br>
+shortcut scanning all the files as we have nothing to work with<br></p>
 <h5 id="example-7">Example:  7</h5>
 <pre><code>PS C:\&gt; $Backups = Get-DbaBackupInformation -SqlInstance Server1 -Path \\network\backups -MaintenanceSolution -IgnoreLogBackup
 </code></pre>
-<p>As we know we are dealing with an Ola Hallengren style backup folder from the MaintenanceSolution switch, when IgnoreLogBackup is also included we can ignore the LOG folder to skip any scanning of
-log backups. Note this also means they WON'T be restored</p>
+<p>As we know we are dealing with an Ola Hallengren style backup folder from the MaintenanceSolution switch, when IgnoreLogBackup is also included we can ignore the LOG folder to skip any scanning of <br>
+log backups. Note this also means they WON'T be restored<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="path">-Path</h5>
 <p>Path to SQL Server backup files.
 Paths passed in as strings will be scanned using the desired method, default is a non recursive folder scan
 Accepts multiple paths separated by ','
 Or it can consist of FileInfo objects, such as the output of Get-ChildItem or Get-Item. This allows you to work with
-your own file structures as needed</p>
+your own file structures as needed<br></p>
 <table>
 <thead>
 <tr>
@@ -581,7 +581,7 @@ your own file structures as needed</p>
 </tbody>
 </table>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The SQL Server instance to be used to read the headers of the backup files</p>
+<p>The SQL Server instance to be used to read the headers of the backup files<br></p>
 <table>
 <thead>
 <tr>
@@ -612,7 +612,7 @@ your own file structures as needed</p>
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -640,7 +640,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="databasename">-DatabaseName</h5>
-<p>An array of Database Names to filter by. If empty all databases are returned.</p>
+<p>An array of Database Names to filter by. If empty all databases are returned.<br></p>
 <table>
 <thead>
 <tr>
@@ -668,7 +668,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="sourceinstance">-SourceInstance</h5>
-<p>If provided only backup originating from this destination will be returned. This SQL instance will not be connected to or involved in this work</p>
+<p>If provided only backup originating from this destination will be returned. This SQL instance will not be connected to or involved in this work<br></p>
 <table>
 <thead>
 <tr>
@@ -696,7 +696,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="noxpdirtree">-NoXpDirTree</h5>
-<p>If this switch is set, then Files will be parsed as locally files. This can cause failures if the running user can see files that the parsing SQL Instance cannot</p>
+<p>If this switch is set, then Files will be parsed as locally files. This can cause failures if the running user can see files that the parsing SQL Instance cannot<br></p>
 <table>
 <thead>
 <tr>
@@ -724,7 +724,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="directoryrecurse">-DirectoryRecurse</h5>
-<p>If specified the provided path/directory will be traversed (only applies if not using XpDirTree)</p>
+<p>If specified the provided path/directory will be traversed (only applies if not using XpDirTree)<br></p>
 <table>
 <thead>
 <tr>
@@ -753,7 +753,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </table>
 <h5 id="enableexception">-EnableException</h5>
 <p>Replaces user friendly yellow warnings with bloody red exceptions of doom!
-Use this if you want the function to throw terminating errors you want to catch.</p>
+Use this if you want the function to throw terminating errors you want to catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -781,7 +781,7 @@ Use this if you want the function to throw terminating errors you want to catch.
 </tbody>
 </table>
 <h5 id="maintenancesolution">-MaintenanceSolution</h5>
-<p>This switch tells the function that the folder is the root of a Ola Hallengren backup folder</p>
+<p>This switch tells the function that the folder is the root of a Ola Hallengren backup folder<br></p>
 <table>
 <thead>
 <tr>
@@ -810,7 +810,7 @@ Use this if you want the function to throw terminating errors you want to catch.
 </table>
 <h5 id="ignorelogbackup">-IgnoreLogBackup</h5>
 <p>This switch only works with the MaintenanceSolution switch. With an Ola Hallengren style backup we can be sure that the LOG folder contains only log backups and skip it.
-For all other scenarios we need to read the file headers to be sure.</p>
+For all other scenarios we need to read the file headers to be sure.<br></p>
 <table>
 <thead>
 <tr>
@@ -839,7 +839,7 @@ For all other scenarios we need to read the file headers to be sure.</p>
 </table>
 <h5 id="ignorediffbackup">-IgnoreDiffBackup</h5>
 <p>This switch only works with the MaintenanceSolution switch. With an Ola Hallengren style backup we can be sure that the DIFF folder contains only differential backups and skip it.
-For all other scenarios we need to read the file headers to be sure.</p>
+For all other scenarios we need to read the file headers to be sure.<br></p>
 <table>
 <thead>
 <tr>
@@ -867,7 +867,7 @@ For all other scenarios we need to read the file headers to be sure.</p>
 </tbody>
 </table>
 <h5 id="exportpath">-ExportPath</h5>
-<p>If specified the output will export via CliXml format to the specified file. This allows you to store the backup history object for later usage, or move it between computers</p>
+<p>If specified the output will export via CliXml format to the specified file. This allows you to store the backup history object for later usage, or move it between computers<br></p>
 <table>
 <thead>
 <tr>
@@ -895,7 +895,7 @@ For all other scenarios we need to read the file headers to be sure.</p>
 </tbody>
 </table>
 <h5 id="azurecredential">-AzureCredential</h5>
-<p>The name of the SQL Server credential to be used if restoring from an Azure hosted backup</p>
+<p>The name of the SQL Server credential to be used if restoring from an Azure hosted backup<br></p>
 <table>
 <thead>
 <tr>
@@ -923,7 +923,7 @@ For all other scenarios we need to read the file headers to be sure.</p>
 </tbody>
 </table>
 <h5 id="import">-Import</h5>
-<p>When specified along with a path the command will import a previously exported BackupHistory object from an xml file.</p>
+<p>When specified along with a path the command will import a previously exported BackupHistory object from an xml file.<br></p>
 <table>
 <thead>
 <tr>
@@ -952,7 +952,7 @@ For all other scenarios we need to read the file headers to be sure.</p>
 </table>
 <h5 id="anonymise">-Anonymise</h5>
 <p>If specified we will output the results with ComputerName, InstanceName, Database, UserName, Paths, and Logical and Physical Names hashed out
-This options is mainly for use if we need you to submit details for fault finding to the dbatools team</p>
+This options is mainly for use if we need you to submit details for fault finding to the dbatools team<br></p>
 <table>
 <thead>
 <tr>
@@ -980,7 +980,7 @@ This options is mainly for use if we need you to submit details for fault findin
 </tbody>
 </table>
 <h5 id="noclobber">-NoClobber</h5>
-<p>If specified will stop Export from overwriting an existing file, the default is to overwrite</p>
+<p>If specified will stop Export from overwriting an existing file, the default is to overwrite<br></p>
 <table>
 <thead>
 <tr>
@@ -1008,7 +1008,7 @@ This options is mainly for use if we need you to submit details for fault findin
 </tbody>
 </table>
 <h5 id="passthru">-PassThru</h5>
-<p>When data is exported the cmdlet will return no other output, this switch means it will also return the normal output which can be then piped into another command</p>
+<p>When data is exported the cmdlet will return no other output, this switch means it will also return the normal output which can be then piped into another command<br></p>
 <table>
 <thead>
 <tr>
@@ -1037,6 +1037,7 @@ This options is mainly for use if we need you to submit details for fault findin
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Get-DbaBackupInformation.ps1">Get-DbaBackupInformation</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Get-DbaBackupInformation">Get-DbaBackupInformation</a>.</p>
 
                 </div> <!-- rendered -->

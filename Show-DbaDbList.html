@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -470,13 +470,13 @@
 <p>Shows a list of databases in a GUI. Returns a string holding the name of the selected database. Hitting cancel returns null.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Show-DbaDbList
-    --SqlInstance] &lt;DbaInstanceParameter&gt;
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    -[-Title] &lt;String&gt;]
-    -[-Header] &lt;String&gt;]
-    -[-DefaultDb] &lt;String&gt;]
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [-SqlInstance] &lt;DbaInstanceParameter&gt;
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [[-Title] &lt;String&gt;]
+    [[-Header] &lt;String&gt;]
+    [[-DefaultDb] &lt;String&gt;]
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -485,18 +485,18 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Show-DbaDbList -SqlInstance sqlserver2014a
 </code></pre>
-<p>Shows a GUI list of databases using Windows Authentication to connect to the SQL Server. Returns a string of the selected database.</p>
+<p>Shows a GUI list of databases using Windows Authentication to connect to the SQL Server. Returns a string of the selected database.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Show-DbaDbList -SqlInstance sqlserver2014a -SqlCredential $cred
 </code></pre>
-<p>Shows a GUI list of databases using SQL credentials to connect to the SQL Server. Returns a string of the selected database.</p>
+<p>Shows a GUI list of databases using SQL credentials to connect to the SQL Server. Returns a string of the selected database.<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Show-DbaDbList -SqlInstance sqlserver2014a -DefaultDb master
 </code></pre>
-<p>Shows a GUI list of databases using Windows Authentication to connect to the SQL Server. The &quot;master&quot; database will be selected when the lists shows. Returns a string of the selected database.</p>
+<p>Shows a GUI list of databases using Windows Authentication to connect to the SQL Server. The &quot;master&quot; database will be selected when the lists shows. Returns a string of the selected database.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances..</p>
+<p>The target SQL Server instance or instances..<br></p>
 <table>
 <thead>
 <tr>
@@ -527,7 +527,7 @@
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -555,7 +555,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="title">-Title</h5>
-<p>Title of the window being displayed. Default is &quot;Select Database&quot;.</p>
+<p>Title of the window being displayed. Default is &quot;Select Database&quot;.<br></p>
 <table>
 <thead>
 <tr>
@@ -583,7 +583,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="header">-Header</h5>
-<p>Header text displayed above the database listing. Default is &quot;Select the database:&quot;.</p>
+<p>Header text displayed above the database listing. Default is &quot;Select the database:&quot;.<br></p>
 <table>
 <thead>
 <tr>
@@ -611,7 +611,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="defaultdb">-DefaultDb</h5>
-<p>Specify a database to have selected when the window appears.</p>
+<p>Specify a database to have selected when the window appears.<br></p>
 <table>
 <thead>
 <tr>
@@ -641,7 +641,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default in most of our commands, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This command, however, gifts you  with &quot;sea of red&quot; exceptions, by default, because it is useful for advanced scripting.
-Using this switch turns our &quot;nice by default&quot; feature on which makes errors into pretty warnings.</p>
+Using this switch turns our &quot;nice by default&quot; feature on which makes errors into pretty warnings.<br></p>
 <table>
 <thead>
 <tr>
@@ -670,6 +670,7 @@ Using this switch turns our &quot;nice by default&quot; feature on which makes e
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Show-DbaDbList.ps1">Show-DbaDbList</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Show-DbaDbList">Show-DbaDbList</a>.</p>
 
                 </div> <!-- rendered -->

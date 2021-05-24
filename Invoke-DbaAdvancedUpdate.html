@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -466,17 +466,17 @@
 <p>Invokes an update process for a single computer and restarts it if needed</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Invoke-DbaAdvancedUpdate
-    -[-ComputerName] &lt;String&gt;]
-    -[-Action] &lt;Object[]&gt;]
-    -[-Restart] &lt;Boolean&gt;]
-    -[-Authentication] &lt;String&gt;]
-    -[-Credential] &lt;PSCredential&gt;]
-    -[-ExtractPath] &lt;String&gt;]
-    -[-ArgumentList] &lt;String[]&gt;]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [[-ComputerName] &lt;String&gt;]
+    [[-Action] &lt;Object[]&gt;]
+    [[-Restart] &lt;Boolean&gt;]
+    [[-Authentication] &lt;String&gt;]
+    [[-Credential] &lt;PSCredential&gt;]
+    [[-ExtractPath] &lt;String&gt;]
+    [[-ArgumentList] &lt;String[]&gt;]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -485,14 +485,14 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Invoke-DbaAdvancedUpdate -ComputerName SQL1 -Action $actions
 </code></pre>
-<p>Invokes update actions on SQL1 after restarting it.</p>
+<p>Invokes update actions on SQL1 after restarting it.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Invoke-DbaAdvancedUpdate -ComputerName SQL1 -Action $actions -ExtractPath C:\temp
 </code></pre>
-<p>Extracts required files to the specific location &quot;C:\temp&quot;. Invokes update actions on SQL1 after restarting it.</p>
+<p>Extracts required files to the specific location &quot;C:\temp&quot;. Invokes update actions on SQL1 after restarting it.<br></p>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="computername">-ComputerName</h5>
-<p>Target computer with SQL instance or instances.</p>
+<p>Target computer with SQL instance or instances.<br></p>
 <table>
 <thead>
 <tr>
@@ -520,7 +520,7 @@
 </tbody>
 </table>
 <h5 id="action">-Action</h5>
-<p>An object containing the action plan</p>
+<p>An object containing the action plan<br></p>
 <table>
 <thead>
 <tr>
@@ -549,7 +549,7 @@
 </table>
 <h5 id="restart">-Restart</h5>
 <p>Restart computer automatically after a successful installation of a patch and wait until it comes back online.
-Using this parameter is the only way to chain-install more than 1 patch on a computer, since every single patch will require a restart of said computer.</p>
+Using this parameter is the only way to chain-install more than 1 patch on a computer, since every single patch will require a restart of said computer.<br></p>
 <table>
 <thead>
 <tr>
@@ -583,7 +583,7 @@ Defaults:</p>
 <ul>
 <li>CredSSP when -Credential is specified - due to the fact that repository Path is usually a network share and credentials need to be passed to the remote host
 to avoid the double-hop issue.</li>
-<li>Default when -Credential is not specified. Will likely fail if a network path is specified.</li>
+<li>Default when -Credential is not specified. Will likely fail if a network path is specified.<br></li>
 </ul>
 <table>
 <thead>
@@ -617,7 +617,7 @@ to avoid the double-hop issue.</li>
 </table>
 <h5 id="credential">-Credential</h5>
 <p>Windows Credential with permission to log on to the remote server.
-Must be specified for any remote connection if update Repository is located on a network folder.</p>
+Must be specified for any remote connection if update Repository is located on a network folder.<br></p>
 <table>
 <thead>
 <tr>
@@ -645,7 +645,7 @@ Must be specified for any remote connection if update Repository is located on a
 </tbody>
 </table>
 <h5 id="extractpath">-ExtractPath</h5>
-<p>Lets you specify a location to extract the update file to on the system requiring the update. e.g. C:\temp</p>
+<p>Lets you specify a location to extract the update file to on the system requiring the update. e.g. C:\temp<br></p>
 <table>
 <thead>
 <tr>
@@ -674,7 +674,7 @@ Must be specified for any remote connection if update Repository is located on a
 </table>
 <h5 id="argumentlist">-ArgumentList</h5>
 <p>A list of extra arguments to pass to the execution file. Accepts one or more strings containing command line parameters.
-Example: ... -ArgumentList &quot;/SkipRules=RebootRequiredCheck&quot;, &quot;/Q&quot;</p>
+Example: ... -ArgumentList &quot;/SkipRules=RebootRequiredCheck&quot;, &quot;/Q&quot;<br></p>
 <table>
 <thead>
 <tr>
@@ -704,7 +704,7 @@ Example: ... -ArgumentList &quot;/SkipRules=RebootRequiredCheck&quot;, &quot;/Q&
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -732,7 +732,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>Shows what would happen if the command were to run. No actions are actually performed.</p>
+<p>Shows what would happen if the command were to run. No actions are actually performed.<br></p>
 <table>
 <thead>
 <tr>
@@ -760,7 +760,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>Prompts you for confirmation before executing any changing operations within the command.</p>
+<p>Prompts you for confirmation before executing any changing operations within the command.<br></p>
 <table>
 <thead>
 <tr>
@@ -789,6 +789,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Invoke-DbaAdvancedUpdate.ps1">Invoke-DbaAdvancedUpdate</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Invoke-DbaAdvancedUpdate">Invoke-DbaAdvancedUpdate</a>.</p>
 
                 </div> <!-- rendered -->

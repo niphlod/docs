@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -472,17 +472,17 @@ NB: Restoring to a snapshot will result in every other snapshot of the same data
 It also fixes some long-standing bugs in SQL Server when restoring from snapshots</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Restore-DbaDbSnapshot
-    -[-SqlInstance] &lt;DbaInstanceParameter[]&gt;]
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    -[-Database] &lt;Object[]&gt;]
-    -[-ExcludeDatabase] &lt;Object[]&gt;]
-    -[-Snapshot] &lt;Object[]&gt;]
-    -[-InputObject] &lt;Database[]&gt;]
-    --Force]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [[-SqlInstance] &lt;DbaInstanceParameter[]&gt;]
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [[-Database] &lt;Object[]&gt;]
+    [[-ExcludeDatabase] &lt;Object[]&gt;]
+    [[-Snapshot] &lt;Object[]&gt;]
+    [[-InputObject] &lt;Database[]&gt;]
+    [-Force]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -491,26 +491,26 @@ It also fixes some long-standing bugs in SQL Server when restoring from snapshot
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Restore-DbaDbSnapshot -SqlInstance sql2014 -Database HR, Accounting
 </code></pre>
-<p>Restores HR and Accounting databases using the latest snapshot available</p>
+<p>Restores HR and Accounting databases using the latest snapshot available<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Restore-DbaDbSnapshot -SqlInstance sql2014 -Database HR -Force
 </code></pre>
-<p>Restores HR database from latest snapshot and kills any active connections in the database on sql2014.</p>
+<p>Restores HR database from latest snapshot and kills any active connections in the database on sql2014.<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Get-DbaDbSnapshot -SqlInstance sql2016 -Database HR | Restore-DbaDbSnapshot -Force
 </code></pre>
-<p>Restores HR database from latest snapshot and kills any active connections in the database on sql2016.</p>
+<p>Restores HR database from latest snapshot and kills any active connections in the database on sql2016.<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; Get-DbaDbSnapshot -SqlInstance sql2016 | Out-GridView -PassThru | Restore-DbaDbSnapshot
 </code></pre>
-<p>Allows the selection of snapshots on sql2016 to restore</p>
+<p>Allows the selection of snapshots on sql2016 to restore<br></p>
 <h5 id="example-5">Example:  5</h5>
 <pre><code>PS C:\&gt; Restore-DbaDbSnapshot -SqlInstance sql2014 -Snapshot HR_snap_20161201, Accounting_snap_20161101
 </code></pre>
-<p>Restores databases from snapshots named HR_snap_20161201 and Accounting_snap_20161101</p>
+<p>Restores databases from snapshots named HR_snap_20161201 and Accounting_snap_20161101<br></p>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances</p>
+<p>The target SQL Server instance or instances<br></p>
 <table>
 <thead>
 <tr>
@@ -540,7 +540,7 @@ It also fixes some long-standing bugs in SQL Server when restoring from snapshot
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -568,7 +568,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="database">-Database</h5>
-<p>Restores from the last snapshot databases with this names only. You can pass either Databases or Snapshots</p>
+<p>Restores from the last snapshot databases with this names only. You can pass either Databases or Snapshots<br></p>
 <table>
 <thead>
 <tr>
@@ -596,7 +596,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="excludedatabase">-ExcludeDatabase</h5>
-<p>The database(s) to exclude - this list is auto-populated from the server</p>
+<p>The database(s) to exclude - this list is auto-populated from the server<br></p>
 <table>
 <thead>
 <tr>
@@ -624,7 +624,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="snapshot">-Snapshot</h5>
-<p>Restores databases from snapshots with this names only. You can pass either Databases or Snapshots</p>
+<p>Restores databases from snapshots with this names only. You can pass either Databases or Snapshots<br></p>
 <table>
 <thead>
 <tr>
@@ -652,7 +652,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="inputobject">-InputObject</h5>
-<p>Allows piping from other Snapshot commands</p>
+<p>Allows piping from other Snapshot commands<br></p>
 <table>
 <thead>
 <tr>
@@ -682,7 +682,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 <h5 id="force">-Force</h5>
 <p>If restoring from a snapshot involves dropping any other snapshot, you need to explicitly
 use -Force to let this command delete the ones not involved in the restore process.
-Also, -Force will forcibly kill all running queries that prevent the restore process.</p>
+Also, -Force will forcibly kill all running queries that prevent the restore process.<br></p>
 <table>
 <thead>
 <tr>
@@ -712,7 +712,7 @@ Also, -Force will forcibly kill all running queries that prevent the restore pro
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -740,7 +740,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>Shows what would happen if the command were to run</p>
+<p>Shows what would happen if the command were to run<br></p>
 <table>
 <thead>
 <tr>
@@ -768,7 +768,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>Prompts for confirmation of every step.</p>
+<p>Prompts for confirmation of every step.<br></p>
 <table>
 <thead>
 <tr>
@@ -797,6 +797,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Restore-DbaDbSnapshot.ps1">Restore-DbaDbSnapshot</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Restore-DbaDbSnapshot">Restore-DbaDbSnapshot</a>.</p>
 
                 </div> <!-- rendered -->

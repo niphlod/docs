@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -470,26 +470,26 @@
 <p>This script stops Extended Events sessions on a SQL Server instance.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Stop-DbaXESession
-    --SqlInstance] &lt;DbaInstanceParameter[]&gt;
-    --SqlCredential &lt;PSCredential&gt;] -Session &lt;Object[]&gt;
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-SqlInstance] &lt;DbaInstanceParameter[]&gt;
+    [-SqlCredential &lt;PSCredential&gt;] -Session &lt;Object[]&gt;
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 Stop-DbaXESession
-    --SqlInstance] &lt;DbaInstanceParameter[]&gt;
-    --SqlCredential &lt;PSCredential&gt;] -AllSessions
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-SqlInstance] &lt;DbaInstanceParameter[]&gt;
+    [-SqlCredential &lt;PSCredential&gt;] -AllSessions
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 Stop-DbaXESession -InputObject &lt;Session[]&gt;
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -498,18 +498,18 @@ Stop-DbaXESession -InputObject &lt;Session[]&gt;
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Stop-DbaXESession -SqlInstance sqlserver2012 -AllSessions
 </code></pre>
-<p>Stops all Extended Event Session on the sqlserver2014 instance.</p>
+<p>Stops all Extended Event Session on the sqlserver2014 instance.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Stop-DbaXESession -SqlInstance sqlserver2012 -Session xesession1,xesession2
 </code></pre>
-<p>Stops the xesession1 and xesession2 Extended Event sessions.</p>
+<p>Stops the xesession1 and xesession2 Extended Event sessions.<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Get-DbaXESession -SqlInstance sqlserver2012 -Session xesession1 | Stop-DbaXESession
 </code></pre>
-<p>Stops the sessions returned from the Get-DbaXESession function.</p>
+<p>Stops the sessions returned from the Get-DbaXESession function.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances. You must have sysadmin access and server version must be SQL Server version 2008 or higher.</p>
+<p>The target SQL Server instance or instances. You must have sysadmin access and server version must be SQL Server version 2008 or higher.<br></p>
 <table>
 <thead>
 <tr>
@@ -537,7 +537,7 @@ Stop-DbaXESession -InputObject &lt;Session[]&gt;
 </tbody>
 </table>
 <h5 id="session">-Session</h5>
-<p>Specifies individual Extended Events sessions to stop.</p>
+<p>Specifies individual Extended Events sessions to stop.<br></p>
 <table>
 <thead>
 <tr>
@@ -565,7 +565,7 @@ Stop-DbaXESession -InputObject &lt;Session[]&gt;
 </tbody>
 </table>
 <h5 id="allsessions">-AllSessions</h5>
-<p>If this switch is enabled, all Extended Events sessions will be stopped except the packaged sessions AlwaysOn_health, system_health, telemetry_xevents.</p>
+<p>If this switch is enabled, all Extended Events sessions will be stopped except the packaged sessions AlwaysOn_health, system_health, telemetry_xevents.<br></p>
 <table>
 <thead>
 <tr>
@@ -593,7 +593,7 @@ Stop-DbaXESession -InputObject &lt;Session[]&gt;
 </tbody>
 </table>
 <h5 id="inputobject">-InputObject</h5>
-<p>Accepts the object output by Get-DbaXESession as the list of sessions to be stopped.</p>
+<p>Accepts the object output by Get-DbaXESession as the list of sessions to be stopped.<br></p>
 <table>
 <thead>
 <tr>
@@ -624,7 +624,7 @@ Stop-DbaXESession -InputObject &lt;Session[]&gt;
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -654,7 +654,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -682,7 +682,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.</p>
+<p>If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.<br></p>
 <table>
 <thead>
 <tr>
@@ -710,7 +710,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.</p>
+<p>If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.<br></p>
 <table>
 <thead>
 <tr>
@@ -739,6 +739,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Stop-DbaXESession.ps1">Stop-DbaXESession</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Stop-DbaXESession">Stop-DbaXESession</a>.</p>
 
                 </div> <!-- rendered -->

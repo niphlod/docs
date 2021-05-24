@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -470,23 +470,23 @@
 <p>This response type can be used to send an email each time an event is captured.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>New-DbaXESmartEmail
-    --SmtpServer] &lt;String&gt;
-    --Sender] &lt;String&gt;
-    --To] &lt;String[]&gt;
-    -[-Cc] &lt;String[]&gt;]
-    -[-Bcc] &lt;String[]&gt;]
-    -[-Credential] &lt;PSCredential&gt;]
-    --Subject] &lt;String&gt;
-    --Body] &lt;String&gt;
-    -[-Attachment] &lt;String&gt;]
-    -[-AttachmentFileName] &lt;String&gt;]
-    -[-PlainText] &lt;String&gt;]
-    -[-Event] &lt;String[]&gt;]
-    -[-Filter] &lt;String&gt;]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-SmtpServer] &lt;String&gt;
+    [-Sender] &lt;String&gt;
+    [-To] &lt;String[]&gt;
+    [[-Cc] &lt;String[]&gt;]
+    [[-Bcc] &lt;String[]&gt;]
+    [[-Credential] &lt;PSCredential&gt;]
+    [-Subject] &lt;String&gt;
+    [-Body] &lt;String&gt;
+    [[-Attachment] &lt;String&gt;]
+    [[-AttachmentFileName] &lt;String&gt;]
+    [[-PlainText] &lt;String&gt;]
+    [[-Event] &lt;String[]&gt;]
+    [[-Filter] &lt;String&gt;]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -506,10 +506,10 @@
 PS C:\&gt; $emailresponse = New-DbaXESmartEmail @params
 PS C:\&gt; Start-DbaXESmartTarget -SqlInstance sql2017 -Session querytracker -Responder $emailresponse
 </code></pre>
-<p>Sends an email each time a querytracker event is captured.</p>
+<p>Sends an email each time a querytracker event is captured.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="smtpserver">-SmtpServer</h5>
-<p>Address of the SMTP server for outgoing mail.</p>
+<p>Address of the SMTP server for outgoing mail.<br></p>
 <table>
 <thead>
 <tr>
@@ -537,7 +537,7 @@ PS C:\&gt; Start-DbaXESmartTarget -SqlInstance sql2017 -Session querytracker -Re
 </tbody>
 </table>
 <h5 id="sender">-Sender</h5>
-<p>Sender's email address.</p>
+<p>Sender's email address.<br></p>
 <table>
 <thead>
 <tr>
@@ -565,7 +565,7 @@ PS C:\&gt; Start-DbaXESmartTarget -SqlInstance sql2017 -Session querytracker -Re
 </tbody>
 </table>
 <h5 id="to">-To</h5>
-<p>Address of the To recipient(s).</p>
+<p>Address of the To recipient(s).<br></p>
 <table>
 <thead>
 <tr>
@@ -595,7 +595,7 @@ PS C:\&gt; Start-DbaXESmartTarget -SqlInstance sql2017 -Session querytracker -Re
 <h5 id="subject">-Subject</h5>
 <p PropertyName="" Name="" collection_time="">Subject of the mail message. Accepts placeholders in the text.
 Placeholders are in the form , where PropertyName is one of the fields or actions available in the Event object.
-For instance, a valid Subject in a configuration file looks like this: &quot;An event of name  occurred at &quot;</p>
+For instance, a valid Subject in a configuration file looks like this: &quot;An event of name  occurred at &quot;<br></p>
 <table>
 <thead>
 <tr>
@@ -623,7 +623,7 @@ For instance, a valid Subject in a configuration file looks like this: &quot;An 
 </tbody>
 </table>
 <h5 id="body">-Body</h5>
-<p>Body of the mail message. The body can be static text or any property taken from the underlying event. See Subject for a description of how placeholders work.</p>
+<p>Body of the mail message. The body can be static text or any property taken from the underlying event. See Subject for a description of how placeholders work.<br></p>
 <table>
 <thead>
 <tr>
@@ -652,7 +652,7 @@ For instance, a valid Subject in a configuration file looks like this: &quot;An 
 </table>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="cc">-Cc</h5>
-<p>Address of the Cc recipient(s).</p>
+<p>Address of the Cc recipient(s).<br></p>
 <table>
 <thead>
 <tr>
@@ -680,7 +680,7 @@ For instance, a valid Subject in a configuration file looks like this: &quot;An 
 </tbody>
 </table>
 <h5 id="bcc">-Bcc</h5>
-<p>Address of the Bcc recipient(s).</p>
+<p>Address of the Bcc recipient(s).<br></p>
 <table>
 <thead>
 <tr>
@@ -708,7 +708,7 @@ For instance, a valid Subject in a configuration file looks like this: &quot;An 
 </tbody>
 </table>
 <h5 id="credential">-Credential</h5>
-<p>Credential object containing username and password used to authenticate on the SMTP server. When blank, no authentication is performed.</p>
+<p>Credential object containing username and password used to authenticate on the SMTP server. When blank, no authentication is performed.<br></p>
 <table>
 <thead>
 <tr>
@@ -737,7 +737,7 @@ For instance, a valid Subject in a configuration file looks like this: &quot;An 
 </table>
 <h5 id="attachment">-Attachment</h5>
 <p>Data to attach to the email message. At this time, it can be any of the fields/actions of the underlying event. The data from the field/action is attached to the message as an ASCII stream. A single
-attachment is supported.</p>
+attachment is supported.<br></p>
 <table>
 <thead>
 <tr>
@@ -765,7 +765,7 @@ attachment is supported.</p>
 </tbody>
 </table>
 <h5 id="attachmentfilename">-AttachmentFileName</h5>
-<p>File name to assign to the attachment.</p>
+<p>File name to assign to the attachment.<br></p>
 <table>
 <thead>
 <tr>
@@ -793,7 +793,7 @@ attachment is supported.</p>
 </tbody>
 </table>
 <h5 id="plaintext">-PlainText</h5>
-<p>If this switch is enabled, the email will be sent in plain text. By default, HTML formatting is used.</p>
+<p>If this switch is enabled, the email will be sent in plain text. By default, HTML formatting is used.<br></p>
 <table>
 <thead>
 <tr>
@@ -821,7 +821,7 @@ attachment is supported.</p>
 </tbody>
 </table>
 <h5 id="event">-Event</h5>
-<p>Each Response can be limited to processing specific events, while ignoring all the other ones. When this attribute is omitted, all events are processed.</p>
+<p>Each Response can be limited to processing specific events, while ignoring all the other ones. When this attribute is omitted, all events are processed.<br></p>
 <table>
 <thead>
 <tr>
@@ -850,7 +850,7 @@ attachment is supported.</p>
 </table>
 <h5 id="filter">-Filter</h5>
 <p>You can specify a filter expression by using this attribute. The filter expression is in the same form that you would use in a SQL query. For example, a valid example looks like this: duration &gt;
-10000 AND cpu_time &gt; 10000</p>
+10000 AND cpu_time &gt; 10000<br></p>
 <table>
 <thead>
 <tr>
@@ -880,7 +880,7 @@ attachment is supported.</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -908,7 +908,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.</p>
+<p>If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.<br></p>
 <table>
 <thead>
 <tr>
@@ -936,7 +936,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.</p>
+<p>If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.<br></p>
 <table>
 <thead>
 <tr>
@@ -965,6 +965,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/New-DbaXESmartEmail.ps1">New-DbaXESmartEmail</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#New-DbaXESmartEmail">New-DbaXESmartEmail</a>.</p>
 
                 </div> <!-- rendered -->

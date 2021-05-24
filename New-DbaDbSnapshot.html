@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -470,20 +470,20 @@
 <p>Creates database snapshots without hassles</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>New-DbaDbSnapshot
-    -[-SqlInstance] &lt;DbaInstanceParameter[]&gt;]
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    -[-Database] &lt;Object[]&gt;]
-    -[-ExcludeDatabase] &lt;Object[]&gt;]
-    --AllDatabases]
-    -[-Name] &lt;String&gt;]
-    -[-NameSuffix] &lt;String&gt;]
-    -[-Path] &lt;String&gt;]
-    --Force]
-    -[-InputObject] &lt;Database[]&gt;]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [[-SqlInstance] &lt;DbaInstanceParameter[]&gt;]
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [[-Database] &lt;Object[]&gt;]
+    [[-ExcludeDatabase] &lt;Object[]&gt;]
+    [-AllDatabases]
+    [[-Name] &lt;String&gt;]
+    [[-NameSuffix] &lt;String&gt;]
+    [[-Path] &lt;String&gt;]
+    [-Force]
+    [[-InputObject] &lt;Database[]&gt;]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -492,26 +492,26 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; New-DbaDbSnapshot -SqlInstance sqlserver2014a -Database HR, Accounting
 </code></pre>
-<p>Creates snapshot for HR and Accounting, returning a custom object displaying Server, Database, DatabaseCreated, SnapshotOf, SizeMB, DatabaseCreated, PrimaryFilePath, Status, Notes</p>
+<p>Creates snapshot for HR and Accounting, returning a custom object displaying Server, Database, DatabaseCreated, SnapshotOf, SizeMB, DatabaseCreated, PrimaryFilePath, Status, Notes<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; New-DbaDbSnapshot -SqlInstance sqlserver2014a -Database HR -Name HR_snap
 </code></pre>
-<p>Creates snapshot named &quot;HR_snap&quot; for HR</p>
+<p>Creates snapshot named &quot;HR_snap&quot; for HR<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; New-DbaDbSnapshot -SqlInstance sqlserver2014a -Database HR -NameSuffix 'fool_{0}_snap'
 </code></pre>
-<p>Creates snapshot named &quot;fool_HR_snap&quot; for HR</p>
+<p>Creates snapshot named &quot;fool_HR_snap&quot; for HR<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; New-DbaDbSnapshot -SqlInstance sqlserver2014a -Database HR, Accounting -Path F:\snapshotpath
 </code></pre>
-<p>Creates snapshots for HR and Accounting databases, storing files under the F:\snapshotpath\ dir</p>
+<p>Creates snapshots for HR and Accounting databases, storing files under the F:\snapshotpath\ dir<br></p>
 <h5 id="example-5">Example:  5</h5>
 <pre><code>PS C:\&gt; Get-DbaDatabase -SqlInstance sql2016 -Database df | New-DbaDbSnapshot
 </code></pre>
-<p>Creates a snapshot for the database df on sql2016</p>
+<p>Creates a snapshot for the database df on sql2016<br></p>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances.</p>
+<p>The target SQL Server instance or instances.<br></p>
 <table>
 <thead>
 <tr>
@@ -541,7 +541,7 @@
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -569,7 +569,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="database">-Database</h5>
-<p>The database(s) to process - this list is auto-populated from the server. If unspecified, all databases will be processed.</p>
+<p>The database(s) to process - this list is auto-populated from the server. If unspecified, all databases will be processed.<br></p>
 <table>
 <thead>
 <tr>
@@ -597,7 +597,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="excludedatabase">-ExcludeDatabase</h5>
-<p>The database(s) to exclude - this list is auto-populated from the server</p>
+<p>The database(s) to exclude - this list is auto-populated from the server<br></p>
 <table>
 <thead>
 <tr>
@@ -625,7 +625,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="alldatabases">-AllDatabases</h5>
-<p>Creates snapshot for all eligible databases</p>
+<p>Creates snapshot for all eligible databases<br></p>
 <table>
 <thead>
 <tr>
@@ -654,7 +654,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </table>
 <h5 id="name">-Name</h5>
 <p>The specific snapshot name you want to create. Works only if you target a single database. If you need to create multiple snapshot,
-you must use the NameSuffix parameter</p>
+you must use the NameSuffix parameter<br></p>
 <table>
 <thead>
 <tr>
@@ -683,7 +683,7 @@ you must use the NameSuffix parameter</p>
 </table>
 <h5 id="namesuffix">-NameSuffix</h5>
 <p>When you pass a simple string, it'll be appended to use it to build the name of the snapshot. By default snapshots are created with yyyyMMdd_HHmmss suffix
-You can also pass a standard placeholder, in which case it'll be interpolated (e.g. '{0}' gets replaced with the database name)</p>
+You can also pass a standard placeholder, in which case it'll be interpolated (e.g. '{0}' gets replaced with the database name)<br></p>
 <table>
 <thead>
 <tr>
@@ -711,7 +711,7 @@ You can also pass a standard placeholder, in which case it'll be interpolated (e
 </tbody>
 </table>
 <h5 id="path">-Path</h5>
-<p>Snapshot files will be created here (by default the filestructure will be created in the same folder as the base db)</p>
+<p>Snapshot files will be created here (by default the filestructure will be created in the same folder as the base db)<br></p>
 <table>
 <thead>
 <tr>
@@ -742,7 +742,7 @@ You can also pass a standard placeholder, in which case it'll be interpolated (e
 <p>Databases with Filestream FG can be snapshotted, but the Filestream FG is marked offline
 in the snapshot. To create a &quot;partial&quot; snapshot, you need to pass -Force explicitely
 NB: You can't then restore the Database from the newly-created snapshot.
-For details, check <a href="https://msdn.microsoft.com/en-us/library/bb895334.aspx">https://msdn.microsoft.com/en-us/library/bb895334.aspx</a></p>
+For details, check <a href="https://msdn.microsoft.com/en-us/library/bb895334.aspx">https://msdn.microsoft.com/en-us/library/bb895334.aspx</a><br></p>
 <table>
 <thead>
 <tr>
@@ -770,7 +770,7 @@ For details, check <a href="https://msdn.microsoft.com/en-us/library/bb895334.as
 </tbody>
 </table>
 <h5 id="inputobject">-InputObject</h5>
-<p>Allows Piping from Get-DbaDatabase</p>
+<p>Allows Piping from Get-DbaDatabase<br></p>
 <table>
 <thead>
 <tr>
@@ -800,7 +800,7 @@ For details, check <a href="https://msdn.microsoft.com/en-us/library/bb895334.as
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -828,7 +828,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>Shows what would happen if the command were to run</p>
+<p>Shows what would happen if the command were to run<br></p>
 <table>
 <thead>
 <tr>
@@ -856,7 +856,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>Prompts for confirmation of every step.</p>
+<p>Prompts for confirmation of every step.<br></p>
 <table>
 <thead>
 <tr>
@@ -885,6 +885,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/New-DbaDbSnapshot.ps1">New-DbaDbSnapshot</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#New-DbaDbSnapshot">New-DbaDbSnapshot</a>.</p>
 
                 </div> <!-- rendered -->

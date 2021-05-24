@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -473,43 +473,43 @@ For detailed examples of the various parameters see the documentation of Get-Dba
 <p>Reference: <a href="http://www.sqlhub.com/2011/07/find-your-backup-history-in-sql-server.html">http://www.sqlhub.com/2011/07/find-your-backup-history-in-sql-server.html</a></p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Get-DbaAgBackupHistory -SqlInstance &lt;DbaInstanceParameter[]&gt;
-    --SqlCredential &lt;PSCredential&gt;] -AvailabilityGroup &lt;String&gt;
-    --Database &lt;Object[]&gt;]
-    --ExcludeDatabase &lt;Object[]&gt;]
-    --IncludeCopyOnly]
-    --Since &lt;DateTime&gt;]
-    --RecoveryFork &lt;String&gt;]
-    --Last]
-    --LastFull]
-    --LastDiff]
-    --LastLog]
-    --DeviceType &lt;String[]&gt;]
-    --Raw]
-    --LastLsn &lt;BigInteger&gt;]
-    --IncludeMirror]
-    --Type &lt;String[]&gt;]
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [-SqlCredential &lt;PSCredential&gt;] -AvailabilityGroup &lt;String&gt;
+    [-Database &lt;Object[]&gt;]
+    [-ExcludeDatabase &lt;Object[]&gt;]
+    [-IncludeCopyOnly]
+    [-Since &lt;DateTime&gt;]
+    [-RecoveryFork &lt;String&gt;]
+    [-Last]
+    [-LastFull]
+    [-LastDiff]
+    [-LastLog]
+    [-DeviceType &lt;String[]&gt;]
+    [-Raw]
+    [-LastLsn &lt;BigInteger&gt;]
+    [-IncludeMirror]
+    [-Type &lt;String[]&gt;]
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 Get-DbaAgBackupHistory -SqlInstance &lt;DbaInstanceParameter[]&gt;
-    --SqlCredential &lt;PSCredential&gt;] -AvailabilityGroup &lt;String&gt;
-    --Database &lt;Object[]&gt;]
-    --ExcludeDatabase &lt;Object[]&gt;]
-    --IncludeCopyOnly]
-    --Force]
-    --Since &lt;DateTime&gt;]
-    --RecoveryFork &lt;String&gt;]
-    --Last]
-    --LastFull]
-    --LastDiff]
-    --LastLog]
-    --DeviceType &lt;String[]&gt;]
-    --Raw]
-    --LastLsn &lt;BigInteger&gt;]
-    --IncludeMirror]
-    --Type &lt;String[]&gt;]
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [-SqlCredential &lt;PSCredential&gt;] -AvailabilityGroup &lt;String&gt;
+    [-Database &lt;Object[]&gt;]
+    [-ExcludeDatabase &lt;Object[]&gt;]
+    [-IncludeCopyOnly]
+    [-Force]
+    [-Since &lt;DateTime&gt;]
+    [-RecoveryFork &lt;String&gt;]
+    [-Last]
+    [-LastFull]
+    [-LastDiff]
+    [-LastLog]
+    [-DeviceType &lt;String[]&gt;]
+    [-Raw]
+    [-LastLsn &lt;BigInteger&gt;]
+    [-IncludeMirror]
+    [-Type &lt;String[]&gt;]
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -518,19 +518,19 @@ Get-DbaAgBackupHistory -SqlInstance &lt;DbaInstanceParameter[]&gt;
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Get-DbaAgBackupHistory -SqlInstance AgListener -AvailabilityGroup AgTest1
 </code></pre>
-<p>Returns information for all database backups still in msdb history on all replicas of availability group AgTest1 using the listener AgListener to determine all replicas.</p>
+<p>Returns information for all database backups still in msdb history on all replicas of availability group AgTest1 using the listener AgListener to determine all replicas.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Get-DbaAgBackupHistory -SqlInstance Replica1, Replica2, Replica3 -AvailabilityGroup AgTest1
 </code></pre>
-<p>Returns information for all database backups still in msdb history on the given replicas of availability group AgTest1.</p>
+<p>Returns information for all database backups still in msdb history on the given replicas of availability group AgTest1.<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Get-DbaAgBackupHistory -SqlInstance 'Replica1:14331', 'Replica2:14332', 'Replica3:14333' -AvailabilityGroup AgTest1
 </code></pre>
-<p>Returns information for all database backups still in msdb history on the given replicas of availability group AgTest1 using custom ports.</p>
+<p>Returns information for all database backups still in msdb history on the given replicas of availability group AgTest1 using custom ports.<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; $ListOfReplicas | Get-DbaAgBackupHistory -AvailabilityGroup AgTest1
 </code></pre>
-<p>Returns information for all database backups still in msdb history on the replicas in $ListOfReplicas of availability group AgTest1.</p>
+<p>Returns information for all database backups still in msdb history on the replicas in $ListOfReplicas of availability group AgTest1.<br></p>
 <h5 id="example-5">Example:  5</h5>
 <pre><code>PS C:\&gt; $serverWithAllAgs = Connect-DbaInstance -SqlInstance MyServer
 PS C:\&gt; $allAgResults = foreach ( $ag in $serverWithAllAgs.AvailabilityGroups ) {
@@ -539,12 +539,12 @@ PS C:\&gt; $allAgResults = foreach ( $ag in $serverWithAllAgs.AvailabilityGroups
 &gt;&gt;
 PS C:\&gt; $allAgResults | Format-Table
 </code></pre>
-<p>Returns information for all database backups on all replicas for all availability groups on SQL instance MyServer.</p>
+<p>Returns information for all database backups on all replicas for all availability groups on SQL instance MyServer.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
 <p>The target SQL Server instance or instances. This can be a collection and receive pipeline input to allow the function to be executed against multiple SQL Server instances.
 If you pass in one availability group listener, all replicas are automatically determined and queried.
-If you pass in a list of individual replicas, they will be queried. This enables you to use custom ports for the replicas.</p>
+If you pass in a list of individual replicas, they will be queried. This enables you to use custom ports for the replicas.<br></p>
 <table>
 <thead>
 <tr>
@@ -572,7 +572,7 @@ If you pass in a list of individual replicas, they will be queried. This enables
 </tbody>
 </table>
 <h5 id="availabilitygroup">-AvailabilityGroup</h5>
-<p>Specify the availability group to process.</p>
+<p>Specify the availability group to process.<br></p>
 <table>
 <thead>
 <tr>
@@ -602,7 +602,7 @@ If you pass in a list of individual replicas, they will be queried. This enables
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Credential object used to connect to the SQL Server instance as a different user. This can be a Windows or SQL Server account. Windows users are determined by the existence of a backslash, so if you
-are intending to use an alternative Windows connection instead of a SQL login, ensure it contains a backslash.</p>
+are intending to use an alternative Windows connection instead of a SQL login, ensure it contains a backslash.<br></p>
 <table>
 <thead>
 <tr>
@@ -630,7 +630,7 @@ are intending to use an alternative Windows connection instead of a SQL login, e
 </tbody>
 </table>
 <h5 id="database">-Database</h5>
-<p>Specifies one or more database(s) to process. If unspecified, all databases of the availability group will be processed.</p>
+<p>Specifies one or more database(s) to process. If unspecified, all databases of the availability group will be processed.<br></p>
 <table>
 <thead>
 <tr>
@@ -658,7 +658,7 @@ are intending to use an alternative Windows connection instead of a SQL login, e
 </tbody>
 </table>
 <h5 id="excludedatabase">-ExcludeDatabase</h5>
-<p>Specifies one or more database(s) to exclude from processing.</p>
+<p>Specifies one or more database(s) to exclude from processing.<br></p>
 <table>
 <thead>
 <tr>
@@ -686,7 +686,7 @@ are intending to use an alternative Windows connection instead of a SQL login, e
 </tbody>
 </table>
 <h5 id="includecopyonly">-IncludeCopyOnly</h5>
-<p>By default Get-DbaAgBackupHistory will ignore backups taken with the CopyOnly option. This switch will include them.</p>
+<p>By default Get-DbaAgBackupHistory will ignore backups taken with the CopyOnly option. This switch will include them.<br></p>
 <table>
 <thead>
 <tr>
@@ -714,7 +714,7 @@ are intending to use an alternative Windows connection instead of a SQL login, e
 </tbody>
 </table>
 <h5 id="force">-Force</h5>
-<p>If this switch is enabled, a large amount of information is returned, similar to what SQL Server itself returns.</p>
+<p>If this switch is enabled, a large amount of information is returned, similar to what SQL Server itself returns.<br></p>
 <table>
 <thead>
 <tr>
@@ -742,7 +742,7 @@ are intending to use an alternative Windows connection instead of a SQL login, e
 </tbody>
 </table>
 <h5 id="since">-Since</h5>
-<p>Specifies a DateTime object to use as the starting point for the search for backups.</p>
+<p>Specifies a DateTime object to use as the starting point for the search for backups.<br></p>
 <table>
 <thead>
 <tr>
@@ -770,7 +770,7 @@ are intending to use an alternative Windows connection instead of a SQL login, e
 </tbody>
 </table>
 <h5 id="recoveryfork">-RecoveryFork</h5>
-<p>Specifies the Recovery Fork you want backup history for</p>
+<p>Specifies the Recovery Fork you want backup history for<br></p>
 <table>
 <thead>
 <tr>
@@ -798,7 +798,7 @@ are intending to use an alternative Windows connection instead of a SQL login, e
 </tbody>
 </table>
 <h5 id="last">-Last</h5>
-<p>If this switch is enabled, the most recent full chain of full, diff and log backup sets is returned.</p>
+<p>If this switch is enabled, the most recent full chain of full, diff and log backup sets is returned.<br></p>
 <table>
 <thead>
 <tr>
@@ -826,7 +826,7 @@ are intending to use an alternative Windows connection instead of a SQL login, e
 </tbody>
 </table>
 <h5 id="lastfull">-LastFull</h5>
-<p>If this switch is enabled, the most recent full backup set is returned.</p>
+<p>If this switch is enabled, the most recent full backup set is returned.<br></p>
 <table>
 <thead>
 <tr>
@@ -854,7 +854,7 @@ are intending to use an alternative Windows connection instead of a SQL login, e
 </tbody>
 </table>
 <h5 id="lastdiff">-LastDiff</h5>
-<p>If this switch is enabled, the most recent differential backup set is returned.</p>
+<p>If this switch is enabled, the most recent differential backup set is returned.<br></p>
 <table>
 <thead>
 <tr>
@@ -882,7 +882,7 @@ are intending to use an alternative Windows connection instead of a SQL login, e
 </tbody>
 </table>
 <h5 id="lastlog">-LastLog</h5>
-<p>If this switch is enabled, the most recent log backup is returned.</p>
+<p>If this switch is enabled, the most recent log backup is returned.<br></p>
 <table>
 <thead>
 <tr>
@@ -911,7 +911,7 @@ are intending to use an alternative Windows connection instead of a SQL login, e
 </table>
 <h5 id="devicetype">-DeviceType</h5>
 <p>Specifies a filter for backup sets based on DeviceType. Valid options are 'Disk','Permanent Disk Device', 'Tape', 'Permanent Tape Device','Pipe','Permanent Pipe Device','Virtual Device','URL', in
-addition to custom integers for your own DeviceType.</p>
+addition to custom integers for your own DeviceType.<br></p>
 <table>
 <thead>
 <tr>
@@ -939,7 +939,7 @@ addition to custom integers for your own DeviceType.</p>
 </tbody>
 </table>
 <h5 id="raw">-Raw</h5>
-<p>If this switch is enabled, one object per backup file is returned. Otherwise, media sets (striped backups across multiple files) will be grouped into a single return object.</p>
+<p>If this switch is enabled, one object per backup file is returned. Otherwise, media sets (striped backups across multiple files) will be grouped into a single return object.<br></p>
 <table>
 <thead>
 <tr>
@@ -967,7 +967,7 @@ addition to custom integers for your own DeviceType.</p>
 </tbody>
 </table>
 <h5 id="lastlsn">-LastLsn</h5>
-<p>Specifies a minimum LSN to use in filtering backup history. Only backups with an LSN greater than this value will be returned, which helps speed the retrieval process.</p>
+<p>Specifies a minimum LSN to use in filtering backup history. Only backups with an LSN greater than this value will be returned, which helps speed the retrieval process.<br></p>
 <table>
 <thead>
 <tr>
@@ -995,7 +995,7 @@ addition to custom integers for your own DeviceType.</p>
 </tbody>
 </table>
 <h5 id="includemirror">-IncludeMirror</h5>
-<p>By default mirrors of backups are not returned, this switch will cause them to be returned</p>
+<p>By default mirrors of backups are not returned, this switch will cause them to be returned<br></p>
 <table>
 <thead>
 <tr>
@@ -1024,7 +1024,7 @@ addition to custom integers for your own DeviceType.</p>
 </table>
 <h5 id="type">-Type</h5>
 <p>Specifies one or more types of backups to return. Valid options are 'Full', 'Log', 'Differential', 'File', 'Differential File', 'Partial Full', and 'Partial Differential'. Otherwise, all types of
-backups will be returned unless one of the -Last* switches is enabled.</p>
+backups will be returned unless one of the -Last* switches is enabled.<br></p>
 <table>
 <thead>
 <tr>
@@ -1058,7 +1058,7 @@ backups will be returned unless one of the -Last* switches is enabled.</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -1087,6 +1087,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Get-DbaAgBackupHistory.ps1">Get-DbaAgBackupHistory</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Get-DbaAgBackupHistory">Get-DbaAgBackupHistory</a>.</p>
 
                 </div> <!-- rendered -->

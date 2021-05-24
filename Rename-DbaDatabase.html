@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -486,41 +486,41 @@ Please take a backup of your databases BEFORE using this, and remember to backup
 <p>To get a grasp without worrying of what would happen under the hood, use &quot;Rename-DbaDatabase .... -Preview | Select-Object *&quot;</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Rename-DbaDatabase -SqlInstance &lt;DbaInstanceParameter[]&gt;
-    --SqlCredential &lt;PSCredential&gt;]
-    --Database &lt;Object[]&gt;]
-    --ExcludeDatabase &lt;Object[]&gt;]
-    --AllDatabases]
-    --DatabaseName &lt;String&gt;]
-    --FileGroupName &lt;String&gt;]
-    --LogicalName &lt;String&gt;]
-    --FileName &lt;String&gt;]
-    --ReplaceBefore]
-    --Force]
-    --Move]
-    --SetOffline]
-    --Preview]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-SqlCredential &lt;PSCredential&gt;]
+    [-Database &lt;Object[]&gt;]
+    [-ExcludeDatabase &lt;Object[]&gt;]
+    [-AllDatabases]
+    [-DatabaseName &lt;String&gt;]
+    [-FileGroupName &lt;String&gt;]
+    [-LogicalName &lt;String&gt;]
+    [-FileName &lt;String&gt;]
+    [-ReplaceBefore]
+    [-Force]
+    [-Move]
+    [-SetOffline]
+    [-Preview]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 Rename-DbaDatabase
-    --SqlCredential &lt;PSCredential&gt;]
-    --ExcludeDatabase &lt;Object[]&gt;]
-    --AllDatabases]
-    --DatabaseName &lt;String&gt;]
-    --FileGroupName &lt;String&gt;]
-    --LogicalName &lt;String&gt;]
-    --FileName &lt;String&gt;]
-    --ReplaceBefore]
-    --Force]
-    --Move]
-    --SetOffline]
-    --Preview] -InputObject &lt;Database[]&gt;
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-SqlCredential &lt;PSCredential&gt;]
+    [-ExcludeDatabase &lt;Object[]&gt;]
+    [-AllDatabases]
+    [-DatabaseName &lt;String&gt;]
+    [-FileGroupName &lt;String&gt;]
+    [-LogicalName &lt;String&gt;]
+    [-FileName &lt;String&gt;]
+    [-ReplaceBefore]
+    [-Force]
+    [-Move]
+    [-SetOffline]
+    [-Preview] -InputObject &lt;Database[]&gt;
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -529,54 +529,54 @@ Rename-DbaDatabase
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Rename-DbaDatabase -SqlInstance sqlserver2014a -Database HR -DatabaseName HR2 -Preview | Select-Object *
 </code></pre>
-<p>Shows the detailed result set you'll get renaming the HR database to HR2 without doing anything</p>
+<p>Shows the detailed result set you'll get renaming the HR database to HR2 without doing anything<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Rename-DbaDatabase -SqlInstance sqlserver2014a -Database HR -DatabaseName HR2
 </code></pre>
-<p>Renames the HR database to HR2</p>
+<p>Renames the HR database to HR2<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Get-DbaDatabase -SqlInstance sqlserver2014a -Database HR | Rename-DbaDatabase -DatabaseName HR2
 </code></pre>
-<p>Same as before, but with a piped database (renames the HR database to HR2)</p>
+<p>Same as before, but with a piped database (renames the HR database to HR2)<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; Rename-DbaDatabase -SqlInstance sqlserver2014a -Database HR -DatabaseName &quot;dbatools_&lt;DBN&gt;&quot;
 </code></pre>
-<p>Renames the HR database to dbatools_HR</p>
+<p>Renames the HR database to dbatools_HR<br></p>
 <h5 id="example-5">Example:  5</h5>
 <pre><code>PS C:\&gt; Rename-DbaDatabase -SqlInstance sqlserver2014a -Database HR -DatabaseName &quot;dbatools_&lt;DBN&gt;_&lt;DATE&gt;&quot;
 </code></pre>
-<p>Renames the HR database to dbatools_HR_20170807 (if today is 07th Aug 2017)</p>
+<p>Renames the HR database to dbatools_HR_20170807 (if today is 07th Aug 2017)<br></p>
 <h5 id="example-6">Example:  6</h5>
 <pre><code>PS C:\&gt; Rename-DbaDatabase -SqlInstance sqlserver2014a -Database HR -FileGroupName &quot;dbatools_&lt;FGN&gt;&quot;
 </code></pre>
-<p>Renames every FileGroup within HR to &quot;dbatools_[the original FileGroup name]&quot;</p>
+<p>Renames every FileGroup within HR to &quot;dbatools_[the original FileGroup name]&quot;<br></p>
 <h5 id="example-7">Example:  7</h5>
 <pre><code>PS C:\&gt; Rename-DbaDatabase -SqlInstance sqlserver2014a -Database HR -DatabaseName &quot;dbatools_&lt;DBN&gt;&quot; -FileGroupName &quot;&lt;DBN&gt;_&lt;FGN&gt;&quot;
 </code></pre>
-<p>Renames the HR database to &quot;dbatools_HR&quot;, then renames every FileGroup within to &quot;dbatools_HR_[the original FileGroup name]&quot;</p>
+<p>Renames the HR database to &quot;dbatools_HR&quot;, then renames every FileGroup within to &quot;dbatools_HR_[the original FileGroup name]&quot;<br></p>
 <h5 id="example-8">Example:  8</h5>
 <pre><code>PS C:\&gt; Rename-DbaDatabase -SqlInstance sqlserver2014a -Database HR -FileGroupName &quot;dbatools_&lt;DBN&gt;_&lt;FGN&gt;&quot;
 PS C:\&gt; Rename-DbaDatabase -SqlInstance sqlserver2014a -Database HR -DatabaseName &quot;dbatools_&lt;DBN&gt;&quot;
 </code></pre>
-<p>Renames the HR database to &quot;dbatools_HR&quot;, then renames every FileGroup within to &quot;dbatools_HR_[the original FileGroup name]&quot;</p>
+<p>Renames the HR database to &quot;dbatools_HR&quot;, then renames every FileGroup within to &quot;dbatools_HR_[the original FileGroup name]&quot;<br></p>
 <h5 id="example-9">Example:  9</h5>
 <pre><code>PS C:\&gt; Rename-DbaDatabase -SqlInstance sqlserver2014a -Database HR -DatabaseName &quot;dbatools_&lt;DBN&gt;&quot; -FileName &quot;&lt;DBN&gt;_&lt;FGN&gt;_&lt;FNN&gt;&quot;
 </code></pre>
-<p>Renames the HR database to &quot;dbatools_HR&quot; and then all filenames as &quot;dbatools_HR_[Name of the FileGroup]_[original_filename]&quot;
-The db stays online (watch out!). You can then proceed manually to move/copy files by hand, set the db offline and then online again to finish the rename process</p>
+<p>Renames the HR database to &quot;dbatools_HR&quot; and then all filenames as &quot;dbatools_HR_[Name of the FileGroup]_[original_filename]&quot;<br>
+The db stays online (watch out!). You can then proceed manually to move/copy files by hand, set the db offline and then online again to finish the rename process<br></p>
 <h5 id="example-10">Example:  10</h5>
 <pre><code>PS C:\&gt; Rename-DbaDatabase -SqlInstance sqlserver2014a -Database HR -DatabaseName &quot;dbatools_&lt;DBN&gt;&quot; -FileName &quot;&lt;DBN&gt;_&lt;FGN&gt;_&lt;FNN&gt;&quot; -SetOffline
 </code></pre>
-<p>Renames the HR database to &quot;dbatools_HR&quot; and then all filenames as &quot;dbatools_HR_[Name of the FileGroup]_[original_filename]&quot;
-The db is then set offline (watch out!). You can then proceed manually to move/copy files by hand and then set it online again to finish the rename process</p>
+<p>Renames the HR database to &quot;dbatools_HR&quot; and then all filenames as &quot;dbatools_HR_[Name of the FileGroup]_[original_filename]&quot;<br>
+The db is then set offline (watch out!). You can then proceed manually to move/copy files by hand and then set it online again to finish the rename process<br></p>
 <h5 id="example-11">Example:  11</h5>
 <pre><code>PS C:\&gt; Rename-DbaDatabase -SqlInstance sqlserver2014a -Database HR -DatabaseName &quot;dbatools_&lt;DBN&gt;&quot; -FileName &quot;&lt;DBN&gt;_&lt;FGN&gt;_&lt;FNN&gt;&quot; -Move
 </code></pre>
-<p>Renames the HR database to &quot;dbatools_HR&quot; and then all filenames as &quot;dbatools_HR_[Name of the FileGroup]_[original_filename]&quot;
-The db is then set offline (watch out!). The function tries to do a simple rename and then sets the db online again to finish the rename process</p>
+<p>Renames the HR database to &quot;dbatools_HR&quot; and then all filenames as &quot;dbatools_HR_[Name of the FileGroup]_[original_filename]&quot;<br>
+The db is then set offline (watch out!). The function tries to do a simple rename and then sets the db online again to finish the rename process<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>Target any number of instances, in order to return their build state.</p>
+<p>Target any number of instances, in order to return their build state.<br></p>
 <table>
 <thead>
 <tr>
@@ -604,7 +604,7 @@ The db is then set offline (watch out!). The function tries to do a simple renam
 </tbody>
 </table>
 <h5 id="inputobject">-InputObject</h5>
-<p>Accepts piped database objects</p>
+<p>Accepts piped database objects<br></p>
 <table>
 <thead>
 <tr>
@@ -635,7 +635,7 @@ The db is then set offline (watch out!). The function tries to do a simple renam
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -663,7 +663,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="database">-Database</h5>
-<p>Targets only specified databases</p>
+<p>Targets only specified databases<br></p>
 <table>
 <thead>
 <tr>
@@ -691,7 +691,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="excludedatabase">-ExcludeDatabase</h5>
-<p>Excludes only specified databases</p>
+<p>Excludes only specified databases<br></p>
 <table>
 <thead>
 <tr>
@@ -719,7 +719,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="alldatabases">-AllDatabases</h5>
-<p>If you want to apply the naming convention system wide, you need to pass this parameter</p>
+<p>If you want to apply the naming convention system wide, you need to pass this parameter<br></p>
 <table>
 <thead>
 <tr>
@@ -750,7 +750,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 <p>Pass a template to rename the database name. Valid placeholders are:</p>
 <ul>
 <li><DBN> current database name</li>
-<li><DATE> date (yyyyMMdd)</li>
+<li><DATE> date (yyyyMMdd)<br></li>
 </ul>
 <table>
 <thead>
@@ -784,7 +784,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 <li><FGN> current filegroup name</li>
 <li><DBN> current database name</li>
 <li><DATE> date (yyyyMMdd)
-If distinct names cannot be generated, a counter will be appended (0001, 0002, 0003, etc)</li>
+If distinct names cannot be generated, a counter will be appended (0001, 0002, 0003, etc)<br></li>
 </ul>
 <table>
 <thead>
@@ -820,7 +820,7 @@ If distinct names cannot be generated, a counter will be appended (0001, 0002, 0
 <li><FGN> current filegroup name</li>
 <li><DBN> current database name</li>
 <li><DATE> date (yyyyMMdd)
-If distinct names cannot be generated, a counter will be appended (0001, 0002, 0003, etc)</li>
+If distinct names cannot be generated, a counter will be appended (0001, 0002, 0003, etc)<br></li>
 </ul>
 <table>
 <thead>
@@ -857,7 +857,7 @@ If distinct names cannot be generated, a counter will be appended (0001, 0002, 0
 <li><FGN> current filegroup name</li>
 <li><DBN> current database name</li>
 <li><DATE> date (yyyyMMdd)
-If distinct names cannot be generated, a counter will be appended (0001, 0002, 0003, etc)</li>
+If distinct names cannot be generated, a counter will be appended (0001, 0002, 0003, etc)<br></li>
 </ul>
 <table>
 <thead>
@@ -911,7 +911,7 @@ end up with this logic instead:</li>
 <DBN><FNN>, plus -ReplaceBefore --&gt; current database name + replace OLD &quot;upper level&quot; names inside the current filename</li>
 <li>dbatools_HR_Data.mdf to dbatools_HRARCHIVE_Data.mdf</li>
 <li>dbatools_HR_Index.mdf to dbatools_HRARCHIVE_Data.mdf</li>
-<li>dbatools_HR_log.ldf to dbatools_HRARCHIVE_log.ldf</li>
+<li>dbatools_HR_log.ldf to dbatools_HRARCHIVE_log.ldf<br></li>
 </ul>
 <table>
 <thead>
@@ -940,7 +940,7 @@ end up with this logic instead:</li>
 </tbody>
 </table>
 <h5 id="force">-Force</h5>
-<p>Kills any open session to be able to do renames.</p>
+<p>Kills any open session to be able to do renames.<br></p>
 <table>
 <thead>
 <tr>
@@ -970,7 +970,7 @@ end up with this logic instead:</li>
 <h5 id="move">-Move</h5>
 <p>If you want this function to move files, else you're the one in charge of it.
 This enables the same functionality as SetOffline, killing open transactions and putting the database
-offline, then do the actual rename and setting it online again afterwards</p>
+offline, then do the actual rename and setting it online again afterwards<br></p>
 <table>
 <thead>
 <tr>
@@ -998,7 +998,7 @@ offline, then do the actual rename and setting it online again afterwards</p>
 </tbody>
 </table>
 <h5 id="setoffline">-SetOffline</h5>
-<p>Kills any open session and sets the database offline to be able to move files</p>
+<p>Kills any open session and sets the database offline to be able to move files<br></p>
 <table>
 <thead>
 <tr>
@@ -1026,7 +1026,7 @@ offline, then do the actual rename and setting it online again afterwards</p>
 </tbody>
 </table>
 <h5 id="preview">-Preview</h5>
-<p>Shows the renames without performing any operation (recommended to find your way around this function parameters ;-) )</p>
+<p>Shows the renames without performing any operation (recommended to find your way around this function parameters ;-) )<br></p>
 <table>
 <thead>
 <tr>
@@ -1056,7 +1056,7 @@ offline, then do the actual rename and setting it online again afterwards</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -1084,7 +1084,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.</p>
+<p>If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.<br></p>
 <table>
 <thead>
 <tr>
@@ -1112,7 +1112,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.</p>
+<p>If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.<br></p>
 <table>
 <thead>
 <tr>
@@ -1141,6 +1141,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Rename-DbaDatabase.ps1">Rename-DbaDatabase</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Rename-DbaDatabase">Rename-DbaDatabase</a>.</p>
 
                 </div> <!-- rendered -->

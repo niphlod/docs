@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -470,19 +470,19 @@
 <p>Creates a new database mail account</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>New-DbaDbMailAccount
-    --SqlInstance] &lt;DbaInstanceParameter[]&gt;
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    --Name] &lt;String&gt;
-    -[-DisplayName] &lt;String&gt;]
-    -[-Description] &lt;String&gt;]
-    --EmailAddress] &lt;String&gt;
-    -[-ReplyToAddress] &lt;String&gt;]
-    -[-MailServer] &lt;String&gt;]
-    --Force]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-SqlInstance] &lt;DbaInstanceParameter[]&gt;
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [-Name] &lt;String&gt;
+    [[-DisplayName] &lt;String&gt;]
+    [[-Description] &lt;String&gt;]
+    [-EmailAddress] &lt;String&gt;
+    [[-ReplyToAddress] &lt;String&gt;]
+    [[-MailServer] &lt;String&gt;]
+    [-Force]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -491,10 +491,10 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; $account = New-DbaDbMailAccount -SqlInstance sql2017 -Name 'The DBA Team' -EmailAddress admin@ad.local -MailServer smtp.ad.local
 </code></pre>
-<p>Creates a new db mail account with the email address admin@ad.local on sql2017 named &quot;The DBA Team&quot; using the smtp.ad.local mail server</p>
+<p>Creates a new db mail account with the email address admin@ad.local on sql2017 named &quot;The DBA Team&quot; using the smtp.ad.local mail server<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances. You must have sysadmin access and server version must be SQL Server version 2008 or higher.</p>
+<p>The target SQL Server instance or instances. You must have sysadmin access and server version must be SQL Server version 2008 or higher.<br></p>
 <table>
 <thead>
 <tr>
@@ -522,7 +522,7 @@
 </tbody>
 </table>
 <h5 id="name">-Name</h5>
-<p>The Name of the account to be created.</p>
+<p>The Name of the account to be created.<br></p>
 <table>
 <thead>
 <tr>
@@ -550,7 +550,7 @@
 </tbody>
 </table>
 <h5 id="emailaddress">-EmailAddress</h5>
-<p>Sets the e-mail address of the mail account.</p>
+<p>Sets the e-mail address of the mail account.<br></p>
 <table>
 <thead>
 <tr>
@@ -581,7 +581,7 @@
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -609,7 +609,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="displayname">-DisplayName</h5>
-<p>Sets the name of the mail account that is displayed in messages.</p>
+<p>Sets the name of the mail account that is displayed in messages.<br></p>
 <table>
 <thead>
 <tr>
@@ -637,7 +637,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="description-1">-Description</h5>
-<p>Sets the description of the purpose of the mail account.</p>
+<p>Sets the description of the purpose of the mail account.<br></p>
 <table>
 <thead>
 <tr>
@@ -665,7 +665,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="replytoaddress">-ReplyToAddress</h5>
-<p>Sets the e-mail address to which the mail account replies.</p>
+<p>Sets the e-mail address to which the mail account replies.<br></p>
 <table>
 <thead>
 <tr>
@@ -693,7 +693,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="mailserver">-MailServer</h5>
-<p>The name of the mail server.</p>
+<p>The name of the mail server.<br></p>
 <table>
 <thead>
 <tr>
@@ -721,7 +721,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="force">-Force</h5>
-<p>If this switch is enabled, the Mail Account will be created even if the mail server is not present.</p>
+<p>If this switch is enabled, the Mail Account will be created even if the mail server is not present.<br></p>
 <table>
 <thead>
 <tr>
@@ -751,7 +751,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -779,7 +779,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.</p>
+<p>If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.<br></p>
 <table>
 <thead>
 <tr>
@@ -807,7 +807,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.</p>
+<p>If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.<br></p>
 <table>
 <thead>
 <tr>
@@ -836,6 +836,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/New-DbaDbMailAccount.ps1">New-DbaDbMailAccount</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#New-DbaDbMailAccount">New-DbaDbMailAccount</a>.</p>
 
                 </div> <!-- rendered -->

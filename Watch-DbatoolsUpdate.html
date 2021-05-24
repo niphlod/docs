@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -471,7 +471,7 @@
 <p>Anyone know how to make it clickable so that it opens an URL?</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Watch-DbatoolsUpdate
-    -&lt;CommonParameters&gt;]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -480,9 +480,10 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Watch-DbatoolsUpdate
 </code></pre>
-<p>Watches the gallery for updates to dbatools.</p>
+<p>Watches the gallery for updates to dbatools.<br></p>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Watch-DbatoolsUpdate.ps1">Watch-DbatoolsUpdate</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Watch-DbatoolsUpdate">Watch-DbatoolsUpdate</a>.</p>
 
                 </div> <!-- rendered -->

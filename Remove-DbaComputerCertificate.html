@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -470,15 +470,15 @@
 <p>Removes a computer certificate from a local or remote compuer</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Remove-DbaComputerCertificate
-    -[-ComputerName] &lt;DbaInstanceParameter[]&gt;]
-    -[-Credential] &lt;PSCredential&gt;]
-    --Thumbprint] &lt;String[]&gt;
-    -[-Store] &lt;String&gt;]
-    -[-Folder] &lt;String&gt;]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [[-ComputerName] &lt;DbaInstanceParameter[]&gt;]
+    [[-Credential] &lt;PSCredential&gt;]
+    [-Thumbprint] &lt;String[]&gt;
+    [[-Store] &lt;String&gt;]
+    [[-Folder] &lt;String&gt;]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -487,18 +487,18 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Remove-DbaComputerCertificate -ComputerName Server1 -Thumbprint C2BBE81A94FEE7A26FFF86C2DFDAF6BFD28C6C94
 </code></pre>
-<p>Removes certificate with thumbprint C2BBE81A94FEE7A26FFF86C2DFDAF6BFD28C6C94 in the LocalMachine store on Server1</p>
+<p>Removes certificate with thumbprint C2BBE81A94FEE7A26FFF86C2DFDAF6BFD28C6C94 in the LocalMachine store on Server1<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Get-DbaComputerCertificate | Where-Object Thumbprint -eq E0A071E387396723C45E92D42B2D497C6A182340 | Remove-DbaComputerCertificate
 </code></pre>
-<p>Removes certificate using the pipeline</p>
+<p>Removes certificate using the pipeline<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Remove-DbaComputerCertificate -ComputerName Server1 -Thumbprint C2BBE81A94FEE7A26FFF86C2DFDAF6BFD28C6C94 -Store User -Folder My
 </code></pre>
-<p>Removes certificate with thumbprint C2BBE81A94FEE7A26FFF86C2DFDAF6BFD28C6C94 in the User\My (Personal) store on Server1</p>
+<p>Removes certificate with thumbprint C2BBE81A94FEE7A26FFF86C2DFDAF6BFD28C6C94 in the User\My (Personal) store on Server1<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="thumbprint">-Thumbprint</h5>
-<p>The thumbprint of the certificate object</p>
+<p>The thumbprint of the certificate object<br></p>
 <table>
 <thead>
 <tr>
@@ -527,7 +527,7 @@
 </table>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="computername">-ComputerName</h5>
-<p>The target computer. Defaults to localhost.</p>
+<p>The target computer. Defaults to localhost.<br></p>
 <table>
 <thead>
 <tr>
@@ -555,7 +555,7 @@
 </tbody>
 </table>
 <h5 id="credential">-Credential</h5>
-<p>Allows you to login to $ComputerName using alternative credentials</p>
+<p>Allows you to login to $ComputerName using alternative credentials<br></p>
 <table>
 <thead>
 <tr>
@@ -583,7 +583,7 @@
 </tbody>
 </table>
 <h5 id="store">-Store</h5>
-<p>Certificate store - defaults to LocalMachine (otherwise exceptions can be thrown on remote connections)</p>
+<p>Certificate store - defaults to LocalMachine (otherwise exceptions can be thrown on remote connections)<br></p>
 <table>
 <thead>
 <tr>
@@ -611,7 +611,7 @@
 </tbody>
 </table>
 <h5 id="folder">-Folder</h5>
-<p>Certificate folder</p>
+<p>Certificate folder<br></p>
 <table>
 <thead>
 <tr>
@@ -641,7 +641,7 @@
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -669,7 +669,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>Shows what would happen if the command were to run. No actions are actually performed.</p>
+<p>Shows what would happen if the command were to run. No actions are actually performed.<br></p>
 <table>
 <thead>
 <tr>
@@ -697,7 +697,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>Prompts you for confirmation before executing any changing operations within the command.</p>
+<p>Prompts you for confirmation before executing any changing operations within the command.<br></p>
 <table>
 <thead>
 <tr>
@@ -726,6 +726,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Remove-DbaComputerCertificate.ps1">Remove-DbaComputerCertificate</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Remove-DbaComputerCertificate">Remove-DbaComputerCertificate</a>.</p>
 
                 </div> <!-- rendered -->

@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -470,12 +470,12 @@
 <p>Removes the network certificate for SQL Server instance. This setting is found in Configuration Manager.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Remove-DbaNetworkCertificate
-    -[-SqlInstance] &lt;DbaInstanceParameter[]&gt;]
-    -[-Credential] &lt;PSCredential&gt;]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [[-SqlInstance] &lt;DbaInstanceParameter[]&gt;]
+    [[-Credential] &lt;PSCredential&gt;]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -484,18 +484,18 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Remove-DbaNetworkCertificate
 </code></pre>
-<p>Removes the Network Certificate for the default instance (MSSQLSERVER) on localhost</p>
+<p>Removes the Network Certificate for the default instance (MSSQLSERVER) on localhost<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Remove-DbaNetworkCertificate -SqlInstance sql1\SQL2008R2SP2
 </code></pre>
-<p>Removes the Network Certificate for the SQL2008R2SP2 instance on sql1</p>
+<p>Removes the Network Certificate for the SQL2008R2SP2 instance on sql1<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Remove-DbaNetworkCertificate -SqlInstance localhost\SQL2008R2SP2 -WhatIf
 </code></pre>
-<p>Shows what would happen if the command were run</p>
+<p>Shows what would happen if the command were run<br></p>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances. Defaults to localhost. If target is a cluster, you must also specify InstanceClusterName (see below)</p>
+<p>The target SQL Server instance or instances. Defaults to localhost. If target is a cluster, you must also specify InstanceClusterName (see below)<br></p>
 <table>
 <thead>
 <tr>
@@ -523,7 +523,7 @@
 </tbody>
 </table>
 <h5 id="credential">-Credential</h5>
-<p>Allows you to login to the computer (not sql instance) using alternative credentials.</p>
+<p>Allows you to login to the computer (not sql instance) using alternative credentials.<br></p>
 <table>
 <thead>
 <tr>
@@ -553,7 +553,7 @@
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -581,7 +581,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>Shows what would happen if the command were to run. No actions are actually performed.</p>
+<p>Shows what would happen if the command were to run. No actions are actually performed.<br></p>
 <table>
 <thead>
 <tr>
@@ -609,7 +609,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>Prompts you for confirmation before executing any changing operations within the command.</p>
+<p>Prompts you for confirmation before executing any changing operations within the command.<br></p>
 <table>
 <thead>
 <tr>
@@ -638,6 +638,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Remove-DbaNetworkCertificate.ps1">Remove-DbaNetworkCertificate</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Remove-DbaNetworkCertificate">Remove-DbaNetworkCertificate</a>.</p>
 
                 </div> <!-- rendered -->

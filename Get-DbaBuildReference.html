@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -471,16 +471,16 @@
 It also includes End Of Support dates as specified on Microsoft Life Cycle Policy</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Get-DbaBuildReference
-    -[-Build] &lt;Version[]&gt;]
-    -[-Kb] &lt;String[]&gt;]
-    -[-MajorVersion] &lt;String&gt;]
-    -[-ServicePack] &lt;String&gt;]
-    -[-CumulativeUpdate] &lt;String&gt;]
-    -[-SqlInstance] &lt;DbaInstanceParameter[]&gt;]
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    --Update]
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [[-Build] &lt;Version[]&gt;]
+    [[-Kb] &lt;String[]&gt;]
+    [[-MajorVersion] &lt;String&gt;]
+    [[-ServicePack] &lt;String&gt;]
+    [[-CumulativeUpdate] &lt;String&gt;]
+    [[-SqlInstance] &lt;DbaInstanceParameter[]&gt;]
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [-Update]
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -489,22 +489,22 @@ It also includes End Of Support dates as specified on Microsoft Life Cycle Polic
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Get-DbaBuildReference -Build &quot;12.00.4502&quot;
 </code></pre>
-<p>Returns information about a build identified by  &quot;12.00.4502&quot; (which is SQL 2014 with SP1 and CU11)</p>
+<p>Returns information about a build identified by  &quot;12.00.4502&quot; (which is SQL 2014 with SP1 and CU11)<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Get-DbaBuildReference -Build &quot;12.00.4502&quot; -Update
 </code></pre>
-<p>Returns information about a build trying to fetch the most up to date index online. When the online version is newer, the local one gets overwritten</p>
+<p>Returns information about a build trying to fetch the most up to date index online. When the online version is newer, the local one gets overwritten<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Get-DbaBuildReference -Build &quot;12.0.4502&quot;,&quot;10.50.4260&quot;
 </code></pre>
-<p>Returns information builds identified by these versions strings</p>
+<p>Returns information builds identified by these versions strings<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; Get-DbaRegServer -SqlInstance sqlserver2014a | Get-DbaBuildReference
 </code></pre>
-<p>Integrate with other cmdlets to have builds checked for all your registered servers on sqlserver2014a</p>
+<p>Integrate with other cmdlets to have builds checked for all your registered servers on sqlserver2014a<br></p>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="build">-Build</h5>
-<p>Instead of connecting to a real instance, pass a string identifying the build to get the info back.</p>
+<p>Instead of connecting to a real instance, pass a string identifying the build to get the info back.<br></p>
 <table>
 <thead>
 <tr>
@@ -532,7 +532,7 @@ It also includes End Of Support dates as specified on Microsoft Life Cycle Polic
 </tbody>
 </table>
 <h5 id="kb">-Kb</h5>
-<p>Get a KB information based on its number. Supported format: KBXXXXXX, or simply XXXXXX.</p>
+<p>Get a KB information based on its number. Supported format: KBXXXXXX, or simply XXXXXX.<br></p>
 <table>
 <thead>
 <tr>
@@ -561,7 +561,7 @@ It also includes End Of Support dates as specified on Microsoft Life Cycle Polic
 </table>
 <h5 id="majorversion">-MajorVersion</h5>
 <p>Get a KB information based on SQL Server version. Can be refined further by -ServicePack and -CumulativeUpdate parameters.
-Examples: SQL2008 | 2008R2 | 2016</p>
+Examples: SQL2008 | 2008R2 | 2016<br></p>
 <table>
 <thead>
 <tr>
@@ -590,7 +590,7 @@ Examples: SQL2008 | 2008R2 | 2016</p>
 </table>
 <h5 id="servicepack">-ServicePack</h5>
 <p>Get a KB information based on SQL Server Service Pack version. Can be refined further by -CumulativeUpdate parameter.
-Examples: SP0 | 2 | RTM</p>
+Examples: SP0 | 2 | RTM<br></p>
 <table>
 <thead>
 <tr>
@@ -619,7 +619,7 @@ Examples: SP0 | 2 | RTM</p>
 </table>
 <h5 id="cumulativeupdate">-CumulativeUpdate</h5>
 <p>Get a KB information based on SQL Server Cumulative Update version.
-Examples: CU0 | CU13 | CU0</p>
+Examples: CU0 | CU13 | CU0<br></p>
 <table>
 <thead>
 <tr>
@@ -647,7 +647,7 @@ Examples: CU0 | CU13 | CU0</p>
 </tbody>
 </table>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>Target any number of instances, in order to return their build state.</p>
+<p>Target any number of instances, in order to return their build state.<br></p>
 <table>
 <thead>
 <tr>
@@ -677,7 +677,7 @@ Examples: CU0 | CU13 | CU0</p>
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -705,7 +705,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="update">-Update</h5>
-<p>Adding this switch will look online for the most up to date reference, optionally replacing the local one.</p>
+<p>Adding this switch will look online for the most up to date reference, optionally replacing the local one.<br></p>
 <table>
 <thead>
 <tr>
@@ -735,7 +735,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -764,6 +764,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Get-DbaBuildReference.ps1">Get-DbaBuildReference</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Get-DbaBuildReference">Get-DbaBuildReference</a>.</p>
 
                 </div> <!-- rendered -->

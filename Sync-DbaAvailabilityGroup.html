@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -487,22 +487,22 @@ AgentJob</p>
 <p>This command does not filter by which logins are in use by the ag databases or which linked servers are used. All objects that are not excluded will be copied like hulk smash.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Sync-DbaAvailabilityGroup
-    -[-Primary] &lt;DbaInstanceParameter&gt;]
-    -[-PrimarySqlCredential] &lt;PSCredential&gt;]
-    -[-Secondary] &lt;DbaInstanceParameter[]&gt;]
-    -[-SecondarySqlCredential] &lt;PSCredential&gt;]
-    -[-AvailabilityGroup] &lt;String&gt;]
-    -[-Exclude] &lt;String[]&gt;]
-    -[-Login] &lt;String[]&gt;]
-    -[-ExcludeLogin] &lt;String[]&gt;]
-    -[-Job] &lt;String[]&gt;]
-    -[-ExcludeJob] &lt;String[]&gt;]
-    -[-InputObject] &lt;AvailabilityGroup[]&gt;]
-    --Force]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [[-Primary] &lt;DbaInstanceParameter&gt;]
+    [[-PrimarySqlCredential] &lt;PSCredential&gt;]
+    [[-Secondary] &lt;DbaInstanceParameter[]&gt;]
+    [[-SecondarySqlCredential] &lt;PSCredential&gt;]
+    [[-AvailabilityGroup] &lt;String&gt;]
+    [[-Exclude] &lt;String[]&gt;]
+    [[-Login] &lt;String[]&gt;]
+    [[-ExcludeLogin] &lt;String[]&gt;]
+    [[-Job] &lt;String[]&gt;]
+    [[-ExcludeJob] &lt;String[]&gt;]
+    [[-InputObject] &lt;AvailabilityGroup[]&gt;]
+    [-Force]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -511,25 +511,25 @@ AgentJob</p>
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Sync-DbaAvailabilityGroup -Primary sql2016a -AvailabilityGroup db3
 </code></pre>
-<p>Syncs the following on all replicas found in the db3 AG:
-SpConfigure, CustomErrors, Credentials, DatabaseMail, LinkedServers
-Logins, LoginPermissions, SystemTriggers, DatabaseOwner, AgentCategory,
-AgentOperator, AgentAlert, AgentProxy, AgentSchedule, AgentJob</p>
+<p>Syncs the following on all replicas found in the db3 AG:<br>
+SpConfigure, CustomErrors, Credentials, DatabaseMail, LinkedServers<br>
+Logins, LoginPermissions, SystemTriggers, DatabaseOwner, AgentCategory,<br>
+AgentOperator, AgentAlert, AgentProxy, AgentSchedule, AgentJob<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Get-DbaAvailabilityGroup -SqlInstance sql2016a | Sync-DbaAvailabilityGroup -ExcludeType LoginPermissions, LinkedServers -ExcludeLogin login1, login2 -Job job1, job2
 </code></pre>
-<p>Syncs the following on all replicas found in all AGs on the specified instance:
-SpConfigure, CustomErrors, Credentials, DatabaseMail, Logins,
-SystemTriggers, DatabaseOwner, AgentCategory, AgentOperator
-AgentAlert, AgentProxy, AgentSchedule, AgentJob.
-Copies all logins except for login1 and login2 and only syncs job1 and job2</p>
+<p>Syncs the following on all replicas found in all AGs on the specified instance:<br>
+SpConfigure, CustomErrors, Credentials, DatabaseMail, Logins,<br>
+SystemTriggers, DatabaseOwner, AgentCategory, AgentOperator<br>
+AgentAlert, AgentProxy, AgentSchedule, AgentJob.<br>
+Copies all logins except for login1 and login2 and only syncs job1 and job2<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Get-DbaAvailabilityGroup -SqlInstance sql2016a | Sync-DbaAvailabilityGroup -WhatIf
 </code></pre>
-<p>Shows what would happen if the command were to run but doesn't actually perform the action.</p>
+<p>Shows what would happen if the command were to run but doesn't actually perform the action.<br></p>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="primary">-Primary</h5>
-<p>The primary SQL Server instance. Server version must be SQL Server version 2012 or higher.</p>
+<p>The primary SQL Server instance. Server version must be SQL Server version 2012 or higher.<br></p>
 <table>
 <thead>
 <tr>
@@ -559,7 +559,7 @@ Copies all logins except for login1 and login2 and only syncs job1 and job2</p>
 <h5 id="primarysqlcredential">-PrimarySqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -587,7 +587,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="secondary">-Secondary</h5>
-<p>The target SQL Server instance or instances. Server version must be SQL Server version 2012 or higher.</p>
+<p>The target SQL Server instance or instances. Server version must be SQL Server version 2012 or higher.<br></p>
 <table>
 <thead>
 <tr>
@@ -617,7 +617,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 <h5 id="secondarysqlcredential">-SecondarySqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -645,7 +645,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="availabilitygroup">-AvailabilityGroup</h5>
-<p>The name of the Availability Group.</p>
+<p>The name of the Availability Group.<br></p>
 <table>
 <thead>
 <tr>
@@ -688,7 +688,7 @@ AgentOperator
 AgentAlert
 AgentProxy
 AgentSchedule
-AgentJob</p>
+AgentJob<br></p>
 <table>
 <thead>
 <tr>
@@ -720,7 +720,7 @@ AgentJob</p>
 </tbody>
 </table>
 <h5 id="login">-Login</h5>
-<p>Specific logins to sync. If unspecified, all logins will be processed.</p>
+<p>Specific logins to sync. If unspecified, all logins will be processed.<br></p>
 <table>
 <thead>
 <tr>
@@ -748,7 +748,7 @@ AgentJob</p>
 </tbody>
 </table>
 <h5 id="excludelogin">-ExcludeLogin</h5>
-<p>Specific logins to exclude when performing the sync. If unspecified, all logins will be processed.</p>
+<p>Specific logins to exclude when performing the sync. If unspecified, all logins will be processed.<br></p>
 <table>
 <thead>
 <tr>
@@ -776,7 +776,7 @@ AgentJob</p>
 </tbody>
 </table>
 <h5 id="job">-Job</h5>
-<p>Specific jobs to sync. If unspecified, all jobs will be processed.</p>
+<p>Specific jobs to sync. If unspecified, all jobs will be processed.<br></p>
 <table>
 <thead>
 <tr>
@@ -804,7 +804,7 @@ AgentJob</p>
 </tbody>
 </table>
 <h5 id="excludejob">-ExcludeJob</h5>
-<p>Specific jobs to exclude when performing the sync. If unspecified, all jobs will be processed.</p>
+<p>Specific jobs to exclude when performing the sync. If unspecified, all jobs will be processed.<br></p>
 <table>
 <thead>
 <tr>
@@ -832,7 +832,7 @@ AgentJob</p>
 </tbody>
 </table>
 <h5 id="inputobject">-InputObject</h5>
-<p>Enables piping from Get-DbaAvailabilityGroup.</p>
+<p>Enables piping from Get-DbaAvailabilityGroup.<br></p>
 <table>
 <thead>
 <tr>
@@ -860,7 +860,7 @@ AgentJob</p>
 </tbody>
 </table>
 <h5 id="force">-Force</h5>
-<p>If this switch is enabled, the objects will dropped and recreated on Destination.</p>
+<p>If this switch is enabled, the objects will dropped and recreated on Destination.<br></p>
 <table>
 <thead>
 <tr>
@@ -890,7 +890,7 @@ AgentJob</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -918,7 +918,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>Shows what would happen if the command were to run. No actions are actually performed.</p>
+<p>Shows what would happen if the command were to run. No actions are actually performed.<br></p>
 <table>
 <thead>
 <tr>
@@ -946,7 +946,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>Prompts you for confirmation before executing any changing operations within the command.</p>
+<p>Prompts you for confirmation before executing any changing operations within the command.<br></p>
 <table>
 <thead>
 <tr>
@@ -975,6 +975,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Sync-DbaAvailabilityGroup.ps1">Sync-DbaAvailabilityGroup</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Sync-DbaAvailabilityGroup">Sync-DbaAvailabilityGroup</a>.</p>
 
                 </div> <!-- rendered -->

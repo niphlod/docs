@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -493,41 +493,41 @@ If this is not desired (e.g.: CredSSP authentication is managed externally, or i
 it can be disabled by setting the dbatools configuration option 'commands.initialize-credssp.bypass' value to $true.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Install-DbaInstance
-    -[-SqlInstance] &lt;DbaInstanceParameter[]&gt;]
-    --Version] &lt;String&gt;
-    -[-InstanceName] &lt;String&gt;]
-    -[-SaCredential] &lt;PSCredential&gt;]
-    -[-Credential] &lt;PSCredential&gt;]
-    -[-Authentication] &lt;String&gt;]
-    -[-ConfigurationFile] &lt;Object&gt;]
-    -[-Configuration] &lt;Hashtable&gt;]
-    -[-Path] &lt;String[]&gt;]
-    -[-Feature] &lt;String[]&gt;]
-    -[-AuthenticationMode] &lt;String&gt;]
-    -[-InstancePath] &lt;String&gt;]
-    -[-DataPath] &lt;String&gt;]
-    -[-LogPath] &lt;String&gt;]
-    -[-TempPath] &lt;String&gt;]
-    -[-BackupPath] &lt;String&gt;]
-    -[-UpdateSourcePath] &lt;String&gt;]
-    -[-AdminAccount] &lt;String[]&gt;]
-    -[-Port] &lt;Int32&gt;]
-    -[-Throttle] &lt;Int32&gt;]
-    -[-ProductID] &lt;String&gt;]
-    -[-EngineCredential] &lt;PSCredential&gt;]
-    -[-AgentCredential] &lt;PSCredential&gt;]
-    -[-ASCredential] &lt;PSCredential&gt;]
-    -[-ISCredential] &lt;PSCredential&gt;]
-    -[-RSCredential] &lt;PSCredential&gt;]
-    -[-FTCredential] &lt;PSCredential&gt;]
-    -[-PBEngineCredential] &lt;PSCredential&gt;]
-    -[-SaveConfiguration] &lt;String&gt;]
-    --PerformVolumeMaintenanceTasks]
-    --Restart]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [[-SqlInstance] &lt;DbaInstanceParameter[]&gt;]
+    [-Version] &lt;String&gt;
+    [[-InstanceName] &lt;String&gt;]
+    [[-SaCredential] &lt;PSCredential&gt;]
+    [[-Credential] &lt;PSCredential&gt;]
+    [[-Authentication] &lt;String&gt;]
+    [[-ConfigurationFile] &lt;Object&gt;]
+    [[-Configuration] &lt;Hashtable&gt;]
+    [[-Path] &lt;String[]&gt;]
+    [[-Feature] &lt;String[]&gt;]
+    [[-AuthenticationMode] &lt;String&gt;]
+    [[-InstancePath] &lt;String&gt;]
+    [[-DataPath] &lt;String&gt;]
+    [[-LogPath] &lt;String&gt;]
+    [[-TempPath] &lt;String&gt;]
+    [[-BackupPath] &lt;String&gt;]
+    [[-UpdateSourcePath] &lt;String&gt;]
+    [[-AdminAccount] &lt;String[]&gt;]
+    [[-Port] &lt;Int32&gt;]
+    [[-Throttle] &lt;Int32&gt;]
+    [[-ProductID] &lt;String&gt;]
+    [[-EngineCredential] &lt;PSCredential&gt;]
+    [[-AgentCredential] &lt;PSCredential&gt;]
+    [[-ASCredential] &lt;PSCredential&gt;]
+    [[-ISCredential] &lt;PSCredential&gt;]
+    [[-RSCredential] &lt;PSCredential&gt;]
+    [[-FTCredential] &lt;PSCredential&gt;]
+    [[-PBEngineCredential] &lt;PSCredential&gt;]
+    [[-SaveConfiguration] &lt;String&gt;]
+    [-PerformVolumeMaintenanceTasks]
+    [-Restart]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -536,27 +536,27 @@ it can be disabled by setting the dbatools configuration option 'commands.initia
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Install-DbaInstance -Version 2017 -Feature All
 </code></pre>
-<p>Install a default SQL Server instance and run the installation enabling all features with default settings. Automatically generates configuration.ini</p>
+<p>Install a default SQL Server instance and run the installation enabling all features with default settings. Automatically generates configuration.ini<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Install-DbaInstance -SqlInstance sql2017\sqlexpress, server01 -Version 2017 -Feature Default
 </code></pre>
-<p>Install a named SQL Server instance named sqlexpress on sql2017, and a default instance on server01. Automatically generates configuration.ini.
-Default features will be installed.</p>
+<p>Install a named SQL Server instance named sqlexpress on sql2017, and a default instance on server01. Automatically generates configuration.ini.<br>
+Default features will be installed.<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Install-DbaInstance -Version 2008R2 -SqlInstance sql2017 -ConfigurationFile C:\temp\configuration.ini
 </code></pre>
-<p>Install a default named SQL Server instance on the remote machine, sql2017 and use the local configuration.ini</p>
+<p>Install a default named SQL Server instance on the remote machine, sql2017 and use the local configuration.ini<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; Install-DbaInstance -Version 2017 -InstancePath G:\SQLServer -UpdateSourcePath '\\my\updates'
 </code></pre>
-<p>Run the installation locally with default settings apart from the application volume, this will be redirected to G:\SQLServer.
-The installation procedure would search for SQL Server updates in \my\updates and slipstream them into the installation.</p>
+<p>Run the installation locally with default settings apart from the application volume, this will be redirected to G:\SQLServer.<br>
+The installation procedure would search for SQL Server updates in \my\updates and slipstream them into the installation.<br></p>
 <h5 id="example-5">Example:  5</h5>
 <pre><code>PS C:\&gt; $svcAcc = Get-Credential MyDomain\SvcSqlServer
 PS C:\&gt; Install-DbaInstance -Version 2016 -InstancePath D:\Root -DataPath E: -LogPath L: -PerformVolumeMaintenanceTasks -EngineCredential $svcAcc
 </code></pre>
-<p>Install SQL Server 2016 instance into D:\Root drive, set default data folder as E: and default logs folder as L:.
-Perform volume maintenance tasks permission is granted. MyDomain\SvcSqlServer is used as a service account for SqlServer.</p>
+<p>Install SQL Server 2016 instance into D:\Root drive, set default data folder as E: and default logs folder as L:.<br>
+Perform volume maintenance tasks permission is granted. MyDomain\SvcSqlServer is used as a service account for SqlServer.<br></p>
 <h5 id="example-6">Example:  6</h5>
 <pre><code>PS C:\&gt; $config = @{
 &gt;&gt; AGTSVCSTARTUPTYPE = &quot;Manual&quot;
@@ -566,12 +566,12 @@ Perform volume maintenance tasks permission is granted. MyDomain\SvcSqlServer is
 &gt;&gt; }
 PS C:\&gt; Install-DbaInstance -SqlInstance localhost\v2017:1337 -Version 2017 -Configuration $config
 </code></pre>
-<p>Run the installation locally with default settings overriding the value of specific configuration items.
-Instance name will be defined as 'v2017'; TCP port will be changed to 1337 after installation.</p>
+<p>Run the installation locally with default settings overriding the value of specific configuration items.<br>
+Instance name will be defined as 'v2017'; TCP port will be changed to 1337 after installation.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="version">-Version</h5>
 <p>SQL Server version you wish to install.
-This is the year version (e.g. &quot;2008R2&quot;, &quot;2017&quot;, &quot;2019&quot;)</p>
+This is the year version (e.g. &quot;2008R2&quot;, &quot;2017&quot;, &quot;2019&quot;)<br></p>
 <table>
 <thead>
 <tr>
@@ -610,7 +610,7 @@ Server1
 Server2\Instance1
 Server1\Alpha:1533, Server2\Omega:1566
 &quot;ServerName\NewInstanceName,1534&quot;
-You can also define instance name and port using -InstanceName and -Port parameters.</p>
+You can also define instance name and port using -InstanceName and -Port parameters.<br></p>
 <table>
 <thead>
 <tr>
@@ -638,7 +638,7 @@ You can also define instance name and port using -InstanceName and -Port paramet
 </tbody>
 </table>
 <h5 id="instancename">-InstanceName</h5>
-<p>Name of the SQL Server instance to install. Overrides the instance name specified in -SqlInstance.</p>
+<p>Name of the SQL Server instance to install. Overrides the instance name specified in -SqlInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -666,7 +666,7 @@ You can also define instance name and port using -InstanceName and -Port paramet
 </tbody>
 </table>
 <h5 id="sacredential">-SaCredential</h5>
-<p>Securely provide the password for the sa account when using mixed mode authentication.</p>
+<p>Securely provide the password for the sa account when using mixed mode authentication.<br></p>
 <table>
 <thead>
 <tr>
@@ -694,7 +694,7 @@ You can also define instance name and port using -InstanceName and -Port paramet
 </tbody>
 </table>
 <h5 id="credential">-Credential</h5>
-<p>Used when executing installs against remote servers</p>
+<p>Used when executing installs against remote servers<br></p>
 <table>
 <thead>
 <tr>
@@ -729,7 +729,7 @@ Defaults:</p>
 <ul>
 <li>CredSSP when -Credential is specified - due to the fact that repository Path is usually a network share and credentials need to be passed to the remote host
 to avoid the double-hop issue.</li>
-<li>Default when -Credential is not specified. Will likely fail if a network path is specified.</li>
+<li>Default when -Credential is not specified. Will likely fail if a network path is specified.<br></li>
 </ul>
 <table>
 <thead>
@@ -762,7 +762,7 @@ to avoid the double-hop issue.</li>
 </tbody>
 </table>
 <h5 id="configurationfile">-ConfigurationFile</h5>
-<p>The path to the custom Configuration.ini file.</p>
+<p>The path to the custom Configuration.ini file.<br></p>
 <table>
 <thead>
 <tr>
@@ -794,7 +794,7 @@ to avoid the double-hop issue.</li>
 Overrides all other parameters.
 For example, to define a custom server collation you can use the following parameter:
 PS&gt; Install-DbaInstance -Version 2017 -Configuration @
-Full list of parameters can be found here: <a href="https://docs.microsoft.com/en-us/sql/database-engine/install-windows/install-sql-server-from-the-command-prompt#Install">https://docs.microsoft.com/en-us/sql/database-engine/install-windows/install-sql-server-from-the-command-prompt#Install</a></p>
+Full list of parameters can be found here: <a href="https://docs.microsoft.com/en-us/sql/database-engine/install-windows/install-sql-server-from-the-command-prompt#Install">https://docs.microsoft.com/en-us/sql/database-engine/install-windows/install-sql-server-from-the-command-prompt#Install</a><br></p>
 <table>
 <thead>
 <tr>
@@ -825,7 +825,7 @@ Full list of parameters can be found here: <a href="https://docs.microsoft.com/e
 <p>Path to the folder(s) with SQL Server installation media downloaded. It will be scanned recursively for a corresponding setup.exe.
 Path should be available from the remote server.
 If a setup.exe file is missing in the repository, the installation will fail.
-Consider setting the following configuration in your session if you want to omit this parameter: <code>Set-DbatoolsConfig -Name Path.SQLServerSetup -Value '\\path\to\installations'</code></p>
+Consider setting the following configuration in your session if you want to omit this parameter: <code>Set-DbatoolsConfig -Name Path.SQLServerSetup -Value '\\path\to\installations'</code><br></p>
 <table>
 <thead>
 <tr>
@@ -875,7 +875,7 @@ ReplayController
 ReplayClient
 SDK
 BIDS
-SSMS</p>
+SSMS<br></p>
 <table>
 <thead>
 <tr>
@@ -907,7 +907,7 @@ SSMS</p>
 </tbody>
 </table>
 <h5 id="authenticationmode">-AuthenticationMode</h5>
-<p>Chooses authentication mode for SQL Server. Allowed values: Mixed, Windows.</p>
+<p>Chooses authentication mode for SQL Server. Allowed values: Mixed, Windows.<br></p>
 <table>
 <thead>
 <tr>
@@ -939,7 +939,7 @@ SSMS</p>
 </tbody>
 </table>
 <h5 id="instancepath">-InstancePath</h5>
-<p>Root folder for instance components. Includes SQL Server logs, system databases, etc.</p>
+<p>Root folder for instance components. Includes SQL Server logs, system databases, etc.<br></p>
 <table>
 <thead>
 <tr>
@@ -967,7 +967,7 @@ SSMS</p>
 </tbody>
 </table>
 <h5 id="datapath">-DataPath</h5>
-<p>Path to the Data folder.</p>
+<p>Path to the Data folder.<br></p>
 <table>
 <thead>
 <tr>
@@ -995,7 +995,7 @@ SSMS</p>
 </tbody>
 </table>
 <h5 id="logpath">-LogPath</h5>
-<p>Path to the Log folder.</p>
+<p>Path to the Log folder.<br></p>
 <table>
 <thead>
 <tr>
@@ -1023,7 +1023,7 @@ SSMS</p>
 </tbody>
 </table>
 <h5 id="temppath">-TempPath</h5>
-<p>Path to the TempDB folder.</p>
+<p>Path to the TempDB folder.<br></p>
 <table>
 <thead>
 <tr>
@@ -1051,7 +1051,7 @@ SSMS</p>
 </tbody>
 </table>
 <h5 id="backuppath">-BackupPath</h5>
-<p>Path to the Backup folder.</p>
+<p>Path to the Backup folder.<br></p>
 <table>
 <thead>
 <tr>
@@ -1079,7 +1079,7 @@ SSMS</p>
 </tbody>
 </table>
 <h5 id="updatesourcepath">-UpdateSourcePath</h5>
-<p>Path to the updates that you want to slipstream into the installation.</p>
+<p>Path to the updates that you want to slipstream into the installation.<br></p>
 <table>
 <thead>
 <tr>
@@ -1107,7 +1107,7 @@ SSMS</p>
 </tbody>
 </table>
 <h5 id="adminaccount">-AdminAccount</h5>
-<p>One or more members of the sysadmin group. Uses UserName from the -Credential parameter if specified, or current Windows user by default.</p>
+<p>One or more members of the sysadmin group. Uses UserName from the -Credential parameter if specified, or current Windows user by default.<br></p>
 <table>
 <thead>
 <tr>
@@ -1135,7 +1135,7 @@ SSMS</p>
 </tbody>
 </table>
 <h5 id="port">-Port</h5>
-<p>After successful installation, changes SQL Server TCP port to this value. Overrides the port specified in -SqlInstance.</p>
+<p>After successful installation, changes SQL Server TCP port to this value. Overrides the port specified in -SqlInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -1164,7 +1164,7 @@ SSMS</p>
 </table>
 <h5 id="throttle">-Throttle</h5>
 <p>Maximum number of computers updated in parallel. Once reached, the update operations will queue up.
-Default: 50</p>
+Default: 50<br></p>
 <table>
 <thead>
 <tr>
@@ -1193,7 +1193,7 @@ Default: 50</p>
 </table>
 <h5 id="productid">-ProductID</h5>
 <p>Product ID, or simply, serial number of your SQL Server installation, which will determine which version to install.
-If the PID is already built into the installation media, can be ignored.</p>
+If the PID is already built into the installation media, can be ignored.<br></p>
 <table>
 <thead>
 <tr>
@@ -1221,7 +1221,7 @@ If the PID is already built into the installation media, can be ignored.</p>
 </tbody>
 </table>
 <h5 id="enginecredential">-EngineCredential</h5>
-<p>Service account of the SQL Server Database Engine</p>
+<p>Service account of the SQL Server Database Engine<br></p>
 <table>
 <thead>
 <tr>
@@ -1249,7 +1249,7 @@ If the PID is already built into the installation media, can be ignored.</p>
 </tbody>
 </table>
 <h5 id="agentcredential">-AgentCredential</h5>
-<p>Service account of the SQL Server Agent</p>
+<p>Service account of the SQL Server Agent<br></p>
 <table>
 <thead>
 <tr>
@@ -1277,7 +1277,7 @@ If the PID is already built into the installation media, can be ignored.</p>
 </tbody>
 </table>
 <h5 id="ascredential">-ASCredential</h5>
-<p>Service account of the Analysis Services</p>
+<p>Service account of the Analysis Services<br></p>
 <table>
 <thead>
 <tr>
@@ -1305,7 +1305,7 @@ If the PID is already built into the installation media, can be ignored.</p>
 </tbody>
 </table>
 <h5 id="iscredential">-ISCredential</h5>
-<p>Service account of the Integration Services</p>
+<p>Service account of the Integration Services<br></p>
 <table>
 <thead>
 <tr>
@@ -1333,7 +1333,7 @@ If the PID is already built into the installation media, can be ignored.</p>
 </tbody>
 </table>
 <h5 id="rscredential">-RSCredential</h5>
-<p>Service account of the Reporting Services</p>
+<p>Service account of the Reporting Services<br></p>
 <table>
 <thead>
 <tr>
@@ -1361,7 +1361,7 @@ If the PID is already built into the installation media, can be ignored.</p>
 </tbody>
 </table>
 <h5 id="ftcredential">-FTCredential</h5>
-<p>Service account of the Full-Text catalog service</p>
+<p>Service account of the Full-Text catalog service<br></p>
 <table>
 <thead>
 <tr>
@@ -1389,7 +1389,7 @@ If the PID is already built into the installation media, can be ignored.</p>
 </tbody>
 </table>
 <h5 id="pbenginecredential">-PBEngineCredential</h5>
-<p>Service account of the PolyBase service</p>
+<p>Service account of the PolyBase service<br></p>
 <table>
 <thead>
 <tr>
@@ -1417,7 +1417,7 @@ If the PID is already built into the installation media, can be ignored.</p>
 </tbody>
 </table>
 <h5 id="saveconfiguration">-SaveConfiguration</h5>
-<p>Save installation configuration file in a custom location. Will not be preserved otherwise.</p>
+<p>Save installation configuration file in a custom location. Will not be preserved otherwise.<br></p>
 <table>
 <thead>
 <tr>
@@ -1445,7 +1445,7 @@ If the PID is already built into the installation media, can be ignored.</p>
 </tbody>
 </table>
 <h5 id="performvolumemaintenancetasks">-PerformVolumeMaintenanceTasks</h5>
-<p>Allow SQL Server service account to perform Volume Maintenance tasks.</p>
+<p>Allow SQL Server service account to perform Volume Maintenance tasks.<br></p>
 <table>
 <thead>
 <tr>
@@ -1473,7 +1473,7 @@ If the PID is already built into the installation media, can be ignored.</p>
 </tbody>
 </table>
 <h5 id="restart">-Restart</h5>
-<p>Restart computer automatically if a restart is required before or after the installation.</p>
+<p>Restart computer automatically if a restart is required before or after the installation.<br></p>
 <table>
 <thead>
 <tr>
@@ -1503,7 +1503,7 @@ If the PID is already built into the installation media, can be ignored.</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -1531,7 +1531,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>Shows what would happen if the command were to run. No actions are actually performed.</p>
+<p>Shows what would happen if the command were to run. No actions are actually performed.<br></p>
 <table>
 <thead>
 <tr>
@@ -1559,7 +1559,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>Prompts you for confirmation before executing any changing operations within the command.</p>
+<p>Prompts you for confirmation before executing any changing operations within the command.<br></p>
 <table>
 <thead>
 <tr>
@@ -1588,6 +1588,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Install-DbaInstance.ps1">Install-DbaInstance</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Install-DbaInstance">Install-DbaInstance</a>.</p>
 
                 </div> <!-- rendered -->

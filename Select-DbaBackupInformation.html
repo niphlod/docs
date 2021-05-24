@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -470,16 +470,16 @@
 <p>Select-DbaBackupInformation filters out a subset of backups from the dbatools backup history object with parameters supplied.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Select-DbaBackupInformation
-    --BackupHistory] &lt;Object&gt;
-    -[-RestoreTime] &lt;DateTime&gt;]
-    --IgnoreLogs]
-    --IgnoreDiffs]
-    -[-DatabaseName] &lt;String[]&gt;]
-    -[-ServerName] &lt;String[]&gt;]
-    -[-ContinuePoints] &lt;Object&gt;]
-    -[-LastRestoreType] &lt;Object&gt;]
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [-BackupHistory] &lt;Object&gt;
+    [[-RestoreTime] &lt;DateTime&gt;]
+    [-IgnoreLogs]
+    [-IgnoreDiffs]
+    [[-DatabaseName] &lt;String[]&gt;]
+    [[-ServerName] &lt;String[]&gt;]
+    [[-ContinuePoints] &lt;Object&gt;]
+    [[-LastRestoreType] &lt;Object&gt;]
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -489,25 +489,25 @@
 <pre><code>PS C:\&gt; $Backups = Get-DbaBackupInformation -SqlInstance Server1 -Path \\server1\backups$
 PS C:\&gt; $FilteredBackups = $Backups | Select-DbaBackupInformation -RestoreTime (Get-Date).AddHours(-1)
 </code></pre>
-<p>Returns all backups needed to restore all the backups in \server1\backups$ to 1 hour ago</p>
+<p>Returns all backups needed to restore all the backups in \server1\backups$ to 1 hour ago<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; $Backups = Get-DbaBackupInformation -SqlInstance Server1 -Path \\server1\backups$
 PS C:\&gt; $FilteredBackups = $Backups | Select-DbaBackupInformation -RestoreTime (Get-Date).AddHours(-1) -DatabaseName ProdFinance
 </code></pre>
-<p>Returns all the backups needed to restore Database ProdFinance to an hour ago</p>
+<p>Returns all the backups needed to restore Database ProdFinance to an hour ago<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; $Backups = Get-DbaBackupInformation -SqlInstance Server1 -Path \\server1\backups$
 PS C:\&gt; $FilteredBackups = $Backups | Select-DbaBackupInformation -RestoreTime (Get-Date).AddHours(-1) -IgnoreLogs
 </code></pre>
-<p>Returns all the backups in \server1\backups$ to restore to as close prior to 1 hour ago as can be managed with only full and differential backups</p>
+<p>Returns all the backups in \server1\backups$ to restore to as close prior to 1 hour ago as can be managed with only full and differential backups<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; $Backups = Get-DbaBackupInformation -SqlInstance Server1 -Path \\server1\backups$
 PS C:\&gt; $FilteredBackups = $Backups | Select-DbaBackupInformation -RestoreTime (Get-Date).AddHours(-1) -IgnoreDiffs
 </code></pre>
-<p>Returns all the backups in \server1\backups$ to restore to 1 hour ago using only Full and Diff backups.</p>
+<p>Returns all the backups in \server1\backups$ to restore to 1 hour ago using only Full and Diff backups.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="backuphistory">-BackupHistory</h5>
-<p>A dbatools.BackupHistory object containing backup history records</p>
+<p>A dbatools.BackupHistory object containing backup history records<br></p>
 <table>
 <thead>
 <tr>
@@ -536,7 +536,7 @@ PS C:\&gt; $FilteredBackups = $Backups | Select-DbaBackupInformation -RestoreTim
 </table>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="restoretime">-RestoreTime</h5>
-<p>The point in time you want to restore to</p>
+<p>The point in time you want to restore to<br></p>
 <table>
 <thead>
 <tr>
@@ -564,7 +564,7 @@ PS C:\&gt; $FilteredBackups = $Backups | Select-DbaBackupInformation -RestoreTim
 </tbody>
 </table>
 <h5 id="ignorelogs">-IgnoreLogs</h5>
-<p>This switch will cause Log Backups to be ignored. So will restore to the last Full or Diff backup only</p>
+<p>This switch will cause Log Backups to be ignored. So will restore to the last Full or Diff backup only<br></p>
 <table>
 <thead>
 <tr>
@@ -592,7 +592,7 @@ PS C:\&gt; $FilteredBackups = $Backups | Select-DbaBackupInformation -RestoreTim
 </tbody>
 </table>
 <h5 id="ignorediffs">-IgnoreDiffs</h5>
-<p>This switch will cause Differential backups to be ignored. Unless IgnoreLogs is specified, restore to point in time will still occur, just using all available log backups</p>
+<p>This switch will cause Differential backups to be ignored. Unless IgnoreLogs is specified, restore to point in time will still occur, just using all available log backups<br></p>
 <table>
 <thead>
 <tr>
@@ -620,7 +620,7 @@ PS C:\&gt; $FilteredBackups = $Backups | Select-DbaBackupInformation -RestoreTim
 </tbody>
 </table>
 <h5 id="databasename">-DatabaseName</h5>
-<p>A string array of Database Names that you want to filter to</p>
+<p>A string array of Database Names that you want to filter to<br></p>
 <table>
 <thead>
 <tr>
@@ -648,7 +648,7 @@ PS C:\&gt; $FilteredBackups = $Backups | Select-DbaBackupInformation -RestoreTim
 </tbody>
 </table>
 <h5 id="servername">-ServerName</h5>
-<p>A string array of Server Names that you want to filter</p>
+<p>A string array of Server Names that you want to filter<br></p>
 <table>
 <thead>
 <tr>
@@ -677,7 +677,7 @@ PS C:\&gt; $FilteredBackups = $Backups | Select-DbaBackupInformation -RestoreTim
 </table>
 <h5 id="continuepoints">-ContinuePoints</h5>
 <p>The Output of Get-RestoreContinuableDatabase while provides 'Database',redo_start_lsn,'FirstRecoveryForkID' values. Used to filter backups to continue a restore on a database
-Sets IgnoreDiffs, and also filters databases to only those within the ContinuePoints object, or the ContinuePoints object AND DatabaseName if both specified</p>
+Sets IgnoreDiffs, and also filters databases to only those within the ContinuePoints object, or the ContinuePoints object AND DatabaseName if both specified<br></p>
 <table>
 <thead>
 <tr>
@@ -706,7 +706,7 @@ Sets IgnoreDiffs, and also filters databases to only those within the ContinuePo
 </table>
 <h5 id="lastrestoretype">-LastRestoreType</h5>
 <p>The Output of Get-DbaDbRestoreHistory -last
-This is used to check the last type of backup to a database to see if a differential backup can be restored</p>
+This is used to check the last type of backup to a database to see if a differential backup can be restored<br></p>
 <table>
 <thead>
 <tr>
@@ -736,7 +736,7 @@ This is used to check the last type of backup to a database to see if a differen
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -765,6 +765,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Select-DbaBackupInformation.ps1">Select-DbaBackupInformation</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Select-DbaBackupInformation">Select-DbaBackupInformation</a>.</p>
 
                 </div> <!-- rendered -->

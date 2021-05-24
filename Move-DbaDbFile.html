@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -472,34 +472,34 @@ It will put database offline, update metadata and set it online again.
 It can also be used to move database files on an AG secondary.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Move-DbaDbFile -SqlInstance &lt;DbaInstanceParameter&gt;
-    --SqlCredential &lt;PSCredential&gt;] -Database &lt;String&gt;
-    --FileType &lt;String&gt;]
-    --FileDestination &lt;String&gt;]
-    --DeleteAfterMove]
-    --Force]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-SqlCredential &lt;PSCredential&gt;] -Database &lt;String&gt;
+    [-FileType &lt;String&gt;]
+    [-FileDestination &lt;String&gt;]
+    [-DeleteAfterMove]
+    [-Force]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 Move-DbaDbFile -SqlInstance &lt;DbaInstanceParameter&gt;
-    --SqlCredential &lt;PSCredential&gt;] -Database &lt;String&gt;
-    --FileToMove &lt;Hashtable&gt;]
-    --DeleteAfterMove]
-    --Force]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-SqlCredential &lt;PSCredential&gt;] -Database &lt;String&gt;
+    [-FileToMove &lt;Hashtable&gt;]
+    [-DeleteAfterMove]
+    [-Force]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 Move-DbaDbFile -SqlInstance &lt;DbaInstanceParameter&gt;
-    --SqlCredential &lt;PSCredential&gt;] -Database &lt;String&gt;
-    --FileStructureOnly]
-    --Force]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-SqlCredential &lt;PSCredential&gt;] -Database &lt;String&gt;
+    [-FileStructureOnly]
+    [-Force]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -508,8 +508,8 @@ Move-DbaDbFile -SqlInstance &lt;DbaInstanceParameter&gt;
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Move-DbaDbFile -SqlInstance sql2017 -Database dbatools -FileType Data -FileDestination &quot;D:\DATA2&quot;
 </code></pre>
-<p>Copy all data files of dbatools database on sql2017 instance to the &quot;D:\DATA2&quot; path.
-Before it puts database offline and after copy each file will update database metadata and it ends by set the database back online</p>
+<p>Copy all data files of dbatools database on sql2017 instance to the &quot;D:\DATA2&quot; path.<br>
+Before it puts database offline and after copy each file will update database metadata and it ends by set the database back online<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; $fileToMove=@{
 &gt;&gt; 'dbatools'='D:\DATA3'
@@ -517,16 +517,16 @@ Before it puts database offline and after copy each file will update database me
 &gt;&gt; }
 PS C:\&gt; Move-DbaDbFile -SqlInstance sql2019 -Database dbatools -FileToMove $fileToMove
 </code></pre>
-<p>Declares a hashtable that says for each logical file the new path.
-Copy each dbatools database file referenced on the hashtable on the sql2019 instance from the current location to the new mentioned location (D:\DATA3 and D:\LOG2 paths).
-Before it puts database offline and after copy each file will update database metadata and it ends by set the database back online</p>
+<p>Declares a hashtable that says for each logical file the new path.<br>
+Copy each dbatools database file referenced on the hashtable on the sql2019 instance from the current location to the new mentioned location (D:\DATA3 and D:\LOG2 paths).<br>
+Before it puts database offline and after copy each file will update database metadata and it ends by set the database back online<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Move-DbaDbFile -SqlInstance sql2017 -Database dbatools -FileStructureOnly
 </code></pre>
-<p>Shows the current database file structure (without filenames). Example: 'dbatools'='D:\Data'</p>
+<p>Shows the current database file structure (without filenames). Example: 'dbatools'='D:\Data'<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances.</p>
+<p>The target SQL Server instance or instances.<br></p>
 <table>
 <thead>
 <tr>
@@ -554,7 +554,7 @@ Before it puts database offline and after copy each file will update database me
 </tbody>
 </table>
 <h5 id="database">-Database</h5>
-<p>The database to be moved.</p>
+<p>The database to be moved.<br></p>
 <table>
 <thead>
 <tr>
@@ -585,7 +585,7 @@ Before it puts database offline and after copy each file will update database me
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -615,7 +615,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 <h5 id="filetype">-FileType</h5>
 <p>Define the file type to move; accepted values: Data, Log or Both.
 Default value: Both
-Exclusive, cannot be used in conjunction with FileToMove.</p>
+Exclusive, cannot be used in conjunction with FileToMove.<br></p>
 <table>
 <thead>
 <tr>
@@ -647,7 +647,7 @@ Exclusive, cannot be used in conjunction with FileToMove.</p>
 </tbody>
 </table>
 <h5 id="filedestination">-FileDestination</h5>
-<p>Destination directory of the database file(s).</p>
+<p>Destination directory of the database file(s).<br></p>
 <table>
 <thead>
 <tr>
@@ -676,7 +676,7 @@ Exclusive, cannot be used in conjunction with FileToMove.</p>
 </table>
 <h5 id="filetomove">-FileToMove</h5>
 <p>Pass a hashtable that contains a list of database files and their destination path.
-Key and value should be the logical name and then the path (e.g. 'db1_log' = 'D:\mssql\logs')</p>
+Key and value should be the logical name and then the path (e.g. 'db1_log' = 'D:\mssql\logs')<br></p>
 <table>
 <thead>
 <tr>
@@ -704,7 +704,7 @@ Key and value should be the logical name and then the path (e.g. 'db1_log' = 'D:
 </tbody>
 </table>
 <h5 id="deleteaftermove">-DeleteAfterMove</h5>
-<p>Remove the source database file(s) after the successful move operation.</p>
+<p>Remove the source database file(s) after the successful move operation.<br></p>
 <table>
 <thead>
 <tr>
@@ -733,7 +733,7 @@ Key and value should be the logical name and then the path (e.g. 'db1_log' = 'D:
 </table>
 <h5 id="filestructureonly">-FileStructureOnly</h5>
 <p>Return a hashtable of the Database file structure.
-Modifying the hashtable it can then be utilized with the FileToMove parameter</p>
+Modifying the hashtable it can then be utilized with the FileToMove parameter<br></p>
 <table>
 <thead>
 <tr>
@@ -761,7 +761,7 @@ Modifying the hashtable it can then be utilized with the FileToMove parameter</p
 </tbody>
 </table>
 <h5 id="force">-Force</h5>
-<p>Database(s) is set offline as part of the move process, this will utilize WITH ROLLBACK IMMEDIATE and rollback any open transaction running against the database(s).</p>
+<p>Database(s) is set offline as part of the move process, this will utilize WITH ROLLBACK IMMEDIATE and rollback any open transaction running against the database(s).<br></p>
 <table>
 <thead>
 <tr>
@@ -791,7 +791,7 @@ Modifying the hashtable it can then be utilized with the FileToMove parameter</p
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -819,7 +819,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>Shows what would happen if the command were to run. No actions are actually performed.</p>
+<p>Shows what would happen if the command were to run. No actions are actually performed.<br></p>
 <table>
 <thead>
 <tr>
@@ -847,7 +847,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>Prompts you for confirmation before executing any changing operations within the command.</p>
+<p>Prompts you for confirmation before executing any changing operations within the command.<br></p>
 <table>
 <thead>
 <tr>
@@ -876,6 +876,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Move-DbaDbFile.ps1">Move-DbaDbFile</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Move-DbaDbFile">Move-DbaDbFile</a>.</p>
 
                 </div> <!-- rendered -->

@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -473,40 +473,40 @@ The cleanup of SQL Agent history determines how many records are kept.</p>
 <a href="https://msdn.microsoft.com/en-us/library/microsoft.sqlserver.management.smo.agent.jobhistoryfilter(v=sql.120).aspx">https://msdn.microsoft.com/en-us/library/microsoft.sqlserver.management.smo.agent.jobhistoryfilter(v=sql.120).aspx</a></p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Get-DbaAgentJobHistory
-    --SqlCredential &lt;PSCredential&gt;]
-    --Job &lt;Object[]&gt;]
-    --ExcludeJob &lt;Object[]&gt;]
-    --StartDate &lt;DateTime&gt;]
-    --EndDate &lt;DateTime&gt;]
-    --OutcomeType {Failed | Succeeded | Retry | Cancelled | InProgress | Unknown}]
-    --ExcludeJobSteps]
-    --WithOutputFile]
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [-SqlCredential &lt;PSCredential&gt;]
+    [-Job &lt;Object[]&gt;]
+    [-ExcludeJob &lt;Object[]&gt;]
+    [-StartDate &lt;DateTime&gt;]
+    [-EndDate &lt;DateTime&gt;]
+    [-OutcomeType {Failed | Succeeded | Retry | Cancelled | InProgress | Unknown}]
+    [-ExcludeJobSteps]
+    [-WithOutputFile]
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 Get-DbaAgentJobHistory -SqlInstance &lt;DbaInstanceParameter[]&gt;
-    --SqlCredential &lt;PSCredential&gt;]
-    --Job &lt;Object[]&gt;]
-    --ExcludeJob &lt;Object[]&gt;]
-    --StartDate &lt;DateTime&gt;]
-    --EndDate &lt;DateTime&gt;]
-    --OutcomeType {Failed | Succeeded | Retry | Cancelled | InProgress | Unknown}]
-    --ExcludeJobSteps]
-    --WithOutputFile]
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [-SqlCredential &lt;PSCredential&gt;]
+    [-Job &lt;Object[]&gt;]
+    [-ExcludeJob &lt;Object[]&gt;]
+    [-StartDate &lt;DateTime&gt;]
+    [-EndDate &lt;DateTime&gt;]
+    [-OutcomeType {Failed | Succeeded | Retry | Cancelled | InProgress | Unknown}]
+    [-ExcludeJobSteps]
+    [-WithOutputFile]
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 Get-DbaAgentJobHistory
-    --SqlCredential &lt;PSCredential&gt;]
-    --Job &lt;Object[]&gt;]
-    --ExcludeJob &lt;Object[]&gt;]
-    --StartDate &lt;DateTime&gt;]
-    --EndDate &lt;DateTime&gt;]
-    --OutcomeType {Failed | Succeeded | Retry | Cancelled | InProgress | Unknown}]
-    --ExcludeJobSteps]
-    --WithOutputFile] -JobCollection &lt;Job&gt;
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [-SqlCredential &lt;PSCredential&gt;]
+    [-Job &lt;Object[]&gt;]
+    [-ExcludeJob &lt;Object[]&gt;]
+    [-StartDate &lt;DateTime&gt;]
+    [-EndDate &lt;DateTime&gt;]
+    [-OutcomeType {Failed | Succeeded | Retry | Cancelled | InProgress | Unknown}]
+    [-ExcludeJobSteps]
+    [-WithOutputFile] -JobCollection &lt;Job&gt;
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -515,47 +515,47 @@ Get-DbaAgentJobHistory
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Get-DbaAgentJobHistory -SqlInstance localhost
 </code></pre>
-<p>Returns all SQL Agent Job execution results on the local default SQL Server instance.</p>
+<p>Returns all SQL Agent Job execution results on the local default SQL Server instance.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Get-DbaAgentJobHistory -SqlInstance localhost, sql2016
 </code></pre>
-<p>Returns all SQL Agent Job execution results for the local and sql2016 SQL Server instances.</p>
+<p>Returns all SQL Agent Job execution results for the local and sql2016 SQL Server instances.<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; 'sql1','sql2\Inst2K17' | Get-DbaAgentJobHistory
 </code></pre>
-<p>Returns all SQL Agent Job execution results for sql1 and sql2\Inst2K17.</p>
+<p>Returns all SQL Agent Job execution results for sql1 and sql2\Inst2K17.<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; Get-DbaAgentJobHistory -SqlInstance sql2\Inst2K17 | Select-Object *
 </code></pre>
-<p>Returns all properties for all SQl Agent Job execution results on sql2\Inst2K17.</p>
+<p>Returns all properties for all SQl Agent Job execution results on sql2\Inst2K17.<br></p>
 <h5 id="example-5">Example:  5</h5>
 <pre><code>PS C:\&gt; Get-DbaAgentJobHistory -SqlInstance sql2\Inst2K17 -Job 'Output File Cleanup'
 </code></pre>
-<p>Returns all properties for all SQl Agent Job execution results of the 'Output File Cleanup' job on sql2\Inst2K17.</p>
+<p>Returns all properties for all SQl Agent Job execution results of the 'Output File Cleanup' job on sql2\Inst2K17.<br></p>
 <h5 id="example-6">Example:  6</h5>
 <pre><code>PS C:\&gt; Get-DbaAgentJobHistory -SqlInstance sql2\Inst2K17 -Job 'Output File Cleanup' -WithOutputFile
 </code></pre>
-<p>Returns all properties for all SQl Agent Job execution results of the 'Output File Cleanup' job on sql2\Inst2K17,
-with additional properties that show the output filename path</p>
+<p>Returns all properties for all SQl Agent Job execution results of the 'Output File Cleanup' job on sql2\Inst2K17,<br>
+with additional properties that show the output filename path<br></p>
 <h5 id="example-7">Example:  7</h5>
 <pre><code>PS C:\&gt; Get-DbaAgentJobHistory -SqlInstance sql2\Inst2K17 -ExcludeJobSteps
 </code></pre>
-<p>Returns the SQL Agent Job execution results for the whole jobs on sql2\Inst2K17, leaving out job step execution results.</p>
+<p>Returns the SQL Agent Job execution results for the whole jobs on sql2\Inst2K17, leaving out job step execution results.<br></p>
 <h5 id="example-8">Example:  8</h5>
 <pre><code>PS C:\&gt; Get-DbaAgentJobHistory -SqlInstance sql2\Inst2K17 -StartDate '2017-05-22' -EndDate '2017-05-23 12:30:00'
 </code></pre>
-<p>Returns the SQL Agent Job execution results between 2017/05/22 00:00:00 and 2017/05/23 12:30:00 on sql2\Inst2K17.</p>
+<p>Returns the SQL Agent Job execution results between 2017/05/22 00:00:00 and 2017/05/23 12:30:00 on sql2\Inst2K17.<br></p>
 <h5 id="example-9">Example:  9</h5>
 <pre><code>PS C:\&gt; Get-DbaAgentJob -SqlInstance sql2016 | Where-Object Name -Match backup | Get-DbaAgentJobHistory
 </code></pre>
-<p>Gets all jobs with the name that match the regex pattern &quot;backup&quot; and then gets the job history from those. You can also use -Like <em>backup</em> in this example.</p>
+<p>Gets all jobs with the name that match the regex pattern &quot;backup&quot; and then gets the job history from those. You can also use -Like <em>backup</em> in this example.<br></p>
 <h5 id="example-10">Example:  10</h5>
 <pre><code>PS C:\&gt; Get-DbaAgentJobHistory -SqlInstance sql2016 -OutcomeType Failed
 </code></pre>
-<p>Returns only the failed SQL Agent Job execution results for the sql2016 SQL Server instance.</p>
+<p>Returns only the failed SQL Agent Job execution results for the sql2016 SQL Server instance.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances. This can be a collection and receive pipeline input to allow the function to be executed against multiple SQL Server instances.</p>
+<p>The target SQL Server instance or instances. This can be a collection and receive pipeline input to allow the function to be executed against multiple SQL Server instances.<br></p>
 <table>
 <thead>
 <tr>
@@ -583,7 +583,7 @@ with additional properties that show the output filename path</p>
 </tbody>
 </table>
 <h5 id="jobcollection">-JobCollection</h5>
-<p>An array of SMO jobs</p>
+<p>An array of SMO jobs<br></p>
 <table>
 <thead>
 <tr>
@@ -614,7 +614,7 @@ with additional properties that show the output filename path</p>
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -642,7 +642,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="job">-Job</h5>
-<p>The name of the job from which the history is wanted. If unspecified, all jobs will be processed.</p>
+<p>The name of the job from which the history is wanted. If unspecified, all jobs will be processed.<br></p>
 <table>
 <thead>
 <tr>
@@ -670,7 +670,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="excludejob">-ExcludeJob</h5>
-<p>The job(s) to exclude - this list is auto-populated from the server</p>
+<p>The job(s) to exclude - this list is auto-populated from the server<br></p>
 <table>
 <thead>
 <tr>
@@ -698,7 +698,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="startdate">-StartDate</h5>
-<p>The DateTime starting from which the history is wanted. If unspecified, all available records will be processed.</p>
+<p>The DateTime starting from which the history is wanted. If unspecified, all available records will be processed.<br></p>
 <table>
 <thead>
 <tr>
@@ -726,7 +726,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="enddate">-EndDate</h5>
-<p>The DateTime before which the history is wanted. If unspecified, all available records will be processed.</p>
+<p>The DateTime before which the history is wanted. If unspecified, all available records will be processed.<br></p>
 <table>
 <thead>
 <tr>
@@ -754,7 +754,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="outcometype">-OutcomeType</h5>
-<p>The CompletionResult to filter the history for. Valid values are: Failed, Succeeded, Retry, Cancelled, InProgress, Unknown</p>
+<p>The CompletionResult to filter the history for. Valid values are: Failed, Succeeded, Retry, Cancelled, InProgress, Unknown<br></p>
 <table>
 <thead>
 <tr>
@@ -786,7 +786,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="excludejobsteps">-ExcludeJobSteps</h5>
-<p>Use this switch to discard all job steps, and return only the job totals</p>
+<p>Use this switch to discard all job steps, and return only the job totals<br></p>
 <table>
 <thead>
 <tr>
@@ -815,7 +815,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </table>
 <h5 id="withoutputfile">-WithOutputFile</h5>
 <p>Use this switch to retrieve the output file (only if you want step details). Bonus points, we handle the quirks
-of SQL Agent tokens to the best of our knowledge (<a href="https://technet.microsoft.com/it-it/library/ms175575(v=sql.110).aspx">https://technet.microsoft.com/it-it/library/ms175575(v=sql.110).aspx</a>)</p>
+of SQL Agent tokens to the best of our knowledge (<a href="https://technet.microsoft.com/it-it/library/ms175575(v=sql.110).aspx">https://technet.microsoft.com/it-it/library/ms175575(v=sql.110).aspx</a>)<br></p>
 <table>
 <thead>
 <tr>
@@ -845,7 +845,7 @@ of SQL Agent tokens to the best of our knowledge (<a href="https://technet.micro
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -874,6 +874,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Get-DbaAgentJobHistory.ps1">Get-DbaAgentJobHistory</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Get-DbaAgentJobHistory">Get-DbaAgentJobHistory</a>.</p>
 
                 </div> <!-- rendered -->

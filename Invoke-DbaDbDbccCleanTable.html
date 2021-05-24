@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -473,16 +473,16 @@
 - <a href="https://docs.microsoft.com/en-us/sql/t-sql/database-console-commands/dbcc-cleantable-transact-sql">https://docs.microsoft.com/en-us/sql/t-sql/database-console-commands/dbcc-cleantable-transact-sql</a></p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Invoke-DbaDbDbccCleanTable
-    --SqlInstance] &lt;DbaInstanceParameter[]&gt;
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    -[-Database] &lt;String[]&gt;]
-    -[-Object] &lt;String[]&gt;]
-    -[-BatchSize] &lt;Int32&gt;]
-    --NoInformationalMessages]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-SqlInstance] &lt;DbaInstanceParameter[]&gt;
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [[-Database] &lt;String[]&gt;]
+    [[-Object] &lt;String[]&gt;]
+    [[-BatchSize] &lt;Int32&gt;]
+    [-NoInformationalMessages]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -491,26 +491,26 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Invoke-DbaDbDbccCleanTable -SqlInstance SqlServer2017 -Database CurrentDB -Object 'dbo.SomeTable'
 </code></pre>
-<p>Connects to CurrentDB on instance SqlServer2017 using Windows Authentication and runs the command DBCC CLEANTABLE('CurrentDB', 'dbo.SomeTable') to reclaim space after variable-length columns have
-been dropped.</p>
+<p>Connects to CurrentDB on instance SqlServer2017 using Windows Authentication and runs the command DBCC CLEANTABLE('CurrentDB', 'dbo.SomeTable') to reclaim space after variable-length columns have <br>
+been dropped.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Invoke-DbaDbDbccCleanTable -SqlInstance SqlServer2017 -Database CurrentDB -Object 34636372 -BatchSize 5000
 </code></pre>
-<p>Connects to CurrentDB on instance SqlServer2017 using Windows Authentication and runs the command DBCC CLEANTABLE('CurrentDB', 34636372, 5000) to reclaim space from table with Table_Id = 34636372
-after variable-length columns have been dropped.</p>
+<p>Connects to CurrentDB on instance SqlServer2017 using Windows Authentication and runs the command DBCC CLEANTABLE('CurrentDB', 34636372, 5000) to reclaim space from table with Table_Id = 34636372 <br>
+after variable-length columns have been dropped.<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; $cred = Get-Credential sqladmin
 PS C:\&gt; Invoke-DbaDbDbccCleanTable -SqlInstance SqlServer2017 -SqlCredential $cred -Database CurrentDB -Object 'dbo.SomeTable'  -NoInformationalMessages
 </code></pre>
-<p>Connects to CurrentDB on instance SqlServer2017 using sqladmin credential and runs the command DBCC CLEANTABLE('CurrentDB', 'dbo.SomeTable') WITH NO_INFOMSGS to reclaim space after variable-length
-columns have been dropped.</p>
+<p>Connects to CurrentDB on instance SqlServer2017 using sqladmin credential and runs the command DBCC CLEANTABLE('CurrentDB', 'dbo.SomeTable') WITH NO_INFOMSGS to reclaim space after variable-length <br>
+columns have been dropped.<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; 'Sql1','Sql2/sqlexpress' | Invoke-DbaDbDbccCleanTable -Object 'dbo.SomeTable' -BatchSize 5000
 </code></pre>
-<p>Runs the command DBCC CLEANTABLE('DatabaseName', 'dbo.SomeTable', 5000) against all databses on Sql1 and Sql2/sqlexpress</p>
+<p>Runs the command DBCC CLEANTABLE('DatabaseName', 'dbo.SomeTable', 5000) against all databses on Sql1 and Sql2/sqlexpress<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances.</p>
+<p>The target SQL Server instance or instances.<br></p>
 <table>
 <thead>
 <tr>
@@ -541,7 +541,7 @@ columns have been dropped.</p>
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -569,7 +569,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="database">-Database</h5>
-<p>The database(s) to process. If unspecified, all databases will be processed.</p>
+<p>The database(s) to process. If unspecified, all databases will be processed.<br></p>
 <table>
 <thead>
 <tr>
@@ -597,7 +597,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="object">-Object</h5>
-<p>The table(s) or indexed view(s) to be cleaned.</p>
+<p>The table(s) or indexed view(s) to be cleaned.<br></p>
 <table>
 <thead>
 <tr>
@@ -626,7 +626,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </table>
 <h5 id="batchsize">-BatchSize</h5>
 <p>Is the number of rows processed per transaction.
-If not specified, or if 0 is specified, the statement processes the whole table in one transaction.</p>
+If not specified, or if 0 is specified, the statement processes the whole table in one transaction.<br></p>
 <table>
 <thead>
 <tr>
@@ -654,7 +654,7 @@ If not specified, or if 0 is specified, the statement processes the whole table 
 </tbody>
 </table>
 <h5 id="noinformationalmessages">-NoInformationalMessages</h5>
-<p>Suppresses all informational messages.</p>
+<p>Suppresses all informational messages.<br></p>
 <table>
 <thead>
 <tr>
@@ -684,7 +684,7 @@ If not specified, or if 0 is specified, the statement processes the whole table 
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -712,7 +712,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>Shows what would happen if the cmdlet runs. The cmdlet is not run.</p>
+<p>Shows what would happen if the cmdlet runs. The cmdlet is not run.<br></p>
 <table>
 <thead>
 <tr>
@@ -740,7 +740,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>Prompts you for confirmation before running the cmdlet.</p>
+<p>Prompts you for confirmation before running the cmdlet.<br></p>
 <table>
 <thead>
 <tr>
@@ -769,6 +769,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Invoke-DbaDbDbccCleanTable.ps1">Invoke-DbaDbDbccCleanTable</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Invoke-DbaDbDbccCleanTable">Invoke-DbaDbDbccCleanTable</a>.</p>
 
                 </div> <!-- rendered -->

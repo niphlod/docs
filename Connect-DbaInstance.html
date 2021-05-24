@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -478,40 +478,40 @@ and <a href="https://msdn.microsoft.com/en-us/library/system.data.sqlclient.sqlc
 <p>To execute SQL commands, you can use $server.ConnectionContext.ExecuteReader($sql) or $server.Databases['master'].ExecuteNonQuery($sql)</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Connect-DbaInstance
-    --SqlInstance] &lt;DbaInstanceParameter[]&gt;
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    -[-Database] &lt;String&gt;]
-    -[-ApplicationIntent] &lt;String&gt;]
-    --AzureUnsupported]
-    -[-BatchSeparator] &lt;String&gt;]
-    -[-ClientName] &lt;String&gt;]
-    -[-ConnectTimeout] &lt;Int32&gt;]
-    --EncryptConnection]
-    -[-FailoverPartner] &lt;String&gt;]
-    -[-LockTimeout] &lt;Int32&gt;]
-    -[-MaxPoolSize] &lt;Int32&gt;]
-    -[-MinPoolSize] &lt;Int32&gt;]
-    -[-MinimumVersion] &lt;Int32&gt;]
-    --MultipleActiveResultSets]
-    --MultiSubnetFailover]
-    -[-NetworkProtocol] &lt;String&gt;]
-    --NonPooledConnection]
-    -[-PacketSize] &lt;Int32&gt;]
-    -[-PooledConnectionLifetime] &lt;Int32&gt;]
-    -[-SqlExecutionModes] &lt;String&gt;]
-    -[-StatementTimeout] &lt;Int32&gt;]
-    --TrustServerCertificate]
-    -[-WorkstationId] &lt;String&gt;]
-    -[-AppendConnectionString] &lt;String&gt;]
-    --SqlConnectionOnly]
-    -[-AzureDomain] &lt;String&gt;]
-    -[-AuthenticationType] &lt;String&gt;]
-    -[-Tenant] &lt;String&gt;]
-    -[-Thumbprint] &lt;String&gt;]
-    -[-Store] &lt;String&gt;]
-    -[-AccessToken] &lt;String&gt;]
-    --DisableException]
-    -&lt;CommonParameters&gt;]
+    [-SqlInstance] &lt;DbaInstanceParameter[]&gt;
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [[-Database] &lt;String&gt;]
+    [[-ApplicationIntent] &lt;String&gt;]
+    [-AzureUnsupported]
+    [[-BatchSeparator] &lt;String&gt;]
+    [[-ClientName] &lt;String&gt;]
+    [[-ConnectTimeout] &lt;Int32&gt;]
+    [-EncryptConnection]
+    [[-FailoverPartner] &lt;String&gt;]
+    [[-LockTimeout] &lt;Int32&gt;]
+    [[-MaxPoolSize] &lt;Int32&gt;]
+    [[-MinPoolSize] &lt;Int32&gt;]
+    [[-MinimumVersion] &lt;Int32&gt;]
+    [-MultipleActiveResultSets]
+    [-MultiSubnetFailover]
+    [[-NetworkProtocol] &lt;String&gt;]
+    [-NonPooledConnection]
+    [[-PacketSize] &lt;Int32&gt;]
+    [[-PooledConnectionLifetime] &lt;Int32&gt;]
+    [[-SqlExecutionModes] &lt;String&gt;]
+    [[-StatementTimeout] &lt;Int32&gt;]
+    [-TrustServerCertificate]
+    [[-WorkstationId] &lt;String&gt;]
+    [[-AppendConnectionString] &lt;String&gt;]
+    [-SqlConnectionOnly]
+    [[-AzureDomain] &lt;String&gt;]
+    [[-AuthenticationType] &lt;String&gt;]
+    [[-Tenant] &lt;String&gt;]
+    [[-Thumbprint] &lt;String&gt;]
+    [[-Store] &lt;String&gt;]
+    [[-AccessToken] &lt;String&gt;]
+    [-DisableException]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -520,74 +520,74 @@ and <a href="https://msdn.microsoft.com/en-us/library/system.data.sqlclient.sqlc
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Connect-DbaInstance -SqlInstance sql2014
 </code></pre>
-<p>Creates an SMO Server object that connects using Windows Authentication</p>
+<p>Creates an SMO Server object that connects using Windows Authentication<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; $wincred = Get-Credential ad\sqladmin
 PS C:\&gt; Connect-DbaInstance -SqlInstance sql2014 -SqlCredential $wincred
 </code></pre>
-<p>Creates an SMO Server object that connects using alternative Windows credentials</p>
+<p>Creates an SMO Server object that connects using alternative Windows credentials<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; $sqlcred = Get-Credential sqladmin
 PS C:\&gt; $server = Connect-DbaInstance -SqlInstance sql2014 -SqlCredential $sqlcred
 </code></pre>
-<p>Login to sql2014 as SQL login sqladmin.</p>
+<p>Login to sql2014 as SQL login sqladmin.<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; $server = Connect-DbaInstance -SqlInstance sql2014 -ClientName &quot;my connection&quot;
 </code></pre>
-<p>Creates an SMO Server object that connects using Windows Authentication and uses the client name &quot;my connection&quot;. So when you open up profiler or use extended events, you can search for &quot;my
-connection&quot;.</p>
+<p>Creates an SMO Server object that connects using Windows Authentication and uses the client name &quot;my connection&quot;. So when you open up profiler or use extended events, you can search for &quot;my <br>
+connection&quot;.<br></p>
 <h5 id="example-5">Example:  5</h5>
 <pre><code>PS C:\&gt; $server = Connect-DbaInstance -SqlInstance sql2014 -AppendConnectionString &quot;Packet Size=4096;AttachDbFilename=C:\MyFolder\MyDataFile.mdf;User Instance=true;&quot;
 </code></pre>
-<p>Creates an SMO Server object that connects to sql2014 using Windows Authentication, then it sets the packet size (this can also be done via -PacketSize) and other connection attributes.</p>
+<p>Creates an SMO Server object that connects to sql2014 using Windows Authentication, then it sets the packet size (this can also be done via -PacketSize) and other connection attributes.<br></p>
 <h5 id="example-6">Example:  6</h5>
 <pre><code>PS C:\&gt; $server = Connect-DbaInstance -SqlInstance sql2014 -NetworkProtocol TcpIp -MultiSubnetFailover
 </code></pre>
-<p>Creates an SMO Server object that connects using Windows Authentication that uses TCP/IP and has MultiSubnetFailover enabled.</p>
+<p>Creates an SMO Server object that connects using Windows Authentication that uses TCP/IP and has MultiSubnetFailover enabled.<br></p>
 <h5 id="example-7">Example:  7</h5>
 <pre><code>PS C:\&gt; $server = Connect-DbaInstance sql2016 -ApplicationIntent ReadOnly
 </code></pre>
-<p>Connects with ReadOnly ApplicationIntent.</p>
+<p>Connects with ReadOnly ApplicationIntent.<br></p>
 <h5 id="example-8">Example:  8</h5>
 <pre><code>PS C:\&gt; $server = Connect-DbaInstance -SqlInstance myserver.database.windows.net -Database mydb -SqlCredential me@mydomain.onmicrosoft.com -DisableException
 PS C:\&gt; Invoke-DbaQuery -SqlInstance $server -Query &quot;select 1 as test&quot;
 </code></pre>
-<p>Logs into Azure SQL DB using AAD / Azure Active Directory, then performs a sample query.</p>
+<p>Logs into Azure SQL DB using AAD / Azure Active Directory, then performs a sample query.<br></p>
 <h5 id="example-9">Example:  9</h5>
 <pre><code>PS C:\&gt; $server = Connect-DbaInstance -SqlInstance psdbatools.database.windows.net -Database dbatools -DisableException
 PS C:\&gt; Invoke-DbaQuery -SqlInstance $server -Query &quot;select 1 as test&quot;
 </code></pre>
-<p>Logs into Azure SQL DB using AAD Integrated Auth, then performs a sample query.</p>
+<p>Logs into Azure SQL DB using AAD Integrated Auth, then performs a sample query.<br></p>
 <h5 id="example-10">Example:  10</h5>
 <pre><code>PS C:\&gt; $server = Connect-DbaInstance -SqlInstance &quot;myserver.public.cust123.database.windows.net,3342&quot; -Database mydb -SqlCredential me@mydomain.onmicrosoft.com -DisableException
 PS C:\&gt; Invoke-DbaQuery -SqlInstance $server -Query &quot;select 1 as test&quot;
 </code></pre>
-<p>Logs into Azure SQL Managed instance using AAD / Azure Active Directory, then performs a sample query.</p>
+<p>Logs into Azure SQL Managed instance using AAD / Azure Active Directory, then performs a sample query.<br></p>
 <h5 id="example-11">Example:  11</h5>
 <pre><code>PS C:\&gt; $server = Connect-DbaInstance -SqlInstance db.mycustomazure.com -Database mydb -AzureDomain mycustomazure.com -DisableException
 PS C:\&gt; Invoke-DbaQuery -SqlInstance $server -Query &quot;select 1 as test&quot;
 </code></pre>
-<p>In the event your AzureSqlDb is not on a database.windows.net domain, you can set a custom domain using the AzureDomain parameter.
-This tells Connect-DbaInstance to login to the database using the method that works best with Azure.</p>
+<p>In the event your AzureSqlDb is not on a database.windows.net domain, you can set a custom domain using the AzureDomain parameter.<br>
+This tells Connect-DbaInstance to login to the database using the method that works best with Azure.<br></p>
 <h5 id="example-12">Example:  12</h5>
 <pre><code>PS C:\&gt; $server = Connect-DbaInstance -ConnectionString &quot;Data Source=TCP:mydb.database.windows.net,1433;User ID=sqladmin;Password=adfasdf;MultipleActiveResultSets=False;Connect
 </code></pre>
-<p>Timeout=30;Encrypt=True;TrustServerCertificate=False;&quot;</p>
+<p>Timeout=30;Encrypt=True;TrustServerCertificate=False;&quot;<br></p>
 <pre><code>PS C:\&gt; Invoke-DbaQuery -SqlInstance $server -Query &quot;select 1 as test&quot;
 </code></pre>
-<p>Logs into Azure using a preconstructed connstring, then performs a sample query.
-ConnectionString is an alias of SqlInstance, so you can use -SqlInstance $connstring as well.</p>
+<p>Logs into Azure using a preconstructed connstring, then performs a sample query.<br>
+ConnectionString is an alias of SqlInstance, so you can use -SqlInstance $connstring as well.<br></p>
 <h5 id="example-13">Example:  13</h5>
 <pre><code>PS C:\&gt; $cred = Get-Credential guid-app-id-here # appid for username, clientsecret for password
 PS C:\&gt; $server = Connect-DbaInstance -SqlInstance psdbatools.database.windows.net -Database abc -SqCredential $cred -Tenant guidheremaybename
 PS C:\&gt; Invoke-DbaQuery -SqlInstance $server -Query &quot;select 1 as test&quot;
 </code></pre>
-<p>When connecting from a non-Azure workstation, logs into Azure using Universal with MFA Support with a username and password, then performs a sample query.</p>
+<p>When connecting from a non-Azure workstation, logs into Azure using Universal with MFA Support with a username and password, then performs a sample query.<br></p>
 <h5 id="example-14">Example:  14</h5>
 <pre><code>PS C:\&gt; $server = Connect-DbaInstance -SqlInstance psdbatools.database.windows.net -Database abc -AuthenticationType 'AD Universal with MFA Support'
 PS C:\&gt; Invoke-DbaQuery -SqlInstance $server -Query &quot;select 1 as test&quot;
 </code></pre>
-<p>When connecting from an Azure VM with .NET 4.7.2 and higher, logs into Azure using Universal with MFA Support, then performs a sample query.</p>
+<p>When connecting from an Azure VM with .NET 4.7.2 and higher, logs into Azure using Universal with MFA Support, then performs a sample query.<br></p>
 <h5 id="example-15">Example:  15</h5>
 <pre><code>PS C:\&gt; $cred = Get-Credential guid-app-id-here # appid for username, clientsecret for password
 PS C:\&gt; Set-DbatoolsConfig -FullName azure.tenantid -Value 'guidheremaybename' -Passthru | Register-DbatoolsConfig
@@ -596,29 +596,29 @@ PS C:\&gt; Set-DbatoolsConfig -FullName azure.clientsecret -Value $cred.Password
 PS C:\&gt; Set-DbatoolsConfig -FullName sql.connection.database -Value abc -Passthru | Register-DbatoolsConfig
 PS C:\&gt; Connect-DbaInstance -SqlInstance psdbatools.database.windows.net
 </code></pre>
-<p>Permanently sets some app id config values. To set them temporarily (just for a session), remove -Passthru | Register-DbatoolsConfig
-When connecting from a non-Azure workstation or an Azure VM without .NET 4.7.2 and higher, logs into Azure using Universal with MFA Support, then performs a sample query.</p>
+<p>Permanently sets some app id config values. To set them temporarily (just for a session), remove -Passthru | Register-DbatoolsConfig<br>
+When connecting from a non-Azure workstation or an Azure VM without .NET 4.7.2 and higher, logs into Azure using Universal with MFA Support, then performs a sample query.<br></p>
 <h5 id="example-16">Example:  16</h5>
 <pre><code>PS C:\&gt; $server = Connect-DbaInstance -SqlInstance psdbatools.database.windows.net -Thumbprint FF6361E82F21664F64A2576BB49EAC429BD5ABB6 -Store CurrentUser -Tenant tenant-guid -SqlCredential
 </code></pre>
-<p>app-id-guid-here -Database abc</p>
+<p>app-id-guid-here -Database abc<br></p>
 <pre><code>PS C:\&gt; Invoke-DbaQuery -SqlInstance $server -Query &quot;select 1 as test&quot;
 </code></pre>
-<p>Logs into Azure using Universal with MFA Support with a certificate, then performs a sample query. Note that you will be prompted for a password but the password can be left blank and the certificate
-will be used instead.</p>
+<p>Logs into Azure using Universal with MFA Support with a certificate, then performs a sample query. Note that you will be prompted for a password but the password can be left blank and the certificate <br>
+will be used instead.<br></p>
 <h5 id="example-17">Example:  17</h5>
 <pre><code>PS C:\&gt; Set-DbatoolsConfig -FullName sql.connection.experimental -Value $true
 PS C:\&gt; $sqlcred = Get-Credential sqladmin
 PS C:\&gt; $server = Connect-DbaInstance -SqlInstance sql2014 -SqlCredential $sqlcred
 PS C:\&gt; Invoke-DbaQuery -SqlInstance $server -Query &quot;select 1 as test&quot;
 </code></pre>
-<p>Use the new code path for handling connections. Especially when you have problems with connection pooling, try this.
-We also have added additional -Verbose and -Debug output to help us understand your problem if you open an issue related to connections.
-For additional information about how the new code path works, please have a look at the code: <a href="https://github.com/sqlcollaborative/dbatools/blob/development/functions/Connect-DbaInstance.ps1">https://github.com/sqlcollaborative/dbatools/blob/development/functions/Connect-DbaInstance.ps1</a>
-If you like to use the new code path permanently, register this config:</p>
+<p>Use the new code path for handling connections. Especially when you have problems with connection pooling, try this.<br>
+We also have added additional -Verbose and -Debug output to help us understand your problem if you open an issue related to connections.<br>
+For additional information about how the new code path works, please have a look at the code: <a href="https://github.com/sqlcollaborative/dbatools/blob/development/functions/Connect-DbaInstance.ps1">https://github.com/sqlcollaborative/dbatools/blob/development/functions/Connect-DbaInstance.ps1</a><br>
+If you like to use the new code path permanently, register this config:<br></p>
 <pre><code>PS C:\&gt; Set-DbatoolsConfig -FullName sql.connection.experimental -Value $true -Passthru | Register-DbatoolsConfig
 </code></pre>
-<p>As we would like to use the new code path as a default in the future, please give feedback if you are using it in your environment.</p>
+<p>As we would like to use the new code path as a default in the future, please give feedback if you are using it in your environment.<br></p>
 <h5 id="example-18">Example:  18</h5>
 <pre><code>PS C:\&gt; Set-DbatoolsConfig -FullName sql.connection.experimental -Value $true
 PS C:\&gt; $azureCredential = Get-Credential -Message 'Azure Credential'
@@ -628,12 +628,12 @@ PS C:\&gt; $azureInstance = &quot;YOURSERVER.database.windows.net&quot;
 PS C:\&gt; $server = Connect-DbaInstance -SqlInstance $azureInstance -AccessToken $azureToken
 PS C:\&gt; Invoke-DbaQuery -SqlInstance $server -Query &quot;select 1 as test&quot;
 </code></pre>
-<p>Connect to an Azure SQL Database or an Azure SQL Managed Instance with an AccessToken.
-Note that the token is valid for only one hour and cannot be renewed automatically.
-This is only available in the new code path for handling connections (see example above).</p>
+<p>Connect to an Azure SQL Database or an Azure SQL Managed Instance with an AccessToken.<br>
+Note that the token is valid for only one hour and cannot be renewed automatically.<br>
+This is only available in the new code path for handling connections (see example above).<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances. This can be a collection and receive pipeline input to allow the function to be executed against multiple SQL Server instances.</p>
+<p>The target SQL Server instance or instances. This can be a collection and receive pipeline input to allow the function to be executed against multiple SQL Server instances.<br></p>
 <table>
 <thead>
 <tr>
@@ -663,7 +663,7 @@ This is only available in the new code path for handling connections (see exampl
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Credential object used to connect to the SQL Server Instance as a different user. This can be a Windows or SQL Server account. Windows users are determined by the existence of a backslash, so if you
-are intending to use an alternative Windows connection instead of a SQL login, ensure it contains a backslash.</p>
+are intending to use an alternative Windows connection instead of a SQL login, ensure it contains a backslash.<br></p>
 <table>
 <thead>
 <tr>
@@ -691,7 +691,7 @@ are intending to use an alternative Windows connection instead of a SQL login, e
 </tbody>
 </table>
 <h5 id="database">-Database</h5>
-<p>The database(s) to process. This list is auto-populated from the server.</p>
+<p>The database(s) to process. This list is auto-populated from the server.<br></p>
 <table>
 <thead>
 <tr>
@@ -720,7 +720,7 @@ are intending to use an alternative Windows connection instead of a SQL login, e
 </table>
 <h5 id="applicationintent">-ApplicationIntent</h5>
 <p>Declares the application workload type when connecting to a server.
-Valid values are &quot;ReadOnly&quot; and &quot;ReadWrite&quot;.</p>
+Valid values are &quot;ReadOnly&quot; and &quot;ReadWrite&quot;.<br></p>
 <table>
 <thead>
 <tr>
@@ -752,7 +752,7 @@ Valid values are &quot;ReadOnly&quot; and &quot;ReadWrite&quot;.</p>
 </tbody>
 </table>
 <h5 id="azureunsupported">-AzureUnsupported</h5>
-<p>Terminate if Azure is detected but not supported</p>
+<p>Terminate if Azure is detected but not supported<br></p>
 <table>
 <thead>
 <tr>
@@ -780,7 +780,7 @@ Valid values are &quot;ReadOnly&quot; and &quot;ReadWrite&quot;.</p>
 </tbody>
 </table>
 <h5 id="batchseparator">-BatchSeparator</h5>
-<p>A string to separate groups of SQL statements being executed. By default, this is &quot;GO&quot;.</p>
+<p>A string to separate groups of SQL statements being executed. By default, this is &quot;GO&quot;.<br></p>
 <table>
 <thead>
 <tr>
@@ -809,7 +809,7 @@ Valid values are &quot;ReadOnly&quot; and &quot;ReadWrite&quot;.</p>
 </table>
 <h5 id="clientname">-ClientName</h5>
 <p>By default, this command sets the client's ApplicationName property to &quot;dbatools PowerShell module - dbatools.io&quot;. If you're doing anything that requires profiling, you can look for this client name.
-Using -ClientName allows you to set your own custom client application name.</p>
+Using -ClientName allows you to set your own custom client application name.<br></p>
 <table>
 <thead>
 <tr>
@@ -839,7 +839,7 @@ Using -ClientName allows you to set your own custom client application name.</p>
 <h5 id="connecttimeout">-ConnectTimeout</h5>
 <p>The length of time (in seconds) to wait for a connection to the server before terminating the attempt and generating an error.
 Valid values are integers between 0 and 2147483647.
-When opening a connection to a Azure SQL Database, set the connection timeout to 30 seconds.</p>
+When opening a connection to a Azure SQL Database, set the connection timeout to 30 seconds.<br></p>
 <table>
 <thead>
 <tr>
@@ -871,7 +871,7 @@ When opening a connection to a Azure SQL Database, set the connection timeout to
 For more information, see Connection String Syntax. <a href="https://docs.microsoft.com/en-us/dotnet/framework/data/adonet/connection-string-syntax">https://docs.microsoft.com/en-us/dotnet/framework/data/adonet/connection-string-syntax</a>
 Beginning in .NET Framework 4.5, when TrustServerCertificate is false and Encrypt is true, the server name (or IP address) in a SQL Server SSL certificate must exactly match the server name (or IP
 address) specified in the connection string. Otherwise, the connection attempt will fail. For information about support for certificates whose subject starts with a wildcard character (*), see
-Accepted wildcards used by server certificates for server authentication. <a href="https://support.microsoft.com/en-us/help/258858/accepted-wildcards-used-by-server-certificates-for-server-authenticati">https://support.microsoft.com/en-us/help/258858/accepted-wildcards-used-by-server-certificates-for-server-authenticati</a></p>
+Accepted wildcards used by server certificates for server authentication. <a href="https://support.microsoft.com/en-us/help/258858/accepted-wildcards-used-by-server-certificates-for-server-authenticati">https://support.microsoft.com/en-us/help/258858/accepted-wildcards-used-by-server-certificates-for-server-authenticati</a><br></p>
 <table>
 <thead>
 <tr>
@@ -905,7 +905,7 @@ The server name can be 128 characters or less.
 If you specify a failover partner but the failover partner server is not configured for database mirroring and the primary server (specified with the Server keyword) is not available, then the
 connection will fail.
 If you specify a failover partner and the primary server is not configured for database mirroring, the connection to the primary server (specified with the Server keyword) will succeed if the primary
-server is available.</p>
+server is available.<br></p>
 <table>
 <thead>
 <tr>
@@ -933,7 +933,7 @@ server is available.</p>
 </tbody>
 </table>
 <h5 id="locktimeout">-LockTimeout</h5>
-<p>Sets the time in seconds required for the connection to time out when the current transaction is locked.</p>
+<p>Sets the time in seconds required for the connection to time out when the current transaction is locked.<br></p>
 <table>
 <thead>
 <tr>
@@ -961,7 +961,7 @@ server is available.</p>
 </tbody>
 </table>
 <h5 id="maxpoolsize">-MaxPoolSize</h5>
-<p>Sets the maximum number of connections allowed in the connection pool for this specific connection string.</p>
+<p>Sets the maximum number of connections allowed in the connection pool for this specific connection string.<br></p>
 <table>
 <thead>
 <tr>
@@ -989,7 +989,7 @@ server is available.</p>
 </tbody>
 </table>
 <h5 id="minpoolsize">-MinPoolSize</h5>
-<p>Sets the minimum number of connections allowed in the connection pool for this specific connection string.</p>
+<p>Sets the minimum number of connections allowed in the connection pool for this specific connection string.<br></p>
 <table>
 <thead>
 <tr>
@@ -1017,7 +1017,7 @@ server is available.</p>
 </tbody>
 </table>
 <h5 id="minimumversion">-MinimumVersion</h5>
-<p>Terminate if the target SQL Server instance version does not meet version requirements</p>
+<p>Terminate if the target SQL Server instance version does not meet version requirements<br></p>
 <table>
 <thead>
 <tr>
@@ -1046,7 +1046,7 @@ server is available.</p>
 </table>
 <h5 id="multipleactiveresultsets">-MultipleActiveResultSets</h5>
 <p>If this switch is enabled, an application can maintain multiple active result sets (MARS).
-If this switch is not enabled, an application must process or cancel all result sets from one batch before it can execute any other batch on that connection.</p>
+If this switch is not enabled, an application must process or cancel all result sets from one batch before it can execute any other batch on that connection.<br></p>
 <table>
 <thead>
 <tr>
@@ -1076,7 +1076,7 @@ If this switch is not enabled, an application must process or cancel all result 
 <h5 id="multisubnetfailover">-MultiSubnetFailover</h5>
 <p>If this switch is enabled, and your application is connecting to an AlwaysOn availability group (AG) on different subnets, detection of and connection to the currently active server will be faster.
 For more information about SqlClient support for Always On Availability Groups, see
-<a href="https://docs.microsoft.com/en-us/dotnet/framework/data/adonet/sql/sqlclient-support-for-high-availability-disaster-recovery">https://docs.microsoft.com/en-us/dotnet/framework/data/adonet/sql/sqlclient-support-for-high-availability-disaster-recovery</a></p>
+<a href="https://docs.microsoft.com/en-us/dotnet/framework/data/adonet/sql/sqlclient-support-for-high-availability-disaster-recovery">https://docs.microsoft.com/en-us/dotnet/framework/data/adonet/sql/sqlclient-support-for-high-availability-disaster-recovery</a><br></p>
 <table>
 <thead>
 <tr>
@@ -1105,7 +1105,7 @@ For more information about SqlClient support for Always On Availability Groups, 
 </table>
 <h5 id="networkprotocol">-NetworkProtocol</h5>
 <p>Explicitly sets the network protocol used to connect to the server.
-Valid values are &quot;TcpIp&quot;,&quot;NamedPipes&quot;,&quot;Multiprotocol&quot;,&quot;AppleTalk&quot;,&quot;BanyanVines&quot;,&quot;Via&quot;,&quot;SharedMemory&quot; and &quot;NWLinkIpxSpx&quot;</p>
+Valid values are &quot;TcpIp&quot;,&quot;NamedPipes&quot;,&quot;Multiprotocol&quot;,&quot;AppleTalk&quot;,&quot;BanyanVines&quot;,&quot;Via&quot;,&quot;SharedMemory&quot; and &quot;NWLinkIpxSpx&quot;<br></p>
 <table>
 <thead>
 <tr>
@@ -1137,7 +1137,7 @@ Valid values are &quot;TcpIp&quot;,&quot;NamedPipes&quot;,&quot;Multiprotocol&qu
 </tbody>
 </table>
 <h5 id="nonpooledconnection">-NonPooledConnection</h5>
-<p>If this switch is enabled, a non-pooled connection will be requested.</p>
+<p>If this switch is enabled, a non-pooled connection will be requested.<br></p>
 <table>
 <thead>
 <tr>
@@ -1165,7 +1165,7 @@ Valid values are &quot;TcpIp&quot;,&quot;NamedPipes&quot;,&quot;Multiprotocol&qu
 </tbody>
 </table>
 <h5 id="packetsize">-PacketSize</h5>
-<p>Sets the size in bytes of the network packets used to communicate with an instance of SQL Server. Must match at server.</p>
+<p>Sets the size in bytes of the network packets used to communicate with an instance of SQL Server. Must match at server.<br></p>
 <table>
 <thead>
 <tr>
@@ -1195,7 +1195,7 @@ Valid values are &quot;TcpIp&quot;,&quot;NamedPipes&quot;,&quot;Multiprotocol&qu
 <h5 id="pooledconnectionlifetime">-PooledConnectionLifetime</h5>
 <p>When a connection is returned to the pool, its creation time is compared with the current time and the connection is destroyed if that time span (in seconds) exceeds the value specified by Connection
 Lifetime. This is useful in clustered configurations to force load balancing between a running server and a server just brought online.
-A value of zero (0) causes pooled connections to have the maximum connection timeout.</p>
+A value of zero (0) causes pooled connections to have the maximum connection timeout.<br></p>
 <table>
 <thead>
 <tr>
@@ -1224,7 +1224,7 @@ A value of zero (0) causes pooled connections to have the maximum connection tim
 </table>
 <h5 id="sqlexecutionmodes">-SqlExecutionModes</h5>
 <p>The SqlExecutionModes enumeration contains values that are used to specify whether the commands sent to the referenced connection to the server are executed immediately or saved in a buffer.
-Valid values include &quot;CaptureSql&quot;, &quot;ExecuteAndCaptureSql&quot; and &quot;ExecuteSql&quot;.</p>
+Valid values include &quot;CaptureSql&quot;, &quot;ExecuteAndCaptureSql&quot; and &quot;ExecuteSql&quot;.<br></p>
 <table>
 <thead>
 <tr>
@@ -1256,7 +1256,7 @@ Valid values include &quot;CaptureSql&quot;, &quot;ExecuteAndCaptureSql&quot; an
 </tbody>
 </table>
 <h5 id="statementtimeout">-StatementTimeout</h5>
-<p>Sets the number of seconds a statement is given to run before failing with a timeout error.</p>
+<p>Sets the number of seconds a statement is given to run before failing with a timeout error.<br></p>
 <table>
 <thead>
 <tr>
@@ -1284,7 +1284,7 @@ Valid values include &quot;CaptureSql&quot;, &quot;ExecuteAndCaptureSql&quot; an
 </tbody>
 </table>
 <h5 id="trustservercertificate">-TrustServerCertificate</h5>
-<p>When this switch is enabled, the channel will be encrypted while bypassing walking the certificate chain to validate trust.</p>
+<p>When this switch is enabled, the channel will be encrypted while bypassing walking the certificate chain to validate trust.<br></p>
 <table>
 <thead>
 <tr>
@@ -1312,7 +1312,7 @@ Valid values include &quot;CaptureSql&quot;, &quot;ExecuteAndCaptureSql&quot; an
 </tbody>
 </table>
 <h5 id="workstationid">-WorkstationId</h5>
-<p>Sets the name of the workstation connecting to SQL Server.</p>
+<p>Sets the name of the workstation connecting to SQL Server.<br></p>
 <table>
 <thead>
 <tr>
@@ -1340,7 +1340,7 @@ Valid values include &quot;CaptureSql&quot;, &quot;ExecuteAndCaptureSql&quot; an
 </tbody>
 </table>
 <h5 id="appendconnectionstring">-AppendConnectionString</h5>
-<p>Appends to the current connection string. Note that you cannot pass authentication information using this method. Use -SqlInstance and optionally -SqlCredential to set authentication information.</p>
+<p>Appends to the current connection string. Note that you cannot pass authentication information using this method. Use -SqlInstance and optionally -SqlCredential to set authentication information.<br></p>
 <table>
 <thead>
 <tr>
@@ -1368,7 +1368,7 @@ Valid values include &quot;CaptureSql&quot;, &quot;ExecuteAndCaptureSql&quot; an
 </tbody>
 </table>
 <h5 id="sqlconnectiononly">-SqlConnectionOnly</h5>
-<p>Instead of returning a rich SMO server object, this command will only return a SqlConnection object when setting this switch.</p>
+<p>Instead of returning a rich SMO server object, this command will only return a SqlConnection object when setting this switch.<br></p>
 <table>
 <thead>
 <tr>
@@ -1398,7 +1398,7 @@ Valid values include &quot;CaptureSql&quot;, &quot;ExecuteAndCaptureSql&quot; an
 <h5 id="azuredomain">-AzureDomain</h5>
 <p>By default, this is set to database.windows.net
 In the event your AzureSqlDb is not on a database.windows.net domain, you can set a custom domain using the AzureDomain parameter.
-This tells Connect-DbaInstance to login to the database using the method that works best with Azure.</p>
+This tells Connect-DbaInstance to login to the database using the method that works best with Azure.<br></p>
 <table>
 <thead>
 <tr>
@@ -1426,7 +1426,7 @@ This tells Connect-DbaInstance to login to the database using the method that wo
 </tbody>
 </table>
 <h5 id="authenticationtype">-AuthenticationType</h5>
-<p>Basically used to force AD Universal with MFA Support when other types have been detected</p>
+<p>Basically used to force AD Universal with MFA Support when other types have been detected<br></p>
 <table>
 <thead>
 <tr>
@@ -1458,7 +1458,7 @@ This tells Connect-DbaInstance to login to the database using the method that wo
 </tbody>
 </table>
 <h5 id="tenant">-Tenant</h5>
-<p>The TenantId for an Azure Instance</p>
+<p>The TenantId for an Azure Instance<br></p>
 <table>
 <thead>
 <tr>
@@ -1486,7 +1486,7 @@ This tells Connect-DbaInstance to login to the database using the method that wo
 </tbody>
 </table>
 <h5 id="thumbprint">-Thumbprint</h5>
-<p>Thumbprint for connections to Azure MSI</p>
+<p>Thumbprint for connections to Azure MSI<br></p>
 <table>
 <thead>
 <tr>
@@ -1514,7 +1514,7 @@ This tells Connect-DbaInstance to login to the database using the method that wo
 </tbody>
 </table>
 <h5 id="store">-Store</h5>
-<p>Store where the Azure MSI certificate is stored</p>
+<p>Store where the Azure MSI certificate is stored<br></p>
 <table>
 <thead>
 <tr>
@@ -1548,7 +1548,7 @@ This tells Connect-DbaInstance to login to the database using the method that wo
 <h5 id="accesstoken">-AccessToken</h5>
 <p>Connect to an Azure SQL Database or an Azure SQL Managed Instance with an AccessToken, that has to be generated with Get-AzAccessToken.
 Note that the token is valid for only one hour and cannot be renewed automatically.
-This is only available in the new code path for handling connections (see the last two examples).</p>
+This is only available in the new code path for handling connections (see the last two examples).<br></p>
 <table>
 <thead>
 <tr>
@@ -1578,7 +1578,7 @@ This is only available in the new code path for handling connections (see the la
 <h5 id="disableexception">-DisableException</h5>
 <p>By default in most of our commands, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This command, however, gifts you  with &quot;sea of red&quot; exceptions, by default, because it is useful for advanced scripting.
-Using this switch turns our &quot;nice by default&quot; feature on which makes errors into pretty warnings.</p>
+Using this switch turns our &quot;nice by default&quot; feature on which makes errors into pretty warnings.<br></p>
 <table>
 <thead>
 <tr>
@@ -1607,6 +1607,7 @@ Using this switch turns our &quot;nice by default&quot; feature on which makes e
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Connect-DbaInstance.ps1">Connect-DbaInstance</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Connect-DbaInstance">Connect-DbaInstance</a>.</p>
 
                 </div> <!-- rendered -->

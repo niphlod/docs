@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -496,33 +496,33 @@ All startup procedures. Use -Exclude StartupProcedures to skip.</p>
 <p>By default, databases will be migrated to the destination SQL Server's default data and log directories. You can override this by specifying -ReuseSourceFolderStructure. Filestreams and filegroups are also migrated. Safety is emphasized.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Start-DbaMigration
-    -[-Source] &lt;DbaInstanceParameter&gt;]
-    -[-Destination] &lt;DbaInstanceParameter[]&gt;]
-    --DetachAttach]
-    --Reattach]
-    --BackupRestore]
-    -[-SharedPath] &lt;String&gt;]
-    --WithReplace]
-    --NoRecovery]
-    --SetSourceReadOnly]
-    --ReuseSourceFolderStructure]
-    --IncludeSupportDbs]
-    -[-SourceSqlCredential] &lt;PSCredential&gt;]
-    -[-DestinationSqlCredential] &lt;PSCredential&gt;]
-    -[-Exclude] &lt;String[]&gt;]
-    --DisableJobsOnDestination]
-    --DisableJobsOnSource]
-    --ExcludeSaRename]
-    --UseLastBackup]
-    --KeepCDC]
-    --KeepReplication]
-    --Continue]
-    --Force]
-    -[-AzureCredential] &lt;String&gt;]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [[-Source] &lt;DbaInstanceParameter&gt;]
+    [[-Destination] &lt;DbaInstanceParameter[]&gt;]
+    [-DetachAttach]
+    [-Reattach]
+    [-BackupRestore]
+    [[-SharedPath] &lt;String&gt;]
+    [-WithReplace]
+    [-NoRecovery]
+    [-SetSourceReadOnly]
+    [-ReuseSourceFolderStructure]
+    [-IncludeSupportDbs]
+    [[-SourceSqlCredential] &lt;PSCredential&gt;]
+    [[-DestinationSqlCredential] &lt;PSCredential&gt;]
+    [[-Exclude] &lt;String[]&gt;]
+    [-DisableJobsOnDestination]
+    [-DisableJobsOnSource]
+    [-ExcludeSaRename]
+    [-UseLastBackup]
+    [-KeepCDC]
+    [-KeepReplication]
+    [-Continue]
+    [-Force]
+    [[-AzureCredential] &lt;String&gt;]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -531,8 +531,8 @@ All startup procedures. Use -Exclude StartupProcedures to skip.</p>
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Start-DbaMigration -Source sqlserver\instance -Destination sqlcluster -DetachAttach
 </code></pre>
-<p>All databases, logins, job objects and sp_configure options will be migrated from sqlserver\instance to sqlcluster. Databases will be migrated using the detach/copy files/attach method. Dbowner will
-be updated. User passwords, SIDs, database roles and server roles will be migrated along with the login.</p>
+<p>All databases, logins, job objects and sp_configure options will be migrated from sqlserver\instance to sqlcluster. Databases will be migrated using the detach/copy files/attach method. Dbowner will <br>
+be updated. User passwords, SIDs, database roles and server roles will be migrated along with the login.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; $params = @{
 &gt;&gt; Source = &quot;sqlcluster&quot;
@@ -547,12 +547,12 @@ be updated. User passwords, SIDs, database roles and server roles will be migrat
 &gt;&gt;
 PS C:\&gt; Start-DbaMigration @params -Verbose
 </code></pre>
-<p>Utilizes splatting technique to set all the needed parameters. This will migrate databases using the backup/restore method. It will also include migration of the logins, database mail configuration,
-credentials, SQL Agent, Central Management Server, and SQL Server global configuration.</p>
+<p>Utilizes splatting technique to set all the needed parameters. This will migrate databases using the backup/restore method. It will also include migration of the logins, database mail configuration, <br>
+credentials, SQL Agent, Central Management Server, and SQL Server global configuration.<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Start-DbaMigration -Verbose -Source sqlcluster -Destination sql2016 -DetachAttach -Reattach -SetSourceReadonly
 </code></pre>
-<p>Migrates databases using detach/copy/attach. Reattach at source and set source databases read-only. Also migrates everything else.</p>
+<p>Migrates databases using detach/copy/attach. Reattach at source and set source databases read-only. Also migrates everything else.<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; $PSDefaultParameters = @{
 &gt;&gt; &quot;dbatools:Source&quot; = &quot;sqlcluster&quot;
@@ -561,12 +561,12 @@ credentials, SQL Agent, Central Management Server, and SQL Server global configu
 &gt;&gt;
 PS C:\&gt; Start-DbaMigration -Verbose -Exclude Databases, Logins
 </code></pre>
-<p>Utilizes the PSDefaultParameterValues system variable, and sets the Source and Destination parameters for any function in the module that has those parameter names. This prevents the need from
-passing them in constantly.
-The execution of the function will migrate everything but logins and databases.</p>
+<p>Utilizes the PSDefaultParameterValues system variable, and sets the Source and Destination parameters for any function in the module that has those parameter names. This prevents the need from <br>
+passing them in constantly.<br>
+The execution of the function will migrate everything but logins and databases.<br></p>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="source">-Source</h5>
-<p>Source SQL Server.</p>
+<p>Source SQL Server.<br></p>
 <table>
 <thead>
 <tr>
@@ -596,7 +596,7 @@ The execution of the function will migrate everything but logins and databases.<
 <h5 id="destination">-Destination</h5>
 <p>Destination SQL Server. You may specify multiple servers.
 Note that when using -BackupRestore with multiple servers, the backup will only be performed once and backups will be deleted at the end (if you didn't specify -ExcludeBackupCleanup).
-When using -DetachAttach with multiple servers, -Reattach must be specified.</p>
+When using -DetachAttach with multiple servers, -Reattach must be specified.<br></p>
 <table>
 <thead>
 <tr>
@@ -625,7 +625,7 @@ When using -DetachAttach with multiple servers, -Reattach must be specified.</p>
 </table>
 <h5 id="detachattach">-DetachAttach</h5>
 <p>If this switch is enabled, the the detach/copy/attach method is used to perform database migrations. No files are deleted on Source. If the destination attachment fails, the source database will be
-reattached. File copies are performed over administrative shares (\server\x$\mssql) using BITS. If a database is being mirrored, the mirror will be broken prior to migration.</p>
+reattached. File copies are performed over administrative shares (\server\x$\mssql) using BITS. If a database is being mirrored, the mirror will be broken prior to migration.<br></p>
 <table>
 <thead>
 <tr>
@@ -653,7 +653,7 @@ reattached. File copies are performed over administrative shares (\server\x$\mss
 </tbody>
 </table>
 <h5 id="reattach">-Reattach</h5>
-<p>If this switch is enabled, all databases are reattached to Source after a DetachAttach migration is complete.</p>
+<p>If this switch is enabled, all databases are reattached to Source after a DetachAttach migration is complete.<br></p>
 <table>
 <thead>
 <tr>
@@ -681,7 +681,7 @@ reattached. File copies are performed over administrative shares (\server\x$\mss
 </tbody>
 </table>
 <h5 id="backuprestore">-BackupRestore</h5>
-<p>If this switch is enabled, the Copy-Only backup and restore method is used to perform database migrations. You must specify -SharedPath with a valid UNC format as well (\server\share).</p>
+<p>If this switch is enabled, the Copy-Only backup and restore method is used to perform database migrations. You must specify -SharedPath with a valid UNC format as well (\server\share).<br></p>
 <table>
 <thead>
 <tr>
@@ -709,7 +709,7 @@ reattached. File copies are performed over administrative shares (\server\x$\mss
 </tbody>
 </table>
 <h5 id="sharedpath">-SharedPath</h5>
-<p>Specifies the network location for the backup files. The SQL Server service accounts on both Source and Destination must have read/write permission to access this location.</p>
+<p>Specifies the network location for the backup files. The SQL Server service accounts on both Source and Destination must have read/write permission to access this location.<br></p>
 <table>
 <thead>
 <tr>
@@ -737,7 +737,7 @@ reattached. File copies are performed over administrative shares (\server\x$\mss
 </tbody>
 </table>
 <h5 id="withreplace">-WithReplace</h5>
-<p>If this switch is enabled, databases are restored from backup using WITH REPLACE. This is useful if you want to stage some complex file paths.</p>
+<p>If this switch is enabled, databases are restored from backup using WITH REPLACE. This is useful if you want to stage some complex file paths.<br></p>
 <table>
 <thead>
 <tr>
@@ -765,7 +765,7 @@ reattached. File copies are performed over administrative shares (\server\x$\mss
 </tbody>
 </table>
 <h5 id="norecovery">-NoRecovery</h5>
-<p>If this switch is enabled, databases will be left in the No Recovery state to enable further backups to be added.</p>
+<p>If this switch is enabled, databases will be left in the No Recovery state to enable further backups to be added.<br></p>
 <table>
 <thead>
 <tr>
@@ -794,7 +794,7 @@ reattached. File copies are performed over administrative shares (\server\x$\mss
 </table>
 <h5 id="setsourcereadonly">-SetSourceReadOnly</h5>
 <p>If this switch is enabled, all migrated databases will be set to ReadOnly on the source instance prior to detach/attach &amp; backup/restore. If -Reattach is specified, the database is set to read-only
-after reattaching.</p>
+after reattaching.<br></p>
 <table>
 <thead>
 <tr>
@@ -823,7 +823,7 @@ after reattaching.</p>
 </table>
 <h5 id="reusesourcefolderstructure">-ReuseSourceFolderStructure</h5>
 <p>If this switch is enabled, the data and log directory structures on Source will be kept on Destination. Otherwise, databases will be migrated to Destination's default data and log directories.
-Consider this if you're migrating between different versions and use part of Microsoft's default SQL structure (MSSQL12.INSTANCE, etc.).</p>
+Consider this if you're migrating between different versions and use part of Microsoft's default SQL structure (MSSQL12.INSTANCE, etc.).<br></p>
 <table>
 <thead>
 <tr>
@@ -852,7 +852,7 @@ Consider this if you're migrating between different versions and use part of Mic
 </table>
 <h5 id="includesupportdbs">-IncludeSupportDbs</h5>
 <p>If this switch is enabled, the ReportServer, ReportServerTempDb, SSIDb, and distribution databases will be migrated if they exist. A logfile named $SOURCE-$DESTINATION-$date-Sqls.csv will be written
-to the current directory. Requires -BackupRestore or -DetachAttach.</p>
+to the current directory. Requires -BackupRestore or -DetachAttach.<br></p>
 <table>
 <thead>
 <tr>
@@ -882,7 +882,7 @@ to the current directory. Requires -BackupRestore or -DetachAttach.</p>
 <h5 id="sourcesqlcredential">-SourceSqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -912,7 +912,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 <h5 id="destinationsqlcredential">-DestinationSqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -961,7 +961,7 @@ ServerAuditSpecifications
 CustomErrors
 DataCollector
 StartupProcedures
-AgentServerProperties</p>
+AgentServerProperties<br></p>
 <table>
 <thead>
 <tr>
@@ -993,7 +993,7 @@ AgentServerProperties</p>
 </tbody>
 </table>
 <h5 id="disablejobsondestination">-DisableJobsOnDestination</h5>
-<p>If this switch is enabled, migrated SQL Agent jobs will be disabled on the destination instance.</p>
+<p>If this switch is enabled, migrated SQL Agent jobs will be disabled on the destination instance.<br></p>
 <table>
 <thead>
 <tr>
@@ -1021,7 +1021,7 @@ AgentServerProperties</p>
 </tbody>
 </table>
 <h5 id="disablejobsonsource">-DisableJobsOnSource</h5>
-<p>If this switch is enabled, SQL Agent jobs will be disabled on the source instance.</p>
+<p>If this switch is enabled, SQL Agent jobs will be disabled on the source instance.<br></p>
 <table>
 <thead>
 <tr>
@@ -1049,7 +1049,7 @@ AgentServerProperties</p>
 </tbody>
 </table>
 <h5 id="excludesarename">-ExcludeSaRename</h5>
-<p>If this switch is enabled, the sa account will not be renamed on the destination instance to match the source.</p>
+<p>If this switch is enabled, the sa account will not be renamed on the destination instance to match the source.<br></p>
 <table>
 <thead>
 <tr>
@@ -1077,7 +1077,7 @@ AgentServerProperties</p>
 </tbody>
 </table>
 <h5 id="uselastbackup">-UseLastBackup</h5>
-<p>Use the last full, diff and logs instead of performing backups. Note that the backups must exist in a location accessible by all destination servers, such a network share.</p>
+<p>Use the last full, diff and logs instead of performing backups. Note that the backups must exist in a location accessible by all destination servers, such a network share.<br></p>
 <table>
 <thead>
 <tr>
@@ -1105,7 +1105,7 @@ AgentServerProperties</p>
 </tbody>
 </table>
 <h5 id="keepcdc">-KeepCDC</h5>
-<p>Indicates whether CDC information should be copied as part of the database</p>
+<p>Indicates whether CDC information should be copied as part of the database<br></p>
 <table>
 <thead>
 <tr>
@@ -1133,7 +1133,7 @@ AgentServerProperties</p>
 </tbody>
 </table>
 <h5 id="keepreplication">-KeepReplication</h5>
-<p>Indicates whether replication configuration should be copied as part of the database copy operation</p>
+<p>Indicates whether replication configuration should be copied as part of the database copy operation<br></p>
 <table>
 <thead>
 <tr>
@@ -1161,7 +1161,7 @@ AgentServerProperties</p>
 </tbody>
 </table>
 <h5 id="continue">-Continue</h5>
-<p>If specified, will to attempt to restore transaction log backups on top of existing database(s) in Recovering or Standby states. Only usable with -UseLastBackup</p>
+<p>If specified, will to attempt to restore transaction log backups on top of existing database(s) in Recovering or Standby states. Only usable with -UseLastBackup<br></p>
 <table>
 <thead>
 <tr>
@@ -1192,7 +1192,7 @@ AgentServerProperties</p>
 <p>If migrating users, forces drop and recreate of SQL and Windows logins.
 If migrating databases, deletes existing databases with matching names.
 If using -DetachAttach, -Force will break mirrors and drop dbs from Availability Groups.
-For other migration objects, it will just drop existing items and readd, if -force is supported within the underlying function.</p>
+For other migration objects, it will just drop existing items and readd, if -force is supported within the underlying function.<br></p>
 <table>
 <thead>
 <tr>
@@ -1220,7 +1220,7 @@ For other migration objects, it will just drop existing items and readd, if -for
 </tbody>
 </table>
 <h5 id="azurecredential">-AzureCredential</h5>
-<p>Name of the AzureCredential if SharedPath is Azure page blob</p>
+<p>Name of the AzureCredential if SharedPath is Azure page blob<br></p>
 <table>
 <thead>
 <tr>
@@ -1250,7 +1250,7 @@ For other migration objects, it will just drop existing items and readd, if -for
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -1278,7 +1278,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.</p>
+<p>If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.<br></p>
 <table>
 <thead>
 <tr>
@@ -1306,7 +1306,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.</p>
+<p>If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.<br></p>
 <table>
 <thead>
 <tr>
@@ -1335,6 +1335,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Start-DbaMigration.ps1">Start-DbaMigration</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Start-DbaMigration">Start-DbaMigration</a>.</p>
 
                 </div> <!-- rendered -->

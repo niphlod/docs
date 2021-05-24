@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -471,10 +471,10 @@
 <p>All Windows Server Failover Clustering (Wsfc) commands require local admin on each member node.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Get-DbaWsfcSharedVolume
-    -[-ComputerName] &lt;DbaInstanceParameter[]&gt;]
-    -[-Credential] &lt;PSCredential&gt;]
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [[-ComputerName] &lt;DbaInstanceParameter[]&gt;]
+    [[-Credential] &lt;PSCredential&gt;]
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -483,10 +483,10 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Get-DbaWsfcSharedVolume -ComputerName cluster01
 </code></pre>
-<p>Gets shared volume (CSV) information from the failover cluster cluster01</p>
+<p>Gets shared volume (CSV) information from the failover cluster cluster01<br></p>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="computername">-ComputerName</h5>
-<p>The target cluster name. Can be a node or the cluster name itself.</p>
+<p>The target cluster name. Can be a node or the cluster name itself.<br></p>
 <table>
 <thead>
 <tr>
@@ -514,7 +514,7 @@
 </tbody>
 </table>
 <h5 id="credential">-Credential</h5>
-<p>Allows you to login to the cluster using alternative credentials.</p>
+<p>Allows you to login to the cluster using alternative credentials.<br></p>
 <table>
 <thead>
 <tr>
@@ -544,7 +544,7 @@
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -573,6 +573,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Get-DbaWsfcSharedVolume.ps1">Get-DbaWsfcSharedVolume</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Get-DbaWsfcSharedVolume">Get-DbaWsfcSharedVolume</a>.</p>
 
                 </div> <!-- rendered -->

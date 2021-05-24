@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -472,14 +472,14 @@ However, CSV output can generate a lot of files and Excel output depends on the 
 Export-DbaDiagnosticQuery can be used to convert from the default export type to the other available export types.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Export-DbaDiagnosticQuery
-    --InputObject] &lt;Object[]&gt;
-    -[-ConvertTo] &lt;String&gt;]
-    -[-Path] &lt;FileInfo&gt;]
-    -[-Suffix] &lt;String&gt;]
-    --NoPlanExport]
-    --NoQueryExport]
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [-InputObject] &lt;Object[]&gt;
+    [[-ConvertTo] &lt;String&gt;]
+    [[-Path] &lt;FileInfo&gt;]
+    [[-Suffix] &lt;String&gt;]
+    [-NoPlanExport]
+    [-NoQueryExport]
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -488,15 +488,15 @@ Export-DbaDiagnosticQuery can be used to convert from the default export type to
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Invoke-DbaDiagnosticQuery -SqlInstance sql2016 | Export-DbaDiagnosticQuery -Path c:\temp
 </code></pre>
-<p>Converts output from Invoke-DbaDiagnosticQuery to multiple CSV files</p>
+<p>Converts output from Invoke-DbaDiagnosticQuery to multiple CSV files<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; $output = Invoke-DbaDiagnosticQuery -SqlInstance sql2016
 PS C:\&gt; Export-DbaDiagnosticQuery -InputObject $output -ConvertTo Excel
 </code></pre>
-<p>Converts output from Invoke-DbaDiagnosticQuery to Excel worksheet(s) in the Documents folder</p>
+<p>Converts output from Invoke-DbaDiagnosticQuery to Excel worksheet(s) in the Documents folder<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="inputobject">-InputObject</h5>
-<p>Specifies the objects to convert</p>
+<p>Specifies the objects to convert<br></p>
 <table>
 <thead>
 <tr>
@@ -525,7 +525,7 @@ PS C:\&gt; Export-DbaDiagnosticQuery -InputObject $output -ConvertTo Excel
 </table>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="convertto">-ConvertTo</h5>
-<p>Specifies the output type. Valid choices are Excel and CSV. CSV is the default.</p>
+<p>Specifies the output type. Valid choices are Excel and CSV. CSV is the default.<br></p>
 <table>
 <thead>
 <tr>
@@ -557,7 +557,7 @@ PS C:\&gt; Export-DbaDiagnosticQuery -InputObject $output -ConvertTo Excel
 </tbody>
 </table>
 <h5 id="path">-Path</h5>
-<p>Specifies the path to the output files.</p>
+<p>Specifies the path to the output files.<br></p>
 <table>
 <thead>
 <tr>
@@ -585,7 +585,7 @@ PS C:\&gt; Export-DbaDiagnosticQuery -InputObject $output -ConvertTo Excel
 </tbody>
 </table>
 <h5 id="suffix">-Suffix</h5>
-<p>Suffix for the filename. It's datetime by default.</p>
+<p>Suffix for the filename. It's datetime by default.<br></p>
 <table>
 <thead>
 <tr>
@@ -613,7 +613,7 @@ PS C:\&gt; Export-DbaDiagnosticQuery -InputObject $output -ConvertTo Excel
 </tbody>
 </table>
 <h5 id="noplanexport">-NoPlanExport</h5>
-<p>Use this switch to suppress exporting of .sqlplan files</p>
+<p>Use this switch to suppress exporting of .sqlplan files<br></p>
 <table>
 <thead>
 <tr>
@@ -641,7 +641,7 @@ PS C:\&gt; Export-DbaDiagnosticQuery -InputObject $output -ConvertTo Excel
 </tbody>
 </table>
 <h5 id="noqueryexport">-NoQueryExport</h5>
-<p>Use this switch to suppress exporting of .sql files</p>
+<p>Use this switch to suppress exporting of .sql files<br></p>
 <table>
 <thead>
 <tr>
@@ -671,7 +671,7 @@ PS C:\&gt; Export-DbaDiagnosticQuery -InputObject $output -ConvertTo Excel
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -700,6 +700,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Export-DbaDiagnosticQuery.ps1">Export-DbaDiagnosticQuery</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Export-DbaDiagnosticQuery">Export-DbaDiagnosticQuery</a>.</p>
 
                 </div> <!-- rendered -->

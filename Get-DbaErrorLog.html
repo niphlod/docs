@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -470,15 +470,15 @@
 <p>Gets the &quot;SQL Error Log&quot; of an instance. Returns all 10 error logs by default.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Get-DbaErrorLog
-    -[-SqlInstance] &lt;DbaInstanceParameter[]&gt;]
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    -[-LogNumber] &lt;Int32[]&gt;]
-    -[-Source] &lt;Object[]&gt;]
-    -[-Text] &lt;String&gt;]
-    -[-After] &lt;DateTime&gt;]
-    -[-Before] &lt;DateTime&gt;]
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [[-SqlInstance] &lt;DbaInstanceParameter[]&gt;]
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [[-LogNumber] &lt;Int32[]&gt;]
+    [[-Source] &lt;Object[]&gt;]
+    [[-Text] &lt;String&gt;]
+    [[-After] &lt;DateTime&gt;]
+    [[-Before] &lt;DateTime&gt;]
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -487,35 +487,35 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Get-DbaErrorLog -SqlInstance sql01\sharepoint
 </code></pre>
-<p>Returns every log entry from sql01\sharepoint SQL Server instance.</p>
+<p>Returns every log entry from sql01\sharepoint SQL Server instance.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Get-DbaErrorLog -SqlInstance sql01\sharepoint -LogNumber 3, 6
 </code></pre>
-<p>Returns all log entries for log number 3 and 6 on sql01\sharepoint SQL Server instance.</p>
+<p>Returns all log entries for log number 3 and 6 on sql01\sharepoint SQL Server instance.<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Get-DbaErrorLog -SqlInstance sql01\sharepoint -Source Logon
 </code></pre>
-<p>Returns every log entry, with a source of Logon, from sql01\sharepoint SQL Server instance.</p>
+<p>Returns every log entry, with a source of Logon, from sql01\sharepoint SQL Server instance.<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; Get-DbaErrorLog -SqlInstance sql01\sharepoint -LogNumber 3 -Text &quot;login failed&quot;
 </code></pre>
-<p>Returns every log entry for log number 3, with &quot;login failed&quot; in the text, from sql01\sharepoint SQL Server instance.</p>
+<p>Returns every log entry for log number 3, with &quot;login failed&quot; in the text, from sql01\sharepoint SQL Server instance.<br></p>
 <h5 id="example-5">Example:  5</h5>
 <pre><code>PS C:\&gt; $servers = &quot;sql2014&quot;,&quot;sql2016&quot;, &quot;sqlcluster\sharepoint&quot;
 PS C:\&gt; $servers | Get-DbaErrorLog -LogNumber 0
 </code></pre>
-<p>Returns the most recent SQL Server error logs for &quot;sql2014&quot;,&quot;sql2016&quot; and &quot;sqlcluster\sharepoint&quot;</p>
+<p>Returns the most recent SQL Server error logs for &quot;sql2014&quot;,&quot;sql2016&quot; and &quot;sqlcluster\sharepoint&quot;<br></p>
 <h5 id="example-6">Example:  6</h5>
 <pre><code>PS C:\&gt; Get-DbaErrorLog -SqlInstance sql01\sharepoint -After '2016-11-14 00:00:00'
 </code></pre>
-<p>Returns every log entry found after the date 14 November 2016 from sql101\sharepoint SQL Server instance.</p>
+<p>Returns every log entry found after the date 14 November 2016 from sql101\sharepoint SQL Server instance.<br></p>
 <h5 id="example-7">Example:  7</h5>
 <pre><code>PS C:\&gt; Get-DbaErrorLog -SqlInstance sql01\sharepoint -Before '2016-08-16 00:00:00'
 </code></pre>
-<p>Returns every log entry found before the date 16 August 2016 from sql101\sharepoint SQL Server instance.</p>
+<p>Returns every log entry found before the date 16 August 2016 from sql101\sharepoint SQL Server instance.<br></p>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>TThe target SQL Server instance or instances.</p>
+<p>TThe target SQL Server instance or instances.<br></p>
 <table>
 <thead>
 <tr>
@@ -545,7 +545,7 @@ PS C:\&gt; $servers | Get-DbaErrorLog -LogNumber 0
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -575,7 +575,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 <h5 id="lognumber">-LogNumber</h5>
 <p>An Int32 value that specifies the index number of the error log required.
 Error logs are listed 0 through 99, where 0 is the current error log and 99 is potential oldest log file.
-SQL Server errorlog rollover defaults to 6, but can be increased to 99. <a href="https://docs.microsoft.com/en-us/sql/database-engine/configure-windows/scm-services-configure-sql-server-error-logs">https://docs.microsoft.com/en-us/sql/database-engine/configure-windows/scm-services-configure-sql-server-error-logs</a></p>
+SQL Server errorlog rollover defaults to 6, but can be increased to 99. <a href="https://docs.microsoft.com/en-us/sql/database-engine/configure-windows/scm-services-configure-sql-server-error-logs">https://docs.microsoft.com/en-us/sql/database-engine/configure-windows/scm-services-configure-sql-server-error-logs</a><br></p>
 <table>
 <thead>
 <tr>
@@ -603,7 +603,7 @@ SQL Server errorlog rollover defaults to 6, but can be increased to 99. <a href=
 </tbody>
 </table>
 <h5 id="source">-Source</h5>
-<p>Filter results based on the Source of the error (e.g. Logon, Server, etc.)</p>
+<p>Filter results based on the Source of the error (e.g. Logon, Server, etc.)<br></p>
 <table>
 <thead>
 <tr>
@@ -631,7 +631,7 @@ SQL Server errorlog rollover defaults to 6, but can be increased to 99. <a href=
 </tbody>
 </table>
 <h5 id="text">-Text</h5>
-<p>Filter results based on a pattern of text (e.g. &quot;login failed&quot;, &quot;error: 12345&quot;).</p>
+<p>Filter results based on a pattern of text (e.g. &quot;login failed&quot;, &quot;error: 12345&quot;).<br></p>
 <table>
 <thead>
 <tr>
@@ -659,7 +659,7 @@ SQL Server errorlog rollover defaults to 6, but can be increased to 99. <a href=
 </tbody>
 </table>
 <h5 id="after">-After</h5>
-<p>Filter the results based on datetime value.</p>
+<p>Filter the results based on datetime value.<br></p>
 <table>
 <thead>
 <tr>
@@ -687,7 +687,7 @@ SQL Server errorlog rollover defaults to 6, but can be increased to 99. <a href=
 </tbody>
 </table>
 <h5 id="before">-Before</h5>
-<p>Filter the results based on datetime value.</p>
+<p>Filter the results based on datetime value.<br></p>
 <table>
 <thead>
 <tr>
@@ -717,7 +717,7 @@ SQL Server errorlog rollover defaults to 6, but can be increased to 99. <a href=
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -746,6 +746,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Get-DbaErrorLog.ps1">Get-DbaErrorLog</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Get-DbaErrorLog">Get-DbaErrorLog</a>.</p>
 
                 </div> <!-- rendered -->

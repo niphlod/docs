@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -482,21 +482,21 @@
 <p>NOTE: If a backup / restore is performed, the backups will be left in tact on the network share.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Invoke-DbaDbMirroring
-    -[-Primary] &lt;DbaInstanceParameter&gt;]
-    -[-PrimarySqlCredential] &lt;PSCredential&gt;]
-    --Mirror] &lt;DbaInstanceParameter[]&gt;
-    -[-MirrorSqlCredential] &lt;PSCredential&gt;]
-    -[-Witness] &lt;DbaInstanceParameter&gt;]
-    -[-WitnessSqlCredential] &lt;PSCredential&gt;]
-    -[-Database] &lt;String[]&gt;]
-    -[-SharedPath] &lt;String&gt;]
-    -[-InputObject] &lt;Database[]&gt;]
-    --UseLastBackup]
-    --Force]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [[-Primary] &lt;DbaInstanceParameter&gt;]
+    [[-PrimarySqlCredential] &lt;PSCredential&gt;]
+    [-Mirror] &lt;DbaInstanceParameter[]&gt;
+    [[-MirrorSqlCredential] &lt;PSCredential&gt;]
+    [[-Witness] &lt;DbaInstanceParameter&gt;]
+    [[-WitnessSqlCredential] &lt;PSCredential&gt;]
+    [[-Database] &lt;String[]&gt;]
+    [[-SharedPath] &lt;String&gt;]
+    [[-InputObject] &lt;Database[]&gt;]
+    [-UseLastBackup]
+    [-Force]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -514,11 +514,11 @@
 &gt;&gt;
 PS C:\&gt; Invoke-DbaDbMirroring @params
 </code></pre>
-<p>Performs a bunch of checks to ensure the pubs database on sql2017a
-can be mirrored from sql2017a to sql2017b. Logs in to sql2019 and sql2017a
-using Windows credentials and sql2017b using a SQL credential.
-Prompts for confirmation for most changes. To avoid confirmation, use -Confirm:$false or
-use the syntax in the second example.</p>
+<p>Performs a bunch of checks to ensure the pubs database on sql2017a<br>
+can be mirrored from sql2017a to sql2017b. Logs in to sql2019 and sql2017a<br>
+using Windows credentials and sql2017b using a SQL credential.<br>
+Prompts for confirmation for most changes. To avoid confirmation, use -Confirm:$false or<br>
+use the syntax in the second example.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; $params = @{
 &gt;&gt; Primary = 'sql2017a'
@@ -533,26 +533,26 @@ use the syntax in the second example.</p>
 &gt;&gt;
 PS C:\&gt; Invoke-DbaDbMirroring @params
 </code></pre>
-<p>Performs a bunch of checks to ensure the pubs database on sql2017a
-can be mirrored from sql2017a to sql2017b. Logs in to sql2019 and sql2017a
-using Windows credentials and sql2017b using a SQL credential.
-Drops existing pubs database on Mirror and Witness and restores them with
-a fresh backup.
-Does all the things in the description, does not prompt for confirmation.</p>
+<p>Performs a bunch of checks to ensure the pubs database on sql2017a<br>
+can be mirrored from sql2017a to sql2017b. Logs in to sql2019 and sql2017a<br>
+using Windows credentials and sql2017b using a SQL credential.<br>
+Drops existing pubs database on Mirror and Witness and restores them with<br>
+a fresh backup.<br>
+Does all the things in the description, does not prompt for confirmation.<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; $map = @{ 'database_data' = 'M:\Data\database_data.mdf' 'database_log' = 'L:\Log\database_log.ldf' }
 PS C:\&gt; Get-ChildItem \\nas\seed | Restore-DbaDatabase -SqlInstance sql2017b -FileMapping $map -NoRecovery
 PS C:\&gt; Get-DbaDatabase -SqlInstance sql2017a -Database pubs | Invoke-DbaDbMirroring -Mirror sql2017b -Confirm:$false
 </code></pre>
-<p>Restores backups from sql2017a to a specific file structure on sql2017b then creates mirror with no prompts for confirmation.</p>
+<p>Restores backups from sql2017a to a specific file structure on sql2017b then creates mirror with no prompts for confirmation.<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; Get-DbaDatabase -SqlInstance sql2017a -Database pubs |
 &gt;&gt; Invoke-DbaDbMirroring -Mirror sql2017b -UseLastBackup -Confirm:$false
 </code></pre>
-<p>Mirrors pubs on sql2017a to sql2017b and uses the last full and logs from sql2017a to seed. Doesn't prompt for confirmation.</p>
+<p>Mirrors pubs on sql2017a to sql2017b and uses the last full and logs from sql2017a to seed. Doesn't prompt for confirmation.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="mirror">-Mirror</h5>
-<p>SQL Server name or SMO object representing the mirror SQL Server.</p>
+<p>SQL Server name or SMO object representing the mirror SQL Server.<br></p>
 <table>
 <thead>
 <tr>
@@ -581,7 +581,7 @@ PS C:\&gt; Get-DbaDatabase -SqlInstance sql2017a -Database pubs | Invoke-DbaDbMi
 </table>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="primary">-Primary</h5>
-<p>SQL Server name or SMO object representing the primary SQL Server.</p>
+<p>SQL Server name or SMO object representing the primary SQL Server.<br></p>
 <table>
 <thead>
 <tr>
@@ -611,7 +611,7 @@ PS C:\&gt; Get-DbaDatabase -SqlInstance sql2017a -Database pubs | Invoke-DbaDbMi
 <h5 id="primarysqlcredential">-PrimarySqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -641,7 +641,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 <h5 id="mirrorsqlcredential">-MirrorSqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -669,7 +669,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="witness">-Witness</h5>
-<p>SQL Server name or SMO object representing the witness SQL Server.</p>
+<p>SQL Server name or SMO object representing the witness SQL Server.<br></p>
 <table>
 <thead>
 <tr>
@@ -699,7 +699,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 <h5 id="witnesssqlcredential">-WitnessSqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -727,7 +727,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="database">-Database</h5>
-<p>The database or databases to mirror.</p>
+<p>The database or databases to mirror.<br></p>
 <table>
 <thead>
 <tr>
@@ -757,7 +757,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 <h5 id="sharedpath">-SharedPath</h5>
 <p>The network share where the backups will be backed up and restored from.
 Each SQL Server service account must have access to this share.
-NOTE: If a backup / restore is performed, the backups will be left in tact on the network share.</p>
+NOTE: If a backup / restore is performed, the backups will be left in tact on the network share.<br></p>
 <table>
 <thead>
 <tr>
@@ -785,7 +785,7 @@ NOTE: If a backup / restore is performed, the backups will be left in tact on th
 </tbody>
 </table>
 <h5 id="inputobject">-InputObject</h5>
-<p>Enables piping from Get-DbaDatabase.</p>
+<p>Enables piping from Get-DbaDatabase.<br></p>
 <table>
 <thead>
 <tr>
@@ -813,7 +813,7 @@ NOTE: If a backup / restore is performed, the backups will be left in tact on th
 </tbody>
 </table>
 <h5 id="uselastbackup">-UseLastBackup</h5>
-<p>Use the last full backup of database.</p>
+<p>Use the last full backup of database.<br></p>
 <table>
 <thead>
 <tr>
@@ -841,7 +841,7 @@ NOTE: If a backup / restore is performed, the backups will be left in tact on th
 </tbody>
 </table>
 <h5 id="force">-Force</h5>
-<p>Drop and recreate the database on remote servers using fresh backup.</p>
+<p>Drop and recreate the database on remote servers using fresh backup.<br></p>
 <table>
 <thead>
 <tr>
@@ -871,7 +871,7 @@ NOTE: If a backup / restore is performed, the backups will be left in tact on th
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -899,7 +899,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>Shows what would happen if the command were to run. No actions are actually performed.</p>
+<p>Shows what would happen if the command were to run. No actions are actually performed.<br></p>
 <table>
 <thead>
 <tr>
@@ -927,7 +927,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>Prompts you for confirmation before executing any changing operations within the command.</p>
+<p>Prompts you for confirmation before executing any changing operations within the command.<br></p>
 <table>
 <thead>
 <tr>
@@ -956,6 +956,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Invoke-DbaDbMirroring.ps1">Invoke-DbaDbMirroring</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Invoke-DbaDbMirroring">Invoke-DbaDbMirroring</a>.</p>
 
                 </div> <!-- rendered -->

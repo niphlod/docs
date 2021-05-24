@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -474,25 +474,25 @@ the list of such rules could be displayed when listing members of the transfer o
 $transfer | Get-Member</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Invoke-DbaDbTransfer
-    -[-SqlInstance] &lt;DbaInstanceParameter&gt;]
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    -[-DestinationSqlInstance] &lt;DbaInstanceParameter&gt;]
-    -[-DestinationSqlCredential] &lt;PSCredential&gt;]
-    -[-Database] &lt;String&gt;]
-    -[-DestinationDatabase] &lt;String&gt;]
-    -[-BatchSize] &lt;Int32&gt;]
-    -[-BulkCopyTimeOut] &lt;Int32&gt;]
-    -[-ScriptingOption] &lt;ScriptingOptions&gt;]
-    -[-InputObject] &lt;Transfer&gt;]
-    --CopyAllObjects]
-    -[-CopyAll] &lt;String[]&gt;]
-    --SchemaOnly]
-    --DataOnly]
-    --ScriptOnly]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [[-SqlInstance] &lt;DbaInstanceParameter&gt;]
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [[-DestinationSqlInstance] &lt;DbaInstanceParameter&gt;]
+    [[-DestinationSqlCredential] &lt;PSCredential&gt;]
+    [[-Database] &lt;String&gt;]
+    [[-DestinationDatabase] &lt;String&gt;]
+    [[-BatchSize] &lt;Int32&gt;]
+    [[-BulkCopyTimeOut] &lt;Int32&gt;]
+    [[-ScriptingOption] &lt;ScriptingOptions&gt;]
+    [[-InputObject] &lt;Transfer&gt;]
+    [-CopyAllObjects]
+    [[-CopyAll] &lt;String[]&gt;]
+    [-SchemaOnly]
+    [-DataOnly]
+    [-ScriptOnly]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -501,28 +501,28 @@ $transfer | Get-Member</p>
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Invoke-DbaDbTransfer -SqlInstance sql1 -DestinationSqlInstance sql2 -Database mydb -CopyAll Tables -DestinationDatabase newdb
 </code></pre>
-<p>Copies all tables from database mydb on sql1 to database newdb on sql2.</p>
+<p>Copies all tables from database mydb on sql1 to database newdb on sql2.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Invoke-DbaDbTransfer -SqlInstance sql1 -DestinationSqlInstance sql2 -Database mydb -CopyAllObjects
 </code></pre>
-<p>Copies all objects from database mydb on sql1 to database mydb on sql2.</p>
+<p>Copies all objects from database mydb on sql1 to database mydb on sql2.<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; $transfer = New-DbaDbTransfer -SqlInstance sql1 -DestinationSqlInstance sql2 -Database mydb -CopyAllObjects
 PS C:\&gt; $transfer.Options.ScriptDrops = $true
 PS C:\&gt; $transfer.SchemaOnly = $true
 PS C:\&gt; $transfer | Invoke-DbaDbTransfer
 </code></pre>
-<p>Copies object schema from database mydb on sql1 to database mydb on sql2 using customized transfer parameters.</p>
+<p>Copies object schema from database mydb on sql1 to database mydb on sql2 using customized transfer parameters.<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; $options = New-DbaScriptingOption
 PS C:\&gt; $options.ScriptDrops = $true
 PS C:\&gt; $transfer = New-DbaDbTransfer -SqlInstance sql1 -DestinationSqlInstance sql2 -Database mydb -CopyAll StoredProcedures -ScriptingOption $options
 PS C:\&gt; $transfer | Invoke-DbaDbTransfer
 </code></pre>
-<p>Copies procedures from database mydb on sql1 to database mydb on sql2 using custom scripting parameters.</p>
+<p>Copies procedures from database mydb on sql1 to database mydb on sql2 using custom scripting parameters.<br></p>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>Source SQL Server instance name.</p>
+<p>Source SQL Server instance name.<br></p>
 <table>
 <thead>
 <tr>
@@ -552,7 +552,7 @@ PS C:\&gt; $transfer | Invoke-DbaDbTransfer
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -580,7 +580,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="destinationsqlinstance">-DestinationSqlInstance</h5>
-<p>Destination Sql Server. You must have appropriate access to create objects on the target server.</p>
+<p>Destination Sql Server. You must have appropriate access to create objects on the target server.<br></p>
 <table>
 <thead>
 <tr>
@@ -609,7 +609,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </table>
 <h5 id="destinationsqlcredential">-DestinationSqlCredential</h5>
 <p>Login to the source instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
-Only SQL authentication is supported. When not specified, uses Trusted Authentication.</p>
+Only SQL authentication is supported. When not specified, uses Trusted Authentication.<br></p>
 <table>
 <thead>
 <tr>
@@ -637,7 +637,7 @@ Only SQL authentication is supported. When not specified, uses Trusted Authentic
 </tbody>
 </table>
 <h5 id="database">-Database</h5>
-<p>The database to copy the objects from.</p>
+<p>The database to copy the objects from.<br></p>
 <table>
 <thead>
 <tr>
@@ -665,7 +665,7 @@ Only SQL authentication is supported. When not specified, uses Trusted Authentic
 </tbody>
 </table>
 <h5 id="destinationdatabase">-DestinationDatabase</h5>
-<p>The database to copy the objects to. If not specified, it is assumed to be same as the source database.</p>
+<p>The database to copy the objects to. If not specified, it is assumed to be same as the source database.<br></p>
 <table>
 <thead>
 <tr>
@@ -693,7 +693,7 @@ Only SQL authentication is supported. When not specified, uses Trusted Authentic
 </tbody>
 </table>
 <h5 id="batchsize">-BatchSize</h5>
-<p>The BatchSize for the data copy defaults to 5000.</p>
+<p>The BatchSize for the data copy defaults to 5000.<br></p>
 <table>
 <thead>
 <tr>
@@ -721,7 +721,7 @@ Only SQL authentication is supported. When not specified, uses Trusted Authentic
 </tbody>
 </table>
 <h5 id="bulkcopytimeout">-BulkCopyTimeOut</h5>
-<p>Value in seconds for the BulkCopy operations timeout. The default is 30 seconds.</p>
+<p>Value in seconds for the BulkCopy operations timeout. The default is 30 seconds.<br></p>
 <table>
 <thead>
 <tr>
@@ -749,7 +749,7 @@ Only SQL authentication is supported. When not specified, uses Trusted Authentic
 </tbody>
 </table>
 <h5 id="scriptingoption">-ScriptingOption</h5>
-<p>Custom scripting rules, generated by New-DbaScriptingOption</p>
+<p>Custom scripting rules, generated by New-DbaScriptingOption<br></p>
 <table>
 <thead>
 <tr>
@@ -777,7 +777,7 @@ Only SQL authentication is supported. When not specified, uses Trusted Authentic
 </tbody>
 </table>
 <h5 id="inputobject">-InputObject</h5>
-<p>Enables piping of database SMO objects into the command.</p>
+<p>Enables piping of database SMO objects into the command.<br></p>
 <table>
 <thead>
 <tr>
@@ -805,7 +805,7 @@ Only SQL authentication is supported. When not specified, uses Trusted Authentic
 </tbody>
 </table>
 <h5 id="copyallobjects">-CopyAllObjects</h5>
-<p>Transfer all objects of the source database</p>
+<p>Transfer all objects of the source database<br></p>
 <table>
 <thead>
 <tr>
@@ -862,7 +862,7 @@ DatabaseScopedCredentials
 ExternalFileFormats
 ExternalDataSources
 Logins
-ExternalLibraries</p>
+ExternalLibraries<br></p>
 <table>
 <thead>
 <tr>
@@ -894,7 +894,7 @@ ExternalLibraries</p>
 </tbody>
 </table>
 <h5 id="schemaonly">-SchemaOnly</h5>
-<p>Transfers only object schema.</p>
+<p>Transfers only object schema.<br></p>
 <table>
 <thead>
 <tr>
@@ -922,7 +922,7 @@ ExternalLibraries</p>
 </tbody>
 </table>
 <h5 id="dataonly">-DataOnly</h5>
-<p>Transfers only data without copying schema.</p>
+<p>Transfers only data without copying schema.<br></p>
 <table>
 <thead>
 <tr>
@@ -950,7 +950,7 @@ ExternalLibraries</p>
 </tbody>
 </table>
 <h5 id="scriptonly">-ScriptOnly</h5>
-<p>Generate the script without moving any objects. Does not include any data - just object definitions.</p>
+<p>Generate the script without moving any objects. Does not include any data - just object definitions.<br></p>
 <table>
 <thead>
 <tr>
@@ -980,7 +980,7 @@ ExternalLibraries</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -1008,7 +1008,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.</p>
+<p>If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.<br></p>
 <table>
 <thead>
 <tr>
@@ -1036,7 +1036,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.</p>
+<p>If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.<br></p>
 <table>
 <thead>
 <tr>
@@ -1065,6 +1065,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Invoke-DbaDbTransfer.ps1">Invoke-DbaDbTransfer</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Invoke-DbaDbTransfer">Invoke-DbaDbTransfer</a>.</p>
 
                 </div> <!-- rendered -->

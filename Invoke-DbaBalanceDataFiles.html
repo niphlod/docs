@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -479,26 +479,26 @@ A file group whould have at least have 2 data files and should be writable.
 If a table is within such a file group it will be subject for processing. If not the table will be skipped.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Invoke-DbaBalanceDataFiles
-    --SqlCredential &lt;PSCredential&gt;]
-    --Database &lt;Object[]&gt;]
-    --Table &lt;Object[]&gt;]
-    --RebuildOffline]
-    --EnableException]
-    --Force]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-SqlCredential &lt;PSCredential&gt;]
+    [-Database &lt;Object[]&gt;]
+    [-Table &lt;Object[]&gt;]
+    [-RebuildOffline]
+    [-EnableException]
+    [-Force]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 Invoke-DbaBalanceDataFiles -SqlInstance &lt;DbaInstanceParameter[]&gt;
-    --SqlCredential &lt;PSCredential&gt;]
-    --Database &lt;Object[]&gt;]
-    --Table &lt;Object[]&gt;]
-    --RebuildOffline]
-    --EnableException]
-    --Force]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-SqlCredential &lt;PSCredential&gt;]
+    [-Database &lt;Object[]&gt;]
+    [-Table &lt;Object[]&gt;]
+    [-RebuildOffline]
+    [-EnableException]
+    [-Force]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -507,23 +507,23 @@ Invoke-DbaBalanceDataFiles -SqlInstance &lt;DbaInstanceParameter[]&gt;
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Invoke-DbaBalanceDataFiles -SqlInstance sql1 -Database db1
 </code></pre>
-<p>This command will distribute the data in database db1 on instance sql1</p>
+<p>This command will distribute the data in database db1 on instance sql1<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Invoke-DbaBalanceDataFiles -SqlInstance sql1 -Database db1 | Select-Object -ExpandProperty DataFilesEnd
 </code></pre>
-<p>This command will distribute the data in database db1 on instance sql1</p>
+<p>This command will distribute the data in database db1 on instance sql1<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Invoke-DbaBalanceDataFiles -SqlInstance sql1 -Database db1 -Table table1,table2,table5
 </code></pre>
-<p>This command will distribute the data for only the tables table1,table2 and table5</p>
+<p>This command will distribute the data for only the tables table1,table2 and table5<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; Invoke-DbaBalanceDataFiles -SqlInstance sql1 -Database db1 -RebuildOffline
 </code></pre>
-<p>This command will consider the fact that there might be a SQL Server edition that does not support online rebuilds of indexes.
-By supplying this parameter you give permission to do the rebuilds offline if the edition does not support it.</p>
+<p>This command will consider the fact that there might be a SQL Server edition that does not support online rebuilds of indexes.<br>
+By supplying this parameter you give permission to do the rebuilds offline if the edition does not support it.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances.</p>
+<p>The target SQL Server instance or instances.<br></p>
 <table>
 <thead>
 <tr>
@@ -554,7 +554,7 @@ By supplying this parameter you give permission to do the rebuilds offline if th
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -582,7 +582,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="database">-Database</h5>
-<p>The database(s) to process.</p>
+<p>The database(s) to process.<br></p>
 <table>
 <thead>
 <tr>
@@ -610,7 +610,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="table">-Table</h5>
-<p>The tables(s) of the database to process. If unspecified, all tables will be processed.</p>
+<p>The tables(s) of the database to process. If unspecified, all tables will be processed.<br></p>
 <table>
 <thead>
 <tr>
@@ -639,7 +639,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </table>
 <h5 id="rebuildoffline">-RebuildOffline</h5>
 <p>Will set all the indexes to rebuild offline.
-This option is also needed when the server version is below 2005.</p>
+This option is also needed when the server version is below 2005.<br></p>
 <table>
 <thead>
 <tr>
@@ -669,7 +669,7 @@ This option is also needed when the server version is below 2005.</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -698,7 +698,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <h5 id="force">-Force</h5>
 <p>This will disable the check for enough disk space for the action to be successful.
-Use this with caution!!</p>
+Use this with caution!!<br></p>
 <table>
 <thead>
 <tr>
@@ -726,7 +726,7 @@ Use this with caution!!</p>
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>Shows what would happen if the command were to run</p>
+<p>Shows what would happen if the command were to run<br></p>
 <table>
 <thead>
 <tr>
@@ -757,7 +757,7 @@ Use this with caution!!</p>
 <p>Prompts for confirmation of every step. For example:
 The server does not support online rebuilds of indexes.
 Do you want to rebuild the indexes offline?
-[Y] Yes  [N] No   [?] Help (default is &quot;Y&quot;):</p>
+[Y] Yes  [N] No   [?] Help (default is &quot;Y&quot;):<br></p>
 <table>
 <thead>
 <tr>
@@ -786,6 +786,7 @@ Do you want to rebuild the indexes offline?
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Invoke-DbaBalanceDataFiles.ps1">Invoke-DbaBalanceDataFiles</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Invoke-DbaBalanceDataFiles">Invoke-DbaBalanceDataFiles</a>.</p>
 
                 </div> <!-- rendered -->

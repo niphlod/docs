@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -475,29 +475,29 @@
 <db name>_MainData_1  (Secondary filegroup files)</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>New-DbaDatabase
-    --SqlInstance] &lt;DbaInstanceParameter[]&gt;
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    -[-Name] &lt;String[]&gt;]
-    -[-Collation] &lt;String&gt;]
-    -[-RecoveryModel] &lt;String&gt;]
-    -[-Owner] &lt;String&gt;]
-    -[-DataFilePath] &lt;String&gt;]
-    -[-LogFilePath] &lt;String&gt;]
-    -[-PrimaryFilesize] &lt;Int32&gt;]
-    -[-PrimaryFileGrowth] &lt;Int32&gt;]
-    -[-PrimaryFileMaxSize] &lt;Int32&gt;]
-    -[-LogSize] &lt;Int32&gt;]
-    -[-LogGrowth] &lt;Int32&gt;]
-    -[-LogMaxSize] &lt;Int32&gt;]
-    -[-SecondaryFilesize] &lt;Int32&gt;]
-    -[-SecondaryFileGrowth] &lt;Int32&gt;]
-    -[-SecondaryFileMaxSize] &lt;Int32&gt;]
-    -[-SecondaryFileCount] &lt;Int32&gt;]
-    -[-DefaultFileGroup] &lt;String&gt;]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-SqlInstance] &lt;DbaInstanceParameter[]&gt;
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [[-Name] &lt;String[]&gt;]
+    [[-Collation] &lt;String&gt;]
+    [[-RecoveryModel] &lt;String&gt;]
+    [[-Owner] &lt;String&gt;]
+    [[-DataFilePath] &lt;String&gt;]
+    [[-LogFilePath] &lt;String&gt;]
+    [[-PrimaryFilesize] &lt;Int32&gt;]
+    [[-PrimaryFileGrowth] &lt;Int32&gt;]
+    [[-PrimaryFileMaxSize] &lt;Int32&gt;]
+    [[-LogSize] &lt;Int32&gt;]
+    [[-LogGrowth] &lt;Int32&gt;]
+    [[-LogMaxSize] &lt;Int32&gt;]
+    [[-SecondaryFilesize] &lt;Int32&gt;]
+    [[-SecondaryFileGrowth] &lt;Int32&gt;]
+    [[-SecondaryFileMaxSize] &lt;Int32&gt;]
+    [[-SecondaryFileCount] &lt;Int32&gt;]
+    [[-DefaultFileGroup] &lt;String&gt;]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -506,31 +506,31 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; New-DbaDatabase -SqlInstance sql1
 </code></pre>
-<p>Creates a randomly named database (random-N) on instance sql1</p>
+<p>Creates a randomly named database (random-N) on instance sql1<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; New-DbaDatabase -SqlInstance sql1 -Name dbatools, dbachecks
 </code></pre>
-<p>Creates a database named dbatools and a database named dbachecks on sql1</p>
+<p>Creates a database named dbatools and a database named dbachecks on sql1<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; New-DbaDatabase -SqlInstance sql1, sql2, sql3 -Name multidb, multidb2 -SecondaryFilesize 20 -SecondaryFileGrowth 20 -LogSize 20 -LogGrowth 20
 </code></pre>
-<p>Creates two databases, multidb and multidb2, on 3 instances (sql1, sql2 and sql3) and sets the secondary data file size to 20MB, the file growth to 20MB and the log growth to 20MB for each</p>
+<p>Creates two databases, multidb and multidb2, on 3 instances (sql1, sql2 and sql3) and sets the secondary data file size to 20MB, the file growth to 20MB and the log growth to 20MB for each<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; New-DbaDatabase -SqlInstance sql1 -Name nondefault -DataFilePath M:\Data -LogFilePath 'L:\Logs with spaces' -SecondaryFileCount 2
 </code></pre>
-<p>Creates a database named nondefault and places data files in in the M:\data directory and log files in &quot;L:\Logs with spaces&quot;.
-Creates a secondary group with 2 files in the Secondary filegroup.</p>
+<p>Creates a database named nondefault and places data files in in the M:\data directory and log files in &quot;L:\Logs with spaces&quot;.<br>
+Creates a secondary group with 2 files in the Secondary filegroup.<br></p>
 <h5 id="example-5">Example:  5</h5>
 <pre><code>PS C:\&gt; New-DbaDatabase -SqlInstance sql1 -Name newDb -LogSize 32 -LogMaxSize 512 -PrimaryFilesize 64 -PrimaryFileMaxSize 512 -SecondaryFilesize 64 -SecondaryFileMaxSize 512 -LogGrowth 32
 </code></pre>
-<p>-PrimaryFileGrowth 64 -SecondaryFileGrowth 64
-Creates a new database named newDb on the sql1 instance and sets the file sizes, max sizes, and growth as specified. The resulting filenames will take the form:
-newDb_PRIMARY
-newDb_Log
-newDb_MainData_1  (Secondary filegroup files)</p>
+<p>-PrimaryFileGrowth 64 -SecondaryFileGrowth 64<br>
+Creates a new database named newDb on the sql1 instance and sets the file sizes, max sizes, and growth as specified. The resulting filenames will take the form:<br>
+newDb_PRIMARY<br>
+newDb_Log<br>
+newDb_MainData_1  (Secondary filegroup files)<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances.</p>
+<p>The target SQL Server instance or instances.<br></p>
 <table>
 <thead>
 <tr>
@@ -561,7 +561,7 @@ newDb_MainData_1  (Secondary filegroup files)</p>
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -589,7 +589,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="name">-Name</h5>
-<p>The name of the new database or databases to be created.</p>
+<p>The name of the new database or databases to be created.<br></p>
 <table>
 <thead>
 <tr>
@@ -617,7 +617,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="collation">-Collation</h5>
-<p>The database collation, if not supplied the default server collation will be used.</p>
+<p>The database collation, if not supplied the default server collation will be used.<br></p>
 <table>
 <thead>
 <tr>
@@ -646,7 +646,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </table>
 <h5 id="recoverymodel">-RecoveryModel</h5>
 <p>The recovery model for the database, if not supplied the recovery model from the model database will be used.
-Valid options are: Simple, Full, BulkLogged.</p>
+Valid options are: Simple, Full, BulkLogged.<br></p>
 <table>
 <thead>
 <tr>
@@ -678,7 +678,7 @@ Valid options are: Simple, Full, BulkLogged.</p>
 </tbody>
 </table>
 <h5 id="owner">-Owner</h5>
-<p>The login that will be used as the database owner.</p>
+<p>The login that will be used as the database owner.<br></p>
 <table>
 <thead>
 <tr>
@@ -706,7 +706,7 @@ Valid options are: Simple, Full, BulkLogged.</p>
 </tbody>
 </table>
 <h5 id="datafilepath">-DataFilePath</h5>
-<p>The location that data files will be placed, otherwise the default SQL Server data path will be used.</p>
+<p>The location that data files will be placed, otherwise the default SQL Server data path will be used.<br></p>
 <table>
 <thead>
 <tr>
@@ -734,7 +734,7 @@ Valid options are: Simple, Full, BulkLogged.</p>
 </tbody>
 </table>
 <h5 id="logfilepath">-LogFilePath</h5>
-<p>The location the log file will be placed, otherwise the default SQL Server log path will be used.</p>
+<p>The location the log file will be placed, otherwise the default SQL Server log path will be used.<br></p>
 <table>
 <thead>
 <tr>
@@ -762,7 +762,7 @@ Valid options are: Simple, Full, BulkLogged.</p>
 </tbody>
 </table>
 <h5 id="primaryfilesize">-PrimaryFilesize</h5>
-<p>The size in MB for the Primary file. If this is less than the primary file size for the model database, then the model size will be used instead.</p>
+<p>The size in MB for the Primary file. If this is less than the primary file size for the model database, then the model size will be used instead.<br></p>
 <table>
 <thead>
 <tr>
@@ -790,7 +790,7 @@ Valid options are: Simple, Full, BulkLogged.</p>
 </tbody>
 </table>
 <h5 id="primaryfilegrowth">-PrimaryFileGrowth</h5>
-<p>The size in MB that the Primary file will autogrow by.</p>
+<p>The size in MB that the Primary file will autogrow by.<br></p>
 <table>
 <thead>
 <tr>
@@ -818,7 +818,7 @@ Valid options are: Simple, Full, BulkLogged.</p>
 </tbody>
 </table>
 <h5 id="primaryfilemaxsize">-PrimaryFileMaxSize</h5>
-<p>The maximum permitted size in MB for the Primary File. If this is less than the primary file size for the model database, then the model size will be used instead.</p>
+<p>The maximum permitted size in MB for the Primary File. If this is less than the primary file size for the model database, then the model size will be used instead.<br></p>
 <table>
 <thead>
 <tr>
@@ -846,7 +846,7 @@ Valid options are: Simple, Full, BulkLogged.</p>
 </tbody>
 </table>
 <h5 id="logsize">-LogSize</h5>
-<p>The size in MB that the Transaction log will be created.</p>
+<p>The size in MB that the Transaction log will be created.<br></p>
 <table>
 <thead>
 <tr>
@@ -874,7 +874,7 @@ Valid options are: Simple, Full, BulkLogged.</p>
 </tbody>
 </table>
 <h5 id="loggrowth">-LogGrowth</h5>
-<p>The amount in MB that the log file will be set to autogrow by.</p>
+<p>The amount in MB that the log file will be set to autogrow by.<br></p>
 <table>
 <thead>
 <tr>
@@ -902,7 +902,7 @@ Valid options are: Simple, Full, BulkLogged.</p>
 </tbody>
 </table>
 <h5 id="logmaxsize">-LogMaxSize</h5>
-<p>The maximum permitted size in MB. If this is less than the log file size for the model database, then the model log size will be used instead.</p>
+<p>The maximum permitted size in MB. If this is less than the log file size for the model database, then the model log size will be used instead.<br></p>
 <table>
 <thead>
 <tr>
@@ -930,7 +930,7 @@ Valid options are: Simple, Full, BulkLogged.</p>
 </tbody>
 </table>
 <h5 id="secondaryfilesize">-SecondaryFilesize</h5>
-<p>The size in MB of the files to be added to the Secondary filegroup. Each file added will be created with this size setting.</p>
+<p>The size in MB of the files to be added to the Secondary filegroup. Each file added will be created with this size setting.<br></p>
 <table>
 <thead>
 <tr>
@@ -958,7 +958,7 @@ Valid options are: Simple, Full, BulkLogged.</p>
 </tbody>
 </table>
 <h5 id="secondaryfilegrowth">-SecondaryFileGrowth</h5>
-<p>The amount in MB that the Secondary files will be set to autogrow by. Use 0 for no growth allowed. Each file added will be created with this growth setting.</p>
+<p>The amount in MB that the Secondary files will be set to autogrow by. Use 0 for no growth allowed. Each file added will be created with this growth setting.<br></p>
 <table>
 <thead>
 <tr>
@@ -986,7 +986,7 @@ Valid options are: Simple, Full, BulkLogged.</p>
 </tbody>
 </table>
 <h5 id="secondaryfilemaxsize">-SecondaryFileMaxSize</h5>
-<p>The maximum permitted size in MB for the Secondary data files to grow to. Each file added will be created with this max size setting.</p>
+<p>The maximum permitted size in MB for the Secondary data files to grow to. Each file added will be created with this max size setting.<br></p>
 <table>
 <thead>
 <tr>
@@ -1014,7 +1014,7 @@ Valid options are: Simple, Full, BulkLogged.</p>
 </tbody>
 </table>
 <h5 id="secondaryfilecount">-SecondaryFileCount</h5>
-<p>The number of files to create in the Secondary filegroup for the database.</p>
+<p>The number of files to create in the Secondary filegroup for the database.<br></p>
 <table>
 <thead>
 <tr>
@@ -1042,7 +1042,7 @@ Valid options are: Simple, Full, BulkLogged.</p>
 </tbody>
 </table>
 <h5 id="defaultfilegroup">-DefaultFileGroup</h5>
-<p>Sets the default file group. Either primary or secondary.</p>
+<p>Sets the default file group. Either primary or secondary.<br></p>
 <table>
 <thead>
 <tr>
@@ -1076,7 +1076,7 @@ Valid options are: Simple, Full, BulkLogged.</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -1104,7 +1104,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.</p>
+<p>If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.<br></p>
 <table>
 <thead>
 <tr>
@@ -1132,7 +1132,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.</p>
+<p>If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.<br></p>
 <table>
 <thead>
 <tr>
@@ -1161,6 +1161,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/New-DbaDatabase.ps1">New-DbaDatabase</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#New-DbaDatabase">New-DbaDatabase</a>.</p>
 
                 </div> <!-- rendered -->

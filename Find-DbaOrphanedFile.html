@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -472,22 +472,22 @@
 <p>You can specify additional filetypes using the -FileType parameter, and additional paths to search using the -Path parameter.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Find-DbaOrphanedFile -SqlInstance &lt;DbaInstanceParameter[]&gt;
-    --SqlCredential &lt;PSCredential&gt;]
-    --Path &lt;String[]&gt;]
-    --FileType &lt;String[]&gt;]
-    --LocalOnly]
-    --EnableException]
-    --Recurse]
-    -&lt;CommonParameters&gt;]
+    [-SqlCredential &lt;PSCredential&gt;]
+    [-Path &lt;String[]&gt;]
+    [-FileType &lt;String[]&gt;]
+    [-LocalOnly]
+    [-EnableException]
+    [-Recurse]
+    [&lt;CommonParameters&gt;]
 
 Find-DbaOrphanedFile -SqlInstance &lt;DbaInstanceParameter[]&gt;
-    --SqlCredential &lt;PSCredential&gt;]
-    --Path &lt;String[]&gt;]
-    --FileType &lt;String[]&gt;]
-    --RemoteOnly]
-    --EnableException]
-    --Recurse]
-    -&lt;CommonParameters&gt;]
+    [-SqlCredential &lt;PSCredential&gt;]
+    [-Path &lt;String[]&gt;]
+    [-FileType &lt;String[]&gt;]
+    [-RemoteOnly]
+    [-EnableException]
+    [-Recurse]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -496,34 +496,34 @@ Find-DbaOrphanedFile -SqlInstance &lt;DbaInstanceParameter[]&gt;
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Find-DbaOrphanedFile -SqlInstance sqlserver2014a
 </code></pre>
-<p>Connects to sqlserver2014a, authenticating with Windows credentials, and searches for orphaned files. Returns server name, local filename, and unc path to file.</p>
+<p>Connects to sqlserver2014a, authenticating with Windows credentials, and searches for orphaned files. Returns server name, local filename, and unc path to file.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Find-DbaOrphanedFile -SqlInstance sqlserver2014a -SqlCredential $cred
 </code></pre>
-<p>Connects to sqlserver2014a, authenticating with SQL Server authentication, and searches for orphaned files. Returns server name, local filename, and unc path to file.</p>
+<p>Connects to sqlserver2014a, authenticating with SQL Server authentication, and searches for orphaned files. Returns server name, local filename, and unc path to file.<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Find-DbaOrphanedFile -SqlInstance sql2014 -Path 'E:\Dir1', 'E:\Dir2'
 </code></pre>
-<p>Finds the orphaned files in &quot;E:\Dir1&quot; and &quot;E:Dir2&quot; in addition to the default directories.</p>
+<p>Finds the orphaned files in &quot;E:\Dir1&quot; and &quot;E:Dir2&quot; in addition to the default directories.<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; Find-DbaOrphanedFile -SqlInstance sql2014 -Path 'E:\Dir1' -Recurse
 </code></pre>
-<p>Finds the orphaned files in &quot;E:\Dir1&quot; and any of its subdirectories in addition to the default directories.</p>
+<p>Finds the orphaned files in &quot;E:\Dir1&quot; and any of its subdirectories in addition to the default directories.<br></p>
 <h5 id="example-5">Example:  5</h5>
 <pre><code>PS C:\&gt; Find-DbaOrphanedFile -SqlInstance sql2014 -LocalOnly
 </code></pre>
-<p>Returns only the local file paths for orphaned files.</p>
+<p>Returns only the local file paths for orphaned files.<br></p>
 <h5 id="example-6">Example:  6</h5>
 <pre><code>PS C:\&gt; Find-DbaOrphanedFile -SqlInstance sql2014 -RemoteOnly
 </code></pre>
-<p>Returns only the remote file path for orphaned files.</p>
+<p>Returns only the remote file path for orphaned files.<br></p>
 <h5 id="example-7">Example:  7</h5>
 <pre><code>PS C:\&gt; Find-DbaOrphanedFile -SqlInstance sql2014, sql2016 -FileType fsf, mld
 </code></pre>
-<p>Finds the orphaned ending with &quot;.fsf&quot; and &quot;.mld&quot; in addition to the default filetypes &quot;.mdf&quot;, &quot;.ldf&quot;, &quot;.ndf&quot; for both the servers sql2014 and sql2016.</p>
+<p>Finds the orphaned ending with &quot;.fsf&quot; and &quot;.mld&quot; in addition to the default filetypes &quot;.mdf&quot;, &quot;.ldf&quot;, &quot;.ndf&quot; for both the servers sql2014 and sql2016.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances. You must have sysadmin access and server version must be SQL Server version 2000 or higher.</p>
+<p>The target SQL Server instance or instances. You must have sysadmin access and server version must be SQL Server version 2000 or higher.<br></p>
 <table>
 <thead>
 <tr>
@@ -554,7 +554,7 @@ Find-DbaOrphanedFile -SqlInstance &lt;DbaInstanceParameter[]&gt;
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -582,7 +582,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="path">-Path</h5>
-<p>Specifies one or more directories to search in addition to the default data and log directories.</p>
+<p>Specifies one or more directories to search in addition to the default data and log directories.<br></p>
 <table>
 <thead>
 <tr>
@@ -610,7 +610,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="filetype">-FileType</h5>
-<p>Specifies file extensions other than mdf, ldf and ndf to search for. Do not include the dot (&quot;.&quot;) when specifying the extension.</p>
+<p>Specifies file extensions other than mdf, ldf and ndf to search for. Do not include the dot (&quot;.&quot;) when specifying the extension.<br></p>
 <table>
 <thead>
 <tr>
@@ -638,7 +638,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="localonly">-LocalOnly</h5>
-<p>If this switch is enabled, only local filenames will be returned. Using this switch with multiple servers is not recommended since it does not return the associated server name.</p>
+<p>If this switch is enabled, only local filenames will be returned. Using this switch with multiple servers is not recommended since it does not return the associated server name.<br></p>
 <table>
 <thead>
 <tr>
@@ -666,7 +666,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="remoteonly">-RemoteOnly</h5>
-<p>If this switch is enabled, only remote filenames will be returned.</p>
+<p>If this switch is enabled, only remote filenames will be returned.<br></p>
 <table>
 <thead>
 <tr>
@@ -696,7 +696,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -724,7 +724,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="recurse">-Recurse</h5>
-<p>If this switch is enabled, the command will search subdirectories of the Path parameter.</p>
+<p>If this switch is enabled, the command will search subdirectories of the Path parameter.<br></p>
 <table>
 <thead>
 <tr>
@@ -753,6 +753,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Find-DbaOrphanedFile.ps1">Find-DbaOrphanedFile</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Find-DbaOrphanedFile">Find-DbaOrphanedFile</a>.</p>
 
                 </div> <!-- rendered -->

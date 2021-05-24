@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -470,13 +470,13 @@
 <p>Imports registered servers and registered server groups to SQL Server Central Management Server (CMS)</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Import-DbaRegServer
-    --SqlInstance] &lt;DbaInstanceParameter[]&gt;
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    -[-Path] &lt;String[]&gt;]
-    -[-InputObject] &lt;Object[]&gt;]
-    -[-Group] &lt;Object&gt;]
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [-SqlInstance] &lt;DbaInstanceParameter[]&gt;
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [[-Path] &lt;String[]&gt;]
+    [[-InputObject] &lt;Object[]&gt;]
+    [[-Group] &lt;Object&gt;]
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -485,22 +485,22 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Import-DbaRegServer -SqlInstance sql2012 -Path C:\temp\corp-regservers.xml
 </code></pre>
-<p>Imports C:\temp\corp-regservers.xml to the CMS on sql2012</p>
+<p>Imports C:\temp\corp-regservers.xml to the CMS on sql2012<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Import-DbaRegServer -SqlInstance sql2008 -Group hr\Seattle -Path C:\temp\Seattle.xml
 </code></pre>
-<p>Imports C:\temp\Seattle.xml to Seattle subgroup within the hr group on sql2008</p>
+<p>Imports C:\temp\Seattle.xml to Seattle subgroup within the hr group on sql2008<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Get-DbaRegServer -SqlInstance sql2008, sql2012 | Import-DbaRegServer -SqlInstance sql2017
 </code></pre>
-<p>Imports all registered servers from sql2008 and sql2012 to sql2017</p>
+<p>Imports all registered servers from sql2008 and sql2012 to sql2017<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; Get-DbaRegServerGroup -SqlInstance sql2008 -Group hr\Seattle | Import-DbaRegServer -SqlInstance sql2017 -Group Seattle
 </code></pre>
-<p>Imports all registered servers from the hr\Seattle group on sql2008 to the Seattle group on sql2017</p>
+<p>Imports all registered servers from the hr\Seattle group on sql2008 to the Seattle group on sql2017<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances.</p>
+<p>The target SQL Server instance or instances.<br></p>
 <table>
 <thead>
 <tr>
@@ -531,7 +531,7 @@
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -559,7 +559,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="path">-Path</h5>
-<p>Optional path to exported reg server XML</p>
+<p>Optional path to exported reg server XML<br></p>
 <table>
 <thead>
 <tr>
@@ -588,7 +588,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </table>
 <h5 id="inputobject">-InputObject</h5>
 <p>Enables piping from Get-DbaRegServer, Get-DbaRegServerGroup, CSVs and other objects.
-If importing from CSV or other object, a column named ServerName is required. Optional columns include Name, Description and Group.</p>
+If importing from CSV or other object, a column named ServerName is required. Optional columns include Name, Description and Group.<br></p>
 <table>
 <thead>
 <tr>
@@ -616,7 +616,7 @@ If importing from CSV or other object, a column named ServerName is required. Op
 </tbody>
 </table>
 <h5 id="group">-Group</h5>
-<p>Imports to specific group</p>
+<p>Imports to specific group<br></p>
 <table>
 <thead>
 <tr>
@@ -646,7 +646,7 @@ If importing from CSV or other object, a column named ServerName is required. Op
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -675,6 +675,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Import-DbaRegServer.ps1">Import-DbaRegServer</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Import-DbaRegServer">Import-DbaRegServer</a>.</p>
 
                 </div> <!-- rendered -->

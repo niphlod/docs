@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -470,23 +470,23 @@
 <p>This script will download and install the latest version of SQL Server Maintenance Solution created by Ola Hallengren</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Install-DbaMaintenanceSolution
-    --SqlInstance] &lt;DbaInstanceParameter[]&gt;
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    -[-Database] &lt;Object&gt;]
-    -[-BackupLocation] &lt;String&gt;]
-    -[-CleanupTime] &lt;Int32&gt;]
-    -[-OutputFileDirectory] &lt;String&gt;]
-    --ReplaceExisting]
-    --LogToTable]
-    -[-Solution] &lt;String[]&gt;]
-    --InstallJobs]
-    -[-LocalFile] &lt;String&gt;]
-    --Force]
-    --InstallParallel]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-SqlInstance] &lt;DbaInstanceParameter[]&gt;
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [[-Database] &lt;Object&gt;]
+    [[-BackupLocation] &lt;String&gt;]
+    [[-CleanupTime] &lt;Int32&gt;]
+    [[-OutputFileDirectory] &lt;String&gt;]
+    [-ReplaceExisting]
+    [-LogToTable]
+    [[-Solution] &lt;String[]&gt;]
+    [-InstallJobs]
+    [[-LocalFile] &lt;String&gt;]
+    [-Force]
+    [-InstallParallel]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -495,13 +495,13 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Install-DbaMaintenanceSolution -SqlInstance RES14224 -Database DBA -CleanupTime 72
 </code></pre>
-<p>Installs Ola Hallengren's Solution objects on RES14224 in the DBA database.
-Backups will default to the default Backup Directory.
-If the Maintenance Solution already exists, the script will be halted.</p>
+<p>Installs Ola Hallengren's Solution objects on RES14224 in the DBA database.<br>
+Backups will default to the default Backup Directory.<br>
+If the Maintenance Solution already exists, the script will be halted.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Install-DbaMaintenanceSolution -SqlInstance RES14224 -Database DBA -BackupLocation &quot;Z:\SQLBackup&quot; -CleanupTime 72
 </code></pre>
-<p>This will create the Ola Hallengren's Solution objects. Existing objects are not affected in any way.</p>
+<p>This will create the Ola Hallengren's Solution objects. Existing objects are not affected in any way.<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; $params = @{
 &gt;&gt; SqlInstance = 'MyServer'
@@ -515,38 +515,38 @@ If the Maintenance Solution already exists, the script will be halted.</p>
 &gt;&gt; }
 &gt;&gt; Install-DbaMaintenanceSolution @params
 </code></pre>
-<p>Installs Maintenance Solution to myserver in database. Adds Agent Jobs, and if any currently exist, they'll be replaced.</p>
+<p>Installs Maintenance Solution to myserver in database. Adds Agent Jobs, and if any currently exist, they'll be replaced.<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; Install-DbaMaintenanceSolution -SqlInstance RES14224 -Database DBA -BackupLocation &quot;Z:\SQLBackup&quot; -CleanupTime 72 -ReplaceExisting
 </code></pre>
-<p>This will drop and then recreate the Ola Hallengren's Solution objects
-The cleanup script will drop and recreate:</p>
+<p>This will drop and then recreate the Ola Hallengren's Solution objects<br>
+The cleanup script will drop and recreate:<br></p>
 <ul>
-<li>TABLE [dbo].[CommandLog]</li>
-<li>STORED PROCEDURE [dbo].[CommandExecute]</li>
-<li>STORED PROCEDURE [dbo].[DatabaseBackup]</li>
-<li>STORED PROCEDURE [dbo].[DatabaseIntegrityCheck]</li>
-<li>STORED PROCEDURE [dbo].[IndexOptimize]
-The following SQL Agent jobs will be deleted:</li>
-<li>'Output File Cleanup'</li>
-<li>'IndexOptimize - USER_DATABASES'</li>
-<li>'sp_delete_backuphistory'</li>
-<li>'DatabaseBackup - USER_DATABASES - LOG'</li>
-<li>'DatabaseBackup - SYSTEM_DATABASES - FULL'</li>
-<li>'DatabaseBackup - USER_DATABASES - FULL'</li>
-<li>'sp_purge_jobhistory'</li>
-<li>'DatabaseIntegrityCheck - SYSTEM_DATABASES'</li>
-<li>'CommandLog Cleanup'</li>
-<li>'DatabaseIntegrityCheck - USER_DATABASES'</li>
-<li>'DatabaseBackup - USER_DATABASES - DIFF'</li>
+<li>TABLE [dbo].[CommandLog]<br></li>
+<li>STORED PROCEDURE [dbo].[CommandExecute]<br></li>
+<li>STORED PROCEDURE [dbo].[DatabaseBackup]<br></li>
+<li>STORED PROCEDURE [dbo].[DatabaseIntegrityCheck]<br></li>
+<li>STORED PROCEDURE [dbo].[IndexOptimize]<br>
+The following SQL Agent jobs will be deleted:<br></li>
+<li>'Output File Cleanup'<br></li>
+<li>'IndexOptimize - USER_DATABASES'<br></li>
+<li>'sp_delete_backuphistory'<br></li>
+<li>'DatabaseBackup - USER_DATABASES - LOG'<br></li>
+<li>'DatabaseBackup - SYSTEM_DATABASES - FULL'<br></li>
+<li>'DatabaseBackup - USER_DATABASES - FULL'<br></li>
+<li>'sp_purge_jobhistory'<br></li>
+<li>'DatabaseIntegrityCheck - SYSTEM_DATABASES'<br></li>
+<li>'CommandLog Cleanup'<br></li>
+<li>'DatabaseIntegrityCheck - USER_DATABASES'<br></li>
+<li>'DatabaseBackup - USER_DATABASES - DIFF'<br></li>
 </ul>
 <h5 id="example-5">Example:  5</h5>
 <pre><code>PS C:\&gt; Install-DbaMaintenanceSolution -SqlInstance RES14224 -Database DBA -InstallParallel
 </code></pre>
-<p>This will create the Queue and QueueDatabase tables for uses when manually changing jobs to use the @DatabasesInParallel = 'Y' flag</p>
+<p>This will create the Queue and QueueDatabase tables for uses when manually changing jobs to use the @DatabasesInParallel = 'Y' flag<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance onto which the Maintenance Solution will be installed.</p>
+<p>The target SQL Server instance onto which the Maintenance Solution will be installed.<br></p>
 <table>
 <thead>
 <tr>
@@ -577,7 +577,7 @@ The following SQL Agent jobs will be deleted:</li>
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -605,7 +605,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="database">-Database</h5>
-<p>The database where Ola Hallengren's solution will be installed. Defaults to master.</p>
+<p>The database where Ola Hallengren's solution will be installed. Defaults to master.<br></p>
 <table>
 <thead>
 <tr>
@@ -633,7 +633,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="backuplocation">-BackupLocation</h5>
-<p>Location of the backup root directory. If this is not supplied, the default backup directory will be used.</p>
+<p>Location of the backup root directory. If this is not supplied, the default backup directory will be used.<br></p>
 <table>
 <thead>
 <tr>
@@ -661,7 +661,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="cleanuptime">-CleanupTime</h5>
-<p>Time in hours, after which backup files are deleted.</p>
+<p>Time in hours, after which backup files are deleted.<br></p>
 <table>
 <thead>
 <tr>
@@ -689,7 +689,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="outputfiledirectory">-OutputFileDirectory</h5>
-<p>Specify the output file directory where the Maintenance Solution will write to.</p>
+<p>Specify the output file directory where the Maintenance Solution will write to.<br></p>
 <table>
 <thead>
 <tr>
@@ -717,7 +717,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="replaceexisting">-ReplaceExisting</h5>
-<p>If this switch is enabled, objects already present in the target database will be dropped and recreated.</p>
+<p>If this switch is enabled, objects already present in the target database will be dropped and recreated.<br></p>
 <table>
 <thead>
 <tr>
@@ -745,7 +745,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="logtotable">-LogToTable</h5>
-<p>If this switch is enabled, the Maintenance Solution will be configured to log commands to a table.</p>
+<p>If this switch is enabled, the Maintenance Solution will be configured to log commands to a table.<br></p>
 <table>
 <thead>
 <tr>
@@ -773,7 +773,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="solution">-Solution</h5>
-<p>Specifies which portion of the Maintenance solution to install. Valid values are All (full solution), Backup, IntegrityCheck and IndexOptimize.</p>
+<p>Specifies which portion of the Maintenance solution to install. Valid values are All (full solution), Backup, IntegrityCheck and IndexOptimize.<br></p>
 <table>
 <thead>
 <tr>
@@ -805,7 +805,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="installjobs">-InstallJobs</h5>
-<p>If this switch is enabled, the corresponding SQL Agent Jobs will be created.</p>
+<p>If this switch is enabled, the corresponding SQL Agent Jobs will be created.<br></p>
 <table>
 <thead>
 <tr>
@@ -834,7 +834,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </table>
 <h5 id="localfile">-LocalFile</h5>
 <p>Specifies the path to a local file to install Ola's solution from. This <em>should</em> be the zip file as distributed by the maintainers.
-If this parameter is not specified, the latest version will be downloaded and installed from <a href="https://github.com/olahallengren/sql-server-maintenance-solution">https://github.com/olahallengren/sql-server-maintenance-solution</a></p>
+If this parameter is not specified, the latest version will be downloaded and installed from <a href="https://github.com/olahallengren/sql-server-maintenance-solution">https://github.com/olahallengren/sql-server-maintenance-solution</a><br></p>
 <table>
 <thead>
 <tr>
@@ -862,7 +862,7 @@ If this parameter is not specified, the latest version will be downloaded and in
 </tbody>
 </table>
 <h5 id="force">-Force</h5>
-<p>If this switch is enabled, the Ola's solution will be downloaded from the internet even if previously cached.</p>
+<p>If this switch is enabled, the Ola's solution will be downloaded from the internet even if previously cached.<br></p>
 <table>
 <thead>
 <tr>
@@ -890,7 +890,7 @@ If this parameter is not specified, the latest version will be downloaded and in
 </tbody>
 </table>
 <h5 id="installparallel">-InstallParallel</h5>
-<p>If this switch is enabled, the Queue and QueueDatabase tables are created, for use when  @DatabasesInParallel = 'Y' are set in the jobs.</p>
+<p>If this switch is enabled, the Queue and QueueDatabase tables are created, for use when  @DatabasesInParallel = 'Y' are set in the jobs.<br></p>
 <table>
 <thead>
 <tr>
@@ -920,7 +920,7 @@ If this parameter is not specified, the latest version will be downloaded and in
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -948,7 +948,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.</p>
+<p>If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.<br></p>
 <table>
 <thead>
 <tr>
@@ -976,7 +976,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.</p>
+<p>If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.<br></p>
 <table>
 <thead>
 <tr>
@@ -1005,6 +1005,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Install-DbaMaintenanceSolution.ps1">Install-DbaMaintenanceSolution</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Install-DbaMaintenanceSolution">Install-DbaMaintenanceSolution</a>.</p>
 
                 </div> <!-- rendered -->

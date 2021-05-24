@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -471,20 +471,20 @@
 <p>The parameters get more granular from the Folder level. For example, specifying -Folder will only deploy projects/environments from within that folder.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Copy-DbaSsisCatalog
-    --Source] &lt;DbaInstanceParameter&gt;
-    --Destination] &lt;DbaInstanceParameter[]&gt;
-    -[-SourceSqlCredential] &lt;PSCredential&gt;]
-    -[-DestinationSqlCredential] &lt;PSCredential&gt;]
-    -[-Project] &lt;String&gt;]
-    -[-Folder] &lt;String&gt;]
-    -[-Environment] &lt;String&gt;]
-    -[-CreateCatalogPassword] &lt;SecureString&gt;]
-    --EnableSqlClr]
-    --Force]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-Source] &lt;DbaInstanceParameter&gt;
+    [-Destination] &lt;DbaInstanceParameter[]&gt;
+    [[-SourceSqlCredential] &lt;PSCredential&gt;]
+    [[-DestinationSqlCredential] &lt;PSCredential&gt;]
+    [[-Project] &lt;String&gt;]
+    [[-Folder] &lt;String&gt;]
+    [[-Environment] &lt;String&gt;]
+    [[-CreateCatalogPassword] &lt;SecureString&gt;]
+    [-EnableSqlClr]
+    [-Force]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -493,25 +493,25 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Copy-DbaSsisCatalog -Source sqlserver2014a -Destination sqlcluster
 </code></pre>
-<p>Copies all folders, environments and SSIS Projects from sqlserver2014a to sqlcluster, using Windows credentials to authenticate to both instances. If folders with the same name exist on the
-destination they will be skipped, but projects will be redeployed.</p>
+<p>Copies all folders, environments and SSIS Projects from sqlserver2014a to sqlcluster, using Windows credentials to authenticate to both instances. If folders with the same name exist on the <br>
+destination they will be skipped, but projects will be redeployed.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Copy-DbaSsisCatalog -Source sqlserver2014a -Destination sqlcluster -Project Archive_Tables -SourceSqlCredential $cred -Force
 </code></pre>
-<p>Copies a single Project, the Archive_Tables Project, from sqlserver2014a to sqlcluster using SQL credentials to authenticate to sqlserver2014a and Windows credentials to authenticate to sqlcluster.
-If a Project with the same name exists on sqlcluster, it will be deleted and recreated because -Force was used.</p>
+<p>Copies a single Project, the Archive_Tables Project, from sqlserver2014a to sqlcluster using SQL credentials to authenticate to sqlserver2014a and Windows credentials to authenticate to sqlcluster. <br>
+If a Project with the same name exists on sqlcluster, it will be deleted and recreated because -Force was used.<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Copy-DbaSsisCatalog -Source sqlserver2014a -Destination sqlcluster -WhatIf -Force
 </code></pre>
-<p>Shows what would happen if the command were executed using force.</p>
+<p>Shows what would happen if the command were executed using force.<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; $SecurePW = Read-Host &quot;Enter password&quot; -AsSecureString
 PS C:\&gt; Copy-DbaSsisCatalog -Source sqlserver2014a -Destination sqlcluster -CreateCatalogPassword $SecurePW
 </code></pre>
-<p>Deploy entire SSIS catalog to an instance without a destination catalog. User prompts for creating the catalog on Destination will be bypassed.</p>
+<p>Deploy entire SSIS catalog to an instance without a destination catalog. User prompts for creating the catalog on Destination will be bypassed.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="source">-Source</h5>
-<p>Source SQL Server. You must have sysadmin access and server version must be SQL Server version 2012 or higher.</p>
+<p>Source SQL Server. You must have sysadmin access and server version must be SQL Server version 2012 or higher.<br></p>
 <table>
 <thead>
 <tr>
@@ -539,7 +539,7 @@ PS C:\&gt; Copy-DbaSsisCatalog -Source sqlserver2014a -Destination sqlcluster -C
 </tbody>
 </table>
 <h5 id="destination">-Destination</h5>
-<p>Destination SQL Server. You must have sysadmin access and the server must be SQL Server 2012 or higher.</p>
+<p>Destination SQL Server. You must have sysadmin access and the server must be SQL Server 2012 or higher.<br></p>
 <table>
 <thead>
 <tr>
@@ -570,7 +570,7 @@ PS C:\&gt; Copy-DbaSsisCatalog -Source sqlserver2014a -Destination sqlcluster -C
 <h5 id="sourcesqlcredential">-SourceSqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -600,7 +600,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 <h5 id="destinationsqlcredential">-DestinationSqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -628,7 +628,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="project">-Project</h5>
-<p>Specifies a source Project name.</p>
+<p>Specifies a source Project name.<br></p>
 <table>
 <thead>
 <tr>
@@ -656,7 +656,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="folder">-Folder</h5>
-<p>Specifies a source folder name.</p>
+<p>Specifies a source folder name.<br></p>
 <table>
 <thead>
 <tr>
@@ -684,7 +684,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="environment">-Environment</h5>
-<p>Specifies an environment to copy.</p>
+<p>Specifies an environment to copy.<br></p>
 <table>
 <thead>
 <tr>
@@ -712,7 +712,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="createcatalogpassword">-CreateCatalogPassword</h5>
-<p>Specifies a secure string to use in creating an SSISDB catalog on Destination. If this is specified, prompts for the password will be skipped.</p>
+<p>Specifies a secure string to use in creating an SSISDB catalog on Destination. If this is specified, prompts for the password will be skipped.<br></p>
 <table>
 <thead>
 <tr>
@@ -740,7 +740,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="enablesqlclr">-EnableSqlClr</h5>
-<p>If this switch is enabled and Destination does not have the SQL CLR configuration option enabled, user prompts for enabling it on Destination will be skipped. SQL CLR is required for SSISDB.</p>
+<p>If this switch is enabled and Destination does not have the SQL CLR configuration option enabled, user prompts for enabling it on Destination will be skipped. SQL CLR is required for SSISDB.<br></p>
 <table>
 <thead>
 <tr>
@@ -768,7 +768,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="force">-Force</h5>
-<p>If this switch is enabled, the SSIS Catalog will be dropped and recreated on Destination if it already exists.</p>
+<p>If this switch is enabled, the SSIS Catalog will be dropped and recreated on Destination if it already exists.<br></p>
 <table>
 <thead>
 <tr>
@@ -798,7 +798,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -826,7 +826,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.</p>
+<p>If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.<br></p>
 <table>
 <thead>
 <tr>
@@ -854,7 +854,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.</p>
+<p>If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.<br></p>
 <table>
 <thead>
 <tr>
@@ -883,6 +883,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Copy-DbaSsisCatalog.ps1">Copy-DbaSsisCatalog</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Copy-DbaSsisCatalog">Copy-DbaSsisCatalog</a>.</p>
 
                 </div> <!-- rendered -->

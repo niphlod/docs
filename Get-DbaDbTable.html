@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -470,15 +470,15 @@
 <p>Shows table information around table row and data sizes and if it has any table type information.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Get-DbaDbTable
-    -[-SqlInstance] &lt;DbaInstanceParameter[]&gt;]
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    -[-Database] &lt;String[]&gt;]
-    -[-ExcludeDatabase] &lt;String[]&gt;]
-    --IncludeSystemDBs]
-    -[-Table] &lt;String[]&gt;]
-    -[-InputObject] &lt;Database[]&gt;]
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [[-SqlInstance] &lt;DbaInstanceParameter[]&gt;]
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [[-Database] &lt;String[]&gt;]
+    [[-ExcludeDatabase] &lt;String[]&gt;]
+    [-IncludeSystemDBs]
+    [[-Table] &lt;String[]&gt;]
+    [[-InputObject] &lt;Database[]&gt;]
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -487,33 +487,33 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Get-DbaDbTable -SqlInstance DEV01 -Database Test1
 </code></pre>
-<p>Return all tables in the Test1 database</p>
+<p>Return all tables in the Test1 database<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Get-DbaDbTable -SqlInstance DEV01 -Database MyDB -Table MyTable
 </code></pre>
-<p>Return only information on the table MyTable from the database MyDB</p>
+<p>Return only information on the table MyTable from the database MyDB<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Get-DbaDbTable -SqlInstance DEV01 -Table MyTable
 </code></pre>
-<p>Returns information on table called MyTable if it exists in any database on the server, under any schema</p>
+<p>Returns information on table called MyTable if it exists in any database on the server, under any schema<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; Get-DbaDbTable -SqlInstance DEV01 -Table dbo.[First.Table]
 </code></pre>
-<p>Returns information on table called First.Table on schema dbo if it exists in any database on the server</p>
+<p>Returns information on table called First.Table on schema dbo if it exists in any database on the server<br></p>
 <h5 id="example-5">Example:  5</h5>
 <pre><code>PS C:\&gt; 'localhost','localhost\namedinstance' | Get-DbaDbTable -Database DBA -Table Commandlog
 </code></pre>
-<p>Returns information on the CommandLog table in the DBA database on both instances localhost and the named instance localhost\namedinstance</p>
+<p>Returns information on the CommandLog table in the DBA database on both instances localhost and the named instance localhost\namedinstance<br></p>
 <h5 id="example-6">Example:  6</h5>
 <pre><code>PS C:\&gt; Get-DbaDbTable -SqlInstance DEV01 -Table &quot;[[DbName]]].[Schema.With.Dots].[`&quot;[Process]]`&quot;]&quot; -Verbose
 </code></pre>
-<p>For the instance Dev01 Returns information for a table named: &quot;[Process]&quot; in schema named: Schema.With.Dots in database named: [DbName]
-The Table name, Schema name and Database name must be wrapped in square brackets [ ]
-Special charcters like &quot; must be escaped by a ` charcter.
-In addition any actual instance of the ] character must be escaped by being duplicated.</p>
+<p>For the instance Dev01 Returns information for a table named: &quot;[Process]&quot; in schema named: Schema.With.Dots in database named: [DbName]<br>
+The Table name, Schema name and Database name must be wrapped in square brackets [ ]<br>
+Special charcters like &quot; must be escaped by a ` charcter.<br>
+In addition any actual instance of the ] character must be escaped by being duplicated.<br></p>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances. This can be a collection and receive pipeline input.</p>
+<p>The target SQL Server instance or instances. This can be a collection and receive pipeline input.<br></p>
 <table>
 <thead>
 <tr>
@@ -543,7 +543,7 @@ In addition any actual instance of the ] character must be escaped by being dupl
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -571,7 +571,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="database">-Database</h5>
-<p>The database(s) to process - this list is auto-populated from the server. If unspecified, all databases will be processed.</p>
+<p>The database(s) to process - this list is auto-populated from the server. If unspecified, all databases will be processed.<br></p>
 <table>
 <thead>
 <tr>
@@ -599,7 +599,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="excludedatabase">-ExcludeDatabase</h5>
-<p>The database(s) to exclude - this list is auto-populated from the server</p>
+<p>The database(s) to exclude - this list is auto-populated from the server<br></p>
 <table>
 <thead>
 <tr>
@@ -627,7 +627,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="includesystemdbs">-IncludeSystemDBs</h5>
-<p>Switch parameter that when used will display system database information</p>
+<p>Switch parameter that when used will display system database information<br></p>
 <table>
 <thead>
 <tr>
@@ -660,7 +660,7 @@ If the object has special characters please wrap them in square brackets [ ].
 Using dbo.First.Table will try to find table named 'Table' on schema 'First' and database 'dbo'.
 The correct way to find table named 'First.Table' on schema 'dbo' is by passing dbo.[First.Table]
 Any actual usage of the ] must be escaped by duplicating the ] character.
-The correct way to find a table Name] in schema Schema.Name is by passing [Schema.Name].[Name]]]</p>
+The correct way to find a table Name] in schema Schema.Name is by passing [Schema.Name].[Name]]]<br></p>
 <table>
 <thead>
 <tr>
@@ -688,7 +688,7 @@ The correct way to find a table Name] in schema Schema.Name is by passing [Schem
 </tbody>
 </table>
 <h5 id="inputobject">-InputObject</h5>
-<p>Enables piping from Get-DbaDatabase</p>
+<p>Enables piping from Get-DbaDatabase<br></p>
 <table>
 <thead>
 <tr>
@@ -718,7 +718,7 @@ The correct way to find a table Name] in schema Schema.Name is by passing [Schem
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -747,6 +747,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Get-DbaDbTable.ps1">Get-DbaDbTable</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Get-DbaDbTable">Get-DbaDbTable</a>.</p>
 
                 </div> <!-- rendered -->

@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -472,25 +472,25 @@
 Reference:  <a href="https://dbaeyes.wordpress.com/2013/04/19/fully-script-out-a-mssql-database-role/">https://dbaeyes.wordpress.com/2013/04/19/fully-script-out-a-mssql-database-role/</a></p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Export-DbaDbRole
-    -[-SqlInstance] &lt;DbaInstanceParameter[]&gt;]
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    -[-InputObject] &lt;Object[]&gt;]
-    -[-ScriptingOptionsObject] &lt;ScriptingOptions&gt;]
-    -[-Database] &lt;Object[]&gt;]
-    -[-Role] &lt;Object[]&gt;]
-    -[-ExcludeRole] &lt;Object[]&gt;]
-    --ExcludeFixedRole]
-    --IncludeRoleMember]
-    -[-Path] &lt;String&gt;]
-    -[-FilePath] &lt;String&gt;]
-    --Passthru]
-    -[-BatchSeparator] &lt;String&gt;]
-    --NoClobber]
-    --Append]
-    --NoPrefix]
-    -[-Encoding] &lt;String&gt;]
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [[-SqlInstance] &lt;DbaInstanceParameter[]&gt;]
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [[-InputObject] &lt;Object[]&gt;]
+    [[-ScriptingOptionsObject] &lt;ScriptingOptions&gt;]
+    [[-Database] &lt;Object[]&gt;]
+    [[-Role] &lt;Object[]&gt;]
+    [[-ExcludeRole] &lt;Object[]&gt;]
+    [-ExcludeFixedRole]
+    [-IncludeRoleMember]
+    [[-Path] &lt;String&gt;]
+    [[-FilePath] &lt;String&gt;]
+    [-Passthru]
+    [[-BatchSeparator] &lt;String&gt;]
+    [-NoClobber]
+    [-Append]
+    [-NoPrefix]
+    [[-Encoding] &lt;String&gt;]
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -499,45 +499,45 @@ Reference:  <a href="https://dbaeyes.wordpress.com/2013/04/19/fully-script-out-a
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Export-DbaDbRole -SqlInstance sql2005 -Path C:\temp
 </code></pre>
-<p>Exports all the Database Roles for SQL Server &quot;sql2005&quot; and writes them to the file &quot;C:\temp\sql2005-logins.sql&quot;</p>
+<p>Exports all the Database Roles for SQL Server &quot;sql2005&quot; and writes them to the file &quot;C:\temp\sql2005-logins.sql&quot;<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Export-DbaDbRole -SqlInstance sqlserver2014a -ExcludeRole realcajun -SqlCredential $scred -Path C:\temp\roles.sql -Append
 </code></pre>
-<p>Authenticates to sqlserver2014a using SQL Authentication. Exports all roles except for realcajun to C:\temp\roles.sql, and appends to the file if it exists. If not, the file will be created.</p>
+<p>Authenticates to sqlserver2014a using SQL Authentication. Exports all roles except for realcajun to C:\temp\roles.sql, and appends to the file if it exists. If not, the file will be created.<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Export-DbaDbRole -SqlInstance sqlserver2014a -Role realcajun,netnerds -Path C:\temp\roles.sql
 </code></pre>
-<p>Exports ONLY roles netnerds and realcajun FROM sqlserver2014a to the file C:\temp\roles.sql</p>
+<p>Exports ONLY roles netnerds and realcajun FROM sqlserver2014a to the file C:\temp\roles.sql<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; Export-DbaDbRole -SqlInstance sqlserver2014a -Role realcajun,netnerds -Database HR, Accounting
 </code></pre>
-<p>Exports ONLY roles netnerds and realcajun FROM sqlserver2014a with the permissions on databases HR and Accounting</p>
+<p>Exports ONLY roles netnerds and realcajun FROM sqlserver2014a with the permissions on databases HR and Accounting<br></p>
 <h5 id="example-5">Example:  5</h5>
 <pre><code>PS C:\&gt; Get-DbaDatabase -SqlInstance sqlserver2014a -Database HR, Accounting | Export-DbaDbRole
 </code></pre>
-<p>Exports ONLY roles FROM sqlserver2014a with permissions on databases HR and Accounting</p>
+<p>Exports ONLY roles FROM sqlserver2014a with permissions on databases HR and Accounting<br></p>
 <h5 id="example-6">Example:  6</h5>
 <pre><code>PS C:\&gt; Set-DbatoolsConfig -FullName formatting.batchseparator -Value $null
 PS C:\&gt; Export-DbaDbRole -SqlInstance sqlserver2008 -Role realcajun,netnerds -Path C:\temp\roles.sql
 </code></pre>
-<p>Sets the BatchSeparator configuration to null, removing the default &quot;GO&quot; value.
-Exports ONLY roles netnerds and realcajun FROM sqlserver2008 server, to the C:\temp\roles.sql file, without the &quot;GO&quot; batch separator.</p>
+<p>Sets the BatchSeparator configuration to null, removing the default &quot;GO&quot; value.<br>
+Exports ONLY roles netnerds and realcajun FROM sqlserver2008 server, to the C:\temp\roles.sql file, without the &quot;GO&quot; batch separator.<br></p>
 <h5 id="example-7">Example:  7</h5>
 <pre><code>PS C:\&gt; Export-DbaDbRole -SqlInstance sqlserver2008 -Role realcajun,netnerds -Path C:\temp\roles.sql -BatchSeparator $null
 </code></pre>
-<p>Exports ONLY roles netnerds and realcajun FROM sqlserver2008 server, to the C:\temp\roles.sql file, without the &quot;GO&quot; batch separator.</p>
+<p>Exports ONLY roles netnerds and realcajun FROM sqlserver2008 server, to the C:\temp\roles.sql file, without the &quot;GO&quot; batch separator.<br></p>
 <h5 id="example-8">Example:  8</h5>
 <pre><code>PS C:\&gt; Get-DbaDatabase -SqlInstance sqlserver2008 | Export-DbaDbRole -Role realcajun
 </code></pre>
-<p>Exports role realcajun for all databases on sqlserver2008</p>
+<p>Exports role realcajun for all databases on sqlserver2008<br></p>
 <h5 id="example-9">Example:  9</h5>
 <pre><code>PS C:\&gt; Get-DbaDbRole -SqlInstance sqlserver2008 -ExcludeFixedRole | Export-DbaDbRole
 </code></pre>
-<p>Exports all roles from all databases on sqlserver2008, excludes all roles marked as as FixedRole</p>
+<p>Exports all roles from all databases on sqlserver2008, excludes all roles marked as as FixedRole<br></p>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
 <p>The target SQL Server instance or instances. SQL Server 2005 and above supported.
-Any databases in CompatibilityLevel 80 or lower will be skipped</p>
+Any databases in CompatibilityLevel 80 or lower will be skipped<br></p>
 <table>
 <thead>
 <tr>
@@ -567,7 +567,7 @@ Any databases in CompatibilityLevel 80 or lower will be skipped</p>
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -595,7 +595,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="inputobject">-InputObject</h5>
-<p>Enables piping from Get-DbaDatabase and Get-DbaLogin.</p>
+<p>Enables piping from Get-DbaDatabase and Get-DbaLogin.<br></p>
 <table>
 <thead>
 <tr>
@@ -623,7 +623,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="scriptingoptionsobject">-ScriptingOptionsObject</h5>
-<p>An SMO Scripting Object that can be used to customize the output - see New-DbaScriptingOption</p>
+<p>An SMO Scripting Object that can be used to customize the output - see New-DbaScriptingOption<br></p>
 <table>
 <thead>
 <tr>
@@ -651,7 +651,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="database">-Database</h5>
-<p>The database(s) to process. Options for this list are auto-populated from the server. If unspecified, all databases will be processed.</p>
+<p>The database(s) to process. Options for this list are auto-populated from the server. If unspecified, all databases will be processed.<br></p>
 <table>
 <thead>
 <tr>
@@ -679,7 +679,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="role">-Role</h5>
-<p>The Role(s) to process. If unspecified, all Roles will be processed.</p>
+<p>The Role(s) to process. If unspecified, all Roles will be processed.<br></p>
 <table>
 <thead>
 <tr>
@@ -707,7 +707,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="excluderole">-ExcludeRole</h5>
-<p>The Role(s) to exclude.</p>
+<p>The Role(s) to exclude.<br></p>
 <table>
 <thead>
 <tr>
@@ -735,7 +735,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="excludefixedrole">-ExcludeFixedRole</h5>
-<p>Excludes all members of fixed roles.</p>
+<p>Excludes all members of fixed roles.<br></p>
 <table>
 <thead>
 <tr>
@@ -763,7 +763,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="includerolemember">-IncludeRoleMember</h5>
-<p>Include scripting of role members in script</p>
+<p>Include scripting of role members in script<br></p>
 <table>
 <thead>
 <tr>
@@ -792,7 +792,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </table>
 <h5 id="path">-Path</h5>
 <p>Specifies the directory where the file or files will be exported.
-Will default to Path.DbatoolsExport Configuration entry</p>
+Will default to Path.DbatoolsExport Configuration entry<br></p>
 <table>
 <thead>
 <tr>
@@ -821,7 +821,7 @@ Will default to Path.DbatoolsExport Configuration entry</p>
 </table>
 <h5 id="filepath">-FilePath</h5>
 <p>Specifies the full file path of the output file. If left blank then filename based on Instance name, Database name and date is created.
-If more than one database or instance is input then this parameter should normally be blank.</p>
+If more than one database or instance is input then this parameter should normally be blank.<br></p>
 <table>
 <thead>
 <tr>
@@ -849,7 +849,7 @@ If more than one database or instance is input then this parameter should normal
 </tbody>
 </table>
 <h5 id="passthru">-Passthru</h5>
-<p>Output script to console only</p>
+<p>Output script to console only<br></p>
 <table>
 <thead>
 <tr>
@@ -877,7 +877,7 @@ If more than one database or instance is input then this parameter should normal
 </tbody>
 </table>
 <h5 id="batchseparator">-BatchSeparator</h5>
-<p>Batch separator for scripting output. Uses the value from configuration Formatting.BatchSeparator by default. This is normally &quot;GO&quot;</p>
+<p>Batch separator for scripting output. Uses the value from configuration Formatting.BatchSeparator by default. This is normally &quot;GO&quot;<br></p>
 <table>
 <thead>
 <tr>
@@ -905,7 +905,7 @@ If more than one database or instance is input then this parameter should normal
 </tbody>
 </table>
 <h5 id="noclobber">-NoClobber</h5>
-<p>If this switch is enabled, a file already existing at the path specified by Path will not be overwritten. This takes precedence over Append switch</p>
+<p>If this switch is enabled, a file already existing at the path specified by Path will not be overwritten. This takes precedence over Append switch<br></p>
 <table>
 <thead>
 <tr>
@@ -933,7 +933,7 @@ If more than one database or instance is input then this parameter should normal
 </tbody>
 </table>
 <h5 id="append">-Append</h5>
-<p>If this switch is enabled, content will be appended to a file already existing at the path specified by FilePath. If the file does not exist, it will be created.</p>
+<p>If this switch is enabled, content will be appended to a file already existing at the path specified by FilePath. If the file does not exist, it will be created.<br></p>
 <table>
 <thead>
 <tr>
@@ -961,7 +961,7 @@ If more than one database or instance is input then this parameter should normal
 </tbody>
 </table>
 <h5 id="noprefix">-NoPrefix</h5>
-<p>Do not include a Prefix</p>
+<p>Do not include a Prefix<br></p>
 <table>
 <thead>
 <tr>
@@ -998,7 +998,7 @@ Valid values are:
 -- Unicode: Encodes in UTF-16 format using the little-endian byte order.
 -- UTF7: Encodes in UTF-7 format.
 -- UTF8: Encodes in UTF-8 format.
--- Unknown: The encoding type is unknown or invalid. The data can be treated as binary.</p>
+-- Unknown: The encoding type is unknown or invalid. The data can be treated as binary.<br></p>
 <table>
 <thead>
 <tr>
@@ -1032,7 +1032,7 @@ Valid values are:
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -1061,6 +1061,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Export-DbaDbRole.ps1">Export-DbaDbRole</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Export-DbaDbRole">Export-DbaDbRole</a>.</p>
 
                 </div> <!-- rendered -->

@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -466,22 +466,22 @@
 <p>Invokes an install process for a single computer and restarts it if needed</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Invoke-DbaAdvancedInstall
-    -[-ComputerName] &lt;String&gt;]
-    -[-InstanceName] &lt;String&gt;]
-    -[-Port] &lt;Nullable`1&gt;]
-    -[-InstallationPath] &lt;String&gt;]
-    -[-ConfigurationPath] &lt;String&gt;]
-    -[-ArgumentList] &lt;String[]&gt;]
-    -[-Version] &lt;Version&gt;]
-    -[-Configuration] &lt;Hashtable&gt;]
-    -[-Restart] &lt;Boolean&gt;]
-    -[-PerformVolumeMaintenanceTasks] &lt;Boolean&gt;]
-    -[-SaveConfiguration] &lt;String&gt;]
-    -[-Authentication] &lt;String&gt;]
-    -[-Credential] &lt;PSCredential&gt;]
-    -[-SaCredential] &lt;PSCredential&gt;]
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [[-ComputerName] &lt;String&gt;]
+    [[-InstanceName] &lt;String&gt;]
+    [[-Port] &lt;Nullable`1&gt;]
+    [[-InstallationPath] &lt;String&gt;]
+    [[-ConfigurationPath] &lt;String&gt;]
+    [[-ArgumentList] &lt;String[]&gt;]
+    [[-Version] &lt;Version&gt;]
+    [[-Configuration] &lt;Hashtable&gt;]
+    [[-Restart] &lt;Boolean&gt;]
+    [[-PerformVolumeMaintenanceTasks] &lt;Boolean&gt;]
+    [[-SaveConfiguration] &lt;String&gt;]
+    [[-Authentication] &lt;String&gt;]
+    [[-Credential] &lt;PSCredential&gt;]
+    [[-SaCredential] &lt;PSCredential&gt;]
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -490,10 +490,10 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Invoke-DbaAdvancedUpdate -ComputerName SQL1 -Action $actions
 </code></pre>
-<p>Invokes update actions on SQL1 after restarting it.</p>
+<p>Invokes update actions on SQL1 after restarting it.<br></p>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="computername">-ComputerName</h5>
-<p>Target computer with SQL instance or instances.</p>
+<p>Target computer with SQL instance or instances.<br></p>
 <table>
 <thead>
 <tr>
@@ -521,7 +521,7 @@
 </tbody>
 </table>
 <h5 id="instancename">-InstanceName</h5>
-<p>Instance name to be used for the installation</p>
+<p>Instance name to be used for the installation<br></p>
 <table>
 <thead>
 <tr>
@@ -549,7 +549,7 @@
 </tbody>
 </table>
 <h5 id="port">-Port</h5>
-<p>After successful installation, changes SQL Server TCP port to this value. Overrides the port specified in -SqlInstance.</p>
+<p>After successful installation, changes SQL Server TCP port to this value. Overrides the port specified in -SqlInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -577,7 +577,7 @@
 </tbody>
 </table>
 <h5 id="installationpath">-InstallationPath</h5>
-<p>Path to setup.exe</p>
+<p>Path to setup.exe<br></p>
 <table>
 <thead>
 <tr>
@@ -605,7 +605,7 @@
 </tbody>
 </table>
 <h5 id="configurationpath">-ConfigurationPath</h5>
-<p>Path to Configuration.ini on a local machine</p>
+<p>Path to Configuration.ini on a local machine<br></p>
 <table>
 <thead>
 <tr>
@@ -633,7 +633,7 @@
 </tbody>
 </table>
 <h5 id="argumentlist">-ArgumentList</h5>
-<p>Array of command line arguments for setup.exe</p>
+<p>Array of command line arguments for setup.exe<br></p>
 <table>
 <thead>
 <tr>
@@ -661,7 +661,7 @@
 </tbody>
 </table>
 <h5 id="version">-Version</h5>
-<p>Canonic version of SQL Server, e.g. 10.50, 11.0</p>
+<p>Canonic version of SQL Server, e.g. 10.50, 11.0<br></p>
 <table>
 <thead>
 <tr>
@@ -693,7 +693,7 @@
 Overrides all other parameters.
 For example, to define a custom server collation you can use the following parameter:
 PS&gt; Install-DbaInstance -Version 2017 -Configuration @
-Full list of parameters can be found here: <a href="https://docs.microsoft.com/en-us/sql/database-engine/install-windows/install-sql-server-from-the-command-prompt#Install">https://docs.microsoft.com/en-us/sql/database-engine/install-windows/install-sql-server-from-the-command-prompt#Install</a></p>
+Full list of parameters can be found here: <a href="https://docs.microsoft.com/en-us/sql/database-engine/install-windows/install-sql-server-from-the-command-prompt#Install">https://docs.microsoft.com/en-us/sql/database-engine/install-windows/install-sql-server-from-the-command-prompt#Install</a><br></p>
 <table>
 <thead>
 <tr>
@@ -722,7 +722,7 @@ Full list of parameters can be found here: <a href="https://docs.microsoft.com/e
 </table>
 <h5 id="restart">-Restart</h5>
 <p>Restart computer automatically after a successful installation of Sql Server and wait until it comes back online.
-Using this parameter is the only way to chain-install more than 1 instance, since every single patch will require a restart of said computer.</p>
+Using this parameter is the only way to chain-install more than 1 instance, since every single patch will require a restart of said computer.<br></p>
 <table>
 <thead>
 <tr>
@@ -750,7 +750,7 @@ Using this parameter is the only way to chain-install more than 1 instance, sinc
 </tbody>
 </table>
 <h5 id="performvolumemaintenancetasks">-PerformVolumeMaintenanceTasks</h5>
-<p>Allow SQL Server service account to perform Volume Maintenance tasks.</p>
+<p>Allow SQL Server service account to perform Volume Maintenance tasks.<br></p>
 <table>
 <thead>
 <tr>
@@ -778,7 +778,7 @@ Using this parameter is the only way to chain-install more than 1 instance, sinc
 </tbody>
 </table>
 <h5 id="saveconfiguration">-SaveConfiguration</h5>
-<p>Save installation configuration file in a custom location. Will not be preserved otherwise.</p>
+<p>Save installation configuration file in a custom location. Will not be preserved otherwise.<br></p>
 <table>
 <thead>
 <tr>
@@ -812,7 +812,7 @@ Defaults:</p>
 <ul>
 <li>CredSSP when -Credential is specified - due to the fact that repository Path is usually a network share and credentials need to be passed to the remote host
 to avoid the double-hop issue.</li>
-<li>Default when -Credential is not specified. Will likely fail if a network path is specified.</li>
+<li>Default when -Credential is not specified. Will likely fail if a network path is specified.<br></li>
 </ul>
 <table>
 <thead>
@@ -846,7 +846,7 @@ to avoid the double-hop issue.</li>
 </table>
 <h5 id="credential">-Credential</h5>
 <p>Windows Credential with permission to log on to the remote server.
-Must be specified for any remote connection if installation media is located on a network folder.</p>
+Must be specified for any remote connection if installation media is located on a network folder.<br></p>
 <table>
 <thead>
 <tr>
@@ -874,7 +874,7 @@ Must be specified for any remote connection if installation media is located on 
 </tbody>
 </table>
 <h5 id="sacredential">-SaCredential</h5>
-<p>Securely provide the password for the sa account when using mixed mode authentication.</p>
+<p>Securely provide the password for the sa account when using mixed mode authentication.<br></p>
 <table>
 <thead>
 <tr>
@@ -904,7 +904,7 @@ Must be specified for any remote connection if installation media is located on 
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -933,6 +933,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Invoke-DbaAdvancedInstall.ps1">Invoke-DbaAdvancedInstall</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Invoke-DbaAdvancedInstall">Invoke-DbaAdvancedInstall</a>.</p>
 
                 </div> <!-- rendered -->

@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -471,12 +471,12 @@
 <p>As an addition you have the ability to check the Archive bit on files before deletion. This will allow you to ensure backups have been archived to your archive location before removal.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Find-DbaBackup
-    --Path] &lt;String&gt;
-    --BackupFileExtension] &lt;String&gt;
-    --RetentionPeriod] &lt;String&gt;
-    --CheckArchiveBit]
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [-Path] &lt;String&gt;
+    [-BackupFileExtension] &lt;String&gt;
+    [-RetentionPeriod] &lt;String&gt;
+    [-CheckArchiveBit]
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -485,19 +485,19 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Find-DbaBackup -Path 'C:\MSSQL\SQL Backup\' -BackupFileExtension trn -RetentionPeriod 48h
 </code></pre>
-<p>Searches for all trn files in C:\MSSQL\SQL Backup\ and all subdirectories that are more than 48 hours old will be included.</p>
+<p>Searches for all trn files in C:\MSSQL\SQL Backup\ and all subdirectories that are more than 48 hours old will be included.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Find-DbaBackup -Path 'C:\MSSQL\Backup\' -BackupFileExtension bak -RetentionPeriod 7d -CheckArchiveBit
 </code></pre>
-<p>Searches for all bak files in C:\MSSQL\Backup\ and all subdirectories that are more than 7 days old will be included, but only if the files have been backed up to another location as verified by
-checking the Archive bit.</p>
+<p>Searches for all bak files in C:\MSSQL\Backup\ and all subdirectories that are more than 7 days old will be included, but only if the files have been backed up to another location as verified by <br>
+checking the Archive bit.<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Find-DbaBackup -Path '\\SQL2014\Backup\' -BackupFileExtension bak -RetentionPeriod 24h | Remove-Item -Verbose
 </code></pre>
-<p>Searches for all bak files in \SQL2014\Backup\ and all subdirectories that are more than 24 hours old and deletes only those files with verbose message.</p>
+<p>Searches for all bak files in \SQL2014\Backup\ and all subdirectories that are more than 24 hours old and deletes only those files with verbose message.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="path">-Path</h5>
-<p>Specifies the name of the base level folder to search for backup files.</p>
+<p>Specifies the name of the base level folder to search for backup files.<br></p>
 <table>
 <thead>
 <tr>
@@ -525,7 +525,7 @@ checking the Archive bit.</p>
 </tbody>
 </table>
 <h5 id="backupfileextension">-BackupFileExtension</h5>
-<p>Specifies the filename extension of the backup files you wish to find (typically 'bak', 'trn' or 'log'). Do not include the period.</p>
+<p>Specifies the filename extension of the backup files you wish to find (typically 'bak', 'trn' or 'log'). Do not include the period.<br></p>
 <table>
 <thead>
 <tr>
@@ -564,7 +564,7 @@ Formatting Examples:
 '48h' = 48 hours
 '7d' = 7 days
 '4w' = 4 weeks
-'1m' = 1 month</p>
+'1m' = 1 month<br></p>
 <table>
 <thead>
 <tr>
@@ -594,7 +594,7 @@ Formatting Examples:
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="checkarchivebit">-CheckArchiveBit</h5>
 <p>If this switch is enabled, the filesystem Archive bit is checked.
-If this bit is set (which translates to &quot;it has not been backed up to another location yet&quot;), the file won't be included.</p>
+If this bit is set (which translates to &quot;it has not been backed up to another location yet&quot;), the file won't be included.<br></p>
 <table>
 <thead>
 <tr>
@@ -624,7 +624,7 @@ If this bit is set (which translates to &quot;it has not been backed up to anoth
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -653,6 +653,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Find-DbaBackup.ps1">Find-DbaBackup</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Find-DbaBackup">Find-DbaBackup</a>.</p>
 
                 </div> <!-- rendered -->

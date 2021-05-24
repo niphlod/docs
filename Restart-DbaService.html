@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -471,27 +471,27 @@
 <p>Requires Local Admin rights on destination computer(s).</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Restart-DbaService
-    -[-ComputerName] &lt;DbaInstanceParameter[]&gt;]
-    --InstanceName &lt;String[]&gt;]
-    --Type &lt;String[]&gt;]
-    --Timeout &lt;Int32&gt;]
-    --Credential &lt;PSCredential&gt;]
-    --Force]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [[-ComputerName] &lt;DbaInstanceParameter[]&gt;]
+    [-InstanceName &lt;String[]&gt;]
+    [-Type &lt;String[]&gt;]
+    [-Timeout &lt;Int32&gt;]
+    [-Credential &lt;PSCredential&gt;]
+    [-Force]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 Restart-DbaService
-    --InstanceName &lt;String[]&gt;]
-    --Type &lt;String[]&gt;] -InputObject &lt;Object[]&gt;
-    --Timeout &lt;Int32&gt;]
-    --Credential &lt;PSCredential&gt;]
-    --Force]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-InstanceName &lt;String[]&gt;]
+    [-Type &lt;String[]&gt;] -InputObject &lt;Object[]&gt;
+    [-Timeout &lt;Int32&gt;]
+    [-Credential &lt;PSCredential&gt;]
+    [-Force]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -500,26 +500,26 @@ Restart-DbaService
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Restart-DbaService -ComputerName sqlserver2014a
 </code></pre>
-<p>Restarts the SQL Server related services on computer sqlserver2014a.</p>
+<p>Restarts the SQL Server related services on computer sqlserver2014a.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; 'sql1','sql2','sql3'| Get-DbaService | Restart-DbaService
 </code></pre>
-<p>Gets the SQL Server related services on computers sql1, sql2 and sql3 and restarts them.</p>
+<p>Gets the SQL Server related services on computers sql1, sql2 and sql3 and restarts them.<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Restart-DbaService -ComputerName sql1,sql2 -InstanceName MSSQLSERVER
 </code></pre>
-<p>Restarts the SQL Server services related to the default instance MSSQLSERVER on computers sql1 and sql2.</p>
+<p>Restarts the SQL Server services related to the default instance MSSQLSERVER on computers sql1 and sql2.<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; Restart-DbaService -ComputerName $MyServers -Type SSRS
 </code></pre>
-<p>Restarts the SQL Server related services of type &quot;SSRS&quot; (Reporting Services) on computers in the variable MyServers.</p>
+<p>Restarts the SQL Server related services of type &quot;SSRS&quot; (Reporting Services) on computers in the variable MyServers.<br></p>
 <h5 id="example-5">Example:  5</h5>
 <pre><code>PS C:\&gt; Restart-DbaService -ComputerName sql1 -Type Engine -Force
 </code></pre>
-<p>Restarts SQL Server database engine services on sql1 forcing dependent SQL Server Agent services to restart as well.</p>
+<p>Restarts SQL Server database engine services on sql1 forcing dependent SQL Server Agent services to restart as well.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="inputobject">-InputObject</h5>
-<p>A collection of services from Get-DbaService</p>
+<p>A collection of services from Get-DbaService<br></p>
 <table>
 <thead>
 <tr>
@@ -548,7 +548,7 @@ Restart-DbaService
 </table>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="computername">-ComputerName</h5>
-<p>The target SQL Server instance or instances.</p>
+<p>The target SQL Server instance or instances.<br></p>
 <table>
 <thead>
 <tr>
@@ -576,7 +576,7 @@ Restart-DbaService
 </tbody>
 </table>
 <h5 id="instancename">-InstanceName</h5>
-<p>Only affects services that belong to the specific instances.</p>
+<p>Only affects services that belong to the specific instances.<br></p>
 <table>
 <thead>
 <tr>
@@ -605,7 +605,7 @@ Restart-DbaService
 </table>
 <h5 id="type">-Type</h5>
 <p>Use -Type to collect only services of the desired SqlServiceType.
-Can be one of the following: &quot;Agent&quot;, &quot;Browser&quot;, &quot;Engine&quot;, &quot;FullText&quot;, &quot;SSAS&quot;, &quot;SSIS&quot;, &quot;SSRS&quot;, &quot;PolyBase&quot;, &quot;Launchpad&quot;</p>
+Can be one of the following: &quot;Agent&quot;, &quot;Browser&quot;, &quot;Engine&quot;, &quot;FullText&quot;, &quot;SSAS&quot;, &quot;SSIS&quot;, &quot;SSRS&quot;, &quot;PolyBase&quot;, &quot;Launchpad&quot;<br></p>
 <table>
 <thead>
 <tr>
@@ -637,7 +637,7 @@ Can be one of the following: &quot;Agent&quot;, &quot;Browser&quot;, &quot;Engin
 </tbody>
 </table>
 <h5 id="timeout">-Timeout</h5>
-<p>How long to wait for the start/stop request completion before moving on. Specify 0 to wait indefinitely.</p>
+<p>How long to wait for the start/stop request completion before moving on. Specify 0 to wait indefinitely.<br></p>
 <table>
 <thead>
 <tr>
@@ -665,7 +665,7 @@ Can be one of the following: &quot;Agent&quot;, &quot;Browser&quot;, &quot;Engin
 </tbody>
 </table>
 <h5 id="credential">-Credential</h5>
-<p>Credential object used to connect to the computer as a different user.</p>
+<p>Credential object used to connect to the computer as a different user.<br></p>
 <table>
 <thead>
 <tr>
@@ -693,7 +693,7 @@ Can be one of the following: &quot;Agent&quot;, &quot;Browser&quot;, &quot;Engin
 </tbody>
 </table>
 <h5 id="force">-Force</h5>
-<p>Will stop dependent SQL Server agents when stopping Engine services.</p>
+<p>Will stop dependent SQL Server agents when stopping Engine services.<br></p>
 <table>
 <thead>
 <tr>
@@ -723,7 +723,7 @@ Can be one of the following: &quot;Agent&quot;, &quot;Browser&quot;, &quot;Engin
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -751,7 +751,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>Shows what would happen if the cmdlet runs. The cmdlet is not run.</p>
+<p>Shows what would happen if the cmdlet runs. The cmdlet is not run.<br></p>
 <table>
 <thead>
 <tr>
@@ -779,7 +779,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>Prompts you for confirmation before running the cmdlet.</p>
+<p>Prompts you for confirmation before running the cmdlet.<br></p>
 <table>
 <thead>
 <tr>
@@ -808,6 +808,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Restart-DbaService.ps1">Restart-DbaService</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Restart-DbaService">Restart-DbaService</a>.</p>
 
                 </div> <!-- rendered -->

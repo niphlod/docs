@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -470,18 +470,18 @@
 <p>This response type can be used to replay execution related events to a target SQL Server instance. The events that you can replay are of the type sql_batch_completed and rpc_completed: all other events are ignored.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>New-DbaXESmartReplay
-    --SqlInstance] &lt;DbaInstanceParameter[]&gt;
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    -[-Database] &lt;String&gt;]
-    -[-Event] &lt;String[]&gt;]
-    -[-Filter] &lt;String&gt;]
-    -[-DelaySeconds] &lt;Int32&gt;]
-    --StopOnError]
-    -[-ReplayIntervalSeconds] &lt;Int32&gt;]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-SqlInstance] &lt;DbaInstanceParameter[]&gt;
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [[-Database] &lt;String&gt;]
+    [[-Event] &lt;String[]&gt;]
+    [[-Filter] &lt;String&gt;]
+    [[-DelaySeconds] &lt;Int32&gt;]
+    [-StopOnError]
+    [[-ReplayIntervalSeconds] &lt;Int32&gt;]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -491,16 +491,16 @@
 <pre><code>PS C:\&gt; $response = New-DbaXESmartReplay -SqlInstance sql2017 -Database planning
 PS C:\&gt; Start-DbaXESmartTarget -SqlInstance sql2016 -Session loadrelay -Responder $response
 </code></pre>
-<p>Replays events from sql2016 on sql2017 in the planning database. Returns a PowerShell job object.
-To see a list of all SmartTarget job objects, use Get-DbaXESmartTarget.</p>
+<p>Replays events from sql2016 on sql2017 in the planning database. Returns a PowerShell job object.<br>
+To see a list of all SmartTarget job objects, use Get-DbaXESmartTarget.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; $response = New-DbaXESmartReplay -SqlInstance sql2017 -Database planning
 PS C:\&gt; Start-DbaXESmartTarget -SqlInstance sql2017 -Session 'Profiler Standard' -Responder $response -NotAsJob
 </code></pre>
-<p>Replays events from the 'Profiler Standard' session on sql2016 to sql2017's planning database. Does not run as a job so you can see the raw output.</p>
+<p>Replays events from the 'Profiler Standard' session on sql2016 to sql2017's planning database. Does not run as a job so you can see the raw output.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances. You must have sysadmin access and server version must be SQL Server version 2008 or higher.</p>
+<p>The target SQL Server instance or instances. You must have sysadmin access and server version must be SQL Server version 2008 or higher.<br></p>
 <table>
 <thead>
 <tr>
@@ -531,7 +531,7 @@ PS C:\&gt; Start-DbaXESmartTarget -SqlInstance sql2017 -Session 'Profiler Standa
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -560,7 +560,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </table>
 <h5 id="database">-Database</h5>
 <p>Name of the initial catalog to connect to. Statements will be replayed by changing database to the same database where the event was originally captured, so this property only controls the initial
-database to connect to.</p>
+database to connect to.<br></p>
 <table>
 <thead>
 <tr>
@@ -588,7 +588,7 @@ database to connect to.</p>
 </tbody>
 </table>
 <h5 id="event">-Event</h5>
-<p>Each Response can be limited to processing specific events, while ignoring all the other ones. When this attribute is omitted, all events are processed.</p>
+<p>Each Response can be limited to processing specific events, while ignoring all the other ones. When this attribute is omitted, all events are processed.<br></p>
 <table>
 <thead>
 <tr>
@@ -617,7 +617,7 @@ database to connect to.</p>
 </table>
 <h5 id="filter">-Filter</h5>
 <p>Specifies a filter expression in the same form as you would use in the WHERE clause of a SQL query.
-Example: duration &gt; 10000 AND cpu_time &gt; 10000</p>
+Example: duration &gt; 10000 AND cpu_time &gt; 10000<br></p>
 <table>
 <thead>
 <tr>
@@ -645,7 +645,7 @@ Example: duration &gt; 10000 AND cpu_time &gt; 10000</p>
 </tbody>
 </table>
 <h5 id="delayseconds">-DelaySeconds</h5>
-<p>Specifies the duration of the delay in seconds.</p>
+<p>Specifies the duration of the delay in seconds.<br></p>
 <table>
 <thead>
 <tr>
@@ -673,7 +673,7 @@ Example: duration &gt; 10000 AND cpu_time &gt; 10000</p>
 </tbody>
 </table>
 <h5 id="stoponerror">-StopOnError</h5>
-<p>If this switch is enabled, the replay will be stopped when the first error is encountered. By default, error messages are piped to the log and console output, and replay proceeds.</p>
+<p>If this switch is enabled, the replay will be stopped when the first error is encountered. By default, error messages are piped to the log and console output, and replay proceeds.<br></p>
 <table>
 <thead>
 <tr>
@@ -701,7 +701,7 @@ Example: duration &gt; 10000 AND cpu_time &gt; 10000</p>
 </tbody>
 </table>
 <h5 id="replayintervalseconds">-ReplayIntervalSeconds</h5>
-<p>Specifies the duration of the replay interval in seconds.</p>
+<p>Specifies the duration of the replay interval in seconds.<br></p>
 <table>
 <thead>
 <tr>
@@ -731,7 +731,7 @@ Example: duration &gt; 10000 AND cpu_time &gt; 10000</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -759,7 +759,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.</p>
+<p>If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.<br></p>
 <table>
 <thead>
 <tr>
@@ -787,7 +787,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.</p>
+<p>If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.<br></p>
 <table>
 <thead>
 <tr>
@@ -816,6 +816,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/New-DbaXESmartReplay.ps1">New-DbaXESmartReplay</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#New-DbaXESmartReplay">New-DbaXESmartReplay</a>.</p>
 
                 </div> <!-- rendered -->

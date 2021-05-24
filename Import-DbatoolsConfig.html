@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -470,17 +470,17 @@
 <p>Imports a json configuration file into the configuration system.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Import-DbatoolsConfig -Path &lt;String[]&gt;
-    --IncludeFilter &lt;String[]&gt;]
-    --ExcludeFilter &lt;String[]&gt;]
-    --Peek]
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [-IncludeFilter &lt;String[]&gt;]
+    [-ExcludeFilter &lt;String[]&gt;]
+    [-Peek]
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 Import-DbatoolsConfig -ModuleName &lt;String&gt;
-    --ModuleVersion &lt;Int32&gt;]
-    --Scope {UserDefault | UserMandatory | SystemDefault | SystemMandatory | FileUserLocal | FileUserShared | FileSystem}]
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [-ModuleVersion &lt;Int32&gt;]
+    [-Scope {UserDefault | UserMandatory | SystemDefault | SystemMandatory | FileUserLocal | FileUserShared | FileSystem}]
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -489,14 +489,14 @@ Import-DbatoolsConfig -ModuleName &lt;String&gt;
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Import-DbatoolsConfig -Path '.\config.json'
 </code></pre>
-<p>Imports the configuration stored in '.\config.json'</p>
+<p>Imports the configuration stored in '.\config.json'<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Import-DbatoolsConfig -ModuleName message
 </code></pre>
-<p>Imports all the module specific settings that have been persisted in any of the default file system paths.</p>
+<p>Imports all the module specific settings that have been persisted in any of the default file system paths.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="path">-Path</h5>
-<p>The path to the json file to import.</p>
+<p>The path to the json file to import.<br></p>
 <table>
 <thead>
 <tr>
@@ -524,7 +524,7 @@ Import-DbatoolsConfig -ModuleName &lt;String&gt;
 </tbody>
 </table>
 <h5 id="modulename">-ModuleName</h5>
-<p>Import configuration items specific to a module from the default configuration paths.</p>
+<p>Import configuration items specific to a module from the default configuration paths.<br></p>
 <table>
 <thead>
 <tr>
@@ -553,7 +553,7 @@ Import-DbatoolsConfig -ModuleName &lt;String&gt;
 </table>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="moduleversion">-ModuleVersion</h5>
-<p>The configuration version of the module-settings to load.</p>
+<p>The configuration version of the module-settings to load.<br></p>
 <table>
 <thead>
 <tr>
@@ -583,7 +583,7 @@ Import-DbatoolsConfig -ModuleName &lt;String&gt;
 <h5 id="scope">-Scope</h5>
 <p>Where to import the module specific configuration items form.
 Only file-based scopes are supported for this.
-By default, all locations are queried, with user settings beating system settings.</p>
+By default, all locations are queried, with user settings beating system settings.<br></p>
 <table>
 <thead>
 <tr>
@@ -611,7 +611,7 @@ By default, all locations are queried, with user settings beating system setting
 </tbody>
 </table>
 <h5 id="includefilter">-IncludeFilter</h5>
-<p>If specified, only elements with names that are similar (-like) to names in this list will be imported.</p>
+<p>If specified, only elements with names that are similar (-like) to names in this list will be imported.<br></p>
 <table>
 <thead>
 <tr>
@@ -639,7 +639,7 @@ By default, all locations are queried, with user settings beating system setting
 </tbody>
 </table>
 <h5 id="excludefilter">-ExcludeFilter</h5>
-<p>Elements that are similar (-like) to names in this list will not be imported.</p>
+<p>Elements that are similar (-like) to names in this list will not be imported.<br></p>
 <table>
 <thead>
 <tr>
@@ -667,7 +667,7 @@ By default, all locations are queried, with user settings beating system setting
 </tbody>
 </table>
 <h5 id="peek">-Peek</h5>
-<p>Rather than applying the setting, return the configuration items that would have been applied.</p>
+<p>Rather than applying the setting, return the configuration items that would have been applied.<br></p>
 <table>
 <thead>
 <tr>
@@ -696,7 +696,7 @@ By default, all locations are queried, with user settings beating system setting
 </table>
 <h5 id="enableexception">-EnableException</h5>
 <p>This parameters disables user-friendly warnings and enables the throwing of exceptions.
-This is less user friendly, but allows catching exceptions in calling scripts.</p>
+This is less user friendly, but allows catching exceptions in calling scripts.<br></p>
 <table>
 <thead>
 <tr>
@@ -725,6 +725,7 @@ This is less user friendly, but allows catching exceptions in calling scripts.</
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Import-DbatoolsConfig.ps1">Import-DbatoolsConfig</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Import-DbatoolsConfig">Import-DbatoolsConfig</a>.</p>
 
                 </div> <!-- rendered -->

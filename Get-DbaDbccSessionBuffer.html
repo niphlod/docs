@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -473,14 +473,14 @@
 - <a href="https://docs.microsoft.com/en-us/sql/t-sql/database-console-commands/dbcc-outputbuffer-transact-sql">https://docs.microsoft.com/en-us/sql/t-sql/database-console-commands/dbcc-outputbuffer-transact-sql</a></p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Get-DbaDbccSessionBuffer
-    --SqlInstance] &lt;DbaInstanceParameter[]&gt;
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    -[-Operation] &lt;String&gt;]
-    -[-SessionId] &lt;Int32[]&gt;]
-    -[-RequestId] &lt;Int32&gt;]
-    --All]
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [-SqlInstance] &lt;DbaInstanceParameter[]&gt;
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [[-Operation] &lt;String&gt;]
+    [[-SessionId] &lt;Int32[]&gt;]
+    [[-RequestId] &lt;Int32&gt;]
+    [-All]
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -489,40 +489,40 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Get-DbaDbccSessionBuffer -SqlInstance Server1 -Operation InputBuffer -SessionId 51
 </code></pre>
-<p>Get results of DBCC INPUTBUFFER(51) for Instance Server1</p>
+<p>Get results of DBCC INPUTBUFFER(51) for Instance Server1<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Get-DbaDbccSessionBuffer -SqlInstance Server1 -Operation OutputBuffer -SessionId 51, 52
 </code></pre>
-<p>Get results of DBCC OUTPUTBUFFER for SessionId's 51 and 52 for Instance Server1</p>
+<p>Get results of DBCC OUTPUTBUFFER for SessionId's 51 and 52 for Instance Server1<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Get-DbaDbccSessionBuffer -SqlInstance Server1 -Operation InputBuffer -SessionId 51 -RequestId 0
 </code></pre>
-<p>Get results of DBCC INPUTBUFFER(51,0) for Instance Server1</p>
+<p>Get results of DBCC INPUTBUFFER(51,0) for Instance Server1<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; Get-DbaDbccSessionBuffer -SqlInstance Server1 -Operation OutputBuffer -SessionId 51 -RequestId 0
 </code></pre>
-<p>Get results of DBCC OUTPUTBUFFER(51,0) for Instance Server1</p>
+<p>Get results of DBCC OUTPUTBUFFER(51,0) for Instance Server1<br></p>
 <h5 id="example-5">Example:  5</h5>
 <pre><code>PS C:\&gt; 'Sql1','Sql2/sqlexpress' | Get-DbaDbccSessionBuffer -Operation InputBuffer -All
 </code></pre>
-<p>Get results of DBCC INPUTBUFFER for all user sessions for the instances Sql1 and Sql2/sqlexpress</p>
+<p>Get results of DBCC INPUTBUFFER for all user sessions for the instances Sql1 and Sql2/sqlexpress<br></p>
 <h5 id="example-6">Example:  6</h5>
 <pre><code>PS C:\&gt; 'Sql1','Sql2/sqlexpress' | Get-DbaDbccSessionBuffer -Operation OutputBuffer -All
 </code></pre>
-<p>Get results of DBCC OUTPUTBUFFER for all user sessions for the instances Sql1 and Sql2/sqlexpress</p>
+<p>Get results of DBCC OUTPUTBUFFER for all user sessions for the instances Sql1 and Sql2/sqlexpress<br></p>
 <h5 id="example-7">Example:  7</h5>
 <pre><code>PS C:\&gt; $cred = Get-Credential sqladmin
 PS C:\&gt; Get-DbaDbccSessionBuffer -SqlInstance Server1 -SqlCredential $cred -Operation InputBuffer -SessionId 51 -RequestId 0
 </code></pre>
-<p>Connects using sqladmin credential and gets results of DBCC INPUTBUFFER(51,0) for Instance Server1</p>
+<p>Connects using sqladmin credential and gets results of DBCC INPUTBUFFER(51,0) for Instance Server1<br></p>
 <h5 id="example-8">Example:  8</h5>
 <pre><code>PS C:\&gt; $cred = Get-Credential sqladmin
 PS C:\&gt; Get-DbaDbccSessionBuffer -SqlInstance Server1 -SqlCredential $cred -Operation OutputBuffer -SessionId 51 -RequestId 0
 </code></pre>
-<p>Connects using sqladmin credential and gets results of DBCC OUTPUTBUFFER(51,0) for Instance Server1</p>
+<p>Connects using sqladmin credential and gets results of DBCC OUTPUTBUFFER(51,0) for Instance Server1<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances.</p>
+<p>The target SQL Server instance or instances.<br></p>
 <table>
 <thead>
 <tr>
@@ -553,7 +553,7 @@ PS C:\&gt; Get-DbaDbccSessionBuffer -SqlInstance Server1 -SqlCredential $cred -O
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -581,7 +581,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="operation">-Operation</h5>
-<p>DBCC Operation to execute - either InputBuffer or OutputBuffer</p>
+<p>DBCC Operation to execute - either InputBuffer or OutputBuffer<br></p>
 <table>
 <thead>
 <tr>
@@ -613,7 +613,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="sessionid">-SessionId</h5>
-<p>The Session ID(s) to use to get current input or output buffer.</p>
+<p>The Session ID(s) to use to get current input or output buffer.<br></p>
 <table>
 <thead>
 <tr>
@@ -645,7 +645,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 The following query returns request_id:
 SELECT request_id
 FROM sys.dm_exec_requests
-WHERE session_id = @@spid;</p>
+WHERE session_id = @@spid;<br></p>
 <table>
 <thead>
 <tr>
@@ -674,7 +674,7 @@ WHERE session_id = @@spid;</p>
 </table>
 <h5 id="all">-All</h5>
 <p>If this switch is enabled, results for all User Sessions will be retreived
-This overides any values for SessionId or RequestId</p>
+This overides any values for SessionId or RequestId<br></p>
 <table>
 <thead>
 <tr>
@@ -704,7 +704,7 @@ This overides any values for SessionId or RequestId</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -733,6 +733,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Get-DbaDbccSessionBuffer.ps1">Get-DbaDbccSessionBuffer</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Get-DbaDbccSessionBuffer">Get-DbaDbccSessionBuffer</a>.</p>
 
                 </div> <!-- rendered -->

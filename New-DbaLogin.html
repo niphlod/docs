@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -470,85 +470,85 @@
 <p>Creates a new SQL Server login with provided specifications</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>New-DbaLogin
-    --SqlInstance] &lt;DbaInstanceParameter[]&gt;
-    --SqlCredential &lt;PSCredential&gt;]
-    -[-Login] &lt;String[]&gt;]
-    --InputObject &lt;Object[]&gt;]
-    --LoginRenameHashtable &lt;Hashtable&gt;]
-    -[-SecurePassword] &lt;SecureString&gt;]
-    --MapToCredential &lt;String&gt;]
-    --Sid &lt;Object&gt;]
-    --DefaultDatabase &lt;String&gt;]
-    --Language &lt;String&gt;]
-    --PasswordExpirationEnabled]
-    --PasswordPolicyEnforced]
-    --PasswordMustChange]
-    --Disabled]
-    --DenyWindowsLogin]
-    --NewSid]
-    --Force]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-SqlInstance] &lt;DbaInstanceParameter[]&gt;
+    [-SqlCredential &lt;PSCredential&gt;]
+    [[-Login] &lt;String[]&gt;]
+    [-InputObject &lt;Object[]&gt;]
+    [-LoginRenameHashtable &lt;Hashtable&gt;]
+    [[-SecurePassword] &lt;SecureString&gt;]
+    [-MapToCredential &lt;String&gt;]
+    [-Sid &lt;Object&gt;]
+    [-DefaultDatabase &lt;String&gt;]
+    [-Language &lt;String&gt;]
+    [-PasswordExpirationEnabled]
+    [-PasswordPolicyEnforced]
+    [-PasswordMustChange]
+    [-Disabled]
+    [-DenyWindowsLogin]
+    [-NewSid]
+    [-Force]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 New-DbaLogin
-    --SqlInstance] &lt;DbaInstanceParameter[]&gt;
-    --SqlCredential &lt;PSCredential&gt;]
-    --Login &lt;String[]&gt;]
-    --InputObject &lt;Object[]&gt;]
-    --LoginRenameHashtable &lt;Hashtable&gt;]
-    --MapToAsymmetricKey &lt;String&gt;]
-    --MapToCredential &lt;String&gt;]
-    --Sid &lt;Object&gt;]
-    --Disabled]
-    --DenyWindowsLogin]
-    --NewSid]
-    --Force]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-SqlInstance] &lt;DbaInstanceParameter[]&gt;
+    [-SqlCredential &lt;PSCredential&gt;]
+    [-Login &lt;String[]&gt;]
+    [-InputObject &lt;Object[]&gt;]
+    [-LoginRenameHashtable &lt;Hashtable&gt;]
+    [-MapToAsymmetricKey &lt;String&gt;]
+    [-MapToCredential &lt;String&gt;]
+    [-Sid &lt;Object&gt;]
+    [-Disabled]
+    [-DenyWindowsLogin]
+    [-NewSid]
+    [-Force]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 New-DbaLogin
-    --SqlInstance] &lt;DbaInstanceParameter[]&gt;
-    --SqlCredential &lt;PSCredential&gt;]
-    --Login &lt;String[]&gt;]
-    --InputObject &lt;Object[]&gt;]
-    --LoginRenameHashtable &lt;Hashtable&gt;]
-    --MapToCertificate &lt;String&gt;]
-    --MapToCredential &lt;String&gt;]
-    --Sid &lt;Object&gt;]
-    --Disabled]
-    --DenyWindowsLogin]
-    --NewSid]
-    --Force]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-SqlInstance] &lt;DbaInstanceParameter[]&gt;
+    [-SqlCredential &lt;PSCredential&gt;]
+    [-Login &lt;String[]&gt;]
+    [-InputObject &lt;Object[]&gt;]
+    [-LoginRenameHashtable &lt;Hashtable&gt;]
+    [-MapToCertificate &lt;String&gt;]
+    [-MapToCredential &lt;String&gt;]
+    [-Sid &lt;Object&gt;]
+    [-Disabled]
+    [-DenyWindowsLogin]
+    [-NewSid]
+    [-Force]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 New-DbaLogin
-    --SqlInstance] &lt;DbaInstanceParameter[]&gt;
-    --SqlCredential &lt;PSCredential&gt;]
-    --Login &lt;String[]&gt;]
-    --InputObject &lt;Object[]&gt;]
-    --LoginRenameHashtable &lt;Hashtable&gt;]
-    --HashedPassword &lt;String&gt;]
-    --MapToCredential &lt;String&gt;]
-    --Sid &lt;Object&gt;]
-    --DefaultDatabase &lt;String&gt;]
-    --Language &lt;String&gt;]
-    --PasswordExpirationEnabled]
-    --PasswordPolicyEnforced]
-    --Disabled]
-    --DenyWindowsLogin]
-    --NewSid]
-    --Force]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-SqlInstance] &lt;DbaInstanceParameter[]&gt;
+    [-SqlCredential &lt;PSCredential&gt;]
+    [-Login &lt;String[]&gt;]
+    [-InputObject &lt;Object[]&gt;]
+    [-LoginRenameHashtable &lt;Hashtable&gt;]
+    [-HashedPassword &lt;String&gt;]
+    [-MapToCredential &lt;String&gt;]
+    [-Sid &lt;Object&gt;]
+    [-DefaultDatabase &lt;String&gt;]
+    [-Language &lt;String&gt;]
+    [-PasswordExpirationEnabled]
+    [-PasswordPolicyEnforced]
+    [-Disabled]
+    [-DenyWindowsLogin]
+    [-NewSid]
+    [-Force]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -557,33 +557,33 @@ New-DbaLogin
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; New-DbaLogin -SqlInstance Server1,Server2 -Login Newlogin
 </code></pre>
-<p>You will be prompted to securely enter the password for a login [Newlogin]. The login would be created on servers Server1 and Server2 with default parameters.</p>
+<p>You will be prompted to securely enter the password for a login [Newlogin]. The login would be created on servers Server1 and Server2 with default parameters.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; $securePassword = Read-Host &quot;Input password&quot; -AsSecureString
 PS C:\&gt; New-DbaLogin -SqlInstance Server1\sql1 -Login Newlogin -SecurePassword $securePassword -PasswordPolicyEnforced -PasswordExpirationEnabled
 </code></pre>
-<p>Creates a login on Server1\sql1 with a predefined password. The login will have password and expiration policies enforced onto it.</p>
+<p>Creates a login on Server1\sql1 with a predefined password. The login will have password and expiration policies enforced onto it.<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Get-DbaLogin -SqlInstance sql1 -Login Oldlogin | New-DbaLogin -SqlInstance sql1 -LoginRenameHashtable @{Oldlogin = 'Newlogin'} -Force -NewSid -Disabled:$false
 </code></pre>
-<p>Copies a login [Oldlogin] to the same instance sql1 with the same parameters (including password). New login will have a new sid, a new name [Newlogin] and will not be disabled. Existing login
-[Newlogin] will be removed prior to creation.</p>
+<p>Copies a login [Oldlogin] to the same instance sql1 with the same parameters (including password). New login will have a new sid, a new name [Newlogin] and will not be disabled. Existing login <br>
+[Newlogin] will be removed prior to creation.<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; Get-DbaLogin -SqlInstance sql1 -Login Login1,Login2 | New-DbaLogin -SqlInstance sql2 -PasswordPolicyEnforced -PasswordExpirationEnabled -DefaultDatabase tempdb -Disabled
 </code></pre>
-<p>Copies logins [Login1] and [Login2] from instance sql1 to instance sql2, but enforces password and expiration policies for the new logins. New logins will also have a default database set to [tempdb]
-and will be created in a disabled state.</p>
+<p>Copies logins [Login1] and [Login2] from instance sql1 to instance sql2, but enforces password and expiration policies for the new logins. New logins will also have a default database set to [tempdb] <br>
+and will be created in a disabled state.<br></p>
 <h5 id="example-5">Example:  5</h5>
 <pre><code>PS C:\&gt; New-DbaLogin -SqlInstance sql1 -Login domain\user
 </code></pre>
-<p>Creates a new Windows Authentication backed login on sql1. The login will be part of the public server role.</p>
+<p>Creates a new Windows Authentication backed login on sql1. The login will be part of the public server role.<br></p>
 <h5 id="example-6">Example:  6</h5>
 <pre><code>PS C:\&gt; New-DbaLogin -SqlInstance sql1 -Login domain\user1, domain\user2 -DenyWindowsLogin
 </code></pre>
-<p>Creates two new Windows Authentication backed login on sql1. The logins would be denied from logging in.</p>
+<p>Creates two new Windows Authentication backed login on sql1. The logins would be denied from logging in.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server(s)</p>
+<p>The target SQL Server(s)<br></p>
 <table>
 <thead>
 <tr>
@@ -614,7 +614,7 @@ and will be created in a disabled state.</p>
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -642,7 +642,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="login">-Login</h5>
-<p>The Login name(s)</p>
+<p>The Login name(s)<br></p>
 <table>
 <thead>
 <tr>
@@ -670,7 +670,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="inputobject">-InputObject</h5>
-<p>Takes the parameters required from a Login object that has been piped into the command</p>
+<p>Takes the parameters required from a Login object that has been piped into the command<br></p>
 <table>
 <thead>
 <tr>
@@ -698,7 +698,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="loginrenamehashtable">-LoginRenameHashtable</h5>
-<p>Pass a hash table into this parameter to change login names when piping objects into the procedure</p>
+<p>Pass a hash table into this parameter to change login names when piping objects into the procedure<br></p>
 <table>
 <thead>
 <tr>
@@ -726,7 +726,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="securepassword">-SecurePassword</h5>
-<p>Secure string used to authenticate the Login</p>
+<p>Secure string used to authenticate the Login<br></p>
 <table>
 <thead>
 <tr>
@@ -754,7 +754,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="hashedpassword">-HashedPassword</h5>
-<p>Hashed password string used to authenticate the Login</p>
+<p>Hashed password string used to authenticate the Login<br></p>
 <table>
 <thead>
 <tr>
@@ -782,7 +782,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="maptocertificate">-MapToCertificate</h5>
-<p>Map the login to a certificate</p>
+<p>Map the login to a certificate<br></p>
 <table>
 <thead>
 <tr>
@@ -810,7 +810,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="maptoasymmetrickey">-MapToAsymmetricKey</h5>
-<p>Map the login to an asymmetric key</p>
+<p>Map the login to an asymmetric key<br></p>
 <table>
 <thead>
 <tr>
@@ -838,7 +838,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="maptocredential">-MapToCredential</h5>
-<p>Map the login to a credential</p>
+<p>Map the login to a credential<br></p>
 <table>
 <thead>
 <tr>
@@ -866,7 +866,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="sid">-Sid</h5>
-<p>Provide an explicit Sid that should be used when creating the account. Can be [byte[]] or hex [string] ('0xFFFF...')</p>
+<p>Provide an explicit Sid that should be used when creating the account. Can be [byte[]] or hex [string] ('0xFFFF...')<br></p>
 <table>
 <thead>
 <tr>
@@ -894,7 +894,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="defaultdatabase">-DefaultDatabase</h5>
-<p>Default database for the login</p>
+<p>Default database for the login<br></p>
 <table>
 <thead>
 <tr>
@@ -922,7 +922,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="language">-Language</h5>
-<p>Login's default language</p>
+<p>Login's default language<br></p>
 <table>
 <thead>
 <tr>
@@ -950,7 +950,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="passwordexpirationenabled">-PasswordExpirationEnabled</h5>
-<p>Enforces password expiration policy. Requires PasswordPolicyEnforced to be enabled. Can be $true or $false(default)</p>
+<p>Enforces password expiration policy. Requires PasswordPolicyEnforced to be enabled. Can be $true or $false(default)<br></p>
 <table>
 <thead>
 <tr>
@@ -978,7 +978,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="passwordpolicyenforced">-PasswordPolicyEnforced</h5>
-<p>Enforces password complexity policy. Can be $true or $false(default)</p>
+<p>Enforces password complexity policy. Can be $true or $false(default)<br></p>
 <table>
 <thead>
 <tr>
@@ -1007,7 +1007,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </table>
 <h5 id="passwordmustchange">-PasswordMustChange</h5>
 <p>Enforces user must change password at next login.
-When specified will enforce PasswordExpirationEnabled and PasswordPolicyEnforced as they are required for the must change.</p>
+When specified will enforce PasswordExpirationEnabled and PasswordPolicyEnforced as they are required for the must change.<br></p>
 <table>
 <thead>
 <tr>
@@ -1035,7 +1035,7 @@ When specified will enforce PasswordExpirationEnabled and PasswordPolicyEnforced
 </tbody>
 </table>
 <h5 id="disabled">-Disabled</h5>
-<p>Create the login in a disabled state</p>
+<p>Create the login in a disabled state<br></p>
 <table>
 <thead>
 <tr>
@@ -1063,7 +1063,7 @@ When specified will enforce PasswordExpirationEnabled and PasswordPolicyEnforced
 </tbody>
 </table>
 <h5 id="denywindowslogin">-DenyWindowsLogin</h5>
-<p>Create the login and deny Windows login ability</p>
+<p>Create the login and deny Windows login ability<br></p>
 <table>
 <thead>
 <tr>
@@ -1091,7 +1091,7 @@ When specified will enforce PasswordExpirationEnabled and PasswordPolicyEnforced
 </tbody>
 </table>
 <h5 id="newsid">-NewSid</h5>
-<p>Ignore sids from the piped login object to generate new sids on the server. Useful when copying login onto the same server</p>
+<p>Ignore sids from the piped login object to generate new sids on the server. Useful when copying login onto the same server<br></p>
 <table>
 <thead>
 <tr>
@@ -1119,7 +1119,7 @@ When specified will enforce PasswordExpirationEnabled and PasswordPolicyEnforced
 </tbody>
 </table>
 <h5 id="force">-Force</h5>
-<p>If login exists, drop and recreate</p>
+<p>If login exists, drop and recreate<br></p>
 <table>
 <thead>
 <tr>
@@ -1149,7 +1149,7 @@ When specified will enforce PasswordExpirationEnabled and PasswordPolicyEnforced
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -1177,7 +1177,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>Shows what would happen if the command were to run. No actions are actually performed</p>
+<p>Shows what would happen if the command were to run. No actions are actually performed<br></p>
 <table>
 <thead>
 <tr>
@@ -1205,7 +1205,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>Prompts you for confirmation before executing any changing operations within the command</p>
+<p>Prompts you for confirmation before executing any changing operations within the command<br></p>
 <table>
 <thead>
 <tr>
@@ -1234,6 +1234,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/New-DbaLogin.ps1">New-DbaLogin</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#New-DbaLogin">New-DbaLogin</a>.</p>
 
                 </div> <!-- rendered -->

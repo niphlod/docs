@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -470,11 +470,11 @@
 <p>Tests the ability to connect to an SQL Server instance outputting information about the server and instance.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Test-DbaConnection
-    -[-SqlInstance] &lt;DbaInstanceParameter[]&gt;]
-    -[-Credential] &lt;PSCredential&gt;]
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [[-SqlInstance] &lt;DbaInstanceParameter[]&gt;]
+    [[-Credential] &lt;PSCredential&gt;]
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -483,58 +483,58 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Test-DbaConnection SQL2016
 </code></pre>
-<p>ComputerName         : SQL2016
-InstanceName         : MSSQLSERVER
-SqlInstance          : sql2016
-SqlVersion           : 13.0.4001
-ConnectingAsUser     : BASE\ctrlb
-ConnectSuccess       : True
-AuthType             : Windows Authentication
-AuthScheme           : KERBEROS
-TcpPort              : 1433
-IPAddress            : 10.2.1.5
-NetBiosName          : sql2016.base.local
-IsPingable           : True
-PSRemotingAccessible : True
-DomainName           : base.local
-LocalWindows         : 10.0.15063.0
-LocalPowerShell      : 5.1.15063.502
-LocalCLR             : 4.0.30319.42000
-LocalSMOVersion      : 13.0.0.0
-LocalDomainUser      : True
-LocalRunAsAdmin      : False
-LocalEdition         : Desktop
-Test connection to SQL2016 and outputs information collected</p>
+<p>ComputerName         : SQL2016<br>
+InstanceName         : MSSQLSERVER<br>
+SqlInstance          : sql2016<br>
+SqlVersion           : 13.0.4001<br>
+ConnectingAsUser     : BASE\ctrlb<br>
+ConnectSuccess       : True<br>
+AuthType             : Windows Authentication<br>
+AuthScheme           : KERBEROS<br>
+TcpPort              : 1433<br>
+IPAddress            : 10.2.1.5<br>
+NetBiosName          : sql2016.base.local<br>
+IsPingable           : True<br>
+PSRemotingAccessible : True<br>
+DomainName           : base.local<br>
+LocalWindows         : 10.0.15063.0<br>
+LocalPowerShell      : 5.1.15063.502<br>
+LocalCLR             : 4.0.30319.42000<br>
+LocalSMOVersion      : 13.0.0.0<br>
+LocalDomainUser      : True<br>
+LocalRunAsAdmin      : False<br>
+LocalEdition         : Desktop<br>
+Test connection to SQL2016 and outputs information collected<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; $winCred = Get-Credential sql2017\Administrator
 PS C:\&gt; $sqlCred = Get-Credential sa
 PS C:\&gt; Test-DbaConnection SQL2017 -SqlCredential $sqlCred -Credential $winCred
 </code></pre>
-<p>ComputerName         : SQL2017
-InstanceName         : MSSQLSERVER
-SqlInstance          : sql2017
-SqlVersion           : 14.0.3356
-ConnectingAsUser     : sa
-ConnectSuccess       : True
-AuthType             : SQL Authentication
-AuthScheme           : SQL
-TcpPort              : 50164
-IPAddress            : 10.10.10.15
-NetBiosName          : sql2017.company.local
-IsPingable           : True
-PSRemotingAccessible : True
-DomainName           : company.local
-LocalWindows         : 10.0.15063.0
-LocalPowerShell      : 5.1.19041.610
-LocalCLR             : 4.0.30319.42000
-LocalSMOVersion      : 15.100.0.0
-LocalDomainUser      : True
-LocalRunAsAdmin      : False
-LocalEdition         : Desktop
-Test connection to SQL2017 instance and collecting information on SQL Server using the sa login, local Administrator account is used to collect port information</p>
+<p>ComputerName         : SQL2017<br>
+InstanceName         : MSSQLSERVER<br>
+SqlInstance          : sql2017<br>
+SqlVersion           : 14.0.3356<br>
+ConnectingAsUser     : sa<br>
+ConnectSuccess       : True<br>
+AuthType             : SQL Authentication<br>
+AuthScheme           : SQL<br>
+TcpPort              : 50164<br>
+IPAddress            : 10.10.10.15<br>
+NetBiosName          : sql2017.company.local<br>
+IsPingable           : True<br>
+PSRemotingAccessible : True<br>
+DomainName           : company.local<br>
+LocalWindows         : 10.0.15063.0<br>
+LocalPowerShell      : 5.1.19041.610<br>
+LocalCLR             : 4.0.30319.42000<br>
+LocalSMOVersion      : 15.100.0.0<br>
+LocalDomainUser      : True<br>
+LocalRunAsAdmin      : False<br>
+LocalEdition         : Desktop<br>
+Test connection to SQL2017 instance and collecting information on SQL Server using the sa login, local Administrator account is used to collect port information<br></p>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The SQL Server Instance to test connection</p>
+<p>The SQL Server Instance to test connection<br></p>
 <table>
 <thead>
 <tr>
@@ -563,7 +563,7 @@ Test connection to SQL2017 instance and collecting information on SQL Server usi
 </table>
 <h5 id="credential">-Credential</h5>
 <p>Credential object used to connect to the Computer as a different user
-Utilized for gathering TCPPort information.</p>
+Utilized for gathering TCPPort information.<br></p>
 <table>
 <thead>
 <tr>
@@ -593,7 +593,7 @@ Utilized for gathering TCPPort information.</p>
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -623,7 +623,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -652,6 +652,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Test-DbaConnection.ps1">Test-DbaConnection</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Test-DbaConnection">Test-DbaConnection</a>.</p>
 
                 </div> <!-- rendered -->

@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -491,18 +491,18 @@ For performance reasons certain statistics information will not be returned from
 </ul>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Get-DbaHelpIndex
-    -[-SqlInstance] &lt;DbaInstanceParameter[]&gt;]
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    -[-Database] &lt;Object[]&gt;]
-    -[-ExcludeDatabase] &lt;Object[]&gt;]
-    -[-InputObject] &lt;Database[]&gt;]
-    -[-ObjectName] &lt;String&gt;]
-    --IncludeStats]
-    --IncludeDataTypes]
-    --Raw]
-    --IncludeFragmentation]
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [[-SqlInstance] &lt;DbaInstanceParameter[]&gt;]
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [[-Database] &lt;Object[]&gt;]
+    [[-ExcludeDatabase] &lt;Object[]&gt;]
+    [[-InputObject] &lt;Database[]&gt;]
+    [[-ObjectName] &lt;String&gt;]
+    [-IncludeStats]
+    [-IncludeDataTypes]
+    [-Raw]
+    [-IncludeFragmentation]
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -511,42 +511,42 @@ For performance reasons certain statistics information will not be returned from
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Get-DbaHelpIndex -SqlInstance localhost -Database MyDB
 </code></pre>
-<p>Returns information on all indexes on the MyDB database on the localhost.</p>
+<p>Returns information on all indexes on the MyDB database on the localhost.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Get-DbaHelpIndex -SqlInstance localhost -Database MyDB,MyDB2
 </code></pre>
-<p>Returns information on all indexes on the MyDB &amp; MyDB2 databases.</p>
+<p>Returns information on all indexes on the MyDB &amp; MyDB2 databases.<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Get-DbaHelpIndex -SqlInstance localhost -Database MyDB -ObjectName dbo.Table1
 </code></pre>
-<p>Returns index information on the object dbo.Table1 in the database MyDB.</p>
+<p>Returns index information on the object dbo.Table1 in the database MyDB.<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; Get-DbaHelpIndex -SqlInstance localhost -Database MyDB -ObjectName dbo.Table1 -IncludeStats
 </code></pre>
-<p>Returns information on the indexes and statistics for the table dbo.Table1 in the MyDB database.</p>
+<p>Returns information on the indexes and statistics for the table dbo.Table1 in the MyDB database.<br></p>
 <h5 id="example-5">Example:  5</h5>
 <pre><code>PS C:\&gt; Get-DbaHelpIndex -SqlInstance localhost -Database MyDB -ObjectName dbo.Table1 -IncludeDataTypes
 </code></pre>
-<p>Returns the index information for the table dbo.Table1 in the MyDB database, and includes the data types for the key and include columns.</p>
+<p>Returns the index information for the table dbo.Table1 in the MyDB database, and includes the data types for the key and include columns.<br></p>
 <h5 id="example-6">Example:  6</h5>
 <pre><code>PS C:\&gt; Get-DbaHelpIndex -SqlInstance localhost -Database MyDB -ObjectName dbo.Table1 -Raw
 </code></pre>
-<p>Returns the index information for the table dbo.Table1 in the MyDB database, and returns the numerical data without localized separators.</p>
+<p>Returns the index information for the table dbo.Table1 in the MyDB database, and returns the numerical data without localized separators.<br></p>
 <h5 id="example-7">Example:  7</h5>
 <pre><code>PS C:\&gt; Get-DbaHelpIndex -SqlInstance localhost -Database MyDB -IncludeStats -Raw
 </code></pre>
-<p>Returns the index information for all indexes in the MyDB database as well as their statistics, and formats the numerical data without localized separators.</p>
+<p>Returns the index information for all indexes in the MyDB database as well as their statistics, and formats the numerical data without localized separators.<br></p>
 <h5 id="example-8">Example:  8</h5>
 <pre><code>PS C:\&gt; Get-DbaHelpIndex -SqlInstance localhost -Database MyDB -IncludeFragmentation
 </code></pre>
-<p>Returns the index information for all indexes in the MyDB database as well as their fragmentation</p>
+<p>Returns the index information for all indexes in the MyDB database as well as their fragmentation<br></p>
 <h5 id="example-9">Example:  9</h5>
 <pre><code>PS C:\&gt; Get-DbaDatabase -SqlInstance sql2017 -Database MyDB | Get-DbaHelpIndex
 </code></pre>
-<p>Returns the index information for all indexes in the MyDB database</p>
+<p>Returns the index information for all indexes in the MyDB database<br></p>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances.</p>
+<p>The target SQL Server instance or instances.<br></p>
 <table>
 <thead>
 <tr>
@@ -576,7 +576,7 @@ For performance reasons certain statistics information will not be returned from
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -604,7 +604,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="database">-Database</h5>
-<p>The database(s) to process. This list is auto-populated from the server. If unspecified, all databases will be processed.</p>
+<p>The database(s) to process. This list is auto-populated from the server. If unspecified, all databases will be processed.<br></p>
 <table>
 <thead>
 <tr>
@@ -632,7 +632,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="excludedatabase">-ExcludeDatabase</h5>
-<p>The database(s) to exclude. This list is auto-populated from the server.</p>
+<p>The database(s) to exclude. This list is auto-populated from the server.<br></p>
 <table>
 <thead>
 <tr>
@@ -660,7 +660,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="inputobject">-InputObject</h5>
-<p>Allows piping from Get-DbaDatabase</p>
+<p>Allows piping from Get-DbaDatabase<br></p>
 <table>
 <thead>
 <tr>
@@ -689,7 +689,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </table>
 <h5 id="objectname">-ObjectName</h5>
 <p>The name of a table for which you want to obtain the index information. If the two part naming convention for an object is not used it will use the default schema for the executing user. If not
-passed it will return data on all indexes in a given database.</p>
+passed it will return data on all indexes in a given database.<br></p>
 <table>
 <thead>
 <tr>
@@ -717,7 +717,7 @@ passed it will return data on all indexes in a given database.</p>
 </tbody>
 </table>
 <h5 id="includestats">-IncludeStats</h5>
-<p>If this switch is enabled, statistics as well as indexes will be returned in the output (statistics information such as the StatsRowMods will always be returned for indexes).</p>
+<p>If this switch is enabled, statistics as well as indexes will be returned in the output (statistics information such as the StatsRowMods will always be returned for indexes).<br></p>
 <table>
 <thead>
 <tr>
@@ -745,7 +745,7 @@ passed it will return data on all indexes in a given database.</p>
 </tbody>
 </table>
 <h5 id="includedatatypes">-IncludeDataTypes</h5>
-<p>If this switch is enabled, the output will include the data type of each column that makes up a part of the index definition (key and include columns).</p>
+<p>If this switch is enabled, the output will include the data type of each column that makes up a part of the index definition (key and include columns).<br></p>
 <table>
 <thead>
 <tr>
@@ -773,7 +773,7 @@ passed it will return data on all indexes in a given database.</p>
 </tbody>
 </table>
 <h5 id="raw">-Raw</h5>
-<p>If this switch is enabled, results may be less user-readable but more suitable for processing by other code.</p>
+<p>If this switch is enabled, results may be less user-readable but more suitable for processing by other code.<br></p>
 <table>
 <thead>
 <tr>
@@ -801,7 +801,7 @@ passed it will return data on all indexes in a given database.</p>
 </tbody>
 </table>
 <h5 id="includefragmentation">-IncludeFragmentation</h5>
-<p>If this switch is enabled, the output will include fragmentation information.</p>
+<p>If this switch is enabled, the output will include fragmentation information.<br></p>
 <table>
 <thead>
 <tr>
@@ -831,7 +831,7 @@ passed it will return data on all indexes in a given database.</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -860,6 +860,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Get-DbaHelpIndex.ps1">Get-DbaHelpIndex</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Get-DbaHelpIndex">Get-DbaHelpIndex</a>.</p>
 
                 </div> <!-- rendered -->

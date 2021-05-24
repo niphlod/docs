@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -492,40 +492,40 @@ it can be disabled by setting the dbatools configuration option 'commands.initia
 <p>Always backup databases and configurations prior to upgrade.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Update-DbaInstance
-    -[-ComputerName] &lt;DbaInstanceParameter[]&gt;]
-    --Credential &lt;PSCredential&gt;]
-    --Version &lt;String[]&gt;]
-    --Type &lt;String[]&gt;]
-    --InstanceName &lt;String&gt;]
-    --Path &lt;String[]&gt;]
-    --Restart]
-    --Continue]
-    --Throttle &lt;Int32&gt;]
-    --Authentication &lt;String&gt;]
-    --ExtractPath &lt;String&gt;]
-    --ArgumentList &lt;String[]&gt;]
-    --Download]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [[-ComputerName] &lt;DbaInstanceParameter[]&gt;]
+    [-Credential &lt;PSCredential&gt;]
+    [-Version &lt;String[]&gt;]
+    [-Type &lt;String[]&gt;]
+    [-InstanceName &lt;String&gt;]
+    [-Path &lt;String[]&gt;]
+    [-Restart]
+    [-Continue]
+    [-Throttle &lt;Int32&gt;]
+    [-Authentication &lt;String&gt;]
+    [-ExtractPath &lt;String&gt;]
+    [-ArgumentList &lt;String[]&gt;]
+    [-Download]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 Update-DbaInstance
-    -[-ComputerName] &lt;DbaInstanceParameter[]&gt;]
-    --Credential &lt;PSCredential&gt;] -KB &lt;String[]&gt;
-    --InstanceName &lt;String&gt;]
-    --Path &lt;String[]&gt;]
-    --Restart]
-    --Continue]
-    --Throttle &lt;Int32&gt;]
-    --Authentication &lt;String&gt;]
-    --ExtractPath &lt;String&gt;]
-    --ArgumentList &lt;String[]&gt;]
-    --Download]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [[-ComputerName] &lt;DbaInstanceParameter[]&gt;]
+    [-Credential &lt;PSCredential&gt;] -KB &lt;String[]&gt;
+    [-InstanceName &lt;String&gt;]
+    [-Path &lt;String[]&gt;]
+    [-Restart]
+    [-Continue]
+    [-Throttle &lt;Int32&gt;]
+    [-Authentication &lt;String&gt;]
+    [-ExtractPath &lt;String&gt;]
+    [-ArgumentList &lt;String[]&gt;]
+    [-Download]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -534,55 +534,55 @@ Update-DbaInstance
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Update-DbaInstance -ComputerName SQL1 -Version SP3 -Path \\network\share
 </code></pre>
-<p>Updates all applicable SQL Server installations on SQL1 to SP3.
-Binary files for the update will be searched among all files and folders recursively in \network\share.
-Prompts for confirmation before the update.</p>
+<p>Updates all applicable SQL Server installations on SQL1 to SP3.<br>
+Binary files for the update will be searched among all files and folders recursively in \network\share.<br>
+Prompts for confirmation before the update.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Update-DbaInstance -ComputerName SQL1, SQL2 -Restart -Path \\network\share -Confirm:$false
 </code></pre>
-<p>Updates all applicable SQL Server installations on SQL1 and SQL2 with the most recent patch.
-It will install latest ServicePack, restart the computers, install latest Cumulative Update, and finally restart the computer once again.
-Binary files for the update will be searched among all files and folders recursively in \network\share.
-Does not prompt for confirmation.</p>
+<p>Updates all applicable SQL Server installations on SQL1 and SQL2 with the most recent patch.<br>
+It will install latest ServicePack, restart the computers, install latest Cumulative Update, and finally restart the computer once again.<br>
+Binary files for the update will be searched among all files and folders recursively in \network\share.<br>
+Does not prompt for confirmation.<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Update-DbaInstance -ComputerName SQL1 -Version 2012 -Type ServicePack -Path \\network\share
 </code></pre>
-<p>Updates SQL Server 2012 on SQL1 with the most recent ServicePack found in your patch repository.
-Binary files for the update will be searched among all files and folders recursively in \network\share.
-Prompts for confirmation before the update.</p>
+<p>Updates SQL Server 2012 on SQL1 with the most recent ServicePack found in your patch repository.<br>
+Binary files for the update will be searched among all files and folders recursively in \network\share.<br>
+Prompts for confirmation before the update.<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; Update-DbaInstance -ComputerName SQL1 -KB 123456 -Restart -Path \\network\share -Confirm:$false
 </code></pre>
-<p>Installs KB 123456 on SQL1 and restarts the computer.
-Binary files for the update will be searched among all files and folders recursively in \network\share.
-Does not prompt for confirmation.</p>
+<p>Installs KB 123456 on SQL1 and restarts the computer.<br>
+Binary files for the update will be searched among all files and folders recursively in \network\share.<br>
+Does not prompt for confirmation.<br></p>
 <h5 id="example-5">Example:  5</h5>
 <pre><code>PS C:\&gt; Update-DbaInstance -ComputerName Server1 -Version SQL2012SP3, SQL2016SP2CU3 -Path \\network\share -Restart -Confirm:$false
 </code></pre>
-<p>Updates SQL 2012 to SP3 and SQL 2016 to SP2CU3 on Server1. Each update will be followed by a restart.
-Binary files for the update will be searched among all files and folders recursively in \network\share.
-Does not prompt for confirmation.</p>
+<p>Updates SQL 2012 to SP3 and SQL 2016 to SP2CU3 on Server1. Each update will be followed by a restart.<br>
+Binary files for the update will be searched among all files and folders recursively in \network\share.<br>
+Does not prompt for confirmation.<br></p>
 <h5 id="example-6">Example:  6</h5>
 <pre><code>PS C:\&gt; Update-DbaInstance -ComputerName Server1 -Path \\network\share -Restart -Confirm:$false -ExtractPath &quot;C:\temp&quot;
 </code></pre>
-<p>Updates all applicable SQL Server installations on Server1 with the most recent patch. Each update will be followed by a restart.
-Binary files for the update will be searched among all files and folders recursively in \network\share.
-Does not prompt for confirmation.
-Extracts the files in local driver on Server1 C:\temp.</p>
+<p>Updates all applicable SQL Server installations on Server1 with the most recent patch. Each update will be followed by a restart.<br>
+Binary files for the update will be searched among all files and folders recursively in \network\share.<br>
+Does not prompt for confirmation.<br>
+Extracts the files in local driver on Server1 C:\temp.<br></p>
 <h5 id="example-7">Example:  7</h5>
 <pre><code>PS C:\&gt; Update-DbaInstance -ComputerName Server1 -Path \\network\share -ArgumentList &quot;/SkipRules=RebootRequiredCheck&quot;
 </code></pre>
-<p>Updates all applicable SQL Server installations on Server1 with the most recent patch.
-Additional command line parameters would be passed to the executable.
-Binary files for the update will be searched among all files and folders recursively in \network\share.</p>
+<p>Updates all applicable SQL Server installations on Server1 with the most recent patch.<br>
+Additional command line parameters would be passed to the executable.<br>
+Binary files for the update will be searched among all files and folders recursively in \network\share.<br></p>
 <h5 id="example-8">Example:  8</h5>
 <pre><code>PS C:\&gt; Update-DbaInstance -ComputerName SQL1 -Version CU3 -Download -Path \\network\share -Confirm:$false
 </code></pre>
-<p>Downloads an appropriate CU KB to \network\share and installs it onto SQL1.
-Does not prompt for confirmation.</p>
+<p>Downloads an appropriate CU KB to \network\share and installs it onto SQL1.<br>
+Does not prompt for confirmation.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="kb">-KB</h5>
-<p>Install a specific update or list of updates. Can be a number of a string KBXXXXXXX.</p>
+<p>Install a specific update or list of updates. Can be a number of a string KBXXXXXXX.<br></p>
 <table>
 <thead>
 <tr>
@@ -611,7 +611,7 @@ Does not prompt for confirmation.</p>
 </table>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="computername">-ComputerName</h5>
-<p>Target computer with SQL instance or instances.</p>
+<p>Target computer with SQL instance or instances.<br></p>
 <table>
 <thead>
 <tr>
@@ -640,7 +640,7 @@ Does not prompt for confirmation.</p>
 </table>
 <h5 id="credential">-Credential</h5>
 <p>Windows Credential with permission to log on to the remote server.
-Must be specified for any remote connection if update Repository is located on a network folder.</p>
+Must be specified for any remote connection if update Repository is located on a network folder.<br></p>
 <table>
 <thead>
 <tr>
@@ -675,7 +675,7 @@ Any part of the pattern can be omitted if needed:
 2016CU3 - will update SQL 2016 to CU3 of current Service Pack installed
 SP0CU3 - will update all existing SQL Server versions to RTM CU3 without installing any service packs
 SP1CU7 - will update all existing SQL Server versions to SP1 and then (after restart if -Restart is specified) to SP1CU7
-CU7 - will update all existing SQL Server versions to CU7 of current Service Pack installed</p>
+CU7 - will update all existing SQL Server versions to CU7 of current Service Pack installed<br></p>
 <table>
 <thead>
 <tr>
@@ -705,7 +705,7 @@ CU7 - will update all existing SQL Server versions to CU7 of current Service Pac
 <h5 id="type">-Type</h5>
 <p>Type of the update: All | ServicePack | CumulativeUpdate.
 Default: All
-Use -Version to limit upgrade to a certain Major version of SQL Server.</p>
+Use -Version to limit upgrade to a certain Major version of SQL Server.<br></p>
 <table>
 <thead>
 <tr>
@@ -737,7 +737,7 @@ Use -Version to limit upgrade to a certain Major version of SQL Server.</p>
 </tbody>
 </table>
 <h5 id="instancename">-InstanceName</h5>
-<p>Only updates a specific instance(s).</p>
+<p>Only updates a specific instance(s).<br></p>
 <table>
 <thead>
 <tr>
@@ -769,7 +769,7 @@ Use -Version to limit upgrade to a certain Major version of SQL Server.</p>
 Path should be available from both server with SQL Server installation and client that runs the command.
 All file names should match the pattern used by Microsoft: SQLServer####<em>-KB###-</em>x##*.exe
 If a file is missing in the repository, the installation will fail.
-Consider setting the following configuration if you want to omit this parameter: <code>Set-DbatoolsConfig -Name Path.SQLServerUpdates -Value '\\path\to\updates'</code></p>
+Consider setting the following configuration if you want to omit this parameter: <code>Set-DbatoolsConfig -Name Path.SQLServerUpdates -Value '\\path\to\updates'</code><br></p>
 <table>
 <thead>
 <tr>
@@ -798,7 +798,7 @@ Consider setting the following configuration if you want to omit this parameter:
 </table>
 <h5 id="restart">-Restart</h5>
 <p>Restart computer automatically after a successful installation of a patch and wait until it comes back online.
-Using this parameter is the only way to chain-install more than 1 patch on a computer, since every single patch will require a restart of said computer.</p>
+Using this parameter is the only way to chain-install more than 1 patch on a computer, since every single patch will require a restart of said computer.<br></p>
 <table>
 <thead>
 <tr>
@@ -826,7 +826,7 @@ Using this parameter is the only way to chain-install more than 1 patch on a com
 </tbody>
 </table>
 <h5 id="continue">-Continue</h5>
-<p>Continues a failed installation attempt when specified. Will abort a previously failed installation otherwise.</p>
+<p>Continues a failed installation attempt when specified. Will abort a previously failed installation otherwise.<br></p>
 <table>
 <thead>
 <tr>
@@ -855,7 +855,7 @@ Using this parameter is the only way to chain-install more than 1 patch on a com
 </table>
 <h5 id="throttle">-Throttle</h5>
 <p>Maximum number of computers updated in parallel. Once reached, the update operations will queue up.
-Default: 50</p>
+Default: 50<br></p>
 <table>
 <thead>
 <tr>
@@ -888,7 +888,7 @@ If the protocol fails to establish a connection
 Defaults:</p>
 <ul>
 <li>CredSSP when -Credential is specified - due to the fact that repository Path is usually a network share and credentials need to be passed to the remote host to avoid the double-hop issue.</li>
-<li>Default when -Credential is not specified. Will likely fail if a network path is specified.</li>
+<li>Default when -Credential is not specified. Will likely fail if a network path is specified.<br></li>
 </ul>
 <table>
 <thead>
@@ -921,7 +921,7 @@ Defaults:</p>
 </tbody>
 </table>
 <h5 id="extractpath">-ExtractPath</h5>
-<p>Lets you specify a location to extract the update file to on the system requiring the update. e.g. C:\temp</p>
+<p>Lets you specify a location to extract the update file to on the system requiring the update. e.g. C:\temp<br></p>
 <table>
 <thead>
 <tr>
@@ -950,7 +950,7 @@ Defaults:</p>
 </table>
 <h5 id="argumentlist">-ArgumentList</h5>
 <p>A list of extra arguments to pass to the execution file. Accepts one or more strings containing command line parameters.
-Example: ... -ArgumentList &quot;/SkipRules=RebootRequiredCheck&quot;, &quot;/Q&quot;</p>
+Example: ... -ArgumentList &quot;/SkipRules=RebootRequiredCheck&quot;, &quot;/Q&quot;<br></p>
 <table>
 <thead>
 <tr>
@@ -980,7 +980,7 @@ Example: ... -ArgumentList &quot;/SkipRules=RebootRequiredCheck&quot;, &quot;/Q&
 <h5 id="download">-Download</h5>
 <p>Download missing KBs to the first folder specified in the -Path parameter.
 Files would be first downloaded to the local machine (TEMP folder), and then distributed onto remote machines if needed.
-If the Path is a network Path, the files would be downloaded straight to the network folder and executed from there.</p>
+If the Path is a network Path, the files would be downloaded straight to the network folder and executed from there.<br></p>
 <table>
 <thead>
 <tr>
@@ -1010,7 +1010,7 @@ If the Path is a network Path, the files would be downloaded straight to the net
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -1038,7 +1038,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>Shows what would happen if the command were to run. No actions are actually performed.</p>
+<p>Shows what would happen if the command were to run. No actions are actually performed.<br></p>
 <table>
 <thead>
 <tr>
@@ -1066,7 +1066,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>Prompts you for confirmation before executing any changing operations within the command.</p>
+<p>Prompts you for confirmation before executing any changing operations within the command.<br></p>
 <table>
 <thead>
 <tr>
@@ -1095,6 +1095,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Update-DbaInstance.ps1">Update-DbaInstance</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Update-DbaInstance">Update-DbaInstance</a>.</p>
 
                 </div> <!-- rendered -->

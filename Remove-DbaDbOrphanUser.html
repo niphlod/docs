@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -475,16 +475,16 @@ This can occur when the login is deleted, or when the database is moved to anoth
 <p>If a login of the same name exists (which could be re-mapped with Repair-DbaDbOrphanUser)  the drop will not be performed unless you specify the -Force parameter (only when calling from Repair-DbaDbOrphanUser.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Remove-DbaDbOrphanUser
-    --SqlInstance] &lt;DbaInstanceParameter[]&gt;
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    -[-Database] &lt;Object[]&gt;]
-    -[-ExcludeDatabase] &lt;Object[]&gt;]
-    -[-User] &lt;Object[]&gt;]
-    --Force]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-SqlInstance] &lt;DbaInstanceParameter[]&gt;
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [[-Database] &lt;Object[]&gt;]
+    [[-ExcludeDatabase] &lt;Object[]&gt;]
+    [[-User] &lt;Object[]&gt;]
+    [-Force]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -493,30 +493,30 @@ This can occur when the login is deleted, or when the database is moved to anoth
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Remove-DbaDbOrphanUser -SqlInstance sql2005
 </code></pre>
-<p>Finds and drops all orphan users without matching Logins in all databases present on server 'sql2005'.</p>
+<p>Finds and drops all orphan users without matching Logins in all databases present on server 'sql2005'.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Remove-DbaDbOrphanUser -SqlInstance sqlserver2014a -SqlCredential $cred
 </code></pre>
-<p>Finds and drops all orphan users without matching Logins in all databases present on server 'sqlserver2014a'. SQL Server authentication will be used in connecting to the server.</p>
+<p>Finds and drops all orphan users without matching Logins in all databases present on server 'sqlserver2014a'. SQL Server authentication will be used in connecting to the server.<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Remove-DbaDbOrphanUser -SqlInstance sqlserver2014a -Database db1, db2 -Force
 </code></pre>
-<p>Finds and drops orphan users even if they have a matching Login on both db1 and db2 databases.</p>
+<p>Finds and drops orphan users even if they have a matching Login on both db1 and db2 databases.<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; Remove-DbaDbOrphanUser -SqlInstance sqlserver2014a -ExcludeDatabase db1, db2 -Force
 </code></pre>
-<p>Finds and drops orphan users even if they have a matching Login from all databases except db1 and db2.</p>
+<p>Finds and drops orphan users even if they have a matching Login from all databases except db1 and db2.<br></p>
 <h5 id="example-5">Example:  5</h5>
 <pre><code>PS C:\&gt; Remove-DbaDbOrphanUser -SqlInstance sqlserver2014a -User OrphanUser
 </code></pre>
-<p>Removes user OrphanUser from all databases only if there is no matching login.</p>
+<p>Removes user OrphanUser from all databases only if there is no matching login.<br></p>
 <h5 id="example-6">Example:  6</h5>
 <pre><code>PS C:\&gt; Remove-DbaDbOrphanUser -SqlInstance sqlserver2014a -User OrphanUser -Force
 </code></pre>
-<p>Removes user OrphanUser from all databases even if they have a matching Login. Any schema that the user owns will change ownership to dbo.</p>
+<p>Removes user OrphanUser from all databases even if they have a matching Login. Any schema that the user owns will change ownership to dbo.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances.</p>
+<p>The target SQL Server instance or instances.<br></p>
 <table>
 <thead>
 <tr>
@@ -547,7 +547,7 @@ This can occur when the login is deleted, or when the database is moved to anoth
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -575,7 +575,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="database">-Database</h5>
-<p>Specifies the database(s) to process. Options for this list are auto-populated from the server. If unspecified, all databases will be processed.</p>
+<p>Specifies the database(s) to process. Options for this list are auto-populated from the server. If unspecified, all databases will be processed.<br></p>
 <table>
 <thead>
 <tr>
@@ -603,7 +603,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="excludedatabase">-ExcludeDatabase</h5>
-<p>Specifies the database(s) to exclude from processing. Options for this list are auto-populated from the server</p>
+<p>Specifies the database(s) to exclude from processing. Options for this list are auto-populated from the server<br></p>
 <table>
 <thead>
 <tr>
@@ -631,7 +631,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="user">-User</h5>
-<p>Specifies the list of users to remove.</p>
+<p>Specifies the list of users to remove.<br></p>
 <table>
 <thead>
 <tr>
@@ -661,7 +661,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 <h5 id="force">-Force</h5>
 <p>If this switch is enabled:
 If exists any schema which owner is the User, this will force the change of the owner to 'dbo'.
-If a login of the same name exists the drop will not be performed unless you specify this parameter.</p>
+If a login of the same name exists the drop will not be performed unless you specify this parameter.<br></p>
 <table>
 <thead>
 <tr>
@@ -691,7 +691,7 @@ If a login of the same name exists the drop will not be performed unless you spe
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -719,7 +719,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.</p>
+<p>If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.<br></p>
 <table>
 <thead>
 <tr>
@@ -747,7 +747,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.</p>
+<p>If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.<br></p>
 <table>
 <thead>
 <tr>
@@ -776,6 +776,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Remove-DbaDbOrphanUser.ps1">Remove-DbaDbOrphanUser</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Remove-DbaDbOrphanUser">Remove-DbaDbOrphanUser</a>.</p>
 
                 </div> <!-- rendered -->

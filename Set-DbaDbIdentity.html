@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -473,15 +473,15 @@ Can update an individual table via the ReSeedValue and RESEED option of DBCC CHE
 - <a href="https://docs.microsoft.com/en-us/sql/t-sql/database-console-commands/dbcc-checkident-transact-sql">https://docs.microsoft.com/en-us/sql/t-sql/database-console-commands/dbcc-checkident-transact-sql</a></p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Set-DbaDbIdentity
-    --SqlInstance] &lt;DbaInstanceParameter[]&gt;
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    -[-Database] &lt;String[]&gt;]
-    -[-Table] &lt;String[]&gt;]
-    -[-ReSeedValue] &lt;Int32&gt;]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-SqlInstance] &lt;DbaInstanceParameter[]&gt;
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [[-Database] &lt;String[]&gt;]
+    [[-Table] &lt;String[]&gt;]
+    [[-ReSeedValue] &lt;Int32&gt;]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -490,12 +490,12 @@ Can update an individual table via the ReSeedValue and RESEED option of DBCC CHE
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Set-DbaDbIdentity -SqlInstance SQLServer2017 -Database AdventureWorks2014 -Table 'Production.ScrapReason'
 </code></pre>
-<p>Connects to AdventureWorks2014 on instance SqlServer2017 using Windows Authentication and runs the command DBCC CHECKIDENT('Production.ScrapReason') to return the current identity value.</p>
+<p>Connects to AdventureWorks2014 on instance SqlServer2017 using Windows Authentication and runs the command DBCC CHECKIDENT('Production.ScrapReason') to return the current identity value.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; $cred = Get-Credential sqladmin
 PS C:\&gt; 'Sql1','Sql2/sqlexpress' | Set-DbaDbIdentity -SqlCredential $cred -Database AdventureWorks2014 -Table 'Production.ScrapReason'
 </code></pre>
-<p>Connects to AdventureWorks2014 on instances Sql1 and Sql2/sqlexpress using sqladmin credential and runs the command DBCC CHECKIDENT('Production.ScrapReason') to return the current identity value.</p>
+<p>Connects to AdventureWorks2014 on instances Sql1 and Sql2/sqlexpress using sqladmin credential and runs the command DBCC CHECKIDENT('Production.ScrapReason') to return the current identity value.<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; $query = &quot;Select Schema_Name(t.schema_id) +'.' + t.name as TableName from sys.columns c INNER JOIN sys.tables t on t.object_id = c.object_id WHERE is_identity = 1&quot;
 PS C:\&gt; $IdentityTables = Invoke-DbaQuery -SqlInstance SQLServer2017 -Database AdventureWorks2014 -Query $query
@@ -503,10 +503,10 @@ PS C:\&gt; foreach ($tbl in $IdentityTables) {
 PS C:\&gt; Set-DbaDbIdentity -SqlInstance SQLServer2017 -Database AdventureWorks2014 -Table $tbl.TableName
 PS C:\&gt; }
 </code></pre>
-<p>Checks the current identity value for all tables with an Identity in the AdventureWorks2014 database on the SQLServer2017 and, if it is needed, changes the identity value.</p>
+<p>Checks the current identity value for all tables with an Identity in the AdventureWorks2014 database on the SQLServer2017 and, if it is needed, changes the identity value.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances.</p>
+<p>The target SQL Server instance or instances.<br></p>
 <table>
 <thead>
 <tr>
@@ -537,7 +537,7 @@ PS C:\&gt; }
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -566,7 +566,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </table>
 <h5 id="database">-Database</h5>
 <p>The database(s) to process - this list is auto-populated from the server. If unspecified, all databases will be processed.
-Only one database should be specified when using a RESEED value</p>
+Only one database should be specified when using a RESEED value<br></p>
 <table>
 <thead>
 <tr>
@@ -595,7 +595,7 @@ Only one database should be specified when using a RESEED value</p>
 </table>
 <h5 id="table">-Table</h5>
 <p>The table(s) for which to check the current identity value.
-Only one table should be specified when using a RESEED value</p>
+Only one table should be specified when using a RESEED value<br></p>
 <table>
 <thead>
 <tr>
@@ -623,7 +623,7 @@ Only one table should be specified when using a RESEED value</p>
 </tbody>
 </table>
 <h5 id="reseedvalue">-ReSeedValue</h5>
-<p>The new reseed value to be used to set as the current identity value.</p>
+<p>The new reseed value to be used to set as the current identity value.<br></p>
 <table>
 <thead>
 <tr>
@@ -653,7 +653,7 @@ Only one table should be specified when using a RESEED value</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -681,7 +681,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>Shows what would happen if the cmdlet runs. The cmdlet is not run.</p>
+<p>Shows what would happen if the cmdlet runs. The cmdlet is not run.<br></p>
 <table>
 <thead>
 <tr>
@@ -709,7 +709,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>Prompts you for confirmation before running the cmdlet.</p>
+<p>Prompts you for confirmation before running the cmdlet.<br></p>
 <table>
 <thead>
 <tr>
@@ -738,6 +738,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Set-DbaDbIdentity.ps1">Set-DbaDbIdentity</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Set-DbaDbIdentity">Set-DbaDbIdentity</a>.</p>
 
                 </div> <!-- rendered -->

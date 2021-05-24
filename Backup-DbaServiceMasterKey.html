@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -470,15 +470,15 @@
 <p>Backs up specified service master key.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Backup-DbaServiceMasterKey
-    --SqlInstance] &lt;DbaInstanceParameter[]&gt;
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    -[-KeyCredential] &lt;PSCredential&gt;]
-    -[-SecurePassword] &lt;SecureString&gt;]
-    -[-Path] &lt;String&gt;]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-SqlInstance] &lt;DbaInstanceParameter[]&gt;
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [[-KeyCredential] &lt;PSCredential&gt;]
+    [[-SecurePassword] &lt;SecureString&gt;]
+    [[-Path] &lt;String&gt;]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -487,250 +487,112 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Backup-DbaServiceMasterKey -SqlInstance server1\sql2016
 </code></pre>
-<pre><code>ComputerName : SERVER1
-InstanceName : SQL2016
-SqlInstance  : SERVER1\SQL2016
-Filename     : E:\MSSQL13.SQL2016\MSSQL\Backup\server1$sql2016-SMK-20170614162311.key
-Status       : Success
+<pre><code class="language-&lt;br&gt;">ComputerName : SERVER1&lt;br&gt;
+InstanceName : SQL2016&lt;br&gt;
+SqlInstance  : SERVER1\SQL2016&lt;br&gt;
+Filename     : E:\MSSQL13.SQL2016\MSSQL\Backup\server1$sql2016-SMK-20170614162311.key&lt;br&gt;
+Status       : Success&lt;br&gt;
+```&lt;br&gt;
+Prompts for export password, then logs into server1\sql2016 with Windows credentials then backs up the service master key to the default backup directory.&lt;br&gt;
+
+##### Example:  2 
 </code></pre>
-<p>Prompts for export password, then logs into server1\sql2016 with Windows credentials then backs up the service master key to the default backup directory.</p>
-<h5 id="example-2">Example:  2</h5>
-<pre><code>PS C:\&gt; Backup-DbaServiceMasterKey -SqlInstance Server1 -Path \\nas\sqlbackups\keys
-</code></pre>
-<p>Logs into sql2016 with Windows credentials then backs up the service master key to the \nas\sqlbackups\keys directory.</p>
-<h3 id="required-parameters">Required Parameters</h3>
-<h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances.</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Alias</td>
-<td></td>
-</tr>
-<tr>
-<td>Required</td>
-<td>True</td>
-</tr>
-<tr>
-<td>Pipeline</td>
-<td>true (ByValue)</td>
-</tr>
-<tr>
-<td>Default Value</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h3 id="optional-parameters">Optional Parameters</h3>
-<h5 id="sqlcredential">-SqlCredential</h5>
-<p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
+<p>PS C:&gt; Backup-DbaServiceMasterKey -SqlInstance Server1 -Path \nas\sqlbackups\keys</p>
+<pre><code>Logs into sql2016 with Windows credentials then backs up the service master key to the \\nas\sqlbackups\keys directory.&lt;br&gt;
+### Required Parameters
+##### -SqlInstance
+The target SQL Server instance or instances.&lt;br&gt;
+
+|  |  |
+| - | - |
+| Alias |  |
+| Required | True |
+| Pipeline | true (ByValue) |
+| Default Value |  |
+
+### Optional Parameters
+##### -SqlCredential
+Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Alias</td>
-<td></td>
-</tr>
-<tr>
-<td>Required</td>
-<td>False</td>
-</tr>
-<tr>
-<td>Pipeline</td>
-<td>false</td>
-</tr>
-<tr>
-<td>Default Value</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h5 id="keycredential">-KeyCredential</h5>
-<p>Pass a credential object for the password</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Alias</td>
-<td></td>
-</tr>
-<tr>
-<td>Required</td>
-<td>False</td>
-</tr>
-<tr>
-<td>Pipeline</td>
-<td>false</td>
-</tr>
-<tr>
-<td>Default Value</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h5 id="securepassword">-SecurePassword</h5>
-<p>The password to encrypt the exported key. This must be a SecureString.</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Alias</td>
-<td>Password</td>
-</tr>
-<tr>
-<td>Required</td>
-<td>False</td>
-</tr>
-<tr>
-<td>Pipeline</td>
-<td>false</td>
-</tr>
-<tr>
-<td>Default Value</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h5 id="path">-Path</h5>
-<p>The directory to export the key. If no path is specified, the default backup directory for the instance will be used.</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Alias</td>
-<td></td>
-</tr>
-<tr>
-<td>Required</td>
-<td>False</td>
-</tr>
-<tr>
-<td>Pipeline</td>
-<td>false</td>
-</tr>
-<tr>
-<td>Default Value</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h5 id="enableexception">-EnableException</h5>
-<p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
+For MFA support, please use Connect-DbaInstance.&lt;br&gt;
+
+|  |  |
+| - | - |
+| Alias |  |
+| Required | False |
+| Pipeline | false |
+| Default Value |  |
+
+##### -KeyCredential
+Pass a credential object for the password&lt;br&gt;
+
+|  |  |
+| - | - |
+| Alias |  |
+| Required | False |
+| Pipeline | false |
+| Default Value |  |
+
+##### -SecurePassword
+The password to encrypt the exported key. This must be a SecureString.&lt;br&gt;
+
+|  |  |
+| - | - |
+| Alias | Password |
+| Required | False |
+| Pipeline | false |
+| Default Value |  |
+
+##### -Path
+The directory to export the key. If no path is specified, the default backup directory for the instance will be used.&lt;br&gt;
+
+|  |  |
+| - | - |
+| Alias |  |
+| Required | False |
+| Pipeline | false |
+| Default Value |  |
+
+##### -EnableException
+By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Alias</td>
-<td></td>
-</tr>
-<tr>
-<td>Required</td>
-<td>False</td>
-</tr>
-<tr>
-<td>Pipeline</td>
-<td>false</td>
-</tr>
-<tr>
-<td>Default Value</td>
-<td>False</td>
-</tr>
-</tbody>
-</table>
-<h5 id="whatif">-WhatIf</h5>
-<p>Shows what would happen if the command were to run. No actions are actually performed.</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Alias</td>
-<td>wi</td>
-</tr>
-<tr>
-<td>Required</td>
-<td>False</td>
-</tr>
-<tr>
-<td>Pipeline</td>
-<td>false</td>
-</tr>
-<tr>
-<td>Default Value</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h5 id="confirm">-Confirm</h5>
-<p>Prompts you for confirmation before executing any changing operations within the command.</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Alias</td>
-<td>cf</td>
-</tr>
-<tr>
-<td>Required</td>
-<td>False</td>
-</tr>
-<tr>
-<td>Pipeline</td>
-<td>false</td>
-</tr>
-<tr>
-<td>Default Value</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p> </p>
-<p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Backup-DbaServiceMasterKey.ps1">Backup-DbaServiceMasterKey</a> on GitHub.
-Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Backup-DbaServiceMasterKey">Backup-DbaServiceMasterKey</a>.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.&lt;br&gt;
+
+|  |  |
+| - | - |
+| Alias |  |
+| Required | False |
+| Pipeline | false |
+| Default Value | False |
+
+##### -WhatIf
+Shows what would happen if the command were to run. No actions are actually performed.&lt;br&gt;
+
+|  |  |
+| - | - |
+| Alias | wi |
+| Required | False |
+| Pipeline | false |
+| Default Value |  |
+
+##### -Confirm
+Prompts you for confirmation before executing any changing operations within the command.&lt;br&gt;
+
+|  |  |
+| - | - |
+| Alias | cf |
+| Required | False |
+| Pipeline | false |
+| Default Value |  |
+
+
+
+&amp;nbsp;
+
+Want to see the source code for this command? Check out [Backup-DbaServiceMasterKey](https://github.com/sqlcollaborative/dbatools/blob/master/functions/Backup-DbaServiceMasterKey.ps1) on GitHub.
+&lt;br&gt;
+Want to see the Bill Of Health for this command? Check out [Backup-DbaServiceMasterKey](https://sqlcollaborative.github.io/boh#Backup-DbaServiceMasterKey).
+</code></pre>
 
                 </div> <!-- rendered -->
             </div>

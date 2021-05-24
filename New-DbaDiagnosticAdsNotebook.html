@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -471,15 +471,15 @@
 popular Diagnostic queries</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>New-DbaDiagnosticAdsNotebook
-    -[-SqlInstance] &lt;DbaInstanceParameter&gt;]
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    -[-TargetVersion] &lt;String&gt;]
-    --Path] &lt;String&gt;
-    --IncludeDatabaseSpecific]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [[-SqlInstance] &lt;DbaInstanceParameter&gt;]
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [[-TargetVersion] &lt;String&gt;]
+    [-Path] &lt;String&gt;
+    [-IncludeDatabaseSpecific]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -488,18 +488,18 @@ popular Diagnostic queries</p>
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; New-DbaDiagnosticAdsNotebook -SqlInstance localhost -Path c:\temp\myNotebook.ipynb
 </code></pre>
-<p>Creates a new Jupyter Notebook named &quot;myNotebook&quot; based on the version of diagnostic queries found at localhost</p>
+<p>Creates a new Jupyter Notebook named &quot;myNotebook&quot; based on the version of diagnostic queries found at localhost<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; New-DbaDiagnosticAdsNotebook -TargetVersion 2016SP2 -Path c:\temp\myNotebook.ipynb
 </code></pre>
-<p>Creates a new Jupyter Notebook named &quot;myNotebook&quot; based on the version &quot;2016SP2&quot; of diagnostic queries</p>
+<p>Creates a new Jupyter Notebook named &quot;myNotebook&quot; based on the version &quot;2016SP2&quot; of diagnostic queries<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; New-DbaDiagnosticAdsNotebook -TargetVersion 2017 -Path c:\temp\myNotebook.ipynb -IncludeDatabaseSpecific
 </code></pre>
-<p>Creates a new Jupyter Notebook named &quot;myNotebook&quot; based on the version &quot;2017&quot; of diagnostic queries, including database-specific queries</p>
+<p>Creates a new Jupyter Notebook named &quot;myNotebook&quot; based on the version &quot;2017&quot; of diagnostic queries, including database-specific queries<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="path">-Path</h5>
-<p>Specifies the output path of the Jupyter Notebook</p>
+<p>Specifies the output path of the Jupyter Notebook<br></p>
 <table>
 <thead>
 <tr>
@@ -528,7 +528,7 @@ popular Diagnostic queries</p>
 </table>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances. Defaults to the default instance on localhost.</p>
+<p>The target SQL Server instance or instances. Defaults to the default instance on localhost.<br></p>
 <table>
 <thead>
 <tr>
@@ -558,7 +558,7 @@ popular Diagnostic queries</p>
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -587,7 +587,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </table>
 <h5 id="targetversion">-TargetVersion</h5>
 <p>If you are not creating the notebook for a specific instance of SQL Server, you can specify the version that you want to create the notebook for.
-Must be one of &quot;2005&quot;, &quot;2008&quot;, &quot;2008R2&quot;, &quot;2012&quot;, &quot;2014&quot;, &quot;2016&quot;, &quot;2016SP2&quot;, &quot;2017&quot;, &quot;2019&quot;, &quot;AzureSQLDatabase&quot;</p>
+Must be one of &quot;2005&quot;, &quot;2008&quot;, &quot;2008R2&quot;, &quot;2012&quot;, &quot;2014&quot;, &quot;2016&quot;, &quot;2016SP2&quot;, &quot;2017&quot;, &quot;2019&quot;, &quot;AzureSQLDatabase&quot;<br></p>
 <table>
 <thead>
 <tr>
@@ -619,7 +619,7 @@ Must be one of &quot;2005&quot;, &quot;2008&quot;, &quot;2008R2&quot;, &quot;201
 </tbody>
 </table>
 <h5 id="includedatabasespecific">-IncludeDatabaseSpecific</h5>
-<p>If this switch is enabled, the notebook will also include database-specific queries. Defaults to $false.</p>
+<p>If this switch is enabled, the notebook will also include database-specific queries. Defaults to $false.<br></p>
 <table>
 <thead>
 <tr>
@@ -649,7 +649,7 @@ Must be one of &quot;2005&quot;, &quot;2008&quot;, &quot;2008R2&quot;, &quot;201
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -677,7 +677,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>Shows what would happen if the command were to run. No actions are actually performed.</p>
+<p>Shows what would happen if the command were to run. No actions are actually performed.<br></p>
 <table>
 <thead>
 <tr>
@@ -705,7 +705,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>Prompts you for confirmation before executing any changing operations within the command.</p>
+<p>Prompts you for confirmation before executing any changing operations within the command.<br></p>
 <table>
 <thead>
 <tr>
@@ -734,6 +734,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/New-DbaDiagnosticAdsNotebook.ps1">New-DbaDiagnosticAdsNotebook</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#New-DbaDiagnosticAdsNotebook">New-DbaDiagnosticAdsNotebook</a>.</p>
 
                 </div> <!-- rendered -->

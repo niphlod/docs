@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -470,11 +470,11 @@
 <p>Parses Perf Monitor XML templates. Defaults to parsing templates in the dbatools template repository (\bin\perfmontemplates).</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Get-DbaPfDataCollectorSetTemplate
-    -[-Path] &lt;String[]&gt;]
-    -[-Pattern] &lt;String&gt;]
-    -[-Template] &lt;String[]&gt;]
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [[-Path] &lt;String[]&gt;]
+    [[-Pattern] &lt;String&gt;]
+    [[-Template] &lt;String[]&gt;]
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -483,18 +483,18 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Get-DbaPfDataCollectorSetTemplate
 </code></pre>
-<p>Returns information about all the templates in the local dbatools repository.</p>
+<p>Returns information about all the templates in the local dbatools repository.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Get-DbaPfDataCollectorSetTemplate | Out-GridView -PassThru | Import-DbaPfDataCollectorSetTemplate -ComputerName sql2017 | Start-DbaPfDataCollectorSet
 </code></pre>
-<p>Allows you to select a template, then deploys it to sql2017 and immediately starts the DataCollectorSet.</p>
+<p>Allows you to select a template, then deploys it to sql2017 and immediately starts the DataCollectorSet.<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Get-DbaPfDataCollectorSetTemplate | Select-Object *
 </code></pre>
-<p>Returns more information about the template, including the full path/filename.</p>
+<p>Returns more information about the template, including the full path/filename.<br></p>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="path">-Path</h5>
-<p>The path to the template directory. Defaults to the dbatools template repository (\bin\perfmontemplates).</p>
+<p>The path to the template directory. Defaults to the dbatools template repository (\bin\perfmontemplates).<br></p>
 <table>
 <thead>
 <tr>
@@ -522,7 +522,7 @@
 </tbody>
 </table>
 <h5 id="pattern">-Pattern</h5>
-<p>Specify a pattern for filtering. Alternatively, you can use Out-GridView -Passthru to select objects and pipe them to Import-DbaPfDataCollectorSetTemplate.</p>
+<p>Specify a pattern for filtering. Alternatively, you can use Out-GridView -Passthru to select objects and pipe them to Import-DbaPfDataCollectorSetTemplate.<br></p>
 <table>
 <thead>
 <tr>
@@ -550,7 +550,7 @@
 </tbody>
 </table>
 <h5 id="template">-Template</h5>
-<p>Specifies one or more of the templates provided by dbatools. Press tab to cycle through the list to the options.</p>
+<p>Specifies one or more of the templates provided by dbatools. Press tab to cycle through the list to the options.<br></p>
 <table>
 <thead>
 <tr>
@@ -580,7 +580,7 @@
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -609,6 +609,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Get-DbaPfDataCollectorSetTemplate.ps1">Get-DbaPfDataCollectorSetTemplate</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Get-DbaPfDataCollectorSetTemplate">Get-DbaPfDataCollectorSetTemplate</a>.</p>
 
                 </div> <!-- rendered -->

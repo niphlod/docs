@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -471,25 +471,25 @@
 SQL Server. If the name of the database is provided, the command will return only the specific database information.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Get-DbaDatabase
-    --SqlInstance] &lt;DbaInstanceParameter[]&gt;
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    -[-Database] &lt;String[]&gt;]
-    -[-ExcludeDatabase] &lt;String[]&gt;]
-    --ExcludeUser]
-    --ExcludeSystem]
-    -[-Owner] &lt;String[]&gt;]
-    --Encrypted]
-    -[-Status] &lt;String[]&gt;]
-    -[-Access] &lt;String&gt;]
-    -[-RecoveryModel] &lt;String[]&gt;]
-    --NoFullBackup]
-    -[-NoFullBackupSince] &lt;DateTime&gt;]
-    --NoLogBackup]
-    -[-NoLogBackupSince] &lt;DateTime&gt;]
-    --EnableException]
-    --IncludeLastUsed]
-    --OnlyAccessible]
-    -&lt;CommonParameters&gt;]
+    [-SqlInstance] &lt;DbaInstanceParameter[]&gt;
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [[-Database] &lt;String[]&gt;]
+    [[-ExcludeDatabase] &lt;String[]&gt;]
+    [-ExcludeUser]
+    [-ExcludeSystem]
+    [[-Owner] &lt;String[]&gt;]
+    [-Encrypted]
+    [[-Status] &lt;String[]&gt;]
+    [[-Access] &lt;String&gt;]
+    [[-RecoveryModel] &lt;String[]&gt;]
+    [-NoFullBackup]
+    [[-NoFullBackupSince] &lt;DateTime&gt;]
+    [-NoLogBackup]
+    [[-NoLogBackupSince] &lt;DateTime&gt;]
+    [-EnableException]
+    [-IncludeLastUsed]
+    [-OnlyAccessible]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -498,51 +498,51 @@ SQL Server. If the name of the database is provided, the command will return onl
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Get-DbaDatabase -SqlInstance localhost
 </code></pre>
-<p>Returns all databases on the local default SQL Server instance.</p>
+<p>Returns all databases on the local default SQL Server instance.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Get-DbaDatabase -SqlInstance localhost -ExcludeUser
 </code></pre>
-<p>Returns only the system databases on the local default SQL Server instance.</p>
+<p>Returns only the system databases on the local default SQL Server instance.<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Get-DbaDatabase -SqlInstance localhost -ExcludeSystem
 </code></pre>
-<p>Returns only the user databases on the local default SQL Server instance.</p>
+<p>Returns only the user databases on the local default SQL Server instance.<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; 'localhost','sql2016' | Get-DbaDatabase
 </code></pre>
-<p>Returns databases on multiple instances piped into the function.</p>
+<p>Returns databases on multiple instances piped into the function.<br></p>
 <h5 id="example-5">Example:  5</h5>
 <pre><code>PS C:\&gt; Get-DbaDatabase -SqlInstance SQL1\SQLExpress -RecoveryModel full,Simple
 </code></pre>
-<p>Returns only the user databases in Full or Simple recovery model from SQL Server instance SQL1\SQLExpress.</p>
+<p>Returns only the user databases in Full or Simple recovery model from SQL Server instance SQL1\SQLExpress.<br></p>
 <h5 id="example-6">Example:  6</h5>
 <pre><code>PS C:\&gt; Get-DbaDatabase -SqlInstance SQL1\SQLExpress -Status Normal
 </code></pre>
-<p>Returns only the user databases with status 'normal' from SQL Server instance SQL1\SQLExpress.</p>
+<p>Returns only the user databases with status 'normal' from SQL Server instance SQL1\SQLExpress.<br></p>
 <h5 id="example-7">Example:  7</h5>
 <pre><code>PS C:\&gt; Get-DbaDatabase -SqlInstance SQL1\SQLExpress -IncludeLastUsed
 </code></pre>
-<p>Returns the databases from SQL Server instance SQL1\SQLExpress and includes the last used information
-from the sys.dm_db_index_usage_stats DMV.</p>
+<p>Returns the databases from SQL Server instance SQL1\SQLExpress and includes the last used information<br>
+from the sys.dm_db_index_usage_stats DMV.<br></p>
 <h5 id="example-8">Example:  8</h5>
 <pre><code>PS C:\&gt; Get-DbaDatabase -SqlInstance SQL1\SQLExpress,SQL2 -ExcludeDatabase model,master
 </code></pre>
-<p>Returns all databases except master and model from SQL Server instances SQL1\SQLExpress and SQL2.</p>
+<p>Returns all databases except master and model from SQL Server instances SQL1\SQLExpress and SQL2.<br></p>
 <h5 id="example-9">Example:  9</h5>
 <pre><code>PS C:\&gt; Get-DbaDatabase -SqlInstance SQL1\SQLExpress,SQL2 -Encrypted
 </code></pre>
-<p>Returns only databases using TDE from SQL Server instances SQL1\SQLExpress and SQL2.</p>
+<p>Returns only databases using TDE from SQL Server instances SQL1\SQLExpress and SQL2.<br></p>
 <h5 id="example-10">Example:  10</h5>
 <pre><code>PS C:\&gt; Get-DbaDatabase -SqlInstance SQL1\SQLExpress,SQL2 -Access ReadOnly
 </code></pre>
-<p>Returns only read only databases from SQL Server instances SQL1\SQLExpress and SQL2.</p>
+<p>Returns only read only databases from SQL Server instances SQL1\SQLExpress and SQL2.<br></p>
 <h5 id="example-11">Example:  11</h5>
 <pre><code>PS C:\&gt; Get-DbaDatabase -SqlInstance SQL2,SQL3 -Database OneDB,OtherDB
 </code></pre>
-<p>Returns databases 'OneDb' and 'OtherDB' from SQL Server instances SQL2 and SQL3 if databases by those names exist on those instances.</p>
+<p>Returns databases 'OneDb' and 'OtherDB' from SQL Server instances SQL2 and SQL3 if databases by those names exist on those instances.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances.</p>
+<p>The target SQL Server instance or instances.<br></p>
 <table>
 <thead>
 <tr>
@@ -573,7 +573,7 @@ from the sys.dm_db_index_usage_stats DMV.</p>
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -601,7 +601,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="database">-Database</h5>
-<p>Specifies one or more database(s) to process. If unspecified, all databases will be processed.</p>
+<p>Specifies one or more database(s) to process. If unspecified, all databases will be processed.<br></p>
 <table>
 <thead>
 <tr>
@@ -629,7 +629,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="excludedatabase">-ExcludeDatabase</h5>
-<p>Specifies one or more database(s) to exclude from processing.</p>
+<p>Specifies one or more database(s) to exclude from processing.<br></p>
 <table>
 <thead>
 <tr>
@@ -658,7 +658,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </table>
 <h5 id="excludeuser">-ExcludeUser</h5>
 <p>If this switch is enabled, only databases which are not User databases will be processed.
-This parameter cannot be used with -ExcludeSystem.</p>
+This parameter cannot be used with -ExcludeSystem.<br></p>
 <table>
 <thead>
 <tr>
@@ -687,7 +687,7 @@ This parameter cannot be used with -ExcludeSystem.</p>
 </table>
 <h5 id="excludesystem">-ExcludeSystem</h5>
 <p>If this switch is enabled, only databases which are not System databases will be processed.
-This parameter cannot be used with -ExcludeUser.</p>
+This parameter cannot be used with -ExcludeUser.<br></p>
 <table>
 <thead>
 <tr>
@@ -715,7 +715,7 @@ This parameter cannot be used with -ExcludeUser.</p>
 </tbody>
 </table>
 <h5 id="owner">-Owner</h5>
-<p>Specifies one or more database owners. Only databases owned by the listed owner(s) will be returned.</p>
+<p>Specifies one or more database owners. Only databases owned by the listed owner(s) will be returned.<br></p>
 <table>
 <thead>
 <tr>
@@ -743,7 +743,7 @@ This parameter cannot be used with -ExcludeUser.</p>
 </tbody>
 </table>
 <h5 id="encrypted">-Encrypted</h5>
-<p>If this switch is enabled, only databases which have Transparent Data Encryption (TDE) enabled will be returned.</p>
+<p>If this switch is enabled, only databases which have Transparent Data Encryption (TDE) enabled will be returned.<br></p>
 <table>
 <thead>
 <tr>
@@ -772,7 +772,7 @@ This parameter cannot be used with -ExcludeUser.</p>
 </table>
 <h5 id="status">-Status</h5>
 <p>Specifies one or more database statuses to filter on. Only databases in the status(es) listed will be returned. Valid options for this parameter are 'Emergency', 'Normal', 'Offline', 'Recovering',
-'Restoring', 'Standby', and 'Suspect'.</p>
+'Restoring', 'Standby', and 'Suspect'.<br></p>
 <table>
 <thead>
 <tr>
@@ -804,7 +804,7 @@ This parameter cannot be used with -ExcludeUser.</p>
 </tbody>
 </table>
 <h5 id="access">-Access</h5>
-<p>Filters databases returned by their access type. Valid options for this parameter are 'ReadOnly' and 'ReadWrite'. If omitted, no filtering is performed.</p>
+<p>Filters databases returned by their access type. Valid options for this parameter are 'ReadOnly' and 'ReadWrite'. If omitted, no filtering is performed.<br></p>
 <table>
 <thead>
 <tr>
@@ -836,7 +836,7 @@ This parameter cannot be used with -ExcludeUser.</p>
 </tbody>
 </table>
 <h5 id="recoverymodel">-RecoveryModel</h5>
-<p>Filters databases returned by their recovery model. Valid options for this parameter are 'Full', 'Simple', and 'BulkLogged'.</p>
+<p>Filters databases returned by their recovery model. Valid options for this parameter are 'Full', 'Simple', and 'BulkLogged'.<br></p>
 <table>
 <thead>
 <tr>
@@ -868,7 +868,7 @@ This parameter cannot be used with -ExcludeUser.</p>
 </tbody>
 </table>
 <h5 id="nofullbackup">-NoFullBackup</h5>
-<p>If this switch is enabled, only databases without a full backup recorded by SQL Server will be returned. This will also indicate which of these databases only have CopyOnly full backups.</p>
+<p>If this switch is enabled, only databases without a full backup recorded by SQL Server will be returned. This will also indicate which of these databases only have CopyOnly full backups.<br></p>
 <table>
 <thead>
 <tr>
@@ -896,7 +896,7 @@ This parameter cannot be used with -ExcludeUser.</p>
 </tbody>
 </table>
 <h5 id="nofullbackupsince">-NoFullBackupSince</h5>
-<p>Only databases which haven't had a full backup since the specified DateTime will be returned.</p>
+<p>Only databases which haven't had a full backup since the specified DateTime will be returned.<br></p>
 <table>
 <thead>
 <tr>
@@ -924,7 +924,7 @@ This parameter cannot be used with -ExcludeUser.</p>
 </tbody>
 </table>
 <h5 id="nologbackup">-NoLogBackup</h5>
-<p>If this switch is enabled, only databases without a log backup recorded by SQL Server will be returned. This will also indicate which of these databases only have CopyOnly log backups.</p>
+<p>If this switch is enabled, only databases without a log backup recorded by SQL Server will be returned. This will also indicate which of these databases only have CopyOnly log backups.<br></p>
 <table>
 <thead>
 <tr>
@@ -952,7 +952,7 @@ This parameter cannot be used with -ExcludeUser.</p>
 </tbody>
 </table>
 <h5 id="nologbackupsince">-NoLogBackupSince</h5>
-<p>Only databases which haven't had a log backup since the specified DateTime will be returned.</p>
+<p>Only databases which haven't had a log backup since the specified DateTime will be returned.<br></p>
 <table>
 <thead>
 <tr>
@@ -982,7 +982,7 @@ This parameter cannot be used with -ExcludeUser.</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -1010,7 +1010,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="includelastused">-IncludeLastUsed</h5>
-<p>If this switch is enabled, the last used read &amp; write times for each database will be returned. This data is retrieved from sys.dm_db_index_usage_stats which is reset when SQL Server is restarted.</p>
+<p>If this switch is enabled, the last used read &amp; write times for each database will be returned. This data is retrieved from sys.dm_db_index_usage_stats which is reset when SQL Server is restarted.<br></p>
 <table>
 <thead>
 <tr>
@@ -1038,7 +1038,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="onlyaccessible">-OnlyAccessible</h5>
-<p>If this switch is enabled, only accessible databases are returned (huge speedup in SMO enumeration)</p>
+<p>If this switch is enabled, only accessible databases are returned (huge speedup in SMO enumeration)<br></p>
 <table>
 <thead>
 <tr>
@@ -1067,6 +1067,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Get-DbaDatabase.ps1">Get-DbaDatabase</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Get-DbaDatabase">Get-DbaDatabase</a>.</p>
 
                 </div> <!-- rendered -->

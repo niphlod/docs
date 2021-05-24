@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -479,25 +479,25 @@ Much of its behavior can be configured using Test-DbaCmConnection.</li>
 </ul>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Get-DbaCmObject
-    --ClassName] &lt;String&gt;
-    --ComputerName &lt;DbaCmConnectionParameter[]&gt;]
-    --Credential &lt;PSCredential&gt;]
-    --Namespace &lt;String&gt;]
-    --DoNotUse {None | CimRM | CimDCOM | Wmi | PowerShellRemoting}]
-    --Force]
-    --SilentlyContinue]
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [-ClassName] &lt;String&gt;
+    [-ComputerName &lt;DbaCmConnectionParameter[]&gt;]
+    [-Credential &lt;PSCredential&gt;]
+    [-Namespace &lt;String&gt;]
+    [-DoNotUse {None | CimRM | CimDCOM | Wmi | PowerShellRemoting}]
+    [-Force]
+    [-SilentlyContinue]
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 Get-DbaCmObject -Query &lt;String&gt;
-    --ComputerName &lt;DbaCmConnectionParameter[]&gt;]
-    --Credential &lt;PSCredential&gt;]
-    --Namespace &lt;String&gt;]
-    --DoNotUse {None | CimRM | CimDCOM | Wmi | PowerShellRemoting}]
-    --Force]
-    --SilentlyContinue]
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [-ComputerName &lt;DbaCmConnectionParameter[]&gt;]
+    [-Credential &lt;PSCredential&gt;]
+    [-Namespace &lt;String&gt;]
+    [-DoNotUse {None | CimRM | CimDCOM | Wmi | PowerShellRemoting}]
+    [-Force]
+    [-SilentlyContinue]
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -506,15 +506,15 @@ Get-DbaCmObject -Query &lt;String&gt;
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Get-DbaCmObject win32_OperatingSystem
 </code></pre>
-<p>Retrieves the common operating system information from the local computer.</p>
+<p>Retrieves the common operating system information from the local computer.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Get-DbaCmObject -Computername &quot;sql2014&quot; -ClassName Win32_OperatingSystem -Credential $cred -DoNotUse CimRM
 </code></pre>
-<p>Retrieves the common operating system information from the server sql2014.
-It will use the Credentials stored in $cred to connect, unless they are known to not work, in which case they will default to windows credentials (unless another default has been set).</p>
+<p>Retrieves the common operating system information from the server sql2014.<br>
+It will use the Credentials stored in $cred to connect, unless they are known to not work, in which case they will default to windows credentials (unless another default has been set).<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="classname">-ClassName</h5>
-<p>The name of the class to retrieve.</p>
+<p>The name of the class to retrieve.<br></p>
 <table>
 <thead>
 <tr>
@@ -542,7 +542,7 @@ It will use the Credentials stored in $cred to connect, unless they are known to
 </tbody>
 </table>
 <h5 id="query">-Query</h5>
-<p>The Wmi/Cim query to run against the server.</p>
+<p>The Wmi/Cim query to run against the server.<br></p>
 <table>
 <thead>
 <tr>
@@ -571,7 +571,7 @@ It will use the Credentials stored in $cred to connect, unless they are known to
 </table>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="computername">-ComputerName</h5>
-<p>The computer(s) to connect to. Defaults to localhost.</p>
+<p>The computer(s) to connect to. Defaults to localhost.<br></p>
 <table>
 <thead>
 <tr>
@@ -599,7 +599,7 @@ It will use the Credentials stored in $cred to connect, unless they are known to
 </tbody>
 </table>
 <h5 id="credential">-Credential</h5>
-<p>Credentials to use. Invalid credentials will be stored in a credentials cache and not be reused.</p>
+<p>Credentials to use. Invalid credentials will be stored in a credentials cache and not be reused.<br></p>
 <table>
 <thead>
 <tr>
@@ -627,7 +627,7 @@ It will use the Credentials stored in $cred to connect, unless they are known to
 </tbody>
 </table>
 <h5 id="namespace">-Namespace</h5>
-<p>The namespace of the class to use.</p>
+<p>The namespace of the class to use.<br></p>
 <table>
 <thead>
 <tr>
@@ -655,7 +655,7 @@ It will use the Credentials stored in $cred to connect, unless they are known to
 </tbody>
 </table>
 <h5 id="donotuse">-DoNotUse</h5>
-<p>Connection Protocols that should not be used.</p>
+<p>Connection Protocols that should not be used.<br></p>
 <table>
 <thead>
 <tr>
@@ -685,7 +685,7 @@ It will use the Credentials stored in $cred to connect, unless they are known to
 <h5 id="force">-Force</h5>
 <p>Overrides some checks that might otherwise halt execution as a precaution</p>
 <ul>
-<li>Ignores timeout on bad connections</li>
+<li>Ignores timeout on bad connections<br></li>
 </ul>
 <table>
 <thead>
@@ -716,7 +716,7 @@ It will use the Credentials stored in $cred to connect, unless they are known to
 <h5 id="silentlycontinue">-SilentlyContinue</h5>
 <p>Use in conjunction with the -EnableException switch.
 By default, Get-DbaCmObject will throw a terminating exception when connecting to a target is impossible in exception enabled mode.
-Setting this switch will cause it write a non-terminating exception and continue with the next computer.</p>
+Setting this switch will cause it write a non-terminating exception and continue with the next computer.<br></p>
 <table>
 <thead>
 <tr>
@@ -746,7 +746,7 @@ Setting this switch will cause it write a non-terminating exception and continue
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -775,6 +775,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Get-DbaCmObject.ps1">Get-DbaCmObject</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Get-DbaCmObject">Get-DbaCmObject</a>.</p>
 
                 </div> <!-- rendered -->

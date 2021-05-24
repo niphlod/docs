@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -470,10 +470,10 @@
 <p>Retrieves windows management connections from the cache</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Get-DbaCmConnection
-    -[-ComputerName] &lt;String[]&gt;]
-    -[-UserName] &lt;String&gt;]
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [[-ComputerName] &lt;String[]&gt;]
+    [[-UserName] &lt;String&gt;]
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -482,18 +482,18 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Get-DbaCmConnection
 </code></pre>
-<p>List all cached connections.</p>
+<p>List all cached connections.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Get-DbaCmConnection sql2014
 </code></pre>
-<p>List the cached connection - if any - to the server sql2014.</p>
+<p>List the cached connection - if any - to the server sql2014.<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Get-DbaCmConnection -UserName &quot;*charles*&quot;
 </code></pre>
-<p>List all cached connection that use a username containing &quot;charles&quot; as default or override credentials.</p>
+<p>List all cached connection that use a username containing &quot;charles&quot; as default or override credentials.<br></p>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="computername">-ComputerName</h5>
-<p>The computername to ComputerName for.</p>
+<p>The computername to ComputerName for.<br></p>
 <table>
 <thead>
 <tr>
@@ -521,7 +521,7 @@
 </tbody>
 </table>
 <h5 id="username">-UserName</h5>
-<p>Username on credentials to look for. Will not find connections using the default windows credentials.</p>
+<p>Username on credentials to look for. Will not find connections using the default windows credentials.<br></p>
 <table>
 <thead>
 <tr>
@@ -551,7 +551,7 @@
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -580,6 +580,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Get-DbaCmConnection.ps1">Get-DbaCmConnection</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Get-DbaCmConnection">Get-DbaCmConnection</a>.</p>
 
                 </div> <!-- rendered -->

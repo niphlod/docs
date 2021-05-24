@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -474,12 +474,12 @@ It will then retrieve rich information from them, including their creation scrip
 <a href="https://technet.microsoft.com/en-us/library/ms345449(v=sql.105).aspx">https://technet.microsoft.com/en-us/library/ms345449(v=sql.105).aspx</a></p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Get-DbaDependency
-    -[-InputObject] &lt;Object&gt;]
-    --AllowSystemObjects]
-    --Parents]
-    --IncludeSelf]
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [[-InputObject] &lt;Object&gt;]
+    [-AllowSystemObjects]
+    [-Parents]
+    [-IncludeSelf]
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -489,10 +489,10 @@ It will then retrieve rich information from them, including their creation scrip
 <pre><code>PS C:\&gt; $table = (Get-DbaDatabase -SqlInstance sql2012 -Database Northwind).tables | Where-Object Name -eq Customers
 PS C:\&gt; $table | Get-DbaDependency
 </code></pre>
-<p>Returns everything that depends on the &quot;Customers&quot; table</p>
+<p>Returns everything that depends on the &quot;Customers&quot; table<br></p>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="inputobject">-InputObject</h5>
-<p>The SMO object to parse</p>
+<p>The SMO object to parse<br></p>
 <table>
 <thead>
 <tr>
@@ -521,7 +521,7 @@ PS C:\&gt; $table | Get-DbaDependency
 </table>
 <h5 id="allowsystemobjects">-AllowSystemObjects</h5>
 <p>Normally, system objects are ignored by this function as dependencies.
-This switch overrides that behavior.</p>
+This switch overrides that behavior.<br></p>
 <table>
 <thead>
 <tr>
@@ -549,7 +549,7 @@ This switch overrides that behavior.</p>
 </tbody>
 </table>
 <h5 id="parents">-Parents</h5>
-<p>Causes the function to retrieve all objects that the input depends on, rather than retrieving everything that depends on the input.</p>
+<p>Causes the function to retrieve all objects that the input depends on, rather than retrieving everything that depends on the input.<br></p>
 <table>
 <thead>
 <tr>
@@ -578,7 +578,7 @@ This switch overrides that behavior.</p>
 </table>
 <h5 id="includeself">-IncludeSelf</h5>
 <p>Includes the object whose dependencies are retrieves itself.
-Useful when exporting an entire logic structure in order to recreate it in another database.</p>
+Useful when exporting an entire logic structure in order to recreate it in another database.<br></p>
 <table>
 <thead>
 <tr>
@@ -608,7 +608,7 @@ Useful when exporting an entire logic structure in order to recreate it in anoth
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -637,6 +637,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Get-DbaDependency.ps1">Get-DbaDependency</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Get-DbaDependency">Get-DbaDependency</a>.</p>
 
                 </div> <!-- rendered -->

@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -471,22 +471,22 @@
 accepts multiple kinds of input and allows you to add reg servers from different CMSes.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Add-DbaRegServer
-    -[-SqlInstance] &lt;DbaInstanceParameter[]&gt;]
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    -[-ServerName] &lt;String&gt;]
-    -[-Name] &lt;String&gt;]
-    -[-Description] &lt;String&gt;]
-    -[-Group] &lt;Object&gt;]
-    -[-ActiveDirectoryTenant] &lt;String&gt;]
-    -[-ActiveDirectoryUserId] &lt;String&gt;]
-    -[-ConnectionString] &lt;String&gt;]
-    -[-OtherParams] &lt;String&gt;]
-    -[-InputObject] &lt;ServerGroup[]&gt;]
-    -[-ServerObject] &lt;Server[]&gt;]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [[-SqlInstance] &lt;DbaInstanceParameter[]&gt;]
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [[-ServerName] &lt;String&gt;]
+    [[-Name] &lt;String&gt;]
+    [[-Description] &lt;String&gt;]
+    [[-Group] &lt;Object&gt;]
+    [[-ActiveDirectoryTenant] &lt;String&gt;]
+    [[-ActiveDirectoryUserId] &lt;String&gt;]
+    [[-ConnectionString] &lt;String&gt;]
+    [[-OtherParams] &lt;String&gt;]
+    [[-InputObject] &lt;ServerGroup[]&gt;]
+    [[-ServerObject] &lt;Server[]&gt;]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -495,27 +495,27 @@ accepts multiple kinds of input and allows you to add reg servers from different
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Add-DbaRegServer -SqlInstance sql2008 -ServerName sql01
 </code></pre>
-<p>Creates a registered server on sql2008's CMS which points to the SQL Server, sql01. When scrolling in CMS, the name &quot;sql01&quot; will be visible.</p>
+<p>Creates a registered server on sql2008's CMS which points to the SQL Server, sql01. When scrolling in CMS, the name &quot;sql01&quot; will be visible.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Add-DbaRegServer -ServerName sql01
 </code></pre>
-<p>Creates a registered server in Local Server Groups which points to the SQL Server, sql01. When scrolling in Registered Servers, the name &quot;sql01&quot; will be visible.</p>
+<p>Creates a registered server in Local Server Groups which points to the SQL Server, sql01. When scrolling in Registered Servers, the name &quot;sql01&quot; will be visible.<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Add-DbaRegServer -SqlInstance sql2008 -ServerName sql01 -Name &quot;The 2008 Clustered Instance&quot; -Description &quot;HR's Dedicated SharePoint instance&quot;
 </code></pre>
-<p>Creates a registered server on sql2008's CMS which points to the SQL Server, sql01. When scrolling in CMS, &quot;The 2008 Clustered Instance&quot; will be visible.
-Clearly this is hard to explain ;)</p>
+<p>Creates a registered server on sql2008's CMS which points to the SQL Server, sql01. When scrolling in CMS, &quot;The 2008 Clustered Instance&quot; will be visible.<br>
+Clearly this is hard to explain ;)<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; Add-DbaRegServer -SqlInstance sql2008 -ServerName sql01 -Group hr\Seattle
 </code></pre>
-<p>Creates a registered server on sql2008's CMS which points to the SQL Server, sql01. When scrolling in CMS, the name &quot;sql01&quot; will be visible within the Seattle group which is in the hr group.</p>
+<p>Creates a registered server on sql2008's CMS which points to the SQL Server, sql01. When scrolling in CMS, the name &quot;sql01&quot; will be visible within the Seattle group which is in the hr group.<br></p>
 <h5 id="example-5">Example:  5</h5>
 <pre><code>PS C:\&gt; Connect-DbaInstance -SqlInstance dockersql1 -SqlCredential sqladmin | Add-DbaRegServer -ServerName mydockerjam
 </code></pre>
-<p>Creates a registered server called &quot;mydockerjam&quot; in Local Server Groups that uses SQL authentication and points to the server dockersql1.</p>
+<p>Creates a registered server called &quot;mydockerjam&quot; in Local Server Groups that uses SQL authentication and points to the server dockersql1.<br></p>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance if a CMS is used</p>
+<p>The target SQL Server instance if a CMS is used<br></p>
 <table>
 <thead>
 <tr>
@@ -545,7 +545,7 @@ Clearly this is hard to explain ;)</p>
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -573,7 +573,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="servername">-ServerName</h5>
-<p>Server Name is the actual SQL instance name (labeled Server Name)</p>
+<p>Server Name is the actual SQL instance name (labeled Server Name)<br></p>
 <table>
 <thead>
 <tr>
@@ -601,7 +601,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="name">-Name</h5>
-<p>Name is basically the nickname in SSMS Registered Server interface (labeled Registered Server Name)</p>
+<p>Name is basically the nickname in SSMS Registered Server interface (labeled Registered Server Name)<br></p>
 <table>
 <thead>
 <tr>
@@ -629,7 +629,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="description-1">-Description</h5>
-<p>Adds a description for the registered server</p>
+<p>Adds a description for the registered server<br></p>
 <table>
 <thead>
 <tr>
@@ -658,7 +658,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </table>
 <h5 id="group">-Group</h5>
 <p>Adds the registered server to a specific group.
-If group does not exist it will be created</p>
+If group does not exist it will be created<br></p>
 <table>
 <thead>
 <tr>
@@ -686,7 +686,7 @@ If group does not exist it will be created</p>
 </tbody>
 </table>
 <h5 id="activedirectorytenant">-ActiveDirectoryTenant</h5>
-<p>Active Directory Tenant</p>
+<p>Active Directory Tenant<br></p>
 <table>
 <thead>
 <tr>
@@ -714,7 +714,7 @@ If group does not exist it will be created</p>
 </tbody>
 </table>
 <h5 id="activedirectoryuserid">-ActiveDirectoryUserId</h5>
-<p>Active Directory User id</p>
+<p>Active Directory User id<br></p>
 <table>
 <thead>
 <tr>
@@ -742,7 +742,7 @@ If group does not exist it will be created</p>
 </tbody>
 </table>
 <h5 id="connectionstring">-ConnectionString</h5>
-<p>SQL Server connection string</p>
+<p>SQL Server connection string<br></p>
 <table>
 <thead>
 <tr>
@@ -770,7 +770,7 @@ If group does not exist it will be created</p>
 </tbody>
 </table>
 <h5 id="otherparams">-OtherParams</h5>
-<p>Additional parameters to append to the connection string</p>
+<p>Additional parameters to append to the connection string<br></p>
 <table>
 <thead>
 <tr>
@@ -798,7 +798,7 @@ If group does not exist it will be created</p>
 </tbody>
 </table>
 <h5 id="inputobject">-InputObject</h5>
-<p>Allows the piping of a registered server group</p>
+<p>Allows the piping of a registered server group<br></p>
 <table>
 <thead>
 <tr>
@@ -826,7 +826,7 @@ If group does not exist it will be created</p>
 </tbody>
 </table>
 <h5 id="serverobject">-ServerObject</h5>
-<p>SMO Server Objects (from Connect-DbaInstance)</p>
+<p>SMO Server Objects (from Connect-DbaInstance)<br></p>
 <table>
 <thead>
 <tr>
@@ -856,7 +856,7 @@ If group does not exist it will be created</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -884,7 +884,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>Shows what would happen if the command were to run. No actions are actually performed.</p>
+<p>Shows what would happen if the command were to run. No actions are actually performed.<br></p>
 <table>
 <thead>
 <tr>
@@ -912,7 +912,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>Prompts you for confirmation before executing any changing operations within the command.</p>
+<p>Prompts you for confirmation before executing any changing operations within the command.<br></p>
 <table>
 <thead>
 <tr>
@@ -941,6 +941,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Add-DbaRegServer.ps1">Add-DbaRegServer</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Add-DbaRegServer">Add-DbaRegServer</a>.</p>
 
                 </div> <!-- rendered -->

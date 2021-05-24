@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -475,25 +475,25 @@ But it is possible to download a newer set or a specific version to an alternati
 It will run all or a selection of those scripts on one or multiple servers and return the result as a PowerShell Object</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Invoke-DbaDiagnosticQuery
-    --SqlInstance] &lt;DbaInstanceParameter[]&gt;
-    --Database &lt;Object[]&gt;]
-    --ExcludeDatabase &lt;Object[]&gt;]
-    --ExcludeQuery &lt;Object[]&gt;]
-    --SqlCredential &lt;PSCredential&gt;]
-    --Path &lt;FileInfo&gt;]
-    --QueryName &lt;String[]&gt;]
-    --UseSelectionHelper]
-    --InstanceOnly]
-    --DatabaseSpecific]
-    --ExcludeQueryTextColumn]
-    --ExcludePlanColumn]
-    --NoColumnParsing]
-    --OutputPath &lt;String&gt;]
-    --ExportQueries]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-SqlInstance] &lt;DbaInstanceParameter[]&gt;
+    [-Database &lt;Object[]&gt;]
+    [-ExcludeDatabase &lt;Object[]&gt;]
+    [-ExcludeQuery &lt;Object[]&gt;]
+    [-SqlCredential &lt;PSCredential&gt;]
+    [-Path &lt;FileInfo&gt;]
+    [-QueryName &lt;String[]&gt;]
+    [-UseSelectionHelper]
+    [-InstanceOnly]
+    [-DatabaseSpecific]
+    [-ExcludeQueryTextColumn]
+    [-ExcludePlanColumn]
+    [-NoColumnParsing]
+    [-OutputPath &lt;String&gt;]
+    [-ExportQueries]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -502,43 +502,43 @@ It will run all or a selection of those scripts on one or multiple servers and r
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Invoke-DbaDiagnosticQuery -SqlInstance sql2016
 </code></pre>
-<p>Run the selection made by the user on the Sql Server instance specified.</p>
+<p>Run the selection made by the user on the Sql Server instance specified.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Invoke-DbaDiagnosticQuery -SqlInstance sql2016 -UseSelectionHelper | Export-DbaDiagnosticQuery -Path C:\temp\gboutput
 </code></pre>
-<p>Provides a grid view with all the queries to choose from and will run the selection made by the user on the SQL Server instance specified.
-Then it will export the results to Export-DbaDiagnosticQuery.</p>
+<p>Provides a grid view with all the queries to choose from and will run the selection made by the user on the SQL Server instance specified.<br>
+Then it will export the results to Export-DbaDiagnosticQuery.<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Invoke-DbaDiagnosticQuery -SqlInstance localhost -ExportQueries -OutputPath &quot;C:\temp\DiagnosticQueries&quot;
 </code></pre>
-<p>Export All Queries to Disk</p>
+<p>Export All Queries to Disk<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; Invoke-DbaDiagnosticQuery -SqlInstance localhost -DatabaseSpecific -ExportQueries -OutputPath &quot;C:\temp\DiagnosticQueries&quot;
 </code></pre>
-<p>Export Database Specific Queries for all User Dbs</p>
+<p>Export Database Specific Queries for all User Dbs<br></p>
 <h5 id="example-5">Example:  5</h5>
 <pre><code>PS C:\&gt; Invoke-DbaDiagnosticQuery -SqlInstance localhost -DatabaseSpecific -DatabaseName 'tempdb' -ExportQueries -OutputPath &quot;C:\temp\DiagnosticQueries&quot;
 </code></pre>
-<p>Export Database Specific Queries For One Target Database</p>
+<p>Export Database Specific Queries For One Target Database<br></p>
 <h5 id="example-6">Example:  6</h5>
 <pre><code>PS C:\&gt; Invoke-DbaDiagnosticQuery -SqlInstance localhost -DatabaseSpecific -DatabaseName 'tempdb' -ExportQueries -OutputPath &quot;C:\temp\DiagnosticQueries&quot; -QueryName 'Database-scoped Configurations'
 </code></pre>
-<p>Export Database Specific Queries For One Target Database and One Specific Query</p>
+<p>Export Database Specific Queries For One Target Database and One Specific Query<br></p>
 <h5 id="example-7">Example:  7</h5>
 <pre><code>PS C:\&gt; Invoke-DbaDiagnosticQuery -SqlInstance localhost -UseSelectionHelper
 </code></pre>
-<p>Choose Queries To Export</p>
+<p>Choose Queries To Export<br></p>
 <h5 id="example-8">Example:  8</h5>
 <pre><code>PS C:\&gt; [PSObject[]]$results = Invoke-DbaDiagnosticQuery -SqlInstance localhost -WhatIf
 </code></pre>
-<p>Parse the appropriate diagnostic queries by connecting to server, and instead of running them, return as [PSCustomObject[]] to work with further</p>
+<p>Parse the appropriate diagnostic queries by connecting to server, and instead of running them, return as [PSCustomObject[]] to work with further<br></p>
 <h5 id="example-9">Example:  9</h5>
 <pre><code>PS C:\&gt; $results = Invoke-DbaDiagnosticQuery -SqlInstance Sql2017 -DatabaseSpecific -QueryName 'Database-scoped Configurations' -DatabaseName TestStuff
 </code></pre>
-<p>Run diagnostic queries targeted at specific database, and only run database level queries against this database.</p>
+<p>Run diagnostic queries targeted at specific database, and only run database level queries against this database.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances. Can be either a string or SMO server</p>
+<p>The target SQL Server instance or instances. Can be either a string or SMO server<br></p>
 <table>
 <thead>
 <tr>
@@ -567,7 +567,7 @@ Then it will export the results to Export-DbaDiagnosticQuery.</p>
 </table>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="database">-Database</h5>
-<p>The database(s) to process. If unspecified, all databases will be processed</p>
+<p>The database(s) to process. If unspecified, all databases will be processed<br></p>
 <table>
 <thead>
 <tr>
@@ -595,7 +595,7 @@ Then it will export the results to Export-DbaDiagnosticQuery.</p>
 </tbody>
 </table>
 <h5 id="excludedatabase">-ExcludeDatabase</h5>
-<p>The database(s) to exclude</p>
+<p>The database(s) to exclude<br></p>
 <table>
 <thead>
 <tr>
@@ -623,7 +623,7 @@ Then it will export the results to Export-DbaDiagnosticQuery.</p>
 </tbody>
 </table>
 <h5 id="excludequery">-ExcludeQuery</h5>
-<p>The Queries to exclude</p>
+<p>The Queries to exclude<br></p>
 <table>
 <thead>
 <tr>
@@ -653,7 +653,7 @@ Then it will export the results to Export-DbaDiagnosticQuery.</p>
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -681,7 +681,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="path">-Path</h5>
-<p>Alternate path for the diagnostic scripts</p>
+<p>Alternate path for the diagnostic scripts<br></p>
 <table>
 <thead>
 <tr>
@@ -709,7 +709,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="queryname">-QueryName</h5>
-<p>Only run specific query</p>
+<p>Only run specific query<br></p>
 <table>
 <thead>
 <tr>
@@ -737,7 +737,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="useselectionhelper">-UseSelectionHelper</h5>
-<p>Provides a grid view with all the queries to choose from and will run the selection made by the user on the Sql Server instance specified.</p>
+<p>Provides a grid view with all the queries to choose from and will run the selection made by the user on the Sql Server instance specified.<br></p>
 <table>
 <thead>
 <tr>
@@ -765,7 +765,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="instanceonly">-InstanceOnly</h5>
-<p>Run only instance level queries</p>
+<p>Run only instance level queries<br></p>
 <table>
 <thead>
 <tr>
@@ -793,7 +793,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="databasespecific">-DatabaseSpecific</h5>
-<p>Run only database level queries</p>
+<p>Run only database level queries<br></p>
 <table>
 <thead>
 <tr>
@@ -821,7 +821,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="excludequerytextcolumn">-ExcludeQueryTextColumn</h5>
-<p>Use this switch to exclude the [Complete Query Text] column from relevant queries</p>
+<p>Use this switch to exclude the [Complete Query Text] column from relevant queries<br></p>
 <table>
 <thead>
 <tr>
@@ -849,7 +849,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="excludeplancolumn">-ExcludePlanColumn</h5>
-<p>Use this switch to exclude the [Query Plan] column from relevant queries</p>
+<p>Use this switch to exclude the [Query Plan] column from relevant queries<br></p>
 <table>
 <thead>
 <tr>
@@ -877,7 +877,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="nocolumnparsing">-NoColumnParsing</h5>
-<p>Does not parse the [Complete Query Text] and [Query Plan] columns and disregards the ExcludeQueryTextColumn and NoColumnParsing switches</p>
+<p>Does not parse the [Complete Query Text] and [Query Plan] columns and disregards the ExcludeQueryTextColumn and NoColumnParsing switches<br></p>
 <table>
 <thead>
 <tr>
@@ -905,7 +905,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="outputpath">-OutputPath</h5>
-<p>Directory to parsed diagnostics queries to. This will split them based on server, database name, and query.</p>
+<p>Directory to parsed diagnostics queries to. This will split them based on server, database name, and query.<br></p>
 <table>
 <thead>
 <tr>
@@ -934,7 +934,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </table>
 <h5 id="exportqueries">-ExportQueries</h5>
 <p>Use this switch to export the diagnostic queries to sql files. Instead of running the queries, the server will be evaluated to find the appropriate queries to run based on SQL Version.
-These sql files will then be created in the OutputDirectory</p>
+These sql files will then be created in the OutputDirectory<br></p>
 <table>
 <thead>
 <tr>
@@ -964,7 +964,7 @@ These sql files will then be created in the OutputDirectory</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -992,7 +992,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>Shows what would happen if the command would execute, but does not actually perform the command</p>
+<p>Shows what would happen if the command would execute, but does not actually perform the command<br></p>
 <table>
 <thead>
 <tr>
@@ -1020,7 +1020,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>Prompts to confirm certain actions</p>
+<p>Prompts to confirm certain actions<br></p>
 <table>
 <thead>
 <tr>
@@ -1049,6 +1049,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Invoke-DbaDiagnosticQuery.ps1">Invoke-DbaDiagnosticQuery</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Invoke-DbaDiagnosticQuery">Invoke-DbaDiagnosticQuery</a>.</p>
 
                 </div> <!-- rendered -->

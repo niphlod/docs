@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -470,36 +470,36 @@
 <p>Publishes the dacpac taken from SSDT project or Export-DbaDacPackage. Changing the schema to match the dacpac and also to run any scripts in the dacpac (pre/post deploy scripts) or bacpac.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Publish-DbaDacPackage
-    --SqlInstance &lt;DbaInstanceParameter[]&gt;]
-    --SqlCredential &lt;PSCredential&gt;] -Path &lt;String&gt; -Database &lt;String[]&gt;
-    --ConnectionString &lt;String[]&gt;]
-    --GenerateDeploymentReport]
-    --ScriptOnly]
-    --Type &lt;String&gt;]
-    --OutputPath &lt;String&gt;]
-    --IncludeSqlCmdVars]
-    --DacOption &lt;Object&gt;]
-    --EnableException]
-    --DacFxPath &lt;String&gt;]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-SqlInstance &lt;DbaInstanceParameter[]&gt;]
+    [-SqlCredential &lt;PSCredential&gt;] -Path &lt;String&gt; -Database &lt;String[]&gt;
+    [-ConnectionString &lt;String[]&gt;]
+    [-GenerateDeploymentReport]
+    [-ScriptOnly]
+    [-Type &lt;String&gt;]
+    [-OutputPath &lt;String&gt;]
+    [-IncludeSqlCmdVars]
+    [-DacOption &lt;Object&gt;]
+    [-EnableException]
+    [-DacFxPath &lt;String&gt;]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 Publish-DbaDacPackage
-    --SqlInstance &lt;DbaInstanceParameter[]&gt;]
-    --SqlCredential &lt;PSCredential&gt;] -Path &lt;String&gt;
-    --PublishXml &lt;String&gt;] -Database &lt;String[]&gt;
-    --ConnectionString &lt;String[]&gt;]
-    --GenerateDeploymentReport]
-    --ScriptOnly]
-    --Type &lt;String&gt;]
-    --OutputPath &lt;String&gt;]
-    --IncludeSqlCmdVars]
-    --EnableException]
-    --DacFxPath &lt;String&gt;]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-SqlInstance &lt;DbaInstanceParameter[]&gt;]
+    [-SqlCredential &lt;PSCredential&gt;] -Path &lt;String&gt;
+    [-PublishXml &lt;String&gt;] -Database &lt;String[]&gt;
+    [-ConnectionString &lt;String[]&gt;]
+    [-GenerateDeploymentReport]
+    [-ScriptOnly]
+    [-Type &lt;String&gt;]
+    [-OutputPath &lt;String&gt;]
+    [-IncludeSqlCmdVars]
+    [-EnableException]
+    [-DacFxPath &lt;String&gt;]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -510,29 +510,29 @@ Publish-DbaDacPackage
 PS C:\&gt; $options.DeployOptions.DropObjectsNotInSource = $true
 PS C:\&gt; Publish-DbaDacPackage -SqlInstance sql2016 -Database DB1 -DacOption $options -Path c:\temp\db.dacpac
 </code></pre>
-<p>Uses DacOption object to set Deployment Options and updates DB1 database on sql2016 from the db.dacpac dacpac file, dropping objects that are missing from source.</p>
+<p>Uses DacOption object to set Deployment Options and updates DB1 database on sql2016 from the db.dacpac dacpac file, dropping objects that are missing from source.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Publish-DbaDacPackage -SqlInstance sql2017 -Database WideWorldImporters -Path C:\temp\sql2016-WideWorldImporters.dacpac -PublishXml C:\temp\sql2016-WideWorldImporters-publish.xml -Confirm
 </code></pre>
-<p>Updates WideWorldImporters on sql2017 from the sql2016-WideWorldImporters.dacpac using the sql2016-WideWorldImporters-publish.xml publish profile. Prompts for confirmation.</p>
+<p>Updates WideWorldImporters on sql2017 from the sql2016-WideWorldImporters.dacpac using the sql2016-WideWorldImporters-publish.xml publish profile. Prompts for confirmation.<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; New-DbaDacProfile -SqlInstance sql2016 -Database db2 -Path C:\temp
 PS C:\&gt; Export-DbaDacPackage -SqlInstance sql2016 -Database db2 | Publish-DbaDacPackage -PublishXml C:\temp\sql2016-db2-publish.xml -Database db1, db2 -SqlInstance sql2017
 </code></pre>
-<p>Creates a publish profile at C:\temp\sql2016-db2-publish.xml, exports the .dacpac to $home\Documents\sql2016-db2.dacpac. Does not prompt for confirmation.
-then publishes it to the sql2017 server database db2</p>
+<p>Creates a publish profile at C:\temp\sql2016-db2-publish.xml, exports the .dacpac to $home\Documents\sql2016-db2.dacpac. Does not prompt for confirmation.<br>
+then publishes it to the sql2017 server database db2<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; $loc = &quot;C:\Users\bob\source\repos\Microsoft.Data.Tools.Msbuild\lib\net46\Microsoft.SqlServer.Dac.dll&quot;
 PS C:\&gt; Publish-DbaDacPackage -SqlInstance &quot;local&quot; -Database WideWorldImporters -Path C:\temp\WideWorldImporters.dacpac -PublishXml C:\temp\WideWorldImporters.publish.xml -DacFxPath $loc -Confirm
 </code></pre>
-<p>Publishes the dacpac using a specific dacfx library. Prompts for confirmation.</p>
+<p>Publishes the dacpac using a specific dacfx library. Prompts for confirmation.<br></p>
 <h5 id="example-5">Example:  5</h5>
 <pre><code>PS C:\&gt; Publish-DbaDacPackage -SqlInstance sql2017 -Database WideWorldImporters -Path C:\temp\sql2016-WideWorldImporters.dacpac -PublishXml C:\temp\sql2016-WideWorldImporters-publish.xml -ScriptOnly
 </code></pre>
-<p>Does not deploy the changes, but will generate the deployment script that would be executed against WideWorldImporters.</p>
+<p>Does not deploy the changes, but will generate the deployment script that would be executed against WideWorldImporters.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="path">-Path</h5>
-<p>Specifies the filesystem path to the DACPAC</p>
+<p>Specifies the filesystem path to the DACPAC<br></p>
 <table>
 <thead>
 <tr>
@@ -560,7 +560,7 @@ PS C:\&gt; Publish-DbaDacPackage -SqlInstance &quot;local&quot; -Database WideWo
 </tbody>
 </table>
 <h5 id="database">-Database</h5>
-<p>Specifies the name of the database being published.</p>
+<p>Specifies the name of the database being published.<br></p>
 <table>
 <thead>
 <tr>
@@ -589,7 +589,7 @@ PS C:\&gt; Publish-DbaDacPackage -SqlInstance &quot;local&quot; -Database WideWo
 </table>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances.</p>
+<p>The target SQL Server instance or instances.<br></p>
 <table>
 <thead>
 <tr>
@@ -618,7 +618,7 @@ PS C:\&gt; Publish-DbaDacPackage -SqlInstance &quot;local&quot; -Database WideWo
 </table>
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
-Only SQL authentication is supported. When not specified, uses Trusted Authentication.</p>
+Only SQL authentication is supported. When not specified, uses Trusted Authentication.<br></p>
 <table>
 <thead>
 <tr>
@@ -646,7 +646,7 @@ Only SQL authentication is supported. When not specified, uses Trusted Authentic
 </tbody>
 </table>
 <h5 id="publishxml">-PublishXml</h5>
-<p>Specifies the publish profile which will include options and sqlCmdVariables.</p>
+<p>Specifies the publish profile which will include options and sqlCmdVariables.<br></p>
 <table>
 <thead>
 <tr>
@@ -674,7 +674,7 @@ Only SQL authentication is supported. When not specified, uses Trusted Authentic
 </tbody>
 </table>
 <h5 id="connectionstring">-ConnectionString</h5>
-<p>Specifies the connection string to the database you are upgrading. This is not required if SqlInstance is specified.</p>
+<p>Specifies the connection string to the database you are upgrading. This is not required if SqlInstance is specified.<br></p>
 <table>
 <thead>
 <tr>
@@ -702,7 +702,7 @@ Only SQL authentication is supported. When not specified, uses Trusted Authentic
 </tbody>
 </table>
 <h5 id="generatedeploymentreport">-GenerateDeploymentReport</h5>
-<p>If this switch is enabled, the publish XML report  will be generated.</p>
+<p>If this switch is enabled, the publish XML report  will be generated.<br></p>
 <table>
 <thead>
 <tr>
@@ -730,7 +730,7 @@ Only SQL authentication is supported. When not specified, uses Trusted Authentic
 </tbody>
 </table>
 <h5 id="scriptonly">-ScriptOnly</h5>
-<p>If this switch is enabled the publish script will be generated.</p>
+<p>If this switch is enabled the publish script will be generated.<br></p>
 <table>
 <thead>
 <tr>
@@ -758,7 +758,7 @@ Only SQL authentication is supported. When not specified, uses Trusted Authentic
 </tbody>
 </table>
 <h5 id="type">-Type</h5>
-<p>Selecting the type of the export: Dacpac (default) or Bacpac.</p>
+<p>Selecting the type of the export: Dacpac (default) or Bacpac.<br></p>
 <table>
 <thead>
 <tr>
@@ -790,7 +790,7 @@ Only SQL authentication is supported. When not specified, uses Trusted Authentic
 </tbody>
 </table>
 <h5 id="outputpath">-OutputPath</h5>
-<p>Specifies the filesystem path (directory) where output files will be generated.</p>
+<p>Specifies the filesystem path (directory) where output files will be generated.<br></p>
 <table>
 <thead>
 <tr>
@@ -818,7 +818,7 @@ Only SQL authentication is supported. When not specified, uses Trusted Authentic
 </tbody>
 </table>
 <h5 id="includesqlcmdvars">-IncludeSqlCmdVars</h5>
-<p>If this switch is enabled, SqlCmdVars in publish.xml will have their values overwritten.</p>
+<p>If this switch is enabled, SqlCmdVars in publish.xml will have their values overwritten.<br></p>
 <table>
 <thead>
 <tr>
@@ -846,7 +846,7 @@ Only SQL authentication is supported. When not specified, uses Trusted Authentic
 </tbody>
 </table>
 <h5 id="dacoption">-DacOption</h5>
-<p>Export options for a corresponding export type. Can be created by New-DbaDacOption -Type Dacpac | Bacpac</p>
+<p>Export options for a corresponding export type. Can be created by New-DbaDacOption -Type Dacpac | Bacpac<br></p>
 <table>
 <thead>
 <tr>
@@ -876,7 +876,7 @@ Only SQL authentication is supported. When not specified, uses Trusted Authentic
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -904,7 +904,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="dacfxpath">-DacFxPath</h5>
-<p>Path to the dac dll. If this is omitted, then the version of dac dll which is packaged with dbatools is used.</p>
+<p>Path to the dac dll. If this is omitted, then the version of dac dll which is packaged with dbatools is used.<br></p>
 <table>
 <thead>
 <tr>
@@ -932,7 +932,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>Shows what would happen if the command were to run. No actions are actually performed.</p>
+<p>Shows what would happen if the command were to run. No actions are actually performed.<br></p>
 <table>
 <thead>
 <tr>
@@ -960,7 +960,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>Prompts you for confirmation before executing any changing operations within the command.</p>
+<p>Prompts you for confirmation before executing any changing operations within the command.<br></p>
 <table>
 <thead>
 <tr>
@@ -989,6 +989,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Publish-DbaDacPackage.ps1">Publish-DbaDacPackage</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Publish-DbaDacPackage">Publish-DbaDacPackage</a>.</p>
 
                 </div> <!-- rendered -->

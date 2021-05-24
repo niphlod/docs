@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -471,16 +471,16 @@
 <p>Basically, only the port is settable at this time, so this command updates the listener port.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Set-DbaAgListener
-    -[-SqlInstance] &lt;DbaInstanceParameter[]&gt;]
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    -[-AvailabilityGroup] &lt;String[]&gt;]
-    -[-Listener] &lt;String[]&gt;]
-    --Port] &lt;Int32&gt;
-    -[-InputObject] &lt;AvailabilityGroupListener[]&gt;]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [[-SqlInstance] &lt;DbaInstanceParameter[]&gt;]
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [[-AvailabilityGroup] &lt;String[]&gt;]
+    [[-Listener] &lt;String[]&gt;]
+    [-Port] &lt;Int32&gt;
+    [[-InputObject] &lt;AvailabilityGroupListener[]&gt;]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -489,14 +489,14 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Set-DbaAgListener -SqlInstance sql2017 -AvailabilityGroup SharePoint -Port 14333
 </code></pre>
-<p>Changes the port for the SharePoint AG Listener on sql2017. Prompts for confirmation.</p>
+<p>Changes the port for the SharePoint AG Listener on sql2017. Prompts for confirmation.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Get-DbaAgListener -SqlInstance sql2017 | Out-GridView -Passthru | Set-DbaAgListener -Port 1433 -Confirm:$false
 </code></pre>
-<p>Changes the port for selected AG listeners to 1433. Does not prompt for confirmation.</p>
+<p>Changes the port for selected AG listeners to 1433. Does not prompt for confirmation.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="port">-Port</h5>
-<p>Sets the port number used to communicate with the availability group.</p>
+<p>Sets the port number used to communicate with the availability group.<br></p>
 <table>
 <thead>
 <tr>
@@ -525,7 +525,7 @@
 </table>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances. Server version must be SQL Server version 2012 or higher.</p>
+<p>The target SQL Server instance or instances. Server version must be SQL Server version 2012 or higher.<br></p>
 <table>
 <thead>
 <tr>
@@ -555,7 +555,7 @@
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -583,7 +583,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="availabilitygroup">-AvailabilityGroup</h5>
-<p>The Availability Group to which a property will be changed.</p>
+<p>The Availability Group to which a property will be changed.<br></p>
 <table>
 <thead>
 <tr>
@@ -611,7 +611,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="listener">-Listener</h5>
-<p>Modify only specific listeners.</p>
+<p>Modify only specific listeners.<br></p>
 <table>
 <thead>
 <tr>
@@ -639,7 +639,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="inputobject">-InputObject</h5>
-<p>Enables piping from Get-DbaAvailabilityGroup</p>
+<p>Enables piping from Get-DbaAvailabilityGroup<br></p>
 <table>
 <thead>
 <tr>
@@ -669,7 +669,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -697,7 +697,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>Shows what would happen if the command were to run. No actions are actually performed.</p>
+<p>Shows what would happen if the command were to run. No actions are actually performed.<br></p>
 <table>
 <thead>
 <tr>
@@ -725,7 +725,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>Prompts you for confirmation before executing any changing operations within the command.</p>
+<p>Prompts you for confirmation before executing any changing operations within the command.<br></p>
 <table>
 <thead>
 <tr>
@@ -754,6 +754,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Set-DbaAgListener.ps1">Set-DbaAgListener</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Set-DbaAgListener">Set-DbaAgListener</a>.</p>
 
                 </div> <!-- rendered -->

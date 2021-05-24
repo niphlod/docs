@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -472,14 +472,14 @@
 <a href="https://technet.microsoft.com/en-us/library/dd758814(v=sql.100).aspx">https://technet.microsoft.com/en-us/library/dd758814(v=sql.100).aspx</a> - &quot;The performance question here is usually not one of correlation per the formula, but whether the cluster size has been explicitly defined at 64 KB, which is a best practice for SQL Server.&quot;</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Test-DbaDiskAllocation
-    --ComputerName] &lt;Object[]&gt;
-    --NoSqlCheck]
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    -[-Credential] &lt;PSCredential&gt;]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-ComputerName] &lt;Object[]&gt;
+    [-NoSqlCheck]
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [[-Credential] &lt;PSCredential&gt;]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -488,18 +488,18 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Test-DbaDiskAllocation -ComputerName sqlserver2014a
 </code></pre>
-<p>Scans all disks on server sqlserver2014a for best practice allocation unit size.</p>
+<p>Scans all disks on server sqlserver2014a for best practice allocation unit size.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Test-DbaDiskAllocation -ComputerName sqlserver2014 | Select-Output *
 </code></pre>
-<p>Scans all disks on server sqlserver2014a for allocation unit size and returns detailed results for each.</p>
+<p>Scans all disks on server sqlserver2014a for allocation unit size and returns detailed results for each.<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Test-DbaDiskAllocation -ComputerName sqlserver2014a -NoSqlCheck
 </code></pre>
-<p>Scans all disks not hosting SQL Server data or log files on server sqlserver2014a for best practice allocation unit size.</p>
+<p>Scans all disks not hosting SQL Server data or log files on server sqlserver2014a for best practice allocation unit size.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="computername">-ComputerName</h5>
-<p>The server(s) to check disk configuration on.</p>
+<p>The server(s) to check disk configuration on.<br></p>
 <table>
 <thead>
 <tr>
@@ -528,7 +528,7 @@
 </table>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="nosqlcheck">-NoSqlCheck</h5>
-<p>If this switch is enabled, the disk(s) will not be checked for SQL Server data or log files.</p>
+<p>If this switch is enabled, the disk(s) will not be checked for SQL Server data or log files.<br></p>
 <table>
 <thead>
 <tr>
@@ -558,7 +558,7 @@
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -587,7 +587,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </table>
 <h5 id="credential">-Credential</h5>
 <p>Specifies an alternate Windows account to use when enumerating drives on the server. May require Administrator privileges. To use:
-$cred = Get-Credential, then pass $cred object to the -Credential parameter.</p>
+$cred = Get-Credential, then pass $cred object to the -Credential parameter.<br></p>
 <table>
 <thead>
 <tr>
@@ -617,7 +617,7 @@ $cred = Get-Credential, then pass $cred object to the -Credential parameter.</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -645,7 +645,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.</p>
+<p>If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.<br></p>
 <table>
 <thead>
 <tr>
@@ -673,7 +673,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.</p>
+<p>If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.<br></p>
 <table>
 <thead>
 <tr>
@@ -702,6 +702,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Test-DbaDiskAllocation.ps1">Test-DbaDiskAllocation</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Test-DbaDiskAllocation">Test-DbaDiskAllocation</a>.</p>
 
                 </div> <!-- rendered -->

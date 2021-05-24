@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -474,13 +474,13 @@ at the users request, but please be aware that this may have an impact on your t
 system running this function</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Read-DbaTransactionLog
-    --SqlInstance] &lt;DbaInstanceParameter&gt;
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    --Database] &lt;Object&gt;
-    --IgnoreLimit]
-    -[-RowLimit] &lt;Int32&gt;]
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [-SqlInstance] &lt;DbaInstanceParameter&gt;
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [-Database] &lt;Object&gt;
+    [-IgnoreLimit]
+    [[-RowLimit] &lt;Int32&gt;]
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -489,14 +489,14 @@ system running this function</p>
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; $Log = Read-DbaTransactionLog -SqlInstance sql2016 -Database MyDatabase
 </code></pre>
-<p>Will read the contents of the transaction log of MyDatabase on SQL Server Instance sql2016 into the local PowerShell object $Log</p>
+<p>Will read the contents of the transaction log of MyDatabase on SQL Server Instance sql2016 into the local PowerShell object $Log<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; $Log = Read-DbaTransactionLog -SqlInstance sql2016 -Database MyDatabase -IgnoreLimit
 </code></pre>
-<p>Will read the contents of the transaction log of MyDatabase on SQL Server Instance sql2016 into the local PowerShell object $Log, ignoring the recommendation of not returning more that 0.5GB of log</p>
+<p>Will read the contents of the transaction log of MyDatabase on SQL Server Instance sql2016 into the local PowerShell object $Log, ignoring the recommendation of not returning more that 0.5GB of log<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances</p>
+<p>The target SQL Server instance or instances<br></p>
 <table>
 <thead>
 <tr>
@@ -524,7 +524,7 @@ system running this function</p>
 </tbody>
 </table>
 <h5 id="database">-Database</h5>
-<p>Database to read the transaction log of</p>
+<p>Database to read the transaction log of<br></p>
 <table>
 <thead>
 <tr>
@@ -555,7 +555,7 @@ system running this function</p>
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -583,7 +583,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="ignorelimit">-IgnoreLimit</h5>
-<p>Switch to indicate that you wish to bypass the recommended limits of the function</p>
+<p>Switch to indicate that you wish to bypass the recommended limits of the function<br></p>
 <table>
 <thead>
 <tr>
@@ -611,7 +611,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="rowlimit">-RowLimit</h5>
-<p>Will limit the number of rows returned from the transaction log</p>
+<p>Will limit the number of rows returned from the transaction log<br></p>
 <table>
 <thead>
 <tr>
@@ -641,7 +641,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -670,6 +670,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Read-DbaTransactionLog.ps1">Read-DbaTransactionLog</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Read-DbaTransactionLog">Read-DbaTransactionLog</a>.</p>
 
                 </div> <!-- rendered -->

@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -470,15 +470,15 @@
 <p>This function can either run against specific databases or all databases searching all user or user and system views.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Find-DbaView
-    --SqlInstance] &lt;DbaInstanceParameter[]&gt;
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    -[-Database] &lt;Object[]&gt;]
-    -[-ExcludeDatabase] &lt;Object[]&gt;]
-    --Pattern] &lt;String&gt;
-    --IncludeSystemObjects]
-    --IncludeSystemDatabases]
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [-SqlInstance] &lt;DbaInstanceParameter[]&gt;
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [[-Database] &lt;Object[]&gt;]
+    [[-ExcludeDatabase] &lt;Object[]&gt;]
+    [-Pattern] &lt;String&gt;
+    [-IncludeSystemObjects]
+    [-IncludeSystemDatabases]
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -487,22 +487,22 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Find-DbaView -SqlInstance DEV01 -Pattern whatever
 </code></pre>
-<p>Searches all user databases views for &quot;whatever&quot; in the text body</p>
+<p>Searches all user databases views for &quot;whatever&quot; in the text body<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Find-DbaView -SqlInstance sql2016 -Pattern '\w+@\w+\.\w+'
 </code></pre>
-<p>Searches all databases for all views that contain a valid email pattern in the text body</p>
+<p>Searches all databases for all views that contain a valid email pattern in the text body<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Find-DbaView -SqlInstance DEV01 -Database MyDB -Pattern 'some string' -Verbose
 </code></pre>
-<p>Searches in &quot;mydb&quot; database views for &quot;some string&quot; in the text body</p>
+<p>Searches in &quot;mydb&quot; database views for &quot;some string&quot; in the text body<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; Find-DbaView -SqlInstance sql2016 -Database MyDB -Pattern RUNTIME -IncludeSystemObjects
 </code></pre>
-<p>Searches in &quot;mydb&quot; database views for &quot;runtime&quot; in the text body</p>
+<p>Searches in &quot;mydb&quot; database views for &quot;runtime&quot; in the text body<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances. This can be a collection and receive pipeline input</p>
+<p>The target SQL Server instance or instances. This can be a collection and receive pipeline input<br></p>
 <table>
 <thead>
 <tr>
@@ -530,7 +530,7 @@
 </tbody>
 </table>
 <h5 id="pattern">-Pattern</h5>
-<p>String pattern that you want to search for in the view text body</p>
+<p>String pattern that you want to search for in the view text body<br></p>
 <table>
 <thead>
 <tr>
@@ -561,7 +561,7 @@
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -589,7 +589,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="database">-Database</h5>
-<p>The database(s) to process - this list is auto-populated from the server. If unspecified, all databases will be processed.</p>
+<p>The database(s) to process - this list is auto-populated from the server. If unspecified, all databases will be processed.<br></p>
 <table>
 <thead>
 <tr>
@@ -617,7 +617,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="excludedatabase">-ExcludeDatabase</h5>
-<p>The database(s) to exclude - this list is auto-populated from the server</p>
+<p>The database(s) to exclude - this list is auto-populated from the server<br></p>
 <table>
 <thead>
 <tr>
@@ -646,7 +646,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </table>
 <h5 id="includesystemobjects">-IncludeSystemObjects</h5>
 <p>By default, system views are ignored but you can include them within the search using this parameter.
-Warning - this will likely make it super slow if you run it on all databases.</p>
+Warning - this will likely make it super slow if you run it on all databases.<br></p>
 <table>
 <thead>
 <tr>
@@ -674,7 +674,7 @@ Warning - this will likely make it super slow if you run it on all databases.</p
 </tbody>
 </table>
 <h5 id="includesystemdatabases">-IncludeSystemDatabases</h5>
-<p>By default system databases are ignored but you can include them within the search using this parameter</p>
+<p>By default system databases are ignored but you can include them within the search using this parameter<br></p>
 <table>
 <thead>
 <tr>
@@ -704,7 +704,7 @@ Warning - this will likely make it super slow if you run it on all databases.</p
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -733,6 +733,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Find-DbaView.ps1">Find-DbaView</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Find-DbaView">Find-DbaView</a>.</p>
 
                 </div> <!-- rendered -->

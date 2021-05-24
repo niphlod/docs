@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -470,25 +470,25 @@
 <p>Tries a bunch of different ways to remove a user created database or two or more.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Remove-DbaDatabase
-    --SqlCredential &lt;PSCredential&gt;]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-SqlCredential &lt;PSCredential&gt;]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 Remove-DbaDatabase -SqlInstance &lt;DbaInstanceParameter[]&gt;
-    --SqlCredential &lt;PSCredential&gt;] -Database &lt;Object[]&gt;
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-SqlCredential &lt;PSCredential&gt;] -Database &lt;Object[]&gt;
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 Remove-DbaDatabase
-    --SqlCredential &lt;PSCredential&gt;] -InputObject &lt;Database[]&gt;
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-SqlCredential &lt;PSCredential&gt;] -InputObject &lt;Database[]&gt;
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -497,26 +497,26 @@ Remove-DbaDatabase
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Remove-DbaDatabase -SqlInstance sql2016 -Database containeddb
 </code></pre>
-<p>Prompts then removes the database containeddb on SQL Server sql2016</p>
+<p>Prompts then removes the database containeddb on SQL Server sql2016<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Remove-DbaDatabase -SqlInstance sql2016 -Database containeddb, mydb
 </code></pre>
-<p>Prompts then removes the databases containeddb and mydb on SQL Server sql2016</p>
+<p>Prompts then removes the databases containeddb and mydb on SQL Server sql2016<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Remove-DbaDatabase -SqlInstance sql2016 -Database containeddb -Confirm:$false
 </code></pre>
-<p>Does not prompt and swiftly removes containeddb on SQL Server sql2016</p>
+<p>Does not prompt and swiftly removes containeddb on SQL Server sql2016<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; Get-DbaDatabase -SqlInstance server\instance | Remove-DbaDatabase
 </code></pre>
-<p>Removes all the user databases from server\instance</p>
+<p>Removes all the user databases from server\instance<br></p>
 <h5 id="example-5">Example:  5</h5>
 <pre><code>PS C:\&gt; Get-DbaDatabase -SqlInstance server\instance | Remove-DbaDatabase -Confirm:$false
 </code></pre>
-<p>Removes all the user databases from server\instance without any confirmation</p>
+<p>Removes all the user databases from server\instance without any confirmation<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances.You must have sysadmin access and server version must be SQL Server version 2000 or higher.</p>
+<p>The target SQL Server instance or instances.You must have sysadmin access and server version must be SQL Server version 2000 or higher.<br></p>
 <table>
 <thead>
 <tr>
@@ -544,7 +544,7 @@ Remove-DbaDatabase
 </tbody>
 </table>
 <h5 id="database">-Database</h5>
-<p>The database(s) to process - this list is auto-populated from the server. If unspecified, all databases will be processed.</p>
+<p>The database(s) to process - this list is auto-populated from the server. If unspecified, all databases will be processed.<br></p>
 <table>
 <thead>
 <tr>
@@ -572,7 +572,7 @@ Remove-DbaDatabase
 </tbody>
 </table>
 <h5 id="inputobject">-InputObject</h5>
-<p>A collection of databases (such as returned by Get-DbaDatabase), to be removed.</p>
+<p>A collection of databases (such as returned by Get-DbaDatabase), to be removed.<br></p>
 <table>
 <thead>
 <tr>
@@ -603,7 +603,7 @@ Remove-DbaDatabase
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -633,7 +633,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -661,7 +661,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>Shows what would happen if the command were to run. No actions are actually performed.</p>
+<p>Shows what would happen if the command were to run. No actions are actually performed.<br></p>
 <table>
 <thead>
 <tr>
@@ -689,7 +689,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>Prompts you for confirmation before executing any changing operations within the command.</p>
+<p>Prompts you for confirmation before executing any changing operations within the command.<br></p>
 <table>
 <thead>
 <tr>
@@ -718,6 +718,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Remove-DbaDatabase.ps1">Remove-DbaDatabase</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Remove-DbaDatabase">Remove-DbaDatabase</a>.</p>
 
                 </div> <!-- rendered -->

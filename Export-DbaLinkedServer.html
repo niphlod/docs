@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -471,17 +471,17 @@
 <p>Requires remote Windows access if exporting the password.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Export-DbaLinkedServer
-    --SqlInstance] &lt;DbaInstanceParameter[]&gt;
-    -[-LinkedServer] &lt;String[]&gt;]
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    -[-Credential] &lt;PSCredential&gt;]
-    -[-Path] &lt;String&gt;]
-    -[-FilePath] &lt;String&gt;]
-    --ExcludePassword]
-    --Append]
-    -[-InputObject] &lt;LinkedServer[]&gt;]
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [-SqlInstance] &lt;DbaInstanceParameter[]&gt;
+    [[-LinkedServer] &lt;String[]&gt;]
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [[-Credential] &lt;PSCredential&gt;]
+    [[-Path] &lt;String&gt;]
+    [[-FilePath] &lt;String&gt;]
+    [-ExcludePassword]
+    [-Append]
+    [[-InputObject] &lt;LinkedServer[]&gt;]
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -490,14 +490,14 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Export-DbaLinkedServer -SqlInstance sql2017 -Path C:\temp\ls.sql
 </code></pre>
-<p>Exports the linked servers, including passwords, from sql2017 to the file C:\temp\ls.sql</p>
+<p>Exports the linked servers, including passwords, from sql2017 to the file C:\temp\ls.sql<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Export-DbaLinkedServer -SqlInstance sql2017 -Path C:\temp\ls.sql -ExcludePassword
 </code></pre>
-<p>Exports the linked servers, without passwords, from sql2017 to the file C:\temp\ls.sql</p>
+<p>Exports the linked servers, without passwords, from sql2017 to the file C:\temp\ls.sql<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>Source SQL Server. You must have sysadmin access and server version must be SQL Server version 2005 or higher.</p>
+<p>Source SQL Server. You must have sysadmin access and server version must be SQL Server version 2005 or higher.<br></p>
 <table>
 <thead>
 <tr>
@@ -526,7 +526,7 @@
 </table>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="linkedserver">-LinkedServer</h5>
-<p>The linked server(s) to export. If unspecified, all linked servers will be processed.</p>
+<p>The linked server(s) to export. If unspecified, all linked servers will be processed.<br></p>
 <table>
 <thead>
 <tr>
@@ -556,7 +556,7 @@
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -584,7 +584,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="credential">-Credential</h5>
-<p>Login to the target OS using alternative linked servers. Accepts credential objects (Get-Credential)</p>
+<p>Login to the target OS using alternative linked servers. Accepts credential objects (Get-Credential)<br></p>
 <table>
 <thead>
 <tr>
@@ -612,7 +612,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="path">-Path</h5>
-<p>Specifies the directory where the file or files will be exported.</p>
+<p>Specifies the directory where the file or files will be exported.<br></p>
 <table>
 <thead>
 <tr>
@@ -640,7 +640,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="filepath">-FilePath</h5>
-<p>Specifies the full file path of the output file.</p>
+<p>Specifies the full file path of the output file.<br></p>
 <table>
 <thead>
 <tr>
@@ -668,7 +668,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="excludepassword">-ExcludePassword</h5>
-<p>Exports the linked server without any sensitive information.</p>
+<p>Exports the linked server without any sensitive information.<br></p>
 <table>
 <thead>
 <tr>
@@ -696,7 +696,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="append">-Append</h5>
-<p>Append to Path</p>
+<p>Append to Path<br></p>
 <table>
 <thead>
 <tr>
@@ -724,7 +724,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="inputobject">-InputObject</h5>
-<p>Allow credentials to be piped in from Get-DbaLinkedServer</p>
+<p>Allow credentials to be piped in from Get-DbaLinkedServer<br></p>
 <table>
 <thead>
 <tr>
@@ -754,7 +754,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -783,6 +783,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Export-DbaLinkedServer.ps1">Export-DbaLinkedServer</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Export-DbaLinkedServer">Export-DbaLinkedServer</a>.</p>
 
                 </div> <!-- rendered -->

@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -470,17 +470,17 @@
 <p>Adds a computer certificate from a local or remote computer.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Add-DbaComputerCertificate
-    -[-ComputerName] &lt;DbaInstanceParameter[]&gt;]
-    -[-Credential] &lt;PSCredential&gt;]
-    -[-SecurePassword] &lt;SecureString&gt;]
-    -[-Certificate] &lt;X509Certificate2[]&gt;]
-    -[-Path] &lt;String&gt;]
-    -[-Store] &lt;String&gt;]
-    -[-Folder] &lt;String&gt;]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [[-ComputerName] &lt;DbaInstanceParameter[]&gt;]
+    [[-Credential] &lt;PSCredential&gt;]
+    [[-SecurePassword] &lt;SecureString&gt;]
+    [[-Certificate] &lt;X509Certificate2[]&gt;]
+    [[-Path] &lt;String&gt;]
+    [[-Store] &lt;String&gt;]
+    [[-Folder] &lt;String&gt;]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -489,14 +489,14 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Add-DbaComputerCertificate -ComputerName Server1 -Path C:\temp\cert.cer
 </code></pre>
-<p>Adds the local C:\temp\cert.cer to the remote server Server1 in LocalMachine\My (Personal).</p>
+<p>Adds the local C:\temp\cert.cer to the remote server Server1 in LocalMachine\My (Personal).<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Add-DbaComputerCertificate -Path C:\temp\cert.cer
 </code></pre>
-<p>Adds the local C:\temp\cert.cer to the local computer's LocalMachine\My (Personal) certificate store.</p>
+<p>Adds the local C:\temp\cert.cer to the local computer's LocalMachine\My (Personal) certificate store.<br></p>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="computername">-ComputerName</h5>
-<p>The target SQL Server instance or instances. Defaults to localhost.</p>
+<p>The target SQL Server instance or instances. Defaults to localhost.<br></p>
 <table>
 <thead>
 <tr>
@@ -524,7 +524,7 @@
 </tbody>
 </table>
 <h5 id="credential">-Credential</h5>
-<p>Allows you to login to $ComputerName using alternative credentials.</p>
+<p>Allows you to login to $ComputerName using alternative credentials.<br></p>
 <table>
 <thead>
 <tr>
@@ -552,7 +552,7 @@
 </tbody>
 </table>
 <h5 id="securepassword">-SecurePassword</h5>
-<p>The password for the certificate, if it is password protected.</p>
+<p>The password for the certificate, if it is password protected.<br></p>
 <table>
 <thead>
 <tr>
@@ -580,7 +580,7 @@
 </tbody>
 </table>
 <h5 id="certificate">-Certificate</h5>
-<p>The target certificate object.</p>
+<p>The target certificate object.<br></p>
 <table>
 <thead>
 <tr>
@@ -608,7 +608,7 @@
 </tbody>
 </table>
 <h5 id="path">-Path</h5>
-<p>The local path to the target certificate object.</p>
+<p>The local path to the target certificate object.<br></p>
 <table>
 <thead>
 <tr>
@@ -636,7 +636,7 @@
 </tbody>
 </table>
 <h5 id="store">-Store</h5>
-<p>Certificate store. Default is LocalMachine.</p>
+<p>Certificate store. Default is LocalMachine.<br></p>
 <table>
 <thead>
 <tr>
@@ -664,7 +664,7 @@
 </tbody>
 </table>
 <h5 id="folder">-Folder</h5>
-<p>Certificate folder. Default is My (Personal).</p>
+<p>Certificate folder. Default is My (Personal).<br></p>
 <table>
 <thead>
 <tr>
@@ -694,7 +694,7 @@
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -722,7 +722,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.</p>
+<p>If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.<br></p>
 <table>
 <thead>
 <tr>
@@ -750,7 +750,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.</p>
+<p>If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.<br></p>
 <table>
 <thead>
 <tr>
@@ -779,6 +779,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Add-DbaComputerCertificate.ps1">Add-DbaComputerCertificate</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Add-DbaComputerCertificate">Add-DbaComputerCertificate</a>.</p>
 
                 </div> <!-- rendered -->

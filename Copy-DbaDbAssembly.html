@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -472,17 +472,17 @@
 <p>This script does not yet copy dependencies or dependent objects.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Copy-DbaDbAssembly
-    --Source] &lt;DbaInstanceParameter&gt;
-    -[-SourceSqlCredential] &lt;PSCredential&gt;]
-    --Destination] &lt;DbaInstanceParameter[]&gt;
-    -[-DestinationSqlCredential] &lt;PSCredential&gt;]
-    -[-Assembly] &lt;Object[]&gt;]
-    -[-ExcludeAssembly] &lt;Object[]&gt;]
-    --Force]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-Source] &lt;DbaInstanceParameter&gt;
+    [[-SourceSqlCredential] &lt;PSCredential&gt;]
+    [-Destination] &lt;DbaInstanceParameter[]&gt;
+    [[-DestinationSqlCredential] &lt;PSCredential&gt;]
+    [[-Assembly] &lt;Object[]&gt;]
+    [[-ExcludeAssembly] &lt;Object[]&gt;]
+    [-Force]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -491,20 +491,20 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Copy-DbaDbAssembly -Source sqlserver2014a -Destination sqlcluster
 </code></pre>
-<p>Copies all assemblies from sqlserver2014a to sqlcluster using Windows credentials. If assemblies with the same name exist on sqlcluster, they will be skipped.</p>
+<p>Copies all assemblies from sqlserver2014a to sqlcluster using Windows credentials. If assemblies with the same name exist on sqlcluster, they will be skipped.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Copy-DbaDbAssembly -Source sqlserver2014a -Destination sqlcluster -Assembly dbname.assemblyname, dbname3.anotherassembly -SourceSqlCredential $cred -Force
 </code></pre>
-<p>Copies two assemblies, the dbname.assemblyname and dbname3.anotherassembly from sqlserver2014a to sqlcluster using SQL credentials for sqlserver2014a and Windows credentials for sqlcluster. If an
-assembly with the same name exists on sqlcluster, it will be dropped and recreated because -Force was used.
-In this example, anotherassembly will be copied to the dbname3 database on the server sqlcluster.</p>
+<p>Copies two assemblies, the dbname.assemblyname and dbname3.anotherassembly from sqlserver2014a to sqlcluster using SQL credentials for sqlserver2014a and Windows credentials for sqlcluster. If an <br>
+assembly with the same name exists on sqlcluster, it will be dropped and recreated because -Force was used.<br>
+In this example, anotherassembly will be copied to the dbname3 database on the server sqlcluster.<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Copy-DbaDbAssembly -Source sqlserver2014a -Destination sqlcluster -WhatIf -Force
 </code></pre>
-<p>Shows what would happen if the command were executed using force.</p>
+<p>Shows what would happen if the command were executed using force.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="source">-Source</h5>
-<p>Source SQL Server. You must have sysadmin access and server version must be SQL Server version 2000 or higher.</p>
+<p>Source SQL Server. You must have sysadmin access and server version must be SQL Server version 2000 or higher.<br></p>
 <table>
 <thead>
 <tr>
@@ -532,7 +532,7 @@ In this example, anotherassembly will be copied to the dbname3 database on the s
 </tbody>
 </table>
 <h5 id="destination">-Destination</h5>
-<p>Destination SQL Server. You must have sysadmin access and the server must be SQL Server 2000 or higher.</p>
+<p>Destination SQL Server. You must have sysadmin access and the server must be SQL Server 2000 or higher.<br></p>
 <table>
 <thead>
 <tr>
@@ -563,7 +563,7 @@ In this example, anotherassembly will be copied to the dbname3 database on the s
 <h5 id="sourcesqlcredential">-SourceSqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -593,7 +593,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 <h5 id="destinationsqlcredential">-DestinationSqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -621,7 +621,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="assembly">-Assembly</h5>
-<p>The assembly(ies) to process. This list is auto-populated from the server. If unspecified, all assemblies will be processed.</p>
+<p>The assembly(ies) to process. This list is auto-populated from the server. If unspecified, all assemblies will be processed.<br></p>
 <table>
 <thead>
 <tr>
@@ -649,7 +649,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="excludeassembly">-ExcludeAssembly</h5>
-<p>The assembly(ies) to exclude. This list is auto-populated from the server.</p>
+<p>The assembly(ies) to exclude. This list is auto-populated from the server.<br></p>
 <table>
 <thead>
 <tr>
@@ -677,7 +677,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="force">-Force</h5>
-<p>If this switch is enabled, existing assemblies on Destination with matching names from Source will be dropped.</p>
+<p>If this switch is enabled, existing assemblies on Destination with matching names from Source will be dropped.<br></p>
 <table>
 <thead>
 <tr>
@@ -707,7 +707,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -735,7 +735,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.</p>
+<p>If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.<br></p>
 <table>
 <thead>
 <tr>
@@ -763,7 +763,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.</p>
+<p>If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.<br></p>
 <table>
 <thead>
 <tr>
@@ -792,6 +792,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Copy-DbaDbAssembly.ps1">Copy-DbaDbAssembly</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Copy-DbaDbAssembly">Copy-DbaDbAssembly</a>.</p>
 
                 </div> <!-- rendered -->

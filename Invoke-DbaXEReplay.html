@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -475,14 +475,14 @@
 </ul>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Invoke-DbaXEReplay
-    --SqlInstance] &lt;DbaInstanceParameter[]&gt;
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    -[-Database] &lt;String[]&gt;]
-    -[-Event] &lt;String[]&gt;]
-    --InputObject] &lt;Object&gt;
-    --Raw]
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [-SqlInstance] &lt;DbaInstanceParameter[]&gt;
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [[-Database] &lt;String[]&gt;]
+    [[-Event] &lt;String[]&gt;]
+    [-InputObject] &lt;Object&gt;
+    [-Raw]
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -491,18 +491,18 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Read-DbaXEFile -Path C:\temp\sample.xel | Invoke-DbaXEReplay -SqlInstance sql2017
 </code></pre>
-<p>Runs all batch_text for sql_batch_completed against tempdb on sql2017.</p>
+<p>Runs all batch_text for sql_batch_completed against tempdb on sql2017.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Read-DbaXEFile -Path C:\temp\sample.xel | Invoke-DbaXEReplay -SqlInstance sql2017 -Database planning -Event sql_batch_completed
 </code></pre>
-<p>Sets the <em>initial</em> database to planning then runs only sql_batch_completed against sql2017.</p>
+<p>Sets the <em>initial</em> database to planning then runs only sql_batch_completed against sql2017.<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Read-DbaXEFile -Path C:\temp\sample.xel | Invoke-DbaXEReplay -SqlInstance sql2017, sql2016
 </code></pre>
-<p>Runs all batch_text for sql_batch_completed against tempdb on sql2017 and sql2016.</p>
+<p>Runs all batch_text for sql_batch_completed against tempdb on sql2017 and sql2016.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>Target SQL Server(s)</p>
+<p>Target SQL Server(s)<br></p>
 <table>
 <thead>
 <tr>
@@ -530,7 +530,7 @@
 </tbody>
 </table>
 <h5 id="inputobject">-InputObject</h5>
-<p>Accepts the object output of Read-DbaXESession.</p>
+<p>Accepts the object output of Read-DbaXESession.<br></p>
 <table>
 <thead>
 <tr>
@@ -561,7 +561,7 @@
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -589,7 +589,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="database">-Database</h5>
-<p>The initial starting database.</p>
+<p>The initial starting database.<br></p>
 <table>
 <thead>
 <tr>
@@ -617,7 +617,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="event">-Event</h5>
-<p>Each Response can be limited to processing specific events, while ignoring all the other ones. When this attribute is omitted, all events are processed.</p>
+<p>Each Response can be limited to processing specific events, while ignoring all the other ones. When this attribute is omitted, all events are processed.<br></p>
 <table>
 <thead>
 <tr>
@@ -645,7 +645,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="raw">-Raw</h5>
-<p>By dafault, the results of . $sqlcmd are collected, cleaned up and displayed. If you'd like to see all results immeidately, use Raw.</p>
+<p>By dafault, the results of . $sqlcmd are collected, cleaned up and displayed. If you'd like to see all results immeidately, use Raw.<br></p>
 <table>
 <thead>
 <tr>
@@ -675,7 +675,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -704,6 +704,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Invoke-DbaXEReplay.ps1">Invoke-DbaXEReplay</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Invoke-DbaXEReplay">Invoke-DbaXEReplay</a>.</p>
 
                 </div> <!-- rendered -->

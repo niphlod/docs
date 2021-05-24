@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -470,18 +470,18 @@
 <p>Removes (drops) database snapshots from the server</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Remove-DbaDbSnapshot
-    -[-SqlInstance] &lt;DbaInstanceParameter[]&gt;]
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    -[-Database] &lt;String[]&gt;]
-    -[-ExcludeDatabase] &lt;String[]&gt;]
-    -[-Snapshot] &lt;String[]&gt;]
-    -[-InputObject] &lt;Database[]&gt;]
-    --AllSnapshots]
-    --Force]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [[-SqlInstance] &lt;DbaInstanceParameter[]&gt;]
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [[-Database] &lt;String[]&gt;]
+    [[-ExcludeDatabase] &lt;String[]&gt;]
+    [[-Snapshot] &lt;String[]&gt;]
+    [[-InputObject] &lt;Database[]&gt;]
+    [-AllSnapshots]
+    [-Force]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -490,38 +490,38 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Remove-DbaDbSnapshot -SqlInstance sql2014 -Snapshot HR_snap_20161201, HR_snap_20161101
 </code></pre>
-<p>Removes database snapshots named HR_snap_20161201 and HR_snap_20161101</p>
+<p>Removes database snapshots named HR_snap_20161201 and HR_snap_20161101<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Remove-DbaDbSnapshot -SqlInstance sql2014 -Database HR, Accounting
 </code></pre>
-<p>Removes all database snapshots having HR and Accounting as base dbs</p>
+<p>Removes all database snapshots having HR and Accounting as base dbs<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Get-DbaDbSnapshot -SqlInstance sql2014 -Database HR, Accounting | Remove-DbaDbSnapshot
 </code></pre>
-<p>Removes all database snapshots having HR and Accounting as base dbs</p>
+<p>Removes all database snapshots having HR and Accounting as base dbs<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; Remove-DbaDbSnapshot -SqlInstance sql2014 -Snapshot HR_snapshot, Accounting_snapshot
 </code></pre>
-<p>Removes HR_snapshot and Accounting_snapshot</p>
+<p>Removes HR_snapshot and Accounting_snapshot<br></p>
 <h5 id="example-5">Example:  5</h5>
 <pre><code>PS C:\&gt; Get-DbaDbSnapshot -SqlInstance sql2016 | Where-Object SnapshotOf -like '*dumpsterfire*' | Remove-DbaDbSnapshot
 </code></pre>
-<p>Removes all snapshots associated with databases that have dumpsterfire in the name</p>
+<p>Removes all snapshots associated with databases that have dumpsterfire in the name<br></p>
 <h5 id="example-6">Example:  6</h5>
 <pre><code>PS C:\&gt; Get-DbaDbSnapshot -SqlInstance sql2016 | Out-GridView -Passthru | Remove-DbaDbSnapshot
 </code></pre>
-<p>Allows the selection of snapshots on sql2016 to remove</p>
+<p>Allows the selection of snapshots on sql2016 to remove<br></p>
 <h5 id="example-7">Example:  7</h5>
 <pre><code>PS C:\&gt; Remove-DbaDbSnapshot -SqlInstance sql2014 -AllSnapshots
 </code></pre>
-<p>Removes all database snapshots from sql2014</p>
+<p>Removes all database snapshots from sql2014<br></p>
 <h5 id="example-8">Example:  8</h5>
 <pre><code>PS C:\&gt; Remove-DbaDbSnapshot -SqlInstance sql2014 -AllSnapshots -Confirm
 </code></pre>
-<p>Removes all database snapshots from sql2014 and prompts for each database</p>
+<p>Removes all database snapshots from sql2014 and prompts for each database<br></p>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances</p>
+<p>The target SQL Server instance or instances<br></p>
 <table>
 <thead>
 <tr>
@@ -551,7 +551,7 @@
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -579,7 +579,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="database">-Database</h5>
-<p>Removes snapshots for only this specific base db</p>
+<p>Removes snapshots for only this specific base db<br></p>
 <table>
 <thead>
 <tr>
@@ -607,7 +607,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="excludedatabase">-ExcludeDatabase</h5>
-<p>Removes snapshots excluding this specific base dbs</p>
+<p>Removes snapshots excluding this specific base dbs<br></p>
 <table>
 <thead>
 <tr>
@@ -635,7 +635,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="snapshot">-Snapshot</h5>
-<p>Restores databases from snapshot with this name only</p>
+<p>Restores databases from snapshot with this name only<br></p>
 <table>
 <thead>
 <tr>
@@ -663,7 +663,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="inputobject">-InputObject</h5>
-<p>Enables input from Get-DbaDbSnapshot</p>
+<p>Enables input from Get-DbaDbSnapshot<br></p>
 <table>
 <thead>
 <tr>
@@ -691,7 +691,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="allsnapshots">-AllSnapshots</h5>
-<p>Specifies that you want to remove all snapshots from the server</p>
+<p>Specifies that you want to remove all snapshots from the server<br></p>
 <table>
 <thead>
 <tr>
@@ -719,7 +719,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="force">-Force</h5>
-<p>Will forcibly kill all running queries that prevent the drop process.</p>
+<p>Will forcibly kill all running queries that prevent the drop process.<br></p>
 <table>
 <thead>
 <tr>
@@ -749,7 +749,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -777,7 +777,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>Shows what would happen if the command were to run</p>
+<p>Shows what would happen if the command were to run<br></p>
 <table>
 <thead>
 <tr>
@@ -805,7 +805,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>Prompts for confirmation of every step.</p>
+<p>Prompts for confirmation of every step.<br></p>
 <table>
 <thead>
 <tr>
@@ -834,6 +834,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Remove-DbaDbSnapshot.ps1">Remove-DbaDbSnapshot</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Remove-DbaDbSnapshot">Remove-DbaDbSnapshot</a>.</p>
 
                 </div> <!-- rendered -->

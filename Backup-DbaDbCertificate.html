@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -470,41 +470,41 @@
 <p>Exports database certificates from SQL Server using SMO and outputs the .cer and .pvk files.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Backup-DbaDbCertificate
-    --SqlCredential &lt;PSCredential&gt;]
-    --EncryptionPassword &lt;SecureString&gt;]
-    --DecryptionPassword &lt;SecureString&gt;]
-    --Path &lt;FileInfo&gt;]
-    --Suffix &lt;String&gt;]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-SqlCredential &lt;PSCredential&gt;]
+    [-EncryptionPassword &lt;SecureString&gt;]
+    [-DecryptionPassword &lt;SecureString&gt;]
+    [-Path &lt;FileInfo&gt;]
+    [-Suffix &lt;String&gt;]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 Backup-DbaDbCertificate -SqlInstance &lt;DbaInstanceParameter[]&gt;
-    --SqlCredential &lt;PSCredential&gt;]
-    --Certificate &lt;Object[]&gt;]
-    --Database &lt;Object[]&gt;]
-    --ExcludeDatabase &lt;Object[]&gt;]
-    --EncryptionPassword &lt;SecureString&gt;]
-    --DecryptionPassword &lt;SecureString&gt;]
-    --Path &lt;FileInfo&gt;]
-    --Suffix &lt;String&gt;]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-SqlCredential &lt;PSCredential&gt;]
+    [-Certificate &lt;Object[]&gt;]
+    [-Database &lt;Object[]&gt;]
+    [-ExcludeDatabase &lt;Object[]&gt;]
+    [-EncryptionPassword &lt;SecureString&gt;]
+    [-DecryptionPassword &lt;SecureString&gt;]
+    [-Path &lt;FileInfo&gt;]
+    [-Suffix &lt;String&gt;]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 Backup-DbaDbCertificate
-    --SqlCredential &lt;PSCredential&gt;]
-    --EncryptionPassword &lt;SecureString&gt;]
-    --DecryptionPassword &lt;SecureString&gt;]
-    --Path &lt;FileInfo&gt;]
-    --Suffix &lt;String&gt;]
-    --InputObject &lt;Certificate[]&gt;]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-SqlCredential &lt;PSCredential&gt;]
+    [-EncryptionPassword &lt;SecureString&gt;]
+    [-DecryptionPassword &lt;SecureString&gt;]
+    [-Path &lt;FileInfo&gt;]
+    [-Suffix &lt;String&gt;]
+    [-InputObject &lt;Certificate[]&gt;]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -513,49 +513,49 @@ Backup-DbaDbCertificate
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Backup-DbaDbCertificate -SqlInstance Server1
 </code></pre>
-<p>Exports all the certificates on the specified SQL Server to the default data path for the instance.</p>
+<p>Exports all the certificates on the specified SQL Server to the default data path for the instance.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; $cred = Get-Credential sqladmin
 PS C:\&gt; Backup-DbaDbCertificate -SqlInstance Server1 -SqlCredential $cred
 </code></pre>
-<p>Connects using sqladmin credential and exports all the certificates on the specified SQL Server to the default data path for the instance.</p>
+<p>Connects using sqladmin credential and exports all the certificates on the specified SQL Server to the default data path for the instance.<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Backup-DbaDbCertificate -SqlInstance Server1 -Certificate Certificate1
 </code></pre>
-<p>Exports only the certificate named Certificate1 on the specified SQL Server to the default data path for the instance.</p>
+<p>Exports only the certificate named Certificate1 on the specified SQL Server to the default data path for the instance.<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; Backup-DbaDbCertificate -SqlInstance Server1 -Database AdventureWorks
 </code></pre>
-<p>Exports only the certificates for AdventureWorks on the specified SQL Server to the default data path for the instance.</p>
+<p>Exports only the certificates for AdventureWorks on the specified SQL Server to the default data path for the instance.<br></p>
 <h5 id="example-5">Example:  5</h5>
 <pre><code>PS C:\&gt; Backup-DbaDbCertificate -SqlInstance Server1 -ExcludeDatabase AdventureWorks
 </code></pre>
-<p>Exports all certificates except those for AdventureWorks on the specified SQL Server to the default data path for the instance.</p>
+<p>Exports all certificates except those for AdventureWorks on the specified SQL Server to the default data path for the instance.<br></p>
 <h5 id="example-6">Example:  6</h5>
 <pre><code>PS C:\&gt; Backup-DbaDbCertificate -SqlInstance Server1 -Path \\Server1\Certificates -EncryptionPassword (ConvertTo-SecureString -force -AsPlainText GoodPass1234!!)
 </code></pre>
-<p>Exports all the certificates and private keys on the specified SQL Server.</p>
+<p>Exports all the certificates and private keys on the specified SQL Server.<br></p>
 <h5 id="example-7">Example:  7</h5>
 <pre><code>PS C:\&gt; $EncryptionPassword = ConvertTo-SecureString -AsPlainText &quot;GoodPass1234!!&quot; -force
 PS C:\&gt; $DecryptionPassword = ConvertTo-SecureString -AsPlainText &quot;Password4567!!&quot; -force
 PS C:\&gt; Backup-DbaDbCertificate -SqlInstance Server1 -EncryptionPassword $EncryptionPassword -DecryptionPassword $DecryptionPassword
 </code></pre>
-<p>Exports all the certificates on the specified SQL Server using the supplied DecryptionPassword, since an EncryptionPassword is specified private keys are also exported.</p>
+<p>Exports all the certificates on the specified SQL Server using the supplied DecryptionPassword, since an EncryptionPassword is specified private keys are also exported.<br></p>
 <h5 id="example-8">Example:  8</h5>
 <pre><code>PS C:\&gt; Backup-DbaDbCertificate -SqlInstance Server1 -Path \\Server1\Certificates
 </code></pre>
-<p>Exports all certificates on the specified SQL Server to the specified path.</p>
+<p>Exports all certificates on the specified SQL Server to the specified path.<br></p>
 <h5 id="example-9">Example:  9</h5>
 <pre><code>PS C:\&gt; Backup-DbaDbCertificate -SqlInstance Server1 -Suffix DbaTools
 </code></pre>
-<p>Exports all certificates on the specified SQL Server to the specified path, appends DbaTools to the end of the filenames.</p>
+<p>Exports all certificates on the specified SQL Server to the specified path, appends DbaTools to the end of the filenames.<br></p>
 <h5 id="example-10">Example:  10</h5>
 <pre><code>PS C:\&gt; Get-DbaDbCertificate -SqlInstance sql2016 | Backup-DbaDbCertificate
 </code></pre>
-<p>Exports all certificates found on sql2016 to the default data directory.</p>
+<p>Exports all certificates found on sql2016 to the default data directory.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances. This can be a collection and receive pipeline input to allow the function to be executed against multiple SQL Server instances.</p>
+<p>The target SQL Server instance or instances. This can be a collection and receive pipeline input to allow the function to be executed against multiple SQL Server instances.<br></p>
 <table>
 <thead>
 <tr>
@@ -586,7 +586,7 @@ PS C:\&gt; Backup-DbaDbCertificate -SqlInstance Server1 -EncryptionPassword $Enc
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -614,7 +614,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="certificate">-Certificate</h5>
-<p>Exports certificate that matches the name(s).</p>
+<p>Exports certificate that matches the name(s).<br></p>
 <table>
 <thead>
 <tr>
@@ -642,7 +642,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="database">-Database</h5>
-<p>Exports the encryptor for specific database(s).</p>
+<p>Exports the encryptor for specific database(s).<br></p>
 <table>
 <thead>
 <tr>
@@ -670,7 +670,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="excludedatabase">-ExcludeDatabase</h5>
-<p>Database(s) to skip when exporting encryptors.</p>
+<p>Database(s) to skip when exporting encryptors.<br></p>
 <table>
 <thead>
 <tr>
@@ -698,7 +698,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="encryptionpassword">-EncryptionPassword</h5>
-<p>A string value that specifies the system path to encrypt the private key.</p>
+<p>A string value that specifies the system path to encrypt the private key.<br></p>
 <table>
 <thead>
 <tr>
@@ -726,7 +726,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="decryptionpassword">-DecryptionPassword</h5>
-<p>Secure string used to decrypt the private key.</p>
+<p>Secure string used to decrypt the private key.<br></p>
 <table>
 <thead>
 <tr>
@@ -754,7 +754,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="path">-Path</h5>
-<p>The path to output the files to. The path is relative to the SQL Server itself. If no path is specified, the default data directory will be used.</p>
+<p>The path to output the files to. The path is relative to the SQL Server itself. If no path is specified, the default data directory will be used.<br></p>
 <table>
 <thead>
 <tr>
@@ -782,7 +782,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="suffix">-Suffix</h5>
-<p>The suffix of the filename of the exported certificate.</p>
+<p>The suffix of the filename of the exported certificate.<br></p>
 <table>
 <thead>
 <tr>
@@ -810,7 +810,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="inputobject">-InputObject</h5>
-<p>Enables piping from Get-DbaDbCertificate</p>
+<p>Enables piping from Get-DbaDbCertificate<br></p>
 <table>
 <thead>
 <tr>
@@ -840,7 +840,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -868,7 +868,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.</p>
+<p>If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.<br></p>
 <table>
 <thead>
 <tr>
@@ -896,7 +896,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.</p>
+<p>If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.<br></p>
 <table>
 <thead>
 <tr>
@@ -925,6 +925,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Backup-DbaDbCertificate.ps1">Backup-DbaDbCertificate</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Backup-DbaDbCertificate">Backup-DbaDbCertificate</a>.</p>
 
                 </div> <!-- rendered -->

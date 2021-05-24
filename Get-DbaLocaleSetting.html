@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -471,10 +471,10 @@
 <p>Requires Local Admin rights on destination computer(s).</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Get-DbaLocaleSetting
-    -[-ComputerName] &lt;String[]&gt;]
-    -[-Credential] &lt;PSCredential&gt;]
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [[-ComputerName] &lt;String[]&gt;]
+    [[-Credential] &lt;PSCredential&gt;]
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -483,18 +483,18 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Get-DbaLocaleSetting -ComputerName sqlserver2014a
 </code></pre>
-<p>Gets the Locale settings on computer sqlserver2014a.</p>
+<p>Gets the Locale settings on computer sqlserver2014a.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; 'sql1','sql2','sql3' | Get-DbaLocaleSetting
 </code></pre>
-<p>Gets the Locale settings on computers sql1, sql2 and sql3.</p>
+<p>Gets the Locale settings on computers sql1, sql2 and sql3.<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Get-DbaLocaleSetting -ComputerName sql1,sql2 -Credential $credential
 </code></pre>
-<p>Gets the Locale settings on computers sql1 and sql2 using SQL Authentication to authenticate to the servers.</p>
+<p>Gets the Locale settings on computers sql1 and sql2 using SQL Authentication to authenticate to the servers.<br></p>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="computername">-ComputerName</h5>
-<p>The target SQL Server instance or instances.</p>
+<p>The target SQL Server instance or instances.<br></p>
 <table>
 <thead>
 <tr>
@@ -522,7 +522,7 @@
 </tbody>
 </table>
 <h5 id="credential">-Credential</h5>
-<p>Credential object used to connect to the computer as a different user.</p>
+<p>Credential object used to connect to the computer as a different user.<br></p>
 <table>
 <thead>
 <tr>
@@ -552,7 +552,7 @@
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -581,6 +581,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Get-DbaLocaleSetting.ps1">Get-DbaLocaleSetting</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Get-DbaLocaleSetting">Get-DbaLocaleSetting</a>.</p>
 
                 </div> <!-- rendered -->

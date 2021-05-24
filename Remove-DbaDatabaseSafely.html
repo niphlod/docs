@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -471,23 +471,23 @@
 <p>With huge thanks to Grant Fritchey and his verify your backups video. Take a look, it's only 3 minutes long. <a href="http://sqlps.io/backuprant">http://sqlps.io/backuprant</a></p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Remove-DbaDatabaseSafely
-    --SqlInstance] &lt;DbaInstanceParameter&gt;
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    -[-Database] &lt;Object[]&gt;]
-    -[-Destination] &lt;DbaInstanceParameter&gt;]
-    -[-DestinationCredential] &lt;PSCredential&gt;]
-    --NoDbccCheckDb]
-    --BackupFolder] &lt;String&gt;
-    -[-CategoryName] &lt;String&gt;]
-    -[-JobOwner] &lt;String&gt;]
-    --AllDatabases]
-    -[-BackupCompression] &lt;String&gt;]
-    --ReuseSourceFolderStructure]
-    --Force]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-SqlInstance] &lt;DbaInstanceParameter&gt;
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [[-Database] &lt;Object[]&gt;]
+    [[-Destination] &lt;DbaInstanceParameter&gt;]
+    [[-DestinationCredential] &lt;PSCredential&gt;]
+    [-NoDbccCheckDb]
+    [-BackupFolder] &lt;String&gt;
+    [[-CategoryName] &lt;String&gt;]
+    [[-JobOwner] &lt;String&gt;]
+    [-AllDatabases]
+    [[-BackupCompression] &lt;String&gt;]
+    [-ReuseSourceFolderStructure]
+    [-Force]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -496,39 +496,39 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Remove-DbaDatabaseSafely -SqlInstance 'Fade2Black' -Database RideTheLightning -BackupFolder 'C:\MSSQL\Backup\Rationalised - DO NOT DELETE'
 </code></pre>
-<p>Performs a DBCC CHECKDB on database RideTheLightning on server Fade2Black. If there are no errors, the database is backup to the folder C:\MSSQL\Backup\Rationalised - DO NOT DELETE. Then, an Agent
-job to restore the database from that backup is created. The database is then dropped, the Agent job to restore it run, a DBCC CHECKDB run against the restored database, and then it is dropped again.
-Any DBCC errors will be written to your documents folder</p>
+<p>Performs a DBCC CHECKDB on database RideTheLightning on server Fade2Black. If there are no errors, the database is backup to the folder C:\MSSQL\Backup\Rationalised - DO NOT DELETE. Then, an Agent <br>
+job to restore the database from that backup is created. The database is then dropped, the Agent job to restore it run, a DBCC CHECKDB run against the restored database, and then it is dropped again.<br>
+Any DBCC errors will be written to your documents folder<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; $Database = 'DemoNCIndex','RemoveTestDatabase'
 PS C:\&gt; Remove-DbaDatabaseSafely -SqlInstance 'Fade2Black' -Database $Database -BackupFolder 'C:\MSSQL\Backup\Rationalised - DO NOT DELETE'
 </code></pre>
-<p>Performs a DBCC CHECKDB on two databases, 'DemoNCIndex' and 'RemoveTestDatabase' on server Fade2Black. Then, an Agent job to restore each database from those backups is created. The databases are
-then dropped, the Agent jobs to restore them run, a DBCC CHECKDB run against the restored databases, and then they are dropped again.
-Any DBCC errors will be written to your documents folder</p>
+<p>Performs a DBCC CHECKDB on two databases, 'DemoNCIndex' and 'RemoveTestDatabase' on server Fade2Black. Then, an Agent job to restore each database from those backups is created. The databases are <br>
+then dropped, the Agent jobs to restore them run, a DBCC CHECKDB run against the restored databases, and then they are dropped again.<br>
+Any DBCC errors will be written to your documents folder<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Remove-DbaDatabaseSafely -SqlInstance 'Fade2Black' -Destination JusticeForAll -Database RideTheLightning -BackupFolder '\\BACKUPSERVER\BACKUPSHARE\MSSQL\Rationalised - DO NOT DELETE'
 </code></pre>
-<p>Performs a DBCC CHECKDB on database RideTheLightning on server Fade2Black. If there are no errors, the database is backup to the folder \BACKUPSERVER\BACKUPSHARE\MSSQL\Rationalised - DO NOT DELETE .
-Then, an Agent job is created on server JusticeForAll to restore the database from that backup is created. The database is then dropped on Fade2Black, the Agent job to restore it on JusticeForAll is
-run, a DBCC CHECKDB run against the restored database, and then it is dropped from JusticeForAll.
-Any DBCC errors will be written to your documents folder</p>
+<p>Performs a DBCC CHECKDB on database RideTheLightning on server Fade2Black. If there are no errors, the database is backup to the folder \BACKUPSERVER\BACKUPSHARE\MSSQL\Rationalised - DO NOT DELETE . <br>
+Then, an Agent job is created on server JusticeForAll to restore the database from that backup is created. The database is then dropped on Fade2Black, the Agent job to restore it on JusticeForAll is <br>
+run, a DBCC CHECKDB run against the restored database, and then it is dropped from JusticeForAll.<br>
+Any DBCC errors will be written to your documents folder<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; Remove-DbaDatabaseSafely -SqlInstance IronMaiden -Database $Database -Destination TheWildHearts -BackupFolder Z:\Backups -NoDbccCheckDb -JobOwner 'THEBEARD\Rob'
 </code></pre>
-<p>For the databases $Database on the server IronMaiden a DBCC CHECKDB will not be performed before backing up the databases to the folder Z:\Backups. Then, an Agent job is created on server
-TheWildHearts with a Job Owner of THEBEARD\Rob to restore each database from that backup using the instance's default file paths. The database(s) is(are) then dropped on IronMaiden, the Agent job(s)
-run, a DBCC CHECKDB run on the restored database(s), and then the database(s) is(are) dropped.</p>
+<p>For the databases $Database on the server IronMaiden a DBCC CHECKDB will not be performed before backing up the databases to the folder Z:\Backups. Then, an Agent job is created on server <br>
+TheWildHearts with a Job Owner of THEBEARD\Rob to restore each database from that backup using the instance's default file paths. The database(s) is(are) then dropped on IronMaiden, the Agent job(s) <br>
+run, a DBCC CHECKDB run on the restored database(s), and then the database(s) is(are) dropped.<br></p>
 <h5 id="example-5">Example:  5</h5>
 <pre><code>PS C:\&gt; Remove-DbaDatabaseSafely -SqlInstance IronMaiden -Database $Database -Destination TheWildHearts -BackupFolder Z:\Backups
 </code></pre>
-<p>The databases $Database on the server IronMaiden will be backed up the to the folder Z:\Backups. Then, an Agent job is created on server TheWildHearts with a Job Owner of THEBEARD\Rob to restore each
-database from that backup using the instance's default file paths. The database(s) is(are) then dropped on IronMaiden, the Agent job(s) run, a DBCC CHECKDB run on the restored database(s), and then
-the database(s) is(are) dropped.
-If there is a DBCC Error, the function  will continue to perform rest of the actions and will create an Agent job with 'DBCCERROR' in the name and a Backup file with 'DBCCError' in the name.</p>
+<p>The databases $Database on the server IronMaiden will be backed up the to the folder Z:\Backups. Then, an Agent job is created on server TheWildHearts with a Job Owner of THEBEARD\Rob to restore each <br>
+database from that backup using the instance's default file paths. The database(s) is(are) then dropped on IronMaiden, the Agent job(s) run, a DBCC CHECKDB run on the restored database(s), and then <br>
+the database(s) is(are) dropped.<br>
+If there is a DBCC Error, the function  will continue to perform rest of the actions and will create an Agent job with 'DBCCERROR' in the name and a Backup file with 'DBCCError' in the name.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances. You must have sysadmin access and server version must be SQL Server version 2000 or higher.</p>
+<p>The target SQL Server instance or instances. You must have sysadmin access and server version must be SQL Server version 2000 or higher.<br></p>
 <table>
 <thead>
 <tr>
@@ -557,7 +557,7 @@ If there is a DBCC Error, the function  will continue to perform rest of the act
 </table>
 <h5 id="backupfolder">-BackupFolder</h5>
 <p>Specifies the path to a folder where the final backups of the removed databases will be stored. If you are using separate source and destination servers, you must specify a UNC path such as<br />
-\SERVER1\BACKUPSHARE\</p>
+\SERVER1\BACKUPSHARE&lt;br&gt;</p>
 <table>
 <thead>
 <tr>
@@ -588,7 +588,7 @@ If there is a DBCC Error, the function  will continue to perform rest of the act
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -616,7 +616,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="database">-Database</h5>
-<p>Specifies one or more databases to remove.</p>
+<p>Specifies one or more databases to remove.<br></p>
 <table>
 <thead>
 <tr>
@@ -645,7 +645,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </table>
 <h5 id="destination">-Destination</h5>
 <p>If specified, Agent jobs will be created on this server. By default, the jobs will be created on the server specified by SqlInstance. You must have sysadmin access and the server must be SQL Server
-2000 or higher. The SQL Agent service will be started if it is not already running.</p>
+2000 or higher. The SQL Agent service will be started if it is not already running.<br></p>
 <table>
 <thead>
 <tr>
@@ -675,7 +675,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 <h5 id="destinationcredential">-DestinationCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -705,7 +705,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 <h5 id="nodbcccheckdb">-NoDbccCheckDb</h5>
 <p>If this switch is enabled, the initial DBCC CHECK DB will be skipped. This will make the process quicker but will also allow you to create an Agent job that restores a database backup containing a
 corrupt database.
-A second DBCC CHECKDB is performed on the restored database so you will still be notified BUT USE THIS WITH CARE.</p>
+A second DBCC CHECKDB is performed on the restored database so you will still be notified BUT USE THIS WITH CARE.<br></p>
 <table>
 <thead>
 <tr>
@@ -733,7 +733,7 @@ A second DBCC CHECKDB is performed on the restored database so you will still be
 </tbody>
 </table>
 <h5 id="categoryname">-CategoryName</h5>
-<p>Specifies the Category Name for the Agent job that is created for restoring the database(s). By default, the name is &quot;Rationalisation&quot;.</p>
+<p>Specifies the Category Name for the Agent job that is created for restoring the database(s). By default, the name is &quot;Rationalisation&quot;.<br></p>
 <table>
 <thead>
 <tr>
@@ -761,7 +761,7 @@ A second DBCC CHECKDB is performed on the restored database so you will still be
 </tbody>
 </table>
 <h5 id="jobowner">-JobOwner</h5>
-<p>Specifies the name of the account which will own the Agent jobs. By default, sa is used.</p>
+<p>Specifies the name of the account which will own the Agent jobs. By default, sa is used.<br></p>
 <table>
 <thead>
 <tr>
@@ -789,7 +789,7 @@ A second DBCC CHECKDB is performed on the restored database so you will still be
 </tbody>
 </table>
 <h5 id="alldatabases">-AllDatabases</h5>
-<p>If this switch is enabled, all user databases on the server will be removed. This is useful when decommissioning a server. You should use a Destination with this switch.</p>
+<p>If this switch is enabled, all user databases on the server will be removed. This is useful when decommissioning a server. You should use a Destination with this switch.<br></p>
 <table>
 <thead>
 <tr>
@@ -817,7 +817,7 @@ A second DBCC CHECKDB is performed on the restored database so you will still be
 </tbody>
 </table>
 <h5 id="backupcompression">-BackupCompression</h5>
-<p>If this switch is enabled, compression will be used for the backup regardless of the SQL Server instance setting. By default, the SQL Server instance setting for backup compression is used.</p>
+<p>If this switch is enabled, compression will be used for the backup regardless of the SQL Server instance setting. By default, the SQL Server instance setting for backup compression is used.<br></p>
 <table>
 <thead>
 <tr>
@@ -849,7 +849,7 @@ A second DBCC CHECKDB is performed on the restored database so you will still be
 </tbody>
 </table>
 <h5 id="reusesourcefolderstructure">-ReuseSourceFolderStructure</h5>
-<p>If this switch is enabled, the source folder structure will be used when restoring instead of using the destination instance default folder structure.</p>
+<p>If this switch is enabled, the source folder structure will be used when restoring instead of using the destination instance default folder structure.<br></p>
 <table>
 <thead>
 <tr>
@@ -877,7 +877,7 @@ A second DBCC CHECKDB is performed on the restored database so you will still be
 </tbody>
 </table>
 <h5 id="force">-Force</h5>
-<p>If this switch is enabled, all actions will be performed even if DBCC errors are detected. An Agent job will be created with 'DBCCERROR' in the name and the backup file will have 'DBCC' in its name.</p>
+<p>If this switch is enabled, all actions will be performed even if DBCC errors are detected. An Agent job will be created with 'DBCCERROR' in the name and the backup file will have 'DBCC' in its name.<br></p>
 <table>
 <thead>
 <tr>
@@ -907,7 +907,7 @@ A second DBCC CHECKDB is performed on the restored database so you will still be
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -935,7 +935,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.</p>
+<p>If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.<br></p>
 <table>
 <thead>
 <tr>
@@ -963,7 +963,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.</p>
+<p>If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.<br></p>
 <table>
 <thead>
 <tr>
@@ -992,6 +992,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Remove-DbaDatabaseSafely.ps1">Remove-DbaDatabaseSafely</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Remove-DbaDatabaseSafely">Remove-DbaDatabaseSafely</a>.</p>
 
                 </div> <!-- rendered -->

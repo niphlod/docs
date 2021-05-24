@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -470,11 +470,11 @@
 <p>Retrieves the templates from the default directory and if assigned custom directories</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Get-DbaRandomizedDatasetTemplate
-    -[-Template] &lt;String[]&gt;]
-    -[-Path] &lt;String[]&gt;]
-    --ExcludeDefault]
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [[-Template] &lt;String[]&gt;]
+    [[-Path] &lt;String[]&gt;]
+    [-ExcludeDefault]
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -483,19 +483,19 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Get-DbaRandomizedDatasetTemplate
 </code></pre>
-<p>Get the templates from the default directory</p>
+<p>Get the templates from the default directory<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Get-DbaRandomizedDatasetTemplate  -Template Personaldata, Test
 </code></pre>
-<p>Get the templates from thedefault directory and filter on PersonalData and Test</p>
+<p>Get the templates from thedefault directory and filter on PersonalData and Test<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Get-DbaRandomizedDatasetTemplate  -Path C:\DatasetTemplates
 </code></pre>
-<p>Get the templates from a custom directory</p>
+<p>Get the templates from a custom directory<br></p>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="template">-Template</h5>
 <p>The name of the template to use.
-It will go through the default templates to see if it's present</p>
+It will go through the default templates to see if it's present<br></p>
 <table>
 <thead>
 <tr>
@@ -523,7 +523,7 @@ It will go through the default templates to see if it's present</p>
 </tbody>
 </table>
 <h5 id="path">-Path</h5>
-<p>Path or paths that contain template files</p>
+<p>Path or paths that contain template files<br></p>
 <table>
 <thead>
 <tr>
@@ -551,7 +551,7 @@ It will go through the default templates to see if it's present</p>
 </tbody>
 </table>
 <h5 id="excludedefault">-ExcludeDefault</h5>
-<p>Exclude the default templates</p>
+<p>Exclude the default templates<br></p>
 <table>
 <thead>
 <tr>
@@ -581,7 +581,7 @@ It will go through the default templates to see if it's present</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -610,6 +610,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Get-DbaRandomizedDatasetTemplate.ps1">Get-DbaRandomizedDatasetTemplate</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Get-DbaRandomizedDatasetTemplate">Get-DbaRandomizedDatasetTemplate</a>.</p>
 
                 </div> <!-- rendered -->

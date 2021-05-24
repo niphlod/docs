@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -472,13 +472,13 @@
 <p>Thanks to serg-52 for the query:  <a href="https://www.sqlservercentral.com/Forums/Topic1642213-391-1.aspx">https://www.sqlservercentral.com/Forums/Topic1642213-391-1.aspx</a></p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Get-DbaFile
-    --SqlInstance] &lt;DbaInstanceParameter[]&gt;
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    -[-Path] &lt;String[]&gt;]
-    -[-FileType] &lt;String[]&gt;]
-    -[-Depth] &lt;Int32&gt;]
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [-SqlInstance] &lt;DbaInstanceParameter[]&gt;
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [[-Path] &lt;String[]&gt;]
+    [[-FileType] &lt;String[]&gt;]
+    [[-Depth] &lt;Int32&gt;]
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -487,27 +487,27 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Get-DbaFile -SqlInstance sqlserver2014a -Path E:\Dir1
 </code></pre>
-<p>Logs into the SQL Server &quot;sqlserver2014a&quot; using Windows credentials and searches E:\Dir for all files</p>
+<p>Logs into the SQL Server &quot;sqlserver2014a&quot; using Windows credentials and searches E:\Dir for all files<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Get-DbaFile -SqlInstance sqlserver2014a -SqlCredential $cred -Path 'E:\sql files'
 </code></pre>
-<p>Logs into the SQL Server &quot;sqlserver2014a&quot; using alternative credentials and returns all files in 'E:\sql files'</p>
+<p>Logs into the SQL Server &quot;sqlserver2014a&quot; using alternative credentials and returns all files in 'E:\sql files'<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; $all = Get-DbaDefaultPath -SqlInstance sql2014
 PS C:\&gt; Get-DbaFile -SqlInstance sql2014 -Path $all.Data, $all.Log, $all.Backup -Depth 3
 </code></pre>
-<p>Returns the files in the default data, log and backup directories on sql2014, 3 directories deep (recursively).</p>
+<p>Returns the files in the default data, log and backup directories on sql2014, 3 directories deep (recursively).<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; Get-DbaFile -SqlInstance sql2014 -Path 'E:\Dir1', 'E:\Dir2'
 </code></pre>
-<p>Returns the files in &quot;E:\Dir1&quot; and &quot;E:Dir2&quot; on sql2014</p>
+<p>Returns the files in &quot;E:\Dir1&quot; and &quot;E:Dir2&quot; on sql2014<br></p>
 <h5 id="example-5">Example:  5</h5>
 <pre><code>PS C:\&gt; Get-DbaFile -SqlInstance sql2014, sql2016 -Path 'E:\Dir1' -FileType fsf, mld
 </code></pre>
-<p>Finds files in E:\Dir1 ending with &quot;.fsf&quot; and &quot;.mld&quot; for both the servers sql2014 and sql2016.</p>
+<p>Finds files in E:\Dir1 ending with &quot;.fsf&quot; and &quot;.mld&quot; for both the servers sql2014 and sql2016.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances.</p>
+<p>The target SQL Server instance or instances.<br></p>
 <table>
 <thead>
 <tr>
@@ -536,7 +536,7 @@ PS C:\&gt; Get-DbaFile -SqlInstance sql2014 -Path $all.Data, $all.Log, $all.Back
 </table>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="sqlcredential">-SqlCredential</h5>
-<p>Allows you to login to servers using alternative credentials</p>
+<p>Allows you to login to servers using alternative credentials<br></p>
 <table>
 <thead>
 <tr>
@@ -564,7 +564,7 @@ PS C:\&gt; Get-DbaFile -SqlInstance sql2014 -Path $all.Data, $all.Log, $all.Back
 </tbody>
 </table>
 <h5 id="path">-Path</h5>
-<p>Used to specify extra directories to search in addition to the default data directory.</p>
+<p>Used to specify extra directories to search in addition to the default data directory.<br></p>
 <table>
 <thead>
 <tr>
@@ -592,7 +592,7 @@ PS C:\&gt; Get-DbaFile -SqlInstance sql2014 -Path $all.Data, $all.Log, $all.Back
 </tbody>
 </table>
 <h5 id="filetype">-FileType</h5>
-<p>Used to specify filter by filetype. No dot required, just pass the extension.</p>
+<p>Used to specify filter by filetype. No dot required, just pass the extension.<br></p>
 <table>
 <thead>
 <tr>
@@ -620,7 +620,7 @@ PS C:\&gt; Get-DbaFile -SqlInstance sql2014 -Path $all.Data, $all.Log, $all.Back
 </tbody>
 </table>
 <h5 id="depth">-Depth</h5>
-<p>Used to specify recursive folder depth.  Default is 1, non-recursive.</p>
+<p>Used to specify recursive folder depth.  Default is 1, non-recursive.<br></p>
 <table>
 <thead>
 <tr>
@@ -650,7 +650,7 @@ PS C:\&gt; Get-DbaFile -SqlInstance sql2014 -Path $all.Data, $all.Log, $all.Back
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -679,6 +679,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Get-DbaFile.ps1">Get-DbaFile</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Get-DbaFile">Get-DbaFile</a>.</p>
 
                 </div> <!-- rendered -->

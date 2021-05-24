@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -470,19 +470,19 @@
 <p>Creates a System.Data.SqlClient.SqlConnectionStringBuilder from a connection string.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>New-DbaConnectionStringBuilder
-    -[-ConnectionString] &lt;String[]&gt;]
-    -[-ApplicationName] &lt;String&gt;]
-    -[-DataSource] &lt;String&gt;]
-    -[-InitialCatalog] &lt;String&gt;]
-    -[-IntegratedSecurity] &lt;Nullable`1&gt;]
-    -[-UserName] &lt;String&gt;]
-    -[-Password] &lt;String&gt;]
-    --MultipleActiveResultSets]
-    -[-ColumnEncryptionSetting] {Disabled | Enabled}]
-    -[-WorkstationId] &lt;String&gt;]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [[-ConnectionString] &lt;String[]&gt;]
+    [[-ApplicationName] &lt;String&gt;]
+    [[-DataSource] &lt;String&gt;]
+    [[-InitialCatalog] &lt;String&gt;]
+    [[-IntegratedSecurity] &lt;Nullable`1&gt;]
+    [[-UserName] &lt;String&gt;]
+    [[-Password] &lt;String&gt;]
+    [-MultipleActiveResultSets]
+    [[-ColumnEncryptionSetting] {Disabled | Enabled}]
+    [[-WorkstationId] &lt;String&gt;]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -491,15 +491,15 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; New-DbaConnectionStringBuilder
 </code></pre>
-<p>Returns an empty ConnectionStringBuilder</p>
+<p>Returns an empty ConnectionStringBuilder<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; &quot;Data Source=localhost,1433;Initial Catalog=AlwaysEncryptedSample;UID=sa;PWD=alwaysB3Encrypt1ng;Application Name=Always Encrypted Sample MVC App;Column Encryption Setting=enabled&quot; |
 </code></pre>
-<p>New-DbaConnectionStringBuilder
-Returns a connection string builder that can be used to connect to the local sql server instance on the default port.</p>
+<p>New-DbaConnectionStringBuilder<br>
+Returns a connection string builder that can be used to connect to the local sql server instance on the default port.<br></p>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="connectionstring">-ConnectionString</h5>
-<p>A Connection String</p>
+<p>A Connection String<br></p>
 <table>
 <thead>
 <tr>
@@ -527,7 +527,7 @@ Returns a connection string builder that can be used to connect to the local sql
 </tbody>
 </table>
 <h5 id="applicationname">-ApplicationName</h5>
-<p>The application name to tell SQL Server the connection is associated with.</p>
+<p>The application name to tell SQL Server the connection is associated with.<br></p>
 <table>
 <thead>
 <tr>
@@ -555,7 +555,7 @@ Returns a connection string builder that can be used to connect to the local sql
 </tbody>
 </table>
 <h5 id="datasource">-DataSource</h5>
-<p>The Sql Server to connect to.</p>
+<p>The Sql Server to connect to.<br></p>
 <table>
 <thead>
 <tr>
@@ -583,7 +583,7 @@ Returns a connection string builder that can be used to connect to the local sql
 </tbody>
 </table>
 <h5 id="initialcatalog">-InitialCatalog</h5>
-<p>The initial database on the server to connect to.</p>
+<p>The initial database on the server to connect to.<br></p>
 <table>
 <thead>
 <tr>
@@ -611,7 +611,7 @@ Returns a connection string builder that can be used to connect to the local sql
 </tbody>
 </table>
 <h5 id="integratedsecurity">-IntegratedSecurity</h5>
-<p>Set to true to use windows authentication.</p>
+<p>Set to true to use windows authentication.<br></p>
 <table>
 <thead>
 <tr>
@@ -639,7 +639,7 @@ Returns a connection string builder that can be used to connect to the local sql
 </tbody>
 </table>
 <h5 id="username">-UserName</h5>
-<p>Sql User Name to connect with.</p>
+<p>Sql User Name to connect with.<br></p>
 <table>
 <thead>
 <tr>
@@ -667,7 +667,7 @@ Returns a connection string builder that can be used to connect to the local sql
 </tbody>
 </table>
 <h5 id="password">-Password</h5>
-<p>Password to use to connect with.</p>
+<p>Password to use to connect with.<br></p>
 <table>
 <thead>
 <tr>
@@ -695,7 +695,7 @@ Returns a connection string builder that can be used to connect to the local sql
 </tbody>
 </table>
 <h5 id="multipleactiveresultsets">-MultipleActiveResultSets</h5>
-<p>Enable Multiple Active Result Sets.</p>
+<p>Enable Multiple Active Result Sets.<br></p>
 <table>
 <thead>
 <tr>
@@ -723,7 +723,7 @@ Returns a connection string builder that can be used to connect to the local sql
 </tbody>
 </table>
 <h5 id="columnencryptionsetting">-ColumnEncryptionSetting</h5>
-<p>Enable Always Encrypted.</p>
+<p>Enable Always Encrypted.<br></p>
 <table>
 <thead>
 <tr>
@@ -751,7 +751,7 @@ Returns a connection string builder that can be used to connect to the local sql
 </tbody>
 </table>
 <h5 id="workstationid">-WorkstationId</h5>
-<p>Set the Workstation Id that is associated with the connection.</p>
+<p>Set the Workstation Id that is associated with the connection.<br></p>
 <table>
 <thead>
 <tr>
@@ -779,7 +779,7 @@ Returns a connection string builder that can be used to connect to the local sql
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.</p>
+<p>If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.<br></p>
 <table>
 <thead>
 <tr>
@@ -807,7 +807,7 @@ Returns a connection string builder that can be used to connect to the local sql
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.</p>
+<p>If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.<br></p>
 <table>
 <thead>
 <tr>
@@ -836,6 +836,7 @@ Returns a connection string builder that can be used to connect to the local sql
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/New-DbaConnectionStringBuilder.ps1">New-DbaConnectionStringBuilder</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#New-DbaConnectionStringBuilder">New-DbaConnectionStringBuilder</a>.</p>
 
                 </div> <!-- rendered -->

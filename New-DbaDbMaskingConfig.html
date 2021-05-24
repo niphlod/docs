@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -481,25 +481,25 @@ Xml</p>
 <a href="https://github.com/bchavez/Bogus">https://github.com/bchavez/Bogus</a></p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>New-DbaDbMaskingConfig
-    -[-SqlInstance] &lt;DbaInstanceParameter[]&gt;]
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    -[-Database] &lt;String[]&gt;]
-    -[-Table] &lt;String[]&gt;]
-    -[-Column] &lt;String[]&gt;]
-    --Path] &lt;String&gt;
-    -[-Locale] &lt;String&gt;]
-    -[-CharacterString] &lt;String&gt;]
-    -[-SampleCount] &lt;Int32&gt;]
-    -[-KnownNameFilePath] &lt;String&gt;]
-    -[-PatternFilePath] &lt;String&gt;]
-    --ExcludeDefaultKnownName]
-    --ExcludeDefaultPattern]
-    --Force]
-    -[-InputObject] &lt;Object[]&gt;]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [[-SqlInstance] &lt;DbaInstanceParameter[]&gt;]
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [[-Database] &lt;String[]&gt;]
+    [[-Table] &lt;String[]&gt;]
+    [[-Column] &lt;String[]&gt;]
+    [-Path] &lt;String&gt;
+    [[-Locale] &lt;String&gt;]
+    [[-CharacterString] &lt;String&gt;]
+    [[-SampleCount] &lt;Int32&gt;]
+    [[-KnownNameFilePath] &lt;String&gt;]
+    [[-PatternFilePath] &lt;String&gt;]
+    [-ExcludeDefaultKnownName]
+    [-ExcludeDefaultPattern]
+    [-Force]
+    [[-InputObject] &lt;Object[]&gt;]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -508,19 +508,19 @@ Xml</p>
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; New-DbaDbMaskingConfig -SqlInstance SQLDB1 -Database DB1 -Path C:\Temp\clone
 </code></pre>
-<p>Process all tables and columns for database DB1 on instance SQLDB1</p>
+<p>Process all tables and columns for database DB1 on instance SQLDB1<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; New-DbaDbMaskingConfig -SqlInstance SQLDB1 -Database DB1 -Table Customer -Path C:\Temp\clone
 </code></pre>
-<p>Process only table Customer with all the columns</p>
+<p>Process only table Customer with all the columns<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; New-DbaDbMaskingConfig -SqlInstance SQLDB1 -Database DB1 -Table Customer -Column City -Path C:\Temp\clone
 </code></pre>
-<p>Process only table Customer and only the column named &quot;City&quot;</p>
+<p>Process only table Customer and only the column named &quot;City&quot;<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="path">-Path</h5>
 <p>Path where to save the generated JSON files.
-Th naming convention will be &quot;servername.databasename.tables.json&quot;</p>
+Th naming convention will be &quot;servername.databasename.tables.json&quot;<br></p>
 <table>
 <thead>
 <tr>
@@ -549,7 +549,7 @@ Th naming convention will be &quot;servername.databasename.tables.json&quot;</p>
 </table>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances.</p>
+<p>The target SQL Server instance or instances.<br></p>
 <table>
 <thead>
 <tr>
@@ -579,7 +579,7 @@ Th naming convention will be &quot;servername.databasename.tables.json&quot;</p>
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -607,7 +607,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="database">-Database</h5>
-<p>Databases to process through</p>
+<p>Databases to process through<br></p>
 <table>
 <thead>
 <tr>
@@ -635,7 +635,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="table">-Table</h5>
-<p>Tables to process. By default all the tables will be processed</p>
+<p>Tables to process. By default all the tables will be processed<br></p>
 <table>
 <thead>
 <tr>
@@ -663,7 +663,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="column">-Column</h5>
-<p>Columns to process. By default all the columns will be processed</p>
+<p>Columns to process. By default all the columns will be processed<br></p>
 <table>
 <thead>
 <tr>
@@ -691,7 +691,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="locale">-Locale</h5>
-<p>Set the local to enable certain settings in the masking</p>
+<p>Set the local to enable certain settings in the masking<br></p>
 <table>
 <thead>
 <tr>
@@ -719,7 +719,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="characterstring">-CharacterString</h5>
-<p>The characters to use in string data. 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789' by default</p>
+<p>The characters to use in string data. 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789' by default<br></p>
 <table>
 <thead>
 <tr>
@@ -747,7 +747,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="samplecount">-SampleCount</h5>
-<p>Amount of rows to sample to make an assessment. The default is 100</p>
+<p>Amount of rows to sample to make an assessment. The default is 100<br></p>
 <table>
 <thead>
 <tr>
@@ -775,7 +775,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="knownnamefilepath">-KnownNameFilePath</h5>
-<p>Points to a file containing the custom known names</p>
+<p>Points to a file containing the custom known names<br></p>
 <table>
 <thead>
 <tr>
@@ -803,7 +803,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="patternfilepath">-PatternFilePath</h5>
-<p>Points to a file containing the custom patterns</p>
+<p>Points to a file containing the custom patterns<br></p>
 <table>
 <thead>
 <tr>
@@ -831,7 +831,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="excludedefaultknownname">-ExcludeDefaultKnownName</h5>
-<p>Excludes the default known names</p>
+<p>Excludes the default known names<br></p>
 <table>
 <thead>
 <tr>
@@ -859,7 +859,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="excludedefaultpattern">-ExcludeDefaultPattern</h5>
-<p>Excludes the default patterns</p>
+<p>Excludes the default patterns<br></p>
 <table>
 <thead>
 <tr>
@@ -887,7 +887,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="force">-Force</h5>
-<p>Forcefully execute commands when needed</p>
+<p>Forcefully execute commands when needed<br></p>
 <table>
 <thead>
 <tr>
@@ -915,7 +915,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="inputobject">-InputObject</h5>
-<p>Used for piping the values from Invoke-DbaDbPiiScan</p>
+<p>Used for piping the values from Invoke-DbaDbPiiScan<br></p>
 <table>
 <thead>
 <tr>
@@ -945,7 +945,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -973,7 +973,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>Shows what would happen if the command were to run. No actions are actually performed.</p>
+<p>Shows what would happen if the command were to run. No actions are actually performed.<br></p>
 <table>
 <thead>
 <tr>
@@ -1001,7 +1001,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>Prompts you for confirmation before executing any changing operations within the command.</p>
+<p>Prompts you for confirmation before executing any changing operations within the command.<br></p>
 <table>
 <thead>
 <tr>
@@ -1030,6 +1030,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/New-DbaDbMaskingConfig.ps1">New-DbaDbMaskingConfig</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#New-DbaDbMaskingConfig">New-DbaDbMaskingConfig</a>.</p>
 
                 </div> <!-- rendered -->

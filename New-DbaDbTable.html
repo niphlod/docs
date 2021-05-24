@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -470,67 +470,67 @@
 <p>Creates a new table in a database</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>New-DbaDbTable
-    -[-SqlInstance] &lt;DbaInstanceParameter[]&gt;]
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    -[-Database] &lt;String[]&gt;]
-    -[-Name] &lt;String&gt;]
-    -[-Schema] &lt;String&gt;]
-    -[-ColumnMap] &lt;Hashtable[]&gt;]
-    -[-ColumnObject] &lt;Column[]&gt;]
-    --AnsiNullsStatus]
-    --ChangeTrackingEnabled]
-    -[-DataSourceName] &lt;String&gt;]
-    -[-Durability] {SchemaOnly | SchemaAndData}]
-    -[-ExternalTableDistribution] {Sharded | Replicated | RoundRobin | None}]
-    -[-FileFormatName] &lt;String&gt;]
-    -[-FileGroup] &lt;String&gt;]
-    -[-FileStreamFileGroup] &lt;String&gt;]
-    -[-FileStreamPartitionScheme] &lt;String&gt;]
-    -[-FileTableDirectoryName] &lt;String&gt;]
-    -[-FileTableNameColumnCollation] &lt;String&gt;]
-    --FileTableNamespaceEnabled]
-    -[-HistoryTableName] &lt;String&gt;]
-    -[-HistoryTableSchema] &lt;String&gt;]
-    --IsExternal]
-    --IsFileTable]
-    --IsMemoryOptimized]
-    --IsSystemVersioned]
-    -[-Location] &lt;String&gt;]
-    -[-LockEscalation] {Table | Disable | Auto}]
-    -[-Owner] &lt;String&gt;]
-    -[-PartitionScheme] &lt;String&gt;]
-    --QuotedIdentifierStatus]
-    -[-RejectSampleValue] &lt;Double&gt;]
-    -[-RejectType] {Value | Percentage | None}]
-    -[-RejectValue] &lt;Double&gt;]
-    -[-RemoteDataArchiveDataMigrationState] {Disabled | PausedOutbound | PausedInbound | Outbound | Inbound | Paused}]
-    --RemoteDataArchiveEnabled]
-    -[-RemoteDataArchiveFilterPredicate] &lt;String&gt;]
-    -[-RemoteObjectName] &lt;String&gt;]
-    -[-RemoteSchemaName] &lt;String&gt;]
-    -[-RemoteTableName] &lt;String&gt;]
-    --RemoteTableProvisioned]
-    -[-ShardingColumnName] &lt;String&gt;]
-    -[-TextFileGroup] &lt;String&gt;]
-    --TrackColumnsUpdatedEnabled]
-    -[-HistoryRetentionPeriod] &lt;Int32&gt;]
-    -[-HistoryRetentionPeriodUnit] {Day | Week | Month | Year | Undefined | Infinite}]
-    -[-DwTableDistribution] {Undefined | None | Hash | Replicate | RoundRobin}]
-    -[-RejectedRowLocation] &lt;String&gt;]
-    --OnlineHeapOperation]
-    -[-LowPriorityMaxDuration] &lt;Int32&gt;]
-    --DataConsistencyCheck]
-    -[-LowPriorityAbortAfterWait] {None | Blockers | Self}]
-    -[-MaximumDegreeOfParallelism] &lt;Int32&gt;]
-    --IsNode]
-    --IsEdge]
-    --IsVarDecimalStorageFormatEnabled]
-    --Passthru]
-    -[-InputObject] &lt;Database[]&gt;]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [[-SqlInstance] &lt;DbaInstanceParameter[]&gt;]
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [[-Database] &lt;String[]&gt;]
+    [[-Name] &lt;String&gt;]
+    [[-Schema] &lt;String&gt;]
+    [[-ColumnMap] &lt;Hashtable[]&gt;]
+    [[-ColumnObject] &lt;Column[]&gt;]
+    [-AnsiNullsStatus]
+    [-ChangeTrackingEnabled]
+    [[-DataSourceName] &lt;String&gt;]
+    [[-Durability] {SchemaOnly | SchemaAndData}]
+    [[-ExternalTableDistribution] {Sharded | Replicated | RoundRobin | None}]
+    [[-FileFormatName] &lt;String&gt;]
+    [[-FileGroup] &lt;String&gt;]
+    [[-FileStreamFileGroup] &lt;String&gt;]
+    [[-FileStreamPartitionScheme] &lt;String&gt;]
+    [[-FileTableDirectoryName] &lt;String&gt;]
+    [[-FileTableNameColumnCollation] &lt;String&gt;]
+    [-FileTableNamespaceEnabled]
+    [[-HistoryTableName] &lt;String&gt;]
+    [[-HistoryTableSchema] &lt;String&gt;]
+    [-IsExternal]
+    [-IsFileTable]
+    [-IsMemoryOptimized]
+    [-IsSystemVersioned]
+    [[-Location] &lt;String&gt;]
+    [[-LockEscalation] {Table | Disable | Auto}]
+    [[-Owner] &lt;String&gt;]
+    [[-PartitionScheme] &lt;String&gt;]
+    [-QuotedIdentifierStatus]
+    [[-RejectSampleValue] &lt;Double&gt;]
+    [[-RejectType] {Value | Percentage | None}]
+    [[-RejectValue] &lt;Double&gt;]
+    [[-RemoteDataArchiveDataMigrationState] {Disabled | PausedOutbound | PausedInbound | Outbound | Inbound | Paused}]
+    [-RemoteDataArchiveEnabled]
+    [[-RemoteDataArchiveFilterPredicate] &lt;String&gt;]
+    [[-RemoteObjectName] &lt;String&gt;]
+    [[-RemoteSchemaName] &lt;String&gt;]
+    [[-RemoteTableName] &lt;String&gt;]
+    [-RemoteTableProvisioned]
+    [[-ShardingColumnName] &lt;String&gt;]
+    [[-TextFileGroup] &lt;String&gt;]
+    [-TrackColumnsUpdatedEnabled]
+    [[-HistoryRetentionPeriod] &lt;Int32&gt;]
+    [[-HistoryRetentionPeriodUnit] {Day | Week | Month | Year | Undefined | Infinite}]
+    [[-DwTableDistribution] {Undefined | None | Hash | Replicate | RoundRobin}]
+    [[-RejectedRowLocation] &lt;String&gt;]
+    [-OnlineHeapOperation]
+    [[-LowPriorityMaxDuration] &lt;Int32&gt;]
+    [-DataConsistencyCheck]
+    [[-LowPriorityAbortAfterWait] {None | Blockers | Self}]
+    [[-MaximumDegreeOfParallelism] &lt;Int32&gt;]
+    [-IsNode]
+    [-IsEdge]
+    [-IsVarDecimalStorageFormatEnabled]
+    [-Passthru]
+    [[-InputObject] &lt;Database[]&gt;]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -545,7 +545,7 @@
 &gt;&gt; }
 PS C:\&gt; New-DbaDbTable -SqlInstance sql2017 -Database tempdb -Name testtable -ColumnMap $col
 </code></pre>
-<p>Creates a new table on sql2017 in tempdb with the name testtable and one column</p>
+<p>Creates a new table on sql2017 in tempdb with the name testtable and one column<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; # Create collection
 &gt;&gt; $cols = @()
@@ -621,10 +621,10 @@ PS C:\&gt; $cols += @{
 &gt;&gt; }
 PS C:\&gt; New-DbaDbTable -SqlInstance sql2017 -Database tempdb -Name testtable -ColumnMap $cols
 </code></pre>
-<p>Creates a new table on sql2017 in tempdb with the name testtable and ten columns.</p>
+<p>Creates a new table on sql2017 in tempdb with the name testtable and ten columns.<br></p>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances.</p>
+<p>The target SQL Server instance or instances.<br></p>
 <table>
 <thead>
 <tr>
@@ -654,7 +654,7 @@ PS C:\&gt; New-DbaDbTable -SqlInstance sql2017 -Database tempdb -Name testtable 
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -682,7 +682,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="database">-Database</h5>
-<p>The database or databases where the table will be created</p>
+<p>The database or databases where the table will be created<br></p>
 <table>
 <thead>
 <tr>
@@ -710,7 +710,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="name">-Name</h5>
-<p>The name of the table</p>
+<p>The name of the table<br></p>
 <table>
 <thead>
 <tr>
@@ -738,7 +738,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="schema">-Schema</h5>
-<p>The schema for the table, defaults to dbo</p>
+<p>The schema for the table, defaults to dbo<br></p>
 <table>
 <thead>
 <tr>
@@ -766,7 +766,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="columnmap">-ColumnMap</h5>
-<p>Hashtable for easy column creation. See Examples for details</p>
+<p>Hashtable for easy column creation. See Examples for details<br></p>
 <table>
 <thead>
 <tr>
@@ -794,7 +794,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="columnobject">-ColumnObject</h5>
-<p>If you want to get fancy, you can build your own column objects and pass them in</p>
+<p>If you want to get fancy, you can build your own column objects and pass them in<br></p>
 <table>
 <thead>
 <tr>
@@ -822,7 +822,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="ansinullsstatus">-AnsiNullsStatus</h5>
-<p>No information provided by Microsoft</p>
+<p>No information provided by Microsoft<br></p>
 <table>
 <thead>
 <tr>
@@ -850,7 +850,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="changetrackingenabled">-ChangeTrackingEnabled</h5>
-<p>No information provided by Microsoft</p>
+<p>No information provided by Microsoft<br></p>
 <table>
 <thead>
 <tr>
@@ -878,7 +878,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="datasourcename">-DataSourceName</h5>
-<p>No information provided by Microsoft</p>
+<p>No information provided by Microsoft<br></p>
 <table>
 <thead>
 <tr>
@@ -906,7 +906,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="durability">-Durability</h5>
-<p>No information provided by Microsoft</p>
+<p>No information provided by Microsoft<br></p>
 <table>
 <thead>
 <tr>
@@ -934,7 +934,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="externaltabledistribution">-ExternalTableDistribution</h5>
-<p>No information provided by Microsoft</p>
+<p>No information provided by Microsoft<br></p>
 <table>
 <thead>
 <tr>
@@ -962,7 +962,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="fileformatname">-FileFormatName</h5>
-<p>No information provided by Microsoft</p>
+<p>No information provided by Microsoft<br></p>
 <table>
 <thead>
 <tr>
@@ -990,7 +990,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="filegroup">-FileGroup</h5>
-<p>No information provided by Microsoft</p>
+<p>No information provided by Microsoft<br></p>
 <table>
 <thead>
 <tr>
@@ -1018,7 +1018,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="filestreamfilegroup">-FileStreamFileGroup</h5>
-<p>No information provided by Microsoft</p>
+<p>No information provided by Microsoft<br></p>
 <table>
 <thead>
 <tr>
@@ -1046,7 +1046,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="filestreampartitionscheme">-FileStreamPartitionScheme</h5>
-<p>No information provided by Microsoft</p>
+<p>No information provided by Microsoft<br></p>
 <table>
 <thead>
 <tr>
@@ -1074,7 +1074,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="filetabledirectoryname">-FileTableDirectoryName</h5>
-<p>No information provided by Microsoft</p>
+<p>No information provided by Microsoft<br></p>
 <table>
 <thead>
 <tr>
@@ -1102,7 +1102,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="filetablenamecolumncollation">-FileTableNameColumnCollation</h5>
-<p>No information provided by Microsoft</p>
+<p>No information provided by Microsoft<br></p>
 <table>
 <thead>
 <tr>
@@ -1130,7 +1130,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="filetablenamespaceenabled">-FileTableNamespaceEnabled</h5>
-<p>No information provided by Microsoft</p>
+<p>No information provided by Microsoft<br></p>
 <table>
 <thead>
 <tr>
@@ -1158,7 +1158,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="historytablename">-HistoryTableName</h5>
-<p>No information provided by Microsoft</p>
+<p>No information provided by Microsoft<br></p>
 <table>
 <thead>
 <tr>
@@ -1186,7 +1186,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="historytableschema">-HistoryTableSchema</h5>
-<p>No information provided by Microsoft</p>
+<p>No information provided by Microsoft<br></p>
 <table>
 <thead>
 <tr>
@@ -1214,7 +1214,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="isexternal">-IsExternal</h5>
-<p>No information provided by Microsoft</p>
+<p>No information provided by Microsoft<br></p>
 <table>
 <thead>
 <tr>
@@ -1242,7 +1242,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="isfiletable">-IsFileTable</h5>
-<p>No information provided by Microsoft</p>
+<p>No information provided by Microsoft<br></p>
 <table>
 <thead>
 <tr>
@@ -1270,7 +1270,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="ismemoryoptimized">-IsMemoryOptimized</h5>
-<p>No information provided by Microsoft</p>
+<p>No information provided by Microsoft<br></p>
 <table>
 <thead>
 <tr>
@@ -1298,7 +1298,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="issystemversioned">-IsSystemVersioned</h5>
-<p>No information provided by Microsoft</p>
+<p>No information provided by Microsoft<br></p>
 <table>
 <thead>
 <tr>
@@ -1326,7 +1326,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="location">-Location</h5>
-<p>No information provided by Microsoft</p>
+<p>No information provided by Microsoft<br></p>
 <table>
 <thead>
 <tr>
@@ -1354,7 +1354,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="lockescalation">-LockEscalation</h5>
-<p>No information provided by Microsoft</p>
+<p>No information provided by Microsoft<br></p>
 <table>
 <thead>
 <tr>
@@ -1382,7 +1382,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="owner">-Owner</h5>
-<p>No information provided by Microsoft</p>
+<p>No information provided by Microsoft<br></p>
 <table>
 <thead>
 <tr>
@@ -1410,7 +1410,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="partitionscheme">-PartitionScheme</h5>
-<p>No information provided by Microsoft</p>
+<p>No information provided by Microsoft<br></p>
 <table>
 <thead>
 <tr>
@@ -1438,7 +1438,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="quotedidentifierstatus">-QuotedIdentifierStatus</h5>
-<p>No information provided by Microsoft</p>
+<p>No information provided by Microsoft<br></p>
 <table>
 <thead>
 <tr>
@@ -1466,7 +1466,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="rejectsamplevalue">-RejectSampleValue</h5>
-<p>No information provided by Microsoft</p>
+<p>No information provided by Microsoft<br></p>
 <table>
 <thead>
 <tr>
@@ -1494,7 +1494,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="rejecttype">-RejectType</h5>
-<p>No information provided by Microsoft</p>
+<p>No information provided by Microsoft<br></p>
 <table>
 <thead>
 <tr>
@@ -1522,7 +1522,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="rejectvalue">-RejectValue</h5>
-<p>No information provided by Microsoft</p>
+<p>No information provided by Microsoft<br></p>
 <table>
 <thead>
 <tr>
@@ -1550,7 +1550,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="remotedataarchivedatamigrationstate">-RemoteDataArchiveDataMigrationState</h5>
-<p>No information provided by Microsoft</p>
+<p>No information provided by Microsoft<br></p>
 <table>
 <thead>
 <tr>
@@ -1578,7 +1578,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="remotedataarchiveenabled">-RemoteDataArchiveEnabled</h5>
-<p>No information provided by Microsoft</p>
+<p>No information provided by Microsoft<br></p>
 <table>
 <thead>
 <tr>
@@ -1606,7 +1606,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="remotedataarchivefilterpredicate">-RemoteDataArchiveFilterPredicate</h5>
-<p>No information provided by Microsoft</p>
+<p>No information provided by Microsoft<br></p>
 <table>
 <thead>
 <tr>
@@ -1634,7 +1634,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="remoteobjectname">-RemoteObjectName</h5>
-<p>No information provided by Microsoft</p>
+<p>No information provided by Microsoft<br></p>
 <table>
 <thead>
 <tr>
@@ -1662,7 +1662,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="remoteschemaname">-RemoteSchemaName</h5>
-<p>No information provided by Microsoft</p>
+<p>No information provided by Microsoft<br></p>
 <table>
 <thead>
 <tr>
@@ -1690,7 +1690,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="remotetablename">-RemoteTableName</h5>
-<p>No information provided by Microsoft</p>
+<p>No information provided by Microsoft<br></p>
 <table>
 <thead>
 <tr>
@@ -1718,7 +1718,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="remotetableprovisioned">-RemoteTableProvisioned</h5>
-<p>No information provided by Microsoft</p>
+<p>No information provided by Microsoft<br></p>
 <table>
 <thead>
 <tr>
@@ -1746,7 +1746,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="shardingcolumnname">-ShardingColumnName</h5>
-<p>No information provided by Microsoft</p>
+<p>No information provided by Microsoft<br></p>
 <table>
 <thead>
 <tr>
@@ -1774,7 +1774,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="textfilegroup">-TextFileGroup</h5>
-<p>No information provided by Microsoft</p>
+<p>No information provided by Microsoft<br></p>
 <table>
 <thead>
 <tr>
@@ -1802,7 +1802,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="trackcolumnsupdatedenabled">-TrackColumnsUpdatedEnabled</h5>
-<p>No information provided by Microsoft</p>
+<p>No information provided by Microsoft<br></p>
 <table>
 <thead>
 <tr>
@@ -1830,7 +1830,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="historyretentionperiod">-HistoryRetentionPeriod</h5>
-<p>No information provided by Microsoft</p>
+<p>No information provided by Microsoft<br></p>
 <table>
 <thead>
 <tr>
@@ -1858,7 +1858,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="historyretentionperiodunit">-HistoryRetentionPeriodUnit</h5>
-<p>No information provided by Microsoft</p>
+<p>No information provided by Microsoft<br></p>
 <table>
 <thead>
 <tr>
@@ -1886,7 +1886,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="dwtabledistribution">-DwTableDistribution</h5>
-<p>No information provided by Microsoft</p>
+<p>No information provided by Microsoft<br></p>
 <table>
 <thead>
 <tr>
@@ -1914,7 +1914,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="rejectedrowlocation">-RejectedRowLocation</h5>
-<p>No information provided by Microsoft</p>
+<p>No information provided by Microsoft<br></p>
 <table>
 <thead>
 <tr>
@@ -1942,7 +1942,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="onlineheapoperation">-OnlineHeapOperation</h5>
-<p>No information provided by Microsoft</p>
+<p>No information provided by Microsoft<br></p>
 <table>
 <thead>
 <tr>
@@ -1970,7 +1970,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="lowprioritymaxduration">-LowPriorityMaxDuration</h5>
-<p>No information provided by Microsoft</p>
+<p>No information provided by Microsoft<br></p>
 <table>
 <thead>
 <tr>
@@ -1998,7 +1998,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="dataconsistencycheck">-DataConsistencyCheck</h5>
-<p>No information provided by Microsoft</p>
+<p>No information provided by Microsoft<br></p>
 <table>
 <thead>
 <tr>
@@ -2026,7 +2026,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="lowpriorityabortafterwait">-LowPriorityAbortAfterWait</h5>
-<p>No information provided by Microsoft</p>
+<p>No information provided by Microsoft<br></p>
 <table>
 <thead>
 <tr>
@@ -2054,7 +2054,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="maximumdegreeofparallelism">-MaximumDegreeOfParallelism</h5>
-<p>No information provided by Microsoft</p>
+<p>No information provided by Microsoft<br></p>
 <table>
 <thead>
 <tr>
@@ -2082,7 +2082,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="isnode">-IsNode</h5>
-<p>No information provided by Microsoft</p>
+<p>No information provided by Microsoft<br></p>
 <table>
 <thead>
 <tr>
@@ -2110,7 +2110,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="isedge">-IsEdge</h5>
-<p>No information provided by Microsoft</p>
+<p>No information provided by Microsoft<br></p>
 <table>
 <thead>
 <tr>
@@ -2138,7 +2138,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="isvardecimalstorageformatenabled">-IsVarDecimalStorageFormatEnabled</h5>
-<p>No information provided by Microsoft</p>
+<p>No information provided by Microsoft<br></p>
 <table>
 <thead>
 <tr>
@@ -2166,7 +2166,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="passthru">-Passthru</h5>
-<p>Don't create the table, just print the table script on the screen.</p>
+<p>Don't create the table, just print the table script on the screen.<br></p>
 <table>
 <thead>
 <tr>
@@ -2194,7 +2194,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="inputobject">-InputObject</h5>
-<p>Allows piped input from Get-DbaDatabase</p>
+<p>Allows piped input from Get-DbaDatabase<br></p>
 <table>
 <thead>
 <tr>
@@ -2224,7 +2224,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -2252,7 +2252,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>Shows what would happen if the command were to run. No actions are actually performed.</p>
+<p>Shows what would happen if the command were to run. No actions are actually performed.<br></p>
 <table>
 <thead>
 <tr>
@@ -2280,7 +2280,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>Prompts you for confirmation before executing any changing operations within the command.</p>
+<p>Prompts you for confirmation before executing any changing operations within the command.<br></p>
 <table>
 <thead>
 <tr>
@@ -2309,6 +2309,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/New-DbaDbTable.ps1">New-DbaDbTable</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#New-DbaDbTable">New-DbaDbTable</a>.</p>
 
                 </div> <!-- rendered -->

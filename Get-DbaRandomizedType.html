@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -470,11 +470,11 @@
 <p>Retrieves the types and sub types available</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Get-DbaRandomizedType
-    -[-RandomizedType] &lt;String[]&gt;]
-    -[-RandomizedSubType] &lt;String[]&gt;]
-    -[-Pattern] &lt;String&gt;]
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [[-RandomizedType] &lt;String[]&gt;]
+    [[-RandomizedSubType] &lt;String[]&gt;]
+    [[-Pattern] &lt;String&gt;]
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -483,22 +483,22 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Get-DbaRandomizedType
 </code></pre>
-<p>Get all the types and subtypes</p>
+<p>Get all the types and subtypes<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Get-DbaRandomizedType -Pattern &quot;Addr&quot;
 </code></pre>
-<p>Find all the types and sub types based on a pattern</p>
+<p>Find all the types and sub types based on a pattern<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Get-DbaRandomizedType -RandomizedType Person
 </code></pre>
-<p>Find all the sub types for Person</p>
+<p>Find all the sub types for Person<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; Get-DbaRandomizedType -RandomizedSubType LastName
 </code></pre>
-<p>Get all the types and subtypes that known by &quot;LastName&quot;</p>
+<p>Get all the types and subtypes that known by &quot;LastName&quot;<br></p>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="randomizedtype">-RandomizedType</h5>
-<p>Filter the randomized types</p>
+<p>Filter the randomized types<br></p>
 <table>
 <thead>
 <tr>
@@ -526,7 +526,7 @@
 </tbody>
 </table>
 <h5 id="randomizedsubtype">-RandomizedSubType</h5>
-<p>Filter the randomized sub types</p>
+<p>Filter the randomized sub types<br></p>
 <table>
 <thead>
 <tr>
@@ -554,7 +554,7 @@
 </tbody>
 </table>
 <h5 id="pattern">-Pattern</h5>
-<p>Get the types and sub types based on a pattern</p>
+<p>Get the types and sub types based on a pattern<br></p>
 <table>
 <thead>
 <tr>
@@ -584,7 +584,7 @@
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -613,6 +613,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Get-DbaRandomizedType.ps1">Get-DbaRandomizedType</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Get-DbaRandomizedType">Get-DbaRandomizedType</a>.</p>
 
                 </div> <!-- rendered -->

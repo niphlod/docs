@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -483,12 +483,12 @@ URL</p>
 <p>Reference: <a href="https://www.sqlskills.com/blogs/paul/wait-statistics-or-please-tell-me-where-it-hurts/">https://www.sqlskills.com/blogs/paul/wait-statistics-or-please-tell-me-where-it-hurts/</a></p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Get-DbaWaitStatistic
-    --SqlInstance] &lt;DbaInstanceParameter[]&gt;
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    -[-Threshold] &lt;Int32&gt;]
-    --IncludeIgnorable]
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [-SqlInstance] &lt;DbaInstanceParameter[]&gt;
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [[-Threshold] &lt;Int32&gt;]
+    [-IncludeIgnorable]
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -497,27 +497,27 @@ URL</p>
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Get-DbaWaitStatistic -SqlInstance sql2008, sqlserver2012
 </code></pre>
-<p>Check wait statistics for servers sql2008 and sqlserver2012</p>
+<p>Check wait statistics for servers sql2008 and sqlserver2012<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Get-DbaWaitStatistic -SqlInstance sql2008 -Threshold 98 -IncludeIgnorable
 </code></pre>
-<p>Check wait statistics on server sql2008 for thresholds above 98% and include wait stats that are most often, but not always, ignorable</p>
+<p>Check wait statistics on server sql2008 for thresholds above 98% and include wait stats that are most often, but not always, ignorable<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Get-DbaWaitStatistic -SqlInstance sql2008 | Select-Object *
 </code></pre>
-<p>Shows detailed notes, if available, from Paul's post</p>
+<p>Shows detailed notes, if available, from Paul's post<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; $output = Get-DbaWaitStatistic -SqlInstance sql2008 -Threshold 100 -IncludeIgnorable | Select-Object * | ConvertTo-DbaDataTable
 </code></pre>
-<p>Collects all Wait Statistics (including ignorable waits) on server sql2008 into a Data Table.</p>
+<p>Collects all Wait Statistics (including ignorable waits) on server sql2008 into a Data Table.<br></p>
 <h5 id="example-5">Example:  5</h5>
 <pre><code>PS C:\&gt; $output = Get-DbaWaitStatistic -SqlInstance sql2008
 PS C:\&gt; foreach ($row in ($output | Sort-Object -Unique Url)) { Start-Process ($row).Url }
 </code></pre>
-<p>Displays the output then loads the associated sqlskills website for each result. Opens one tab per unique URL.</p>
+<p>Displays the output then loads the associated sqlskills website for each result. Opens one tab per unique URL.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances. Server version must be SQL Server version 2005 or higher.</p>
+<p>The target SQL Server instance or instances. Server version must be SQL Server version 2005 or higher.<br></p>
 <table>
 <thead>
 <tr>
@@ -548,7 +548,7 @@ PS C:\&gt; foreach ($row in ($output | Sort-Object -Unique Url)) { Start-Process
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -576,7 +576,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="threshold">-Threshold</h5>
-<p>Threshold, in percentage of all waits on the system. Default per Paul's post is 95%.</p>
+<p>Threshold, in percentage of all waits on the system. Default per Paul's post is 95%.<br></p>
 <table>
 <thead>
 <tr>
@@ -604,7 +604,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="includeignorable">-IncludeIgnorable</h5>
-<p>Some waits are no big deal and can be safely ignored in most circumstances. If you've got weird issues with mirroring or AGs.</p>
+<p>Some waits are no big deal and can be safely ignored in most circumstances. If you've got weird issues with mirroring or AGs.<br></p>
 <table>
 <thead>
 <tr>
@@ -634,7 +634,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -663,6 +663,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Get-DbaWaitStatistic.ps1">Get-DbaWaitStatistic</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Get-DbaWaitStatistic">Get-DbaWaitStatistic</a>.</p>
 
                 </div> <!-- rendered -->

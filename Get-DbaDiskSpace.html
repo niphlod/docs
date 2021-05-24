@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -472,15 +472,15 @@
 <p>Requires Windows administrator access on SQL Servers</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Get-DbaDiskSpace
-    -[-ComputerName] &lt;DbaInstanceParameter[]&gt;]
-    -[-Credential] &lt;PSCredential&gt;]
-    -[-Unit] &lt;String&gt;]
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    -[-ExcludeDrive] &lt;String[]&gt;]
-    --CheckFragmentation]
-    --Force]
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [[-ComputerName] &lt;DbaInstanceParameter[]&gt;]
+    [[-Credential] &lt;PSCredential&gt;]
+    [[-Unit] &lt;String&gt;]
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [[-ExcludeDrive] &lt;String[]&gt;]
+    [-CheckFragmentation]
+    [-Force]
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -489,26 +489,26 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Get-DbaDiskSpace -ComputerName srv0042
 </code></pre>
-<p>Get disk space for the server srv0042.</p>
+<p>Get disk space for the server srv0042.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Get-DbaDiskSpace -ComputerName srv0042 -Unit MB
 </code></pre>
-<p>Get disk space for the server srv0042 and displays in megabytes (MB).</p>
+<p>Get disk space for the server srv0042 and displays in megabytes (MB).<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Get-DbaDiskSpace -ComputerName srv0042, srv0007 -Unit TB
 </code></pre>
-<p>Get disk space from two servers and displays in terabytes (TB).</p>
+<p>Get disk space from two servers and displays in terabytes (TB).<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; Get-DbaDiskSpace -ComputerName srv0042 -Force
 </code></pre>
-<p>Get all disk and volume space information.</p>
+<p>Get all disk and volume space information.<br></p>
 <h5 id="example-5">Example:  5</h5>
 <pre><code>PS C:\&gt; Get-DbaDiskSpace -ComputerName srv0042 -ExcludeDrive 'C:\'
 </code></pre>
-<p>Get all disk and volume space information.</p>
+<p>Get all disk and volume space information.<br></p>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="computername">-ComputerName</h5>
-<p>The target computer. Defaults to localhost.</p>
+<p>The target computer. Defaults to localhost.<br></p>
 <table>
 <thead>
 <tr>
@@ -536,7 +536,7 @@
 </tbody>
 </table>
 <h5 id="credential">-Credential</h5>
-<p>Credential object used to connect to the computer as a different user.</p>
+<p>Credential object used to connect to the computer as a different user.<br></p>
 <table>
 <thead>
 <tr>
@@ -565,7 +565,7 @@
 </table>
 <h5 id="unit">-Unit</h5>
 <p>This parameter has been deprecated and will be removed in 1.0.0
-All properties previously generated through this command are present at the same time, but hidden by default.</p>
+All properties previously generated through this command are present at the same time, but hidden by default.<br></p>
 <table>
 <thead>
 <tr>
@@ -599,7 +599,7 @@ All properties previously generated through this command are present at the same
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -627,7 +627,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="excludedrive">-ExcludeDrive</h5>
-<p>Filter out drives - format is C:\</p>
+<p>Filter out drives - format is C:&lt;br&gt;</p>
 <table>
 <thead>
 <tr>
@@ -656,7 +656,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </table>
 <h5 id="checkfragmentation">-CheckFragmentation</h5>
 <p>If this switch is enabled, fragmentation of all file systems will be checked.
-This will increase the runtime of the function by seconds or even minutes per volume.</p>
+This will increase the runtime of the function by seconds or even minutes per volume.<br></p>
 <table>
 <thead>
 <tr>
@@ -685,7 +685,7 @@ This will increase the runtime of the function by seconds or even minutes per vo
 </table>
 <h5 id="force">-Force</h5>
 <p>Enabling this switch will cause the command to include ALL drives.
-By default, only local disks and removable disks are shown, and hidden volumes are excluded.</p>
+By default, only local disks and removable disks are shown, and hidden volumes are excluded.<br></p>
 <table>
 <thead>
 <tr>
@@ -715,7 +715,7 @@ By default, only local disks and removable disks are shown, and hidden volumes a
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -744,6 +744,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Get-DbaDiskSpace.ps1">Get-DbaDiskSpace</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Get-DbaDiskSpace">Get-DbaDiskSpace</a>.</p>
 
                 </div> <!-- rendered -->

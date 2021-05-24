@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -470,11 +470,11 @@
 <p>Exports Extended Events to a CSV file.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Export-DbaXECsv
-    --InputObject] &lt;Object[]&gt;
-    -[-Path] &lt;String&gt;]
-    -[-FilePath] &lt;String&gt;]
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [-InputObject] &lt;Object[]&gt;
+    [[-Path] &lt;String&gt;]
+    [[-FilePath] &lt;String&gt;]
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -483,14 +483,14 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Get-ChildItem -Path C:\temp\sample.xel | Export-DbaXECsv -Path c:\temp\sample.csv
 </code></pre>
-<p>Writes Extended Events data to the file &quot;C:\temp\events.csv&quot;.</p>
+<p>Writes Extended Events data to the file &quot;C:\temp\events.csv&quot;.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Get-DbaXESession -SqlInstance sql2014 -Session deadlocks | Export-DbaXECsv -Path c:\temp\events.csv
 </code></pre>
-<p>Writes Extended Events data to the file &quot;C:\temp\events.csv&quot;.</p>
+<p>Writes Extended Events data to the file &quot;C:\temp\events.csv&quot;.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="inputobject">-InputObject</h5>
-<p>Allows Piping</p>
+<p>Allows Piping<br></p>
 <table>
 <thead>
 <tr>
@@ -519,7 +519,7 @@
 </table>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="path">-Path</h5>
-<p>Specifies the directory where the file or files will be exported.</p>
+<p>Specifies the directory where the file or files will be exported.<br></p>
 <table>
 <thead>
 <tr>
@@ -547,7 +547,7 @@
 </tbody>
 </table>
 <h5 id="filepath">-FilePath</h5>
-<p>Specifies the full file path of the output file.</p>
+<p>Specifies the full file path of the output file.<br></p>
 <table>
 <thead>
 <tr>
@@ -577,7 +577,7 @@
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -606,6 +606,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Export-DbaXECsv.ps1">Export-DbaXECsv</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Export-DbaXECsv">Export-DbaXECsv</a>.</p>
 
                 </div> <!-- rendered -->

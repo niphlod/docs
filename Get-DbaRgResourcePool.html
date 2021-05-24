@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -470,12 +470,12 @@
 <p>Gets Resource Governor Pool objects, including internal or external</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Get-DbaRgResourcePool
-    -[-SqlInstance] &lt;DbaInstanceParameter[]&gt;]
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    -[-Type] &lt;String&gt;]
-    -[-InputObject] &lt;ResourceGovernor[]&gt;]
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [[-SqlInstance] &lt;DbaInstanceParameter[]&gt;]
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [[-Type] &lt;String&gt;]
+    [[-InputObject] &lt;ResourceGovernor[]&gt;]
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -484,18 +484,18 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Get-DbaRgResourcePool -SqlInstance sql2016
 </code></pre>
-<p>Gets the internal resource pools on sql2016</p>
+<p>Gets the internal resource pools on sql2016<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; 'Sql1','Sql2/sqlexpress' | Get-DbaResourceGovernor | Get-DbaRgResourcePool
 </code></pre>
-<p>Gets the internal resource pools on Sql1 and Sql2/sqlexpress instances</p>
+<p>Gets the internal resource pools on Sql1 and Sql2/sqlexpress instances<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; 'Sql1','Sql2/sqlexpress' | Get-DbaResourceGovernor | Get-DbaRgResourcePool -Type External
 </code></pre>
-<p>Gets the external resource pools on Sql1 and Sql2/sqlexpress instances</p>
+<p>Gets the external resource pools on Sql1 and Sql2/sqlexpress instances<br></p>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances</p>
+<p>The target SQL Server instance or instances<br></p>
 <table>
 <thead>
 <tr>
@@ -525,7 +525,7 @@
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -553,7 +553,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="type">-Type</h5>
-<p>Internal or External</p>
+<p>Internal or External<br></p>
 <table>
 <thead>
 <tr>
@@ -585,7 +585,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="inputobject">-InputObject</h5>
-<p>Allows input to be piped from Get-DbaResourceGovernor</p>
+<p>Allows input to be piped from Get-DbaResourceGovernor<br></p>
 <table>
 <thead>
 <tr>
@@ -615,7 +615,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -644,6 +644,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Get-DbaRgResourcePool.ps1">Get-DbaRgResourcePool</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Get-DbaRgResourcePool">Get-DbaRgResourcePool</a>.</p>
 
                 </div> <!-- rendered -->

@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -471,21 +471,21 @@ SQL Azure DB is not supported.</p>
 <p>The Get-DbaLogin function returns an SMO Login object for the logins passed, if there are no users passed it will return all logins.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Get-DbaLogin
-    --SqlInstance] &lt;DbaInstanceParameter[]&gt;
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    -[-Login] &lt;Object[]&gt;]
-    -[-IncludeFilter] &lt;Object[]&gt;]
-    -[-ExcludeLogin] &lt;Object[]&gt;]
-    -[-ExcludeFilter] &lt;Object[]&gt;]
-    --ExcludeSystemLogin]
-    -[-Type] &lt;String&gt;]
-    --HasAccess]
-    --Locked]
-    --Disabled]
-    --MustChangePassword]
-    --Detailed]
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [-SqlInstance] &lt;DbaInstanceParameter[]&gt;
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [[-Login] &lt;Object[]&gt;]
+    [[-IncludeFilter] &lt;Object[]&gt;]
+    [[-ExcludeLogin] &lt;Object[]&gt;]
+    [[-ExcludeFilter] &lt;Object[]&gt;]
+    [-ExcludeSystemLogin]
+    [[-Type] &lt;String&gt;]
+    [-HasAccess]
+    [-Locked]
+    [-Disabled]
+    [-MustChangePassword]
+    [-Detailed]
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -494,70 +494,70 @@ SQL Azure DB is not supported.</p>
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Get-DbaLogin -SqlInstance sql2016
 </code></pre>
-<p>Gets all the logins from server sql2016 using NT authentication and returns the SMO login objects</p>
+<p>Gets all the logins from server sql2016 using NT authentication and returns the SMO login objects<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Get-DbaLogin -SqlInstance sql2016 -SqlCredential $sqlcred
 </code></pre>
-<p>Gets all the logins for a given SQL Server using a passed credential object and returns the SMO login objects</p>
+<p>Gets all the logins for a given SQL Server using a passed credential object and returns the SMO login objects<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Get-DbaLogin -SqlInstance sql2016 -SqlCredential $sqlcred -Login dbatoolsuser,TheCaptain
 </code></pre>
-<p>Get specific logins from server sql2016 returned as SMO login objects.</p>
+<p>Get specific logins from server sql2016 returned as SMO login objects.<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; Get-DbaLogin -SqlInstance sql2016 -IncludeFilter '##*','NT *'
 </code></pre>
-<p>Get all user objects from server sql2016 beginning with '##' or 'NT ', returned as SMO login objects.</p>
+<p>Get all user objects from server sql2016 beginning with '##' or 'NT ', returned as SMO login objects.<br></p>
 <h5 id="example-5">Example:  5</h5>
 <pre><code>PS C:\&gt; Get-DbaLogin -SqlInstance sql2016 -ExcludeLogin dbatoolsuser
 </code></pre>
-<p>Get all user objects from server sql2016 except the login dbatoolsuser, returned as SMO login objects.</p>
+<p>Get all user objects from server sql2016 except the login dbatoolsuser, returned as SMO login objects.<br></p>
 <h5 id="example-6">Example:  6</h5>
 <pre><code>PS C:\&gt; Get-DbaLogin -SqlInstance sql2016 -Type Windows
 </code></pre>
-<p>Get all user objects from server sql2016 that are Windows Logins</p>
+<p>Get all user objects from server sql2016 that are Windows Logins<br></p>
 <h5 id="example-7">Example:  7</h5>
 <pre><code>PS C:\&gt; Get-DbaLogin -SqlInstance sql2016 -Type Windows -IncludeFilter *Rob*
 </code></pre>
-<p>Get all user objects from server sql2016 that are Windows Logins and have Rob in the name</p>
+<p>Get all user objects from server sql2016 that are Windows Logins and have Rob in the name<br></p>
 <h5 id="example-8">Example:  8</h5>
 <pre><code>PS C:\&gt; Get-DbaLogin -SqlInstance sql2016 -Type SQL
 </code></pre>
-<p>Get all user objects from server sql2016 that are SQL Logins</p>
+<p>Get all user objects from server sql2016 that are SQL Logins<br></p>
 <h5 id="example-9">Example:  9</h5>
 <pre><code>PS C:\&gt; Get-DbaLogin -SqlInstance sql2016 -Type SQL -IncludeFilter *Rob*
 </code></pre>
-<p>Get all user objects from server sql2016 that are SQL Logins and have Rob in the name</p>
+<p>Get all user objects from server sql2016 that are SQL Logins and have Rob in the name<br></p>
 <h5 id="example-10">Example:  10</h5>
 <pre><code>PS C:\&gt; Get-DbaLogin -SqlInstance sql2016 -ExcludeSystemLogin
 </code></pre>
-<p>Get all user objects from server sql2016 that are not system objects</p>
+<p>Get all user objects from server sql2016 that are not system objects<br></p>
 <h5 id="example-11">Example:  11</h5>
 <pre><code>PS C:\&gt; Get-DbaLogin -SqlInstance sql2016 -ExcludeFilter '##*','NT *'
 </code></pre>
-<p>Get all user objects from server sql2016 except any beginning with '##' or 'NT ', returned as SMO login objects.</p>
+<p>Get all user objects from server sql2016 except any beginning with '##' or 'NT ', returned as SMO login objects.<br></p>
 <h5 id="example-12">Example:  12</h5>
 <pre><code>PS C:\&gt; 'sql2016', 'sql2014' | Get-DbaLogin -SqlCredential $sqlcred
 </code></pre>
-<p>Using Get-DbaLogin on the pipeline, you can also specify which names you would like with -Login.</p>
+<p>Using Get-DbaLogin on the pipeline, you can also specify which names you would like with -Login.<br></p>
 <h5 id="example-13">Example:  13</h5>
 <pre><code>PS C:\&gt; 'sql2016', 'sql2014' | Get-DbaLogin -SqlCredential $sqlcred -Locked
 </code></pre>
-<p>Using Get-DbaLogin on the pipeline to get all locked logins on servers sql2016 and sql2014.</p>
+<p>Using Get-DbaLogin on the pipeline to get all locked logins on servers sql2016 and sql2014.<br></p>
 <h5 id="example-14">Example:  14</h5>
 <pre><code>PS C:\&gt; 'sql2016', 'sql2014' | Get-DbaLogin -SqlCredential $sqlcred -HasAccess -Disabled
 </code></pre>
-<p>Using Get-DbaLogin on the pipeline to get all Disabled logins that have access on servers sql2016 or sql2014.</p>
+<p>Using Get-DbaLogin on the pipeline to get all Disabled logins that have access on servers sql2016 or sql2014.<br></p>
 <h5 id="example-15">Example:  15</h5>
 <pre><code>PS C:\&gt; Get-DbaLogin -SqlInstance sql2016 -Type SQL -Detailed
 </code></pre>
-<p>Get all user objects from server sql2016 that are SQL Logins. Get additional info for login available from LoginProperty function</p>
+<p>Get all user objects from server sql2016 that are SQL Logins. Get additional info for login available from LoginProperty function<br></p>
 <h5 id="example-16">Example:  16</h5>
 <pre><code>PS C:\&gt; 'sql2016', 'sql2014' | Get-DbaLogin -SqlCredential $sqlcred -MustChangePassword
 </code></pre>
-<p>Using Get-DbaLogin on the pipeline to get all logins that must change password on servers sql2016 and sql2014.</p>
+<p>Using Get-DbaLogin on the pipeline to get all logins that must change password on servers sql2016 and sql2014.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances.You must have sysadmin access and server version must be SQL Server version 2000 or higher.</p>
+<p>The target SQL Server instance or instances.You must have sysadmin access and server version must be SQL Server version 2000 or higher.<br></p>
 <table>
 <thead>
 <tr>
@@ -588,7 +588,7 @@ SQL Azure DB is not supported.</p>
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -616,7 +616,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="login">-Login</h5>
-<p>The login(s) to process - this list is auto-populated from the server. If unspecified, all logins will be processed.</p>
+<p>The login(s) to process - this list is auto-populated from the server. If unspecified, all logins will be processed.<br></p>
 <table>
 <thead>
 <tr>
@@ -644,7 +644,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="includefilter">-IncludeFilter</h5>
-<p>A list of logins to include - accepts wildcard patterns</p>
+<p>A list of logins to include - accepts wildcard patterns<br></p>
 <table>
 <thead>
 <tr>
@@ -672,7 +672,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="excludelogin">-ExcludeLogin</h5>
-<p>The login(s) to exclude. Options for this list are auto-populated from the server.</p>
+<p>The login(s) to exclude. Options for this list are auto-populated from the server.<br></p>
 <table>
 <thead>
 <tr>
@@ -700,7 +700,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="excludefilter">-ExcludeFilter</h5>
-<p>A list of logins to exclude - accepts wildcard patterns</p>
+<p>A list of logins to exclude - accepts wildcard patterns<br></p>
 <table>
 <thead>
 <tr>
@@ -728,7 +728,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="excludesystemlogin">-ExcludeSystemLogin</h5>
-<p>A Switch to remove System Logins from the output.</p>
+<p>A Switch to remove System Logins from the output.<br></p>
 <table>
 <thead>
 <tr>
@@ -756,7 +756,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="type">-Type</h5>
-<p>Filters logins by their type. Valid options are Windows and SQL.</p>
+<p>Filters logins by their type. Valid options are Windows and SQL.<br></p>
 <table>
 <thead>
 <tr>
@@ -788,7 +788,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="hasaccess">-HasAccess</h5>
-<p>A Switch to return Logins that have access to the instance of SQL Server.</p>
+<p>A Switch to return Logins that have access to the instance of SQL Server.<br></p>
 <table>
 <thead>
 <tr>
@@ -816,7 +816,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="locked">-Locked</h5>
-<p>A Switch to return locked Logins.</p>
+<p>A Switch to return locked Logins.<br></p>
 <table>
 <thead>
 <tr>
@@ -844,7 +844,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="disabled">-Disabled</h5>
-<p>A Switch to return disabled Logins.</p>
+<p>A Switch to return disabled Logins.<br></p>
 <table>
 <thead>
 <tr>
@@ -872,7 +872,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="mustchangepassword">-MustChangePassword</h5>
-<p>A Switch to return Logins that need to change password.</p>
+<p>A Switch to return Logins that need to change password.<br></p>
 <table>
 <thead>
 <tr>
@@ -900,7 +900,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="detailed">-Detailed</h5>
-<p>A Switch to return additional information available from the LoginProperty function</p>
+<p>A Switch to return additional information available from the LoginProperty function<br></p>
 <table>
 <thead>
 <tr>
@@ -930,7 +930,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -959,6 +959,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Get-DbaLogin.ps1">Get-DbaLogin</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Get-DbaLogin">Get-DbaLogin</a>.</p>
 
                 </div> <!-- rendered -->

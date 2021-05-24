@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -470,15 +470,15 @@
 <p>After installing the SQL Server Engine and SSIS you still have to enable the SSIS Catalog. This function will enable the catalog and gives the option of supplying the password.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>New-DbaSsisCatalog
-    --SqlInstance] &lt;DbaInstanceParameter[]&gt;
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    -[-Credential] &lt;PSCredential&gt;]
-    -[-SecurePassword] &lt;SecureString&gt;]
-    -[-SsisCatalog] &lt;String&gt;]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-SqlInstance] &lt;DbaInstanceParameter[]&gt;
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [[-Credential] &lt;PSCredential&gt;]
+    [[-SecurePassword] &lt;SecureString&gt;]
+    [[-SsisCatalog] &lt;String&gt;]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -488,15 +488,15 @@
 <pre><code>PS C:\&gt; $SecurePassword = Read-Host -AsSecureString -Prompt &quot;Enter password&quot;
 PS C:\&gt; New-DbaSsisCatalog -SqlInstance DEV01 -SecurePassword $SecurePassword
 </code></pre>
-<p>Creates the SSIS Catalog on server DEV01 with the specified password.</p>
+<p>Creates the SSIS Catalog on server DEV01 with the specified password.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; New-DbaSsisCatalog -SqlInstance sql2016 -Credential usernamedoesntmatter
 </code></pre>
-<p>Creates the SSIS Catalog on server DEV01 with the specified password in the credential prompt. As the example username suggets the username does not matter.
-This is simply an easier way to get a secure password.</p>
+<p>Creates the SSIS Catalog on server DEV01 with the specified password in the credential prompt. As the example username suggets the username does not matter.<br>
+This is simply an easier way to get a secure password.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>SQL Server you wish to run the function on.</p>
+<p>SQL Server you wish to run the function on.<br></p>
 <table>
 <thead>
 <tr>
@@ -527,7 +527,7 @@ This is simply an easier way to get a secure password.</p>
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -555,7 +555,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="credential">-Credential</h5>
-<p>Use a credential object instead of a securepassword</p>
+<p>Use a credential object instead of a securepassword<br></p>
 <table>
 <thead>
 <tr>
@@ -583,7 +583,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="securepassword">-SecurePassword</h5>
-<p>Required password that will be used for the security key in SSISDB.</p>
+<p>Required password that will be used for the security key in SSISDB.<br></p>
 <table>
 <thead>
 <tr>
@@ -611,7 +611,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="ssiscatalog">-SsisCatalog</h5>
-<p>SSIS catalog name. By default, this is SSISDB.</p>
+<p>SSIS catalog name. By default, this is SSISDB.<br></p>
 <table>
 <thead>
 <tr>
@@ -641,7 +641,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -669,7 +669,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>Shows what would happen if the command were to run. No actions are actually performed.</p>
+<p>Shows what would happen if the command were to run. No actions are actually performed.<br></p>
 <table>
 <thead>
 <tr>
@@ -697,7 +697,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>Prompts you for confirmation before executing any changing operations within the command.</p>
+<p>Prompts you for confirmation before executing any changing operations within the command.<br></p>
 <table>
 <thead>
 <tr>
@@ -726,6 +726,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/New-DbaSsisCatalog.ps1">New-DbaSsisCatalog</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#New-DbaSsisCatalog">New-DbaSsisCatalog</a>.</p>
 
                 </div> <!-- rendered -->

@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -472,13 +472,13 @@
 <p>If the attempt to convert to data table fails, try the -Raw parameter for less accurate datatype detection.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>ConvertTo-DbaDataTable
-    --InputObject] &lt;PSObject[]&gt;
-    --TimeSpanType &lt;String&gt;]
-    --SizeType &lt;String&gt;]
-    --IgnoreNull]
-    --Raw]
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [-InputObject] &lt;PSObject[]&gt;
+    [-TimeSpanType &lt;String&gt;]
+    [-SizeType &lt;String&gt;]
+    [-IgnoreNull]
+    [-Raw]
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -487,22 +487,22 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Get-Service | ConvertTo-DbaDataTable
 </code></pre>
-<p>Creates a DataTable from the output of Get-Service.</p>
+<p>Creates a DataTable from the output of Get-Service.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; ConvertTo-DbaDataTable -InputObject $csv.cheesetypes
 </code></pre>
-<p>Creates a DataTable from the CSV object $csv.cheesetypes.</p>
+<p>Creates a DataTable from the CSV object $csv.cheesetypes.<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; $dblist | ConvertTo-DbaDataTable
 </code></pre>
-<p>Creates a DataTable from the $dblist object passed in via pipeline.</p>
+<p>Creates a DataTable from the $dblist object passed in via pipeline.<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; Get-Process | ConvertTo-DbaDataTable -TimeSpanType TotalSeconds
 </code></pre>
-<p>Creates a DataTable with the running processes and converts any TimeSpan property to TotalSeconds.</p>
+<p>Creates a DataTable with the running processes and converts any TimeSpan property to TotalSeconds.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="inputobject">-InputObject</h5>
-<p>The object to transform into a DataTable.</p>
+<p>The object to transform into a DataTable.<br></p>
 <table>
 <thead>
 <tr>
@@ -532,7 +532,7 @@
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="timespantype">-TimeSpanType</h5>
 <p>Specifies the type to convert TimeSpan objects into. Default is 'TotalMilliseconds'. Valid options are: 'Ticks', 'TotalDays', 'TotalHours', 'TotalMinutes', 'TotalSeconds', 'TotalMilliseconds', and
-'String'.</p>
+'String'.<br></p>
 <table>
 <thead>
 <tr>
@@ -564,7 +564,7 @@
 </tbody>
 </table>
 <h5 id="sizetype">-SizeType</h5>
-<p>Specifies the type to convert DbaSize objects to. Default is 'Int64'. Valid options are 'Int32', 'Int64', and 'String'.</p>
+<p>Specifies the type to convert DbaSize objects to. Default is 'Int64'. Valid options are 'Int32', 'Int64', and 'String'.<br></p>
 <table>
 <thead>
 <tr>
@@ -596,7 +596,7 @@
 </tbody>
 </table>
 <h5 id="ignorenull">-IgnoreNull</h5>
-<p>If this switch is enabled, objects with null values will be ignored (empty rows will be added by default).</p>
+<p>If this switch is enabled, objects with null values will be ignored (empty rows will be added by default).<br></p>
 <table>
 <thead>
 <tr>
@@ -624,7 +624,7 @@
 </tbody>
 </table>
 <h5 id="raw">-Raw</h5>
-<p>If this switch is enabled, the DataTable will be created with strings. No attempt will be made to parse/determine data types.</p>
+<p>If this switch is enabled, the DataTable will be created with strings. No attempt will be made to parse/determine data types.<br></p>
 <table>
 <thead>
 <tr>
@@ -654,7 +654,7 @@
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -683,6 +683,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/ConvertTo-DbaDataTable.ps1">ConvertTo-DbaDataTable</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#ConvertTo-DbaDataTable">ConvertTo-DbaDataTable</a>.</p>
 
                 </div> <!-- rendered -->

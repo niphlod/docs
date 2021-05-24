@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -470,14 +470,14 @@
 <p>The Get-DbaServerRoleMember returns connected SMO object for server roles for each instance(s) of SQL Server.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Get-DbaServerRoleMember
-    --SqlInstance] &lt;DbaInstanceParameter[]&gt;
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    -[-ServerRole] &lt;String[]&gt;]
-    -[-ExcludeServerRole] &lt;String[]&gt;]
-    -[-Login] &lt;Object[]&gt;]
-    --ExcludeFixedRole]
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [-SqlInstance] &lt;DbaInstanceParameter[]&gt;
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [[-ServerRole] &lt;String[]&gt;]
+    [[-ExcludeServerRole] &lt;String[]&gt;]
+    [[-Login] &lt;Object[]&gt;]
+    [-ExcludeFixedRole]
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -486,35 +486,35 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Get-DbaServerRoleMember -SqlInstance localhost
 </code></pre>
-<p>Returns all members of all server roles on the local default SQL Server instance</p>
+<p>Returns all members of all server roles on the local default SQL Server instance<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Get-DbaServerRoleMember -SqlInstance localhost, sql2016
 </code></pre>
-<p>Returns all members of all server roles on the local and sql2016 SQL Server instances</p>
+<p>Returns all members of all server roles on the local and sql2016 SQL Server instances<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; $servers = Get-Content C:\servers.txt
 PS C:\&gt; $servers | Get-DbaServerRoleMember
 </code></pre>
-<p>Returns all members of all server roles for every server in C:\servers.txt</p>
+<p>Returns all members of all server roles for every server in C:\servers.txt<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; Get-DbaServerRoleMember -SqlInstance localhost -ServerRole 'sysadmin', 'dbcreator'
 </code></pre>
-<p>Returns all members of the sysadmin or dbcreator roles on localhost.</p>
+<p>Returns all members of the sysadmin or dbcreator roles on localhost.<br></p>
 <h5 id="example-5">Example:  5</h5>
 <pre><code>PS C:\&gt; Get-DbaServerRoleMember -SqlInstance localhost -ExcludeServerRole 'sysadmin'
 </code></pre>
-<p>Returns all members of server-level roles other than sysadmin.</p>
+<p>Returns all members of server-level roles other than sysadmin.<br></p>
 <h5 id="example-6">Example:  6</h5>
 <pre><code>PS C:\&gt; Get-DbaServerRoleMember -SqlInstance sql2017a -ExcludeFixedRole
 </code></pre>
-<p>Returns all members of server-level role(s) that are not fixed roles on sql2017a instance.</p>
+<p>Returns all members of server-level role(s) that are not fixed roles on sql2017a instance.<br></p>
 <h5 id="example-7">Example:  7</h5>
 <pre><code>PS C:\&gt; Get-DbaServerRoleMember -SqlInstance localhost -Login 'MyFriendlyDeveloper'
 </code></pre>
-<p>Returns all server-level role(s) for the MyFriendlyDeveloper login on localhost.</p>
+<p>Returns all server-level role(s) for the MyFriendlyDeveloper login on localhost.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances. This can be a collection and receive pipeline input to allow the function to be executed against multiple SQL Server instances.</p>
+<p>The target SQL Server instance or instances. This can be a collection and receive pipeline input to allow the function to be executed against multiple SQL Server instances.<br></p>
 <table>
 <thead>
 <tr>
@@ -545,7 +545,7 @@ PS C:\&gt; $servers | Get-DbaServerRoleMember
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -573,7 +573,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="serverrole">-ServerRole</h5>
-<p>The role(s) to process. If unspecified, all roles will be processed.</p>
+<p>The role(s) to process. If unspecified, all roles will be processed.<br></p>
 <table>
 <thead>
 <tr>
@@ -601,7 +601,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="excludeserverrole">-ExcludeServerRole</h5>
-<p>The role(s) to exclude.</p>
+<p>The role(s) to exclude.<br></p>
 <table>
 <thead>
 <tr>
@@ -629,7 +629,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="login">-Login</h5>
-<p>The login(s) to process. If unspecified, all logins will be processed.</p>
+<p>The login(s) to process. If unspecified, all logins will be processed.<br></p>
 <table>
 <thead>
 <tr>
@@ -657,7 +657,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="excludefixedrole">-ExcludeFixedRole</h5>
-<p>Filter the fixed server-level roles. Only applies to SQL Server 2017 that supports creation of server-level roles.</p>
+<p>Filter the fixed server-level roles. Only applies to SQL Server 2017 that supports creation of server-level roles.<br></p>
 <table>
 <thead>
 <tr>
@@ -687,7 +687,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -716,6 +716,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Get-DbaServerRoleMember.ps1">Get-DbaServerRoleMember</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Get-DbaServerRoleMember">Get-DbaServerRoleMember</a>.</p>
 
                 </div> <!-- rendered -->

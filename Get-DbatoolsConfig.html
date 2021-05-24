@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -471,15 +471,15 @@
 Can be used to search the existing configuration list.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Get-DbatoolsConfig
-    -[-FullName] &lt;String&gt;]
-    --Force]
-    -&lt;CommonParameters&gt;]
+    [[-FullName] &lt;String&gt;]
+    [-Force]
+    [&lt;CommonParameters&gt;]
 
 Get-DbatoolsConfig
-    -[-Name] &lt;String&gt;]
-    -[-Module] &lt;String&gt;]
-    --Force]
-    -&lt;CommonParameters&gt;]
+    [[-Name] &lt;String&gt;]
+    [[-Module] &lt;String&gt;]
+    [-Force]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -488,15 +488,15 @@ Get-DbatoolsConfig
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Get-DbatoolsConfig 'Mail.To'
 </code></pre>
-<p>Retrieves the configuration element for the key &quot;Mail.To&quot;</p>
+<p>Retrieves the configuration element for the key &quot;Mail.To&quot;<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Get-DbatoolsConfig -Force
 </code></pre>
-<p>Retrieve all configuration elements from all modules, even hidden ones.</p>
+<p>Retrieve all configuration elements from all modules, even hidden ones.<br></p>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="fullname">-FullName</h5>
 <p>Default: &quot;*&quot;
-Search for configurations using the full name</p>
+Search for configurations using the full name<br></p>
 <table>
 <thead>
 <tr>
@@ -526,7 +526,7 @@ Search for configurations using the full name</p>
 <h5 id="name">-Name</h5>
 <p>Default: &quot;*&quot;
 The name of the configuration element(s) to retrieve.
-May be any string, supports wildcards.</p>
+May be any string, supports wildcards.<br></p>
 <table>
 <thead>
 <tr>
@@ -555,7 +555,7 @@ May be any string, supports wildcards.</p>
 </table>
 <h5 id="module">-Module</h5>
 <p>Default: &quot;*&quot;
-Search configuration by module.</p>
+Search configuration by module.<br></p>
 <table>
 <thead>
 <tr>
@@ -583,7 +583,7 @@ Search configuration by module.</p>
 </tbody>
 </table>
 <h5 id="force">-Force</h5>
-<p>Overrides the default behavior and also displays hidden configuration values.</p>
+<p>Overrides the default behavior and also displays hidden configuration values.<br></p>
 <table>
 <thead>
 <tr>
@@ -612,6 +612,7 @@ Search configuration by module.</p>
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Get-DbatoolsConfig.ps1">Get-DbatoolsConfig</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Get-DbatoolsConfig">Get-DbatoolsConfig</a>.</p>
 
                 </div> <!-- rendered -->

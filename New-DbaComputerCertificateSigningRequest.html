@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -471,17 +471,17 @@
 <p>By default, a key with a length of 1024 and a friendly name of the machines FQDN is generated.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>New-DbaComputerCertificateSigningRequest
-    -[-ComputerName] &lt;DbaInstanceParameter[]&gt;]
-    -[-Credential] &lt;PSCredential&gt;]
-    -[-ClusterInstanceName] &lt;String&gt;]
-    -[-Path] &lt;String&gt;]
-    -[-FriendlyName] &lt;String&gt;]
-    -[-KeyLength] &lt;Int32&gt;]
-    -[-Dns] &lt;String[]&gt;]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [[-ComputerName] &lt;DbaInstanceParameter[]&gt;]
+    [[-Credential] &lt;PSCredential&gt;]
+    [[-ClusterInstanceName] &lt;String&gt;]
+    [[-Path] &lt;String&gt;]
+    [[-FriendlyName] &lt;String&gt;]
+    [[-KeyLength] &lt;Int32&gt;]
+    [[-Dns] &lt;String[]&gt;]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -490,22 +490,22 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; New-DbaComputerCertificate
 </code></pre>
-<p>Creates a computer certificate signing request for the local machine with the keylength of 1024.</p>
+<p>Creates a computer certificate signing request for the local machine with the keylength of 1024.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; New-DbaComputerCertificate -ComputerName Server1
 </code></pre>
-<p>Creates a computer certificate signing request for server1 with the keylength of 1024.</p>
+<p>Creates a computer certificate signing request for server1 with the keylength of 1024.<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; New-DbaComputerCertificate -ComputerName sqla, sqlb -ClusterInstanceName sqlcluster -KeyLength 4096
 </code></pre>
-<p>Creates a computer certificate signing request for sqlcluster with the keylength of 4096.</p>
+<p>Creates a computer certificate signing request for sqlcluster with the keylength of 4096.<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; New-DbaComputerCertificate -ComputerName Server1 -WhatIf
 </code></pre>
-<p>Shows what would happen if the command were run</p>
+<p>Shows what would happen if the command were run<br></p>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="computername">-ComputerName</h5>
-<p>The target SQL Server instance or instances. Defaults to localhost. If target is a cluster, you must also specify ClusterInstanceName (see below)</p>
+<p>The target SQL Server instance or instances. Defaults to localhost. If target is a cluster, you must also specify ClusterInstanceName (see below)<br></p>
 <table>
 <thead>
 <tr>
@@ -533,7 +533,7 @@
 </tbody>
 </table>
 <h5 id="credential">-Credential</h5>
-<p>Allows you to login to $ComputerName using alternative credentials.</p>
+<p>Allows you to login to $ComputerName using alternative credentials.<br></p>
 <table>
 <thead>
 <tr>
@@ -561,7 +561,7 @@
 </tbody>
 </table>
 <h5 id="clusterinstancename">-ClusterInstanceName</h5>
-<p>When creating certs for a cluster, use this parameter to create the certificate for the cluster node name. Use ComputerName for each of the nodes.</p>
+<p>When creating certs for a cluster, use this parameter to create the certificate for the cluster node name. Use ComputerName for each of the nodes.<br></p>
 <table>
 <thead>
 <tr>
@@ -589,7 +589,7 @@
 </tbody>
 </table>
 <h5 id="path">-Path</h5>
-<p>The folder to export to.</p>
+<p>The folder to export to.<br></p>
 <table>
 <thead>
 <tr>
@@ -617,7 +617,7 @@
 </tbody>
 </table>
 <h5 id="friendlyname">-FriendlyName</h5>
-<p>The FriendlyName listed in the certificate. This defaults to the FQDN of the $ComputerName</p>
+<p>The FriendlyName listed in the certificate. This defaults to the FQDN of the $ComputerName<br></p>
 <table>
 <thead>
 <tr>
@@ -645,7 +645,7 @@
 </tbody>
 </table>
 <h5 id="keylength">-KeyLength</h5>
-<p>The length of the key - defaults to 1024</p>
+<p>The length of the key - defaults to 1024<br></p>
 <table>
 <thead>
 <tr>
@@ -673,7 +673,7 @@
 </tbody>
 </table>
 <h5 id="dns">-Dns</h5>
-<p>Specify the Dns entries listed in SAN. By default, it will be ComputerName + FQDN, or in the case of clusters, clustername + cluster FQDN.</p>
+<p>Specify the Dns entries listed in SAN. By default, it will be ComputerName + FQDN, or in the case of clusters, clustername + cluster FQDN.<br></p>
 <table>
 <thead>
 <tr>
@@ -703,7 +703,7 @@
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -731,7 +731,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>Shows what would happen if the command were to run. No actions are actually performed.</p>
+<p>Shows what would happen if the command were to run. No actions are actually performed.<br></p>
 <table>
 <thead>
 <tr>
@@ -759,7 +759,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>Prompts you for confirmation before executing any changing operations within the command.</p>
+<p>Prompts you for confirmation before executing any changing operations within the command.<br></p>
 <table>
 <thead>
 <tr>
@@ -788,6 +788,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/New-DbaComputerCertificateSigningRequest.ps1">New-DbaComputerCertificateSigningRequest</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#New-DbaComputerCertificateSigningRequest">New-DbaComputerCertificateSigningRequest</a>.</p>
 
                 </div> <!-- rendered -->

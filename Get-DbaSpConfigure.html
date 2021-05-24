@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -471,12 +471,12 @@
 The data includes the default value for each configuration, for quick identification of values that may have been changed.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Get-DbaSpConfigure
-    --SqlInstance] &lt;DbaInstanceParameter[]&gt;
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    -[-Name] &lt;String[]&gt;]
-    -[-ExcludeName] &lt;String[]&gt;]
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [-SqlInstance] &lt;DbaInstanceParameter[]&gt;
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [[-Name] &lt;String[]&gt;]
+    [[-ExcludeName] &lt;String[]&gt;]
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -485,27 +485,27 @@ The data includes the default value for each configuration, for quick identifica
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Get-DbaSpConfigure -SqlInstance localhost
 </code></pre>
-<p>Returns all system configuration information on the localhost.</p>
+<p>Returns all system configuration information on the localhost.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; 'localhost','localhost\namedinstance' | Get-DbaSpConfigure
 </code></pre>
-<p>Returns system configuration information on multiple instances piped into the function</p>
+<p>Returns system configuration information on multiple instances piped into the function<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Get-DbaSpConfigure -SqlInstance sql2012 -Name 'max server memory (MB)'
 </code></pre>
-<p>Returns only the system configuration for MaxServerMemory on sql2012.</p>
+<p>Returns only the system configuration for MaxServerMemory on sql2012.<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; Get-DbaSpConfigure -SqlInstance sql2012 -ExcludeName 'max server memory (MB)', RemoteAccess | Out-GridView
 </code></pre>
-<p>Returns system configuration information on sql2012 but excludes for max server memory (MB) and remote access. Values returned in grid view</p>
+<p>Returns system configuration information on sql2012 but excludes for max server memory (MB) and remote access. Values returned in grid view<br></p>
 <h5 id="example-5">Example:  5</h5>
 <pre><code>PS C:\&gt; $cred = Get-Credential SqlCredential
 PS C:\&gt; 'sql2012' | Get-DbaSpConfigure -SqlCredential $cred -Name RemoteAccess, 'max server memory (MB)' -ExcludeName 'remote access' | Out-GridView
 </code></pre>
-<p>Returns system configuration information on sql2012 using SQL Server Authentication. Only MaxServerMemory is returned as RemoteAccess was also excluded.</p>
+<p>Returns system configuration information on sql2012 using SQL Server Authentication. Only MaxServerMemory is returned as RemoteAccess was also excluded.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances. This can be a collection and receive pipeline input</p>
+<p>The target SQL Server instance or instances. This can be a collection and receive pipeline input<br></p>
 <table>
 <thead>
 <tr>
@@ -536,7 +536,7 @@ PS C:\&gt; 'sql2012' | Get-DbaSpConfigure -SqlCredential $cred -Name RemoteAcces
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -564,7 +564,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="name">-Name</h5>
-<p>Return only specific configurations. Name can be either values from (sys.configuration/sp_configure) or from SMO object</p>
+<p>Return only specific configurations. Name can be either values from (sys.configuration/sp_configure) or from SMO object<br></p>
 <table>
 <thead>
 <tr>
@@ -592,7 +592,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="excludename">-ExcludeName</h5>
-<p>Exclude specific configurations. Name can be either values from (sys.configuration/sp_configure) or from SMO object</p>
+<p>Exclude specific configurations. Name can be either values from (sys.configuration/sp_configure) or from SMO object<br></p>
 <table>
 <thead>
 <tr>
@@ -622,7 +622,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -651,6 +651,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Get-DbaSpConfigure.ps1">Get-DbaSpConfigure</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Get-DbaSpConfigure">Get-DbaSpConfigure</a>.</p>
 
                 </div> <!-- rendered -->

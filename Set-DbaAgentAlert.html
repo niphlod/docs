@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -470,18 +470,18 @@
 <p>Set-DbaAgentAlert updates an alert in the SQL Server Agent with parameters supplied.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Set-DbaAgentAlert
-    -[-SqlInstance] &lt;DbaInstanceParameter[]&gt;]
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    -[-Alert] &lt;Object[]&gt;]
-    -[-NewName] &lt;String&gt;]
-    --Enabled]
-    --Disabled]
-    --Force]
-    -[-InputObject] &lt;Alert[]&gt;]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [[-SqlInstance] &lt;DbaInstanceParameter[]&gt;]
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [[-Alert] &lt;Object[]&gt;]
+    [[-NewName] &lt;String&gt;]
+    [-Enabled]
+    [-Disabled]
+    [-Force]
+    [[-InputObject] &lt;Alert[]&gt;]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -490,22 +490,22 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Set-DbaAgentAlert -SqlInstance sql1 -Alert 'Severity 025: Fatal Error' -Disabled
 </code></pre>
-<p>Changes the alert to disabled.</p>
+<p>Changes the alert to disabled.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Set-DbaAgentAlert -SqlInstance sql1 -Alert 'Severity 025: Fatal Error', 'Error Number 825', 'Error Number 824' -Enabled
 </code></pre>
-<p>Changes multiple alerts to enabled.</p>
+<p>Changes multiple alerts to enabled.<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Set-DbaAgentAlert -SqlInstance sql1, sql2, sql3 -Alert 'Severity 025: Fatal Error', 'Error Number 825', 'Error Number 824' -Enabled
 </code></pre>
-<p>Changes multiple alerts to enabled on multiple servers.</p>
+<p>Changes multiple alerts to enabled on multiple servers.<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; Set-DbaAgentAlert -SqlInstance sql1 -Alert 'Severity 025: Fatal Error' -Disabled -WhatIf
 </code></pre>
-<p>Doesn't Change the alert but shows what would happen.</p>
+<p>Doesn't Change the alert but shows what would happen.<br></p>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances. You must have sysadmin access and server version must be SQL Server version 2000 or greater.</p>
+<p>The target SQL Server instance or instances. You must have sysadmin access and server version must be SQL Server version 2000 or greater.<br></p>
 <table>
 <thead>
 <tr>
@@ -535,7 +535,7 @@
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -563,7 +563,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="alert">-Alert</h5>
-<p>The name of the alert.</p>
+<p>The name of the alert.<br></p>
 <table>
 <thead>
 <tr>
@@ -591,7 +591,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="newname">-NewName</h5>
-<p>The new name for the alert.</p>
+<p>The new name for the alert.<br></p>
 <table>
 <thead>
 <tr>
@@ -619,7 +619,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="enabled">-Enabled</h5>
-<p>Enabled the alert.</p>
+<p>Enabled the alert.<br></p>
 <table>
 <thead>
 <tr>
@@ -647,7 +647,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="disabled">-Disabled</h5>
-<p>Disabled the alert.</p>
+<p>Disabled the alert.<br></p>
 <table>
 <thead>
 <tr>
@@ -675,7 +675,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="force">-Force</h5>
-<p>The force parameter will ignore some errors in the parameters and assume defaults.</p>
+<p>The force parameter will ignore some errors in the parameters and assume defaults.<br></p>
 <table>
 <thead>
 <tr>
@@ -703,7 +703,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="inputobject">-InputObject</h5>
-<p>Enables piping alert objects</p>
+<p>Enables piping alert objects<br></p>
 <table>
 <thead>
 <tr>
@@ -733,7 +733,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -761,7 +761,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>Shows what would happen if the command were to run. No actions are actually performed.</p>
+<p>Shows what would happen if the command were to run. No actions are actually performed.<br></p>
 <table>
 <thead>
 <tr>
@@ -789,7 +789,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>Prompts you for confirmation before executing any changing operations within the command.</p>
+<p>Prompts you for confirmation before executing any changing operations within the command.<br></p>
 <table>
 <thead>
 <tr>
@@ -818,6 +818,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Set-DbaAgentAlert.ps1">Set-DbaAgentAlert</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Set-DbaAgentAlert">Set-DbaAgentAlert</a>.</p>
 
                 </div> <!-- rendered -->

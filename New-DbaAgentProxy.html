@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -471,21 +471,21 @@
 <p>Note: ActiveScripting (ActiveX scripting) was discontinued in SQL Server 2016: <a href="https://docs.microsoft.com/en-us/sql/database-engine/discontinued-database-engine-functionality-in-sql-server">https://docs.microsoft.com/en-us/sql/database-engine/discontinued-database-engine-functionality-in-sql-server</a></p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>New-DbaAgentProxy
-    --SqlInstance] &lt;DbaInstanceParameter[]&gt;
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    --Name] &lt;String[]&gt;
-    --ProxyCredential] &lt;String[]&gt;
-    -[-SubSystem] &lt;String[]&gt;]
-    -[-Description] &lt;String&gt;]
-    -[-Login] &lt;String[]&gt;]
-    -[-ServerRole] &lt;String[]&gt;]
-    -[-MsdbRole] &lt;String[]&gt;]
-    --Disabled]
-    --Force]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-SqlInstance] &lt;DbaInstanceParameter[]&gt;
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [-Name] &lt;String[]&gt;
+    [-ProxyCredential] &lt;String[]&gt;
+    [[-SubSystem] &lt;String[]&gt;]
+    [[-Description] &lt;String&gt;]
+    [[-Login] &lt;String[]&gt;]
+    [[-ServerRole] &lt;String[]&gt;]
+    [[-MsdbRole] &lt;String[]&gt;]
+    [-Disabled]
+    [-Force]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -494,21 +494,21 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; New-DbaAgentProxy -SqlInstance sql2016 -Name STIG -ProxyCredential 'PowerShell Proxy'
 </code></pre>
-<p>Creates an Agent Proxy on sql2016 with the name STIG with the 'PowerShell Proxy' credential.
-The proxy is automatically added to the CmdExec subsystem.</p>
+<p>Creates an Agent Proxy on sql2016 with the name STIG with the 'PowerShell Proxy' credential.<br>
+The proxy is automatically added to the CmdExec subsystem.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; New-DbaAgentProxy -SqlInstance localhost\sql2016 -Name STIG -ProxyCredential 'PowerShell Proxy' -Description &quot;Used for auditing purposes&quot; -Login ad\sqlstig -SubSystem CmdExec, PowerShell
 </code></pre>
-<p>-ServerRole securityadmin -MsdbRole ServerGroupAdministratorRole
-Creates an Agent Proxy on sql2016 with the name STIG with the 'PowerShell Proxy' credential and the following principals:
-Login: ad\sqlstig
-ServerRole: securityadmin
-MsdbRole: ServerGroupAdministratorRole
-By default, only sysadmins have access to create job steps with proxies. This will allow 3 additional principals access:
-The proxy is then added to the CmdExec and PowerShell subsystems</p>
+<p>-ServerRole securityadmin -MsdbRole ServerGroupAdministratorRole<br>
+Creates an Agent Proxy on sql2016 with the name STIG with the 'PowerShell Proxy' credential and the following principals:<br>
+Login: ad\sqlstig<br>
+ServerRole: securityadmin<br>
+MsdbRole: ServerGroupAdministratorRole<br>
+By default, only sysadmins have access to create job steps with proxies. This will allow 3 additional principals access:<br>
+The proxy is then added to the CmdExec and PowerShell subsystems<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances.You must have sysadmin access and server version must be SQL Server version 2000 or higher.</p>
+<p>The target SQL Server instance or instances.You must have sysadmin access and server version must be SQL Server version 2000 or higher.<br></p>
 <table>
 <thead>
 <tr>
@@ -536,7 +536,7 @@ The proxy is then added to the CmdExec and PowerShell subsystems</p>
 </tbody>
 </table>
 <h5 id="name">-Name</h5>
-<p>The name of the proxy or proxies you want to create</p>
+<p>The name of the proxy or proxies you want to create<br></p>
 <table>
 <thead>
 <tr>
@@ -564,7 +564,7 @@ The proxy is then added to the CmdExec and PowerShell subsystems</p>
 </tbody>
 </table>
 <h5 id="proxycredential">-ProxyCredential</h5>
-<p>The associated SQL Server Credential. The credential must be created prior to creating the Proxy.</p>
+<p>The associated SQL Server Credential. The credential must be created prior to creating the Proxy.<br></p>
 <table>
 <thead>
 <tr>
@@ -595,7 +595,7 @@ The proxy is then added to the CmdExec and PowerShell subsystems</p>
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -635,7 +635,7 @@ Merge
 PowerShell
 QueueReader
 Snapshot
-Ssis</p>
+Ssis<br></p>
 <table>
 <thead>
 <tr>
@@ -667,7 +667,7 @@ Ssis</p>
 </tbody>
 </table>
 <h5 id="description-1">-Description</h5>
-<p>A description of the proxy</p>
+<p>A description of the proxy<br></p>
 <table>
 <thead>
 <tr>
@@ -695,7 +695,7 @@ Ssis</p>
 </tbody>
 </table>
 <h5 id="login">-Login</h5>
-<p>The SQL Server login or logins (known as proxy principals) to assign to the proxy</p>
+<p>The SQL Server login or logins (known as proxy principals) to assign to the proxy<br></p>
 <table>
 <thead>
 <tr>
@@ -723,7 +723,7 @@ Ssis</p>
 </tbody>
 </table>
 <h5 id="serverrole">-ServerRole</h5>
-<p>The SQL Server role or roles (known as proxy principals) to assign to the proxy</p>
+<p>The SQL Server role or roles (known as proxy principals) to assign to the proxy<br></p>
 <table>
 <thead>
 <tr>
@@ -751,7 +751,7 @@ Ssis</p>
 </tbody>
 </table>
 <h5 id="msdbrole">-MsdbRole</h5>
-<p>The msdb role or roles (known as proxy principals) to assign to the proxy</p>
+<p>The msdb role or roles (known as proxy principals) to assign to the proxy<br></p>
 <table>
 <thead>
 <tr>
@@ -779,7 +779,7 @@ Ssis</p>
 </tbody>
 </table>
 <h5 id="disabled">-Disabled</h5>
-<p>Create the proxy as disabled</p>
+<p>Create the proxy as disabled<br></p>
 <table>
 <thead>
 <tr>
@@ -807,7 +807,7 @@ Ssis</p>
 </tbody>
 </table>
 <h5 id="force">-Force</h5>
-<p>Drop and recreate the proxy if it already exists</p>
+<p>Drop and recreate the proxy if it already exists<br></p>
 <table>
 <thead>
 <tr>
@@ -837,7 +837,7 @@ Ssis</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -865,7 +865,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.</p>
+<p>If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.<br></p>
 <table>
 <thead>
 <tr>
@@ -893,7 +893,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.</p>
+<p>If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.<br></p>
 <table>
 <thead>
 <tr>
@@ -922,6 +922,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/New-DbaAgentProxy.ps1">New-DbaAgentProxy</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#New-DbaAgentProxy">New-DbaAgentProxy</a>.</p>
 
                 </div> <!-- rendered -->

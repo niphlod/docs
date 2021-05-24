@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -470,15 +470,15 @@
 <p>Imports a new XESession XML Template either from the dbatools repository or a file you specify.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Import-DbaXESessionTemplate
-    --SqlInstance] &lt;DbaInstanceParameter[]&gt;
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    -[-Name] &lt;String&gt;]
-    -[-Path] &lt;String[]&gt;]
-    -[-Template] &lt;String[]&gt;]
-    -[-TargetFilePath] &lt;String&gt;]
-    -[-TargetFileMetadataPath] &lt;String&gt;]
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [-SqlInstance] &lt;DbaInstanceParameter[]&gt;
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [[-Name] &lt;String&gt;]
+    [[-Path] &lt;String[]&gt;]
+    [[-Template] &lt;String[]&gt;]
+    [[-TargetFilePath] &lt;String&gt;]
+    [[-TargetFileMetadataPath] &lt;String&gt;]
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -487,23 +487,23 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Import-DbaXESessionTemplate -SqlInstance sql2017 -Template db_query_wait_stats
 </code></pre>
-<p>Creates a new XESession named db_query_wait_stats from the dbatools repository to the SQL Server sql2017.</p>
+<p>Creates a new XESession named db_query_wait_stats from the dbatools repository to the SQL Server sql2017.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Import-DbaXESessionTemplate -SqlInstance sql2017 -Template db_query_wait_stats -Name &quot;Query Wait Stats&quot;
 </code></pre>
-<p>Creates a new XESession named &quot;Query Wait Stats&quot; using the db_query_wait_stats template.</p>
+<p>Creates a new XESession named &quot;Query Wait Stats&quot; using the db_query_wait_stats template.<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Get-DbaXESession -SqlInstance sql2017 -Session 'Database Health 2014' | Remove-DbaXESession
 PS C:\&gt; Import-DbaXESessionTemplate -SqlInstance sql2017 -Template 'Database Health 2014' | Start-DbaXESession
 </code></pre>
-<p>Removes a session if it exists, then recreates it using a template.</p>
+<p>Removes a session if it exists, then recreates it using a template.<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; Get-DbaXESessionTemplate | Out-GridView -PassThru | Import-DbaXESessionTemplate -SqlInstance sql2017
 </code></pre>
-<p>Allows you to select a Session template then import to an instance named sql2017.</p>
+<p>Allows you to select a Session template then import to an instance named sql2017.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances. You must have sysadmin access and server version must be SQL Server version 2008 or higher.</p>
+<p>The target SQL Server instance or instances. You must have sysadmin access and server version must be SQL Server version 2008 or higher.<br></p>
 <table>
 <thead>
 <tr>
@@ -534,7 +534,7 @@ PS C:\&gt; Import-DbaXESessionTemplate -SqlInstance sql2017 -Template 'Database 
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -562,7 +562,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="name">-Name</h5>
-<p>The Name of the session to create.</p>
+<p>The Name of the session to create.<br></p>
 <table>
 <thead>
 <tr>
@@ -590,7 +590,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="path">-Path</h5>
-<p>The path to the xml file or files for the session(s).</p>
+<p>The path to the xml file or files for the session(s).<br></p>
 <table>
 <thead>
 <tr>
@@ -618,7 +618,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="template">-Template</h5>
-<p>Specifies the name of one of the templates from the dbatools repository. Press tab to cycle through the provided templates.</p>
+<p>Specifies the name of one of the templates from the dbatools repository. Press tab to cycle through the provided templates.<br></p>
 <table>
 <thead>
 <tr>
@@ -648,7 +648,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 <h5 id="targetfilepath">-TargetFilePath</h5>
 <p>By default, files will be created in the default xel directory. Use TargetFilePath to change all instances of
 filename = &quot;file.xel&quot; to filename = &quot;$TargetFilePath\file.xel&quot;. Only specify the directory, not the file itself.
-This path is relative to the destination directory</p>
+This path is relative to the destination directory<br></p>
 <table>
 <thead>
 <tr>
@@ -678,7 +678,7 @@ This path is relative to the destination directory</p>
 <h5 id="targetfilemetadatapath">-TargetFileMetadataPath</h5>
 <p>By default, files will be created in the default xem directory. Use TargetFileMetadataPath to change all instances of
 filename = &quot;file.xem&quot; to filename = &quot;$TargetFilePath\file.xem&quot;. Only specify the directory, not the file itself.
-This path is relative to the destination directory</p>
+This path is relative to the destination directory<br></p>
 <table>
 <thead>
 <tr>
@@ -708,7 +708,7 @@ This path is relative to the destination directory</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -737,6 +737,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Import-DbaXESessionTemplate.ps1">Import-DbaXESessionTemplate</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Import-DbaXESessionTemplate">Import-DbaXESessionTemplate</a>.</p>
 
                 </div> <!-- rendered -->

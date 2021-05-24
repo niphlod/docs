@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -470,15 +470,15 @@
 <p>Creates/updates a SQL Server alias by altering HKLM:\SOFTWARE\Microsoft\MSSQLServer\Client</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>New-DbaClientAlias
-    -[-ComputerName] &lt;DbaInstanceParameter[]&gt;]
-    -[-Credential] &lt;PSCredential&gt;]
-    --ServerName] &lt;DbaInstanceParameter&gt;
-    --Alias] &lt;String&gt;
-    -[-Protocol] &lt;String&gt;]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [[-ComputerName] &lt;DbaInstanceParameter[]&gt;]
+    [[-Credential] &lt;PSCredential&gt;]
+    [-ServerName] &lt;DbaInstanceParameter&gt;
+    [-Alias] &lt;String&gt;
+    [[-Protocol] &lt;String&gt;]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -487,18 +487,18 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; New-DbaClientAlias -ServerName sqlcluster\sharepoint -Alias sp
 </code></pre>
-<p>Creates a new TCP alias on the local workstation called sp, which points sqlcluster\sharepoint</p>
+<p>Creates a new TCP alias on the local workstation called sp, which points sqlcluster\sharepoint<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; New-DbaClientAlias -ServerName 'sqlcluster,14443' -Alias spinstance
 </code></pre>
-<p>Creates a new TCP alias on the local workstation called spinstance, which points to sqlcluster, port 14443.</p>
+<p>Creates a new TCP alias on the local workstation called spinstance, which points to sqlcluster, port 14443.<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; New-DbaClientAlias -ServerName sqlcluster\sharepoint -Alias sp -Protocol NamedPipes
 </code></pre>
-<p>Creates a new NamedPipes alias on the local workstation called sp, which points sqlcluster\sharepoint</p>
+<p>Creates a new NamedPipes alias on the local workstation called sp, which points sqlcluster\sharepoint<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="servername">-ServerName</h5>
-<p>The target SQL Server</p>
+<p>The target SQL Server<br></p>
 <table>
 <thead>
 <tr>
@@ -526,7 +526,7 @@
 </tbody>
 </table>
 <h5 id="alias">-Alias</h5>
-<p>The alias to be created</p>
+<p>The alias to be created<br></p>
 <table>
 <thead>
 <tr>
@@ -555,7 +555,7 @@
 </table>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="computername">-ComputerName</h5>
-<p>The target computer where the alias will be created</p>
+<p>The target computer where the alias will be created<br></p>
 <table>
 <thead>
 <tr>
@@ -583,7 +583,7 @@
 </tbody>
 </table>
 <h5 id="credential">-Credential</h5>
-<p>Allows you to login to remote computers using alternative credentials</p>
+<p>Allows you to login to remote computers using alternative credentials<br></p>
 <table>
 <thead>
 <tr>
@@ -611,7 +611,7 @@
 </tbody>
 </table>
 <h5 id="protocol">-Protocol</h5>
-<p>The protocol for the connection, either TCPIP or NetBIOS. Defaults to TCPIP.</p>
+<p>The protocol for the connection, either TCPIP or NetBIOS. Defaults to TCPIP.<br></p>
 <table>
 <thead>
 <tr>
@@ -645,7 +645,7 @@
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -673,7 +673,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.</p>
+<p>If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.<br></p>
 <table>
 <thead>
 <tr>
@@ -701,7 +701,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.</p>
+<p>If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.<br></p>
 <table>
 <thead>
 <tr>
@@ -730,6 +730,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/New-DbaClientAlias.ps1">New-DbaClientAlias</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#New-DbaClientAlias">New-DbaClientAlias</a>.</p>
 
                 </div> <!-- rendered -->

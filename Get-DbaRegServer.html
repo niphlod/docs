@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -472,18 +472,18 @@
 <p>Local Registered Servers and Azure Data Studio support alternative authentication (excluding MFA) but Central Management Studio does not.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Get-DbaRegServer
-    -[-SqlInstance] &lt;DbaInstanceParameter[]&gt;]
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    -[-Name] &lt;String[]&gt;]
-    -[-ServerName] &lt;String[]&gt;]
-    -[-Group] &lt;String[]&gt;]
-    -[-ExcludeGroup] &lt;String[]&gt;]
-    -[-Id] &lt;Int32[]&gt;]
-    --IncludeSelf]
-    --ResolveNetworkName]
-    --IncludeLocal]
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [[-SqlInstance] &lt;DbaInstanceParameter[]&gt;]
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [[-Name] &lt;String[]&gt;]
+    [[-ServerName] &lt;String[]&gt;]
+    [[-Group] &lt;String[]&gt;]
+    [[-ExcludeGroup] &lt;String[]&gt;]
+    [[-Id] &lt;Int32[]&gt;]
+    [-IncludeSelf]
+    [-ResolveNetworkName]
+    [-IncludeLocal]
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -492,30 +492,30 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Get-DbaRegServer
 </code></pre>
-<p>Gets a list of servers from the local registered servers and azure data studio</p>
+<p>Gets a list of servers from the local registered servers and azure data studio<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Get-DbaRegServer -SqlInstance sqlserver2014a
 </code></pre>
-<p>Gets a list of servers from the CMS on sqlserver2014a, using Windows Credentials.</p>
+<p>Gets a list of servers from the CMS on sqlserver2014a, using Windows Credentials.<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Get-DbaRegServer -SqlInstance sqlserver2014a -IncludeSelf
 </code></pre>
-<p>Gets a list of servers from the CMS on sqlserver2014a and includes sqlserver2014a in the output results.</p>
+<p>Gets a list of servers from the CMS on sqlserver2014a and includes sqlserver2014a in the output results.<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; Get-DbaRegServer -SqlInstance sqlserver2014a -SqlCredential $credential | Select-Object -Unique -ExpandProperty ServerName
 </code></pre>
-<p>Returns only the server names from the CMS on sqlserver2014a, using SQL Authentication to authenticate to the server.</p>
+<p>Returns only the server names from the CMS on sqlserver2014a, using SQL Authentication to authenticate to the server.<br></p>
 <h5 id="example-5">Example:  5</h5>
 <pre><code>PS C:\&gt; Get-DbaRegServer -SqlInstance sqlserver2014a -Group HR, Accounting
 </code></pre>
-<p>Gets a list of servers in the HR and Accounting groups from the CMS on sqlserver2014a.</p>
+<p>Gets a list of servers in the HR and Accounting groups from the CMS on sqlserver2014a.<br></p>
 <h5 id="example-6">Example:  6</h5>
 <pre><code>PS C:\&gt; Get-DbaRegServer -SqlInstance sqlserver2014a -Group HR\Development
 </code></pre>
-<p>Returns a list of servers in the HR and sub-group Development from the CMS on sqlserver2014a.</p>
+<p>Returns a list of servers in the HR and sub-group Development from the CMS on sqlserver2014a.<br></p>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances.</p>
+<p>The target SQL Server instance or instances.<br></p>
 <table>
 <thead>
 <tr>
@@ -545,7 +545,7 @@
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -573,7 +573,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="name">-Name</h5>
-<p>Specifies one or more names to include. Name is the visible name in SSMS interface (labeled Registered Server Name)</p>
+<p>Specifies one or more names to include. Name is the visible name in SSMS interface (labeled Registered Server Name)<br></p>
 <table>
 <thead>
 <tr>
@@ -601,7 +601,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="servername">-ServerName</h5>
-<p>Specifies one or more server names to include. Server Name is the actual instance name (labeled Server Name)</p>
+<p>Specifies one or more server names to include. Server Name is the actual instance name (labeled Server Name)<br></p>
 <table>
 <thead>
 <tr>
@@ -629,7 +629,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="group">-Group</h5>
-<p>Specifies one or more groups to include from SQL Server Central Management Server.</p>
+<p>Specifies one or more groups to include from SQL Server Central Management Server.<br></p>
 <table>
 <thead>
 <tr>
@@ -657,7 +657,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="excludegroup">-ExcludeGroup</h5>
-<p>Specifies one or more Central Management Server groups to exclude.</p>
+<p>Specifies one or more Central Management Server groups to exclude.<br></p>
 <table>
 <thead>
 <tr>
@@ -685,7 +685,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="id">-Id</h5>
-<p>Get server by Id(s)</p>
+<p>Get server by Id(s)<br></p>
 <table>
 <thead>
 <tr>
@@ -713,7 +713,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="includeself">-IncludeSelf</h5>
-<p>If this switch is enabled and you're connecting to a Central Management Server, the CMS server itself will be included in the results, along with all other Registered Servers.</p>
+<p>If this switch is enabled and you're connecting to a Central Management Server, the CMS server itself will be included in the results, along with all other Registered Servers.<br></p>
 <table>
 <thead>
 <tr>
@@ -741,7 +741,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="resolvenetworkname">-ResolveNetworkName</h5>
-<p>If this switch is enabled, the NetBIOS name and IP address(es) of each server will be returned.</p>
+<p>If this switch is enabled, the NetBIOS name and IP address(es) of each server will be returned.<br></p>
 <table>
 <thead>
 <tr>
@@ -769,7 +769,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="includelocal">-IncludeLocal</h5>
-<p>Include local registered servers or Azure Data Studio registered servers in results when specifying SqlInstance.</p>
+<p>Include local registered servers or Azure Data Studio registered servers in results when specifying SqlInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -799,7 +799,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -828,6 +828,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Get-DbaRegServer.ps1">Get-DbaRegServer</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Get-DbaRegServer">Get-DbaRegServer</a>.</p>
 
                 </div> <!-- rendered -->

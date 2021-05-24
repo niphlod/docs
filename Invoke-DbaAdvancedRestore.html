@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -475,31 +475,31 @@ For 90% of users Restore-DbaDatabase should be your point of access to this func
 <p>We would recommend ALWAYS pushing your input through <code>Test-DbaBackupInformation</code> just to make sure that it makes sense to us.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Invoke-DbaAdvancedRestore
-    --BackupHistory] &lt;Object[]&gt;
-    -[-SqlInstance] &lt;DbaInstanceParameter&gt;]
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    --OutputScriptOnly]
-    --VerifyOnly]
-    -[-RestoreTime] &lt;DateTime&gt;]
-    -[-StandbyDirectory] &lt;String&gt;]
-    --NoRecovery]
-    -[-MaxTransferSize] &lt;Int32&gt;]
-    -[-BlockSize] &lt;Int32&gt;]
-    -[-BufferCount] &lt;Int32&gt;]
-    --Continue]
-    -[-AzureCredential] &lt;String&gt;]
-    --WithReplace]
-    --KeepReplication]
-    --KeepCDC]
-    -[-PageRestore] &lt;Object[]&gt;]
-    -[-ExecuteAs] &lt;String&gt;]
-    --StopBefore]
-    -[-StopMark] &lt;String&gt;]
-    -[-StopAfterDate] &lt;DateTime&gt;]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-BackupHistory] &lt;Object[]&gt;
+    [[-SqlInstance] &lt;DbaInstanceParameter&gt;]
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [-OutputScriptOnly]
+    [-VerifyOnly]
+    [[-RestoreTime] &lt;DateTime&gt;]
+    [[-StandbyDirectory] &lt;String&gt;]
+    [-NoRecovery]
+    [[-MaxTransferSize] &lt;Int32&gt;]
+    [[-BlockSize] &lt;Int32&gt;]
+    [[-BufferCount] &lt;Int32&gt;]
+    [-Continue]
+    [[-AzureCredential] &lt;String&gt;]
+    [-WithReplace]
+    [-KeepReplication]
+    [-KeepCDC]
+    [[-PageRestore] &lt;Object[]&gt;]
+    [[-ExecuteAs] &lt;String&gt;]
+    [-StopBefore]
+    [[-StopMark] &lt;String&gt;]
+    [[-StopAfterDate] &lt;DateTime&gt;]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -508,17 +508,17 @@ For 90% of users Restore-DbaDatabase should be your point of access to this func
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; $BackupHistory | Invoke-DbaAdvancedRestore -SqlInstance MyInstance
 </code></pre>
-<p>Will restore all the backups in the BackupHistory object according to the transformations it contains</p>
+<p>Will restore all the backups in the BackupHistory object according to the transformations it contains<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; $BackupHistory | Invoke-DbaAdvancedRestore -SqlInstance MyInstance -OutputScriptOnly
 PS C:\&gt; $BackupHistory | Invoke-DbaAdvancedRestore -SqlInstance MyInstance
 </code></pre>
-<p>First generates just the T-SQL restore scripts so they can be sanity checked, and then if they are good perform the full restore.
-By reusing the BackupHistory object there is no need to rescan all the backup files again</p>
+<p>First generates just the T-SQL restore scripts so they can be sanity checked, and then if they are good perform the full restore.<br>
+By reusing the BackupHistory object there is no need to rescan all the backup files again<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="backuphistory">-BackupHistory</h5>
 <p>The BackupHistory object to be restored.
-Can be passed in on the pipeline</p>
+Can be passed in on the pipeline<br></p>
 <table>
 <thead>
 <tr>
@@ -547,7 +547,7 @@ Can be passed in on the pipeline</p>
 </table>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The SqlInstance to which the backups should be restored</p>
+<p>The SqlInstance to which the backups should be restored<br></p>
 <table>
 <thead>
 <tr>
@@ -577,7 +577,7 @@ Can be passed in on the pipeline</p>
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -605,7 +605,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="outputscriptonly">-OutputScriptOnly</h5>
-<p>If set, the restore will not be performed, but the T-SQL scripts to perform it will be returned</p>
+<p>If set, the restore will not be performed, but the T-SQL scripts to perform it will be returned<br></p>
 <table>
 <thead>
 <tr>
@@ -633,7 +633,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="verifyonly">-VerifyOnly</h5>
-<p>If set, performs a Verify of the backups rather than a full restore</p>
+<p>If set, performs a Verify of the backups rather than a full restore<br></p>
 <table>
 <thead>
 <tr>
@@ -662,7 +662,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </table>
 <h5 id="restoretime">-RestoreTime</h5>
 <p>Point in Time to which the database should be restored.
-This should be the same value or earlier, as used in the previous pipeline stages</p>
+This should be the same value or earlier, as used in the previous pipeline stages<br></p>
 <table>
 <thead>
 <tr>
@@ -690,7 +690,7 @@ This should be the same value or earlier, as used in the previous pipeline stage
 </tbody>
 </table>
 <h5 id="standbydirectory">-StandbyDirectory</h5>
-<p>A folder path where a standby file should be created to put the recovered databases in a standby mode</p>
+<p>A folder path where a standby file should be created to put the recovered databases in a standby mode<br></p>
 <table>
 <thead>
 <tr>
@@ -718,7 +718,7 @@ This should be the same value or earlier, as used in the previous pipeline stage
 </tbody>
 </table>
 <h5 id="norecovery">-NoRecovery</h5>
-<p>Leave the database in a restoring state so that further restore may be made</p>
+<p>Leave the database in a restoring state so that further restore may be made<br></p>
 <table>
 <thead>
 <tr>
@@ -746,7 +746,7 @@ This should be the same value or earlier, as used in the previous pipeline stage
 </tbody>
 </table>
 <h5 id="maxtransfersize">-MaxTransferSize</h5>
-<p>Parameter to set the unit of transfer. Values must be a multiple by 64kb</p>
+<p>Parameter to set the unit of transfer. Values must be a multiple by 64kb<br></p>
 <table>
 <thead>
 <tr>
@@ -776,7 +776,7 @@ This should be the same value or earlier, as used in the previous pipeline stage
 <h5 id="blocksize">-BlockSize</h5>
 <p>Specifies the block size to use. Must be one of 0.5kb,1kb,2kb,4kb,8kb,16kb,32kb or 64kb
 Can be specified in bytes
-Refer to <a href="https://msdn.microsoft.com/en-us/library/ms178615.aspx">https://msdn.microsoft.com/en-us/library/ms178615.aspx</a> for more detail</p>
+Refer to <a href="https://msdn.microsoft.com/en-us/library/ms178615.aspx">https://msdn.microsoft.com/en-us/library/ms178615.aspx</a> for more detail<br></p>
 <table>
 <thead>
 <tr>
@@ -805,7 +805,7 @@ Refer to <a href="https://msdn.microsoft.com/en-us/library/ms178615.aspx">https:
 </table>
 <h5 id="buffercount">-BufferCount</h5>
 <p>Number of I/O buffers to use to perform the operation.
-Refer to <a href="https://msdn.microsoft.com/en-us/library/ms178615.aspx">https://msdn.microsoft.com/en-us/library/ms178615.aspx</a> for more detail</p>
+Refer to <a href="https://msdn.microsoft.com/en-us/library/ms178615.aspx">https://msdn.microsoft.com/en-us/library/ms178615.aspx</a> for more detail<br></p>
 <table>
 <thead>
 <tr>
@@ -834,7 +834,7 @@ Refer to <a href="https://msdn.microsoft.com/en-us/library/ms178615.aspx">https:
 </table>
 <h5 id="continue">-Continue</h5>
 <p>Indicates that the restore is continuing a restore, so target database must be in Recovering or Standby states
-When specified, WithReplace will be set to true</p>
+When specified, WithReplace will be set to true<br></p>
 <table>
 <thead>
 <tr>
@@ -862,7 +862,7 @@ When specified, WithReplace will be set to true</p>
 </tbody>
 </table>
 <h5 id="azurecredential">-AzureCredential</h5>
-<p>AzureCredential required to connect to blob storage holding the backups</p>
+<p>AzureCredential required to connect to blob storage holding the backups<br></p>
 <table>
 <thead>
 <tr>
@@ -890,7 +890,7 @@ When specified, WithReplace will be set to true</p>
 </tbody>
 </table>
 <h5 id="withreplace">-WithReplace</h5>
-<p>Indicated that if the database already exists it should be replaced</p>
+<p>Indicated that if the database already exists it should be replaced<br></p>
 <table>
 <thead>
 <tr>
@@ -918,7 +918,7 @@ When specified, WithReplace will be set to true</p>
 </tbody>
 </table>
 <h5 id="keepreplication">-KeepReplication</h5>
-<p>Indicates whether replication configuration should be restored as part of the database restore operation</p>
+<p>Indicates whether replication configuration should be restored as part of the database restore operation<br></p>
 <table>
 <thead>
 <tr>
@@ -946,7 +946,7 @@ When specified, WithReplace will be set to true</p>
 </tbody>
 </table>
 <h5 id="keepcdc">-KeepCDC</h5>
-<p>Indicates whether CDC information should be restored as part of the database</p>
+<p>Indicates whether CDC information should be restored as part of the database<br></p>
 <table>
 <thead>
 <tr>
@@ -974,7 +974,7 @@ When specified, WithReplace will be set to true</p>
 </tbody>
 </table>
 <h5 id="pagerestore">-PageRestore</h5>
-<p>The output from Get-DbaSuspect page containing the suspect pages to be restored.</p>
+<p>The output from Get-DbaSuspect page containing the suspect pages to be restored.<br></p>
 <table>
 <thead>
 <tr>
@@ -1002,7 +1002,7 @@ When specified, WithReplace will be set to true</p>
 </tbody>
 </table>
 <h5 id="executeas">-ExecuteAs</h5>
-<p>If set, this will cause the database(s) to be restored (and therefore owned) as the SA user</p>
+<p>If set, this will cause the database(s) to be restored (and therefore owned) as the SA user<br></p>
 <table>
 <thead>
 <tr>
@@ -1030,7 +1030,7 @@ When specified, WithReplace will be set to true</p>
 </tbody>
 </table>
 <h5 id="stopbefore">-StopBefore</h5>
-<p>Switch to indicate the restore should stop before StopMark</p>
+<p>Switch to indicate the restore should stop before StopMark<br></p>
 <table>
 <thead>
 <tr>
@@ -1058,7 +1058,7 @@ When specified, WithReplace will be set to true</p>
 </tbody>
 </table>
 <h5 id="stopmark">-StopMark</h5>
-<p>Mark in the transaction log to stop the restore at</p>
+<p>Mark in the transaction log to stop the restore at<br></p>
 <table>
 <thead>
 <tr>
@@ -1086,7 +1086,7 @@ When specified, WithReplace will be set to true</p>
 </tbody>
 </table>
 <h5 id="stopafterdate">-StopAfterDate</h5>
-<p>By default the restore will stop at the first occurence of StopMark found in the chain, passing a datetime where will cause it to stop the first StopMark atfer that datetime</p>
+<p>By default the restore will stop at the first occurence of StopMark found in the chain, passing a datetime where will cause it to stop the first StopMark atfer that datetime<br></p>
 <table>
 <thead>
 <tr>
@@ -1115,7 +1115,7 @@ When specified, WithReplace will be set to true</p>
 </table>
 <h5 id="enableexception">-EnableException</h5>
 <p>Replaces user friendly yellow warnings with bloody red exceptions of doom!
-Use this if you want the function to throw terminating errors you want to catch.</p>
+Use this if you want the function to throw terminating errors you want to catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -1143,7 +1143,7 @@ Use this if you want the function to throw terminating errors you want to catch.
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>Shows what would happen if the cmdlet runs. The cmdlet is not run.</p>
+<p>Shows what would happen if the cmdlet runs. The cmdlet is not run.<br></p>
 <table>
 <thead>
 <tr>
@@ -1171,7 +1171,7 @@ Use this if you want the function to throw terminating errors you want to catch.
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>Prompts you for confirmation before running the cmdlet.</p>
+<p>Prompts you for confirmation before running the cmdlet.<br></p>
 <table>
 <thead>
 <tr>
@@ -1200,6 +1200,7 @@ Use this if you want the function to throw terminating errors you want to catch.
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Invoke-DbaAdvancedRestore.ps1">Invoke-DbaAdvancedRestore</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Invoke-DbaAdvancedRestore">Invoke-DbaAdvancedRestore</a>.</p>
 
                 </div> <!-- rendered -->

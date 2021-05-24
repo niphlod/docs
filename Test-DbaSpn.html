@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -477,10 +477,10 @@ whether the SPNs are set or not.</p>
 <p>Once the required SPNs are generated, the script will connect to Active Directory and search for any of the SPNs (if any) that are already set. The function will return a custom object(s) that contains the server name checked, the instance name discovered, the account the service is running under, and what the &quot;required&quot; SPN should be. It will also return a boolean property indicating if the SPN is set in Active Directory or not.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Test-DbaSpn
-    --ComputerName] &lt;DbaInstanceParameter[]&gt;
-    -[-Credential] &lt;PSCredential&gt;]
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [-ComputerName] &lt;DbaInstanceParameter[]&gt;
+    [[-Credential] &lt;PSCredential&gt;]
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -489,21 +489,21 @@ whether the SPNs are set or not.</p>
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Test-DbaSpn -ComputerName SQLSERVERA -Credential ad\sqldba
 </code></pre>
-<p>Connects to a computer (SQLSERVERA) and queries WMI for all SQL instances and return &quot;required&quot; SPNs. It will then take each SPN it generates
-and query Active Directory to make sure the SPNs are set.</p>
+<p>Connects to a computer (SQLSERVERA) and queries WMI for all SQL instances and return &quot;required&quot; SPNs. It will then take each SPN it generates<br>
+and query Active Directory to make sure the SPNs are set.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Test-DbaSpn -ComputerName SQLSERVERA,SQLSERVERB -Credential ad\sqldba
 </code></pre>
-<p>Connects to multiple computers (SQLSERVERA, SQLSERVERB) and queries WMI for all SQL instances and return &quot;required&quot; SPNs.
-It will then take each SPN it generates and query Active Directory to make sure the SPNs are set.</p>
+<p>Connects to multiple computers (SQLSERVERA, SQLSERVERB) and queries WMI for all SQL instances and return &quot;required&quot; SPNs.<br>
+It will then take each SPN it generates and query Active Directory to make sure the SPNs are set.<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Test-DbaSpn -ComputerName SQLSERVERC -Credential ad\sqldba
 </code></pre>
-<p>Connects to a computer (SQLSERVERC) on a specified and queries WMI for all SQL instances and return &quot;required&quot; SPNs.
-It will then take each SPN it generates and query Active Directory to make sure the SPNs are set. Note that the credential you pass must have be a valid login with appropriate rights on the domain</p>
+<p>Connects to a computer (SQLSERVERC) on a specified and queries WMI for all SQL instances and return &quot;required&quot; SPNs.<br>
+It will then take each SPN it generates and query Active Directory to make sure the SPNs are set. Note that the credential you pass must have be a valid login with appropriate rights on the domain<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="computername">-ComputerName</h5>
-<p>The computer you want to discover any SQL Server instances on. This parameter is required.</p>
+<p>The computer you want to discover any SQL Server instances on. This parameter is required.<br></p>
 <table>
 <thead>
 <tr>
@@ -532,7 +532,7 @@ It will then take each SPN it generates and query Active Directory to make sure 
 </table>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="credential">-Credential</h5>
-<p>The credential you want to use to connect to the remote server and active directory.</p>
+<p>The credential you want to use to connect to the remote server and active directory.<br></p>
 <table>
 <thead>
 <tr>
@@ -562,7 +562,7 @@ It will then take each SPN it generates and query Active Directory to make sure 
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -591,6 +591,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Test-DbaSpn.ps1">Test-DbaSpn</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Test-DbaSpn">Test-DbaSpn</a>.</p>
 
                 </div> <!-- rendered -->

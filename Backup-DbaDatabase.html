@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -470,109 +470,109 @@
 <p>Performs a backup of a specified type of 1 or more databases on a single SQL Server Instance. These backups may be Full, Differential or Transaction log backups.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Backup-DbaDatabase
-    --SqlCredential &lt;PSCredential&gt;]
-    --Database &lt;Object[]&gt;]
-    --ExcludeDatabase &lt;Object[]&gt;]
-    --Path &lt;String[]&gt;]
-    --FilePath &lt;String&gt;]
-    --IncrementPrefix]
-    --ReplaceInName]
-    --CopyOnly]
-    --Type &lt;String&gt;]
-    --CreateFolder]
-    --FileCount &lt;Int32&gt;]
-    --CompressBackup]
-    --Checksum]
-    --Verify]
-    --MaxTransferSize &lt;Int32&gt;]
-    --BlockSize &lt;Int32&gt;]
-    --BufferCount &lt;Int32&gt;]
-    --AzureBaseUrl &lt;String[]&gt;]
-    --AzureCredential &lt;String&gt;]
-    --NoRecovery]
-    --BuildPath]
-    --WithFormat]
-    --Initialize]
-    --SkipTapeHeader]
-    --TimeStampFormat &lt;String&gt;]
-    --IgnoreFileChecks]
-    --OutputScriptOnly]
-    --EncryptionAlgorithm &lt;String&gt;]
-    --EncryptionCertificate &lt;String&gt;]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-SqlCredential &lt;PSCredential&gt;]
+    [-Database &lt;Object[]&gt;]
+    [-ExcludeDatabase &lt;Object[]&gt;]
+    [-Path &lt;String[]&gt;]
+    [-FilePath &lt;String&gt;]
+    [-IncrementPrefix]
+    [-ReplaceInName]
+    [-CopyOnly]
+    [-Type &lt;String&gt;]
+    [-CreateFolder]
+    [-FileCount &lt;Int32&gt;]
+    [-CompressBackup]
+    [-Checksum]
+    [-Verify]
+    [-MaxTransferSize &lt;Int32&gt;]
+    [-BlockSize &lt;Int32&gt;]
+    [-BufferCount &lt;Int32&gt;]
+    [-AzureBaseUrl &lt;String[]&gt;]
+    [-AzureCredential &lt;String&gt;]
+    [-NoRecovery]
+    [-BuildPath]
+    [-WithFormat]
+    [-Initialize]
+    [-SkipTapeHeader]
+    [-TimeStampFormat &lt;String&gt;]
+    [-IgnoreFileChecks]
+    [-OutputScriptOnly]
+    [-EncryptionAlgorithm &lt;String&gt;]
+    [-EncryptionCertificate &lt;String&gt;]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 Backup-DbaDatabase -SqlInstance &lt;DbaInstanceParameter&gt;
-    --SqlCredential &lt;PSCredential&gt;]
-    --Database &lt;Object[]&gt;]
-    --ExcludeDatabase &lt;Object[]&gt;]
-    --Path &lt;String[]&gt;]
-    --FilePath &lt;String&gt;]
-    --IncrementPrefix]
-    --ReplaceInName]
-    --CopyOnly]
-    --Type &lt;String&gt;]
-    --CreateFolder]
-    --FileCount &lt;Int32&gt;]
-    --CompressBackup]
-    --Checksum]
-    --Verify]
-    --MaxTransferSize &lt;Int32&gt;]
-    --BlockSize &lt;Int32&gt;]
-    --BufferCount &lt;Int32&gt;]
-    --AzureBaseUrl &lt;String[]&gt;]
-    --AzureCredential &lt;String&gt;]
-    --NoRecovery]
-    --BuildPath]
-    --WithFormat]
-    --Initialize]
-    --SkipTapeHeader]
-    --TimeStampFormat &lt;String&gt;]
-    --IgnoreFileChecks]
-    --OutputScriptOnly]
-    --EncryptionAlgorithm &lt;String&gt;]
-    --EncryptionCertificate &lt;String&gt;]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-SqlCredential &lt;PSCredential&gt;]
+    [-Database &lt;Object[]&gt;]
+    [-ExcludeDatabase &lt;Object[]&gt;]
+    [-Path &lt;String[]&gt;]
+    [-FilePath &lt;String&gt;]
+    [-IncrementPrefix]
+    [-ReplaceInName]
+    [-CopyOnly]
+    [-Type &lt;String&gt;]
+    [-CreateFolder]
+    [-FileCount &lt;Int32&gt;]
+    [-CompressBackup]
+    [-Checksum]
+    [-Verify]
+    [-MaxTransferSize &lt;Int32&gt;]
+    [-BlockSize &lt;Int32&gt;]
+    [-BufferCount &lt;Int32&gt;]
+    [-AzureBaseUrl &lt;String[]&gt;]
+    [-AzureCredential &lt;String&gt;]
+    [-NoRecovery]
+    [-BuildPath]
+    [-WithFormat]
+    [-Initialize]
+    [-SkipTapeHeader]
+    [-TimeStampFormat &lt;String&gt;]
+    [-IgnoreFileChecks]
+    [-OutputScriptOnly]
+    [-EncryptionAlgorithm &lt;String&gt;]
+    [-EncryptionCertificate &lt;String&gt;]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 Backup-DbaDatabase
-    --SqlCredential &lt;PSCredential&gt;]
-    --Database &lt;Object[]&gt;]
-    --ExcludeDatabase &lt;Object[]&gt;]
-    --Path &lt;String[]&gt;]
-    --FilePath &lt;String&gt;]
-    --IncrementPrefix]
-    --ReplaceInName]
-    --CopyOnly]
-    --Type &lt;String&gt;] -InputObject &lt;Object[]&gt;
-    --CreateFolder]
-    --FileCount &lt;Int32&gt;]
-    --CompressBackup]
-    --Checksum]
-    --Verify]
-    --MaxTransferSize &lt;Int32&gt;]
-    --BlockSize &lt;Int32&gt;]
-    --BufferCount &lt;Int32&gt;]
-    --AzureBaseUrl &lt;String[]&gt;]
-    --AzureCredential &lt;String&gt;]
-    --NoRecovery]
-    --BuildPath]
-    --WithFormat]
-    --Initialize]
-    --SkipTapeHeader]
-    --TimeStampFormat &lt;String&gt;]
-    --IgnoreFileChecks]
-    --OutputScriptOnly]
-    --EncryptionAlgorithm &lt;String&gt;]
-    --EncryptionCertificate &lt;String&gt;]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-SqlCredential &lt;PSCredential&gt;]
+    [-Database &lt;Object[]&gt;]
+    [-ExcludeDatabase &lt;Object[]&gt;]
+    [-Path &lt;String[]&gt;]
+    [-FilePath &lt;String&gt;]
+    [-IncrementPrefix]
+    [-ReplaceInName]
+    [-CopyOnly]
+    [-Type &lt;String&gt;] -InputObject &lt;Object[]&gt;
+    [-CreateFolder]
+    [-FileCount &lt;Int32&gt;]
+    [-CompressBackup]
+    [-Checksum]
+    [-Verify]
+    [-MaxTransferSize &lt;Int32&gt;]
+    [-BlockSize &lt;Int32&gt;]
+    [-BufferCount &lt;Int32&gt;]
+    [-AzureBaseUrl &lt;String[]&gt;]
+    [-AzureCredential &lt;String&gt;]
+    [-NoRecovery]
+    [-BuildPath]
+    [-WithFormat]
+    [-Initialize]
+    [-SkipTapeHeader]
+    [-TimeStampFormat &lt;String&gt;]
+    [-IgnoreFileChecks]
+    [-OutputScriptOnly]
+    [-EncryptionAlgorithm &lt;String&gt;]
+    [-EncryptionCertificate &lt;String&gt;]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -581,45 +581,45 @@ Backup-DbaDatabase
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Backup-DbaDatabase -SqlInstance Server1 -Database HR, Finance
 </code></pre>
-<p>This will perform a full database backup on the databases HR and Finance on SQL Server Instance Server1 to Server1 default backup directory.</p>
+<p>This will perform a full database backup on the databases HR and Finance on SQL Server Instance Server1 to Server1 default backup directory.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Backup-DbaDatabase -SqlInstance sql2016 -Path C:\temp -Database AdventureWorks2014 -Type Full
 </code></pre>
-<p>Backs up AdventureWorks2014 to sql2016 C:\temp folder.</p>
+<p>Backs up AdventureWorks2014 to sql2016 C:\temp folder.<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Backup-DbaDatabase -SqlInstance sql2016 -AzureBaseUrl https://dbatoolsaz.blob.core.windows.net/azbackups/ -AzureCredential dbatoolscred -Type Full -CreateFolder
 </code></pre>
-<p>Performs a full backup of all databases on the sql2016 instance to their own containers under the <a href="https://dbatoolsaz.blob.core.windows.net/azbackups/">https://dbatoolsaz.blob.core.windows.net/azbackups/</a> container on Azure blob storage using the sql
-credential &quot;dbatoolscred&quot; registered on the sql2016 instance.</p>
+<p>Performs a full backup of all databases on the sql2016 instance to their own containers under the <a href="https://dbatoolsaz.blob.core.windows.net/azbackups/">https://dbatoolsaz.blob.core.windows.net/azbackups/</a> container on Azure blob storage using the sql <br>
+credential &quot;dbatoolscred&quot; registered on the sql2016 instance.<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; Backup-DbaDatabase -SqlInstance sql2016 -AzureBaseUrl https://dbatoolsaz.blob.core.windows.net/azbackups/  -Type Full
 </code></pre>
-<p>Performs a full backup of all databases on the sql2016 instance to the <a href="https://dbatoolsaz.blob.core.windows.net/azbackups/">https://dbatoolsaz.blob.core.windows.net/azbackups/</a> container on Azure blob storage using the Shared Access Signature sql
-credential &quot;https://dbatoolsaz.blob.core.windows.net/azbackups&quot; registered on the sql2016 instance.</p>
+<p>Performs a full backup of all databases on the sql2016 instance to the <a href="https://dbatoolsaz.blob.core.windows.net/azbackups/">https://dbatoolsaz.blob.core.windows.net/azbackups/</a> container on Azure blob storage using the Shared Access Signature sql <br>
+credential &quot;https://dbatoolsaz.blob.core.windows.net/azbackups&quot; registered on the sql2016 instance.<br></p>
 <h5 id="example-5">Example:  5</h5>
 <pre><code>PS C:\&gt; Backup-DbaDatabase -SqlInstance Server1\Prod -Database db1 -Path \\filestore\backups\servername\instancename\dbname\backuptype -Type Full -ReplaceInName
 </code></pre>
-<p>Performs a full backup of db1 into the folder \filestore\backups\server1\prod\db1</p>
+<p>Performs a full backup of db1 into the folder \filestore\backups\server1\prod\db1<br></p>
 <h5 id="example-6">Example:  6</h5>
 <pre><code>PS C:\&gt; Backup-DbaDatabase -SqlInstance Server1\Prod -Path \\filestore\backups\servername\instancename\dbname\backuptype -FilePath dbname-backuptype-timestamp.trn -Type Log -ReplaceInName
 </code></pre>
-<p>Performs a log backup for every database. For the database db1 this would results in backup files in \filestore\backups\server1\prod\db1\Log\db1-log-31102018.trn</p>
+<p>Performs a log backup for every database. For the database db1 this would results in backup files in \filestore\backups\server1\prod\db1\Log\db1-log-31102018.trn<br></p>
 <h5 id="example-7">Example:  7</h5>
 <pre><code>PS C:\&gt; Backup-DbaDatabase -SqlInstance Sql2017 -Database master -FilePath NUL
 </code></pre>
-<p>Performs a backup of master, but sends the output to the NUL device (ie; throws it away)</p>
+<p>Performs a backup of master, but sends the output to the NUL device (ie; throws it away)<br></p>
 <h5 id="example-8">Example:  8</h5>
 <pre><code>PS C:\&gt; Backup-DbaDatabase -SqlInstance Sql2016 -Database stripetest -AzureBaseUrl https://az.blob.core.windows.net/sql,https://dbatools.blob.core.windows.net/sql
 </code></pre>
-<p>Performs a backup of the database stripetest, striping it across the 2 Azure blob containers at <a href="https://az.blob.core.windows.net/sql">https://az.blob.core.windows.net/sql</a> and <a href="https://dbatools.blob.core.windows.net/sql">https://dbatools.blob.core.windows.net/sql</a>, assuming that
-Shared Access Signature credentials for both containers exist on the source instance</p>
+<p>Performs a backup of the database stripetest, striping it across the 2 Azure blob containers at <a href="https://az.blob.core.windows.net/sql">https://az.blob.core.windows.net/sql</a> and <a href="https://dbatools.blob.core.windows.net/sql">https://dbatools.blob.core.windows.net/sql</a>, assuming that <br>
+Shared Access Signature credentials for both containers exist on the source instance<br></p>
 <h5 id="example-9">Example:  9</h5>
 <pre><code>PS C:\&gt; Backup-DbaDatabase -SqlInstance Sql2017 -Database master -EncryptionAlgorithm AES256 -EncryptionCertificate BackupCert
 </code></pre>
-<p>Backs up the master database using the BackupCert certificate and the AES256 algorithm.</p>
+<p>Backs up the master database using the BackupCert certificate and the AES256 algorithm.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The SQL Server instance hosting the databases to be backed up.</p>
+<p>The SQL Server instance hosting the databases to be backed up.<br></p>
 <table>
 <thead>
 <tr>
@@ -647,7 +647,7 @@ Shared Access Signature credentials for both containers exist on the source inst
 </tbody>
 </table>
 <h5 id="inputobject">-InputObject</h5>
-<p>Internal parameter</p>
+<p>Internal parameter<br></p>
 <table>
 <thead>
 <tr>
@@ -678,7 +678,7 @@ Shared Access Signature credentials for both containers exist on the source inst
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -706,7 +706,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="database">-Database</h5>
-<p>The database(s) to process. This list is auto-populated from the server. If unspecified, all databases will be processed.</p>
+<p>The database(s) to process. This list is auto-populated from the server. If unspecified, all databases will be processed.<br></p>
 <table>
 <thead>
 <tr>
@@ -734,7 +734,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="excludedatabase">-ExcludeDatabase</h5>
-<p>The database(s) to exclude. This list is auto-populated from the server.</p>
+<p>The database(s) to exclude. This list is auto-populated from the server.<br></p>
 <table>
 <thead>
 <tr>
@@ -765,7 +765,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 <p>Path in which to place the backup files. If not specified, the backups will be placed in the default backup location for SqlInstance.
 If multiple paths are specified, the backups will be striped across these locations. This will overwrite the FileCount option.
 If the path does not exist, Sql Server will attempt to create it. Folders are created by the Sql Instance, and checks will be made for write permissions.
-File Names with be suffixed with x-of-y to enable identifying striped sets, where y is the number of files in the set and x ranges from 1 to y.</p>
+File Names with be suffixed with x-of-y to enable identifying striped sets, where y is the number of files in the set and x ranges from 1 to y.<br></p>
 <table>
 <thead>
 <tr>
@@ -797,7 +797,7 @@ File Names with be suffixed with x-of-y to enable identifying striped sets, wher
 If no name is specified then the backup files will be named DatabaseName_yyyyMMddHHmm (i.e. &quot;Database1_201714022131&quot;) with the appropriate extension.
 If the same name is used repeatedly, SQL Server will add backups to the same file at an incrementing position.
 SQL Server needs permissions to write to the specified location. Path names are based on the SQL Server (C:\ is the C drive on the SQL Server, not the machine running the script).
-Passing in NUL as the FilePath will backup to the NUL: device</p>
+Passing in NUL as the FilePath will backup to the NUL: device<br></p>
 <table>
 <thead>
 <tr>
@@ -825,7 +825,7 @@ Passing in NUL as the FilePath will backup to the NUL: device</p>
 </tbody>
 </table>
 <h5 id="incrementprefix">-IncrementPrefix</h5>
-<p>If enables, this will prefix backup files with an incrementing integer (ie; '1-', '2-'). Using this has been alleged to improved restore times on some Azure based SQL Database platorms</p>
+<p>If enables, this will prefix backup files with an incrementing integer (ie; '1-', '2-'). Using this has been alleged to improved restore times on some Azure based SQL Database platorms<br></p>
 <table>
 <thead>
 <tr>
@@ -858,7 +858,7 @@ instancename - will be replaced with the instance Name
 servername - will be replaced with the server name
 dbname - will be replaced with the database name
 timestamp - will be replaced with the timestamp (either the default, or the format provided)
-backuptype - will be replaced with Full, Log or Differential as appropriate</p>
+backuptype - will be replaced with Full, Log or Differential as appropriate<br></p>
 <table>
 <thead>
 <tr>
@@ -888,7 +888,7 @@ backuptype - will be replaced with Full, Log or Differential as appropriate</p>
 <h5 id="copyonly">-CopyOnly</h5>
 <p>If this switch is enabled, CopyOnly backups will be taken. By default function performs a normal backup, these backups interfere with the restore chain of the database. CopyOnly backups will not
 interfere with the restore chain of the database.
-For more details please refer to this MSDN article - <a href="https://msdn.microsoft.com/en-us/library/ms191495.aspx">https://msdn.microsoft.com/en-us/library/ms191495.aspx</a></p>
+For more details please refer to this MSDN article - <a href="https://msdn.microsoft.com/en-us/library/ms191495.aspx">https://msdn.microsoft.com/en-us/library/ms191495.aspx</a><br></p>
 <table>
 <thead>
 <tr>
@@ -916,7 +916,7 @@ For more details please refer to this MSDN article - <a href="https://msdn.micro
 </tbody>
 </table>
 <h5 id="type">-Type</h5>
-<p>The type of SQL Server backup to perform. Accepted values are &quot;Full&quot;, &quot;Log&quot;, &quot;Differential&quot;, &quot;Diff&quot;, &quot;Database&quot;</p>
+<p>The type of SQL Server backup to perform. Accepted values are &quot;Full&quot;, &quot;Log&quot;, &quot;Differential&quot;, &quot;Diff&quot;, &quot;Database&quot;<br></p>
 <table>
 <thead>
 <tr>
@@ -948,7 +948,7 @@ For more details please refer to this MSDN article - <a href="https://msdn.micro
 </tbody>
 </table>
 <h5 id="createfolder">-CreateFolder</h5>
-<p>If this switch is enabled, each database will be backed up into a separate folder on each of the paths specified by Path.</p>
+<p>If this switch is enabled, each database will be backed up into a separate folder on each of the paths specified by Path.<br></p>
 <table>
 <thead>
 <tr>
@@ -976,7 +976,7 @@ For more details please refer to this MSDN article - <a href="https://msdn.micro
 </tbody>
 </table>
 <h5 id="filecount">-FileCount</h5>
-<p>This is the number of striped copies of the backups you wish to create.    This value is overwritten if you specify multiple Backup Directories.</p>
+<p>This is the number of striped copies of the backups you wish to create.    This value is overwritten if you specify multiple Backup Directories.<br></p>
 <table>
 <thead>
 <tr>
@@ -1005,7 +1005,7 @@ For more details please refer to this MSDN article - <a href="https://msdn.micro
 </table>
 <h5 id="compressbackup">-CompressBackup</h5>
 <p>If this switch is enabled, the function will try to perform a compressed backup if supported by the version and edition of SQL Server. Otherwise, this function will use the server(s) default setting
-for compression.</p>
+for compression.<br></p>
 <table>
 <thead>
 <tr>
@@ -1033,7 +1033,7 @@ for compression.</p>
 </tbody>
 </table>
 <h5 id="checksum">-Checksum</h5>
-<p>If this switch is enabled, the backup checksum will be calculated.</p>
+<p>If this switch is enabled, the backup checksum will be calculated.<br></p>
 <table>
 <thead>
 <tr>
@@ -1061,7 +1061,7 @@ for compression.</p>
 </tbody>
 </table>
 <h5 id="verify">-Verify</h5>
-<p>If this switch is enabled, the backup will be verified by running a RESTORE VERIFYONLY against the SqlInstance</p>
+<p>If this switch is enabled, the backup will be verified by running a RESTORE VERIFYONLY against the SqlInstance<br></p>
 <table>
 <thead>
 <tr>
@@ -1089,7 +1089,7 @@ for compression.</p>
 </tbody>
 </table>
 <h5 id="maxtransfersize">-MaxTransferSize</h5>
-<p>Sets the size of the unit of transfer. Values must be a multiple of 64kb.</p>
+<p>Sets the size of the unit of transfer. Values must be a multiple of 64kb.<br></p>
 <table>
 <thead>
 <tr>
@@ -1118,7 +1118,7 @@ for compression.</p>
 </table>
 <h5 id="blocksize">-BlockSize</h5>
 <p>Specifies the block size to use. Must be one of 0.5KB, 1KB, 2KB, 4KB, 8KB, 16KB, 32KB or 64KB. This can be specified in bytes.
-Refer to <a href="https://msdn.microsoft.com/en-us/library/ms178615.aspx">https://msdn.microsoft.com/en-us/library/ms178615.aspx</a> for more detail</p>
+Refer to <a href="https://msdn.microsoft.com/en-us/library/ms178615.aspx">https://msdn.microsoft.com/en-us/library/ms178615.aspx</a> for more detail<br></p>
 <table>
 <thead>
 <tr>
@@ -1147,7 +1147,7 @@ Refer to <a href="https://msdn.microsoft.com/en-us/library/ms178615.aspx">https:
 </table>
 <h5 id="buffercount">-BufferCount</h5>
 <p>Number of I/O buffers to use to perform the operation.
-Refer to <a href="https://msdn.microsoft.com/en-us/library/ms178615.aspx">https://msdn.microsoft.com/en-us/library/ms178615.aspx</a> for more detail</p>
+Refer to <a href="https://msdn.microsoft.com/en-us/library/ms178615.aspx">https://msdn.microsoft.com/en-us/library/ms178615.aspx</a> for more detail<br></p>
 <table>
 <thead>
 <tr>
@@ -1178,7 +1178,7 @@ Refer to <a href="https://msdn.microsoft.com/en-us/library/ms178615.aspx">https:
 <p>The URL(s) to the base container of an Azure Storage account to write backups to.
 If specifying the AzureCredential parameter you can only provide 1 value as page blobs do not support multiple URLs
 If using Shared Access keys, you may specify as many URLs as you want, as long as a corresponding credential exists on the source server.
-If specified, the only other parameters than can be used are &quot;CopyOnly&quot;, &quot;Type&quot;, &quot;CompressBackup&quot;, &quot;Checksum&quot;, &quot;Verify&quot;, &quot;AzureCredential&quot;, &quot;CreateFolder&quot;.</p>
+If specified, the only other parameters than can be used are &quot;CopyOnly&quot;, &quot;Type&quot;, &quot;CompressBackup&quot;, &quot;Checksum&quot;, &quot;Verify&quot;, &quot;AzureCredential&quot;, &quot;CreateFolder&quot;.<br></p>
 <table>
 <thead>
 <tr>
@@ -1208,7 +1208,7 @@ If specified, the only other parameters than can be used are &quot;CopyOnly&quot
 <h5 id="azurecredential">-AzureCredential</h5>
 <p>The name of the credential on the SQL instance that can write to the AzureBaseUrl, only needed if using Storage access keys
 If using SAS credentials, the command will look for a credential with a name matching the AzureBaseUrl. As page blobs are used with this option we force the number of files to 1 and ignore any value
-passed in for BlockSize or MaxTransferSize</p>
+passed in for BlockSize or MaxTransferSize<br></p>
 <table>
 <thead>
 <tr>
@@ -1236,7 +1236,7 @@ passed in for BlockSize or MaxTransferSize</p>
 </tbody>
 </table>
 <h5 id="norecovery">-NoRecovery</h5>
-<p>This is passed in to perform a tail log backup if needed</p>
+<p>This is passed in to perform a tail log backup if needed<br></p>
 <table>
 <thead>
 <tr>
@@ -1264,7 +1264,7 @@ passed in for BlockSize or MaxTransferSize</p>
 </tbody>
 </table>
 <h5 id="buildpath">-BuildPath</h5>
-<p>By default this command will not attempt to create missing paths, this switch will change the behaviour so that it will</p>
+<p>By default this command will not attempt to create missing paths, this switch will change the behaviour so that it will<br></p>
 <table>
 <thead>
 <tr>
@@ -1292,7 +1292,7 @@ passed in for BlockSize or MaxTransferSize</p>
 </tbody>
 </table>
 <h5 id="withformat">-WithFormat</h5>
-<p>Formats the media as the first step of the backup operation. NOTE: This will set Initialize and SkipTapeHeader to $true.</p>
+<p>Formats the media as the first step of the backup operation. NOTE: This will set Initialize and SkipTapeHeader to $true.<br></p>
 <table>
 <thead>
 <tr>
@@ -1320,7 +1320,7 @@ passed in for BlockSize or MaxTransferSize</p>
 </tbody>
 </table>
 <h5 id="initialize">-Initialize</h5>
-<p>Initializes the media as part of the backup operation.</p>
+<p>Initializes the media as part of the backup operation.<br></p>
 <table>
 <thead>
 <tr>
@@ -1348,7 +1348,7 @@ passed in for BlockSize or MaxTransferSize</p>
 </tbody>
 </table>
 <h5 id="skiptapeheader">-SkipTapeHeader</h5>
-<p>Initializes the media as part of the backup operation.</p>
+<p>Initializes the media as part of the backup operation.<br></p>
 <table>
 <thead>
 <tr>
@@ -1377,7 +1377,7 @@ passed in for BlockSize or MaxTransferSize</p>
 </table>
 <h5 id="timestampformat">-TimeStampFormat</h5>
 <p>By default the command timestamps backups using the format yyyyMMddHHmm. Using this parameter this can be overridden. The timestamp format should be defined using the Get-Date formats, illegal
-formats will cause an error to be thrown</p>
+formats will cause an error to be thrown<br></p>
 <table>
 <thead>
 <tr>
@@ -1406,7 +1406,7 @@ formats will cause an error to be thrown</p>
 </table>
 <h5 id="ignorefilechecks">-IgnoreFileChecks</h5>
 <p>This switch stops the function from checking for the validity of paths. This can be useful if SQL Server only has read access to the backup area.
-Note, that as we cannot check the path you may well end up with errors.</p>
+Note, that as we cannot check the path you may well end up with errors.<br></p>
 <table>
 <thead>
 <tr>
@@ -1434,7 +1434,7 @@ Note, that as we cannot check the path you may well end up with errors.</p>
 </tbody>
 </table>
 <h5 id="outputscriptonly">-OutputScriptOnly</h5>
-<p>Switch causes only the T-SQL script for the backup to be generated. Will not create any paths if they do not exist</p>
+<p>Switch causes only the T-SQL script for the backup to be generated. Will not create any paths if they do not exist<br></p>
 <table>
 <thead>
 <tr>
@@ -1463,7 +1463,7 @@ Note, that as we cannot check the path you may well end up with errors.</p>
 </table>
 <h5 id="encryptionalgorithm">-EncryptionAlgorithm</h5>
 <p>Specified the Encryption Algorithm to used. Must be one of 'AES128','AES192','AES256' or 'TRIPLEDES'
-Must specify one of EncryptionCertificate or EncryptionKey as well.</p>
+Must specify one of EncryptionCertificate or EncryptionKey as well.<br></p>
 <table>
 <thead>
 <tr>
@@ -1496,7 +1496,7 @@ Must specify one of EncryptionCertificate or EncryptionKey as well.</p>
 </table>
 <h5 id="encryptioncertificate">-EncryptionCertificate</h5>
 <p>The name of the certificate to be used to encrypt the backups. The existance of the certificate will be checked, and will not proceed if it does not exist
-Is mutually exclusive with the EncryptionKey option</p>
+Is mutually exclusive with the EncryptionKey option<br></p>
 <table>
 <thead>
 <tr>
@@ -1526,7 +1526,7 @@ Is mutually exclusive with the EncryptionKey option</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -1554,7 +1554,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.</p>
+<p>If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.<br></p>
 <table>
 <thead>
 <tr>
@@ -1582,7 +1582,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.</p>
+<p>If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.<br></p>
 <table>
 <thead>
 <tr>
@@ -1611,6 +1611,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Backup-DbaDatabase.ps1">Backup-DbaDatabase</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Backup-DbaDatabase">Backup-DbaDatabase</a>.</p>
 
                 </div> <!-- rendered -->

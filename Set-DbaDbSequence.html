@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -470,22 +470,22 @@
 <p>Modifies a sequence in the database(s) specified.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Set-DbaDbSequence
-    -[-SqlInstance] &lt;DbaInstanceParameter[]&gt;]
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    -[-Database] &lt;String[]&gt;]
-    --Name] &lt;String&gt;
-    -[-Schema] &lt;String&gt;]
-    -[-RestartWith] &lt;Int64&gt;]
-    -[-IncrementBy] &lt;Int64&gt;]
-    -[-MinValue] &lt;Int64&gt;]
-    -[-MaxValue] &lt;Int64&gt;]
-    --Cycle]
-    -[-CacheSize] &lt;Int32&gt;]
-    -[-InputObject] &lt;Database[]&gt;]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [[-SqlInstance] &lt;DbaInstanceParameter[]&gt;]
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [[-Database] &lt;String[]&gt;]
+    [-Name] &lt;String&gt;
+    [[-Schema] &lt;String&gt;]
+    [[-RestartWith] &lt;Int64&gt;]
+    [[-IncrementBy] &lt;Int64&gt;]
+    [[-MinValue] &lt;Int64&gt;]
+    [[-MaxValue] &lt;Int64&gt;]
+    [-Cycle]
+    [[-CacheSize] &lt;Int32&gt;]
+    [[-InputObject] &lt;Database[]&gt;]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -494,14 +494,14 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Set-DbaDbSequence -SqlInstance sqldev01 -Database TestDB -Name TestSequence -RestartWith 10000 -IncrementBy 10
 </code></pre>
-<p>Modifies the sequence TestSequence in the TestDB database on the sqldev01 instance. The sequence will restart with 10000 and increment by 10.</p>
+<p>Modifies the sequence TestSequence in the TestDB database on the sqldev01 instance. The sequence will restart with 10000 and increment by 10.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Get-DbaDatabase -SqlInstance sqldev01 -Database TestDB | Set-DbaDbSequence -Name TestSequence -Schema TestSchema -Cycle
 </code></pre>
-<p>Using a pipeline this command modifies the sequence named TestSchema.TestSequence in the TestDB database on the sqldev01 instance. The sequence will now cycle the sequence values.</p>
+<p>Using a pipeline this command modifies the sequence named TestSchema.TestSequence in the TestDB database on the sqldev01 instance. The sequence will now cycle the sequence values.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="name">-Name</h5>
-<p>The name of the new sequence</p>
+<p>The name of the new sequence<br></p>
 <table>
 <thead>
 <tr>
@@ -531,7 +531,7 @@
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
 <p>The target SQL Server instance or instances. This can be a collection and receive pipeline input to allow the function
-to be executed against multiple SQL Server instances.</p>
+to be executed against multiple SQL Server instances.<br></p>
 <table>
 <thead>
 <tr>
@@ -561,7 +561,7 @@ to be executed against multiple SQL Server instances.</p>
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -589,7 +589,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="database">-Database</h5>
-<p>The target database(s).</p>
+<p>The target database(s).<br></p>
 <table>
 <thead>
 <tr>
@@ -617,7 +617,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="schema">-Schema</h5>
-<p>The name of the schema for the sequence. The default is dbo.</p>
+<p>The name of the schema for the sequence. The default is dbo.<br></p>
 <table>
 <thead>
 <tr>
@@ -645,7 +645,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="restartwith">-RestartWith</h5>
-<p>The first value for the sequence to restart with.</p>
+<p>The first value for the sequence to restart with.<br></p>
 <table>
 <thead>
 <tr>
@@ -673,7 +673,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="incrementby">-IncrementBy</h5>
-<p>The value to increment by.</p>
+<p>The value to increment by.<br></p>
 <table>
 <thead>
 <tr>
@@ -701,7 +701,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="minvalue">-MinValue</h5>
-<p>The minimum bound for the sequence.</p>
+<p>The minimum bound for the sequence.<br></p>
 <table>
 <thead>
 <tr>
@@ -729,7 +729,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="maxvalue">-MaxValue</h5>
-<p>The maximum bound for the sequence.</p>
+<p>The maximum bound for the sequence.<br></p>
 <table>
 <thead>
 <tr>
@@ -757,7 +757,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="cycle">-Cycle</h5>
-<p>Switch that indicates if the sequence should cycle the values</p>
+<p>Switch that indicates if the sequence should cycle the values<br></p>
 <table>
 <thead>
 <tr>
@@ -785,7 +785,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="cachesize">-CacheSize</h5>
-<p>The integer size of the cache. To specify NO CACHE for a sequence use -CacheSize 0. As noted in the Microsoft documentation if the cache size is not specified the Database Engine will select a size.</p>
+<p>The integer size of the cache. To specify NO CACHE for a sequence use -CacheSize 0. As noted in the Microsoft documentation if the cache size is not specified the Database Engine will select a size.<br></p>
 <table>
 <thead>
 <tr>
@@ -813,7 +813,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="inputobject">-InputObject</h5>
-<p>Allows piping from Get-DbaDatabase.</p>
+<p>Allows piping from Get-DbaDatabase.<br></p>
 <table>
 <thead>
 <tr>
@@ -843,7 +843,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -871,7 +871,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>Shows what would happen if the command were to run. No actions are actually performed.</p>
+<p>Shows what would happen if the command were to run. No actions are actually performed.<br></p>
 <table>
 <thead>
 <tr>
@@ -899,7 +899,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>Prompts you for confirmation before executing any changing operations within the command.</p>
+<p>Prompts you for confirmation before executing any changing operations within the command.<br></p>
 <table>
 <thead>
 <tr>
@@ -928,6 +928,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Set-DbaDbSequence.ps1">Set-DbaDbSequence</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Set-DbaDbSequence">Set-DbaDbSequence</a>.</p>
 
                 </div> <!-- rendered -->

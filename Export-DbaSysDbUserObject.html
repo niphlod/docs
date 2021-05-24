@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -466,30 +466,30 @@
 <p>Exports all user objects found in source SQL Server's master, msdb and model databases to the FilePath.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Export-DbaSysDbUserObject
-    --SqlInstance] &lt;DbaInstanceParameter&gt;
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    --IncludeDependencies]
-    -[-BatchSeparator] &lt;String&gt;]
-    -[-Path] &lt;String&gt;]
-    -[-FilePath] &lt;String&gt;]
-    --NoPrefix]
-    -[-ScriptingOptionsObject] &lt;ScriptingOptions&gt;]
-    --NoClobber]
-    --PassThru]
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [-SqlInstance] &lt;DbaInstanceParameter&gt;
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [-IncludeDependencies]
+    [[-BatchSeparator] &lt;String&gt;]
+    [[-Path] &lt;String&gt;]
+    [[-FilePath] &lt;String&gt;]
+    [-NoPrefix]
+    [[-ScriptingOptionsObject] &lt;ScriptingOptions&gt;]
+    [-NoClobber]
+    [-PassThru]
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
 <h2 id="examples">Examples</h2>
 <p> </p>
 <h5 id="example-1">Example:  1</h5>
-<p>PS&gt;Export-DbaSysDbUserObject -SqlInstance server1
-Exports any user objects that are in the system database to the default location.</p>
+<p>PS&gt;Export-DbaSysDbUserObject -SqlInstance server1<br>
+Exports any user objects that are in the system database to the default location.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
 <p>The target SQL Server instance or instances.
-This can be a collection and receive pipeline input to allow the function to be executed against multiple SQL Server instances.</p>
+This can be a collection and receive pipeline input to allow the function to be executed against multiple SQL Server instances.<br></p>
 <table>
 <thead>
 <tr>
@@ -519,7 +519,7 @@ This can be a collection and receive pipeline input to allow the function to be 
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials.
-Windows and SQL Authentication supported. Accepts credential objects (Get-Credential)</p>
+Windows and SQL Authentication supported. Accepts credential objects (Get-Credential)<br></p>
 <table>
 <thead>
 <tr>
@@ -547,7 +547,7 @@ Windows and SQL Authentication supported. Accepts credential objects (Get-Creden
 </tbody>
 </table>
 <h5 id="includedependencies">-IncludeDependencies</h5>
-<p>Specifies whether dependent objects are also scripted out.</p>
+<p>Specifies whether dependent objects are also scripted out.<br></p>
 <table>
 <thead>
 <tr>
@@ -575,7 +575,7 @@ Windows and SQL Authentication supported. Accepts credential objects (Get-Creden
 </tbody>
 </table>
 <h5 id="batchseparator">-BatchSeparator</h5>
-<p>Batch separator for scripting output. &quot;GO&quot; by default.</p>
+<p>Batch separator for scripting output. &quot;GO&quot; by default.<br></p>
 <table>
 <thead>
 <tr>
@@ -603,7 +603,7 @@ Windows and SQL Authentication supported. Accepts credential objects (Get-Creden
 </tbody>
 </table>
 <h5 id="path">-Path</h5>
-<p>Specifies the directory where the file or files will be exported.</p>
+<p>Specifies the directory where the file or files will be exported.<br></p>
 <table>
 <thead>
 <tr>
@@ -631,7 +631,7 @@ Windows and SQL Authentication supported. Accepts credential objects (Get-Creden
 </tbody>
 </table>
 <h5 id="filepath">-FilePath</h5>
-<p>Specifies the full file path of the output file.</p>
+<p>Specifies the full file path of the output file.<br></p>
 <table>
 <thead>
 <tr>
@@ -659,7 +659,7 @@ Windows and SQL Authentication supported. Accepts credential objects (Get-Creden
 </tbody>
 </table>
 <h5 id="noprefix">-NoPrefix</h5>
-<p>If this switch is used, the scripts will not include prefix information containing creator and datetime.</p>
+<p>If this switch is used, the scripts will not include prefix information containing creator and datetime.<br></p>
 <table>
 <thead>
 <tr>
@@ -687,7 +687,7 @@ Windows and SQL Authentication supported. Accepts credential objects (Get-Creden
 </tbody>
 </table>
 <h5 id="scriptingoptionsobject">-ScriptingOptionsObject</h5>
-<p>Add scripting options to scripting output.</p>
+<p>Add scripting options to scripting output.<br></p>
 <table>
 <thead>
 <tr>
@@ -715,7 +715,7 @@ Windows and SQL Authentication supported. Accepts credential objects (Get-Creden
 </tbody>
 </table>
 <h5 id="noclobber">-NoClobber</h5>
-<p>Do not overwrite file.</p>
+<p>Do not overwrite file.<br></p>
 <table>
 <thead>
 <tr>
@@ -743,7 +743,7 @@ Windows and SQL Authentication supported. Accepts credential objects (Get-Creden
 </tbody>
 </table>
 <h5 id="passthru">-PassThru</h5>
-<p>Output script to console.</p>
+<p>Output script to console.<br></p>
 <table>
 <thead>
 <tr>
@@ -773,7 +773,7 @@ Windows and SQL Authentication supported. Accepts credential objects (Get-Creden
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -802,6 +802,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Export-DbaSysDbUserObject.ps1">Export-DbaSysDbUserObject</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Export-DbaSysDbUserObject">Export-DbaSysDbUserObject</a>.</p>
 
                 </div> <!-- rendered -->

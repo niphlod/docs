@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -472,10 +472,10 @@
 <p>Ref: <a href="https://msdn.microsoft.com/en-us/library/system.data.sqlclient.sqlconnection.clearallpools(v=vs.110).aspx">https://msdn.microsoft.com/en-us/library/system.data.sqlclient.sqlconnection.clearallpools(v=vs.110).aspx</a></p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Clear-DbaConnectionPool
-    -[-ComputerName] &lt;DbaInstanceParameter[]&gt;]
-    -[-Credential] &lt;PSCredential&gt;]
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [[-ComputerName] &lt;DbaInstanceParameter[]&gt;]
+    [[-Credential] &lt;PSCredential&gt;]
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -484,14 +484,14 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Clear-DbaConnectionPool
 </code></pre>
-<p>Clears all local connection pools.</p>
+<p>Clears all local connection pools.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Clear-DbaConnectionPool -ComputerName workstation27
 </code></pre>
-<p>Clears all connection pools on workstation27.</p>
+<p>Clears all connection pools on workstation27.<br></p>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="computername">-ComputerName</h5>
-<p>Target computer(s). If no computer name is specified, the local computer is targeted.</p>
+<p>Target computer(s). If no computer name is specified, the local computer is targeted.<br></p>
 <table>
 <thead>
 <tr>
@@ -519,7 +519,7 @@
 </tbody>
 </table>
 <h5 id="credential">-Credential</h5>
-<p>Alternate credential object to use for accessing the target computer(s).</p>
+<p>Alternate credential object to use for accessing the target computer(s).<br></p>
 <table>
 <thead>
 <tr>
@@ -549,7 +549,7 @@
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -578,6 +578,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Clear-DbaConnectionPool.ps1">Clear-DbaConnectionPool</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Clear-DbaConnectionPool">Clear-DbaConnectionPool</a>.</p>
 
                 </div> <!-- rendered -->

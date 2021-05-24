@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -473,46 +473,46 @@
 <p>This importer supports fields spanning multiple lines. The only restriction is that they must be quoted, otherwise it would not be possible to distinguish between malformed data and multi-line values.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Import-DbaCsv
-    -[-Path] &lt;Object[]&gt;]
-    --SqlInstance] &lt;DbaInstanceParameter[]&gt;
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    --Database] &lt;String&gt;
-    -[-Table] &lt;String&gt;]
-    -[-Schema] &lt;String&gt;]
-    --Truncate]
-    -[-Delimiter] &lt;Char&gt;]
-    --SingleColumn]
-    -[-BatchSize] &lt;Int32&gt;]
-    -[-NotifyAfter] &lt;Int32&gt;]
-    --TableLock]
-    --CheckConstraints]
-    --FireTriggers]
-    --KeepIdentity]
-    --KeepNulls]
-    -[-Column] &lt;String[]&gt;]
-    -[-ColumnMap] &lt;Hashtable[]&gt;]
-    --KeepOrdinalOrder]
-    --AutoCreateTable]
-    --NoProgress]
-    --NoHeaderRow]
-    --UseFileNameForSchema]
-    -[-Quote] &lt;Char&gt;]
-    -[-Escape] &lt;Char&gt;]
-    -[-Comment] &lt;Char&gt;]
-    -[-TrimmingOption] &lt;String&gt;]
-    -[-BufferSize] &lt;Int32&gt;]
-    -[-ParseErrorAction] &lt;String&gt;]
-    -[-Encoding] &lt;String&gt;]
-    -[-NullValue] &lt;String&gt;]
-    -[-MaxQuotedFieldLength] &lt;Int32&gt;]
-    --SkipEmptyLine]
-    --SupportsMultiline]
-    --UseColumnDefault]
-    --NoTransaction]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [[-Path] &lt;Object[]&gt;]
+    [-SqlInstance] &lt;DbaInstanceParameter[]&gt;
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [-Database] &lt;String&gt;
+    [[-Table] &lt;String&gt;]
+    [[-Schema] &lt;String&gt;]
+    [-Truncate]
+    [[-Delimiter] &lt;Char&gt;]
+    [-SingleColumn]
+    [[-BatchSize] &lt;Int32&gt;]
+    [[-NotifyAfter] &lt;Int32&gt;]
+    [-TableLock]
+    [-CheckConstraints]
+    [-FireTriggers]
+    [-KeepIdentity]
+    [-KeepNulls]
+    [[-Column] &lt;String[]&gt;]
+    [[-ColumnMap] &lt;Hashtable[]&gt;]
+    [-KeepOrdinalOrder]
+    [-AutoCreateTable]
+    [-NoProgress]
+    [-NoHeaderRow]
+    [-UseFileNameForSchema]
+    [[-Quote] &lt;Char&gt;]
+    [[-Escape] &lt;Char&gt;]
+    [[-Comment] &lt;Char&gt;]
+    [[-TrimmingOption] &lt;String&gt;]
+    [[-BufferSize] &lt;Int32&gt;]
+    [[-ParseErrorAction] &lt;String&gt;]
+    [[-Encoding] &lt;String&gt;]
+    [[-NullValue] &lt;String&gt;]
+    [[-MaxQuotedFieldLength] &lt;Int32&gt;]
+    [-SkipEmptyLine]
+    [-SupportsMultiline]
+    [-UseColumnDefault]
+    [-NoTransaction]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -521,40 +521,40 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Import-DbaCsv -Path C:\temp\housing.csv -SqlInstance sql001 -Database markets
 </code></pre>
-<p>Imports the entire comma-delimited housing.csv to the SQL &quot;markets&quot; database on a SQL Server named sql001, using the first row as column names.
-Since a table name was not specified, the table name is automatically determined from filename as &quot;housing&quot;.</p>
+<p>Imports the entire comma-delimited housing.csv to the SQL &quot;markets&quot; database on a SQL Server named sql001, using the first row as column names.<br>
+Since a table name was not specified, the table name is automatically determined from filename as &quot;housing&quot;.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Import-DbaCsv -Path .\housing.csv -SqlInstance sql001 -Database markets -Table housing -Delimiter &quot;`t&quot; -NoHeaderRow
 </code></pre>
-<p>Imports the entire tab-delimited housing.csv, including the first row which is not used for colum names, to the SQL markets database, into the housing table, on a SQL Server named sql001.</p>
+<p>Imports the entire tab-delimited housing.csv, including the first row which is not used for colum names, to the SQL markets database, into the housing table, on a SQL Server named sql001.<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Import-DbaCsv -Path C:\temp\huge.txt -SqlInstance sqlcluster -Database locations -Table latitudes -Delimiter &quot;|&quot;
 </code></pre>
-<p>Imports the entire pipe-delimited huge.txt to the locations database, into the latitudes table on a SQL Server named sqlcluster.</p>
+<p>Imports the entire pipe-delimited huge.txt to the locations database, into the latitudes table on a SQL Server named sqlcluster.<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; Import-DbaCsv -Path c:\temp\SingleColumn.csv -SqlInstance sql001 -Database markets -Table TempTable -SingleColumn
 </code></pre>
-<p>Imports the single column CSV into TempTable</p>
+<p>Imports the single column CSV into TempTable<br></p>
 <h5 id="example-5">Example:  5</h5>
 <pre><code>PS C:\&gt; Get-ChildItem -Path \\FileServer\csvs | Import-DbaCsv -SqlInstance sql001, sql002 -Database tempdb -AutoCreateTable
 </code></pre>
-<p>Imports every CSV in the \FileServer\csvs path into both sql001 and sql002's tempdb database. Each CSV will be imported into an automatically determined table name.</p>
+<p>Imports every CSV in the \FileServer\csvs path into both sql001 and sql002's tempdb database. Each CSV will be imported into an automatically determined table name.<br></p>
 <h5 id="example-6">Example:  6</h5>
 <pre><code>PS C:\&gt; Get-ChildItem -Path \\FileServer\csvs | Import-DbaCsv -SqlInstance sql001, sql002 -Database tempdb -AutoCreateTable -WhatIf
 </code></pre>
-<p>Shows what would happen if the command were to be executed</p>
+<p>Shows what would happen if the command were to be executed<br></p>
 <h5 id="example-7">Example:  7</h5>
 <pre><code>PS C:\&gt; Import-DbaCsv -Path c:\temp\dataset.csv -SqlInstance sql2016 -Database tempdb -Column Name, Address, Mobile
 </code></pre>
-<p>Import only Name, Address and Mobile even if other columns exist. All other columns are ignored and therefore null or default values.</p>
+<p>Import only Name, Address and Mobile even if other columns exist. All other columns are ignored and therefore null or default values.<br></p>
 <h5 id="example-8">Example:  8</h5>
 <pre><code>PS C:\&gt; Import-DbaCsv -Path C:\temp\schema.data.csv -SqlInstance sql2016 -database tempdb -UseFileNameForSchema
 </code></pre>
-<p>Will import the contents of C:\temp\schema.data.csv to table 'data' in schema 'schema'.</p>
+<p>Will import the contents of C:\temp\schema.data.csv to table 'data' in schema 'schema'.<br></p>
 <h5 id="example-9">Example:  9</h5>
 <pre><code>PS C:\&gt; Import-DbaCsv -Path C:\temp\schema.data.csv -SqlInstance sql2016 -database tempdb -UseFileNameForSchema -Table testtable
 </code></pre>
-<p>Will import the contents of C:\temp\schema.data.csv to table 'testtable' in schema 'schema'.</p>
+<p>Will import the contents of C:\temp\schema.data.csv to table 'testtable' in schema 'schema'.<br></p>
 <h5 id="example-10">Example:  10</h5>
 <pre><code>PS C:\&gt; $columns = @{
 &gt;&gt; Text = 'FirstName'
@@ -562,10 +562,10 @@ Since a table name was not specified, the table name is automatically determined
 &gt;&gt; }
 PS C:\&gt; Import-DbaCsv -Path c:\temp\supersmall.csv -SqlInstance sql2016 -Database tempdb -ColumnMap $columns
 </code></pre>
-<p>The CSV column 'Text' is inserted into SQL column 'FirstName' and CSV column Number is inserted into the SQL Column 'PhoneNumber'. All other columns are ignored and therefore null or default values.</p>
+<p>The CSV column 'Text' is inserted into SQL column 'FirstName' and CSV column Number is inserted into the SQL Column 'PhoneNumber'. All other columns are ignored and therefore null or default values.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The SQL Server Instance to import data into.</p>
+<p>The SQL Server Instance to import data into.<br></p>
 <table>
 <thead>
 <tr>
@@ -593,7 +593,7 @@ PS C:\&gt; Import-DbaCsv -Path c:\temp\supersmall.csv -SqlInstance sql2016 -Data
 </tbody>
 </table>
 <h5 id="database">-Database</h5>
-<p>Specifies the name of the database the CSV will be imported into. Options for this this parameter are  auto-populated from the server.</p>
+<p>Specifies the name of the database the CSV will be imported into. Options for this this parameter are  auto-populated from the server.<br></p>
 <table>
 <thead>
 <tr>
@@ -622,7 +622,7 @@ PS C:\&gt; Import-DbaCsv -Path c:\temp\supersmall.csv -SqlInstance sql2016 -Data
 </table>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="path">-Path</h5>
-<p>Specifies path to the CSV file(s) to be imported. Multiple files may be imported at once.</p>
+<p>Specifies path to the CSV file(s) to be imported. Multiple files may be imported at once.<br></p>
 <table>
 <thead>
 <tr>
@@ -652,7 +652,7 @@ PS C:\&gt; Import-DbaCsv -Path c:\temp\supersmall.csv -SqlInstance sql2016 -Data
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -684,7 +684,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 If a table name is not specified, the table name will be automatically determined from the filename.
 If the table specified does not exist and -AutoCreateTable, it will be automatically created using slow and inefficient but accommodating data types.
 If the automatically generated table datatypes do not work for you, please create the table prior to import.
-If you want to import specific columns from a CSV, create a view with corresponding columns.</p>
+If you want to import specific columns from a CSV, create a view with corresponding columns.<br></p>
 <table>
 <thead>
 <tr>
@@ -714,7 +714,7 @@ If you want to import specific columns from a CSV, create a view with correspond
 <h5 id="schema">-Schema</h5>
 <p>Specifies the schema in which the SQL table or view where CSV will be imported into resides. Default is dbo.
 If a schema does not currently exist, it will be created, after a prompt to confirm this. Authorization will be set to dbo by default.
-This parameter overrides -UseFileNameForSchema.</p>
+This parameter overrides -UseFileNameForSchema.<br></p>
 <table>
 <thead>
 <tr>
@@ -742,7 +742,7 @@ This parameter overrides -UseFileNameForSchema.</p>
 </tbody>
 </table>
 <h5 id="truncate">-Truncate</h5>
-<p>If this switch is enabled, the destination table will be truncated prior to import.</p>
+<p>If this switch is enabled, the destination table will be truncated prior to import.<br></p>
 <table>
 <thead>
 <tr>
@@ -771,7 +771,7 @@ This parameter overrides -UseFileNameForSchema.</p>
 </table>
 <h5 id="delimiter">-Delimiter</h5>
 <p>Specifies the delimiter used in the imported file(s). If no delimiter is specified, comma is assumed.
-Valid delimiters are '<code>t</code>, '|', ';',' ' and ',' (tab, pipe, semicolon, space, and comma).</p>
+Valid delimiters are '<code>t</code>, '|', ';',' ' and ',' (tab, pipe, semicolon, space, and comma).<br></p>
 <table>
 <thead>
 <tr>
@@ -799,7 +799,7 @@ Valid delimiters are '<code>t</code>, '|', ';',' ' and ',' (tab, pipe, semicolon
 </tbody>
 </table>
 <h5 id="singlecolumn">-SingleColumn</h5>
-<p>Specifies that the file contains a single column of data. Otherwise, the delimiter check bombs.</p>
+<p>Specifies that the file contains a single column of data. Otherwise, the delimiter check bombs.<br></p>
 <table>
 <thead>
 <tr>
@@ -827,7 +827,7 @@ Valid delimiters are '<code>t</code>, '|', ';',' ' and ',' (tab, pipe, semicolon
 </tbody>
 </table>
 <h5 id="batchsize">-BatchSize</h5>
-<p>Specifies the batch size for the import. Defaults to 50000.</p>
+<p>Specifies the batch size for the import. Defaults to 50000.<br></p>
 <table>
 <thead>
 <tr>
@@ -855,7 +855,7 @@ Valid delimiters are '<code>t</code>, '|', ';',' ' and ',' (tab, pipe, semicolon
 </tbody>
 </table>
 <h5 id="notifyafter">-NotifyAfter</h5>
-<p>Specifies the import row count interval for reporting progress. A notification will be shown after each group of this many rows has been imported.</p>
+<p>Specifies the import row count interval for reporting progress. A notification will be shown after each group of this many rows has been imported.<br></p>
 <table>
 <thead>
 <tr>
@@ -885,7 +885,7 @@ Valid delimiters are '<code>t</code>, '|', ';',' ' and ',' (tab, pipe, semicolon
 <h5 id="tablelock">-TableLock</h5>
 <p>If this switch is enabled, the SqlBulkCopy option to acquire a table lock will be used.
 Per Microsoft &quot;Obtain a bulk update lock for the duration of the bulk copy operation. When not
-specified, row locks are used.&quot;</p>
+specified, row locks are used.&quot;<br></p>
 <table>
 <thead>
 <tr>
@@ -914,7 +914,7 @@ specified, row locks are used.&quot;</p>
 </table>
 <h5 id="checkconstraints">-CheckConstraints</h5>
 <p>If this switch is enabled, the SqlBulkCopy option to check constraints will be used.
-Per Microsoft &quot;Check constraints while data is being inserted. By default, constraints are not checked.&quot;</p>
+Per Microsoft &quot;Check constraints while data is being inserted. By default, constraints are not checked.&quot;<br></p>
 <table>
 <thead>
 <tr>
@@ -943,7 +943,7 @@ Per Microsoft &quot;Check constraints while data is being inserted. By default, 
 </table>
 <h5 id="firetriggers">-FireTriggers</h5>
 <p>If this switch is enabled, the SqlBulkCopy option to allow insert triggers to be executed will be used.
-Per Microsoft &quot;When specified, cause the server to fire the insert triggers for the rows being inserted into the database.&quot;</p>
+Per Microsoft &quot;When specified, cause the server to fire the insert triggers for the rows being inserted into the database.&quot;<br></p>
 <table>
 <thead>
 <tr>
@@ -972,7 +972,7 @@ Per Microsoft &quot;When specified, cause the server to fire the insert triggers
 </table>
 <h5 id="keepidentity">-KeepIdentity</h5>
 <p>If this switch is enabled, the SqlBulkCopy option to keep identity values from the source will be used.
-Per Microsoft &quot;Preserve source identity values. When not specified, identity values are assigned by the destination.&quot;</p>
+Per Microsoft &quot;Preserve source identity values. When not specified, identity values are assigned by the destination.&quot;<br></p>
 <table>
 <thead>
 <tr>
@@ -1001,7 +1001,7 @@ Per Microsoft &quot;Preserve source identity values. When not specified, identit
 </table>
 <h5 id="keepnulls">-KeepNulls</h5>
 <p>If this switch is enabled, the SqlBulkCopy option to keep NULL values in the table will be used.
-Per Microsoft &quot;Preserve null values in the destination table regardless of the settings for default values. When not specified, null values are replaced by default values where applicable.&quot;</p>
+Per Microsoft &quot;Preserve null values in the destination table regardless of the settings for default values. When not specified, null values are replaced by default values where applicable.&quot;<br></p>
 <table>
 <thead>
 <tr>
@@ -1029,7 +1029,7 @@ Per Microsoft &quot;Preserve null values in the destination table regardless of 
 </tbody>
 </table>
 <h5 id="column">-Column</h5>
-<p>Import only specific columns. To remap column names, use the ColumnMap.</p>
+<p>Import only specific columns. To remap column names, use the ColumnMap.<br></p>
 <table>
 <thead>
 <tr>
@@ -1057,7 +1057,7 @@ Per Microsoft &quot;Preserve null values in the destination table regardless of 
 </tbody>
 </table>
 <h5 id="columnmap">-ColumnMap</h5>
-<p>By default, the bulk copy tries to automap columns. When it doesn't work as desired, this parameter will help. Check out the examples for more information.</p>
+<p>By default, the bulk copy tries to automap columns. When it doesn't work as desired, this parameter will help. Check out the examples for more information.<br></p>
 <table>
 <thead>
 <tr>
@@ -1085,7 +1085,7 @@ Per Microsoft &quot;Preserve null values in the destination table regardless of 
 </tbody>
 </table>
 <h5 id="keepordinalorder">-KeepOrdinalOrder</h5>
-<p>By default, the importer will attempt to map exact-match columns names from the source document to the target table. Using this parameter will keep the ordinal order instead.</p>
+<p>By default, the importer will attempt to map exact-match columns names from the source document to the target table. Using this parameter will keep the ordinal order instead.<br></p>
 <table>
 <thead>
 <tr>
@@ -1113,7 +1113,7 @@ Per Microsoft &quot;Preserve null values in the destination table regardless of 
 </tbody>
 </table>
 <h5 id="autocreatetable">-AutoCreateTable</h5>
-<p>Creates a table if it does not already exist. The table will be created with sub-optimal data types such as nvarchar(max)</p>
+<p>Creates a table if it does not already exist. The table will be created with sub-optimal data types such as nvarchar(max)<br></p>
 <table>
 <thead>
 <tr>
@@ -1141,7 +1141,7 @@ Per Microsoft &quot;Preserve null values in the destination table regardless of 
 </tbody>
 </table>
 <h5 id="noprogress">-NoProgress</h5>
-<p>The progress bar is pretty but can slow down imports. Use this parameter to quietly import.</p>
+<p>The progress bar is pretty but can slow down imports. Use this parameter to quietly import.<br></p>
 <table>
 <thead>
 <tr>
@@ -1170,7 +1170,7 @@ Per Microsoft &quot;Preserve null values in the destination table regardless of 
 </table>
 <h5 id="noheaderrow">-NoHeaderRow</h5>
 <p>By default, the first row is used to determine column names for the data being imported.
-Use this switch if the first row contains data and not column names.</p>
+Use this switch if the first row contains data and not column names.<br></p>
 <table>
 <thead>
 <tr>
@@ -1204,7 +1204,7 @@ be used for the table name.
 For example test.data.csv will import the csv contents to a table in the test schema.
 If it finds one it will use the file name up to the first period as the schema. If there is no period in the filename it will default to dbo.
 If a schema does not currently exist, it will be created, after a prompt to confirm this. Authorization will be set to dbo by default.
-This behaviour will be overridden if the -Schema parameter is specified.</p>
+This behaviour will be overridden if the -Schema parameter is specified.<br></p>
 <table>
 <thead>
 <tr>
@@ -1233,7 +1233,7 @@ This behaviour will be overridden if the -Schema parameter is specified.</p>
 </table>
 <h5 id="quote">-Quote</h5>
 <p>Defines the default quote character wrapping every field.
-Default: double-quotes</p>
+Default: double-quotes<br></p>
 <table>
 <thead>
 <tr>
@@ -1263,7 +1263,7 @@ Default: double-quotes</p>
 <h5 id="escape">-Escape</h5>
 <p>Defines the default escape character letting insert quotation characters inside a quoted field.
 The escape character can be the same as the quote character.
-Default: double-quotes</p>
+Default: double-quotes<br></p>
 <table>
 <thead>
 <tr>
@@ -1292,7 +1292,7 @@ Default: double-quotes</p>
 </table>
 <h5 id="comment">-Comment</h5>
 <p>Defines the default comment character indicating that a line is commented out.
-Default: hashtag</p>
+Default: hashtag<br></p>
 <table>
 <thead>
 <tr>
@@ -1320,7 +1320,7 @@ Default: hashtag</p>
 </tbody>
 </table>
 <h5 id="trimmingoption">-TrimmingOption</h5>
-<p>Determines which values should be trimmed. Default is &quot;None&quot;. Options are All, None, UnquotedOnly and QuotedOnly.</p>
+<p>Determines which values should be trimmed. Default is &quot;None&quot;. Options are All, None, UnquotedOnly and QuotedOnly.<br></p>
 <table>
 <thead>
 <tr>
@@ -1352,7 +1352,7 @@ Default: hashtag</p>
 </tbody>
 </table>
 <h5 id="buffersize">-BufferSize</h5>
-<p>Defines the default buffer size. The default BufferSize is 4096.</p>
+<p>Defines the default buffer size. The default BufferSize is 4096.<br></p>
 <table>
 <thead>
 <tr>
@@ -1381,7 +1381,7 @@ Default: hashtag</p>
 </table>
 <h5 id="parseerroraction">-ParseErrorAction</h5>
 <p>By default, the parse error action throws an exception and ends the import.
-You can also choose AdvanceToNextLine which basically ignores parse errors.</p>
+You can also choose AdvanceToNextLine which basically ignores parse errors.<br></p>
 <table>
 <thead>
 <tr>
@@ -1414,7 +1414,7 @@ You can also choose AdvanceToNextLine which basically ignores parse errors.</p>
 </table>
 <h5 id="encoding">-Encoding</h5>
 <p>By default, set to UTF-8.
-The encoding of the file.</p>
+The encoding of the file.<br></p>
 <table>
 <thead>
 <tr>
@@ -1446,7 +1446,7 @@ The encoding of the file.</p>
 </tbody>
 </table>
 <h5 id="nullvalue">-NullValue</h5>
-<p>The value which denotes a DbNull-value.</p>
+<p>The value which denotes a DbNull-value.<br></p>
 <table>
 <thead>
 <tr>
@@ -1474,7 +1474,7 @@ The encoding of the file.</p>
 </tbody>
 </table>
 <h5 id="maxquotedfieldlength">-MaxQuotedFieldLength</h5>
-<p>The maxmimum length (in bytes) for any quoted field.</p>
+<p>The maxmimum length (in bytes) for any quoted field.<br></p>
 <table>
 <thead>
 <tr>
@@ -1502,7 +1502,7 @@ The encoding of the file.</p>
 </tbody>
 </table>
 <h5 id="skipemptyline">-SkipEmptyLine</h5>
-<p>Skip empty lines.</p>
+<p>Skip empty lines.<br></p>
 <table>
 <thead>
 <tr>
@@ -1530,7 +1530,7 @@ The encoding of the file.</p>
 </tbody>
 </table>
 <h5 id="supportsmultiline">-SupportsMultiline</h5>
-<p>Indicates if the importer should support multiline fields.</p>
+<p>Indicates if the importer should support multiline fields.<br></p>
 <table>
 <thead>
 <tr>
@@ -1558,7 +1558,7 @@ The encoding of the file.</p>
 </tbody>
 </table>
 <h5 id="usecolumndefault">-UseColumnDefault</h5>
-<p>Use the column default values if the field is not in the record.</p>
+<p>Use the column default values if the field is not in the record.<br></p>
 <table>
 <thead>
 <tr>
@@ -1586,7 +1586,7 @@ The encoding of the file.</p>
 </tbody>
 </table>
 <h5 id="notransaction">-NoTransaction</h5>
-<p>Do not use a transaction when performing the import.</p>
+<p>Do not use a transaction when performing the import.<br></p>
 <table>
 <thead>
 <tr>
@@ -1616,7 +1616,7 @@ The encoding of the file.</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -1644,7 +1644,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>Shows what would happen if the command were to run. No actions are actually performed.</p>
+<p>Shows what would happen if the command were to run. No actions are actually performed.<br></p>
 <table>
 <thead>
 <tr>
@@ -1672,7 +1672,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>Prompts you for confirmation before executing any changing operations within the command.</p>
+<p>Prompts you for confirmation before executing any changing operations within the command.<br></p>
 <table>
 <thead>
 <tr>
@@ -1701,6 +1701,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Import-DbaCsv.ps1">Import-DbaCsv</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Import-DbaCsv">Import-DbaCsv</a>.</p>
 
                 </div> <!-- rendered -->

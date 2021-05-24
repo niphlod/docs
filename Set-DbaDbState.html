@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -477,64 +477,64 @@
 <p>Notes gets filled when something went wrong setting the state</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Set-DbaDbState
-    --SqlCredential &lt;PSCredential&gt;]
-    --Database &lt;Object[]&gt;]
-    --ExcludeDatabase &lt;Object[]&gt;]
-    --AllDatabases]
-    --ReadOnly]
-    --ReadWrite]
-    --Online]
-    --Offline]
-    --Emergency]
-    --Detached]
-    --SingleUser]
-    --RestrictedUser]
-    --MultiUser]
-    --Force]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-SqlCredential &lt;PSCredential&gt;]
+    [-Database &lt;Object[]&gt;]
+    [-ExcludeDatabase &lt;Object[]&gt;]
+    [-AllDatabases]
+    [-ReadOnly]
+    [-ReadWrite]
+    [-Online]
+    [-Offline]
+    [-Emergency]
+    [-Detached]
+    [-SingleUser]
+    [-RestrictedUser]
+    [-MultiUser]
+    [-Force]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 Set-DbaDbState -SqlInstance &lt;DbaInstanceParameter[]&gt;
-    --SqlCredential &lt;PSCredential&gt;]
-    --Database &lt;Object[]&gt;]
-    --ExcludeDatabase &lt;Object[]&gt;]
-    --AllDatabases]
-    --ReadOnly]
-    --ReadWrite]
-    --Online]
-    --Offline]
-    --Emergency]
-    --Detached]
-    --SingleUser]
-    --RestrictedUser]
-    --MultiUser]
-    --Force]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-SqlCredential &lt;PSCredential&gt;]
+    [-Database &lt;Object[]&gt;]
+    [-ExcludeDatabase &lt;Object[]&gt;]
+    [-AllDatabases]
+    [-ReadOnly]
+    [-ReadWrite]
+    [-Online]
+    [-Offline]
+    [-Emergency]
+    [-Detached]
+    [-SingleUser]
+    [-RestrictedUser]
+    [-MultiUser]
+    [-Force]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 Set-DbaDbState
-    --SqlCredential &lt;PSCredential&gt;]
-    --Database &lt;Object[]&gt;]
-    --ExcludeDatabase &lt;Object[]&gt;]
-    --AllDatabases]
-    --ReadOnly]
-    --ReadWrite]
-    --Online]
-    --Offline]
-    --Emergency]
-    --Detached]
-    --SingleUser]
-    --RestrictedUser]
-    --MultiUser]
-    --Force]
-    --EnableException] -InputObject &lt;PSObject[]&gt;
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-SqlCredential &lt;PSCredential&gt;]
+    [-Database &lt;Object[]&gt;]
+    [-ExcludeDatabase &lt;Object[]&gt;]
+    [-AllDatabases]
+    [-ReadOnly]
+    [-ReadWrite]
+    [-Online]
+    [-Offline]
+    [-Emergency]
+    [-Detached]
+    [-SingleUser]
+    [-RestrictedUser]
+    [-MultiUser]
+    [-Force]
+    [-EnableException] -InputObject &lt;PSObject[]&gt;
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -543,30 +543,30 @@ Set-DbaDbState
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Set-DbaDbState -SqlInstance sqlserver2014a -Database HR -Offline
 </code></pre>
-<p>Sets the HR database as OFFLINE</p>
+<p>Sets the HR database as OFFLINE<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Set-DbaDbState -SqlInstance sqlserver2014a -AllDatabases -Exclude HR -ReadOnly -Force
 </code></pre>
-<p>Sets all databases of the sqlserver2014a instance, except for HR, as READ_ONLY</p>
+<p>Sets all databases of the sqlserver2014a instance, except for HR, as READ_ONLY<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Get-DbaDbState -SqlInstance sql2016 | Where-Object Status -eq 'Offline' | Set-DbaDbState -Online
 </code></pre>
-<p>Finds all offline databases and sets them to online</p>
+<p>Finds all offline databases and sets them to online<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; Set-DbaDbState -SqlInstance sqlserver2014a -Database HR -SingleUser
 </code></pre>
-<p>Sets the HR database as SINGLE_USER</p>
+<p>Sets the HR database as SINGLE_USER<br></p>
 <h5 id="example-5">Example:  5</h5>
 <pre><code>PS C:\&gt; Set-DbaDbState -SqlInstance sqlserver2014a -Database HR -SingleUser -Force
 </code></pre>
-<p>Sets the HR database as SINGLE_USER, dropping all other connections (and rolling back open transactions)</p>
+<p>Sets the HR database as SINGLE_USER, dropping all other connections (and rolling back open transactions)<br></p>
 <h5 id="example-6">Example:  6</h5>
 <pre><code>PS C:\&gt; Get-DbaDatabase -SqlInstance sqlserver2014a -Database HR | Set-DbaDbState -SingleUser -Force
 </code></pre>
-<p>Gets the databases from Get-DbaDatabase, and sets them as SINGLE_USER, dropping all other connections (and rolling back open transactions)</p>
+<p>Gets the databases from Get-DbaDatabase, and sets them as SINGLE_USER, dropping all other connections (and rolling back open transactions)<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances</p>
+<p>The target SQL Server instance or instances<br></p>
 <table>
 <thead>
 <tr>
@@ -594,7 +594,7 @@ Set-DbaDbState
 </tbody>
 </table>
 <h5 id="inputobject">-InputObject</h5>
-<p>Accepts piped database objects</p>
+<p>Accepts piped database objects<br></p>
 <table>
 <thead>
 <tr>
@@ -625,7 +625,7 @@ Set-DbaDbState
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -653,7 +653,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="database">-Database</h5>
-<p>The database(s) to process - this list is auto-populated from the server. if unspecified, all databases will be processed.</p>
+<p>The database(s) to process - this list is auto-populated from the server. if unspecified, all databases will be processed.<br></p>
 <table>
 <thead>
 <tr>
@@ -681,7 +681,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="excludedatabase">-ExcludeDatabase</h5>
-<p>The database(s) to exclude - this list is auto-populated from the server</p>
+<p>The database(s) to exclude - this list is auto-populated from the server<br></p>
 <table>
 <thead>
 <tr>
@@ -709,7 +709,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="alldatabases">-AllDatabases</h5>
-<p>This is a parameter that was included for safety, so you don't accidentally set options on all databases without specifying</p>
+<p>This is a parameter that was included for safety, so you don't accidentally set options on all databases without specifying<br></p>
 <table>
 <thead>
 <tr>
@@ -737,7 +737,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="readonly">-ReadOnly</h5>
-<p>RW Option : Sets the database as READ_ONLY</p>
+<p>RW Option : Sets the database as READ_ONLY<br></p>
 <table>
 <thead>
 <tr>
@@ -765,7 +765,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="readwrite">-ReadWrite</h5>
-<p>RW Option : Sets the database as READ_WRITE</p>
+<p>RW Option : Sets the database as READ_WRITE<br></p>
 <table>
 <thead>
 <tr>
@@ -793,7 +793,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="online">-Online</h5>
-<p>Status Option : Sets the database as ONLINE</p>
+<p>Status Option : Sets the database as ONLINE<br></p>
 <table>
 <thead>
 <tr>
@@ -821,7 +821,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="offline">-Offline</h5>
-<p>Status Option : Sets the database as OFFLINE</p>
+<p>Status Option : Sets the database as OFFLINE<br></p>
 <table>
 <thead>
 <tr>
@@ -849,7 +849,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="emergency">-Emergency</h5>
-<p>Status Option : Sets the database as EMERGENCY</p>
+<p>Status Option : Sets the database as EMERGENCY<br></p>
 <table>
 <thead>
 <tr>
@@ -877,7 +877,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="detached">-Detached</h5>
-<p>Status Option : Detaches the database</p>
+<p>Status Option : Detaches the database<br></p>
 <table>
 <thead>
 <tr>
@@ -905,7 +905,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="singleuser">-SingleUser</h5>
-<p>Access Option : Sets the database as SINGLE_USER</p>
+<p>Access Option : Sets the database as SINGLE_USER<br></p>
 <table>
 <thead>
 <tr>
@@ -933,7 +933,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="restricteduser">-RestrictedUser</h5>
-<p>Access Option : Sets the database as RESTRICTED_USER</p>
+<p>Access Option : Sets the database as RESTRICTED_USER<br></p>
 <table>
 <thead>
 <tr>
@@ -961,7 +961,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="multiuser">-MultiUser</h5>
-<p>Access Option : Sets the database as MULTI_USER</p>
+<p>Access Option : Sets the database as MULTI_USER<br></p>
 <table>
 <thead>
 <tr>
@@ -991,7 +991,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 <h5 id="force">-Force</h5>
 <p>For most options, this translates to instantly rolling back any open transactions
 that may be stopping the process.
-For -Detached it is required to break mirroring and Availability Groups</p>
+For -Detached it is required to break mirroring and Availability Groups<br></p>
 <table>
 <thead>
 <tr>
@@ -1021,7 +1021,7 @@ For -Detached it is required to break mirroring and Availability Groups</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -1049,7 +1049,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>Shows what would happen if the command were to run. No actions are actually performed.</p>
+<p>Shows what would happen if the command were to run. No actions are actually performed.<br></p>
 <table>
 <thead>
 <tr>
@@ -1077,7 +1077,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>Prompts you for confirmation before executing any changing operations within the command.</p>
+<p>Prompts you for confirmation before executing any changing operations within the command.<br></p>
 <table>
 <thead>
 <tr>
@@ -1106,6 +1106,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Set-DbaDbState.ps1">Set-DbaDbState</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Set-DbaDbState">Set-DbaDbState</a>.</p>
 
                 </div> <!-- rendered -->

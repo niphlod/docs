@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -470,44 +470,44 @@
 <p>If the operator already exists on the destination, it will not be created unless -Force is used.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>New-DbaAgentOperator
-    -[-SqlInstance] &lt;DbaInstanceParameter[]&gt;]
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    --Operator] &lt;String&gt;
-    -[-EmailAddress] &lt;String&gt;]
-    -[-NetSendAddress] &lt;String&gt;]
-    -[-PagerAddress] &lt;String&gt;]
-    -[-PagerDay] &lt;String&gt;]
-    -[-SaturdayStartTime] &lt;String&gt;]
-    -[-SaturdayEndTime] &lt;String&gt;]
-    -[-SundayStartTime] &lt;String&gt;]
-    -[-SundayEndTime] &lt;String&gt;]
-    -[-WeekdayStartTime] &lt;String&gt;]
-    -[-WeekdayEndTime] &lt;String&gt;]
-    --IsFailsafeOperator]
-    -[-FailsafeNotificationMethod] &lt;String&gt;]
-    --Force]
-    -[-InputObject] &lt;Server[]&gt;]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [[-SqlInstance] &lt;DbaInstanceParameter[]&gt;]
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [-Operator] &lt;String&gt;
+    [[-EmailAddress] &lt;String&gt;]
+    [[-NetSendAddress] &lt;String&gt;]
+    [[-PagerAddress] &lt;String&gt;]
+    [[-PagerDay] &lt;String&gt;]
+    [[-SaturdayStartTime] &lt;String&gt;]
+    [[-SaturdayEndTime] &lt;String&gt;]
+    [[-SundayStartTime] &lt;String&gt;]
+    [[-SundayEndTime] &lt;String&gt;]
+    [[-WeekdayStartTime] &lt;String&gt;]
+    [[-WeekdayEndTime] &lt;String&gt;]
+    [-IsFailsafeOperator]
+    [[-FailsafeNotificationMethod] &lt;String&gt;]
+    [-Force]
+    [[-InputObject] &lt;Server[]&gt;]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
 <h2 id="examples">Examples</h2>
 <p> </p>
 <h5 id="example-1">Example:  1</h5>
-<p>PS:&gt;New-DbaAgentOperator -SqlInstance sql01 -Operator DBA -EmailAddress operator@operator.com -PagerDay Everyday -Force
-This sets a new operator named DBA with the above email address with default values to alerts everyday
-for all hours of the day.</p>
+<p>PS:&gt;New-DbaAgentOperator -SqlInstance sql01 -Operator DBA -EmailAddress operator@operator.com -PagerDay Everyday -Force<br>
+This sets a new operator named DBA with the above email address with default values to alerts everyday<br>
+for all hours of the day.<br></p>
 <h5 id="example-2">Example:  2</h5>
-<p>PS:&gt;New-DbaAgentOperator -SqlInstance sql01 -Operator DBA -EmailAddress operator@operator.com -NetSendAddress dbauser1 -PagerAddress dbauser1@pager.dbatools.io -PagerDay Everyday -SaturdayStartTime
-070000 -SaturdayEndTime 180000 -SundayStartTime 080000 -SundayEndTime 170000 -WeekdayStartTime 060000 -WeekdayEndTime 190000
-Creates a new operator named DBA on the sql01 instance with email address operator@operator.com, net send address of dbauser1, pager address of dbauser1@pager.dbatools.io, page day as every day,
-Saturday start time of 7am, Saturday end time of 6pm, Sunday start time of 8am, Sunday end time of 5pm, Weekday start time of 6am, and Weekday end time of 7pm.</p>
+<p>PS:&gt;New-DbaAgentOperator -SqlInstance sql01 -Operator DBA -EmailAddress operator@operator.com -NetSendAddress dbauser1 -PagerAddress dbauser1@pager.dbatools.io -PagerDay Everyday -SaturdayStartTime <br>
+070000 -SaturdayEndTime 180000 -SundayStartTime 080000 -SundayEndTime 170000 -WeekdayStartTime 060000 -WeekdayEndTime 190000<br>
+Creates a new operator named DBA on the sql01 instance with email address operator@operator.com, net send address of dbauser1, pager address of dbauser1@pager.dbatools.io, page day as every day, <br>
+Saturday start time of 7am, Saturday end time of 6pm, Sunday start time of 8am, Sunday end time of 5pm, Weekday start time of 6am, and Weekday end time of 7pm.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="operator">-Operator</h5>
-<p>Name of the operator in SQL Agent.</p>
+<p>Name of the operator in SQL Agent.<br></p>
 <table>
 <thead>
 <tr>
@@ -536,7 +536,7 @@ Saturday start time of 7am, Saturday end time of 6pm, Sunday start time of 8am, 
 </table>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances. You must have sysadmin access and server version must be SQL Server version 2000 or greater.</p>
+<p>The target SQL Server instance or instances. You must have sysadmin access and server version must be SQL Server version 2000 or greater.<br></p>
 <table>
 <thead>
 <tr>
@@ -566,7 +566,7 @@ Saturday start time of 7am, Saturday end time of 6pm, Sunday start time of 8am, 
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -594,7 +594,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="emailaddress">-EmailAddress</h5>
-<p>The email address the SQL Agent will use to email alerts to the operator.</p>
+<p>The email address the SQL Agent will use to email alerts to the operator.<br></p>
 <table>
 <thead>
 <tr>
@@ -622,7 +622,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="netsendaddress">-NetSendAddress</h5>
-<p>The net send address the SQL Agent will use for the operator to net send alerts.</p>
+<p>The net send address the SQL Agent will use for the operator to net send alerts.<br></p>
 <table>
 <thead>
 <tr>
@@ -650,7 +650,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="pageraddress">-PagerAddress</h5>
-<p>The pager email address the SQL Agent will use to send alerts to the oeprator.</p>
+<p>The pager email address the SQL Agent will use to send alerts to the oeprator.<br></p>
 <table>
 <thead>
 <tr>
@@ -680,7 +680,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 <h5 id="pagerday">-PagerDay</h5>
 <p>Defines what days the pager portion of the operator will be used. The default is 'Everyday'. Valid parameters
 are 'EveryDay', 'Weekdays', 'Weekend', 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', and
-'Saturday'.</p>
+'Saturday'.<br></p>
 <table>
 <thead>
 <tr>
@@ -712,7 +712,7 @@ are 'EveryDay', 'Weekdays', 'Weekend', 'Sunday', 'Monday', 'Tuesday', 'Wednesday
 </tbody>
 </table>
 <h5 id="saturdaystarttime">-SaturdayStartTime</h5>
-<p>This a string that takes the Saturday Pager Start Time.</p>
+<p>This a string that takes the Saturday Pager Start Time.<br></p>
 <table>
 <thead>
 <tr>
@@ -740,7 +740,7 @@ are 'EveryDay', 'Weekdays', 'Weekend', 'Sunday', 'Monday', 'Tuesday', 'Wednesday
 </tbody>
 </table>
 <h5 id="saturdayendtime">-SaturdayEndTime</h5>
-<p>This a string that takes the Saturday Pager End Time.</p>
+<p>This a string that takes the Saturday Pager End Time.<br></p>
 <table>
 <thead>
 <tr>
@@ -768,7 +768,7 @@ are 'EveryDay', 'Weekdays', 'Weekend', 'Sunday', 'Monday', 'Tuesday', 'Wednesday
 </tbody>
 </table>
 <h5 id="sundaystarttime">-SundayStartTime</h5>
-<p>This a string that takes the Sunday Pager Start Time.</p>
+<p>This a string that takes the Sunday Pager Start Time.<br></p>
 <table>
 <thead>
 <tr>
@@ -796,7 +796,7 @@ are 'EveryDay', 'Weekdays', 'Weekend', 'Sunday', 'Monday', 'Tuesday', 'Wednesday
 </tbody>
 </table>
 <h5 id="sundayendtime">-SundayEndTime</h5>
-<p>This a string that takes the Sunday Pager End Time.</p>
+<p>This a string that takes the Sunday Pager End Time.<br></p>
 <table>
 <thead>
 <tr>
@@ -824,7 +824,7 @@ are 'EveryDay', 'Weekdays', 'Weekend', 'Sunday', 'Monday', 'Tuesday', 'Wednesday
 </tbody>
 </table>
 <h5 id="weekdaystarttime">-WeekdayStartTime</h5>
-<p>This a string that takes the Weekdays Pager Start Time.</p>
+<p>This a string that takes the Weekdays Pager Start Time.<br></p>
 <table>
 <thead>
 <tr>
@@ -852,7 +852,7 @@ are 'EveryDay', 'Weekdays', 'Weekend', 'Sunday', 'Monday', 'Tuesday', 'Wednesday
 </tbody>
 </table>
 <h5 id="weekdayendtime">-WeekdayEndTime</h5>
-<p>This a string that takes the Weekdays Pager End Time.</p>
+<p>This a string that takes the Weekdays Pager End Time.<br></p>
 <table>
 <thead>
 <tr>
@@ -880,7 +880,7 @@ are 'EveryDay', 'Weekdays', 'Weekend', 'Sunday', 'Monday', 'Tuesday', 'Wednesday
 </tbody>
 </table>
 <h5 id="isfailsafeoperator">-IsFailsafeOperator</h5>
-<p>If this switch is enabled, this operator will be your failsafe operator and replace the one that existed before.</p>
+<p>If this switch is enabled, this operator will be your failsafe operator and replace the one that existed before.<br></p>
 <table>
 <thead>
 <tr>
@@ -909,7 +909,7 @@ are 'EveryDay', 'Weekdays', 'Weekend', 'Sunday', 'Monday', 'Tuesday', 'Wednesday
 </table>
 <h5 id="failsafenotificationmethod">-FailsafeNotificationMethod</h5>
 <p>Defines the notification method for the failsafe oeprator.  Value must be NotifyMail or NotifyPager.
-The default is NotifyEmail.</p>
+The default is NotifyEmail.<br></p>
 <table>
 <thead>
 <tr>
@@ -937,7 +937,7 @@ The default is NotifyEmail.</p>
 </tbody>
 </table>
 <h5 id="force">-Force</h5>
-<p>If this switch is enabled, the Operator will be dropped and recreated on instance.</p>
+<p>If this switch is enabled, the Operator will be dropped and recreated on instance.<br></p>
 <table>
 <thead>
 <tr>
@@ -965,7 +965,7 @@ The default is NotifyEmail.</p>
 </tbody>
 </table>
 <h5 id="inputobject">-InputObject</h5>
-<p>SMO Server Objects (pipeline input from Connect-DbaInstance)</p>
+<p>SMO Server Objects (pipeline input from Connect-DbaInstance)<br></p>
 <table>
 <thead>
 <tr>
@@ -995,7 +995,7 @@ The default is NotifyEmail.</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -1023,7 +1023,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>Shows what would happen if the command were to run. No actions are actually performed.</p>
+<p>Shows what would happen if the command were to run. No actions are actually performed.<br></p>
 <table>
 <thead>
 <tr>
@@ -1051,7 +1051,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>Prompts you for confirmation before executing any changing operations within the command.</p>
+<p>Prompts you for confirmation before executing any changing operations within the command.<br></p>
 <table>
 <thead>
 <tr>
@@ -1080,6 +1080,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/New-DbaAgentOperator.ps1">New-DbaAgentOperator</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#New-DbaAgentOperator">New-DbaAgentOperator</a>.</p>
 
                 </div> <!-- rendered -->

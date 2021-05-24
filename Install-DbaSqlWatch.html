@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -471,16 +471,16 @@
 <a href="https://sqlwatch.io/">https://sqlwatch.io/</a></p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Install-DbaSqlWatch
-    --SqlInstance] &lt;DbaInstanceParameter[]&gt;
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    -[-Database] &lt;String&gt;]
-    -[-LocalFile] &lt;String&gt;]
-    --PreRelease]
-    --Force]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-SqlInstance] &lt;DbaInstanceParameter[]&gt;
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [[-Database] &lt;String&gt;]
+    [[-LocalFile] &lt;String&gt;]
+    [-PreRelease]
+    [-Force]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -489,27 +489,27 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Install-DbaSqlWatch -SqlInstance server1
 </code></pre>
-<p>Logs into server1 with Windows authentication and then installs SqlWatch in the SQLWATCH database.</p>
+<p>Logs into server1 with Windows authentication and then installs SqlWatch in the SQLWATCH database.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Install-DbaSqlWatch -SqlInstance server1\instance1 -Database DBA
 </code></pre>
-<p>Logs into server1\instance1 with Windows authentication and then installs SqlWatch in the DBA database.</p>
+<p>Logs into server1\instance1 with Windows authentication and then installs SqlWatch in the DBA database.<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Install-DbaSqlWatch -SqlInstance server1\instance1 -Database DBA -SqlCredential $cred
 </code></pre>
-<p>Logs into server1\instance1 with SQL authentication and then installs SqlWatch in the DBA database.</p>
+<p>Logs into server1\instance1 with SQL authentication and then installs SqlWatch in the DBA database.<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; Install-DbaSqlWatch -SqlInstance sql2016\standardrtm, sql2016\sqlexpress, sql2014
 </code></pre>
-<p>Logs into sql2016\standardrtm, sql2016\sqlexpress and sql2014 with Windows authentication and then installs SqlWatch in the SQLWATCH database.</p>
+<p>Logs into sql2016\standardrtm, sql2016\sqlexpress and sql2014 with Windows authentication and then installs SqlWatch in the SQLWATCH database.<br></p>
 <h5 id="example-5">Example:  5</h5>
 <pre><code>PS C:\&gt; $servers = &quot;sql2016\standardrtm&quot;, &quot;sql2016\sqlexpress&quot;, &quot;sql2014&quot;
 </code></pre>
-<p>$servers | Install-DbaSqlWatch
-Logs into sql2016\standardrtm, sql2016\sqlexpress and sql2014 with Windows authentication and then installs SqlWatch in the SQLWATCH database.</p>
+<p>$servers | Install-DbaSqlWatch<br>
+Logs into sql2016\standardrtm, sql2016\sqlexpress and sql2014 with Windows authentication and then installs SqlWatch in the SQLWATCH database.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>SQL Server name or SMO object representing the SQL Server to connect to.</p>
+<p>SQL Server name or SMO object representing the SQL Server to connect to.<br></p>
 <table>
 <thead>
 <tr>
@@ -540,7 +540,7 @@ Logs into sql2016\standardrtm, sql2016\sqlexpress and sql2014 with Windows authe
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -568,7 +568,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="database">-Database</h5>
-<p>Specifies the database to install SqlWatch into. Defaults to SQLWATCH.</p>
+<p>Specifies the database to install SqlWatch into. Defaults to SQLWATCH.<br></p>
 <table>
 <thead>
 <tr>
@@ -597,7 +597,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </table>
 <h5 id="localfile">-LocalFile</h5>
 <p>Specifies the path to a local file to install SqlWatch from. This <em>should</em> be the zipfile as distributed by the maintainers.
-If this parameter is not specified, the latest version will be downloaded and installed from <a href="https://github.com/marcingminski/sqlwatch">https://github.com/marcingminski/sqlwatch</a></p>
+If this parameter is not specified, the latest version will be downloaded and installed from <a href="https://github.com/marcingminski/sqlwatch">https://github.com/marcingminski/sqlwatch</a><br></p>
 <table>
 <thead>
 <tr>
@@ -625,7 +625,7 @@ If this parameter is not specified, the latest version will be downloaded and in
 </tbody>
 </table>
 <h5 id="prerelease">-PreRelease</h5>
-<p>If specified, a pre-release (beta) will be downloaded rather than a stable release</p>
+<p>If specified, a pre-release (beta) will be downloaded rather than a stable release<br></p>
 <table>
 <thead>
 <tr>
@@ -653,7 +653,7 @@ If this parameter is not specified, the latest version will be downloaded and in
 </tbody>
 </table>
 <h5 id="force">-Force</h5>
-<p>If this switch is enabled, SqlWatch will be downloaded from the internet even if previously cached.</p>
+<p>If this switch is enabled, SqlWatch will be downloaded from the internet even if previously cached.<br></p>
 <table>
 <thead>
 <tr>
@@ -683,7 +683,7 @@ If this parameter is not specified, the latest version will be downloaded and in
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -711,7 +711,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>Shows what would happen if the command were to run. No actions are actually performed.</p>
+<p>Shows what would happen if the command were to run. No actions are actually performed.<br></p>
 <table>
 <thead>
 <tr>
@@ -739,7 +739,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>Prompts to confirm actions</p>
+<p>Prompts to confirm actions<br></p>
 <table>
 <thead>
 <tr>
@@ -768,6 +768,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Install-DbaSqlWatch.ps1">Install-DbaSqlWatch</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Install-DbaSqlWatch">Install-DbaSqlWatch</a>.</p>
 
                 </div> <!-- rendered -->

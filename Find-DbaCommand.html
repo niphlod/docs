@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -470,16 +470,16 @@
 <p>Finds dbatools commands searching through the inline help text, building a consolidated json index and querying it because Get-Help is too slow</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Find-DbaCommand
-    -[-Pattern] &lt;String&gt;]
-    -[-Tag] &lt;String[]&gt;]
-    -[-Author] &lt;String&gt;]
-    -[-MinimumVersion] &lt;String&gt;]
-    -[-MaximumVersion] &lt;String&gt;]
-    --Rebuild]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [[-Pattern] &lt;String&gt;]
+    [[-Tag] &lt;String[]&gt;]
+    [[-Author] &lt;String&gt;]
+    [[-MinimumVersion] &lt;String&gt;]
+    [[-MaximumVersion] &lt;String&gt;]
+    [-Rebuild]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -488,34 +488,34 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Find-DbaCommand &quot;snapshot&quot;
 </code></pre>
-<p>For lazy typers: finds all commands searching the entire help for &quot;snapshot&quot;</p>
+<p>For lazy typers: finds all commands searching the entire help for &quot;snapshot&quot;<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Find-DbaCommand -Pattern &quot;snapshot&quot;
 </code></pre>
-<p>For rigorous typers: finds all commands searching the entire help for &quot;snapshot&quot;</p>
+<p>For rigorous typers: finds all commands searching the entire help for &quot;snapshot&quot;<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Find-DbaCommand -Tag Job
 </code></pre>
-<p>Finds all commands tagged with &quot;Job&quot;</p>
+<p>Finds all commands tagged with &quot;Job&quot;<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; Find-DbaCommand -Tag Job,Owner
 </code></pre>
-<p>Finds all commands tagged with BOTH &quot;Job&quot; and &quot;Owner&quot;</p>
+<p>Finds all commands tagged with BOTH &quot;Job&quot; and &quot;Owner&quot;<br></p>
 <h5 id="example-5">Example:  5</h5>
 <pre><code>PS C:\&gt; Find-DbaCommand -Author Chrissy
 </code></pre>
-<p>Finds every command whose author contains our beloved &quot;Chrissy&quot;</p>
+<p>Finds every command whose author contains our beloved &quot;Chrissy&quot;<br></p>
 <h5 id="example-6">Example:  6</h5>
 <pre><code>PS C:\&gt; Find-DbaCommand -Author Chrissy -Tag AG
 </code></pre>
-<p>Finds every command whose author contains our beloved &quot;Chrissy&quot; and it tagged as &quot;AG&quot;</p>
+<p>Finds every command whose author contains our beloved &quot;Chrissy&quot; and it tagged as &quot;AG&quot;<br></p>
 <h5 id="example-7">Example:  7</h5>
 <pre><code>PS C:\&gt; Find-DbaCommand -Pattern snapshot -Rebuild
 </code></pre>
-<p>Finds all commands searching the entire help for &quot;snapshot&quot;, rebuilding the index (good for developers)</p>
+<p>Finds all commands searching the entire help for &quot;snapshot&quot;, rebuilding the index (good for developers)<br></p>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="pattern">-Pattern</h5>
-<p>Searches help for all commands in dbatools for the specified pattern and displays all results</p>
+<p>Searches help for all commands in dbatools for the specified pattern and displays all results<br></p>
 <table>
 <thead>
 <tr>
@@ -543,7 +543,7 @@
 </tbody>
 </table>
 <h5 id="tag">-Tag</h5>
-<p>Finds all commands tagged with this auto-populated tag</p>
+<p>Finds all commands tagged with this auto-populated tag<br></p>
 <table>
 <thead>
 <tr>
@@ -571,7 +571,7 @@
 </tbody>
 </table>
 <h5 id="author">-Author</h5>
-<p>Finds all commands tagged with this author</p>
+<p>Finds all commands tagged with this author<br></p>
 <table>
 <thead>
 <tr>
@@ -599,7 +599,7 @@
 </tbody>
 </table>
 <h5 id="minimumversion">-MinimumVersion</h5>
-<p>Finds all commands tagged with this auto-populated minimum version</p>
+<p>Finds all commands tagged with this auto-populated minimum version<br></p>
 <table>
 <thead>
 <tr>
@@ -627,7 +627,7 @@
 </tbody>
 </table>
 <h5 id="maximumversion">-MaximumVersion</h5>
-<p>Finds all commands tagged with this auto-populated maximum version</p>
+<p>Finds all commands tagged with this auto-populated maximum version<br></p>
 <table>
 <thead>
 <tr>
@@ -655,7 +655,7 @@
 </tbody>
 </table>
 <h5 id="rebuild">-Rebuild</h5>
-<p>Rebuilds the index</p>
+<p>Rebuilds the index<br></p>
 <table>
 <thead>
 <tr>
@@ -685,7 +685,7 @@
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -713,7 +713,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>Displays what would happen if the command is run</p>
+<p>Displays what would happen if the command is run<br></p>
 <table>
 <thead>
 <tr>
@@ -741,7 +741,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>Confirms overwrite of index</p>
+<p>Confirms overwrite of index<br></p>
 <table>
 <thead>
 <tr>
@@ -770,6 +770,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Find-DbaCommand.ps1">Find-DbaCommand</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Find-DbaCommand">Find-DbaCommand</a>.</p>
 
                 </div> <!-- rendered -->

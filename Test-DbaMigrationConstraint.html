@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -483,14 +483,14 @@ The editions supported by this function are:</p>
 <p>The -Database parameter is auto-populated for command-line completion.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Test-DbaMigrationConstraint
-    --Source] &lt;DbaInstanceParameter&gt;
-    -[-SourceSqlCredential] &lt;PSCredential&gt;]
-    --Destination] &lt;DbaInstanceParameter&gt;
-    -[-DestinationSqlCredential] &lt;PSCredential&gt;]
-    -[-Database] &lt;Object[]&gt;]
-    -[-ExcludeDatabase] &lt;Object[]&gt;]
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [-Source] &lt;DbaInstanceParameter&gt;
+    [[-SourceSqlCredential] &lt;PSCredential&gt;]
+    [-Destination] &lt;DbaInstanceParameter&gt;
+    [[-DestinationSqlCredential] &lt;PSCredential&gt;]
+    [[-Database] &lt;Object[]&gt;]
+    [[-ExcludeDatabase] &lt;Object[]&gt;]
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -499,19 +499,19 @@ The editions supported by this function are:</p>
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Test-DbaMigrationConstraint -Source sqlserver2014a -Destination sqlcluster
 </code></pre>
-<p>All databases on sqlserver2014a will be verified for features in use that can't be supported on sqlcluster.</p>
+<p>All databases on sqlserver2014a will be verified for features in use that can't be supported on sqlcluster.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Test-DbaMigrationConstraint -Source sqlserver2014a -Destination sqlcluster -SourceSqlCredential $cred
 </code></pre>
-<p>All databases will be verified for features in use that can't be supported on the destination server. SQL credentials are used to authenticate against sqlserver2014a and Windows Authentication is
-used for sqlcluster.</p>
+<p>All databases will be verified for features in use that can't be supported on the destination server. SQL credentials are used to authenticate against sqlserver2014a and Windows Authentication is <br>
+used for sqlcluster.<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Test-DbaMigrationConstraint -Source sqlserver2014a -Destination sqlcluster -Database db1
 </code></pre>
-<p>Only db1 database will be verified for features in use that can't be supported on the destination server.</p>
+<p>Only db1 database will be verified for features in use that can't be supported on the destination server.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="source">-Source</h5>
-<p>Source SQL Server. You must have sysadmin access and server version must be SQL Server version 2000 or higher.</p>
+<p>Source SQL Server. You must have sysadmin access and server version must be SQL Server version 2000 or higher.<br></p>
 <table>
 <thead>
 <tr>
@@ -539,7 +539,7 @@ used for sqlcluster.</p>
 </tbody>
 </table>
 <h5 id="destination">-Destination</h5>
-<p>Destination SQL Server. You must have sysadmin access and the server must be SQL Server 2000 or higher.</p>
+<p>Destination SQL Server. You must have sysadmin access and the server must be SQL Server 2000 or higher.<br></p>
 <table>
 <thead>
 <tr>
@@ -570,7 +570,7 @@ used for sqlcluster.</p>
 <h5 id="sourcesqlcredential">-SourceSqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -600,7 +600,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 <h5 id="destinationsqlcredential">-DestinationSqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -628,7 +628,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="database">-Database</h5>
-<p>The database(s) to process. Options for this list are auto-populated from the server. If unspecified, all databases will be processed.</p>
+<p>The database(s) to process. Options for this list are auto-populated from the server. If unspecified, all databases will be processed.<br></p>
 <table>
 <thead>
 <tr>
@@ -656,7 +656,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="excludedatabase">-ExcludeDatabase</h5>
-<p>The database(s) to exclude. Options for this list are auto-populated from the server.</p>
+<p>The database(s) to exclude. Options for this list are auto-populated from the server.<br></p>
 <table>
 <thead>
 <tr>
@@ -686,7 +686,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -715,6 +715,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Test-DbaMigrationConstraint.ps1">Test-DbaMigrationConstraint</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Test-DbaMigrationConstraint">Test-DbaMigrationConstraint</a>.</p>
 
                 </div> <!-- rendered -->

@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -470,16 +470,16 @@
 <p>Adds a login to a server-level role(s) for each instance(s) of SQL Server.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Add-DbaServerRoleMember
-    -[-SqlInstance] &lt;DbaInstanceParameter[]&gt;]
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    -[-ServerRole] &lt;String[]&gt;]
-    -[-Login] &lt;String[]&gt;]
-    -[-Role] &lt;String[]&gt;]
-    -[-InputObject] &lt;Object[]&gt;]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [[-SqlInstance] &lt;DbaInstanceParameter[]&gt;]
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [[-ServerRole] &lt;String[]&gt;]
+    [[-Login] &lt;String[]&gt;]
+    [[-Role] &lt;String[]&gt;]
+    [[-InputObject] &lt;Object[]&gt;]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -488,38 +488,38 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Add-DbaServerRoleMember -SqlInstance server1 -Role dbcreator -Login login1
 </code></pre>
-<p>Adds login1 to the server-level role dbcreator on the instance server1</p>
+<p>Adds login1 to the server-level role dbcreator on the instance server1<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Add-DbaServerRoleMember -SqlInstance server1, sql2016 -ServerRole customrole -Login login1
 </code></pre>
-<p>Adds login1 in custom, server-level role customrole on the instance server1 and sql2016</p>
+<p>Adds login1 in custom, server-level role customrole on the instance server1 and sql2016<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Add-DbaServerRoleMember -SqlInstance server1 -ServerRole customrole -Role dbcreator
 </code></pre>
-<p>Adds custom, server-level role customrole to dbcreator server-level fixed role.</p>
+<p>Adds custom, server-level role customrole to dbcreator server-level fixed role.<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; $servers = Get-Content C:\servers.txt
 PS C:\&gt; $servers | Add-DbaServerRoleMember -ServerRole sysadmin -Login login1
 </code></pre>
-<p>Adds login1 to the sysadmin server-level role in every server in C:\servers.txt</p>
+<p>Adds login1 to the sysadmin server-level role in every server in C:\servers.txt<br></p>
 <h5 id="example-5">Example:  5</h5>
 <pre><code>PS C:\&gt; Add-DbaServerRoleMember -SqlInstance localhost -ServerRole &quot;bulkadmin&quot;,&quot;dbcreator&quot; -Login login1
 </code></pre>
-<p>Adds login1 on the server localhost to the server-level roles bulkadmin and dbcreator</p>
+<p>Adds login1 on the server localhost to the server-level roles bulkadmin and dbcreator<br></p>
 <h5 id="example-6">Example:  6</h5>
 <pre><code>PS C:\&gt; $roles = Get-DbaServerRole -SqlInstance localhost -ServerRole &quot;bulkadmin&quot;,&quot;dbcreator&quot;
 PS C:\&gt; $roles | Add-DbaServerRoleMember -Login login1
 </code></pre>
-<p>Adds login1 on the server localhost to the server-level roles bulkadmin and dbcreator</p>
+<p>Adds login1 on the server localhost to the server-level roles bulkadmin and dbcreator<br></p>
 <h5 id="example-7">Example:  7</h5>
 <pre><code>PS C:\&gt; PS C:\ $logins = Get-Content C:\logins.txt
 </code></pre>
-<p>PS C:\ $srvLogins = Get-DbaLogin -SqlInstance server1 -Login $logins
-PS C:\ New-DbaServerRole -SqlInstance server1 -ServerRole mycustomrole -Owner sa | Add-DbaServerRoleMember -Login $logins
-Adds all the logins found in C:\logins.txt to the newly created server-level role mycustomrole on server1.</p>
+<p>PS C:\ $srvLogins = Get-DbaLogin -SqlInstance server1 -Login $logins<br>
+PS C:\ New-DbaServerRole -SqlInstance server1 -ServerRole mycustomrole -Owner sa | Add-DbaServerRoleMember -Login $logins<br>
+Adds all the logins found in C:\logins.txt to the newly created server-level role mycustomrole on server1.<br></p>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances. This can be a collection and receive pipeline input to allow the function to be executed against multiple SQL Server instances.</p>
+<p>The target SQL Server instance or instances. This can be a collection and receive pipeline input to allow the function to be executed against multiple SQL Server instances.<br></p>
 <table>
 <thead>
 <tr>
@@ -549,7 +549,7 @@ Adds all the logins found in C:\logins.txt to the newly created server-level rol
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -577,7 +577,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="serverrole">-ServerRole</h5>
-<p>The server-level role(s) to process.</p>
+<p>The server-level role(s) to process.<br></p>
 <table>
 <thead>
 <tr>
@@ -605,7 +605,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="login">-Login</h5>
-<p>The login(s) to add to server-level role(s) specified.</p>
+<p>The login(s) to add to server-level role(s) specified.<br></p>
 <table>
 <thead>
 <tr>
@@ -633,7 +633,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="role">-Role</h5>
-<p>The role(s) to add to server-level role(s) specified.</p>
+<p>The role(s) to add to server-level role(s) specified.<br></p>
 <table>
 <thead>
 <tr>
@@ -661,7 +661,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="inputobject">-InputObject</h5>
-<p>Enables piped input from Get-DbaServerRole or New-DbaServerRole</p>
+<p>Enables piped input from Get-DbaServerRole or New-DbaServerRole<br></p>
 <table>
 <thead>
 <tr>
@@ -691,7 +691,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -719,7 +719,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>Shows what would happen if the command were to run. No actions are actually performed.</p>
+<p>Shows what would happen if the command were to run. No actions are actually performed.<br></p>
 <table>
 <thead>
 <tr>
@@ -747,7 +747,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>Prompts you for confirmation before executing any changing operations within the command.</p>
+<p>Prompts you for confirmation before executing any changing operations within the command.<br></p>
 <table>
 <thead>
 <tr>
@@ -776,6 +776,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Add-DbaServerRoleMember.ps1">Add-DbaServerRoleMember</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Add-DbaServerRoleMember">Add-DbaServerRoleMember</a>.</p>
 
                 </div> <!-- rendered -->

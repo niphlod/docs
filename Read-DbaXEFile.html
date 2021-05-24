@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -470,11 +470,11 @@
 <p>Read XEvents from a *.xel or *.xem file.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Read-DbaXEFile
-    --Path] &lt;Object[]&gt;
-    --Exact]
-    --Raw]
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [-Path] &lt;Object[]&gt;
+    [-Exact]
+    [-Raw]
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -483,18 +483,18 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Read-DbaXEFile -Path C:\temp\deadocks.xel
 </code></pre>
-<p>Returns events from C:\temp\deadocks.xel.</p>
+<p>Returns events from C:\temp\deadocks.xel.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Get-ChildItem C:\temp\xe\*.xel | Read-DbaXEFile
 </code></pre>
-<p>Returns events from all .xel files in C:\temp\xe.</p>
+<p>Returns events from all .xel files in C:\temp\xe.<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Get-DbaXESession -SqlInstance sql2014 -Session deadlocks | Read-DbaXEFile
 </code></pre>
-<p>Reads remote XEvents by accessing the file over the admin UNC share.</p>
+<p>Reads remote XEvents by accessing the file over the admin UNC share.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="path">-Path</h5>
-<p>The path to the *.xem or *.xem file. This is relative to the computer executing the command. UNC paths are supported.</p>
+<p>The path to the *.xem or *.xem file. This is relative to the computer executing the command. UNC paths are supported.<br></p>
 <table>
 <thead>
 <tr>
@@ -524,7 +524,7 @@
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="exact">-Exact</h5>
 <p>If this switch is enabled, only an exact search will be used for the Path. By default, this command will add a wildcard to the Path because Eventing uses the file name as a template and adds
-characters.</p>
+characters.<br></p>
 <table>
 <thead>
 <tr>
@@ -552,7 +552,7 @@ characters.</p>
 </tbody>
 </table>
 <h5 id="raw">-Raw</h5>
-<p>If this switch is enabled, the Microsoft.SqlServer.XEvent.Linq.PublishedEvent enumeration object will be returned.</p>
+<p>If this switch is enabled, the Microsoft.SqlServer.XEvent.Linq.PublishedEvent enumeration object will be returned.<br></p>
 <table>
 <thead>
 <tr>
@@ -582,7 +582,7 @@ characters.</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -611,6 +611,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Read-DbaXEFile.ps1">Read-DbaXEFile</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Read-DbaXEFile">Read-DbaXEFile</a>.</p>
 
                 </div> <!-- rendered -->

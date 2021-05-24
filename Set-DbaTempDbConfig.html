@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -471,22 +471,22 @@
 <p>Other parameters can adjust the settings as the user desires (such as different file paths, number of data files, and log file size). No functions that shrink or delete data files are performed. If you wish to do this, you will need to resize tempdb so that it is &quot;smaller&quot; than what the function will size it to before running the function.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Set-DbaTempDbConfig
-    --SqlInstance] &lt;DbaInstanceParameter[]&gt;
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    -[-DataFileCount] &lt;Int32&gt;]
-    --DataFileSize] &lt;Int32&gt;
-    -[-LogFileSize] &lt;Int32&gt;]
-    -[-DataFileGrowth] &lt;Int32&gt;]
-    -[-LogFileGrowth] &lt;Int32&gt;]
-    -[-DataPath] &lt;String[]&gt;]
-    -[-LogPath] &lt;String&gt;]
-    -[-OutFile] &lt;String&gt;]
-    --OutputScriptOnly]
-    --DisableGrowth]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-SqlInstance] &lt;DbaInstanceParameter[]&gt;
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [[-DataFileCount] &lt;Int32&gt;]
+    [-DataFileSize] &lt;Int32&gt;
+    [[-LogFileSize] &lt;Int32&gt;]
+    [[-DataFileGrowth] &lt;Int32&gt;]
+    [[-LogFileGrowth] &lt;Int32&gt;]
+    [[-DataPath] &lt;String[]&gt;]
+    [[-LogPath] &lt;String&gt;]
+    [[-OutFile] &lt;String&gt;]
+    [-OutputScriptOnly]
+    [-DisableGrowth]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -495,26 +495,26 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Set-DbaTempDbConfig -SqlInstance localhost -DataFileSize 1000
 </code></pre>
-<p>Creates tempdb with a number of data files equal to the logical cores where each file is equal to 1000MB divided by the number of logical cores, with a log file of 250MB.</p>
+<p>Creates tempdb with a number of data files equal to the logical cores where each file is equal to 1000MB divided by the number of logical cores, with a log file of 250MB.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Set-DbaTempDbConfig -SqlInstance localhost -DataFileSize 1000 -DataFileCount 8
 </code></pre>
-<p>Creates tempdb with 8 data files, each one sized at 125MB, with a log file of 250MB.</p>
+<p>Creates tempdb with 8 data files, each one sized at 125MB, with a log file of 250MB.<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Set-DbaTempDbConfig -SqlInstance localhost -DataFileSize 1000 -OutputScriptOnly
 </code></pre>
-<p>Provides a SQL script output to configure tempdb according to the passed parameters.</p>
+<p>Provides a SQL script output to configure tempdb according to the passed parameters.<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; Set-DbaTempDbConfig -SqlInstance localhost -DataFileSize 1000 -DisableGrowth
 </code></pre>
-<p>Disables the growth for the data and log files.</p>
+<p>Disables the growth for the data and log files.<br></p>
 <h5 id="example-5">Example:  5</h5>
 <pre><code>PS C:\&gt; Set-DbaTempDbConfig -SqlInstance localhost -DataFileSize 1000 -OutputScriptOnly
 </code></pre>
-<p>Returns the T-SQL script representing tempdb configuration.</p>
+<p>Returns the T-SQL script representing tempdb configuration.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances.</p>
+<p>The target SQL Server instance or instances.<br></p>
 <table>
 <thead>
 <tr>
@@ -542,7 +542,7 @@
 </tbody>
 </table>
 <h5 id="datafilesize">-DataFileSize</h5>
-<p>Specifies the total data file size in megabytes. This is distributed across the total number of data files.</p>
+<p>Specifies the total data file size in megabytes. This is distributed across the total number of data files.<br></p>
 <table>
 <thead>
 <tr>
@@ -573,7 +573,7 @@
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -601,7 +601,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="datafilecount">-DataFileCount</h5>
-<p>Specifies the number of data files to create. If this number is not specified, the number of logical cores of the host will be used.</p>
+<p>Specifies the number of data files to create. If this number is not specified, the number of logical cores of the host will be used.<br></p>
 <table>
 <thead>
 <tr>
@@ -629,7 +629,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="logfilesize">-LogFileSize</h5>
-<p>Specifies the log file size in megabytes. If not specified, no change will be made.</p>
+<p>Specifies the log file size in megabytes. If not specified, no change will be made.<br></p>
 <table>
 <thead>
 <tr>
@@ -657,7 +657,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="datafilegrowth">-DataFileGrowth</h5>
-<p>Specifies the growth amount for the data file(s) in megabytes. The default is 512 MB.</p>
+<p>Specifies the growth amount for the data file(s) in megabytes. The default is 512 MB.<br></p>
 <table>
 <thead>
 <tr>
@@ -685,7 +685,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="logfilegrowth">-LogFileGrowth</h5>
-<p>Specifies the growth amount for the log file in megabytes. The default is 512 MB.</p>
+<p>Specifies the growth amount for the log file in megabytes. The default is 512 MB.<br></p>
 <table>
 <thead>
 <tr>
@@ -713,7 +713,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="datapath">-DataPath</h5>
-<p>Specifies the filesystem path(s) in which to create the tempdb data files. If not specified, current tempdb location will be used.</p>
+<p>Specifies the filesystem path(s) in which to create the tempdb data files. If not specified, current tempdb location will be used.<br></p>
 <table>
 <thead>
 <tr>
@@ -741,7 +741,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="logpath">-LogPath</h5>
-<p>Specifies the filesystem path in which to create the tempdb log file. If not specified, current tempdb location will be used.</p>
+<p>Specifies the filesystem path in which to create the tempdb log file. If not specified, current tempdb location will be used.<br></p>
 <table>
 <thead>
 <tr>
@@ -769,7 +769,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="outfile">-OutFile</h5>
-<p>Specifies the filesystem path into which the generated T-SQL script will be saved.</p>
+<p>Specifies the filesystem path into which the generated T-SQL script will be saved.<br></p>
 <table>
 <thead>
 <tr>
@@ -797,7 +797,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="outputscriptonly">-OutputScriptOnly</h5>
-<p>If this switch is enabled, only the T-SQL script to change the tempdb configuration is created and output.</p>
+<p>If this switch is enabled, only the T-SQL script to change the tempdb configuration is created and output.<br></p>
 <table>
 <thead>
 <tr>
@@ -825,7 +825,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="disablegrowth">-DisableGrowth</h5>
-<p>If this switch is enabled, the tempdb files will be configured to not grow. This overrides -DataFileGrowth and -LogFileGrowth.</p>
+<p>If this switch is enabled, the tempdb files will be configured to not grow. This overrides -DataFileGrowth and -LogFileGrowth.<br></p>
 <table>
 <thead>
 <tr>
@@ -855,7 +855,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -883,7 +883,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.</p>
+<p>If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.<br></p>
 <table>
 <thead>
 <tr>
@@ -911,7 +911,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.</p>
+<p>If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.<br></p>
 <table>
 <thead>
 <tr>
@@ -940,6 +940,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Set-DbaTempDbConfig.ps1">Set-DbaTempDbConfig</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Set-DbaTempDbConfig">Set-DbaTempDbConfig</a>.</p>
 
                 </div> <!-- rendered -->

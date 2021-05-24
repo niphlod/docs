@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -470,13 +470,13 @@
 <p>Gets the list of server-level roles for SQL Server instance.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Get-DbaServerRole
-    --SqlInstance] &lt;DbaInstanceParameter[]&gt;
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    -[-ServerRole] &lt;String[]&gt;]
-    -[-ExcludeServerRole] &lt;String[]&gt;]
-    --ExcludeFixedRole]
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [-SqlInstance] &lt;DbaInstanceParameter[]&gt;
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [[-ServerRole] &lt;String[]&gt;]
+    [[-ExcludeServerRole] &lt;String[]&gt;]
+    [-ExcludeFixedRole]
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -485,14 +485,14 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Get-DbaServerRole -SqlInstance sql2016a
 </code></pre>
-<p>Outputs list of server-level roles for sql2016a instance.</p>
+<p>Outputs list of server-level roles for sql2016a instance.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Get-DbaServerRole -SqlInstance sql2017a -ExcludeFixedRole
 </code></pre>
-<p>Outputs the server-level role(s) that are not fixed roles on sql2017a instance.</p>
+<p>Outputs the server-level role(s) that are not fixed roles on sql2017a instance.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances. Server version must be SQL Server version 2005 or higher.</p>
+<p>The target SQL Server instance or instances. Server version must be SQL Server version 2005 or higher.<br></p>
 <table>
 <thead>
 <tr>
@@ -523,7 +523,7 @@
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -551,7 +551,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="serverrole">-ServerRole</h5>
-<p>Server-Level role to filter results to that role only.</p>
+<p>Server-Level role to filter results to that role only.<br></p>
 <table>
 <thead>
 <tr>
@@ -579,7 +579,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="excludeserverrole">-ExcludeServerRole</h5>
-<p>Server-Level role to exclude from results.</p>
+<p>Server-Level role to exclude from results.<br></p>
 <table>
 <thead>
 <tr>
@@ -607,7 +607,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="excludefixedrole">-ExcludeFixedRole</h5>
-<p>Filter the fixed server-level roles. Only applies to SQL Server 2017 that supports creation of server-level roles.</p>
+<p>Filter the fixed server-level roles. Only applies to SQL Server 2017 that supports creation of server-level roles.<br></p>
 <table>
 <thead>
 <tr>
@@ -636,7 +636,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </table>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message. This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because
-it basically disables advanced scripting. Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+it basically disables advanced scripting. Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -665,6 +665,7 @@ it basically disables advanced scripting. Using this switch turns this &quot;nic
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Get-DbaServerRole.ps1">Get-DbaServerRole</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Get-DbaServerRole">Get-DbaServerRole</a>.</p>
 
                 </div> <!-- rendered -->

@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -502,20 +502,20 @@ This results in a single folder location with the latest exported files. These f
 </ol>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Export-DbaInstance
-    --SqlInstance] &lt;DbaInstanceParameter[]&gt;
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    -[-Credential] &lt;PSCredential&gt;]
-    -[-Path] &lt;String&gt;]
-    --NoRecovery]
-    --IncludeDbMasterKey]
-    -[-Exclude] &lt;String[]&gt;]
-    -[-BatchSeparator] &lt;String&gt;]
-    -[-ScriptingOption] &lt;ScriptingOptions&gt;]
-    --NoPrefix]
-    --ExcludePassword]
-    --Force]
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [-SqlInstance] &lt;DbaInstanceParameter[]&gt;
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [[-Credential] &lt;PSCredential&gt;]
+    [[-Path] &lt;String&gt;]
+    [-NoRecovery]
+    [-IncludeDbMasterKey]
+    [[-Exclude] &lt;String[]&gt;]
+    [[-BatchSeparator] &lt;String&gt;]
+    [[-ScriptingOption] &lt;ScriptingOptions&gt;]
+    [-NoPrefix]
+    [-ExcludePassword]
+    [-Force]
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -524,24 +524,24 @@ This results in a single folder location with the latest exported files. These f
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Export-DbaInstance -SqlInstance sqlserver\instance
 </code></pre>
-<p>All databases, logins, job objects and sp_configure options will be exported from sqlserver\instance to an automatically generated folder name in Documents. For example,
-%userprofile%\Documents\DbatoolsExport\sqldev1$sqlcluster-20201108140000</p>
+<p>All databases, logins, job objects and sp_configure options will be exported from sqlserver\instance to an automatically generated folder name in Documents. For example, <br>
+%userprofile%\Documents\DbatoolsExport\sqldev1$sqlcluster-20201108140000<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Export-DbaInstance -SqlInstance sqlcluster -Exclude Databases, Logins -Path C:\dr\sqlcluster
 </code></pre>
-<p>Exports everything but logins and database restore scripts to a folder such as C:\dr\sqlcluster\sqldev1$sqlcluster-20201108140000</p>
+<p>Exports everything but logins and database restore scripts to a folder such as C:\dr\sqlcluster\sqldev1$sqlcluster-20201108140000<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Export-DbaInstance -SqlInstance sqlcluster -Path C:\servers\ -NoPrefix
 </code></pre>
-<p>Exports everything to a folder such as C:\servers\sqldev1$sqlcluster-20201108140000 but scripts will not include prefix information.</p>
+<p>Exports everything to a folder such as C:\servers\sqldev1$sqlcluster-20201108140000 but scripts will not include prefix information.<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; Export-DbaInstance -SqlInstance sqlcluster -Path C:\servers\ -Force
 </code></pre>
-<p>Exports everything to a folder such as C:\servers\sqldev1$sqlcluster and will overwrite/refresh existing files in that folder. Note: when the -Force param is used the generated folder name will not
-include a timestamp. This supports the use case of running Export-DbaInstance on a schedule and writing to the same dir each time.</p>
+<p>Exports everything to a folder such as C:\servers\sqldev1$sqlcluster and will overwrite/refresh existing files in that folder. Note: when the -Force param is used the generated folder name will not <br>
+include a timestamp. This supports the use case of running Export-DbaInstance on a schedule and writing to the same dir each time.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instances</p>
+<p>The target SQL Server instances<br></p>
 <table>
 <thead>
 <tr>
@@ -572,7 +572,7 @@ include a timestamp. This supports the use case of running Export-DbaInstance on
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -600,7 +600,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="credential">-Credential</h5>
-<p>Alternative Windows credentials for exporting Linked Servers and Credentials. Accepts credential objects (Get-Credential)</p>
+<p>Alternative Windows credentials for exporting Linked Servers and Credentials. Accepts credential objects (Get-Credential)<br></p>
 <table>
 <thead>
 <tr>
@@ -628,7 +628,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="path">-Path</h5>
-<p>Specifies the directory where the file or files will be exported.</p>
+<p>Specifies the directory where the file or files will be exported.<br></p>
 <table>
 <thead>
 <tr>
@@ -656,7 +656,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="norecovery">-NoRecovery</h5>
-<p>If this switch is used, databases will be left in the No Recovery state to enable further backups to be added.</p>
+<p>If this switch is used, databases will be left in the No Recovery state to enable further backups to be added.<br></p>
 <table>
 <thead>
 <tr>
@@ -684,7 +684,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="includedbmasterkey">-IncludeDbMasterKey</h5>
-<p>Exports the db master key then logs into the server to copy it to the $Path</p>
+<p>Exports the db master key then logs into the server to copy it to the $Path<br></p>
 <table>
 <thead>
 <tr>
@@ -733,7 +733,7 @@ ServerAuditSpecifications
 CustomErrors
 ServerRoles
 AvailabilityGroups
-ReplicationSettings</p>
+ReplicationSettings<br></p>
 <table>
 <thead>
 <tr>
@@ -765,7 +765,7 @@ ReplicationSettings</p>
 </tbody>
 </table>
 <h5 id="batchseparator">-BatchSeparator</h5>
-<p>Batch separator for scripting output. &quot;GO&quot; by default based on (Get-DbatoolsConfigValue -FullName 'formatting.batchseparator').</p>
+<p>Batch separator for scripting output. &quot;GO&quot; by default based on (Get-DbatoolsConfigValue -FullName 'formatting.batchseparator').<br></p>
 <table>
 <thead>
 <tr>
@@ -793,7 +793,7 @@ ReplicationSettings</p>
 </tbody>
 </table>
 <h5 id="scriptingoption">-ScriptingOption</h5>
-<p>Add scripting options to scripting output for all objects except Registered Servers and Extended Events.</p>
+<p>Add scripting options to scripting output for all objects except Registered Servers and Extended Events.<br></p>
 <table>
 <thead>
 <tr>
@@ -821,7 +821,7 @@ ReplicationSettings</p>
 </tbody>
 </table>
 <h5 id="noprefix">-NoPrefix</h5>
-<p>If this switch is used, the scripts will not include prefix information containing creator and datetime.</p>
+<p>If this switch is used, the scripts will not include prefix information containing creator and datetime.<br></p>
 <table>
 <thead>
 <tr>
@@ -849,7 +849,7 @@ ReplicationSettings</p>
 </tbody>
 </table>
 <h5 id="excludepassword">-ExcludePassword</h5>
-<p>If this switch is used, the scripts will not include passwords for Credentials, LinkedServers or Logins.</p>
+<p>If this switch is used, the scripts will not include passwords for Credentials, LinkedServers or Logins.<br></p>
 <table>
 <thead>
 <tr>
@@ -877,7 +877,7 @@ ReplicationSettings</p>
 </tbody>
 </table>
 <h5 id="force">-Force</h5>
-<p>Overwrite files in the location specified by -Path. Note: The Server Name is used when creating the folder structure.</p>
+<p>Overwrite files in the location specified by -Path. Note: The Server Name is used when creating the folder structure.<br></p>
 <table>
 <thead>
 <tr>
@@ -907,7 +907,7 @@ ReplicationSettings</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -936,6 +936,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Export-DbaInstance.ps1">Export-DbaInstance</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Export-DbaInstance">Export-DbaInstance</a>.</p>
 
                 </div> <!-- rendered -->

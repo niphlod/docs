@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -471,25 +471,25 @@
 <p>Writes a .NET DataTable to a SQL Server table using SQL Bulk Copy.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Write-DbaDbTableData -SqlInstance &lt;DbaInstanceParameter&gt;
-    --SqlCredential &lt;PSCredential&gt;]
-    --Database &lt;Object&gt;] -InputObject &lt;Object&gt;
-    --Table] &lt;String&gt;
-    -[-Schema] &lt;String&gt;]
-    --BatchSize &lt;Int32&gt;]
-    --NotifyAfter &lt;Int32&gt;]
-    --AutoCreateTable]
-    --NoTableLock]
-    --CheckConstraints]
-    --FireTriggers]
-    --KeepIdentity]
-    --KeepNulls]
-    --Truncate]
-    --BulkCopyTimeOut &lt;Int32&gt;]
-    --EnableException]
-    --UseDynamicStringLength]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-SqlCredential &lt;PSCredential&gt;]
+    [-Database &lt;Object&gt;] -InputObject &lt;Object&gt;
+    [-Table] &lt;String&gt;
+    [[-Schema] &lt;String&gt;]
+    [-BatchSize &lt;Int32&gt;]
+    [-NotifyAfter &lt;Int32&gt;]
+    [-AutoCreateTable]
+    [-NoTableLock]
+    [-CheckConstraints]
+    [-FireTriggers]
+    [-KeepIdentity]
+    [-KeepNulls]
+    [-Truncate]
+    [-BulkCopyTimeOut &lt;Int32&gt;]
+    [-EnableException]
+    [-UseDynamicStringLength]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -499,54 +499,54 @@
 <pre><code>PS C:\&gt; $DataTable = Import-Csv C:\temp\customers.csv
 PS C:\&gt; Write-DbaDbTableData -SqlInstance sql2014 -InputObject $DataTable -Table mydb.dbo.customers
 </code></pre>
-<p>Performs a bulk insert of all the data in customers.csv into database mydb, schema dbo, table customers. A progress bar will be shown as rows are inserted. If the destination table does not exist,
-the import will be halted.</p>
+<p>Performs a bulk insert of all the data in customers.csv into database mydb, schema dbo, table customers. A progress bar will be shown as rows are inserted. If the destination table does not exist, <br>
+the import will be halted.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; $tableName = &quot;MyTestData&quot;
 PS C:\&gt; $query = &quot;SELECT name, create_date, owner_sid FROM sys.databases&quot;
 PS C:\&gt; $dataset = Invoke-DbaQuery -SqlInstance 'localhost,1417' -SqlCredential $containerCred -Database master -Query $query -As DataSet
 PS C:\&gt; $dataset | Write-DbaDbTableData -SqlInstance 'localhost,1417' -SqlCredential $containerCred -Database tempdb -Table $tableName -AutoCreateTable
 </code></pre>
-<p>Pulls data from a SQL Server instance and then performs a bulk insert of the dataset to a new, auto-generated table tempdb.dbo.MyTestData.</p>
+<p>Pulls data from a SQL Server instance and then performs a bulk insert of the dataset to a new, auto-generated table tempdb.dbo.MyTestData.<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; $DataTable = Import-Csv C:\temp\customers.csv
 PS C:\&gt; Write-DbaDbTableData -SqlInstance sql2014 -InputObject $DataTable -Table mydb.dbo.customers -AutoCreateTable -Confirm
 </code></pre>
-<p>Performs a bulk insert of all the data in customers.csv. If mydb.dbo.customers does not exist, it will be created with inefficient but forgiving DataTypes.
-Prompts for confirmation before a variety of steps.</p>
+<p>Performs a bulk insert of all the data in customers.csv. If mydb.dbo.customers does not exist, it will be created with inefficient but forgiving DataTypes.<br>
+Prompts for confirmation before a variety of steps.<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; $DataTable = Import-Csv C:\temp\customers.csv
 PS C:\&gt; Write-DbaDbTableData -SqlInstance sql2014 -InputObject $DataTable -Table mydb.dbo.customers -Truncate
 </code></pre>
-<p>Performs a bulk insert of all the data in customers.csv. Prior to importing into mydb.dbo.customers, the user is informed that the table will be truncated and asks for confirmation. The user is
-prompted again to perform the import.</p>
+<p>Performs a bulk insert of all the data in customers.csv. Prior to importing into mydb.dbo.customers, the user is informed that the table will be truncated and asks for confirmation. The user is <br>
+prompted again to perform the import.<br></p>
 <h5 id="example-5">Example:  5</h5>
 <pre><code>PS C:\&gt; $DataTable = Import-Csv C:\temp\customers.csv
 PS C:\&gt; Write-DbaDbTableData -SqlInstance sql2014 -InputObject $DataTable -Database mydb -Table customers -KeepNulls
 </code></pre>
-<p>Performs a bulk insert of all the data in customers.csv into mydb.dbo.customers. Because Schema was not specified, dbo was used. NULL values in the destination table will be preserved.</p>
+<p>Performs a bulk insert of all the data in customers.csv into mydb.dbo.customers. Because Schema was not specified, dbo was used. NULL values in the destination table will be preserved.<br></p>
 <h5 id="example-6">Example:  6</h5>
 <pre><code>PS C:\&gt; $passwd = ConvertTo-SecureString &quot;P@ssw0rd&quot; -AsPlainText -Force
 PS C:\&gt; $AzureCredential = New-Object System.Management.Automation.PSCredential(&quot;AzureAccount&quot;),$passwd)
 PS C:\&gt; $DataTable = Import-Csv C:\temp\customers.csv
 PS C:\&gt; Write-DbaDbTableData -SqlInstance AzureDB.database.windows.net -InputObject $DataTable -Database mydb -Table customers -KeepNulls -SqlCredential $AzureCredential -BulkCopyTimeOut 300
 </code></pre>
-<p>This performs the same operation as the previous example, but against a SQL Azure Database instance using the required credentials.</p>
+<p>This performs the same operation as the previous example, but against a SQL Azure Database instance using the required credentials.<br></p>
 <h5 id="example-7">Example:  7</h5>
 <pre><code>PS C:\&gt; $process = Get-Process
 PS C:\&gt; Write-DbaDbTableData -InputObject $process -SqlInstance sql2014 -Table &quot;[[DbName]]].[Schema.With.Dots].[`&quot;[Process]]`&quot;]&quot; -AutoCreateTable
 </code></pre>
-<p>Creates a table based on the Process object with over 60 columns, converted from PowerShell data types to SQL Server data types. After the table is created a bulk insert is performed to add process
-information into the table
-Writes the results of Get-Process to a table named: &quot;[Process]&quot; in schema named: Schema.With.Dots in database named: [DbName]
-The Table name, Schema name and Database name must be wrapped in square brackets [ ]
-Special characters like &quot; must be escaped by a ` character.
-In addition any actual instance of the ] character must be escaped by being duplicated.
-This is an example of the type conversion in action. All process properties are converted, including special types like TimeSpan. Script properties are resolved before the type conversion starts
-thanks to ConvertTo-DbaDataTable.</p>
+<p>Creates a table based on the Process object with over 60 columns, converted from PowerShell data types to SQL Server data types. After the table is created a bulk insert is performed to add process <br>
+information into the table<br>
+Writes the results of Get-Process to a table named: &quot;[Process]&quot; in schema named: Schema.With.Dots in database named: [DbName]<br>
+The Table name, Schema name and Database name must be wrapped in square brackets [ ]<br>
+Special characters like &quot; must be escaped by a ` character.<br>
+In addition any actual instance of the ] character must be escaped by being duplicated.<br>
+This is an example of the type conversion in action. All process properties are converted, including special types like TimeSpan. Script properties are resolved before the type conversion starts <br>
+thanks to ConvertTo-DbaDataTable.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances.</p>
+<p>The target SQL Server instance or instances.<br></p>
 <table>
 <thead>
 <tr>
@@ -581,7 +581,7 @@ imported in a single call of SqlBulkCopy.
 Also the data type DataTable can lead to an import of all records in a single call of SqlBulkCopy. However, it should be noted that &quot;$varWithDataTable | Write-DbaDbTableData&quot; causes the pipeline to
 convert the single object of type DataTable to a series of objects of type DataRow. These in turn lead to single calls of SqlBulkCopy per record, which negatively affects performance. This is also
 the reason why the use of the DataRow data type is generally discouraged.
-When using objects of type PSObject, these are first all combined into an internal object of type DataTable and then imported in a single call of SqlBulkCopy.</p>
+When using objects of type PSObject, these are first all combined into an internal object of type DataTable and then imported in a single call of SqlBulkCopy.<br></p>
 <table>
 <thead>
 <tr>
@@ -615,7 +615,7 @@ If the object has special characters please wrap them in square brackets [ ].
 Using dbo.First.Table will try to import to a table named 'Table' on schema 'First' and database 'dbo'.
 The correct way to import to a table named 'First.Table' on schema 'dbo' is by passing dbo.[First].[Table].
 Any actual usage of the ] must be escaped by duplicating the ] character.
-The correct way to import to a table Name] in schema Schema.Name is by passing [Schema.Name].[Name]]].</p>
+The correct way to import to a table Name] in schema Schema.Name is by passing [Schema.Name].[Name]]].<br></p>
 <table>
 <thead>
 <tr>
@@ -646,7 +646,7 @@ The correct way to import to a table Name] in schema Schema.Name is by passing [
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -674,7 +674,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="database">-Database</h5>
-<p>The database where the Input Object data will be written.</p>
+<p>The database where the Input Object data will be written.<br></p>
 <table>
 <thead>
 <tr>
@@ -702,7 +702,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="schema">-Schema</h5>
-<p>Defaults to dbo if no schema is specified.</p>
+<p>Defaults to dbo if no schema is specified.<br></p>
 <table>
 <thead>
 <tr>
@@ -730,7 +730,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="batchsize">-BatchSize</h5>
-<p>The BatchSize for the import defaults to 50000.</p>
+<p>The BatchSize for the import defaults to 50000.<br></p>
 <table>
 <thead>
 <tr>
@@ -758,7 +758,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="notifyafter">-NotifyAfter</h5>
-<p>Sets the option to show the notification after so many rows of import. Defaults to 5000 rows.</p>
+<p>Sets the option to show the notification after so many rows of import. Defaults to 5000 rows.<br></p>
 <table>
 <thead>
 <tr>
@@ -786,7 +786,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="autocreatetable">-AutoCreateTable</h5>
-<p>If this switch is enabled, the table will be created if it does not already exist. The table will be created with sub-optimal data types such as nvarchar(max).</p>
+<p>If this switch is enabled, the table will be created if it does not already exist. The table will be created with sub-optimal data types such as nvarchar(max).<br></p>
 <table>
 <thead>
 <tr>
@@ -814,7 +814,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="notablelock">-NoTableLock</h5>
-<p>If this switch is enabled, a table lock (TABLOCK) will not be placed on the destination table. By default, this operation will lock the destination table while running.</p>
+<p>If this switch is enabled, a table lock (TABLOCK) will not be placed on the destination table. By default, this operation will lock the destination table while running.<br></p>
 <table>
 <thead>
 <tr>
@@ -843,7 +843,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </table>
 <h5 id="checkconstraints">-CheckConstraints</h5>
 <p>If this switch is enabled, the SqlBulkCopy option to process check constraints will be enabled.
-Per Microsoft &quot;Check constraints while data is being inserted. By default, constraints are not checked.&quot;</p>
+Per Microsoft &quot;Check constraints while data is being inserted. By default, constraints are not checked.&quot;<br></p>
 <table>
 <thead>
 <tr>
@@ -872,7 +872,7 @@ Per Microsoft &quot;Check constraints while data is being inserted. By default, 
 </table>
 <h5 id="firetriggers">-FireTriggers</h5>
 <p>If this switch is enabled, the SqlBulkCopy option to fire insert triggers will be enabled.
-Per Microsoft &quot;When specified, cause the server to fire the insert triggers for the rows being inserted into the Database.&quot;</p>
+Per Microsoft &quot;When specified, cause the server to fire the insert triggers for the rows being inserted into the Database.&quot;<br></p>
 <table>
 <thead>
 <tr>
@@ -901,7 +901,7 @@ Per Microsoft &quot;When specified, cause the server to fire the insert triggers
 </table>
 <h5 id="keepidentity">-KeepIdentity</h5>
 <p>If this switch is enabled, the SqlBulkCopy option to preserve source identity values will be enabled.
-Per Microsoft &quot;Preserve source identity values. When not specified, identity values are assigned by the destination.&quot;</p>
+Per Microsoft &quot;Preserve source identity values. When not specified, identity values are assigned by the destination.&quot;<br></p>
 <table>
 <thead>
 <tr>
@@ -930,7 +930,7 @@ Per Microsoft &quot;Preserve source identity values. When not specified, identit
 </table>
 <h5 id="keepnulls">-KeepNulls</h5>
 <p>If this switch is enabled, the SqlBulkCopy option to preserve NULL values will be enabled.
-Per Microsoft &quot;Preserve null values in the destination table regardless of the settings for default values. When not specified, null values are replaced by default values where applicable.&quot;</p>
+Per Microsoft &quot;Preserve null values in the destination table regardless of the settings for default values. When not specified, null values are replaced by default values where applicable.&quot;<br></p>
 <table>
 <thead>
 <tr>
@@ -958,7 +958,7 @@ Per Microsoft &quot;Preserve null values in the destination table regardless of 
 </tbody>
 </table>
 <h5 id="truncate">-Truncate</h5>
-<p>If this switch is enabled, the destination table will be truncated after prompting for confirmation.</p>
+<p>If this switch is enabled, the destination table will be truncated after prompting for confirmation.<br></p>
 <table>
 <thead>
 <tr>
@@ -986,7 +986,7 @@ Per Microsoft &quot;Preserve null values in the destination table regardless of 
 </tbody>
 </table>
 <h5 id="bulkcopytimeout">-BulkCopyTimeOut</h5>
-<p>Value in seconds for the BulkCopy operations timeout. The default is 30 seconds.</p>
+<p>Value in seconds for the BulkCopy operations timeout. The default is 30 seconds.<br></p>
 <table>
 <thead>
 <tr>
@@ -1016,7 +1016,7 @@ Per Microsoft &quot;Preserve null values in the destination table regardless of 
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -1045,7 +1045,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <h5 id="usedynamicstringlength">-UseDynamicStringLength</h5>
 <p>By default, all string columns will be NVARCHAR(MAX).
-If this switch is enabled, all columns will get the length specified by the column's MaxLength property (if specified).</p>
+If this switch is enabled, all columns will get the length specified by the column's MaxLength property (if specified).<br></p>
 <table>
 <thead>
 <tr>
@@ -1073,7 +1073,7 @@ If this switch is enabled, all columns will get the length specified by the colu
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.</p>
+<p>If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.<br></p>
 <table>
 <thead>
 <tr>
@@ -1101,7 +1101,7 @@ If this switch is enabled, all columns will get the length specified by the colu
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.</p>
+<p>If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.<br></p>
 <table>
 <thead>
 <tr>
@@ -1130,6 +1130,7 @@ If this switch is enabled, all columns will get the length specified by the colu
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Write-DbaDbTableData.ps1">Write-DbaDbTableData</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Write-DbaDbTableData">Write-DbaDbTableData</a>.</p>
 
                 </div> <!-- rendered -->

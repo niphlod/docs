@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -471,20 +471,20 @@
 It supports a wide range of sql data types and an entire dictionary of various random values.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Get-DbaRandomizedValue
-    -[-DataType] &lt;String&gt;]
-    -[-RandomizerType] &lt;String&gt;]
-    -[-RandomizerSubType] &lt;String&gt;]
-    -[-Min] &lt;Object&gt;]
-    -[-Max] &lt;Object&gt;]
-    -[-Precision] &lt;Int32&gt;]
-    -[-CharacterString] &lt;String&gt;]
-    -[-Format] &lt;String&gt;]
-    -[-Symbol] &lt;String&gt;]
-    -[-Separator] &lt;String&gt;]
-    -[-Value] &lt;String&gt;]
-    -[-Locale] &lt;String&gt;]
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [[-DataType] &lt;String&gt;]
+    [[-RandomizerType] &lt;String&gt;]
+    [[-RandomizerSubType] &lt;String&gt;]
+    [[-Min] &lt;Object&gt;]
+    [[-Max] &lt;Object&gt;]
+    [[-Precision] &lt;Int32&gt;]
+    [[-CharacterString] &lt;String&gt;]
+    [[-Format] &lt;String&gt;]
+    [[-Symbol] &lt;String&gt;]
+    [[-Separator] &lt;String&gt;]
+    [[-Value] &lt;String&gt;]
+    [[-Locale] &lt;String&gt;]
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -493,28 +493,28 @@ It supports a wide range of sql data types and an entire dictionary of various r
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Get-DbaRandomizedValue -DataType bit
 </code></pre>
-<p>Will return either a 1 or 0</p>
+<p>Will return either a 1 or 0<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Get-DbaRandomizedValue -DataType int
 </code></pre>
-<p>Will generate a number between -2147483648 and 2147483647</p>
+<p>Will generate a number between -2147483648 and 2147483647<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Get-DbaRandomizedValue -RandomizerSubType Zipcode
 </code></pre>
-<p>Generates a random zipcode</p>
+<p>Generates a random zipcode<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; Get-DbaRandomizedValue -RandomizerSubType Zipcode -Format &quot;#### ##&quot;
 </code></pre>
-<p>Generates a random zipcode like &quot;1234 56&quot;</p>
+<p>Generates a random zipcode like &quot;1234 56&quot;<br></p>
 <h5 id="example-5">Example:  5</h5>
 <pre><code>PS C:\&gt; Get-DbaRandomizedValue -RandomizerSubType PhoneNumber -Format &quot;(###) #######&quot;
 </code></pre>
-<p>Generates a random phonenumber like &quot;(123) 4567890&quot;</p>
+<p>Generates a random phonenumber like &quot;(123) 4567890&quot;<br></p>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="datatype">-DataType</h5>
 <p>The target SQL Server instance or instances.
 Supported data types are bigint, bit, bool, char, date, datetime, datetime2, decimal, int, float, guid, money, numeric, nchar, ntext, nvarchar, real, smalldatetime, smallint, text, time, tinyint,
-uniqueidentifier, userdefineddatatype, varchar</p>
+uniqueidentifier, userdefineddatatype, varchar<br></p>
 <table>
 <thead>
 <tr>
@@ -543,7 +543,7 @@ uniqueidentifier, userdefineddatatype, varchar</p>
 </table>
 <h5 id="randomizertype">-RandomizerType</h5>
 <p>Bogus type to use.
-Supported types are Address, Commerce, Company, Database, Date, Finance, Hacker, Hashids, Image, Internet, Lorem, Name, Person, Phone, Random, Rant, System</p>
+Supported types are Address, Commerce, Company, Database, Date, Finance, Hacker, Hashids, Image, Internet, Lorem, Name, Person, Phone, Random, Rant, System<br></p>
 <table>
 <thead>
 <tr>
@@ -571,7 +571,7 @@ Supported types are Address, Commerce, Company, Database, Date, Finance, Hacker,
 </tbody>
 </table>
 <h5 id="randomizersubtype">-RandomizerSubType</h5>
-<p>Subtype to use.</p>
+<p>Subtype to use.<br></p>
 <table>
 <thead>
 <tr>
@@ -599,7 +599,7 @@ Supported types are Address, Commerce, Company, Database, Date, Finance, Hacker,
 </tbody>
 </table>
 <h5 id="min">-Min</h5>
-<p>Minimum value used to generate certain lengths of values. Default is 0</p>
+<p>Minimum value used to generate certain lengths of values. Default is 0<br></p>
 <table>
 <thead>
 <tr>
@@ -627,7 +627,7 @@ Supported types are Address, Commerce, Company, Database, Date, Finance, Hacker,
 </tbody>
 </table>
 <h5 id="max">-Max</h5>
-<p>Maximum value used to generate certain lengths of values. Default is 255</p>
+<p>Maximum value used to generate certain lengths of values. Default is 255<br></p>
 <table>
 <thead>
 <tr>
@@ -655,7 +655,7 @@ Supported types are Address, Commerce, Company, Database, Date, Finance, Hacker,
 </tbody>
 </table>
 <h5 id="precision">-Precision</h5>
-<p>Precision used for numeric sql data types like decimal, numeric, real and float</p>
+<p>Precision used for numeric sql data types like decimal, numeric, real and float<br></p>
 <table>
 <thead>
 <tr>
@@ -683,7 +683,7 @@ Supported types are Address, Commerce, Company, Database, Date, Finance, Hacker,
 </tbody>
 </table>
 <h5 id="characterstring">-CharacterString</h5>
-<p>The characters to use in string data. 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789' by default</p>
+<p>The characters to use in string data. 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789' by default<br></p>
 <table>
 <thead>
 <tr>
@@ -711,7 +711,7 @@ Supported types are Address, Commerce, Company, Database, Date, Finance, Hacker,
 </tbody>
 </table>
 <h5 id="format">-Format</h5>
-<p>Use specilized formatting with certain randomizer types like phone number.</p>
+<p>Use specilized formatting with certain randomizer types like phone number.<br></p>
 <table>
 <thead>
 <tr>
@@ -739,7 +739,7 @@ Supported types are Address, Commerce, Company, Database, Date, Finance, Hacker,
 </tbody>
 </table>
 <h5 id="symbol">-Symbol</h5>
-<p>Use a symbol in front of the value i.e. $100,12</p>
+<p>Use a symbol in front of the value i.e. $100,12<br></p>
 <table>
 <thead>
 <tr>
@@ -767,7 +767,7 @@ Supported types are Address, Commerce, Company, Database, Date, Finance, Hacker,
 </tbody>
 </table>
 <h5 id="separator">-Separator</h5>
-<p>Some masking types support separators</p>
+<p>Some masking types support separators<br></p>
 <table>
 <thead>
 <tr>
@@ -796,7 +796,7 @@ Supported types are Address, Commerce, Company, Database, Date, Finance, Hacker,
 </table>
 <h5 id="value">-Value</h5>
 <p>This is the value that needs to be used for several possible transformations.
-One example is the subtype &quot;Shuffling&quot; where the value will be shuffled.</p>
+One example is the subtype &quot;Shuffling&quot; where the value will be shuffled.<br></p>
 <table>
 <thead>
 <tr>
@@ -824,7 +824,7 @@ One example is the subtype &quot;Shuffling&quot; where the value will be shuffle
 </tbody>
 </table>
 <h5 id="locale">-Locale</h5>
-<p>Set the local to enable certain settings in the masking. The default is 'en'</p>
+<p>Set the local to enable certain settings in the masking. The default is 'en'<br></p>
 <table>
 <thead>
 <tr>
@@ -854,7 +854,7 @@ One example is the subtype &quot;Shuffling&quot; where the value will be shuffle
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -883,6 +883,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Get-DbaRandomizedValue.ps1">Get-DbaRandomizedValue</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Get-DbaRandomizedValue">Get-DbaRandomizedValue</a>.</p>
 
                 </div> <!-- rendered -->

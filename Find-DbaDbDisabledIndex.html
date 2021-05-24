@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -470,16 +470,16 @@
 <p>This command will help you to find disabled indexes on a database or a list of databases.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Find-DbaDbDisabledIndex
-    --SqlInstance] &lt;DbaInstanceParameter[]&gt;
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    -[-Database] &lt;Object[]&gt;]
-    -[-ExcludeDatabase] &lt;Object[]&gt;]
-    --NoClobber]
-    --Append]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-SqlInstance] &lt;DbaInstanceParameter[]&gt;
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [[-Database] &lt;Object[]&gt;]
+    [[-ExcludeDatabase] &lt;Object[]&gt;]
+    [-NoClobber]
+    [-Append]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -488,22 +488,22 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Find-DbaDbDisabledIndex -SqlInstance sql2005
 </code></pre>
-<p>Generates the SQL statements to drop the selected disabled indexes on server &quot;sql2005&quot;.</p>
+<p>Generates the SQL statements to drop the selected disabled indexes on server &quot;sql2005&quot;.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Find-DbaDbDisabledIndex -SqlInstance sqlserver2016 -SqlCredential $cred
 </code></pre>
-<p>Generates the SQL statements to drop the selected disabled indexes on server &quot;sqlserver2016&quot;, using SQL Authentication to connect to the database.</p>
+<p>Generates the SQL statements to drop the selected disabled indexes on server &quot;sqlserver2016&quot;, using SQL Authentication to connect to the database.<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Find-DbaDbDisabledIndex -SqlInstance sqlserver2016 -Database db1, db2
 </code></pre>
-<p>Generates the SQL Statement to drop selected indexes in databases db1 &amp; db2 on server &quot;sqlserver2016&quot;.</p>
+<p>Generates the SQL Statement to drop selected indexes in databases db1 &amp; db2 on server &quot;sqlserver2016&quot;.<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; Find-DbaDbDisabledIndex -SqlInstance sqlserver2016
 </code></pre>
-<p>Generates the SQL statements to drop selected indexes on all user databases.</p>
+<p>Generates the SQL statements to drop selected indexes on all user databases.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances.</p>
+<p>The target SQL Server instance or instances.<br></p>
 <table>
 <thead>
 <tr>
@@ -534,7 +534,7 @@
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -562,7 +562,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="database">-Database</h5>
-<p>The database(s) to process. Options for this list are auto-populated from the server. If unspecified, all databases will be processed.</p>
+<p>The database(s) to process. Options for this list are auto-populated from the server. If unspecified, all databases will be processed.<br></p>
 <table>
 <thead>
 <tr>
@@ -590,7 +590,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="excludedatabase">-ExcludeDatabase</h5>
-<p>Specifies the database(s) to exclude from processing. Options for this list are auto-populated from the server.</p>
+<p>Specifies the database(s) to exclude from processing. Options for this list are auto-populated from the server.<br></p>
 <table>
 <thead>
 <tr>
@@ -618,7 +618,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="noclobber">-NoClobber</h5>
-<p>If this switch is enabled, the output file will not be overwritten.</p>
+<p>If this switch is enabled, the output file will not be overwritten.<br></p>
 <table>
 <thead>
 <tr>
@@ -646,7 +646,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="append">-Append</h5>
-<p>If this switch is enabled, content will be appended to the output file.</p>
+<p>If this switch is enabled, content will be appended to the output file.<br></p>
 <table>
 <thead>
 <tr>
@@ -676,7 +676,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -704,7 +704,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.</p>
+<p>If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.<br></p>
 <table>
 <thead>
 <tr>
@@ -732,7 +732,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.</p>
+<p>If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.<br></p>
 <table>
 <thead>
 <tr>
@@ -761,6 +761,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Find-DbaDbDisabledIndex.ps1">Find-DbaDbDisabledIndex</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Find-DbaDbDisabledIndex">Find-DbaDbDisabledIndex</a>.</p>
 
                 </div> <!-- rendered -->

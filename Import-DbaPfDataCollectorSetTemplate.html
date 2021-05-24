@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -474,29 +474,29 @@ For specific instances in addition to the default, use -Instance.</p>
 <p>See <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa371952">https://msdn.microsoft.com/en-us/library/windows/desktop/aa371952</a> for more information</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Import-DbaPfDataCollectorSetTemplate
-    -[-ComputerName] &lt;DbaInstanceParameter[]&gt;]
-    -[-Credential] &lt;PSCredential&gt;]
-    -[-DisplayName] &lt;String&gt;]
-    --SchedulesEnabled]
-    -[-RootPath] &lt;String&gt;]
-    --Segment]
-    -[-SegmentMaxDuration] &lt;Int32&gt;]
-    -[-SegmentMaxSize] &lt;Int32&gt;]
-    -[-Subdirectory] &lt;String&gt;]
-    -[-SubdirectoryFormat] &lt;Int32&gt;]
-    -[-SubdirectoryFormatPattern] &lt;String&gt;]
-    -[-Task] &lt;String&gt;]
-    --TaskRunAsSelf]
-    -[-TaskArguments] &lt;String&gt;]
-    -[-TaskUserTextArguments] &lt;String&gt;]
-    --StopOnCompletion]
-    -[-Path] &lt;String[]&gt;]
-    -[-Template] &lt;String[]&gt;]
-    -[-Instance] &lt;String[]&gt;]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [[-ComputerName] &lt;DbaInstanceParameter[]&gt;]
+    [[-Credential] &lt;PSCredential&gt;]
+    [[-DisplayName] &lt;String&gt;]
+    [-SchedulesEnabled]
+    [[-RootPath] &lt;String&gt;]
+    [-Segment]
+    [[-SegmentMaxDuration] &lt;Int32&gt;]
+    [[-SegmentMaxSize] &lt;Int32&gt;]
+    [[-Subdirectory] &lt;String&gt;]
+    [[-SubdirectoryFormat] &lt;Int32&gt;]
+    [[-SubdirectoryFormatPattern] &lt;String&gt;]
+    [[-Task] &lt;String&gt;]
+    [-TaskRunAsSelf]
+    [[-TaskArguments] &lt;String&gt;]
+    [[-TaskUserTextArguments] &lt;String&gt;]
+    [-StopOnCompletion]
+    [[-Path] &lt;String[]&gt;]
+    [[-Template] &lt;String[]&gt;]
+    [[-Instance] &lt;String[]&gt;]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -505,28 +505,28 @@ For specific instances in addition to the default, use -Instance.</p>
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Import-DbaPfDataCollectorSetTemplate -ComputerName sql2017 -Template 'Long Running Query'
 </code></pre>
-<p>Creates a new data collector set named 'Long Running Query' from the dbatools repository on the SQL Server sql2017.</p>
+<p>Creates a new data collector set named 'Long Running Query' from the dbatools repository on the SQL Server sql2017.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Import-DbaPfDataCollectorSetTemplate -ComputerName sql2017 -Template 'Long Running Query' -DisplayName 'New Long running query' -Confirm
 </code></pre>
-<p>Creates a new data collector set named &quot;New Long Running Query&quot; using the 'Long Running Query' template. Forces a confirmation if the template exists.</p>
+<p>Creates a new data collector set named &quot;New Long Running Query&quot; using the 'Long Running Query' template. Forces a confirmation if the template exists.<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Get-DbaPfDataCollectorSet -ComputerName sql2017 -Session db_ola_health | Remove-DbaPfDataCollectorSet
 </code></pre>
-<p>Import-DbaPfDataCollectorSetTemplate -ComputerName sql2017 -Template db_ola_health | Start-DbaPfDataCollectorSet
-Imports a session if it exists, then recreates it using a template.</p>
+<p>Import-DbaPfDataCollectorSetTemplate -ComputerName sql2017 -Template db_ola_health | Start-DbaPfDataCollectorSet<br>
+Imports a session if it exists, then recreates it using a template.<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; Get-DbaPfDataCollectorSetTemplate | Out-GridView -PassThru | Import-DbaPfDataCollectorSetTemplate -ComputerName sql2017
 </code></pre>
-<p>Allows you to select a Session template then import to an instance named sql2017.</p>
+<p>Allows you to select a Session template then import to an instance named sql2017.<br></p>
 <h5 id="example-5">Example:  5</h5>
 <pre><code>PS C:\&gt; Import-DbaPfDataCollectorSetTemplate -ComputerName sql2017 -Template 'Long Running Query' -Instance SHAREPOINT
 </code></pre>
-<p>Creates a new data collector set named 'Long Running Query' from the dbatools repository on the SQL Server sql2017 for both the default and the SHAREPOINT instance.
-If you'd like to remove counters for the default instance, use Remove-DbaPfDataCollectorCounter.</p>
+<p>Creates a new data collector set named 'Long Running Query' from the dbatools repository on the SQL Server sql2017 for both the default and the SHAREPOINT instance.<br>
+If you'd like to remove counters for the default instance, use Remove-DbaPfDataCollectorCounter.<br></p>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="computername">-ComputerName</h5>
-<p>The target computer. Defaults to localhost.</p>
+<p>The target computer. Defaults to localhost.<br></p>
 <table>
 <thead>
 <tr>
@@ -555,7 +555,7 @@ If you'd like to remove counters for the default instance, use Remove-DbaPfDataC
 </table>
 <h5 id="credential">-Credential</h5>
 <p>Allows you to login to servers using alternative credentials. To use:
-$scred = Get-Credential, then pass $scred object to the -Credential parameter.</p>
+$scred = Get-Credential, then pass $scred object to the -Credential parameter.<br></p>
 <table>
 <thead>
 <tr>
@@ -583,7 +583,7 @@ $scred = Get-Credential, then pass $scred object to the -Credential parameter.</
 </tbody>
 </table>
 <h5 id="displayname">-DisplayName</h5>
-<p>Sets the display name of the data collector set.</p>
+<p>Sets the display name of the data collector set.<br></p>
 <table>
 <thead>
 <tr>
@@ -611,7 +611,7 @@ $scred = Get-Credential, then pass $scred object to the -Credential parameter.</
 </tbody>
 </table>
 <h5 id="schedulesenabled">-SchedulesEnabled</h5>
-<p>If this switch is enabled, sets a value that indicates whether the schedules are enabled.</p>
+<p>If this switch is enabled, sets a value that indicates whether the schedules are enabled.<br></p>
 <table>
 <thead>
 <tr>
@@ -639,7 +639,7 @@ $scred = Get-Credential, then pass $scred object to the -Credential parameter.</
 </tbody>
 </table>
 <h5 id="rootpath">-RootPath</h5>
-<p>Sets the base path where the subdirectories are created.</p>
+<p>Sets the base path where the subdirectories are created.<br></p>
 <table>
 <thead>
 <tr>
@@ -667,7 +667,7 @@ $scred = Get-Credential, then pass $scred object to the -Credential parameter.</
 </tbody>
 </table>
 <h5 id="segment">-Segment</h5>
-<p>Sets a value that indicates whether PLA creates new logs if the maximum size or segment duration is reached before the data collector set is stopped.</p>
+<p>Sets a value that indicates whether PLA creates new logs if the maximum size or segment duration is reached before the data collector set is stopped.<br></p>
 <table>
 <thead>
 <tr>
@@ -695,7 +695,7 @@ $scred = Get-Credential, then pass $scred object to the -Credential parameter.</
 </tbody>
 </table>
 <h5 id="segmentmaxduration">-SegmentMaxDuration</h5>
-<p>Sets the duration that the data collector set can run before it begins writing to new log files.</p>
+<p>Sets the duration that the data collector set can run before it begins writing to new log files.<br></p>
 <table>
 <thead>
 <tr>
@@ -723,7 +723,7 @@ $scred = Get-Credential, then pass $scred object to the -Credential parameter.</
 </tbody>
 </table>
 <h5 id="segmentmaxsize">-SegmentMaxSize</h5>
-<p>Sets the maximum size of any log file in the data collector set.</p>
+<p>Sets the maximum size of any log file in the data collector set.<br></p>
 <table>
 <thead>
 <tr>
@@ -751,7 +751,7 @@ $scred = Get-Credential, then pass $scred object to the -Credential parameter.</
 </tbody>
 </table>
 <h5 id="subdirectory">-Subdirectory</h5>
-<p>Sets a base subdirectory of the root path where the next instance of the data collector set will write its logs.</p>
+<p>Sets a base subdirectory of the root path where the next instance of the data collector set will write its logs.<br></p>
 <table>
 <thead>
 <tr>
@@ -780,7 +780,7 @@ $scred = Get-Credential, then pass $scred object to the -Credential parameter.</
 </table>
 <h5 id="subdirectoryformat">-SubdirectoryFormat</h5>
 <p>Sets flags that describe how to decorate the subdirectory name. PLA appends the decoration to the folder name. For example, if you specify plaMonthDayHour, PLA appends the current month, day, and
-hour values to the folder name. If the folder name is MyFile, the result could be MyFile110816.</p>
+hour values to the folder name. If the folder name is MyFile, the result could be MyFile110816.<br></p>
 <table>
 <thead>
 <tr>
@@ -808,7 +808,7 @@ hour values to the folder name. If the folder name is MyFile, the result could b
 </tbody>
 </table>
 <h5 id="subdirectoryformatpattern">-SubdirectoryFormatPattern</h5>
-<p>Sets a format pattern to use when decorating the folder name. Default is 'yyyyMMdd-NNNNNN'.</p>
+<p>Sets a format pattern to use when decorating the folder name. Default is 'yyyyMMdd-NNNNNN'.<br></p>
 <table>
 <thead>
 <tr>
@@ -836,7 +836,7 @@ hour values to the folder name. If the folder name is MyFile, the result could b
 </tbody>
 </table>
 <h5 id="task">-Task</h5>
-<p>Sets the name of a Task Scheduler job to start each time the data collector set stops, including between segments.</p>
+<p>Sets the name of a Task Scheduler job to start each time the data collector set stops, including between segments.<br></p>
 <table>
 <thead>
 <tr>
@@ -864,7 +864,7 @@ hour values to the folder name. If the folder name is MyFile, the result could b
 </tbody>
 </table>
 <h5 id="taskrunasself">-TaskRunAsSelf</h5>
-<p>If this switch is enabled, sets a value that determines whether the task runs as the data collector set user or as the user specified in the task.</p>
+<p>If this switch is enabled, sets a value that determines whether the task runs as the data collector set user or as the user specified in the task.<br></p>
 <table>
 <thead>
 <tr>
@@ -893,7 +893,7 @@ hour values to the folder name. If the folder name is MyFile, the result could b
 </table>
 <h5 id="taskarguments">-TaskArguments</h5>
 <p>Sets the command-line arguments to pass to the Task Scheduler job specified in the IDataCollectorSet::Task property.
-See <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa371992">https://msdn.microsoft.com/en-us/library/windows/desktop/aa371992</a> for more information.</p>
+See <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa371992">https://msdn.microsoft.com/en-us/library/windows/desktop/aa371992</a> for more information.<br></p>
 <table>
 <thead>
 <tr>
@@ -922,7 +922,7 @@ See <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa371992">
 </table>
 <h5 id="taskusertextarguments">-TaskUserTextArguments</h5>
 <p usertext="">Sets the command-line arguments that are substituted for the  substitution variable in the IDataCollectorSet::TaskArguments property.
-See <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa371993">https://msdn.microsoft.com/en-us/library/windows/desktop/aa371993</a> for more information.</p>
+See <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa371993">https://msdn.microsoft.com/en-us/library/windows/desktop/aa371993</a> for more information.<br></p>
 <table>
 <thead>
 <tr>
@@ -950,7 +950,7 @@ See <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa371993">
 </tbody>
 </table>
 <h5 id="stoponcompletion">-StopOnCompletion</h5>
-<p>If this switch is enabled, sets a value that determines whether the data collector set stops when all the data collectors in the set are in a completed state.</p>
+<p>If this switch is enabled, sets a value that determines whether the data collector set stops when all the data collectors in the set are in a completed state.<br></p>
 <table>
 <thead>
 <tr>
@@ -978,7 +978,7 @@ See <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa371993">
 </tbody>
 </table>
 <h5 id="path">-Path</h5>
-<p>The path to the xml file or files.</p>
+<p>The path to the xml file or files.<br></p>
 <table>
 <thead>
 <tr>
@@ -1006,7 +1006,7 @@ See <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa371993">
 </tbody>
 </table>
 <h5 id="template">-Template</h5>
-<p>From one or more of the templates from the dbatools repository. Press Tab to cycle through the available options.</p>
+<p>From one or more of the templates from the dbatools repository. Press Tab to cycle through the available options.<br></p>
 <table>
 <thead>
 <tr>
@@ -1034,7 +1034,7 @@ See <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa371993">
 </tbody>
 </table>
 <h5 id="instance">-Instance</h5>
-<p>By default, the template will be applied to all instances. If you want to set specific ones in addition to the default, supply just the instance name.</p>
+<p>By default, the template will be applied to all instances. If you want to set specific ones in addition to the default, supply just the instance name.<br></p>
 <table>
 <thead>
 <tr>
@@ -1064,7 +1064,7 @@ See <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa371993">
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -1092,7 +1092,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.</p>
+<p>If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.<br></p>
 <table>
 <thead>
 <tr>
@@ -1120,7 +1120,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.</p>
+<p>If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.<br></p>
 <table>
 <thead>
 <tr>
@@ -1149,6 +1149,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Import-DbaPfDataCollectorSetTemplate.ps1">Import-DbaPfDataCollectorSetTemplate</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Import-DbaPfDataCollectorSetTemplate">Import-DbaPfDataCollectorSetTemplate</a>.</p>
 
                 </div> <!-- rendered -->

@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -470,28 +470,28 @@
 <p>Tries a bunch of different ways to remove a Login or two or more.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Remove-DbaLogin
-    --SqlCredential &lt;PSCredential&gt;]
-    --Force]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-SqlCredential &lt;PSCredential&gt;]
+    [-Force]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 Remove-DbaLogin -SqlInstance &lt;DbaInstanceParameter[]&gt;
-    --SqlCredential &lt;PSCredential&gt;] -Login &lt;String[]&gt;
-    --Force]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-SqlCredential &lt;PSCredential&gt;] -Login &lt;String[]&gt;
+    [-Force]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 Remove-DbaLogin
-    --SqlCredential &lt;PSCredential&gt;] -InputObject &lt;Login[]&gt;
-    --Force]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-SqlCredential &lt;PSCredential&gt;] -InputObject &lt;Login[]&gt;
+    [-Force]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -500,22 +500,22 @@ Remove-DbaLogin
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Remove-DbaLogin -SqlInstance sql2016 -Login mylogin
 </code></pre>
-<p>Prompts then removes the Login mylogin on SQL Server sql2016</p>
+<p>Prompts then removes the Login mylogin on SQL Server sql2016<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Remove-DbaLogin -SqlInstance sql2016 -Login mylogin, yourlogin
 </code></pre>
-<p>Prompts then removes the Logins mylogin and yourlogin on SQL Server sql2016</p>
+<p>Prompts then removes the Logins mylogin and yourlogin on SQL Server sql2016<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Remove-DbaLogin -SqlInstance sql2016 -Login mylogin -Confirm:$false
 </code></pre>
-<p>Does not prompt and swiftly removes mylogin on SQL Server sql2016</p>
+<p>Does not prompt and swiftly removes mylogin on SQL Server sql2016<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; Get-DbaLogin -SqlInstance server\instance -Login yourlogin | Remove-DbaLogin
 </code></pre>
-<p>Removes mylogin on SQL Server server\instance</p>
+<p>Removes mylogin on SQL Server server\instance<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances.</p>
+<p>The target SQL Server instance or instances.<br></p>
 <table>
 <thead>
 <tr>
@@ -543,7 +543,7 @@ Remove-DbaLogin
 </tbody>
 </table>
 <h5 id="login">-Login</h5>
-<p>The Login(s) to process - this list is auto-populated from the server. If unspecified, all Logins will be processed.</p>
+<p>The Login(s) to process - this list is auto-populated from the server. If unspecified, all Logins will be processed.<br></p>
 <table>
 <thead>
 <tr>
@@ -571,7 +571,7 @@ Remove-DbaLogin
 </tbody>
 </table>
 <h5 id="inputobject">-InputObject</h5>
-<p>A collection of Logins (such as returned by Get-DbaLogin), to be removed.</p>
+<p>A collection of Logins (such as returned by Get-DbaLogin), to be removed.<br></p>
 <table>
 <thead>
 <tr>
@@ -600,7 +600,7 @@ Remove-DbaLogin
 </table>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="sqlcredential">-SqlCredential</h5>
-<p>Allows you to login to servers using alternative credentials.</p>
+<p>Allows you to login to servers using alternative credentials.<br></p>
 <table>
 <thead>
 <tr>
@@ -628,7 +628,7 @@ Remove-DbaLogin
 </tbody>
 </table>
 <h5 id="force">-Force</h5>
-<p>Kills any sessions associated with the login prior to drop</p>
+<p>Kills any sessions associated with the login prior to drop<br></p>
 <table>
 <thead>
 <tr>
@@ -658,7 +658,7 @@ Remove-DbaLogin
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -686,7 +686,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>Shows what would happen if the command were to run. No actions are actually performed.</p>
+<p>Shows what would happen if the command were to run. No actions are actually performed.<br></p>
 <table>
 <thead>
 <tr>
@@ -714,7 +714,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>Prompts you for confirmation before executing any changing operations within the command.</p>
+<p>Prompts you for confirmation before executing any changing operations within the command.<br></p>
 <table>
 <thead>
 <tr>
@@ -743,6 +743,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Remove-DbaLogin.ps1">Remove-DbaLogin</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Remove-DbaLogin">Remove-DbaLogin</a>.</p>
 
                 </div> <!-- rendered -->

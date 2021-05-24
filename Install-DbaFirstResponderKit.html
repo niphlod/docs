@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -473,17 +473,17 @@
 <a href="https://github.com/BrentOzarULTD/SQL-Server-First-Responder-Kit">https://github.com/BrentOzarULTD/SQL-Server-First-Responder-Kit</a></p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Install-DbaFirstResponderKit
-    --SqlInstance] &lt;DbaInstanceParameter[]&gt;
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    -[-Branch] &lt;String&gt;]
-    -[-Database] &lt;Object&gt;]
-    -[-LocalFile] &lt;String&gt;]
-    -[-OnlyScript] &lt;String[]&gt;]
-    --Force]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-SqlInstance] &lt;DbaInstanceParameter[]&gt;
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [[-Branch] &lt;String&gt;]
+    [[-Database] &lt;Object&gt;]
+    [[-LocalFile] &lt;String&gt;]
+    [[-OnlyScript] &lt;String[]&gt;]
+    [-Force]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -492,43 +492,43 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Install-DbaFirstResponderKit -SqlInstance server1 -Database master
 </code></pre>
-<p>Logs into server1 with Windows authentication and then installs the FRK in the master database.</p>
+<p>Logs into server1 with Windows authentication and then installs the FRK in the master database.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Install-DbaFirstResponderKit -SqlInstance server1\instance1 -Database DBA
 </code></pre>
-<p>Logs into server1\instance1 with Windows authentication and then installs the FRK in the DBA database.</p>
+<p>Logs into server1\instance1 with Windows authentication and then installs the FRK in the DBA database.<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Install-DbaFirstResponderKit -SqlInstance server1\instance1 -Database master -SqlCredential $cred
 </code></pre>
-<p>Logs into server1\instance1 with SQL authentication and then installs the FRK in the master database.</p>
+<p>Logs into server1\instance1 with SQL authentication and then installs the FRK in the master database.<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; Install-DbaFirstResponderKit -SqlInstance sql2016\standardrtm, sql2016\sqlexpress, sql2014
 </code></pre>
-<p>Logs into sql2016\standardrtm, sql2016\sqlexpress and sql2014 with Windows authentication and then installs the FRK in the master database.</p>
+<p>Logs into sql2016\standardrtm, sql2016\sqlexpress and sql2014 with Windows authentication and then installs the FRK in the master database.<br></p>
 <h5 id="example-5">Example:  5</h5>
 <pre><code>PS C:\&gt; $servers = &quot;sql2016\standardrtm&quot;, &quot;sql2016\sqlexpress&quot;, &quot;sql2014&quot;
 PS C:\&gt; $servers | Install-DbaFirstResponderKit
 </code></pre>
-<p>Logs into sql2016\standardrtm, sql2016\sqlexpress and sql2014 with Windows authentication and then installs the FRK in the master database.</p>
+<p>Logs into sql2016\standardrtm, sql2016\sqlexpress and sql2014 with Windows authentication and then installs the FRK in the master database.<br></p>
 <h5 id="example-6">Example:  6</h5>
 <pre><code>PS C:\&gt; Install-DbaFirstResponderKit -SqlInstance sql2016 -Branch dev
 </code></pre>
-<p>Installs the dev branch version of the FRK in the master database on sql2016 instance.</p>
+<p>Installs the dev branch version of the FRK in the master database on sql2016 instance.<br></p>
 <h5 id="example-7">Example:  7</h5>
 <pre><code>PS C:\&gt; Install-DbaFirstResponderKit -SqlInstance sql2016 -OnlyScript sp_Blitz.sql, sp_BlitzWho.sql, SqlServerVersions.sql
 </code></pre>
-<p>Installs only the procedures sp_Blitz and sp_BlitzWho and the table SqlServerVersions by running the corresponding scripts.</p>
+<p>Installs only the procedures sp_Blitz and sp_BlitzWho and the table SqlServerVersions by running the corresponding scripts.<br></p>
 <h5 id="example-8">Example:  8</h5>
 <pre><code>PS C:\&gt; Install-DbaFirstResponderKit -SqlInstance sql2016 -OnlyScript Install-Core-Blitz-No-Query-Store.sql
 </code></pre>
-<p>Installs only part of the First Responder Kit by running the official install script.</p>
+<p>Installs only part of the First Responder Kit by running the official install script.<br></p>
 <h5 id="example-9">Example:  9</h5>
 <pre><code>PS C:\&gt; Install-DbaFirstResponderKit -SqlInstance sql2016 -OnlyScript Uninstall.sql
 </code></pre>
-<p>Uninstalls the First Responder Kit by running the official uninstall script.</p>
+<p>Uninstalls the First Responder Kit by running the official uninstall script.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances.</p>
+<p>The target SQL Server instance or instances.<br></p>
 <table>
 <thead>
 <tr>
@@ -559,7 +559,7 @@ PS C:\&gt; $servers | Install-DbaFirstResponderKit
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -590,7 +590,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 <p>Specifies an alternate branch of the First Responder Kit to install.
 Allowed values:
 main (default)
-dev</p>
+dev<br></p>
 <table>
 <thead>
 <tr>
@@ -622,7 +622,7 @@ dev</p>
 </tbody>
 </table>
 <h5 id="database">-Database</h5>
-<p>Specifies the database to install the First Responder Kit stored procedures into</p>
+<p>Specifies the database to install the First Responder Kit stored procedures into<br></p>
 <table>
 <thead>
 <tr>
@@ -651,7 +651,7 @@ dev</p>
 </table>
 <h5 id="localfile">-LocalFile</h5>
 <p>Specifies the path to a local file to install FRK from. This <em>should</em> be the zip file as distributed by the maintainers.
-If this parameter is not specified, the latest version will be downloaded and installed from <a href="https://github.com/BrentOzarULTD/SQL-Server-First-Responder-Kit">https://github.com/BrentOzarULTD/SQL-Server-First-Responder-Kit</a></p>
+If this parameter is not specified, the latest version will be downloaded and installed from <a href="https://github.com/BrentOzarULTD/SQL-Server-First-Responder-Kit">https://github.com/BrentOzarULTD/SQL-Server-First-Responder-Kit</a><br></p>
 <table>
 <thead>
 <tr>
@@ -682,7 +682,7 @@ If this parameter is not specified, the latest version will be downloaded and in
 <p>Specifies the name(s) of the script(s) to run for installation. Wildcards are permitted.
 This way only part of the First Responder Kit can be installed.
 Using one of the three official Install-* scripts (Install-All-Scripts.sql, Install-Core-Blitz-No-Query-Store.sql, Install-Core-Blitz-With-Query-Store.sql) is possible this way.
-Even removing the First Responder Kit is possible by using the official Uninstall.sql.</p>
+Even removing the First Responder Kit is possible by using the official Uninstall.sql.<br></p>
 <table>
 <thead>
 <tr>
@@ -714,7 +714,7 @@ Even removing the First Responder Kit is possible by using the official Uninstal
 </tbody>
 </table>
 <h5 id="force">-Force</h5>
-<p>If this switch is enabled, the FRK will be downloaded from the internet even if previously cached.</p>
+<p>If this switch is enabled, the FRK will be downloaded from the internet even if previously cached.<br></p>
 <table>
 <thead>
 <tr>
@@ -744,7 +744,7 @@ Even removing the First Responder Kit is possible by using the official Uninstal
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -772,7 +772,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>Shows what would happen if the command were to run. No actions are actually performed.</p>
+<p>Shows what would happen if the command were to run. No actions are actually performed.<br></p>
 <table>
 <thead>
 <tr>
@@ -800,7 +800,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>Prompts to confirm actions</p>
+<p>Prompts to confirm actions<br></p>
 <table>
 <thead>
 <tr>
@@ -829,6 +829,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Install-DbaFirstResponderKit.ps1">Install-DbaFirstResponderKit</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Install-DbaFirstResponderKit">Install-DbaFirstResponderKit</a>.</p>
 
                 </div> <!-- rendered -->

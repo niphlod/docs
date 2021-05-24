@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -500,35 +500,35 @@ The transaction log will grow in chunks until it reaches the desired size.
 Example: If you have a log file with 8192MB and you say that the target size is 81920MB (80GB) it will grow in chunks of 8192MB until it reaches 81920MB. 8192 -&gt; 16384 -&gt; 24576 ... 73728 -&gt; 81920</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Expand-DbaDbLogFile
-    --SqlInstance] &lt;DbaInstanceParameter&gt;
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    --Database &lt;Object[]&gt;]
-    -[-ExcludeDatabase] &lt;Object[]&gt;]
-    --TargetLogSize] &lt;Int32&gt;
-    -[-IncrementSize] &lt;Int32&gt;]
-    -[-LogFileId] &lt;Int32&gt;]
-    --ExcludeDiskSpaceValidation]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-SqlInstance] &lt;DbaInstanceParameter&gt;
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [-Database &lt;Object[]&gt;]
+    [[-ExcludeDatabase] &lt;Object[]&gt;]
+    [-TargetLogSize] &lt;Int32&gt;
+    [[-IncrementSize] &lt;Int32&gt;]
+    [[-LogFileId] &lt;Int32&gt;]
+    [-ExcludeDiskSpaceValidation]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 Expand-DbaDbLogFile
-    --SqlInstance] &lt;DbaInstanceParameter&gt;
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    --Database &lt;Object[]&gt;]
-    -[-ExcludeDatabase] &lt;Object[]&gt;]
-    --TargetLogSize] &lt;Int32&gt;
-    -[-IncrementSize] &lt;Int32&gt;]
-    -[-LogFileId] &lt;Int32&gt;]
-    --ShrinkLogFile]
-    --ShrinkSize] &lt;Int32&gt;
-    -[-BackupDirectory] &lt;String&gt;]
-    --ExcludeDiskSpaceValidation]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-SqlInstance] &lt;DbaInstanceParameter&gt;
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [-Database &lt;Object[]&gt;]
+    [[-ExcludeDatabase] &lt;Object[]&gt;]
+    [-TargetLogSize] &lt;Int32&gt;
+    [[-IncrementSize] &lt;Int32&gt;]
+    [[-LogFileId] &lt;Int32&gt;]
+    [-ShrinkLogFile]
+    [-ShrinkSize] &lt;Int32&gt;
+    [[-BackupDirectory] &lt;String&gt;]
+    [-ExcludeDiskSpaceValidation]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -537,27 +537,27 @@ Expand-DbaDbLogFile
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Expand-DbaDbLogFile -SqlInstance sqlcluster -Database db1 -TargetLogSize 50000
 </code></pre>
-<p>Grows the transaction log for database db1 on sqlcluster to 50000 MB and calculates the increment size.</p>
+<p>Grows the transaction log for database db1 on sqlcluster to 50000 MB and calculates the increment size.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Expand-DbaDbLogFile -SqlInstance sqlcluster -Database db1, db2 -TargetLogSize 10000 -IncrementSize 200
 </code></pre>
-<p>Grows the transaction logs for databases db1 and db2 on sqlcluster to 1000MB and sets the growth increment to 200MB.</p>
+<p>Grows the transaction logs for databases db1 and db2 on sqlcluster to 1000MB and sets the growth increment to 200MB.<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Expand-DbaDbLogFile -SqlInstance sqlcluster -Database db1 -TargetLogSize 10000 -LogFileId 9
 </code></pre>
-<p>Grows the transaction log file  with FileId 9 of the db1 database on sqlcluster instance to 10000MB.</p>
+<p>Grows the transaction log file  with FileId 9 of the db1 database on sqlcluster instance to 10000MB.<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; Expand-DbaDbLogFile -SqlInstance sqlcluster -Database (Get-Content D:\DBs.txt) -TargetLogSize 50000
 </code></pre>
-<p>Grows the transaction log of the databases specified in the file 'D:\DBs.txt' on sqlcluster instance to 50000MB.</p>
+<p>Grows the transaction log of the databases specified in the file 'D:\DBs.txt' on sqlcluster instance to 50000MB.<br></p>
 <h5 id="example-5">Example:  5</h5>
 <pre><code>PS C:\&gt; Expand-DbaDbLogFile -SqlInstance SqlInstance -Database db1,db2 -TargetLogSize 100 -IncrementSize 10 -ShrinkLogFile -ShrinkSize 10 -BackupDirectory R:\MSSQL\Backup
 </code></pre>
-<p>Grows the transaction logs for databases db1 and db2 on SQL server SQLInstance to 100MB, sets the incremental growth to 10MB, shrinks the transaction log to 10MB and uses the directory
-R:\MSSQL\Backup for the required backups.</p>
+<p>Grows the transaction logs for databases db1 and db2 on SQL server SQLInstance to 100MB, sets the incremental growth to 10MB, shrinks the transaction log to 10MB and uses the directory <br>
+R:\MSSQL\Backup for the required backups.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances.</p>
+<p>The target SQL Server instance or instances.<br></p>
 <table>
 <thead>
 <tr>
@@ -585,7 +585,7 @@ R:\MSSQL\Backup for the required backups.</p>
 </tbody>
 </table>
 <h5 id="targetlogsize">-TargetLogSize</h5>
-<p>Specifies the target size of the transaction log file in megabytes.</p>
+<p>Specifies the target size of the transaction log file in megabytes.<br></p>
 <table>
 <thead>
 <tr>
@@ -613,7 +613,7 @@ R:\MSSQL\Backup for the required backups.</p>
 </tbody>
 </table>
 <h5 id="shrinklogfile">-ShrinkLogFile</h5>
-<p>If this switch is enabled, your transaction log files will be shrunk.</p>
+<p>If this switch is enabled, your transaction log files will be shrunk.<br></p>
 <table>
 <thead>
 <tr>
@@ -641,7 +641,7 @@ R:\MSSQL\Backup for the required backups.</p>
 </tbody>
 </table>
 <h5 id="shrinksize">-ShrinkSize</h5>
-<p>Specifies the target size of the transaction log file for the shrink operation in megabytes.</p>
+<p>Specifies the target size of the transaction log file for the shrink operation in megabytes.<br></p>
 <table>
 <thead>
 <tr>
@@ -672,7 +672,7 @@ R:\MSSQL\Backup for the required backups.</p>
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -700,7 +700,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="database">-Database</h5>
-<p>The database(s) to process. Options for this list are auto-populated from the server. If unspecified, all databases will be processed.</p>
+<p>The database(s) to process. Options for this list are auto-populated from the server. If unspecified, all databases will be processed.<br></p>
 <table>
 <thead>
 <tr>
@@ -728,7 +728,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="excludedatabase">-ExcludeDatabase</h5>
-<p>The database(s) to exclude. Options for this list are auto-populated from the server.</p>
+<p>The database(s) to exclude. Options for this list are auto-populated from the server.<br></p>
 <table>
 <thead>
 <tr>
@@ -757,7 +757,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </table>
 <h5 id="incrementsize">-IncrementSize</h5>
 <p>Specifies the amount the transaction log should grow in megabytes. If this value differs from the suggested value based on your TargetLogSize, you will be prompted to confirm your choice.
-This value will be calculated if not specified.</p>
+This value will be calculated if not specified.<br></p>
 <table>
 <thead>
 <tr>
@@ -786,7 +786,7 @@ This value will be calculated if not specified.</p>
 </table>
 <h5 id="logfileid">-LogFileId</h5>
 <p>Specifies the file number(s) of additional transaction log files to grow.
-If this value is not specified, only the first transaction log file will be processed.</p>
+If this value is not specified, only the first transaction log file will be processed.<br></p>
 <table>
 <thead>
 <tr>
@@ -815,7 +815,7 @@ If this value is not specified, only the first transaction log file will be proc
 </table>
 <h5 id="backupdirectory">-BackupDirectory</h5>
 <p>Specifies the location of your backups. Backups must be performed to shrink the transaction log.
-If this value is not specified, the SQL Server instance's default backup directory will be used.</p>
+If this value is not specified, the SQL Server instance's default backup directory will be used.<br></p>
 <table>
 <thead>
 <tr>
@@ -844,7 +844,7 @@ If this value is not specified, the SQL Server instance's default backup directo
 </table>
 <h5 id="excludediskspacevalidation">-ExcludeDiskSpaceValidation</h5>
 <p>If this switch is enabled, the validation for enough disk space using Get-DbaDiskSpace command will be skipped.
-This can be useful when you know that you have enough space to grow your TLog but you don't have PowerShell Remoting enabled to validate it.</p>
+This can be useful when you know that you have enough space to grow your TLog but you don't have PowerShell Remoting enabled to validate it.<br></p>
 <table>
 <thead>
 <tr>
@@ -874,7 +874,7 @@ This can be useful when you know that you have enough space to grow your TLog bu
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -902,7 +902,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.</p>
+<p>If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.<br></p>
 <table>
 <thead>
 <tr>
@@ -930,7 +930,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.</p>
+<p>If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.<br></p>
 <table>
 <thead>
 <tr>
@@ -959,6 +959,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Expand-DbaDbLogFile.ps1">Expand-DbaDbLogFile</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Expand-DbaDbLogFile">Expand-DbaDbLogFile</a>.</p>
 
                 </div> <!-- rendered -->

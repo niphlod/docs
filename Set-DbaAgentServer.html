@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -470,33 +470,33 @@
 <p>Set-DbaAgentServer updates properties in the SQL Server Server with parameters supplied.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Set-DbaAgentServer
-    -[-SqlInstance] &lt;DbaInstanceParameter[]&gt;]
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    -[-InputObject] &lt;JobServer[]&gt;]
-    -[-AgentLogLevel] &lt;Object&gt;]
-    -[-AgentMailType] &lt;Object&gt;]
-    -[-AgentShutdownWaitTime] &lt;Int32&gt;]
-    -[-DatabaseMailProfile] &lt;String&gt;]
-    -[-ErrorLogFile] &lt;String&gt;]
-    -[-IdleCpuDuration] &lt;Int32&gt;]
-    -[-IdleCpuPercentage] &lt;Int32&gt;]
-    -[-CpuPolling] &lt;String&gt;]
-    -[-LocalHostAlias] &lt;String&gt;]
-    -[-LoginTimeout] &lt;Int32&gt;]
-    -[-MaximumHistoryRows] &lt;Int32&gt;]
-    -[-MaximumJobHistoryRows] &lt;Int32&gt;]
-    -[-NetSendRecipient] &lt;String&gt;]
-    -[-ReplaceAlertTokens] &lt;String&gt;]
-    -[-SaveInSentFolder] &lt;String&gt;]
-    -[-SqlAgentAutoStart] &lt;String&gt;]
-    -[-SqlAgentMailProfile] &lt;String&gt;]
-    -[-SqlAgentRestart] &lt;String&gt;]
-    -[-SqlServerRestart] &lt;String&gt;]
-    -[-WriteOemErrorLog] &lt;String&gt;]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [[-SqlInstance] &lt;DbaInstanceParameter[]&gt;]
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [[-InputObject] &lt;JobServer[]&gt;]
+    [[-AgentLogLevel] &lt;Object&gt;]
+    [[-AgentMailType] &lt;Object&gt;]
+    [[-AgentShutdownWaitTime] &lt;Int32&gt;]
+    [[-DatabaseMailProfile] &lt;String&gt;]
+    [[-ErrorLogFile] &lt;String&gt;]
+    [[-IdleCpuDuration] &lt;Int32&gt;]
+    [[-IdleCpuPercentage] &lt;Int32&gt;]
+    [[-CpuPolling] &lt;String&gt;]
+    [[-LocalHostAlias] &lt;String&gt;]
+    [[-LoginTimeout] &lt;Int32&gt;]
+    [[-MaximumHistoryRows] &lt;Int32&gt;]
+    [[-MaximumJobHistoryRows] &lt;Int32&gt;]
+    [[-NetSendRecipient] &lt;String&gt;]
+    [[-ReplaceAlertTokens] &lt;String&gt;]
+    [[-SaveInSentFolder] &lt;String&gt;]
+    [[-SqlAgentAutoStart] &lt;String&gt;]
+    [[-SqlAgentMailProfile] &lt;String&gt;]
+    [[-SqlAgentRestart] &lt;String&gt;]
+    [[-SqlServerRestart] &lt;String&gt;]
+    [[-WriteOemErrorLog] &lt;String&gt;]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -505,30 +505,30 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Set-DbaAgentServer -SqlInstance sql1 -MaximumHistoryRows 10000 -MaximumJobHistoryRows 100
 </code></pre>
-<p>Changes the job history retention to 10000 rows with an maximum of 100 rows per job.</p>
+<p>Changes the job history retention to 10000 rows with an maximum of 100 rows per job.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Set-DbaAgentServer -SqlInstance sql1 -CpuPolling Enabled
 </code></pre>
-<p>Enable the CPU Polling configurations.</p>
+<p>Enable the CPU Polling configurations.<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Set-DbaAgentServer -SqlInstance sql1, sql2, sql3 -AgentLogLevel 'Errors, Warnings'
 </code></pre>
-<p>Set the agent log level to Errors and Warnings on multiple servers.</p>
+<p>Set the agent log level to Errors and Warnings on multiple servers.<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; Set-DbaAgentServer -SqlInstance sql1 -CpuPolling Disabled
 </code></pre>
-<p>Disable the CPU Polling configurations.</p>
+<p>Disable the CPU Polling configurations.<br></p>
 <h5 id="example-5">Example:  5</h5>
 <pre><code>PS C:\&gt; Set-DbaAgentServer -SqlInstance sql1 -MaximumJobHistoryRows 1000 -MaximumHistoryRows 10000
 </code></pre>
-<p>Set the max history limitations. This is the equivalent to calling:  EXEC msdb.dbo.sp_set_sqlagent_properties @jobhistory_max_rows=10000, @jobhistory_max_rows_per_job=1000</p>
+<p>Set the max history limitations. This is the equivalent to calling:  EXEC msdb.dbo.sp_set_sqlagent_properties @jobhistory_max_rows=10000, @jobhistory_max_rows_per_job=1000<br></p>
 <h5 id="example-6">Example:  6</h5>
 <pre><code>PS C:\&gt; Set-DbaAgentServer -SqlInstance sql1 -MaximumJobHistoryRows 0 -MaximumHistoryRows -1
 </code></pre>
-<p>Disable the max history limitations. This is the equivalent to calling:  EXEC msdb.dbo.sp_set_sqlagent_properties @jobhistory_max_rows=-1, @jobhistory_max_rows_per_job=0</p>
+<p>Disable the max history limitations. This is the equivalent to calling:  EXEC msdb.dbo.sp_set_sqlagent_properties @jobhistory_max_rows=-1, @jobhistory_max_rows_per_job=0<br></p>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances. You must have sysadmin access and server version must be SQL Server version 2000 or greater.</p>
+<p>The target SQL Server instance or instances. You must have sysadmin access and server version must be SQL Server version 2000 or greater.<br></p>
 <table>
 <thead>
 <tr>
@@ -558,7 +558,7 @@
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -586,7 +586,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="inputobject">-InputObject</h5>
-<p>Enables piping agent server objects</p>
+<p>Enables piping agent server objects<br></p>
 <table>
 <thead>
 <tr>
@@ -616,7 +616,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 <h5 id="agentloglevel">-AgentLogLevel</h5>
 <p>Specifies the agent log level.
 Allowed values 1, &quot;Errors&quot;, 2, &quot;Warnings&quot;, 3, &quot;Errors, Warnings&quot;, 4, &quot;Informational&quot;, 5, &quot;Errors, Informational&quot;, 6, &quot;Warnings, Informational&quot;, 7, &quot;All&quot;
-The text value can either be lowercase, uppercase or something in between as long as the text is correct.</p>
+The text value can either be lowercase, uppercase or something in between as long as the text is correct.<br></p>
 <table>
 <thead>
 <tr>
@@ -650,7 +650,7 @@ The text value can either be lowercase, uppercase or something in between as lon
 <h5 id="agentmailtype">-AgentMailType</h5>
 <p>Specifies the agent mail type.
 Allowed values 0, &quot;SqlAgentMail&quot;, 1, &quot;DatabaseMail&quot;
-The text value can either be lowercase, uppercase or something in between as long as the text is correct.</p>
+The text value can either be lowercase, uppercase or something in between as long as the text is correct.<br></p>
 <table>
 <thead>
 <tr>
@@ -682,7 +682,7 @@ The text value can either be lowercase, uppercase or something in between as lon
 </tbody>
 </table>
 <h5 id="agentshutdownwaittime">-AgentShutdownWaitTime</h5>
-<p>The Agent Shutdown Wait Time value of the server agent. The accepted value range is between 5 and 600.</p>
+<p>The Agent Shutdown Wait Time value of the server agent. The accepted value range is between 5 and 600.<br></p>
 <table>
 <thead>
 <tr>
@@ -710,7 +710,7 @@ The text value can either be lowercase, uppercase or something in between as lon
 </tbody>
 </table>
 <h5 id="databasemailprofile">-DatabaseMailProfile</h5>
-<p>The Database Mail Profile to be used. Must exists on database mail profiles.</p>
+<p>The Database Mail Profile to be used. Must exists on database mail profiles.<br></p>
 <table>
 <thead>
 <tr>
@@ -738,7 +738,7 @@ The text value can either be lowercase, uppercase or something in between as lon
 </tbody>
 </table>
 <h5 id="errorlogfile">-ErrorLogFile</h5>
-<p>Error log file location</p>
+<p>Error log file location<br></p>
 <table>
 <thead>
 <tr>
@@ -766,7 +766,7 @@ The text value can either be lowercase, uppercase or something in between as lon
 </tbody>
 </table>
 <h5 id="idlecpuduration">-IdleCpuDuration</h5>
-<p>Idle CPU Duration value to be used. The accepted value range is between 20 and 86400.</p>
+<p>Idle CPU Duration value to be used. The accepted value range is between 20 and 86400.<br></p>
 <table>
 <thead>
 <tr>
@@ -794,7 +794,7 @@ The text value can either be lowercase, uppercase or something in between as lon
 </tbody>
 </table>
 <h5 id="idlecpupercentage">-IdleCpuPercentage</h5>
-<p>Idle CPU Percentage value to be used. The accepted value range is between 10 and 100.</p>
+<p>Idle CPU Percentage value to be used. The accepted value range is between 10 and 100.<br></p>
 <table>
 <thead>
 <tr>
@@ -823,7 +823,7 @@ The text value can either be lowercase, uppercase or something in between as lon
 </table>
 <h5 id="cpupolling">-CpuPolling</h5>
 <p>Enable or Disable the Polling.
-Allowed values Enabled, Disabled</p>
+Allowed values Enabled, Disabled<br></p>
 <table>
 <thead>
 <tr>
@@ -855,7 +855,7 @@ Allowed values Enabled, Disabled</p>
 </tbody>
 </table>
 <h5 id="localhostalias">-LocalHostAlias</h5>
-<p>The value for Local Host Alias configuration</p>
+<p>The value for Local Host Alias configuration<br></p>
 <table>
 <thead>
 <tr>
@@ -883,7 +883,7 @@ Allowed values Enabled, Disabled</p>
 </tbody>
 </table>
 <h5 id="logintimeout">-LoginTimeout</h5>
-<p>The value for Login Timeout configuration. The accepted value range is between 5 and 45.</p>
+<p>The value for Login Timeout configuration. The accepted value range is between 5 and 45.<br></p>
 <table>
 <thead>
 <tr>
@@ -912,7 +912,7 @@ Allowed values Enabled, Disabled</p>
 </table>
 <h5 id="maximumhistoryrows">-MaximumHistoryRows</h5>
 <p>Indicates the Maximum job history log size (in rows). The acceptable value range is between 2 and 999999. To turn off the job history limitations use the value -1 and specify 0 for
-MaximumJobHistoryRows. See the example listed below.</p>
+MaximumJobHistoryRows. See the example listed below.<br></p>
 <table>
 <thead>
 <tr>
@@ -941,7 +941,7 @@ MaximumJobHistoryRows. See the example listed below.</p>
 </table>
 <h5 id="maximumjobhistoryrows">-MaximumJobHistoryRows</h5>
 <p>Indicates the Maximum job history rows per job. The acceptable value range is between 2 and 999999. To turn off the job history limitations use the value 0 and specify -1 for MaximumHistoryRows. See
-the example listed below.</p>
+the example listed below.<br></p>
 <table>
 <thead>
 <tr>
@@ -969,7 +969,7 @@ the example listed below.</p>
 </tbody>
 </table>
 <h5 id="netsendrecipient">-NetSendRecipient</h5>
-<p>The Net send recipient value</p>
+<p>The Net send recipient value<br></p>
 <table>
 <thead>
 <tr>
@@ -998,7 +998,7 @@ the example listed below.</p>
 </table>
 <h5 id="replacealerttokens">-ReplaceAlertTokens</h5>
 <p>Enable or Disable the Token replacement property.
-Allowed values Enabled, Disabled</p>
+Allowed values Enabled, Disabled<br></p>
 <table>
 <thead>
 <tr>
@@ -1031,7 +1031,7 @@ Allowed values Enabled, Disabled</p>
 </table>
 <h5 id="saveinsentfolder">-SaveInSentFolder</h5>
 <p>Enable or Disable the copy of the sent messages is save in the Sent Items folder.
-Allowed values Enabled, Disabled</p>
+Allowed values Enabled, Disabled<br></p>
 <table>
 <thead>
 <tr>
@@ -1064,7 +1064,7 @@ Allowed values Enabled, Disabled</p>
 </table>
 <h5 id="sqlagentautostart">-SqlAgentAutoStart</h5>
 <p>Enable or Disable the SQL Agent Auto Start.
-Allowed values Enabled, Disabled</p>
+Allowed values Enabled, Disabled<br></p>
 <table>
 <thead>
 <tr>
@@ -1096,7 +1096,7 @@ Allowed values Enabled, Disabled</p>
 </tbody>
 </table>
 <h5 id="sqlagentmailprofile">-SqlAgentMailProfile</h5>
-<p>The SQL Server Agent Mail Profile to be used. Must exists on database mail profiles.</p>
+<p>The SQL Server Agent Mail Profile to be used. Must exists on database mail profiles.<br></p>
 <table>
 <thead>
 <tr>
@@ -1125,7 +1125,7 @@ Allowed values Enabled, Disabled</p>
 </table>
 <h5 id="sqlagentrestart">-SqlAgentRestart</h5>
 <p>Enable or Disable the SQL Agent Restart.
-Allowed values Enabled, Disabled</p>
+Allowed values Enabled, Disabled<br></p>
 <table>
 <thead>
 <tr>
@@ -1158,7 +1158,7 @@ Allowed values Enabled, Disabled</p>
 </table>
 <h5 id="sqlserverrestart">-SqlServerRestart</h5>
 <p>Enable or Disable the SQL Server Restart.
-Allowed values Enabled, Disabled</p>
+Allowed values Enabled, Disabled<br></p>
 <table>
 <thead>
 <tr>
@@ -1191,7 +1191,7 @@ Allowed values Enabled, Disabled</p>
 </table>
 <h5 id="writeoemerrorlog">-WriteOemErrorLog</h5>
 <p>Enable or Disable the Write OEM Error Log.
-Allowed values Enabled, Disabled</p>
+Allowed values Enabled, Disabled<br></p>
 <table>
 <thead>
 <tr>
@@ -1225,7 +1225,7 @@ Allowed values Enabled, Disabled</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -1253,7 +1253,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>Shows what would happen if the command were to run. No actions are actually performed.</p>
+<p>Shows what would happen if the command were to run. No actions are actually performed.<br></p>
 <table>
 <thead>
 <tr>
@@ -1281,7 +1281,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>Prompts you for confirmation before executing any changing operations within the command.</p>
+<p>Prompts you for confirmation before executing any changing operations within the command.<br></p>
 <table>
 <thead>
 <tr>
@@ -1310,6 +1310,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Set-DbaAgentServer.ps1">Set-DbaAgentServer</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Set-DbaAgentServer">Set-DbaAgentServer</a>.</p>
 
                 </div> <!-- rendered -->

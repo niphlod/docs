@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -470,23 +470,23 @@
 <p>Creates endpoints on a SQL Server instance.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>New-DbaEndpoint
-    --SqlInstance] &lt;DbaInstanceParameter[]&gt;
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    -[-Name] &lt;String&gt;]
-    -[-Type] &lt;String&gt;]
-    -[-Protocol] &lt;String&gt;]
-    -[-Role] &lt;String&gt;]
-    -[-EndpointEncryption] &lt;String&gt;]
-    -[-EncryptionAlgorithm] &lt;String&gt;]
-    -[-Certificate] &lt;String&gt;]
-    -[-IPAddress] &lt;IPAddress&gt;]
-    -[-Port] &lt;Int32&gt;]
-    -[-SslPort] &lt;Int32&gt;]
-    -[-Owner] &lt;String&gt;]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-SqlInstance] &lt;DbaInstanceParameter[]&gt;
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [[-Name] &lt;String&gt;]
+    [[-Type] &lt;String&gt;]
+    [[-Protocol] &lt;String&gt;]
+    [[-Role] &lt;String&gt;]
+    [[-EndpointEncryption] &lt;String&gt;]
+    [[-EncryptionAlgorithm] &lt;String&gt;]
+    [[-Certificate] &lt;String&gt;]
+    [[-IPAddress] &lt;IPAddress&gt;]
+    [[-Port] &lt;Int32&gt;]
+    [[-SslPort] &lt;Int32&gt;]
+    [[-Owner] &lt;String&gt;]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -495,18 +495,18 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; New-DbaEndpoint -SqlInstance localhost\sql2017 -Type DatabaseMirroring
 </code></pre>
-<p>Creates a database mirroring endpoint on localhost\sql2017 which using the default port</p>
+<p>Creates a database mirroring endpoint on localhost\sql2017 which using the default port<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; New-DbaEndpoint -SqlInstance localhost\sql2017 -Type DatabaseMirroring -Port 5055
 </code></pre>
-<p>Creates a database mirroring endpoint on localhost\sql2017 which uses alternative port 5055</p>
+<p>Creates a database mirroring endpoint on localhost\sql2017 which uses alternative port 5055<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; New-DbaEndpoint -SqlInstance localhost\sql2017 -Type DatabaseMirroring -IPAddress 192.168.0.15 -Port 5055
 </code></pre>
-<p>Creates a database mirroring endpoint on localhost\sql2017 which binds only on ipaddress 192.168.0.15 and port 5055</p>
+<p>Creates a database mirroring endpoint on localhost\sql2017 which binds only on ipaddress 192.168.0.15 and port 5055<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances.</p>
+<p>The target SQL Server instance or instances.<br></p>
 <table>
 <thead>
 <tr>
@@ -537,7 +537,7 @@
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -565,7 +565,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="name">-Name</h5>
-<p>The name of the endpoint. Defaults to hadr_endpoint if type is DatabaseMirroring, has to be provided for other types.</p>
+<p>The name of the endpoint. Defaults to hadr_endpoint if type is DatabaseMirroring, has to be provided for other types.<br></p>
 <table>
 <thead>
 <tr>
@@ -593,7 +593,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="type">-Type</h5>
-<p>The type of endpoint. Defaults to DatabaseMirroring. Options: DatabaseMirroring, ServiceBroker, Soap, TSql</p>
+<p>The type of endpoint. Defaults to DatabaseMirroring. Options: DatabaseMirroring, ServiceBroker, Soap, TSql<br></p>
 <table>
 <thead>
 <tr>
@@ -625,7 +625,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="protocol">-Protocol</h5>
-<p>The type of protocol. Defaults to tcp. Options: Tcp, NamedPipes, Http, Via, SharedMemory</p>
+<p>The type of protocol. Defaults to tcp. Options: Tcp, NamedPipes, Http, Via, SharedMemory<br></p>
 <table>
 <thead>
 <tr>
@@ -657,7 +657,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="role">-Role</h5>
-<p>The type of role. Defaults to All. Options: All, None, Partner, Witness</p>
+<p>The type of role. Defaults to All. Options: All, None, Partner, Witness<br></p>
 <table>
 <thead>
 <tr>
@@ -692,7 +692,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 <p>Used to specify the state of encryption on the endpoint. Defaults to required.
 Disabled
 Required
-Supported</p>
+Supported<br></p>
 <table>
 <thead>
 <tr>
@@ -730,7 +730,7 @@ AesRC4
 Aes
 None
 RC4
-RC4Aes</p>
+RC4Aes<br></p>
 <table>
 <thead>
 <tr>
@@ -762,7 +762,7 @@ RC4Aes</p>
 </tbody>
 </table>
 <h5 id="certificate">-Certificate</h5>
-<p>Database certificate used for authentication.</p>
+<p>Database certificate used for authentication.<br></p>
 <table>
 <thead>
 <tr>
@@ -791,7 +791,7 @@ RC4Aes</p>
 </table>
 <h5 id="ipaddress">-IPAddress</h5>
 <p>Specifies the IP address that the endpoint will listen on. The default is ALL. This means that the listener will accept a connection on any valid IP address.
-Currently only IPv4 is supported by this command.</p>
+Currently only IPv4 is supported by this command.<br></p>
 <table>
 <thead>
 <tr>
@@ -819,7 +819,7 @@ Currently only IPv4 is supported by this command.</p>
 </tbody>
 </table>
 <h5 id="port">-Port</h5>
-<p>Port for TCP. If one is not provided, it will be auto-generated.</p>
+<p>Port for TCP. If one is not provided, it will be auto-generated.<br></p>
 <table>
 <thead>
 <tr>
@@ -847,7 +847,7 @@ Currently only IPv4 is supported by this command.</p>
 </tbody>
 </table>
 <h5 id="sslport">-SslPort</h5>
-<p>Port for SSL.</p>
+<p>Port for SSL.<br></p>
 <table>
 <thead>
 <tr>
@@ -875,7 +875,7 @@ Currently only IPv4 is supported by this command.</p>
 </tbody>
 </table>
 <h5 id="owner">-Owner</h5>
-<p>Owner of the endpoint. Defaults to sa.</p>
+<p>Owner of the endpoint. Defaults to sa.<br></p>
 <table>
 <thead>
 <tr>
@@ -905,7 +905,7 @@ Currently only IPv4 is supported by this command.</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -933,7 +933,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>Shows what would happen if the command were to run. No actions are actually performed.</p>
+<p>Shows what would happen if the command were to run. No actions are actually performed.<br></p>
 <table>
 <thead>
 <tr>
@@ -961,7 +961,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>Prompts you for confirmation before executing any changing operations within the command.</p>
+<p>Prompts you for confirmation before executing any changing operations within the command.<br></p>
 <table>
 <thead>
 <tr>
@@ -990,6 +990,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/New-DbaEndpoint.ps1">New-DbaEndpoint</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#New-DbaEndpoint">New-DbaEndpoint</a>.</p>
 
                 </div> <!-- rendered -->

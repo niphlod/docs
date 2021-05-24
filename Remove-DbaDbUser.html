@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -472,22 +472,22 @@ dropped.  If user owns more than one schema, the owner of the schemas that does 
 changed to 'dbo'. If schemas have underlying objects, you must specify the -Force parameter so the user can be dropped.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Remove-DbaDbUser
-    --SqlInstance] &lt;DbaInstanceParameter[]&gt;
-    --SqlCredential &lt;PSCredential&gt;]
-    --Database &lt;Object[]&gt;]
-    --ExcludeDatabase &lt;Object[]&gt;] -User &lt;Object[]&gt;
-    --Force]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-SqlInstance] &lt;DbaInstanceParameter[]&gt;
+    [-SqlCredential &lt;PSCredential&gt;]
+    [-Database &lt;Object[]&gt;]
+    [-ExcludeDatabase &lt;Object[]&gt;] -User &lt;Object[]&gt;
+    [-Force]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 Remove-DbaDbUser -InputObject &lt;User[]&gt;
-    --Force]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [-Force]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -496,22 +496,22 @@ Remove-DbaDbUser -InputObject &lt;User[]&gt;
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Remove-DbaDbUser -SqlInstance sqlserver2014 -User user1
 </code></pre>
-<p>Drops user1 from all databases it exists in on server 'sqlserver2014'.</p>
+<p>Drops user1 from all databases it exists in on server 'sqlserver2014'.<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Remove-DbaDbUser -SqlInstance sqlserver2014 -Database database1 -User user1
 </code></pre>
-<p>Drops user1 from the database1 database on server 'sqlserver2014'.</p>
+<p>Drops user1 from the database1 database on server 'sqlserver2014'.<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Remove-DbaDbUser -SqlInstance sqlserver2014 -ExcludeDatabase model -User user1
 </code></pre>
-<p>Drops user1 from all databases it exists in on server 'sqlserver2014' except for the model database.</p>
+<p>Drops user1 from all databases it exists in on server 'sqlserver2014' except for the model database.<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; Get-DbaDbUser sqlserver2014 | Where-Object Name -In &quot;user1&quot; | Remove-DbaDbUser
 </code></pre>
-<p>Drops user1 from all databases it exists in on server 'sqlserver2014'.</p>
+<p>Drops user1 from all databases it exists in on server 'sqlserver2014'.<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances.</p>
+<p>The target SQL Server instance or instances.<br></p>
 <table>
 <thead>
 <tr>
@@ -539,7 +539,7 @@ Remove-DbaDbUser -InputObject &lt;User[]&gt;
 </tbody>
 </table>
 <h5 id="user">-User</h5>
-<p>Specifies the list of users to remove.</p>
+<p>Specifies the list of users to remove.<br></p>
 <table>
 <thead>
 <tr>
@@ -567,7 +567,7 @@ Remove-DbaDbUser -InputObject &lt;User[]&gt;
 </tbody>
 </table>
 <h5 id="inputobject">-InputObject</h5>
-<p>Support piping from Get-DbaDbUser.</p>
+<p>Support piping from Get-DbaDbUser.<br></p>
 <table>
 <thead>
 <tr>
@@ -598,7 +598,7 @@ Remove-DbaDbUser -InputObject &lt;User[]&gt;
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance..</p>
+For MFA support, please use Connect-DbaInstance..<br></p>
 <table>
 <thead>
 <tr>
@@ -626,7 +626,7 @@ For MFA support, please use Connect-DbaInstance..</p>
 </tbody>
 </table>
 <h5 id="database">-Database</h5>
-<p>Specifies the database(s) to process. Options for this list are auto-populated from the server. If unspecified, all databases will be processed.</p>
+<p>Specifies the database(s) to process. Options for this list are auto-populated from the server. If unspecified, all databases will be processed.<br></p>
 <table>
 <thead>
 <tr>
@@ -654,7 +654,7 @@ For MFA support, please use Connect-DbaInstance..</p>
 </tbody>
 </table>
 <h5 id="excludedatabase">-ExcludeDatabase</h5>
-<p>Specifies the database(s) to exclude from processing. Options for this list are auto-populated from the server.</p>
+<p>Specifies the database(s) to exclude from processing. Options for this list are auto-populated from the server.<br></p>
 <table>
 <thead>
 <tr>
@@ -682,7 +682,7 @@ For MFA support, please use Connect-DbaInstance..</p>
 </tbody>
 </table>
 <h5 id="force">-Force</h5>
-<p>If enabled this will force the change of the owner to 'dbo' for any schema which owner is the User.</p>
+<p>If enabled this will force the change of the owner to 'dbo' for any schema which owner is the User.<br></p>
 <table>
 <thead>
 <tr>
@@ -712,7 +712,7 @@ For MFA support, please use Connect-DbaInstance..</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -740,7 +740,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>Shows what would happen if the command were to run. No actions are actually performed.</p>
+<p>Shows what would happen if the command were to run. No actions are actually performed.<br></p>
 <table>
 <thead>
 <tr>
@@ -768,7 +768,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.</p>
+<p>If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.<br></p>
 <table>
 <thead>
 <tr>
@@ -797,6 +797,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Remove-DbaDbUser.ps1">Remove-DbaDbUser</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Remove-DbaDbUser">Remove-DbaDbUser</a>.</p>
 
                 </div> <!-- rendered -->

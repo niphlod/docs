@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -471,16 +471,16 @@
 The build data used can be found here: <a href="https://dbatools.io/builds">https://dbatools.io/builds</a></p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Test-DbaBuild
-    -[-Build] &lt;Version[]&gt;]
-    -[-MinimumBuild] &lt;Version&gt;]
-    -[-MaxBehind] &lt;String&gt;]
-    --Latest]
-    -[-SqlInstance] &lt;DbaInstanceParameter[]&gt;]
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    --Update]
-    --Quiet]
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [[-Build] &lt;Version[]&gt;]
+    [[-MinimumBuild] &lt;Version&gt;]
+    [[-MaxBehind] &lt;String&gt;]
+    [-Latest]
+    [[-SqlInstance] &lt;DbaInstanceParameter[]&gt;]
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [-Update]
+    [-Quiet]
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -489,45 +489,45 @@ The build data used can be found here: <a href="https://dbatools.io/builds">http
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Test-DbaBuild -Build &quot;12.0.5540&quot; -MinimumBuild &quot;12.0.5557&quot;
 </code></pre>
-<p>Returns information about a build identified by &quot;12.0.5540&quot; (which is SQL 2014 with SP2 and CU4), which is not compliant as the minimum required
-build is &quot;12.0.5557&quot; (which is SQL 2014 with SP2 and CU8).</p>
+<p>Returns information about a build identified by &quot;12.0.5540&quot; (which is SQL 2014 with SP2 and CU4), which is not compliant as the minimum required<br>
+build is &quot;12.0.5557&quot; (which is SQL 2014 with SP2 and CU8).<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Test-DbaBuild -Build &quot;12.0.5540&quot; -MaxBehind &quot;1SP&quot;
 </code></pre>
-<p>Returns information about a build identified by &quot;12.0.5540&quot;, making sure it is AT MOST 1 Service Pack &quot;behind&quot;. For that version,
-that identifies an SP2, means accepting as the lowest compliance version as &quot;12.0.4110&quot;, that identifies 2014 with SP1.
-Output column CUTarget is not relevant (empty). SPTarget and BuildTarget are filled in the result.</p>
+<p>Returns information about a build identified by &quot;12.0.5540&quot;, making sure it is AT MOST 1 Service Pack &quot;behind&quot;. For that version,<br>
+that identifies an SP2, means accepting as the lowest compliance version as &quot;12.0.4110&quot;, that identifies 2014 with SP1.<br>
+Output column CUTarget is not relevant (empty). SPTarget and BuildTarget are filled in the result.<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Test-DbaBuild -Build &quot;12.0.5540&quot; -MaxBehind &quot;1SP 1CU&quot;
 </code></pre>
-<p>Returns information about a build identified by &quot;12.0.5540&quot;, making sure it is AT MOST 1 Service Pack &quot;behind&quot;, plus 1 CU &quot;behind&quot;. For that version,
-that identifies an SP2 and CU, rolling back 1 SP brings you to &quot;12.0.4110&quot;, but given the latest CU for SP1 is CU13, the target &quot;compliant&quot; build
-will be &quot;12.0.4511&quot;, which is 2014 with SP1 and CU12.</p>
+<p>Returns information about a build identified by &quot;12.0.5540&quot;, making sure it is AT MOST 1 Service Pack &quot;behind&quot;, plus 1 CU &quot;behind&quot;. For that version,<br>
+that identifies an SP2 and CU, rolling back 1 SP brings you to &quot;12.0.4110&quot;, but given the latest CU for SP1 is CU13, the target &quot;compliant&quot; build<br>
+will be &quot;12.0.4511&quot;, which is 2014 with SP1 and CU12.<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; Test-DbaBuild -Build &quot;12.0.5540&quot; -MaxBehind &quot;0CU&quot;
 </code></pre>
-<p>Returns information about a build identified by &quot;12.0.5540&quot;, making sure it is the latest CU release.
-Output columns CUTarget, SPTarget and BuildTarget are relevant. If the latest build is a service pack (not a CU), CUTarget will be empty.</p>
+<p>Returns information about a build identified by &quot;12.0.5540&quot;, making sure it is the latest CU release.<br>
+Output columns CUTarget, SPTarget and BuildTarget are relevant. If the latest build is a service pack (not a CU), CUTarget will be empty.<br></p>
 <h5 id="example-5">Example:  5</h5>
 <pre><code>PS C:\&gt; Test-DbaBuild -Build &quot;12.0.5540&quot; -Latest
 </code></pre>
-<p>Returns information about a build identified by &quot;12.0.5540&quot;, making sure it is the latest build available.
-Output columns CUTarget and SPTarget are not relevant (empty), only the BuildTarget is.</p>
+<p>Returns information about a build identified by &quot;12.0.5540&quot;, making sure it is the latest build available.<br>
+Output columns CUTarget and SPTarget are not relevant (empty), only the BuildTarget is.<br></p>
 <h5 id="example-6">Example:  6</h5>
 <pre><code>PS C:\&gt; Test-DbaBuild -Build &quot;12.00.4502&quot; -MinimumBuild &quot;12.0.4511&quot; -Update
 </code></pre>
-<p>Same as before, but tries to fetch the most up to date index online. When the online version is newer, the local one gets overwritten.</p>
+<p>Same as before, but tries to fetch the most up to date index online. When the online version is newer, the local one gets overwritten.<br></p>
 <h5 id="example-7">Example:  7</h5>
 <pre><code>PS C:\&gt; Test-DbaBuild -Build &quot;12.0.4502&quot;,&quot;10.50.4260&quot; -MinimumBuild &quot;12.0.4511&quot;
 </code></pre>
-<p>Returns information builds identified by these versions strings.</p>
+<p>Returns information builds identified by these versions strings.<br></p>
 <h5 id="example-8">Example:  8</h5>
 <pre><code>PS C:\&gt; Get-DbaRegServer -SqlInstance sqlserver2014a | Test-DbaBuild -MinimumBuild &quot;12.0.4511&quot;
 </code></pre>
-<p>Integrate with other cmdlets to have builds checked for all your registered servers on sqlserver2014a.</p>
+<p>Integrate with other cmdlets to have builds checked for all your registered servers on sqlserver2014a.<br></p>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="build">-Build</h5>
-<p>Instead of connecting to a real instance, pass a string identifying the build to get the info back.</p>
+<p>Instead of connecting to a real instance, pass a string identifying the build to get the info back.<br></p>
 <table>
 <thead>
 <tr>
@@ -555,7 +555,7 @@ Output columns CUTarget and SPTarget are not relevant (empty), only the BuildTar
 </tbody>
 </table>
 <h5 id="minimumbuild">-MinimumBuild</h5>
-<p>This is the build version to test &quot;compliance&quot; against. Anything below this is flagged as not compliant.</p>
+<p>This is the build version to test &quot;compliance&quot; against. Anything below this is flagged as not compliant.<br></p>
 <table>
 <thead>
 <tr>
@@ -584,7 +584,7 @@ Output columns CUTarget and SPTarget are not relevant (empty), only the BuildTar
 </table>
 <h5 id="maxbehind">-MaxBehind</h5>
 <p>Instead of using a specific MinimumBuild here you can pass &quot;how many service packs and cu back&quot; is the targeted compliance level. You can use xxSP or xxCU or both, where xx is a number. See the
-Examples for more information.</p>
+Examples for more information.<br></p>
 <table>
 <thead>
 <tr>
@@ -612,7 +612,7 @@ Examples for more information.</p>
 </tbody>
 </table>
 <h5 id="latest">-Latest</h5>
-<p>Shortcut for specifying the very most up-to-date build available.</p>
+<p>Shortcut for specifying the very most up-to-date build available.<br></p>
 <table>
 <thead>
 <tr>
@@ -640,7 +640,7 @@ Examples for more information.</p>
 </tbody>
 </table>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>Target any number of instances, in order to return their compliance state.</p>
+<p>Target any number of instances, in order to return their compliance state.<br></p>
 <table>
 <thead>
 <tr>
@@ -670,7 +670,7 @@ Examples for more information.</p>
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -698,7 +698,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="update">-Update</h5>
-<p>Looks online for the most up to date reference, replacing the local one.</p>
+<p>Looks online for the most up to date reference, replacing the local one.<br></p>
 <table>
 <thead>
 <tr>
@@ -726,7 +726,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="quiet">-Quiet</h5>
-<p>Makes the function just return $true/$false. It's useful if you use Test-DbaBuild in your own scripts.</p>
+<p>Makes the function just return $true/$false. It's useful if you use Test-DbaBuild in your own scripts.<br></p>
 <table>
 <thead>
 <tr>
@@ -756,7 +756,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -785,6 +785,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Test-DbaBuild.ps1">Test-DbaBuild</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Test-DbaBuild">Test-DbaBuild</a>.</p>
 
                 </div> <!-- rendered -->

@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -472,14 +472,14 @@ The function communicates directly with SSISDB database, &quot;SQL Server Integr
 Each parameter (besides SqlInstance and SqlCredential) acts as the filter to only include or exclude particular element</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Get-DbaSsisEnvironmentVariable
-    --SqlInstance] &lt;DbaInstanceParameter[]&gt;
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    -[-Environment] &lt;Object[]&gt;]
-    -[-EnvironmentExclude] &lt;Object[]&gt;]
-    -[-Folder] &lt;Object[]&gt;]
-    -[-FolderExclude] &lt;Object[]&gt;]
-    --EnableException]
-    -&lt;CommonParameters&gt;]
+    [-SqlInstance] &lt;DbaInstanceParameter[]&gt;
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [[-Environment] &lt;Object[]&gt;]
+    [[-EnvironmentExclude] &lt;Object[]&gt;]
+    [[-Folder] &lt;Object[]&gt;]
+    [[-FolderExclude] &lt;Object[]&gt;]
+    [-EnableException]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -488,50 +488,50 @@ Each parameter (besides SqlInstance and SqlCredential) acts as the filter to onl
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Get-DbaSsisEnvironmentVariable -SqlInstance localhost -Environment DEV -Folder DWH_ETL
 </code></pre>
-<p>Gets variables of 'DEV' environment located in 'DWH_ETL' folder on 'localhost' Server</p>
+<p>Gets variables of 'DEV' environment located in 'DWH_ETL' folder on 'localhost' Server<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Get-DbaSsisEnvironmentVariable -SqlInstance localhost -Environment DEV -Folder DWH_ETL, DEV2, QA
 </code></pre>
-<p>Gets variables of 'DEV' environment(s) located in folders 'DWH_ETL', 'DEV2' and 'QA' on 'localhost' server</p>
+<p>Gets variables of 'DEV' environment(s) located in folders 'DWH_ETL', 'DEV2' and 'QA' on 'localhost' server<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Get-DbaSsisEnvironmentVariable -SqlInstance localhost -Environment DEV -FolderExclude DWH_ETL, DEV2, QA
 </code></pre>
-<p>Gets variables of 'DEV' environments located in folders other than 'DWH_ETL', 'DEV2' and 'QA' on 'localhost' server</p>
+<p>Gets variables of 'DEV' environments located in folders other than 'DWH_ETL', 'DEV2' and 'QA' on 'localhost' server<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; Get-DbaSsisEnvironmentVariable -SqlInstance localhost -Environment DEV, PROD -Folder DWH_ETL, DEV2, QA
 </code></pre>
-<p>Gets variables of 'DEV' and 'PROD' environment(s) located in folders 'DWH_ETL', 'DEV2' and 'QA' on 'localhost' server</p>
+<p>Gets variables of 'DEV' and 'PROD' environment(s) located in folders 'DWH_ETL', 'DEV2' and 'QA' on 'localhost' server<br></p>
 <h5 id="example-5">Example:  5</h5>
 <pre><code>PS C:\&gt; Get-DbaSsisEnvironmentVariable -SqlInstance localhost -EnvironmentExclude DEV, PROD -Folder DWH_ETL, DEV2, QA
 </code></pre>
-<p>Gets variables of environments other than 'DEV' and 'PROD' located in folders 'DWH_ETL', 'DEV2' and 'QA' on 'localhost' server</p>
+<p>Gets variables of environments other than 'DEV' and 'PROD' located in folders 'DWH_ETL', 'DEV2' and 'QA' on 'localhost' server<br></p>
 <h5 id="example-6">Example:  6</h5>
 <pre><code>PS C:\&gt; Get-DbaSsisEnvironmentVariable -SqlInstance localhost -EnvironmentExclude DEV, PROD -FolderExclude DWH_ETL, DEV2, QA
 </code></pre>
-<p>Gets variables of environments other than 'DEV' and 'PROD' located in folders other than 'DWH_ETL', 'DEV2' and 'QA' on 'localhost' server</p>
+<p>Gets variables of environments other than 'DEV' and 'PROD' located in folders other than 'DWH_ETL', 'DEV2' and 'QA' on 'localhost' server<br></p>
 <h5 id="example-7">Example:  7</h5>
 <pre><code>PS C:\&gt; 'localhost' | Get-DbaSsisEnvironmentVariable -EnvironmentExclude DEV, PROD
 </code></pre>
-<p>Gets all SSIS environments except 'DEV' and 'PROD' from 'localhost' server. The server name comes from pipeline</p>
+<p>Gets all SSIS environments except 'DEV' and 'PROD' from 'localhost' server. The server name comes from pipeline<br></p>
 <h5 id="example-8">Example:  8</h5>
 <pre><code>PS C:\&gt; 'SRV1', 'SRV3' | Get-DbaSsisEnvironmentVariable
 </code></pre>
-<p>Gets all SSIS environments from 'SRV1' and 'SRV3' servers. The server's names come from pipeline</p>
+<p>Gets all SSIS environments from 'SRV1' and 'SRV3' servers. The server's names come from pipeline<br></p>
 <h5 id="example-9">Example:  9</h5>
 <pre><code>PS C:\&gt; 'SRV1', 'SRV2' | Get-DbaSsisEnvironmentVariable DEV | Out-GridView
 </code></pre>
-<p>Gets all variables from 'DEV' Environment(s) on servers 'SRV1' and 'SRV2' and outputs it as the GridView.
-The server names come from the pipeline.</p>
+<p>Gets all variables from 'DEV' Environment(s) on servers 'SRV1' and 'SRV2' and outputs it as the GridView.<br>
+The server names come from the pipeline.<br></p>
 <h5 id="example-10">Example:  10</h5>
 <pre><code>PS C:\&gt; 'localhost' | Get-DbaSsisEnvironmentVariable -EnvironmentExclude DEV, PROD | Select-Object -Property Name, Value | Where-Object {$_.Name -match '^a'} | Out-GridView
 </code></pre>
-<p>Gets all variables from Environments other than 'DEV' and 'PROD' on 'localhost' server,
-selects Name and Value properties for variables that names start with letter 'a' and outputs it as the GridView</p>
+<p>Gets all variables from Environments other than 'DEV' and 'PROD' on 'localhost' server,<br>
+selects Name and Value properties for variables that names start with letter 'a' and outputs it as the GridView<br></p>
 <h3 id="required-parameters">Required Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
 <p>The target SQL Server instance or instances.
 This can be a collection and receive pipeline input to allow the function
-to be executed against multiple SQL Server instances.</p>
+to be executed against multiple SQL Server instances.<br></p>
 <table>
 <thead>
 <tr>
@@ -562,7 +562,7 @@ to be executed against multiple SQL Server instances.</p>
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -590,7 +590,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="environment">-Environment</h5>
-<p>The SSIS Environments names that we want to get variables from</p>
+<p>The SSIS Environments names that we want to get variables from<br></p>
 <table>
 <thead>
 <tr>
@@ -619,7 +619,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </table>
 <h5 id="environmentexclude">-EnvironmentExclude</h5>
 <p>The SSIS Environments to exclude. Acts as a filter for environments, best used without 'Environment' parameter
-to get variables for all environments but excluded ones</p>
+to get variables for all environments but excluded ones<br></p>
 <table>
 <thead>
 <tr>
@@ -647,7 +647,7 @@ to get variables for all environments but excluded ones</p>
 </tbody>
 </table>
 <h5 id="folder">-Folder</h5>
-<p>The Folders names that contain the environments</p>
+<p>The Folders names that contain the environments<br></p>
 <table>
 <thead>
 <tr>
@@ -676,7 +676,7 @@ to get variables for all environments but excluded ones</p>
 </table>
 <h5 id="folderexclude">-FolderExclude</h5>
 <p>The Folders names to exclude. Acts as a filter for folders containing environments, best user without 'Folder' parameter
-to get variables for all folders but excluded ones</p>
+to get variables for all folders but excluded ones<br></p>
 <table>
 <thead>
 <tr>
@@ -706,7 +706,7 @@ to get variables for all folders but excluded ones</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -735,6 +735,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Get-DbaSsisEnvironmentVariable.ps1">Get-DbaSsisEnvironmentVariable</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Get-DbaSsisEnvironmentVariable">Get-DbaSsisEnvironmentVariable</a>.</p>
 
                 </div> <!-- rendered -->

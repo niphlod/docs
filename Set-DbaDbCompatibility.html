@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -470,16 +470,16 @@
 <p>Sets the current database compatibility level for all databases on a server or list of databases passed in to the function.</p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Set-DbaDbCompatibility
-    -[-SqlInstance] &lt;DbaInstanceParameter[]&gt;]
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    -[-Database] &lt;String[]&gt;]
-    -[-Compatibility] {Version60 | Version65 | Version70 | Version80 | Version90 | Version100 | Version110 | Version120 | Version130 | Version140 | Version150}]
-    -[-TargetCompatibility] &lt;Int32&gt;]
-    -[-InputObject] &lt;Database[]&gt;]
-    --EnableException]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [[-SqlInstance] &lt;DbaInstanceParameter[]&gt;]
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [[-Database] &lt;String[]&gt;]
+    [[-Compatibility] {Version60 | Version65 | Version70 | Version80 | Version90 | Version100 | Version110 | Version120 | Version130 | Version140 | Version150}]
+    [[-TargetCompatibility] &lt;Int32&gt;]
+    [[-InputObject] &lt;Database[]&gt;]
+    [-EnableException]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -488,18 +488,18 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Set-DbaDbCompatibility -SqlInstance localhost\sql2017
 </code></pre>
-<p>Changes database compatibility level for all user databases on server localhost\sql2017 that have a Compatibility level that do not match</p>
+<p>Changes database compatibility level for all user databases on server localhost\sql2017 that have a Compatibility level that do not match<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Set-DbaDbCompatibility -SqlInstance localhost\sql2017 -TargetCompatibility 12
 </code></pre>
-<p>Changes database compatibility level for all user databases on server localhost\sql2017 to Version120</p>
+<p>Changes database compatibility level for all user databases on server localhost\sql2017 to Version120<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Set-DbaDbCompatibility -SqlInstance localhost\sql2017 -Database Test -TargetCompatibility 12
 </code></pre>
-<p>Changes database compatibility level for database Test on server localhost\sql2017 to Version 120</p>
+<p>Changes database compatibility level for database Test on server localhost\sql2017 to Version 120<br></p>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances.</p>
+<p>The target SQL Server instance or instances.<br></p>
 <table>
 <thead>
 <tr>
@@ -529,7 +529,7 @@
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>SqlLogin to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance..</p>
+For MFA support, please use Connect-DbaInstance..<br></p>
 <table>
 <thead>
 <tr>
@@ -557,7 +557,7 @@ For MFA support, please use Connect-DbaInstance..</p>
 </tbody>
 </table>
 <h5 id="database">-Database</h5>
-<p>The database or databases to process. If unspecified, all databases will be processed.</p>
+<p>The database or databases to process. If unspecified, all databases will be processed.<br></p>
 <table>
 <thead>
 <tr>
@@ -592,7 +592,7 @@ Version110 = SQL Server 2012
 Version120 = SQL Server 2014
 Version130 = SQL Server 2016
 Version140 = SQL Server 2017
-Version150 = SQL Server 2019</p>
+Version150 = SQL Server 2019<br></p>
 <table>
 <thead>
 <tr>
@@ -628,7 +628,7 @@ The target compatibility level version. This is an int and follows Microsoft's v
 12 = SQL Server 2014
 13 = SQL Server 2016
 14 = SQL Server 2017
-15 = SQL Server 2019</p>
+15 = SQL Server 2019<br></p>
 <table>
 <thead>
 <tr>
@@ -660,7 +660,7 @@ The target compatibility level version. This is an int and follows Microsoft's v
 </tbody>
 </table>
 <h5 id="inputobject">-InputObject</h5>
-<p>A collection of databases (such as returned by Get-DbaDatabase)</p>
+<p>A collection of databases (such as returned by Get-DbaDatabase)<br></p>
 <table>
 <thead>
 <tr>
@@ -690,7 +690,7 @@ The target compatibility level version. This is an int and follows Microsoft's v
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -718,7 +718,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>Shows what would happen if the command were to run</p>
+<p>Shows what would happen if the command were to run<br></p>
 <table>
 <thead>
 <tr>
@@ -749,7 +749,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 <p>Prompts for confirmation of every step. For example:
 Are you sure you want to perform this action?
 Performing the operation &quot;Update database&quot; on target &quot;pubs on SQL2016\VNEXT&quot;.
-[Y] Yes  [A] Yes to All  [N] No  [L] No to All  [S] Suspend  [?] Help (default is &quot;Y&quot;):</p>
+[Y] Yes  [A] Yes to All  [N] No  [L] No to All  [S] Suspend  [?] Help (default is &quot;Y&quot;):<br></p>
 <table>
 <thead>
 <tr>
@@ -778,6 +778,7 @@ Performing the operation &quot;Update database&quot; on target &quot;pubs on SQL
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Set-DbaDbCompatibility.ps1">Set-DbaDbCompatibility</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Set-DbaDbCompatibility">Set-DbaDbCompatibility</a>.</p>
 
                 </div> <!-- rendered -->

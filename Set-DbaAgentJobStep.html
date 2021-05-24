@@ -288,7 +288,7 @@
                 var hash = window.location.hash.substr(1);
                 var pagename = window.location.pathname.split("/").filter(function (c) { return c.length; }).pop();
                 if (_.isUndefined(pagename)) {
-                    pagename = 'index'
+                    pagename = ''
                 } else {
                     pagename = pagename.split('.')[0];
                 }
@@ -471,32 +471,32 @@
 <p>Note: ActiveScripting (ActiveX scripting) was discontinued in SQL Server 2016: <a href="https://docs.microsoft.com/en-us/sql/database-engine/discontinued-database-engine-functionality-in-sql-server">https://docs.microsoft.com/en-us/sql/database-engine/discontinued-database-engine-functionality-in-sql-server</a></p>
 <h2 id="syntax">Syntax</h2>
 <pre><code>Set-DbaAgentJobStep
-    -[-SqlInstance] &lt;DbaInstanceParameter[]&gt;]
-    -[-SqlCredential] &lt;PSCredential&gt;]
-    -[-Job] &lt;Object[]&gt;]
-    -[-StepName] &lt;String&gt;]
-    -[-NewName] &lt;String&gt;]
-    -[-Subsystem] &lt;String&gt;]
-    -[-SubsystemServer] &lt;String&gt;]
-    -[-Command] &lt;String&gt;]
-    -[-CmdExecSuccessCode] &lt;Int32&gt;]
-    -[-OnSuccessAction] &lt;String&gt;]
-    -[-OnSuccessStepId] &lt;Int32&gt;]
-    -[-OnFailAction] &lt;String&gt;]
-    -[-OnFailStepId] &lt;Int32&gt;]
-    -[-Database] &lt;String&gt;]
-    -[-DatabaseUser] &lt;String&gt;]
-    -[-RetryAttempts] &lt;Int32&gt;]
-    -[-RetryInterval] &lt;Int32&gt;]
-    -[-OutputFileName] &lt;String&gt;]
-    -[-Flag] &lt;String[]&gt;]
-    -[-ProxyName] &lt;String&gt;]
-    -[-InputObject] &lt;Server[]&gt;]
-    --EnableException]
-    --Force]
-    --WhatIf]
-    --Confirm]
-    -&lt;CommonParameters&gt;]
+    [[-SqlInstance] &lt;DbaInstanceParameter[]&gt;]
+    [[-SqlCredential] &lt;PSCredential&gt;]
+    [[-Job] &lt;Object[]&gt;]
+    [[-StepName] &lt;String&gt;]
+    [[-NewName] &lt;String&gt;]
+    [[-Subsystem] &lt;String&gt;]
+    [[-SubsystemServer] &lt;String&gt;]
+    [[-Command] &lt;String&gt;]
+    [[-CmdExecSuccessCode] &lt;Int32&gt;]
+    [[-OnSuccessAction] &lt;String&gt;]
+    [[-OnSuccessStepId] &lt;Int32&gt;]
+    [[-OnFailAction] &lt;String&gt;]
+    [[-OnFailStepId] &lt;Int32&gt;]
+    [[-Database] &lt;String&gt;]
+    [[-DatabaseUser] &lt;String&gt;]
+    [[-RetryAttempts] &lt;Int32&gt;]
+    [[-RetryInterval] &lt;Int32&gt;]
+    [[-OutputFileName] &lt;String&gt;]
+    [[-Flag] &lt;String[]&gt;]
+    [[-ProxyName] &lt;String&gt;]
+    [[-InputObject] &lt;Server[]&gt;]
+    [-EnableException]
+    [-Force]
+    [-WhatIf]
+    [-Confirm]
+    [&lt;CommonParameters&gt;]
 
 </code></pre>
 <p> </p>
@@ -505,54 +505,54 @@
 <h5 id="example-1">Example:  1</h5>
 <pre><code>PS C:\&gt; Set-DbaAgentJobStep -SqlInstance sql1 -Job Job1 -StepName Step1 -NewName Step2
 </code></pre>
-<p>Changes the name of the step in &quot;Job1&quot; with the name Step1 to Step2</p>
+<p>Changes the name of the step in &quot;Job1&quot; with the name Step1 to Step2<br></p>
 <h5 id="example-2">Example:  2</h5>
 <pre><code>PS C:\&gt; Set-DbaAgentJobStep -SqlInstance sql1 -Job Job1 -StepName Step1 -Database msdb
 </code></pre>
-<p>Changes the database of the step in &quot;Job1&quot; with the name Step1 to msdb</p>
+<p>Changes the database of the step in &quot;Job1&quot; with the name Step1 to msdb<br></p>
 <h5 id="example-3">Example:  3</h5>
 <pre><code>PS C:\&gt; Set-DbaAgentJobStep -SqlInstance sql1 -Job Job1, Job2 -StepName Step1 -Database msdb
 </code></pre>
-<p>Changes job steps in multiple jobs with the name Step1 to msdb</p>
+<p>Changes job steps in multiple jobs with the name Step1 to msdb<br></p>
 <h5 id="example-4">Example:  4</h5>
 <pre><code>PS C:\&gt; Set-DbaAgentJobStep -SqlInstance sql1, sql2, sql3 -Job Job1, Job2 -StepName Step1 -Database msdb
 </code></pre>
-<p>Changes job steps in multiple jobs on multiple servers with the name Step1 to msdb</p>
+<p>Changes job steps in multiple jobs on multiple servers with the name Step1 to msdb<br></p>
 <h5 id="example-5">Example:  5</h5>
 <pre><code>PS C:\&gt; Set-DbaAgentJobStep -SqlInstance sql1, sql2, sql3 -Job Job1 -StepName Step1 -Database msdb
 </code></pre>
-<p>Changes the database of the step in &quot;Job1&quot; with the name Step1 to msdb for multiple servers</p>
+<p>Changes the database of the step in &quot;Job1&quot; with the name Step1 to msdb for multiple servers<br></p>
 <h5 id="example-6">Example:  6</h5>
 <pre><code>PS C:\&gt; sql1, sql2, sql3 | Set-DbaAgentJobStep -Job Job1 -StepName Step1 -Database msdb
 </code></pre>
-<p>Changes the database of the step in &quot;Job1&quot; with the name Step1 to msdb for multiple servers using pipeline</p>
+<p>Changes the database of the step in &quot;Job1&quot; with the name Step1 to msdb for multiple servers using pipeline<br></p>
 <h5 id="example-7">Example:  7</h5>
 <pre><code>PS C:\&gt; $jobStep = @{
 </code></pre>
-<p>SqlInstance        = sqldev01
-Job                = dbatools1
-StepName           = &quot;Step 2&quot;
-Subsystem          = &quot;CmdExec&quot;
-Command            = &quot;enter command text here&quot;
-CmdExecSuccessCode = 0
-OnSuccessAction    = &quot;GoToStep&quot;
-OnSuccessStepId    = 1
-OnFailAction       = &quot;GoToStep&quot;
-OnFailStepId       = 1
-Database           = TestDB
-RetryAttempts      = 2
-RetryInterval      = 5
-OutputFileName     = &quot;logCmdExec.txt&quot;
-Flag               = [Microsoft.SqlServer.Management.Smo.Agent.JobStepFlags]::AppendAllCmdExecOutputToJobHistory
-ProxyName          = &quot;dbatoolsci_proxy_1&quot;
-Force              = $true
-}</p>
+<p>SqlInstance        = sqldev01<br>
+Job                = dbatools1<br>
+StepName           = &quot;Step 2&quot;<br>
+Subsystem          = &quot;CmdExec&quot;<br>
+Command            = &quot;enter command text here&quot;<br>
+CmdExecSuccessCode = 0<br>
+OnSuccessAction    = &quot;GoToStep&quot;<br>
+OnSuccessStepId    = 1<br>
+OnFailAction       = &quot;GoToStep&quot;<br>
+OnFailStepId       = 1<br>
+Database           = TestDB<br>
+RetryAttempts      = 2<br>
+RetryInterval      = 5<br>
+OutputFileName     = &quot;logCmdExec.txt&quot;<br>
+Flag               = [Microsoft.SqlServer.Management.Smo.Agent.JobStepFlags]::AppendAllCmdExecOutputToJobHistory<br>
+ProxyName          = &quot;dbatoolsci_proxy_1&quot;<br>
+Force              = $true<br>
+}<br></p>
 <pre><code>PS C:\&gt; $newJobStep = Set-DbaAgentJobStep @jobStep
 </code></pre>
-<p>Updates or creates a new job step named Step 2 in the dbatools1 job on the sqldev01 instance. The subsystem is set to CmdExec and uses a proxy.</p>
+<p>Updates or creates a new job step named Step 2 in the dbatools1 job on the sqldev01 instance. The subsystem is set to CmdExec and uses a proxy.<br></p>
 <h3 id="optional-parameters">Optional Parameters</h3>
 <h5 id="sqlinstance">-SqlInstance</h5>
-<p>The target SQL Server instance or instances. You must have sysadmin access and server version must be SQL Server version 2000 or greater.</p>
+<p>The target SQL Server instance or instances. You must have sysadmin access and server version must be SQL Server version 2000 or greater.<br></p>
 <table>
 <thead>
 <tr>
@@ -582,7 +582,7 @@ Force              = $true
 <h5 id="sqlcredential">-SqlCredential</h5>
 <p>Login to the target instance using alternative credentials. Accepts PowerShell credentials (Get-Credential).
 Windows Authentication, SQL Server Authentication, Active Directory - Password, and Active Directory - Integrated are all supported.
-For MFA support, please use Connect-DbaInstance.</p>
+For MFA support, please use Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -610,7 +610,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="job">-Job</h5>
-<p>The name of the job or the job object itself.</p>
+<p>The name of the job or the job object itself.<br></p>
 <table>
 <thead>
 <tr>
@@ -638,7 +638,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="stepname">-StepName</h5>
-<p>The name of the step.</p>
+<p>The name of the step.<br></p>
 <table>
 <thead>
 <tr>
@@ -666,7 +666,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </tbody>
 </table>
 <h5 id="newname">-NewName</h5>
-<p>The new name for the step in case it needs to be renamed.</p>
+<p>The new name for the step in case it needs to be renamed.<br></p>
 <table>
 <thead>
 <tr>
@@ -695,7 +695,7 @@ For MFA support, please use Connect-DbaInstance.</p>
 </table>
 <h5 id="subsystem">-Subsystem</h5>
 <p>The subsystem used by the SQL Server Agent service to execute command.
-Allowed values 'ActiveScripting','AnalysisCommand','AnalysisQuery','CmdExec','Distribution','LogReader','Merge','PowerShell','QueueReader','Snapshot','Ssis','TransactSql'</p>
+Allowed values 'ActiveScripting','AnalysisCommand','AnalysisQuery','CmdExec','Distribution','LogReader','Merge','PowerShell','QueueReader','Snapshot','Ssis','TransactSql'<br></p>
 <table>
 <thead>
 <tr>
@@ -727,7 +727,7 @@ Allowed values 'ActiveScripting','AnalysisCommand','AnalysisQuery','CmdExec','Di
 </tbody>
 </table>
 <h5 id="subsystemserver">-SubsystemServer</h5>
-<p>The subsystems AnalysisScripting, AnalysisCommand, AnalysisQuery require a server.</p>
+<p>The subsystems AnalysisScripting, AnalysisCommand, AnalysisQuery require a server.<br></p>
 <table>
 <thead>
 <tr>
@@ -755,7 +755,7 @@ Allowed values 'ActiveScripting','AnalysisCommand','AnalysisQuery','CmdExec','Di
 </tbody>
 </table>
 <h5 id="command">-Command</h5>
-<p>The commands to be executed by the SQLServerAgent service through the subsystem.</p>
+<p>The commands to be executed by the SQLServerAgent service through the subsystem.<br></p>
 <table>
 <thead>
 <tr>
@@ -783,7 +783,7 @@ Allowed values 'ActiveScripting','AnalysisCommand','AnalysisQuery','CmdExec','Di
 </tbody>
 </table>
 <h5 id="cmdexecsuccesscode">-CmdExecSuccessCode</h5>
-<p>The value returned by a CmdExec subsystem command to indicate that command executed successfully.</p>
+<p>The value returned by a CmdExec subsystem command to indicate that command executed successfully.<br></p>
 <table>
 <thead>
 <tr>
@@ -813,7 +813,7 @@ Allowed values 'ActiveScripting','AnalysisCommand','AnalysisQuery','CmdExec','Di
 <h5 id="onsuccessaction">-OnSuccessAction</h5>
 <p>The action to perform if the step succeeds.
 Allowed values  &quot;QuitWithSuccess&quot; (default), &quot;QuitWithFailure&quot;, &quot;GoToNextStep&quot;, &quot;GoToStep&quot;.
-The text value van either be lowercase, uppercase or something in between as long as the text is correct.</p>
+The text value van either be lowercase, uppercase or something in between as long as the text is correct.<br></p>
 <table>
 <thead>
 <tr>
@@ -845,7 +845,7 @@ The text value van either be lowercase, uppercase or something in between as lon
 </tbody>
 </table>
 <h5 id="onsuccessstepid">-OnSuccessStepId</h5>
-<p>The ID of the step in this job to execute if the step succeeds and OnSuccessAction is &quot;GoToNextStep&quot;.</p>
+<p>The ID of the step in this job to execute if the step succeeds and OnSuccessAction is &quot;GoToNextStep&quot;.<br></p>
 <table>
 <thead>
 <tr>
@@ -875,7 +875,7 @@ The text value van either be lowercase, uppercase or something in between as lon
 <h5 id="onfailaction">-OnFailAction</h5>
 <p>The action to perform if the step fails.
 Allowed values  &quot;QuitWithSuccess&quot; (default), &quot;QuitWithFailure&quot;, &quot;GoToNextStep&quot;, &quot;GoToStep&quot;.
-The text value van either be lowercase, uppercase or something in between as long as the text is correct.</p>
+The text value van either be lowercase, uppercase or something in between as long as the text is correct.<br></p>
 <table>
 <thead>
 <tr>
@@ -907,7 +907,7 @@ The text value van either be lowercase, uppercase or something in between as lon
 </tbody>
 </table>
 <h5 id="onfailstepid">-OnFailStepId</h5>
-<p>The ID of the step in this job to execute if the step fails and OnFailAction is &quot;GoToNextStep&quot;.</p>
+<p>The ID of the step in this job to execute if the step fails and OnFailAction is &quot;GoToNextStep&quot;.<br></p>
 <table>
 <thead>
 <tr>
@@ -935,7 +935,7 @@ The text value van either be lowercase, uppercase or something in between as lon
 </tbody>
 </table>
 <h5 id="database">-Database</h5>
-<p>The name of the database in which to execute a Transact-SQL step.</p>
+<p>The name of the database in which to execute a Transact-SQL step.<br></p>
 <table>
 <thead>
 <tr>
@@ -963,7 +963,7 @@ The text value van either be lowercase, uppercase or something in between as lon
 </tbody>
 </table>
 <h5 id="databaseuser">-DatabaseUser</h5>
-<p>The name of the user account to use when executing a Transact-SQL step.</p>
+<p>The name of the user account to use when executing a Transact-SQL step.<br></p>
 <table>
 <thead>
 <tr>
@@ -991,7 +991,7 @@ The text value van either be lowercase, uppercase or something in between as lon
 </tbody>
 </table>
 <h5 id="retryattempts">-RetryAttempts</h5>
-<p>The number of retry attempts to use if this step fails.</p>
+<p>The number of retry attempts to use if this step fails.<br></p>
 <table>
 <thead>
 <tr>
@@ -1019,7 +1019,7 @@ The text value van either be lowercase, uppercase or something in between as lon
 </tbody>
 </table>
 <h5 id="retryinterval">-RetryInterval</h5>
-<p>The amount of time in minutes between retry attempts.</p>
+<p>The amount of time in minutes between retry attempts.<br></p>
 <table>
 <thead>
 <tr>
@@ -1047,7 +1047,7 @@ The text value van either be lowercase, uppercase or something in between as lon
 </tbody>
 </table>
 <h5 id="outputfilename">-OutputFileName</h5>
-<p>The name of the file in which the output of this step is saved.</p>
+<p>The name of the file in which the output of this step is saved.<br></p>
 <table>
 <thead>
 <tr>
@@ -1083,7 +1083,7 @@ AppendToLogFile                         Job history is appended to the SQL Serve
 AppendToTableLog                        Job history is appended to a log table.
 LogToTableWithOverwrite                 Job history is written to a log table, overwriting previous contents.
 None                                    Job history is not appended to a file.
-ProvideStopProcessEvent                 Job processing is stopped.</p>
+ProvideStopProcessEvent                 Job processing is stopped.<br></p>
 <table>
 <thead>
 <tr>
@@ -1115,7 +1115,7 @@ ProvideStopProcessEvent                 Job processing is stopped.</p>
 </tbody>
 </table>
 <h5 id="proxyname">-ProxyName</h5>
-<p>The name of the proxy that the job step runs as.</p>
+<p>The name of the proxy that the job step runs as.<br></p>
 <table>
 <thead>
 <tr>
@@ -1143,7 +1143,7 @@ ProvideStopProcessEvent                 Job processing is stopped.</p>
 </tbody>
 </table>
 <h5 id="inputobject">-InputObject</h5>
-<p>Allows pipeline input from Connect-DbaInstance.</p>
+<p>Allows pipeline input from Connect-DbaInstance.<br></p>
 <table>
 <thead>
 <tr>
@@ -1173,7 +1173,7 @@ ProvideStopProcessEvent                 Job processing is stopped.</p>
 <h5 id="enableexception">-EnableException</h5>
 <p>By default, when something goes wrong we try to catch it, interpret it and give you a friendly warning message.
 This avoids overwhelming you with &quot;sea of red&quot; exceptions, but is inconvenient because it basically disables advanced scripting.
-Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.</p>
+Using this switch turns this &quot;nice by default&quot; feature off and enables you to catch exceptions with your own try/catch.<br></p>
 <table>
 <thead>
 <tr>
@@ -1201,7 +1201,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="force">-Force</h5>
-<p>The force parameter will ignore some errors in the parameters and assume defaults.</p>
+<p>The force parameter will ignore some errors in the parameters and assume defaults.<br></p>
 <table>
 <thead>
 <tr>
@@ -1229,7 +1229,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="whatif">-WhatIf</h5>
-<p>Shows what would happen if the command were to run. No actions are actually performed.</p>
+<p>Shows what would happen if the command were to run. No actions are actually performed.<br></p>
 <table>
 <thead>
 <tr>
@@ -1257,7 +1257,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </tbody>
 </table>
 <h5 id="confirm">-Confirm</h5>
-<p>Prompts you for confirmation before executing any changing operations within the command.</p>
+<p>Prompts you for confirmation before executing any changing operations within the command.<br></p>
 <table>
 <thead>
 <tr>
@@ -1286,6 +1286,7 @@ Using this switch turns this &quot;nice by default&quot; feature off and enables
 </table>
 <p> </p>
 <p>Want to see the source code for this command? Check out <a href="https://github.com/sqlcollaborative/dbatools/blob/master/functions/Set-DbaAgentJobStep.ps1">Set-DbaAgentJobStep</a> on GitHub.
+<br>
 Want to see the Bill Of Health for this command? Check out <a href="https://sqlcollaborative.github.io/boh#Set-DbaAgentJobStep">Set-DbaAgentJobStep</a>.</p>
 
                 </div> <!-- rendered -->
